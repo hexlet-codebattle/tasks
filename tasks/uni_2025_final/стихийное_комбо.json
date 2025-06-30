@@ -1,0 +1,208 @@
+{
+  "name": "Стихийное_комбо",
+  "description_ru": "Начальное состояние цели — `neutral`. Дан массив атак:\n- Огненный шар (`fireball`) наносит 20 урона, но если цель была промокшей (`wet`), он нанесет 40 урона, превратив воду в пар (цель станет `neutral`)\n- Водяной удар (`water_blast`) наносит 15 урона и всегда делает цель промокшей (`wet`)\nПосчитайте итоговый урон.\nПример: `['water_blast', 'fireball']` → `15 (цель промокла) + 40 (пар от огня по воде) = 55`.",
+  "description_en": "The initial state of the target is `neutral`. Given an array of attacks:\n- `fireball` deals 20 damage, but if the target was `wet`, it deals 40 damage, turning water into steam (the target becomes `neutral`).\n- `water_blast` deals 15 damage and always makes the target `wet`.\nCalculate the total damage.\nExample: `['water_blast', 'fireball']` → `15 (target becomes wet) + 40 (steam from fire on water) = 55`.",
+  "input_signature": [
+    {
+      "argument_name": "attacks",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "string"
+        }
+      }
+    }
+  ],
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "asserts": [
+    {
+      "arguments": [[]],
+      "expected": 0,
+      "comment": "Пустой массив атак"
+    },
+    {
+      "arguments": [["fireball"]],
+      "expected": 20,
+      "comment": "Одна огненная атака"
+    },
+    {
+      "arguments": [["water_blast"]],
+      "expected": 15,
+      "comment": "Одна водная атака"
+    },
+    {
+      "arguments": [["water_blast", "fireball"]],
+      "expected": 55,
+      "comment": "Комбо: вода, затем огонь"
+    },
+    {
+      "arguments": [["fireball", "water_blast"]],
+      "expected": 35,
+      "comment": "Комбо: огонь, затем вода"
+    },
+    {
+      "arguments": [["fireball", "fireball"]],
+      "expected": 40,
+      "comment": "Две огненные атаки подряд"
+    },
+    {
+      "arguments": [["water_blast", "water_blast"]],
+      "expected": 30,
+      "comment": "Две водные атаки подряд"
+    },
+    {
+      "arguments": [["fireball", "water_blast", "fireball"]],
+      "expected": 75,
+      "comment": "Сложное комбо 1"
+    },
+    {
+      "arguments": [["water_blast", "fireball", "water_blast"]],
+      "expected": 70,
+      "comment": "Сложное комбо 2"
+    },
+    {
+      "arguments": [["water_blast", "fireball", "fireball"]],
+      "expected": 75,
+      "comment": "Сложное комбо 3"
+    },
+    {
+      "arguments": [
+        ["fireball", "fireball", "water_blast", "fireball", "fireball"]
+      ],
+      "expected": 115,
+      "comment": "Длинная последовательность атак"
+    },
+    {
+      "arguments": [["water_blast", "water_blast", "water_blast"]],
+      "expected": 45,
+      "comment": "Три водные атаки"
+    },
+    {
+      "arguments": [["fireball", "fireball", "fireball"]],
+      "expected": 60,
+      "comment": "Три огненные атаки"
+    },
+    {
+      "arguments": [["water_blast", "fireball", "water_blast", "fireball"]],
+      "expected": 110,
+      "comment": "Чередование атак 1"
+    },
+    {
+      "arguments": [["fireball", "water_blast", "fireball", "water_blast"]],
+      "expected": 90,
+      "comment": "Чередование атак 2"
+    },
+    {
+      "arguments": [
+        [
+          "water_blast",
+          "water_blast",
+          "fireball",
+          "fireball",
+          "water_blast",
+          "fireball"
+        ]
+      ],
+      "expected": 145,
+      "comment": "Длинное комбо 1"
+    },
+    {
+      "arguments": [
+        [
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast"
+        ]
+      ],
+      "expected": 145,
+      "comment": "Длинное комбо 2"
+    },
+    {
+      "arguments": [
+        ["fireball", "fireball", "fireball", "fireball", "fireball"]
+      ],
+      "expected": 100,
+      "comment": "Пять огненных атак"
+    },
+    {
+      "arguments": [
+        [
+          "water_blast",
+          "water_blast",
+          "water_blast",
+          "water_blast",
+          "water_blast"
+        ]
+      ],
+      "expected": 75,
+      "comment": "Пять водных атак"
+    },
+    {
+      "arguments": [
+        [
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast"
+        ]
+      ],
+      "expected": 180,
+      "comment": "Длинное чередование, начинающееся с воды"
+    },
+    {
+      "arguments": [
+        [
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast"
+        ]
+      ],
+      "expected": 255,
+      "comment": "Очень длинное чередование, начинающееся с огня"
+    },
+    {
+      "arguments": [
+        [
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball",
+          "water_blast",
+          "fireball"
+        ]
+      ],
+      "expected": 275,
+      "comment": "Очень длинное чередование, начинающееся с воды"
+    }
+  ],
+  "examples": "```\nsolution(['water_blast', 'fireball']) == 55\nsolution(['fireball', 'water_blast']) == 35\n```",
+  "solution": "def solution(attacks):\n    damage = 0\n    state = 'neutral'\n    for attack in attacks:\n        if attack == 'fireball':\n            if state == 'wet':\n                damage += 40\n                state = 'neutral'\n            else:\n                damage += 20\n        elif attack == 'water_blast':\n            damage += 15\n            state = 'wet'\n    return damage",
+  "level": "easy",
+  "tags": ["logic", "arrays"],
+  "visibility": "public",
+  "origin": "user",
+  "generator_lang": "python",
+  "time_to_solve_sec": 2000,
+  "comment": "Задача на простое отслеживание состояния."
+}

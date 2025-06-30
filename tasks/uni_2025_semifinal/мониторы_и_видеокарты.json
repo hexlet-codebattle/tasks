@@ -1,0 +1,266 @@
+{
+  "asserts": [
+    {
+      "arguments": [
+        [3, 4, 6],
+        [2, 3, 8]
+      ],
+      "expected": 13
+    },
+    {
+      "arguments": [
+        [3, 4, 6],
+        [2, 11, 0]
+      ],
+      "expected": 12
+    },
+    {
+      "arguments": [
+        [10, 10, 0],
+        [8, 1, 2]
+      ],
+      "expected": 11
+    },
+    {
+      "arguments": [
+        [8, 8, 5],
+        [10, 0, 1]
+      ],
+      "expected": 11
+    },
+    {
+      "arguments": [
+        [10, 3, 5],
+        [4, 7, 4]
+      ],
+      "expected": 15
+    },
+    {
+      "arguments": [
+        [2, 1, 0],
+        [6, 8, 7]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        [8, 7, 2],
+        [0, 3, 3]
+      ],
+      "expected": 6
+    },
+    {
+      "arguments": [
+        [7, 1, 2],
+        [2, 2, 1]
+      ],
+      "expected": 5
+    },
+    {
+      "arguments": [
+        [3, 8, 7],
+        [7, 1, 2]
+      ],
+      "expected": 10
+    },
+    {
+      "arguments": [
+        [3, 2, 9],
+        [1, 9, 0]
+      ],
+      "expected": 10
+    },
+    {
+      "arguments": [
+        [6, 8, 3],
+        [7, 2, 10]
+      ],
+      "expected": 17
+    },
+    {
+      "arguments": [
+        [6, 2, 2],
+        [5, 1, 0]
+      ],
+      "expected": 6
+    },
+    {
+      "arguments": [
+        [6, 2, 0],
+        [10, 8, 8]
+      ],
+      "expected": 8
+    },
+    {
+      "arguments": [
+        [7, 5, 3],
+        [4, 3, 3]
+      ],
+      "expected": 10
+    },
+    {
+      "arguments": [
+        [4, 9, 3],
+        [2, 1, 1]
+      ],
+      "expected": 4
+    },
+    {
+      "arguments": [
+        [0, 5, 10],
+        [10, 9, 3]
+      ],
+      "expected": 15
+    },
+    {
+      "arguments": [
+        [4, 1, 7],
+        [0, 0, 5]
+      ],
+      "expected": 5
+    },
+    {
+      "arguments": [
+        [5, 6, 3],
+        [3, 9, 5]
+      ],
+      "expected": 14
+    },
+    {
+      "arguments": [
+        [6, 4, 4],
+        [7, 9, 6]
+      ],
+      "expected": 14
+    },
+    {
+      "arguments": [
+        [8, 4, 10],
+        [3, 4, 2]
+      ],
+      "expected": 9
+    },
+    {
+      "arguments": [
+        [10, 1, 7],
+        [9, 5, 6]
+      ],
+      "expected": 18
+    },
+    {
+      "arguments": [
+        [4, 10, 9],
+        [7, 2, 6]
+      ],
+      "expected": 15
+    },
+    {
+      "arguments": [
+        [7, 0, 4],
+        [1, 8, 2]
+      ],
+      "expected": 7
+    },
+    {
+      "arguments": [
+        [7, 3, 4],
+        [7, 3, 6]
+      ],
+      "expected": 14
+    },
+    {
+      "arguments": [
+        [6, 8, 3],
+        [8, 7, 5]
+      ],
+      "expected": 17
+    },
+    {
+      "arguments": [
+        [0, 7, 2],
+        [1, 5, 5]
+      ],
+      "expected": 9
+    },
+    {
+      "arguments": [
+        [3, 9, 6],
+        [2, 5, 4]
+      ],
+      "expected": 11
+    },
+    {
+      "arguments": [
+        [6, 9, 5],
+        [2, 3, 3]
+      ],
+      "expected": 8
+    },
+    {
+      "arguments": [
+        [4, 5, 1],
+        [6, 7, 1]
+      ],
+      "expected": 10
+    },
+    {
+      "arguments": [
+        [9, 0, 3],
+        [6, 3, 9]
+      ],
+      "expected": 12
+    },
+    {
+      "arguments": [
+        [7, 2, 4],
+        [6, 3, 10]
+      ],
+      "expected": 13
+    },
+    {
+      "arguments": [
+        [6, 4, 0],
+        [0, 7, 6]
+      ],
+      "expected": 10
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "**Given:**\n- $a[0]$ monitors with an HDMI input\n- $a[1]$ monitors with a DisplayPort input\n- $a[2]$ monitors with both inputs\n- $b[0]$ video cards with an HDMI output\n- $b[1]$ video cards with a DisplayPort output\n- $b[2]$ video cards with both outputs\n\n**Question:** How many monitor-video card pairs can be formed if each monitor is connected to exactly one video card, and each video card is connected to exactly one monitor?\n",
+  "description_ru": "**Дано:**\n- $a[0]$ мониторов со входом HDMI\n- $a[1]$ мониторов со входом DisplayPort\n- $a[2]$ мониторов с обоими входами\n- $b[0]$ видеокарт с выходом HDMI\n- $b[1]$ видеокарт с выходом DisplayPort\n- $b[2]$ видеокарт с обоими выходами\n\n**Вопрос:** Сколько пар монитор-видеокарта можно сформировать, если каждый монитор подключается ровно к одной видеокарте, а каждая видеокарта - ровно к одному монитору?\n",
+  "examples": "```\nsolution([3, 4, 6], [2, 3, 8]) == 13\nsolution([3, 4, 6], [2, 11, 0]) == 12\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "a",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "integer"
+        }
+      }
+    },
+    {
+      "argument_name": "b",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "integer"
+        }
+      }
+    }
+  ],
+  "level": "medium",
+  "time_to_solve_sec": 300,
+  "name": "Мониторы_и_видеокарты",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(a : list, b : list):\n    def make_pairs(a, b, i, j):\n        nowmn = min(a[i], b[j])\n        a[i] -= nowmn\n        b[j] -= nowmn\n        return nowmn\n    ans = 0\n    for i in range(2):\n        ans += make_pairs(a, b, i, i)\n        ans += make_pairs(a, b, i, 2)\n        ans += make_pairs(a, b, 2, i)\n    ans += make_pairs(a, b, 2, 2)\n    return ans\n",
+  "tags": [],
+  "visibility": "public"
+}

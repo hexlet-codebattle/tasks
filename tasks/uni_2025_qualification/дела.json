@@ -1,0 +1,154 @@
+{
+  "asserts": [
+    {
+      "arguments": [[480]],
+      "expected": 1
+    },
+    {
+      "arguments": [[481]],
+      "expected": 0
+    },
+    {
+      "arguments": [[240, 240]],
+      "expected": 2
+    },
+    {
+      "arguments": [[240, 240, 240]],
+      "expected": 2
+    },
+    {
+      "arguments": [[160, 160, 160]],
+      "expected": 3
+    },
+    {
+      "arguments": [[120, 120, 120, 120]],
+      "expected": 4
+    },
+    {
+      "arguments": [[100, 100, 100, 100, 100]],
+      "expected": 4
+    },
+    {
+      "arguments": [[1, 479]],
+      "expected": 2
+    },
+    {
+      "arguments": [[479, 1]],
+      "expected": 2
+    },
+    {
+      "arguments": [[240, 239, 1]],
+      "expected": 3
+    },
+    {
+      "arguments": [[160, 160, 159, 1]],
+      "expected": 4
+    },
+    {
+      "arguments": [[100, 100, 100, 90, 89]],
+      "expected": 5
+    },
+    {
+      "arguments": [[1, 2, 3, 4, 470]],
+      "expected": 5
+    },
+    {
+      "arguments": [[470, 4, 3, 2, 1]],
+      "expected": 5
+    },
+    {
+      "arguments": [[30, 30, 30, 30, 30, 30, 30, 30]],
+      "expected": 8
+    },
+    {
+      "arguments": [[60, 60, 60, 60, 60, 60, 60, 60]],
+      "expected": 8
+    },
+    {
+      "arguments": [[120, 120, 120, 120, 120]],
+      "expected": 4
+    },
+    {
+      "arguments": [[1]],
+      "expected": 1
+    },
+    {
+      "arguments": [[479]],
+      "expected": 1
+    },
+    {
+      "arguments": [[240, 241]],
+      "expected": 1
+    },
+    {
+      "arguments": [[241, 240]],
+      "expected": 1
+    },
+    {
+      "arguments": [[160, 160, 161]],
+      "expected": 2
+    },
+    {
+      "arguments": [[50, 50, 50, 50, 50, 50, 50, 50, 50, 50]],
+      "expected": 9
+    },
+    {
+      "arguments": [[100, 100, 100, 100, 100]],
+      "expected": 4
+    },
+    {
+      "arguments": [[1, 1, 478]],
+      "expected": 3
+    },
+    {
+      "arguments": [[478, 1, 1]],
+      "expected": 3
+    },
+    {
+      "arguments": [[239, 239, 2]],
+      "expected": 3
+    },
+    {
+      "arguments": [[1]],
+      "expected": 1
+    },
+    {
+      "arguments": [[480, 1]],
+      "expected": 1
+    },
+    {
+      "arguments": [[240, 240, 1]],
+      "expected": 2
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "For each task, you know how many minutes it takes to complete it. The working day lasts `480` minutes. How many tasks can you complete at most?",
+  "description_ru": "Для каждого дела известно, сколько минут требуется на его выполнение. Рабочий день длится `480` минут. Какое максимальное количество дел можно успеть сделать?",
+  "examples": "```\nsolution([240, 120, 360]) == 2\nsolution([1]) == 1\nsolution([4000, 1000, 2000]) == 0\nsolution([240, 240, 240]) == 2\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "nums",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "integer"
+        }
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "5 * 60 = 300 - это 5 минут",
+  "time_to_solve_sec": 300,
+  "name": "Дела",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(nums : list) -> int:\n    nums.sort()\n    time = 0\n    for i in range(len(nums)):\n        time += nums[i]\n        if time > 480:\n            return i\n    return len(nums)",
+  "tags": [],
+  "visibility": "public"
+}

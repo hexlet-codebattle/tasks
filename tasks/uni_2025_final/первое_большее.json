@@ -1,0 +1,159 @@
+{
+  "asserts": [
+    {
+      "arguments": [123],
+      "expected": 132
+    },
+    {
+      "arguments": [110],
+      "expected": -1
+    },
+    {
+      "arguments": [3298],
+      "expected": 3829
+    },
+    {
+      "arguments": [786237],
+      "expected": 786273
+    },
+    {
+      "arguments": [453210],
+      "expected": 501234
+    },
+    {
+      "arguments": [633505],
+      "expected": 633550
+    },
+    {
+      "arguments": [332521],
+      "expected": 335122
+    },
+    {
+      "arguments": [120484],
+      "expected": 120844
+    },
+    {
+      "arguments": [831591],
+      "expected": 831915
+    },
+    {
+      "arguments": [873316],
+      "expected": 873361
+    },
+    {
+      "arguments": [726210],
+      "expected": 760122
+    },
+    {
+      "arguments": [127411],
+      "expected": 141127
+    },
+    {
+      "arguments": [657888],
+      "expected": 658788
+    },
+    {
+      "arguments": [941390],
+      "expected": 941903
+    },
+    {
+      "arguments": [551826],
+      "expected": 551862
+    },
+    {
+      "arguments": [583545],
+      "expected": 583554
+    },
+    {
+      "arguments": [856791],
+      "expected": 856917
+    },
+    {
+      "arguments": [629097],
+      "expected": 629709
+    },
+    {
+      "arguments": [417238],
+      "expected": 417283
+    },
+    {
+      "arguments": [614667],
+      "expected": 614676
+    },
+    {
+      "arguments": [566108],
+      "expected": 566180
+    },
+    {
+      "arguments": [393407],
+      "expected": 393470
+    },
+    {
+      "arguments": [534475],
+      "expected": 534547
+    },
+    {
+      "arguments": [880914],
+      "expected": 880941
+    },
+    {
+      "arguments": [595113],
+      "expected": 595131
+    },
+    {
+      "arguments": [820371],
+      "expected": 820713
+    },
+    {
+      "arguments": [289957],
+      "expected": 289975
+    },
+    {
+      "arguments": [668522],
+      "expected": 682256
+    },
+    {
+      "arguments": [461498],
+      "expected": 461849
+    },
+    {
+      "arguments": [668659],
+      "expected": 668695
+    },
+    {
+      "arguments": [999999],
+      "expected": -1
+    },
+    {
+      "arguments": [1],
+      "expected": -1
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "Given a number $n$ ($n\\leq 10^6$), find the minimum number greater than $n$ obtained from the $n$ obtained permutations of digits. If no such number exists, return $-1$.",
+  "description_ru": "По заданному числу $n$ ($n \\leq 10^6$) найдите минимальное число, большее $n$, которое можно получить перестановкой цифр числа $n$. Если такого числа не существует, верните $-1$.",
+  "examples": "```\nsolution(123) == 132\nsolution(110) == -1\nsolution(3298) == 3829\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "x",
+      "type": {
+        "name": "integer"
+      }
+    }
+  ],
+  "level": "medium",
+  "time_to_solve_sec_comment": "",
+  "time_to_solve_sec": 2000,
+  "name": "Первое_большее",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(x : int):\n    x_digits = ''.join(sorted(str(x)))\n    for i in range(x + 1, 10**6):\n        i_digits = ''.join(sorted(str(i)))\n        if x_digits == i_digits:\n            return i\n    return -1\n",
+  "tags": [],
+  "visibility": "public"
+}

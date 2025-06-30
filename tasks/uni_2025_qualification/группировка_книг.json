@@ -1,0 +1,107 @@
+{
+  "asserts": [
+    {
+      "arguments": [
+        [
+          ["Гарри Поттер", "Фэнтези", "Дж. К. Роулинг"],
+          ["1984", "Антиутопия", "Дж. Оруэлл"],
+          ["Властелин колец", "Фэнтези", "Дж. Р. Р. Толкин"]
+        ]
+      ],
+      "expected": {
+        "Антиутопия": {
+          "Дж. Оруэлл": ["1984"]
+        },
+        "Фэнтези": {
+          "Дж. К. Роулинг": ["Гарри Поттер"],
+          "Дж. Р. Р. Толкин": ["Властелин колец"]
+        }
+      }
+    },
+    {
+      "arguments": [[["Книга Одиночка", "Драма", "Автор Одиночка"]]],
+      "expected": {
+        "Драма": {
+          "Автор Одиночка": ["Книга Одиночка"]
+        }
+      }
+    },
+    {
+      "arguments": [
+        [
+          ["Книга А", "Жанр1", "Автор1"],
+          ["Книга Б", "Жанр1", "Автор1"],
+
+          ["Книга В", "Жанр1", "Автор1"]
+        ]
+      ],
+      "expected": {
+        "Жанр1": {
+          "Автор1": ["Книга А", "Книга Б", "Книга В"]
+        }
+      }
+    },
+    {
+      "arguments": [
+        [
+          ["Book 1", "Genre A", "Author X"],
+          ["Book 2", "Genre B", "Author Y"],
+          ["Book 3", "Genre A", "Author Z"],
+          ["Book 4", "Genre A", "Author X"],
+          ["Book 5", "Genre B", "Author Y"]
+        ]
+      ],
+      "expected": {
+        "Genre A": {
+          "Author X": ["Book 1", "Book 4"],
+          "Author Z": ["Book 3"]
+        },
+        "Genre B": {
+          "Author Y": ["Book 2", "Book 5"]
+        }
+      }
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "You have a non-empty list of books, each of which has a title, genre, and author. It's guaranteed that essentially identical genres and authors are always written identically. You need to group the books first by genres, and then within each genre — by authors. Return the result as a dictionary, where the key is the genre, and the value is a dictionary with authors and lists of their books.\n\nOutput Requirements:\n- Genres (outer dictionary keys) must be sorted alphabetically.\n- Authors (inner dictionary keys) must be sorted alphabetically within each genre.\n- The order of books in the list for each author must be preserved as in the input data.",
+  "description_ru": "У вас есть непустой список книг, каждая из которых имеет название, жанр и автора. Гарантируется, что одинаковые по сути жанры и авторы всегда записаны одинаково. Необходимо сгруппировать книги сначала по жанрам, а затем внутри каждого жанра — по авторам.\n\nТребования к результату:\n- Порядок книг в списке для каждого автора должен сохраняться таким же, как во входных данных.",
+  "examples": "```\nsolution(\n[\n['Гарри Поттер', 'Фэнтези', 'Дж. К. Роулинг'],\n['1984', 'Антиутопия', 'Дж. Оруэлл'],\n['Властелин колец', 'Фэнтези', 'Дж. Р. Р. Толкин']\n]\n) == {\n'Антиутопия': {'Дж. Оруэлл': ['1984']},\n'Фэнтези': {'Дж. К. Роулинг': ['Гарри Поттер'], 'Дж. Р. Р. Толкин': ['Властелин колец']}\n}\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "books",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "array",
+          "nested": {
+            "name": "string"
+          }
+        }
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "15 * 60 = 900 - это 15 минут",
+  "time_to_solve_sec": 900,
+  "name": "Группировка книг",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "hash",
+      "nested": {
+        "name": "hash",
+        "nested": {
+          "name": "array",
+          "nested": {
+            "name": "string"
+          }
+        }
+      }
+    }
+  },
+  "solution": "from collections import defaultdict\n\ndef solution(books):\n    grouped = defaultdict(lambda: defaultdict(list))\n    for title, genre, author in books:\n        grouped[genre][author].append(title)\n\n    # Sort genres (case-sensitive)\n    sorted_grouped = dict(sorted(grouped.items()))\n\n    # Sort authors within each genre (case-sensitive)\n    for genre in sorted_grouped:\n        sorted_grouped[genre] = dict(sorted(sorted_grouped[genre].items()))\n\n    return dict(sorted_grouped)",
+  "tags": [],
+  "visibility": "public"
+}

@@ -1,0 +1,67 @@
+{
+  "asserts": [
+    { "arguments": 410, "expected": [13, 397] },
+    { "arguments": 140, "expected": [3, 137] },
+    { "arguments": 348, "expected": [11, 337] },
+    { "arguments": 266, "expected": [3, 263] },
+    { "arguments": 500, "expected": [13, 487] },
+    { "arguments": 244, "expected": [3, 241] },
+    { "arguments": 270, "expected": [7, 263] },
+    { "arguments": 484, "expected": [5, 479] },
+    { "arguments": 6, "expected": [3, 3] },
+    { "arguments": 550, "expected": [3, 547] },
+    { "arguments": 700, "expected": [17, 683] },
+    { "arguments": 356, "expected": [3, 353] },
+    { "arguments": 252, "expected": [11, 241] },
+    { "arguments": 130, "expected": [3, 127] },
+    { "arguments": 214, "expected": [3, 211] },
+    { "arguments": 350, "expected": [3, 347] },
+    { "arguments": 498, "expected": [7, 491] },
+    { "arguments": 738, "expected": [5, 733] },
+    { "arguments": 412, "expected": [3, 409] },
+    { "arguments": 464, "expected": [3, 461] },
+    { "arguments": 790, "expected": [3, 787] },
+    { "arguments": 492, "expected": [5, 487] },
+    { "arguments": 474, "expected": [7, 467] },
+    { "arguments": 910, "expected": [3, 907] },
+    { "arguments": 516, "expected": [7, 509] },
+    { "arguments": 212, "expected": [13, 199] },
+    { "arguments": 946, "expected": [5, 941] },
+    { "arguments": 498, "expected": [7, 491] },
+    { "arguments": 490, "expected": [3, 487] },
+    { "arguments": 68, "expected": [7, 61] },
+    { "arguments": 476, "expected": [13, 463] },
+    { "arguments": 806, "expected": [19, 787] },
+    { "arguments": 212, "expected": [13, 199] },
+    { "arguments": 206, "expected": [7, 199] },
+    { "arguments": 58, "expected": [5, 53] },
+    { "arguments": 8, "expected": [3, 5] },
+    { "arguments": 118, "expected": [5, 113] },
+    { "arguments": 166, "expected": [3, 163] }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "Represent an even number n>3 as the sum of two prime numbers (possibly identical)",
+  "description_ru": "Представьте четное число n>3 в виде суммы двух простых чисел (возможно одинаковых)",
+  "examples": "```\n[3,5] == solution(8)\n[3,3] == solution(6)```",
+  "generator_lang": "py",
+  "input_signature": [
+    {
+      "argument_name": "n",
+      "type": {
+        "name": "integer"
+      }
+    }
+  ],
+  "level": "medium",
+  "name": "Гипотеза Гольдбаха",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "List"
+    }
+  },
+  "solution": "def solution(n: int):\n  simple = [2]\n  for i in range(3,n):\n    k = 1\n    for j in range(2,int(i**0.5) + 2):\n      if i%j==0:\n        k = 0\n        break\n      if k == 1:\n        simple.append(i)\n  for i in simple:\n    if (n-i) in simple:\n      return [i, n-i]",
+  "tags": ["math"],
+  "visibility": "public"
+}

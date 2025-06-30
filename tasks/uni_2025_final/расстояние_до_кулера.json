@@ -1,0 +1,164 @@
+{
+  "asserts": [
+    {
+      "arguments": [["E.E", ".W.", "E.E"]],
+      "expected": 8
+    },
+    {
+      "arguments": [["WEE"]],
+      "expected": 3
+    },
+    {
+      "arguments": [["EWE", "..."]],
+      "expected": 2
+    },
+    {
+      "arguments": [["E...", "..W.", "E..E"]],
+      "expected": 8
+    },
+    {
+      "arguments": [
+        [".W.E..", ".EE.EE", ".EE.E.", ".E..E.", "E..E.E", "EEE..."]
+      ],
+      "expected": 69
+    },
+    {
+      "arguments": [["..EEEE", ".EEEW.", "EEEE.E"]],
+      "expected": 30
+    },
+    {
+      "arguments": [["WE"]],
+      "expected": 1
+    },
+    {
+      "arguments": [["...EW.", ".E..E.", "E.E.EE"]],
+      "expected": 21
+    },
+    {
+      "arguments": [["E", "W"]],
+      "expected": 1
+    },
+    {
+      "arguments": [["..EEW", ".....", ".EEEE"]],
+      "expected": 17
+    },
+    {
+      "arguments": [["..EEE.", "EE..W."]],
+      "expected": 13
+    },
+    {
+      "arguments": [["EE.", "WE.", "E.E", "..."]],
+      "expected": 8
+    },
+    {
+      "arguments": [["..E..", ".W...", "EEEEE", ".E.EE", "...E.", "EE..."]],
+      "expected": 39
+    },
+    {
+      "arguments": [["EE", "EW", "E."]],
+      "expected": 6
+    },
+    {
+      "arguments": [["EE.", ".EE", "..W", ".E."]],
+      "expected": 12
+    },
+    {
+      "arguments": [[".EEWE", "E.E.E", ".E.EE"]],
+      "expected": 21
+    },
+    {
+      "arguments": [["EW", ".."]],
+      "expected": 1
+    },
+    {
+      "arguments": [["W.", "EE"]],
+      "expected": 3
+    },
+    {
+      "arguments": [["EE....", "EEEEE.", "E.E.W.", "E....E", ".EEEEE"]],
+      "expected": 56
+    },
+    {
+      "arguments": [["EEWEEE", "EEE...", "E.E...", ".E..E."]],
+      "expected": 30
+    },
+    {
+      "arguments": [[".EE.E", "E....", ".E.EW", "....E", ".....", "E..E."]],
+      "expected": 32
+    },
+    {
+      "arguments": [["WE.."]],
+      "expected": 1
+    },
+    {
+      "arguments": [["E.W", ".EE"]],
+      "expected": 5
+    },
+    {
+      "arguments": [["E...", "..EE", "....", "..W."]],
+      "expected": 10
+    },
+    {
+      "arguments": [["E.EEE", ".....", ".WEE.", "E....", "E..EE"]],
+      "expected": 32
+    },
+    {
+      "arguments": [["E.W"]],
+      "expected": 2
+    },
+    {
+      "arguments": [["EE.W.E"]],
+      "expected": 7
+    },
+    {
+      "arguments": [["E.E.E", "EE..E", "EEEE.", "WEEE."]],
+      "expected": 42
+    },
+    {
+      "arguments": [["EE.E.", "EE.EE", "EEEEW", "...E.", "EEEE."]],
+      "expected": 56
+    },
+    {
+      "arguments": [["EE.", "EE.", "..E", ".W."]],
+      "expected": 14
+    },
+    {
+      "arguments": [["..E", "...", "E.W", "EEE", "EEE"]],
+      "expected": 19
+    },
+    {
+      "arguments": [["..", "EE", "WE"]],
+      "expected": 4
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "A rectangular openspace consists of blocks in the shape of squares. There is a water cooler in exactly one block (indicated by the letter \"W\"), some blocks contain employees' workplaces (indicated by the letter \"E\"), and some blocks are vacant (indicated by \".\"). In one second, an employee can move to the block next to it. Employees move to the cooler using the shortest path, they can pass through any blocks (including those where employees' workplaces are located). Determine the total time it takes for all employees to get from the workplace to the cooler.",
+  "description_ru": "Прямоугольный опенспейс состоит из блоков в форме квадратов. Ровно в одном блоке стоит кулер с водой (обозначается буквой \"W\"), в некоторых блоках находятся рабочие места сотрудников (обозначаются буквой \"E\"), а некоторые блоки свободны (обозначаются \".\"). За одну секунду сотрудник может переместиться в соседний по стороне блок. Сотрудники перемещаются к кулеру по кратчайшему пути, они могут проходить через любые блоки (в том числе, в которых находятся рабочие места сотрудников). Определите суммарное время, за которое все сотрудники доберутся от рабочего места до кулера.",
+  "examples": "```\nsolution([\"E.E\", \".W.\", \"E.E\"]) == 8\nsolution([\"WEE\"]) == 3\nsolution([\"EWE\", \"...\"]) == 2\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "office",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "string"
+        }
+      }
+    }
+  ],
+  "level": "medium",
+  "time_to_solve_sec_comment": "",
+  "time_to_solve_sec": 2000,
+  "name": "Расстояние_до_кулера",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(office : list) -> int:\n    n = len(office)\n    m = len(office[0])\n    ans = 0\n    posw_i, posw_j = 0, 0\n    for i in range(n):\n        for j in range(m):\n            if office[i][j] == 'W':\n                posw_i = i\n                posw_j = j\n    for i in range(n):\n        for j in range(m):\n            if office[i][j] == 'E':\n                ans += abs(i - posw_i)\n                ans += abs(j - posw_j)\n    return ans",
+  "tags": [],
+  "visibility": "public"
+}

@@ -1,0 +1,188 @@
+{
+  "asserts": [
+    {
+      "arguments": [10, 10, 5, 5, 1, 1],
+      "expected": 8
+    },
+    {
+      "arguments": [10, 10, 9, 9, 1, 1],
+      "expected": 4
+    },
+    {
+      "arguments": [7, 6, 6, 5, 5, 6],
+      "expected": 2
+    },
+    {
+      "arguments": [8, 3, 7, 1, 1, 3],
+      "expected": 3
+    },
+    {
+      "arguments": [1, 2, 1, 2, 1, 2],
+      "expected": 0
+    },
+    {
+      "arguments": [5, 9, 2, 3, 1, 2],
+      "expected": 2
+    },
+    {
+      "arguments": [6, 1, 3, 1, 4, 1],
+      "expected": 1
+    },
+    {
+      "arguments": [4, 2, 1, 2, 3, 1],
+      "expected": 3
+    },
+    {
+      "arguments": [1, 1, 1, 1, 1, 1],
+      "expected": 0
+    },
+    {
+      "arguments": [8, 6, 6, 3, 6, 6],
+      "expected": 3
+    },
+    {
+      "arguments": [8, 2, 3, 2, 4, 1],
+      "expected": 2
+    },
+    {
+      "arguments": [10, 4, 7, 4, 3, 1],
+      "expected": 5
+    },
+    {
+      "arguments": [4, 5, 3, 3, 2, 2],
+      "expected": 2
+    },
+    {
+      "arguments": [2, 8, 2, 3, 1, 1],
+      "expected": 3
+    },
+    {
+      "arguments": [6, 5, 2, 2, 3, 1],
+      "expected": 2
+    },
+    {
+      "arguments": [3, 9, 3, 3, 3, 7],
+      "expected": 4
+    },
+    {
+      "arguments": [2, 4, 1, 1, 1, 1],
+      "expected": 0
+    },
+    {
+      "arguments": [9, 2, 3, 1, 1, 2],
+      "expected": 3
+    },
+    {
+      "arguments": [10, 5, 10, 5, 3, 1],
+      "expected": 4
+    },
+    {
+      "arguments": [4, 6, 1, 5, 1, 1],
+      "expected": 2
+    },
+    {
+      "arguments": [6, 3, 3, 3, 1, 2],
+      "expected": 3
+    },
+    {
+      "arguments": [3, 7, 1, 4, 3, 7],
+      "expected": 4
+    },
+    {
+      "arguments": [5, 8, 2, 8, 5, 2],
+      "expected": 4
+    },
+    {
+      "arguments": [7, 1, 4, 1, 5, 1],
+      "expected": 1
+    },
+    {
+      "arguments": [1, 4, 1, 3, 1, 2],
+      "expected": 1
+    },
+    {
+      "arguments": [2, 8, 2, 5, 1, 2],
+      "expected": 4
+    },
+    {
+      "arguments": [9, 1, 1, 1, 9, 1],
+      "expected": 1
+    },
+    {
+      "arguments": [7, 9, 7, 2, 2, 1],
+      "expected": 3
+    },
+    {
+      "arguments": [4, 10, 1, 1, 2, 6],
+      "expected": 6
+    },
+    {
+      "arguments": [5, 10, 4, 3, 5, 8],
+      "expected": 6
+    },
+    {
+      "arguments": [4, 1, 1, 1, 1, 1],
+      "expected": 0
+    },
+    {
+      "arguments": [4, 2, 3, 1, 3, 1],
+      "expected": 0
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "On a rectangular field of size $N \\times M$ ($N$ rows, $M$ columns), the coordinates of two cells $R1, C1$ and $R2, C2$ ($1 \\leq R1, R2 \\leq N$, $1 \\leq C1, C2 \\leq M$) are set. In one move, you can move to the cell next to it, while the field is looped vertically and horizontally - from the last column you can get to the first, and from the first to the last. Similarly with strings. Determine the **minimum number of moves** required to move from the first square to the second.",
+  "description_ru": "На прямоугольном поле размером $N \\times M$ ($N$ строк, $M$ столбцов) заданы координаты двух клеток $R1, C1$ и $R2, C2$ ($1 \\leq R1, R2 \\leq N$, $1 \\leq C1, C2 \\leq M$). За один ход можно перемещаться в соседнюю по стороне клетку, при этом поле зациклено по вертикали и горизонтали - из последнего столбца можно попасть в первый, а из первого - в последний. Аналогично со строками. Определите **минимальное количество ходов**, необходимых для перемещения из первой клетки во вторую.",
+  "examples": "```\nsolution(10, 10, 5, 5, 1, 1) == 8\nsolution(10, 10, 9, 9, 1, 1) == 3\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "n",
+      "type": {
+        "name": "integer"
+      }
+    },
+    {
+      "argument_name": "m",
+      "type": {
+        "name": "integer"
+      }
+    },
+    {
+      "argument_name": "r1",
+      "type": {
+        "name": "integer"
+      }
+    },
+    {
+      "argument_name": "c1",
+      "type": {
+        "name": "integer"
+      }
+    },
+    {
+      "argument_name": "r2",
+      "type": {
+        "name": "integer"
+      }
+    },
+    {
+      "argument_name": "c2",
+      "type": {
+        "name": "integer"
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec": 120,
+  "name": "Путь_в_прямоугольнике",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(n, m, r1, c1, r2, c2 : int) -> int:\n    r1 -= 1\n    c1 -= 1\n    r2 -= 1\n    c2 -= 1\n    r_dist = min(abs(r1 - r2), n - abs(r1 - r2))\n    c_dist = min(abs(c1 - c2), m - abs(c1 - c2))\n    return r_dist + c_dist\n",
+  "tags": [],
+  "visibility": "public"
+}

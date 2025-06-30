@@ -1,0 +1,159 @@
+{
+  "asserts": [
+    {
+      "arguments": ["aaa"],
+      "expected": 0
+    },
+    {
+      "arguments": ["abcabc"],
+      "expected": -1
+    },
+    {
+      "arguments": ["xabababyz"],
+      "expected": 1
+    },
+    {
+      "arguments": ["figeiggeiggeigkc"],
+      "expected": 2
+    },
+    {
+      "arguments": ["ijeagfjcfdjjjjjjhei"],
+      "expected": 10
+    },
+    {
+      "arguments": ["diddjejjchdechdechde"],
+      "expected": 8
+    },
+    {
+      "arguments": ["fkfhjhcfbihcfbihcfbi"],
+      "expected": 5
+    },
+    {
+      "arguments": ["gegfgegfgegfgf"],
+      "expected": 0
+    },
+    {
+      "arguments": ["ffaabihghghgeii"],
+      "expected": 6
+    },
+    {
+      "arguments": ["bhgcachjfbjfbjfbk"],
+      "expected": 7
+    },
+    {
+      "arguments": ["fghakfeieieiifgjgkka"],
+      "expected": 6
+    },
+    {
+      "arguments": ["ckdfgdddcgdddcgdddci"],
+      "expected": 4
+    },
+    {
+      "arguments": ["fkakagkcckcckcchaebf"],
+      "expected": 6
+    },
+    {
+      "arguments": ["kgbcdgehcddd"],
+      "expected": 9
+    },
+    {
+      "arguments": ["gediidcgchabagggedi"],
+      "expected": 13
+    },
+    {
+      "arguments": ["iigkbiigkbiigkbiike"],
+      "expected": 0
+    },
+    {
+      "arguments": ["ffibijegjbdijbdijbdi"],
+      "expected": 8
+    },
+    {
+      "arguments": ["jieekfjgigjhgafcfcfc"],
+      "expected": 14
+    },
+    {
+      "arguments": ["bibfeafccccccccccf"],
+      "expected": 7
+    },
+    {
+      "arguments": ["adiihgbkhgbkhgbkhgkh"],
+      "expected": 4
+    },
+    {
+      "arguments": ["jjccjfdkfjdiediedief"],
+      "expected": 10
+    },
+    {
+      "arguments": ["ddicdkakehfkehfkehfj"],
+      "expected": 7
+    },
+    {
+      "arguments": ["iegbjkegbjkegbjkjbej"],
+      "expected": 1
+    },
+    {
+      "arguments": ["cgdcbiajkgjdggeaaaij"],
+      "expected": 15
+    },
+    {
+      "arguments": ["fkafkafkabghecffdfhi"],
+      "expected": 0
+    },
+    {
+      "arguments": ["cbagjagjagja"],
+      "expected": 2
+    },
+    {
+      "arguments": ["hifkgkkkffj"],
+      "expected": 5
+    },
+    {
+      "arguments": ["fhbeekbbhhfafcgjjjbf"],
+      "expected": 15
+    },
+    {
+      "arguments": ["aedghajhfhajhfhajhf"],
+      "expected": 4
+    },
+    {
+      "arguments": ["egfabgjkidjhigigigid"],
+      "expected": 12
+    },
+    {
+      "arguments": ["ffaehgijijfakibkkki"],
+      "expected": 15
+    },
+    {
+      "arguments": ["ecgidaijiiikijjfgh"],
+      "expected": 8
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "Determine the minimum index $i$ from which a substring in the string $S$ ($|S| ≤ 20$) that repeats three times in a row begins. For example, in the string \"xabababyz\", the substring \"ab\" occurs three times in a row starting from position $i=1$ (0-indexed). If no such substring exists, return $-1$.",
+  "description_ru": "Определите минимальный индекс $i$, с которого начинается повторяющаяся три раза подряд подстрока в строке $S$ ($|S| ≤ 20$). Например, в строке \"xabababyz\" три раза подряд встречается подстрока \"ab\" начиная с позиции $i=1$ (нумерация в строке $S$ начинается с нуля). Если такой подстроки не существует, верните $-1$.",
+  "examples": "```\nsolution(\"aaa\") == 0\nsolution(\"abcabc\") == -1\nsolution(\"xabababyz\") == 1\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "s",
+      "type": {
+        "name": "string"
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "",
+  "time_to_solve_sec": 2000,
+  "name": "Тройные_подстроки",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(s : str):\n    for i in range(len(s)):\n       for j in range(1, (len(s) - i) // 3 + 1):\n            if s[i:i + j] == s[i + j:i + 2 * j] and s[i:i + j] == s[i + 2 * j:i + 3 * j]:\n                return i\n    return -1\n",
+  "tags": [],
+  "visibility": "public"
+}

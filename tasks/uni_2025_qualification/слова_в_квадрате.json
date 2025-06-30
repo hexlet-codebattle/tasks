@@ -1,0 +1,154 @@
+{
+  "asserts": [
+    {
+      "arguments": [["LOVE", "OVER", "VERY", "EYES"]],
+      "expected": false
+    },
+    {
+      "arguments": [["WORD", "OPEN", "REAL", "DENY"]],
+      "expected": false
+    },
+    {
+      "arguments": [["TEAM", "ECHO", "ACID", "MODE"]],
+      "expected": false
+    },
+    {
+      "arguments": [["DARK", "AREA", "REAL", "KALE"]],
+      "expected": true
+    },
+    {
+      "arguments": [["FAST", "ALSO", "STOP", "TOPS"]],
+      "expected": false
+    },
+    {
+      "arguments": [["ROSE", "OVAL", "SALT", "ELSE"]],
+      "expected": false
+    },
+    {
+      "arguments": [["TIME", "IDEA", "MEAN", "EARN"]],
+      "expected": false
+    },
+    {
+      "arguments": [["BOOK", "ORAL", "OPEN", "KING"]],
+      "expected": false
+    },
+    {
+      "arguments": [["SAME", "AREA", "MEAN", "EARN"]],
+      "expected": false
+    },
+    {
+      "arguments": [["CODE", "OPEN", "DEMO", "ENDS"]],
+      "expected": false
+    },
+    {
+      "arguments": [["GATE", "ATOM", "TIME", "EVEN"]],
+      "expected": false
+    },
+    {
+      "arguments": [["STAR", "TAKE", "AREA", "REAR"]],
+      "expected": false
+    },
+    {
+      "arguments": [["PLAY", "LANE", "ARMY", "YEAH"]],
+      "expected": false
+    },
+    {
+      "arguments": [["MIND", "IDEA", "NODE", "DEAD"]],
+      "expected": false
+    },
+    {
+      "arguments": [["HOPE", "OPEN", "PEAK", "ENDS"]],
+      "expected": false
+    },
+    {
+      "arguments": [["AAAA", "BBBB", "CCCC", "DDDD"]],
+      "expected": false
+    },
+    {
+      "arguments": [["HAND", "AREA", "NODE", "DEAN"]],
+      "expected": false
+    },
+    {
+      "arguments": [["FISH", "IRON", "SNOW", "HELP"]],
+      "expected": false
+    },
+    {
+      "arguments": [["CARE", "AREA", "REAL", "EASY"]],
+      "expected": false
+    },
+    {
+      "arguments": [["WORK", "ONLY", "RAIN", "KEYS"]],
+      "expected": false
+    },
+    {
+      "arguments": [["ZZZZ", "ZZZZ", "ZZZZ", "ZZZZ"]],
+      "expected": true
+    },
+    {
+      "arguments": [["ABCD", "BCDA", "CDAB", "DABC"]],
+      "expected": true
+    },
+    {
+      "arguments": [["DONE", "OPEN", "NODE", "ENDS"]],
+      "expected": false
+    },
+    {
+      "arguments": [["TREE", "READ", "EASY", "EDGE"]],
+      "expected": false
+    },
+    {
+      "arguments": [["DEAR", "EDGE", "AREA", "REAR"]],
+      "expected": false
+    },
+    {
+      "arguments": [["BLUE", "LUCK", "USER", "EASY"]],
+      "expected": false
+    },
+    {
+      "arguments": [["ROAD", "OVAL", "ALSO", "DOOR"]],
+      "expected": false
+    },
+    {
+      "arguments": [["COOL", "OPEN", "OKAY", "LAST"]],
+      "expected": false
+    },
+    {
+      "arguments": [["NEXT", "EXIT", "XRAY", "TEAM"]],
+      "expected": false
+    },
+    {
+      "arguments": [["GOOD", "OVER", "OPEN", "DONE"]],
+      "expected": false
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "Given a 4 * 4 square consisting of letters. The square is considered good if the word written in the row is also written in the column. Moreover, the word written in the first row coincides with the word in the first column, in the second row - with the word in the second column, etc. Determine if the square is good.",
+  "description_ru": "Дан квадрат размером 4 * 4, состоящий из букв. Квадрат считается хорошим, если слово, записанное в строке также записано в столбце. Причем слово, записанное в первой строке, совпадает со словом в первом столбце, во второй строке - со словом во втором столбце и т.д. Определите, является ли квадрат хорошим.",
+  "examples": "```\nsolution(['CRAB', 'RARE', 'ARTS', 'BEST']) == true\nsolution(['ABCD', 'EFGH', 'IJKL', 'MNOP']) == false\nsolution(['FIND', 'IDEA', 'NEXT', 'DATE']) == true\nsolution(['AAAA', 'AAAA', 'AAAA', 'AAAB']) == true\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "tab",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "string"
+        }
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "10 * 60 = 600 - это 10 минут",
+  "time_to_solve_sec": 600,
+  "name": "Слова в квадрате",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "boolean"
+    }
+  },
+  "solution": "def solution(arr: list) -> bool:\n    for i in range(4):\n        for j in range(4):\n            if arr[i][j] != arr[j][i]:\n                return False\n    return True",
+  "tags": [],
+  "visibility": "public"
+}

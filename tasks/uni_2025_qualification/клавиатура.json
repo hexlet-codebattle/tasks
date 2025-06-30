@@ -1,0 +1,151 @@
+{
+  "asserts": [
+    {
+      "arguments": ["q"],
+      "expected": "w"
+    },
+    {
+      "arguments": ["w"],
+      "expected": "e"
+    },
+    {
+      "arguments": ["e"],
+      "expected": "r"
+    },
+    {
+      "arguments": ["r"],
+      "expected": "t"
+    },
+    {
+      "arguments": ["t"],
+      "expected": "y"
+    },
+    {
+      "arguments": ["y"],
+      "expected": "u"
+    },
+    {
+      "arguments": ["u"],
+      "expected": "i"
+    },
+    {
+      "arguments": ["i"],
+      "expected": "o"
+    },
+    {
+      "arguments": ["o"],
+      "expected": "p"
+    },
+    {
+      "arguments": ["p"],
+      "expected": "q"
+    },
+    {
+      "arguments": ["a"],
+      "expected": "s"
+    },
+    {
+      "arguments": ["s"],
+      "expected": "d"
+    },
+    {
+      "arguments": ["d"],
+      "expected": "f"
+    },
+    {
+      "arguments": ["f"],
+      "expected": "g"
+    },
+    {
+      "arguments": ["g"],
+      "expected": "h"
+    },
+    {
+      "arguments": ["h"],
+      "expected": "j"
+    },
+    {
+      "arguments": ["j"],
+      "expected": "k"
+    },
+    {
+      "arguments": ["k"],
+      "expected": "l"
+    },
+    {
+      "arguments": ["l"],
+      "expected": "a"
+    },
+    {
+      "arguments": ["z"],
+      "expected": "x"
+    },
+    {
+      "arguments": ["x"],
+      "expected": "c"
+    },
+    {
+      "arguments": ["c"],
+      "expected": "v"
+    },
+    {
+      "arguments": ["v"],
+      "expected": "b"
+    },
+    {
+      "arguments": ["b"],
+      "expected": "n"
+    },
+    {
+      "arguments": ["n"],
+      "expected": "m"
+    },
+    {
+      "arguments": ["m"],
+      "expected": "z"
+    },
+    {
+      "arguments": ["q"],
+      "expected": "w"
+    },
+    {
+      "arguments": ["p"],
+      "expected": "q"
+    },
+    {
+      "arguments": ["l"],
+      "expected": "a"
+    },
+    {
+      "arguments": ["m"],
+      "expected": "z"
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "For a letter of the English alphabet, determine which letter is to the right of it on the keyboard in the same row. Consider that after the last letter in the row is the first letter: after `p` comes `q`, after `l` - `a`, after `m` - `z`",
+  "description_ru": "Для буквы английского алфавита определите, какая буква стоит на клавиатуре справа от нее в той же строке. Считайте, что за последней буквой в строке стоит первая: после `p` идет `q`, после `l` - `a`, после `m` - `z`",
+  "examples": "```\nsolution('q') == 'w'\nsolution('w') == 'e'\nsolution('p') == 'q'\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "letter",
+      "type": {
+        "name": "string"
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "10 * 60 = 600 - это 10 минут",
+  "time_to_solve_sec": 600,
+  "name": "Клавиатура",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "string"
+    }
+  },
+  "solution": "def solution(letter : str) -> str:\n    lines = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm']\n    for line in lines:\n        if letter in line:\n            return line[(line.find(letter) + 1) % len(line)]",
+  "tags": [],
+  "visibility": "public"
+}

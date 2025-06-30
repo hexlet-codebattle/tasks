@@ -1,0 +1,393 @@
+{
+  "asserts": [
+    {
+      "arguments": [
+        ["Ann", "Boris", "Ivan", "Gala"],
+        [
+          ["movies", "music"],
+          ["sports", "movies"],
+          ["music", "gaming"],
+          ["sports", "movies"]
+        ]
+      ],
+      "expected": [
+        ["Ann", "Boris"],
+        ["Ann", "Ivan"],
+        ["Ann", "Gala"],
+        ["Boris", "Gala"]
+      ]
+    },
+    {
+      "comment": "No common interests",
+      "arguments": [
+        ["Alice", "Bob"],
+        [["hiking"], ["swimming"]]
+      ],
+      "expected": []
+    },
+    {
+      "comment": "Case sensitivity check",
+      "arguments": [
+        ["Daniel", "Sarah"],
+        [
+          ["python", "golang"],
+          ["Python", "javascript"]
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "comment": "Everyone shares interests with everyone",
+      "arguments": [
+        ["Chris", "Diana", "Ethan"],
+        [
+          ["reading", "baking"],
+          ["baking", "cycling"],
+          ["reading", "cycling"]
+        ]
+      ],
+      "expected": [
+        ["Chris", "Diana"],
+        ["Chris", "Ethan"],
+        ["Diana", "Ethan"]
+      ]
+    },
+    {
+      "comment": "Order of names in result matters (Yana before Anna)",
+      "arguments": [
+        ["Yana", "Anna", "Peter"],
+        [["books", "coffee"], ["coffee", "tea"], ["books"]]
+      ],
+      "expected": [
+        ["Yana", "Anna"],
+        ["Yana", "Peter"]
+      ]
+    },
+    {
+      "comment": "Simple pair with one common interest",
+      "arguments": [
+        ["Alice", "Bob"],
+        [["reading"], ["reading"]]
+      ],
+      "expected": [
+        ["Alice", "Bob"]
+      ]
+    },
+    {
+      "comment": "Pair with multiple common interests",
+      "arguments": [
+        ["Charlie", "David"],
+        [["coding", "music", "travel"], ["music", "hiking", "coding"]]
+      ],
+      "expected": [
+        ["Charlie", "David"]
+      ]
+    },
+    {
+      "comment": "Chain of common interests",
+      "arguments": [
+        ["Eve", "Frank", "Grace"],
+        [["art", "biking"], ["biking", "cooking"], ["cooking", "dance"]]
+      ],
+      "expected": [
+        ["Eve", "Frank"],
+        ["Frank", "Grace"]
+      ]
+    },
+    {
+      "comment": "Forking common interests",
+      "arguments": [
+        ["Heidi", "Ivan", "Judy"],
+        [["photography", "yoga"], ["photography", "zumba"], ["yoga", "writing"]]
+      ],
+      "expected": [
+        ["Heidi", "Ivan"],
+        ["Heidi", "Judy"]
+      ]
+    },
+    {
+      "comment": "Sequential common interests",
+      "arguments": [
+        ["Kevin", "Liam", "Mia", "Noah"],
+        [["gardening"], ["gardening", "knitting"], ["knitting", "language"], ["language"]]
+      ],
+      "expected": [
+        ["Kevin", "Liam"],
+        ["Liam", "Mia"],
+        ["Mia", "Noah"]
+      ]
+    },
+    {
+      "comment": "Three people, no common interests",
+      "arguments": [
+        ["Paul", "Rachel", "Simon"],
+        [["apple"], ["banana"], ["cherry"]]
+      ],
+      "expected": []
+    },
+    {
+      "comment": "One person shares interest with two others",
+      "arguments": [
+        ["Gordon", "Jamie", "Nigella"],
+        [["baking", "grilling", "pasta", "dessert", "salad"], ["baking"], ["salad"]]
+      ],
+      "expected": [
+        ["Gordon", "Jamie"],
+        ["Gordon", "Nigella"]
+      ]
+    },
+    {
+      "comment": "Circular common interests",
+      "arguments": [
+        ["Leo", "Max", "Nina"],
+        [["chess", "checkers"], ["checkers", "go"], ["go", "chess"]]
+      ],
+      "expected": [
+        ["Leo", "Max"],
+        ["Leo", "Nina"],
+        ["Max", "Nina"]
+      ]
+    },
+    {
+      "comment": "Interests with multiple words",
+      "arguments": [
+        ["Anastasia", "Bartholomew", "Constance"],
+        [["classical music", "philosophy"], ["philosophy", "quantum physics"], ["astronomy", "classical music"]]
+      ],
+      "expected": [
+        ["Anastasia", "Bartholomew"],
+        ["Anastasia", "Constance"]
+      ]
+    },
+    {
+      "comment": "Circular interests in a group of five",
+      "arguments": [
+        ["Quinn", "Rachel", "Sam", "Tina", "Uma"],
+        [["rock", "pop"], ["pop", "jazz"], ["jazz", "classical"], ["classical", "blues"], ["blues", "rock"]]
+      ],
+      "expected": [
+        ["Quinn", "Rachel"],
+        ["Quinn", "Uma"],
+        ["Rachel", "Sam"],
+        ["Sam", "Tina"],
+        ["Tina", "Uma"]
+      ]
+    },
+    {
+      "comment": "One very common interest for all",
+      "arguments": [
+        ["Victor", "Wendy", "Xavier", "Yara", "Zane"],
+        [["movies"], ["movies"], ["movies"], ["movies"], ["movies"]]
+      ],
+      "expected": [
+        ["Victor", "Wendy"], ["Victor", "Xavier"], ["Victor", "Yara"], ["Victor", "Zane"],
+        ["Wendy", "Xavier"], ["Wendy", "Yara"], ["Wendy", "Zane"],
+        ["Xavier", "Yara"], ["Xavier", "Zane"],
+        ["Yara", "Zane"]
+      ]
+    },
+    {
+      "comment": "No common interests, large group",
+      "arguments": [
+        ["Adam", "Ben", "Chloe", "David"],
+        [["history", "geography"], ["math", "physics"], ["chemistry", "biology"], ["literature", "art"]]
+      ],
+      "expected": []
+    },
+    {
+      "comment": "Different case (should not match)",
+      "arguments": [
+        ["John", "Jane"],
+        [["InterestName"], ["interestname"]]
+      ],
+      "expected": []
+    },
+    {
+      "comment": "Interests with spaces",
+      "arguments": [
+        ["George", "Harry", "Ivy"],
+        [["Board games", "Video games"], ["Hiking", "Board games"], ["Video games"]]
+      ],
+      "expected": [
+        ["George", "Harry"],
+        ["George", "Ivy"]
+      ]
+    },
+    {
+      "comment": "One person with no common interests",
+      "arguments": [
+        ["Fred", "Greg", "Helen", "Oscar"],
+        [["movies", "books"], ["books", "music"], ["music", "movies"], ["sports", "travel"]]
+      ],
+      "expected": [
+        ["Fred", "Greg"],
+        ["Fred", "Helen"],
+        ["Greg", "Helen"]
+      ]
+    },
+    {
+      "comment": "Repeated interests for one person",
+      "arguments": [
+        ["Robert", "Susan"],
+        [["fiction", "poetry", "fiction"], ["non-fiction", "poetry", "non-fiction"]]
+      ],
+      "expected": [
+        ["Robert", "Susan"]
+      ]
+    },
+    {
+      "comment": "Result sorting check (by index)",
+      "arguments": [
+        ["Olivia", "Liam", "Emma"],
+        [["hiking", "fishing"], ["camping", "hiking"], ["fishing", "camping"]]
+      ],
+      "expected": [
+        ["Olivia", "Liam"],
+        ["Olivia", "Emma"],
+        ["Liam", "Emma"]
+      ]
+    },
+    {
+      "comment": "Only two in the group share an interest",
+      "arguments": [
+        ["Noah", "Ava", "William", "Sophia"],
+        [["gardening"], ["baking"], ["gardening"], ["painting"]]
+      ],
+      "expected": [
+        ["Noah", "William"]
+      ]
+    },
+    {
+      "comment": "Complex interest intersections",
+     "arguments": [
+        ["James", "Isabella", "Oliver", "Mia", "Elijah"],
+        [["art", "books", "cooking"], ["cooking", "dance", "science"], ["science", "fashion", "art"], ["gardening", "history"], ["art", "science"]]
+      ],
+      "expected": [
+        ["James", "Isabella"],
+        ["James", "Oliver"],
+        ["James", "Elijah"],
+        ["Isabella", "Oliver"],
+        ["Isabella", "Elijah"],
+        ["Oliver", "Elijah"]
+      ]
+    },
+    {
+      "comment": "Group of 6 people, chain structure",
+      "arguments": [
+        ["Frank", "Grace", "Henry", "Iris", "Jack", "Kate"],
+        [["action"], ["action", "comedy"], ["comedy", "drama"], ["drama", "horror"], ["horror", "sci-fi"], ["sci-fi", "action"]]
+      ],
+      "expected": [
+        ["Frank", "Grace"],
+        ["Frank", "Kate"],
+        ["Grace", "Henry"],
+        ["Grace", "Kate"],
+        ["Henry", "Iris"],
+        ["Iris", "Jack"],
+        ["Jack", "Kate"]
+      ]
+    },
+    {
+      "comment": "Unicode characters in interests",
+      "arguments": [
+        ["Peter", "Sophia"],
+        [["coffee☕", "tea"], ["tea", "water"]]
+      ],
+      "expected": [
+        ["Peter", "Sophia"]
+      ]
+    },
+    {
+      "comment": "Names that are substrings of each other",
+      "arguments": [
+        ["Alex", "Alexander"],
+        [["coding"], ["coding"]]
+      ],
+      "expected": [
+        ["Alex", "Alexander"]
+      ]
+    },
+    {
+      "comment": "Duplicate interests in one person's list",
+      "arguments": [
+        ["Michael", "Laura"],
+        [["rock", "rock", "pop"], ["pop", "jazz", "jazz"]]
+      ],
+      "expected": [
+        ["Michael", "Laura"]
+      ]
+    },
+    {
+      "comment": "One person in the list",
+      "arguments": [
+        ["Steven"],
+        [["running", "reading"]]
+      ],
+      "expected": []
+    },
+    {
+      "comment": "Long interest lists, few intersections",
+      "arguments": [
+        ["Albert", "Marie", "Isaac"],
+        [
+          ["astronomy", "biology", "chemistry", "geology", "physics", "philosophy"],
+          ["mathematics", "computer_science", "statistics", "logic", "ai", "linguistics"],
+          ["philosophy", "linguistics"]
+        ]
+      ],
+      "expected": [
+        ["Albert", "Isaac"],
+        ["Marie", "Isaac"]
+      ]
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "Given two lists: `names` — a list of unique friend names, and `interests` — a list where the `i`-th element contains the list of interests for the `i`-th friend from `names`. It is guaranteed that the `names` list, the `interests` list, and all inner interest lists are non-empty. The `names` and `interests` lists have the same length. Interests are represented as strings, and comparison is case-sensitive.\n\nYou need to find all pairs of friends (`[name1, name2]`) who have at least one common interest.\n\nResult Requirements:\n1.  In each found pair `['name1', 'name2']`, the friend's name that appears earlier in the original `names` list must come first.\n2.  The final list of all found pairs must be sorted according to the order of appearance of the first name in the pair in the original `names` list. If the first names are the same, sorting should be based on the order of appearance of the second name in the pair in the `names` list.",
+  "description_ru": "Даны два списка: `names` — список уникальных имен друзей, и `interests` — список, где `i`-й элемент содержит список интересов `i`-го друга из `names`. Гарантируется, что все списки (`names`, `interests` и списки интересов внутри `interests`) не пусты. Списки `names` и `interests` имеют одинаковую длину. Интересы представлены строками, сравнение регистрозависимо.\n\nНеобходимо найти все пары друзей (`[имя1, имя2]`), у которых есть хотя бы один общий интерес.\n\nТребования к результату:\n1.  В каждой найденной паре `['имя1', 'имя2']` имя друга, которое встречается раньше в исходном списке `names`, должно стоять на первом месте.\n2.  Итоговый список всех найденных пар должен быть отсортирован по порядку появления первого имени в паре в исходном списке `names`. Если первые имена совпадают, сортировка должна производиться по порядку появления второго имени в паре в списке `names`.",
+  "examples": "```\nsolution(['Аня', 'Боря', 'Ваня', 'Галя'],\n[['кино', 'музыка'],\n ['спорт', 'кино'],\n ['музыка', 'игры'],\n ['спорт', 'кино']]) ==\n[['Аня', 'Боря'],\n ['Аня', 'Ваня'],\n ['Аня', 'Галя'],\n ['Боря', 'Галя']]\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "names",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "string"
+        }
+      }
+    },
+    {
+      "argument_name": "interests",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "array",
+          "nested": {
+            "name": "string"
+          }
+        }
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "15 * 60 = 900 - это 15 минут",
+  "time_to_solve_sec": 900,
+  "name": "Поиск общих интересов",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "array",
+      "nested": {
+        "name": "array",
+        "nested": {
+          "name": "string"
+        }
+      }
+    }
+  },
+  "solution": "def solution(names: list, interests: list) -> list:\n\tnames_and_interests = [(r[0], set(r[1])) for r in zip(names, interests)]\n\tres = []\n\tfor i in range(len(names_and_interests)):\n\t\tfor j in range(i+1, len(names_and_interests)):\n\t\t\tif names_and_interests[i][1] & names_and_interests[j][1]:\n\t\t\t\tres.append([names_and_interests[i][0], names_and_interests[j][0]])\n\treturn res",
+  "tags": [],
+  "visibility": "public"
+}

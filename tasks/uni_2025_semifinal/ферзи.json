@@ -1,0 +1,393 @@
+{
+  "asserts": [
+    {
+      "arguments": [
+        [
+          [1, 1],
+          [1, 2],
+          [1, 3]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "arguments": [
+        [
+          [1, 1],
+          [2, 2],
+          [1, 2]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        [
+          [6, 4],
+          [10, 8],
+          [1, 6],
+          [7, 7],
+          [7, 3],
+          [2, 7]
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "arguments": [[[3, 1]]],
+      "expected": 0
+    },
+    {
+      "arguments": [
+        [
+          [3, 7],
+          [3, 8],
+          [6, 3],
+          [8, 8],
+          [3, 4],
+          [4, 7],
+          [7, 8]
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "arguments": [[[2, 8]]],
+      "expected": 0
+    },
+    {
+      "arguments": [
+        [
+          [3, 7],
+          [6, 2],
+          [1, 6]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "arguments": [
+        [
+          [3, 2],
+          [1, 1],
+          [4, 1],
+          [2, 3],
+          [3, 3],
+          [1, 3],
+          [4, 2],
+          [2, 2],
+          [2, 1]
+        ]
+      ],
+      "expected": 18
+    },
+    {
+      "arguments": [
+        [
+          [3, 1],
+          [1, 1],
+          [2, 3],
+          [3, 3],
+          [1, 3],
+          [1, 2],
+          [2, 2],
+          [2, 1]
+        ]
+      ],
+      "expected": 16
+    },
+    {
+      "arguments": [
+        [
+          [5, 7],
+          [5, 9]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "arguments": [
+        [
+          [8, 4],
+          [1, 4],
+          [5, 2],
+          [1, 6]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        [
+          [4, 2],
+          [3, 2]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "arguments": [
+        [
+          [2, 2],
+          [2, 1],
+          [1, 1]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        [
+          [3, 2],
+          [1, 2],
+          [1, 1],
+          [2, 3]
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "arguments": [
+        [
+          [3, 2],
+          [2, 2],
+          [1, 1],
+          [1, 3]
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "arguments": [
+        [
+          [6, 4],
+          [1, 7],
+          [6, 1],
+          [3, 3],
+          [4, 6],
+          [1, 2],
+          [9, 9],
+          [9, 8]
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "arguments": [[[4, 1]]],
+      "expected": 0
+    },
+    {
+      "arguments": [
+        [
+          [3, 2],
+          [3, 1],
+          [1, 1],
+          [2, 3],
+          [1, 3],
+          [1, 2],
+          [2, 2],
+          [2, 1]
+        ]
+      ],
+      "expected": 17
+    },
+    {
+      "arguments": [
+        [
+          [1, 2],
+          [2, 2],
+          [1, 1],
+          [2, 1]
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "arguments": [
+        [
+          [2, 2],
+          [2, 1]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "arguments": [
+        [
+          [1, 2],
+          [2, 2],
+          [2, 1],
+          [1, 1]
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "arguments": [
+        [
+          [3, 1],
+          [1, 1],
+          [2, 3],
+          [4, 2],
+          [2, 1]
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "arguments": [
+        [
+          [2, 7],
+          [2, 1],
+          [4, 5],
+          [7, 2],
+          [8, 5]
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "arguments": [
+        [
+          [4, 3],
+          [1, 3],
+          [5, 6],
+          [4, 2],
+          [5, 8]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [[[7, 3]]],
+      "expected": 0
+    },
+    {
+      "arguments": [
+        [
+          [5, 1],
+          [9, 6],
+          [1, 6],
+          [6, 7],
+          [3, 3],
+          [4, 6],
+          [9, 4],
+          [4, 2],
+          [2, 2],
+          [1, 4]
+        ]
+      ],
+      "expected": 11
+    },
+    {
+      "arguments": [
+        [
+          [5, 7],
+          [1, 1],
+          [9, 2],
+          [7, 7],
+          [7, 6]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        [
+          [8, 4],
+          [3, 4],
+          [3, 7],
+          [9, 7]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        [
+          [3, 8],
+          [5, 6],
+          [6, 8],
+          [3, 5],
+          [3, 4],
+          [2, 7],
+          [6, 5]
+        ]
+      ],
+      "expected": 10
+    },
+    {
+      "arguments": [
+        [
+          [3, 2],
+          [3, 1],
+          [1, 1],
+          [2, 3],
+          [3, 3],
+          [1, 3],
+          [2, 2],
+          [2, 1]
+        ]
+      ],
+      "expected": 16
+    },
+    {
+      "arguments": [
+        [
+          [9, 6],
+          [4, 4],
+          [8, 2],
+          [8, 6],
+          [7, 1],
+          [2, 2],
+          [2, 5],
+          [8, 9],
+          [7, 3],
+          [8, 5]
+        ]
+      ],
+      "expected": 13
+    },
+    {
+      "arguments": [
+        [
+          [3, 2],
+          [1, 4]
+        ]
+      ],
+      "expected": 1
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "There are **N** queens on an infinite chessboard, the coordinates of each queen are given by two integers. Determine how many pairs of queens are beating each other. A pair of queens beats each other if they are located on the same horizontal, vertical or diagonal line and there are **no other queens between them**.",
+  "description_ru": "На бесконечном шахматном поле расположено **N** ферзей, координаты каждого ферзя задаются двумя целыми числами. Определите, сколько пар ферзей бьют друг-друга. Пара ферзей бьет друг-друга если они расположены на одной горизонтали, вертикали или диагонали и между ними нет других ферзей.",
+  "examples": "```\nsolution([[1, 1], [1, 2], [1, 3]]) == 2\nsolution([[1, 1], [2, 2], [1, 2]]) == 3\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "queens",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "array",
+          "nested": {
+            "name": "integer"
+          }
+        }
+      }
+    }
+  ],
+  "level": "hard",
+  "time_to_solve_sec": 420,
+  "name": "Ферзи",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(queens : list) -> int:\n    xS, yS, sS, dS = set(), set(), set(), set()\n    for x, y in queens:\n        xS.add(x)\n        yS.add(y)\n        sS.add(x + y)\n        dS.add(x - y)\n    return 4 * len(queens) - len(xS) - len(yS) - len(sS) - len(dS)\n",
+  "tags": [],
+  "visibility": "public"
+}

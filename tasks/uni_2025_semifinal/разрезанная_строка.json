@@ -1,0 +1,247 @@
+{
+  "asserts": [
+    {
+      "arguments": ["abcdefgh", ["efgh", "abcd"]],
+      "expected": true
+    },
+    {
+      "arguments": ["abcd", ["ab", "bc"]],
+      "expected": false
+    },
+    {
+      "arguments": ["ababab", ["ab", "ab", "ab"]],
+      "expected": true
+    },
+    {
+      "arguments": ["bacecdbgabiigebi", ["bacecdbg", "abiigebi"]],
+      "expected": true
+    },
+    {
+      "arguments": ["ebefdghi", ["dghi", "cdda"]],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "bhabheadgdbgafcgdcgdafgg",
+        ["head", "afgg", "afcg", "gdbg", "cebb", "dcgd"]
+      ],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "eabbdadbbebfce",
+        ["bf", "be", "bb", "da", "db", "ce", "ea"]
+      ],
+      "expected": true
+    },
+    {
+      "arguments": ["aaa", ["aaa"]],
+      "expected": true
+    },
+    {
+      "arguments": ["ghibehahef", ["eh", "gh", "ah", "ef", "gc"]],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "abbbbabaaabbaaabbbbabbbabbb",
+        ["abbaaabbb", "abbbbabaa", "babbbabbb"]
+      ],
+      "expected": true
+    },
+    {
+      "arguments": [
+        "cagaecccefhfacbdhf",
+        ["aec", "acb", "dhf", "cce", "cfg", "fhf"]
+      ],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "fefdbbdecb",
+        ["d", "f", "d", "b", "b", "e", "e", "c", "b", "f"]
+      ],
+      "expected": true
+    },
+    {
+      "arguments": ["eaadcccedeaeab", ["eaadccc", "edeaeab"]],
+      "expected": true
+    },
+    {
+      "arguments": [
+        "afdgchfhdfghccffbcdgfdedaccgbegdddaggdcefd",
+        ["accgbe", "dgfded", "ccffbc", "afdgch", "gdcefd", "gdddag", "fhdfgh"]
+      ],
+      "expected": true
+    },
+    {
+      "arguments": [
+        "bbbabaabbabbaababaaabbabaaabbbbbbbbabbbbabbbbabbab",
+        [
+          "abbab",
+          "bbaba",
+          "abbbb",
+          "bbbbb",
+          "abaaa",
+          "abbbb",
+          "bbbbb",
+          "bbaab",
+          "aabbb",
+          "bbbab"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "ejcgiijdfgahbhjdbfafcegahfdihjbgbjdibbhiabidj",
+        [
+          "cegah",
+          "dbfaf",
+          "ejcgi",
+          "ijdfg",
+          "fdihj",
+          "bgbjd",
+          "abidj",
+          "ahbhj",
+          "ibbhi"
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "arguments": [
+        "ecdhffeeiebbdididgecbebefebehdcahafhafefdd",
+        ["ecdhff", "dididg", "afefdd", "eeiebb", "cahafh", "ecbebe", "aigeia"]
+      ],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "ceceaebeddeaeeca",
+        ["bd", "ca", "ce", "dd", "ee", "ae", "ce", "be"]
+      ],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "abfadcaededfdcddcfbfdeffadfadfbefadfcfdfac",
+        ["abfadca", "fcfdfac", "daddfbc", "dfbefad", "effadfa", "ddcfbfd"]
+      ],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        [
+          "aaaaa",
+          "aaaaa",
+          "aaaaa",
+          "aaaaa",
+          "aaaaa",
+          "aaaaa",
+          "aaaaa",
+          "aaaaa",
+          "aaaaa",
+          "aaaaa"
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "arguments": ["aaaaaa", ["aaa", "aaa"]],
+      "expected": true
+    },
+    {
+      "arguments": ["fdghcegah", ["a", "c", "d", "h", "e", "f", "g", "g", "b"]],
+      "expected": false
+    },
+    {
+      "arguments": ["ccaacbc", ["cccaacb"]],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "cadecedeceacaaeecbbecbedeebebddcaad",
+        ["acaae", "cbede", "cadec", "edece", "dcaad", "ebebd", "ecbbe"]
+      ],
+      "expected": true
+    },
+    {
+      "arguments": ["dbecceebabcd", ["cdbd", "abcd", "ceeb"]],
+      "expected": false
+    },
+    {
+      "arguments": ["bbbaaabccccc", ["cc", "ba", "aa", "cb", "cc", "bc"]],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "addgfegfchhcgcahaggeffcd",
+        ["addg", "agge", "gcah", "fegf", "chhc", "ffcd"]
+      ],
+      "expected": true
+    },
+    {
+      "arguments": [
+        "bbaaaaaaaababbabbbabbaaaa",
+        ["baaaa", "aabab", "babba", "aaaaa", "bbaaa"]
+      ],
+      "expected": false
+    },
+    {
+      "arguments": ["bab", ["acb"]],
+      "expected": false
+    },
+    {
+      "arguments": ["bbac", ["bbac"]],
+      "expected": true
+    },
+    {
+      "arguments": ["cacbbacef", ["c", "b", "c", "f", "a", "a", "d", "e", "b"]],
+      "expected": false
+    },
+    {
+      "arguments": [
+        "bedaaacbabafdebaffabffddbcdeacbeaebb",
+        ["beda", "abaf", "ffdd", "deba", "bcde", "affb", "ffab", "acbe", "aebb"]
+      ],
+      "expected": false
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "A string **S** and a set of strings of the same length are specified. The total length of these lines is exactly the same as the length of **S**. Determine if it is possible to compose a string **S** using each one exactly once.\n",
+  "description_ru": "Задана строка **S** и набор строк одинаковой длины. Суммарная длина этих строк в точности совпадает с длиной **S**. Определите, можно ли составить из них строку **S**, используя каждую ровно один раз.\n",
+  "examples": "```\nsolution(\"abcdefgh\", [\"efgh\", \"abcd\"]) == True\nsolution(\"abcd\", [\"ab\", \"bc\"]) == False\nsolution(\"ababab\", [\"ab\", \"ab\", \"ab\"]) == True\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "s",
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "argument_name": "ss",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "string"
+        }
+      }
+    }
+  ],
+  "level": "medium",
+  "time_to_solve_sec": 300,
+  "name": "Разрезанная_строка",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "boolean"
+    }
+  },
+  "solution": "def solution(s : str, ss : list) -> bool:\n    k = len(ss[0])\n    dct = {}\n    for substr in ss:\n        dct[substr] = dct.get(substr, 0) + 1\n    for i in range(len(s) // k):\n        substr = s[i * k: (i + 1)*k]\n        if substr not in dct or dct[substr] == 0:\n            return False\n        dct[substr] -= 1\n    return True\n",
+  "tags": [],
+  "visibility": "public"
+}

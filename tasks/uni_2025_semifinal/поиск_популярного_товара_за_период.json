@@ -1,0 +1,333 @@
+{
+  "name": "Популярный_товар",
+  "description_ru": "Дан список покупок (название товара и дата в формате `YYYY-MM-DD`) и месяц (`YYYY-MM`). Найдите товар, который покупали **чаще всего** в этот месяц. Если таких товаров несколько, верните тот, который встречается **первым** в исходном списке. В названии товара учитывается регистр и пробелы.",
+  "description_en": "Given a list of purchases (item name and date in `YYYY-MM-DD` format) and a month (`YYYY-MM`), find the item bought **most frequently** in that month. If there are multiple items with the same frequency, return the one that appears **first** in the original list.",
+  "input_signature": [
+    {
+      "argument_name": "purchases",
+      "type": {
+        "name": "array",
+        "nested": { "name": "array", "nested": { "name": "string" } }
+      }
+    },
+    { "argument_name": "month", "type": { "name": "string" } }
+  ],
+  "output_signature": { "type": { "name": "string" } },
+  "asserts": [
+    {
+      "arguments": [
+        [
+          ["apple", "2023-09-01"],
+          ["cheese", "2023-09-02"],
+          ["juice", "2023-09-03"],
+          ["carrot", "2023-09-04"]
+        ],
+        "2023-09"
+      ],
+      "expected": "apple",
+      "comment": "All different, return first"
+    },
+    {
+      "arguments": [
+        [
+          ["cola", "2023-09-01"],
+          ["cola", "2023-09-02"],
+          ["pepsi", "2023-09-03"],
+          ["pepsi", "2023-09-04"],
+          ["sprite", "2023-09-05"],
+          ["pepsi", "2023-09-06"]
+        ],
+        "2023-09"
+      ],
+      "expected": "pepsi",
+      "comment": "cola and pepsi x2, pepsi second"
+    },
+    {
+      "arguments": [
+        [
+          ["iphone", "2023-09-10"],
+          ["samsung", "2023-09-11"],
+          ["iphone", "2023-09-12"],
+          ["dyson", "2023-09-13"]
+        ],
+        "2023-09"
+      ],
+      "expected": "iphone",
+      "comment": "iphone most frequent"
+    },
+    {
+      "arguments": [
+        [
+          ["banana", "2023-09-01"],
+          ["banana", "2022-09-01"],
+          ["banana", "2021-09-01"],
+          ["orange", "2023-09-02"]
+        ],
+        "2023-09"
+      ],
+      "expected": "banana",
+      "comment": "banana and orange x1, banana first"
+    },
+    {
+      "arguments": [
+        [
+          ["shirt", "2023-09-01"],
+          ["jeans", "2023-09-02"],
+          ["shirt", "2023-09-03"],
+          ["shoes", "2023-09-04"],
+          ["jeans", "2023-09-05"]
+        ],
+        "2023-09"
+      ],
+      "expected": "shirt",
+      "comment": "shirt and jeans x2, shirt first"
+    },
+    {
+      "arguments": [
+        [
+          ["fairy", "2023-09-01"],
+          ["persil", "2023-09-02"],
+          ["fairy", "2023-09-03"],
+          ["persil", "2023-09-04"],
+          ["ariel", "2023-09-05"]
+        ],
+        "2023-09"
+      ],
+      "expected": "fairy",
+      "comment": "fairy and persil x2, fairy first"
+    },
+    {
+      "arguments": [
+        [
+          ["kinder", "2023-09-01"],
+          ["nutella", "2023-09-02"],
+          ["nutella", "2023-09-03"],
+          ["nutella", "2023-09-04"],
+          ["kinder", "2023-09-05"]
+        ],
+        "2023-09"
+      ],
+      "expected": "nutella",
+      "comment": "nutella x3, kinder x2"
+    },
+    {
+      "arguments": [
+        [
+          ["lays", "2023-09-01"],
+          ["pringles", "2023-09-02"],
+          ["lays", "2023-09-03"],
+          ["pringles", "2023-09-04"],
+          ["lays", "2023-09-05"],
+          ["pringles", "2023-09-06"]
+        ],
+        "2023-09"
+      ],
+      "expected": "lays",
+      "comment": "lays and pringles x3, lays first"
+    },
+    {
+      "arguments": [
+        [
+          ["nike", "2023-09-01"],
+          ["adidas", "2023-09-02"],
+          ["nike", "2023-09-03"],
+          ["adidas", "2023-09-04"],
+          ["nike", "2023-09-05"]
+        ],
+        "2023-09"
+      ],
+      "expected": "nike",
+      "comment": "nike x3, adidas x2"
+    },
+    {
+      "arguments": [
+        [
+          ["ipad", "2023-09-01"],
+          ["ipad", "2022-09-01"],
+          ["ipad", "2021-09-01"],
+          ["macbook", "2023-09-02"]
+        ],
+        "2023-09"
+      ],
+      "expected": "ipad",
+      "comment": "ipad and macbook x1, ipad first"
+    },
+    {
+      "arguments": [
+        [
+          ["lego", "2023-09-01"],
+          ["lego", "2023-09-02"],
+          ["lego", "2023-09-03"],
+          ["lego", "2023-09-04"]
+        ],
+        "2023-09"
+      ],
+      "expected": "lego",
+      "comment": "one product many times"
+    },
+    {
+      "arguments": [
+        [
+          ["maybelline", "2023-09-01"],
+          ["loreal", "2023-09-02"],
+          ["maybelline", "2023-09-03"],
+          ["loreal", "2023-09-04"],
+          ["nivea", "2023-09-05"]
+        ],
+        "2023-09"
+      ],
+      "expected": "maybelline",
+      "comment": "maybelline and loreal x2, maybelline first"
+    },
+    {
+      "arguments": [
+        [
+          ["coke", "2023-09-01"],
+          ["coke ", "2023-09-02"],
+          ["coke", "2023-09-03"]
+        ],
+        "2023-09"
+      ],
+      "expected": "coke",
+      "comment": "coke and coke(space) are different"
+    },
+    {
+      "arguments": [
+        [
+          ["coke", "2023-09-01"],
+          ["Coke", "2023-09-02"],
+          ["coke", "2023-09-03"]
+        ],
+        "2023-09"
+      ],
+      "expected": "coke",
+      "comment": "case matters"
+    },
+    {
+      "arguments": [
+        [
+          ["blender", "2023-09-01"],
+          ["blender ", "2023-09-02"],
+          ["blender", "2023-09-03"]
+        ],
+        "2023-09"
+      ],
+      "expected": "blender",
+      "comment": "trailing space matters"
+    },
+    {
+      "arguments": [
+        [
+          ["", "2023-09-01"],
+          ["", "2023-09-02"]
+        ],
+        "2023-09"
+      ],
+      "expected": "",
+      "comment": "empty name"
+    },
+    { "arguments": [[], "2023-09"], "expected": "", "comment": "empty list" },
+    {
+      "arguments": [[["cola", "2023-08-15"]], "2023-09"],
+      "expected": "",
+      "comment": "no purchases in month"
+    },
+    {
+      "arguments": [
+        [
+          ["toyota", "2023-09-01"],
+          ["toyota", "2023-09-01"],
+          ["honda", "2023-09-01"]
+        ],
+        "2023-09"
+      ],
+      "expected": "toyota",
+      "comment": "same product, same day"
+    },
+    {
+      "arguments": [
+        [
+          ["sony", "2023-09-01"],
+          ["lg", "2023-09-01"],
+          ["sony", "2023-10-01"],
+          ["lg", "2023-10-01"]
+        ],
+        "2023-09"
+      ],
+      "expected": "sony",
+      "comment": "sony and lg x1, sony first"
+    },
+    {
+      "arguments": [
+        [
+          ["dell", "2023-09-01"],
+          ["dell", "2022-09-01"],
+          ["dell", "2021-09-01"],
+          ["hp", "2023-09-02"]
+        ],
+        "2023-09"
+      ],
+      "expected": "dell",
+      "comment": "dell and hp x1, dell first"
+    },
+    {
+      "arguments": [
+        [
+          ["tesla", "2020-02-29"],
+          ["ford", "2020-02-28"],
+          ["tesla", "2020-02-01"]
+        ],
+        "2020-02"
+      ],
+      "expected": "tesla",
+      "comment": "leap year"
+    },
+    {
+      "arguments": [
+        [
+          ["puma", "2023-09-30"],
+          ["reebok", "2023-09-01"],
+          ["puma", "2023-09-01"],
+          ["reebok", "2023-09-30"]
+        ],
+        "2023-09"
+      ],
+      "expected": "puma",
+      "comment": "month edges"
+    },
+    {
+      "arguments": [
+        [
+          ["uniqlo", "2023-09-15"],
+          ["gap", "2023-09-15"],
+          ["gap", "2022-09-15"],
+          ["uniqlo", "2022-09-15"]
+        ],
+        "2022-09"
+      ],
+      "expected": "gap",
+      "comment": "different years"
+    },
+    {
+      "arguments": [
+        [
+          ["lego", "2023-09-15"],
+          ["hasbro", "2023-09-15"],
+          ["lego", "2022-09-15"],
+          ["hasbro", "2022-09-15"]
+        ],
+        "2023-09"
+      ],
+      "expected": "lego",
+      "comment": "different years"
+    }
+  ],
+  "examples": "```\nsolution([\n [\"milk\", \"2023-09-15\"],\n [\"bread\", \"2023-09-20\"],\n [\"milk\", \"2023-09-25\"],\n [\"eggs\", \"2023-10-01\"]\n ],\"2023-09\"\n) == \"milk\"\n```",
+  "solution": "def solution(purchases, month):\n    c = {}\n    for name, date in purchases:\n        if date.startswith(month):\n            c[name] = c.get(name, 0) + 1\n    return max(c, key=lambda k: (c[k], -[i for i, (n, d) in enumerate(purchases) if n == k and d.startswith(month)][0])) if c else ''",
+  "level": "medium",
+  "time_to_solve_sec": 240,
+  "tags": ["dict", "date", "array"],
+  "visibility": "public",
+  "origin": "user",
+  "generator_lang": "py"
+}

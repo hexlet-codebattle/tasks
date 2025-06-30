@@ -1,0 +1,338 @@
+{
+  "name": "Косичка",
+  "description_ru": "Даны три массива одинаковой длины. Представьте, что это «ленты» и сплетите из них классическую «косичку»: на первом шаге первый массив-лента перекидывается в середину, на втором шаге последний массив-лента перекидывается в середину и так пока не кончится длина. Вернуть нужно массив троек в том же порядке.",
+  "description_en": "Given three arrays of equal length. Imagine these are 'ribbons' and braid them into a classic 'braid': on the first step, the first array-ribbon is moved to the middle, on the second step, the last array-ribbon is moved to the middle, and so on until the length is exhausted. Return an array of triplets in the same order.",
+  "input_signature": [
+    {
+      "argument_name": "a1",
+      "type": { "name": "array", "nested": { "name": "string" } }
+    },
+    {
+      "argument_name": "a2",
+      "type": { "name": "array", "nested": { "name": "string" } }
+    },
+    {
+      "argument_name": "a3",
+      "type": { "name": "array", "nested": { "name": "string" } }
+    }
+  ],
+  "output_signature": {
+    "type": {
+      "name": "array",
+      "nested": { "name": "array", "nested": { "name": "string" } }
+    }
+  },
+  "asserts": [
+    {
+      "arguments": [
+        ["a", "b", "c"],
+        ["1", "2", "3"],
+        ["!", "@", "#"]
+      ],
+      "expected": [
+        ["a", "1", "!"],
+        ["2", "b", "@"],
+        ["3", "#", "c"]
+      ],
+      "comment": "Базовый пример плетения косички"
+    },
+    {
+      "arguments": [["x"], ["y"], ["z"]],
+      "expected": [["x", "y", "z"]],
+      "comment": "Массивы длиной 1"
+    },
+    {
+      "arguments": [
+        ["a", "b"],
+        ["1", "2"],
+        ["!", "@"]
+      ],
+      "expected": [
+        ["a", "1", "!"],
+        ["2", "b", "@"]
+      ],
+      "comment": "Массивы длиной 2"
+    },
+    {
+      "arguments": [
+        ["red", "green", "blue", "yellow"],
+        ["cat", "dog", "bird", "fish"],
+        ["sun", "moon", "star", "cloud"]
+      ],
+      "expected": [
+        ["red", "cat", "sun"],
+        ["dog", "green", "moon"],
+        ["bird", "star", "blue"],
+        ["cloud", "fish", "yellow"]
+      ],
+      "comment": "Массивы длиной 4"
+    },
+    {
+      "arguments": [
+        ["A", "B", "C", "D", "E"],
+        ["1", "2", "3", "4", "5"],
+        ["X", "Y", "Z", "W", "Q"]
+      ],
+      "expected": [
+        ["A", "1", "X"],
+        ["2", "B", "Y"],
+        ["3", "Z", "C"],
+        ["W", "4", "D"],
+        ["Q", "E", "5"]
+      ],
+      "comment": "Массивы длиной 5"
+    },
+    {
+      "arguments": [
+        ["0", "1", "2", "3", "4", "5"],
+        ["a", "b", "c", "d", "e", "f"],
+        ["!", "@", "#", "$", "%", "^"]
+      ],
+      "expected": [
+        ["0", "a", "!"],
+        ["b", "1", "@"],
+        ["c", "#", "2"],
+        ["$", "d", "3"],
+        ["%", "4", "e"],
+        ["5", "^", "f"]
+      ],
+      "comment": "Массивы длиной 6"
+    },
+    {
+      "arguments": [
+        ["apple", "banana"],
+        ["orange", "grape"],
+        ["cherry", "peach"]
+      ],
+      "expected": [
+        ["apple", "orange", "cherry"],
+        ["grape", "banana", "peach"]
+      ],
+      "comment": "Названия фруктов"
+    },
+    {
+      "arguments": [
+        ["Mon", "Tue", "Wed"],
+        ["Jan", "Feb", "Mar"],
+        ["AM", "PM", "UTC"]
+      ],
+      "expected": [
+        ["Mon", "Jan", "AM"],
+        ["Feb", "Tue", "PM"],
+        ["Mar", "UTC", "Wed"]
+      ],
+      "comment": "Сокращения времени"
+    },
+    {
+      "arguments": [["start"], ["middle"], ["end"]],
+      "expected": [["start", "middle", "end"]],
+      "comment": "Одиночные элементы"
+    },
+    {
+      "arguments": [
+        ["first", "second"],
+        ["alpha", "beta"],
+        ["one", "two"]
+      ],
+      "expected": [
+        ["first", "alpha", "one"],
+        ["beta", "second", "two"]
+      ],
+      "comment": "Слова вместо символов"
+    },
+    {
+      "arguments": [
+        ["cat", "dog", "bird"],
+        ["red", "blue", "green"],
+        ["fast", "slow", "quick"]
+      ],
+      "expected": [
+        ["cat", "red", "fast"],
+        ["blue", "dog", "slow"],
+        ["green", "quick", "bird"]
+      ],
+      "comment": "Животные, цвета и скорости"
+    },
+    {
+      "arguments": [
+        ["book", "pen", "desk"],
+        ["read", "write", "sit"],
+        ["library", "office", "home"]
+      ],
+      "expected": [
+        ["book", "read", "library"],
+        ["write", "pen", "office"],
+        ["sit", "home", "desk"]
+      ],
+      "comment": "Предметы и действия"
+    },
+    {
+      "arguments": [
+        ["circle", "square", "triangle"],
+        ["round", "flat", "sharp"],
+        ["wheel", "box", "roof"]
+      ],
+      "expected": [
+        ["circle", "round", "wheel"],
+        ["flat", "square", "box"],
+        ["sharp", "roof", "triangle"]
+      ],
+      "comment": "Геометрические фигуры и их свойства"
+    },
+    {
+      "arguments": [
+        ["small", "medium", "large"],
+        ["mouse", "cat", "dog"],
+        ["quiet", "soft", "loud"]
+      ],
+      "expected": [
+        ["small", "mouse", "quiet"],
+        ["cat", "medium", "soft"],
+        ["dog", "loud", "large"]
+      ],
+      "comment": "Размеры, животные и звуки"
+    },
+    {
+      "arguments": [
+        ["left", "right"],
+        ["up", "down"],
+        ["top", "bottom"]
+      ],
+      "expected": [
+        ["left", "up", "top"],
+        ["down", "right", "bottom"]
+      ],
+      "comment": "Направления простые"
+    },
+    {
+      "arguments": [
+        ["hot", "cold"],
+        ["fire", "ice"],
+        ["red", "blue"]
+      ],
+      "expected": [
+        ["hot", "fire", "red"],
+        ["ice", "cold", "blue"]
+      ],
+      "comment": "Противоположности"
+    },
+    {
+      "arguments": [
+        ["one", "two", "three"],
+        ["first", "second", "third"],
+        ["alpha", "beta", "gamma"]
+      ],
+      "expected": [
+        ["one", "first", "alpha"],
+        ["second", "two", "beta"],
+        ["third", "gamma", "three"]
+      ],
+      "comment": "Числа, порядковые и греческие буквы"
+    },
+    {
+      "arguments": [
+        ["sun", "moon"],
+        ["day", "night"],
+        ["light", "dark"]
+      ],
+      "expected": [
+        ["sun", "day", "light"],
+        ["night", "moon", "dark"]
+      ],
+      "comment": "День и ночь"
+    },
+    {
+      "arguments": [
+        ["car", "bike"],
+        ["fast", "slow"],
+        ["road", "path"]
+      ],
+      "expected": [
+        ["car", "fast", "road"],
+        ["slow", "bike", "path"]
+      ],
+      "comment": "Транспорт и скорости"
+    },
+    {
+      "arguments": [
+        ["apple", "orange"],
+        ["sweet", "sour"],
+        ["tree", "bush"]
+      ],
+      "expected": [
+        ["apple", "sweet", "tree"],
+        ["sour", "orange", "bush"]
+      ],
+      "comment": "Фрукты и вкусы"
+    },
+    {
+      "arguments": [
+        ["big", "small"],
+        ["elephant", "mouse"],
+        ["heavy", "light"]
+      ],
+      "expected": [
+        ["big", "elephant", "heavy"],
+        ["mouse", "small", "light"]
+      ],
+      "comment": "Размеры и вес"
+    },
+    {
+      "arguments": [
+        ["happy", "sad"],
+        ["smile", "cry"],
+        ["joy", "tear"]
+      ],
+      "expected": [
+        ["happy", "smile", "joy"],
+        ["cry", "sad", "tear"]
+      ],
+      "comment": "Эмоции"
+    },
+    {
+      "arguments": [
+        ["green", "blue", "red"],
+        ["grass", "sky", "fire"],
+        ["nature", "air", "heat"]
+      ],
+      "expected": [
+        ["green", "grass", "nature"],
+        ["sky", "blue", "air"],
+        ["fire", "heat", "red"]
+      ],
+      "comment": "Цвета и ассоциации"
+    },
+    {
+      "arguments": [
+        ["work", "rest"],
+        ["busy", "calm"],
+        ["stress", "peace"]
+      ],
+      "expected": [
+        ["work", "busy", "stress"],
+        ["calm", "rest", "peace"]
+      ],
+      "comment": "Работа и отдых"
+    },
+    {
+      "arguments": [
+        ["young", "old"],
+        ["child", "adult"],
+        ["learn", "teach"]
+      ],
+      "expected": [
+        ["young", "child", "learn"],
+        ["adult", "old", "teach"]
+      ],
+      "comment": "Возраст и обучение"
+    }
+  ],
+  "examples": "```\nsolution(\n    ['0', '1', '2', '3', '4', '5'],\n    ['a', 'b', 'c', 'd', 'e', 'f'],\n    ['!', '@', '#', '$', '%', '^']\n) == [\n    ['0', 'a', '!'],  \n    ['b', '1', '@'],  \n    ['c', '#', '2'],  \n    ['$', 'd', '3'],  \n    ['%', '4', 'e'],  \n    ['5', '^', 'f']   \n]\n```",
+  "solution": "def solution(a1, a2, a3):\n    arrays = [a1, a2, a3]\n    result = []\n    for i in range(len(a1)):\n        result.append([arrays[0][i], arrays[1][i], arrays[2][i]])\n        if i % 2 == 0:\n            arrays = [arrays[1], arrays[0], arrays[2]]\n        else:\n            arrays = [arrays[0], arrays[2], arrays[1]]\n    return result",
+  "level": "hard",
+  "time_to_solve_sec": 420,
+  "tags": ["arrays", "simulation"],
+  "visibility": "public",
+  "origin": "user",
+  "generator_lang": "python"
+}

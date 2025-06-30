@@ -1,0 +1,200 @@
+{
+  "name": "Альтернативные_логины",
+  "description_ru": "Даны желаемый логин, недоступный для использования, и список занятых. Нужно предложить первые 3 свободных варианта, последовательно применяя стратегии:\n1. добавление `_` в начало и конец\n2. полная замена всех символов `o`, `l` и `s` на цифры: `o` → `0`, `l` → `1`, `s` → `5`\n3. добавление минимально возможного целого положительного числа в конец (с помощью этой стратегии можно добавить несколько вариантов)",
+  "description_en": "Given a desired login, which is unavailable, and a list of taken logins, suggest the first 3 available alternatives by sequentially applying these strategies:\n1. Add `_` to the beginning and the end.\n2. Fully replace all `o`, `l`, and `s` characters with numbers: `o` → `0`, `l` → `1`, `s` → `5`.\n3. Add the smallest possible positive integer to the end (this strategy can be used multiple times).",
+  "examples": "```\nsolution(\"user\", [\"user\", \"user1\"]) == [\"_user_\", \"u5er\", \"user2\"]\n```",
+  "input_signature": [
+    {
+      "argument_name": "login",
+      "type": { "name": "string" }
+    },
+    {
+      "argument_name": "taken_logins",
+      "type": { "name": "array", "nested": { "name": "string" } }
+    }
+  ],
+  "output_signature": {
+    "type": { "name": "array", "nested": { "name": "string" } }
+  },
+  "solution": "def solution(login, taken_logins):\n    suggestions = []\n    taken_set = set(taken_logins)\n\n    # Strategy 1: Add underscores\n    s1 = f'_{login}_'\n    if s1 not in taken_set:\n        suggestions.append(s1)\n\n    # Strategy 2: Replace characters\n    s2 = login.replace('o', '0').replace('l', '1').replace('s', '5')\n    if s2 != login and s2 not in taken_set:\n        suggestions.append(s2)\n\n    # Strategy 3: Add numbers\n    i = 1\n    while len(suggestions) < 3:\n        s3 = f'{login}{i}'\n        if s3 not in taken_set:\n            suggestions.append(s3)\n        i += 1\n        if i > len(taken_set) + 100: # Safety break\n            break\n\n    return suggestions[:3]",
+  "asserts": [
+    {
+      "arguments": ["losos", ["losos", "losos1"]],
+      "expected": ["_losos_", "10505", "losos2"],
+      "comment": "Пример из условия"
+    },
+    {
+      "arguments": ["login", []],
+      "expected": ["_login_", "10gin", "login1"],
+      "comment": "Все варианты свободны"
+    },
+    {
+      "arguments": ["hello", ["_hello_"]],
+      "expected": ["he110", "hello1", "hello2"],
+      "comment": "Первый вариант с подчеркиваниями занят"
+    },
+    {
+      "arguments": ["solo", ["_solo_", "5010"]],
+      "expected": ["solo1", "solo2", "solo3"],
+      "comment": "Первый и второй варианты заняты"
+    },
+    {
+      "arguments": ["admin", ["_admin_"]],
+      "expected": ["admin1", "admin2", "admin3"],
+      "comment": "Логин без символов для замены"
+    },
+    {
+      "arguments": ["master", ["master1", "master2", "master3"]],
+      "expected": ["_master_", "ma5ter", "master4"],
+      "comment": "Некоторые числовые суффиксы заняты"
+    },
+    {
+      "arguments": ["new", ["_new_", "new1", "new2", "new3"]],
+      "expected": ["new4", "new5", "new6"],
+      "comment": "Подчеркивания не дают уникальности, числовые суффиксы заняты"
+    },
+    {
+      "arguments": ["losos", ["_losos_", "10s0s"]],
+      "expected": ["10505", "losos1", "losos2"],
+      "comment": "Сложная замена символов, _losos_ занят"
+    },
+    {
+      "arguments": [
+        "password",
+        ["_password_", "pa55w0rd", "password1", "password3"]
+      ],
+      "expected": ["password2", "password4", "password5"],
+      "comment": "Все стратегии кроме числовой заняты на несколько шагов вперед"
+    },
+    {
+      "arguments": ["top", []],
+      "expected": ["_top_", "t0p", "top1"],
+      "comment": "Простой случай без занятых логинов"
+    },
+    {
+      "arguments": [
+        "coder",
+        ["_coder_", "c0der", "coder1", "coder2", "coder3", "coder4"]
+      ],
+      "expected": ["coder5", "coder6", "coder7"],
+      "comment": "Все стратегии кроме числовой заняты на несколько шагов вперед"
+    },
+    {
+      "arguments": ["lss", ["_lss_", "1s5"]],
+      "expected": ["155", "lss1", "lss2"],
+      "comment": "Несколько одинаковых символов для замены, _lss_ занят"
+    },
+    {
+      "arguments": ["", ["_", "1"]],
+      "expected": ["__", "2", "3"],
+      "comment": "Пустой логин"
+    },
+    {
+      "arguments": ["user1", ["_user1_"]],
+      "expected": ["u5er1", "user11", "user12"],
+      "comment": "Логин уже содержит цифры"
+    },
+    {
+      "arguments": ["user", ["User", "_user_"]],
+      "expected": ["u5er", "user1", "user2"],
+      "comment": "Проверка чувствительности к регистру"
+    },
+    {
+      "arguments": ["test", ["_test_", "test1"]],
+      "expected": ["te5t", "test2", "test3"],
+      "comment": "Все стратегии кроме числовой заняты"
+    },
+    {
+      "arguments": ["lol", []],
+      "expected": ["_lol_", "101", "lol1"],
+      "comment": "Логин только из заменяемых символов"
+    },
+    {
+      "arguments": ["user_", ["_user__"]],
+      "expected": ["u5er_", "user_1", "user_2"],
+      "comment": "Добавление подчеркиваний создает конфликт"
+    },
+    {
+      "arguments": [
+        "file",
+        [
+          "_file_",
+          "file1",
+          "file2",
+          "file3",
+          "file4",
+          "file5",
+          "file6",
+          "file7",
+          "file8",
+          "file9"
+        ]
+      ],
+      "expected": ["fi1e", "file10", "file11"],
+      "comment": "Числовой суффикс достигает 10"
+    },
+    {
+      "arguments": ["sole", ["_sole_", "s01e1"]],
+      "expected": ["501e", "sole1", "sole2"],
+      "comment": "Замена создает логин, не конфликтующий с другими"
+    },
+    {
+      "arguments": ["юзер", ["_юзер_"]],
+      "expected": ["юзер1", "юзер2", "юзер3"],
+      "comment": "Логин с не-латинскими символами"
+    },
+    {
+      "arguments": ["s", []],
+      "expected": ["_s_", "5", "s1"],
+      "comment": "Логин из одного символа"
+    },
+    {
+      "arguments": ["LoginUser", ["_LoginUser_"]],
+      "expected": ["L0ginU5er", "LoginUser1", "LoginUser2"],
+      "comment": "Логин в смешанном регистре без заменяемых символов"
+    },
+    {
+      "arguments": ["a_very_long_login_name_for_testing", []],
+      "expected": [
+        "_a_very_long_login_name_for_testing_",
+        "a_very_10ng_10gin_name_f0r_te5ting",
+        "a_very_long_login_name_for_testing1"
+      ],
+      "comment": "Очень длинный логин"
+    },
+    {
+      "arguments": ["z", ["_z_", "z"]],
+      "expected": ["z1", "z2", "z3"],
+      "comment": "Все варианты кроме числовых заняты"
+    },
+    {
+      "arguments": ["login1", ["_login1_"]],
+      "expected": ["10gin1", "login11", "login12"],
+      "comment": "Логин выглядит как числовая вариация"
+    },
+    {
+      "arguments": ["options", ["_options_", "0pti0n5", "options1"]],
+      "expected": ["options2", "options3", "options4"],
+      "comment": "Все три типа предложений заняты"
+    },
+    {
+      "arguments": ["hacker", ["_hacker_", "hacker1", "hacker3", "hacker4"]],
+      "expected": ["hacker2", "hacker5", "hacker6"],
+      "comment": "Заполнение 'дырки' в числовой последовательности"
+    },
+    {
+      "arguments": [
+        "player",
+        ["_player_", "p1ayer", "player2", "player3", "player5"]
+      ],
+      "expected": ["player1", "player4", "player6"],
+      "comment": "Несколько 'дырок' в числовой последовательности"
+    }
+  ],
+  "level": "medium",
+  "tags": ["strings", "generators"],
+  "visibility": "public",
+  "origin": "user",
+  "generator_lang": "python",
+  "time_to_solve_sec": 2000
+}

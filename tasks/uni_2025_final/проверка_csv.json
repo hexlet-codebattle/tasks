@@ -1,0 +1,270 @@
+{
+  "name": "Проверка_CSV",
+  "description_ru": "CSV (Comma-Separated Values) — формат данных, где значения разделены запятыми, а строки — переносами. Проверьте, что все строки CSV содержат одинаковое количество столбцов. Гарантируется, что входная строка и все её подстроки, разделенные переносом строки, не пустые. Верните логический результат.",
+  "description_en": "CSV (Comma-Separated Values) is a data format where values are separated by commas and rows by line breaks. Check that all CSV rows contain the same number of columns. It is guaranteed that the input string and all its substrings separated by a newline character are not empty. Return a boolean result.",
+  "input_signature": [
+    {
+      "argument_name": "csv_data",
+      "type": {
+        "name": "string"
+      }
+    }
+  ],
+  "output_signature": {
+    "type": {
+      "name": "boolean"
+    }
+  },
+  "asserts": [
+    {
+      "arguments": [
+        "name,age,city\nAlice,25,New York\nBob,30,London"
+      ],
+      "expected": true,
+      "comment": "Все строки имеют 3 столбца"
+    },
+    {
+      "arguments": [
+        "a,b,c\n1,2,3\n4,5"
+      ],
+      "expected": false,
+      "comment": "Последняя строка имеет только 2 столбца"
+    },
+    {
+      "arguments": [
+        "x\ny\nz"
+      ],
+      "expected": true,
+      "comment": "Все строки имеют 1 столбец"
+    },
+    {
+      "arguments": [
+        "a,b\nc,d,e"
+      ],
+      "expected": false,
+      "comment": "Разное количество столбцов"
+    },
+    {
+      "arguments": [
+        "single"
+      ],
+      "expected": true,
+      "comment": "Одна строка без запятых"
+    },
+    {
+      "arguments": [
+        "a,b,c"
+      ],
+      "expected": true,
+      "comment": "Одна строка с запятыми"
+    },
+    {
+      "arguments": [
+        "a,b\n,c"
+      ],
+      "expected": true,
+      "comment": "Пустые значения считаются"
+    },
+    {
+      "arguments": [
+        "a,,b\nc,,d"
+      ],
+      "expected": true,
+      "comment": "Пустые значения между запятыми"
+    },
+    {
+      "arguments": [
+        ",\n,"
+      ],
+      "expected": true,
+      "comment": "Только запятые"
+    },
+    {
+      "arguments": [
+        "name,age\nAlice,25\nBob,30\nCharlie,35"
+      ],
+      "expected": true,
+      "comment": "Несколько строк с одинаковым количеством"
+    },
+    {
+      "arguments": [
+        "a\nb,c"
+      ],
+      "expected": false,
+      "comment": "Первая строка 1 столбец, вторая 2"
+    },
+    {
+      "arguments": [
+        "a,b,c,d\ne,f,g\nh,i,j,k"
+      ],
+      "expected": false,
+      "comment": "Средняя строка отличается"
+    },
+    {
+      "arguments": [
+        ",,,\n,,,\n,,,"
+      ],
+      "expected": true,
+      "comment": "Только разделители"
+    },
+    {
+      "arguments": [
+        "data\nmore,data\neven,more,data"
+      ],
+      "expected": false,
+      "comment": "Возрастающее количество столбцов"
+    },
+    {
+      "arguments": [
+        "one,two,three\nfour,five,six\nseven,eight,nine"
+      ],
+      "expected": true,
+      "comment": "Все строки по 3 столбца"
+    },
+    {
+      "arguments": [
+        "a,b,c\nd,e,f\ng,h"
+      ],
+      "expected": false,
+      "comment": "Последняя строка короче"
+    },
+    {
+      "arguments": [
+        "x,y\nz"
+      ],
+      "expected": false,
+      "comment": "Вторая строка без запятых"
+    },
+    {
+      "arguments": [
+        "first,second\nthird,fourth\nfifth,sixth"
+      ],
+      "expected": true,
+      "comment": "Все строки по 2 столбца"
+    },
+    {
+      "arguments": [
+        "a,b,c\nd,e,f,g"
+      ],
+      "expected": false,
+      "comment": "Вторая строка длиннее"
+    },
+    {
+      "arguments": [
+        "test,data,value\nmore,test,data\nfinal,test,value"
+      ],
+      "expected": true,
+      "comment": "Три строки по три столбца"
+    },
+    {
+      "arguments": [
+        "a\nb\nc\nd"
+      ],
+      "expected": true,
+      "comment": "Четыре строки по одному столбцу"
+    },
+    {
+      "arguments": [
+        "a,b\nc,d\ne"
+      ],
+      "expected": false,
+      "comment": "Третья строка без запятых"
+    },
+    {
+      "arguments": [
+        "name,age,city,country\nAlice,25,New York,USA\nBob,30,London,UK\nCharlie,35,Paris,France"
+      ],
+      "expected": true,
+      "comment": "Четыре столбца во всех строках"
+    },
+    {
+      "arguments": [
+        "a,b,c\nd,e,f\ng,h,i\nj,k"
+      ],
+      "expected": false,
+      "comment": "Последняя строка короче остальных"
+    },
+    {
+      "arguments": [
+        "single,column\nanother,column\nthird,column"
+      ],
+      "expected": true,
+      "comment": "Все строки по два столбца"
+    },
+    {
+      "arguments": [
+        "empty,,values\nmore,,empty\nfinal,,values"
+      ],
+      "expected": true,
+      "comment": "Пустые значения в середине"
+    },
+    {
+      "arguments": [
+        "a,b,c,d,e\nf,g,h,i,j\nk,l,m,n,o"
+      ],
+      "expected": true,
+      "comment": "Пять столбцов в каждой строке"
+    },
+    {
+      "arguments": [
+        "start\nmiddle,value\nend"
+      ],
+      "expected": false,
+      "comment": "Средняя строка отличается от крайних"
+    },
+    {
+      "arguments": [
+        "1,2,3,4,5\n6,7,8,9,10\n11,12,13,14,15\n16,17,18,19,20\n21,22,23,24,25"
+      ],
+      "expected": true,
+      "comment": "Все строки имеют 5 столбцов"
+    },
+    {
+      "arguments": [
+        "a,b\nc,d\ne,f\ng,h\ni,j\nk,l\nm,n\no,p\nq,r\ns,t"
+      ],
+      "expected": true,
+      "comment": "10 строк по 2 столбца"
+    },
+    {
+      "arguments": [
+        "a,b,c,d\ne,f,g,h\ni,j,k,l\nm,n,o\np,q,r,s\nt,u,v,w"
+      ],
+      "expected": false,
+      "comment": "Одна из строк в середине короче"
+    },
+    {
+      "arguments": [
+        "a,b,c,d,e,f,g\nh,i,j,k,l,m,n\no,p,q,r,s,t,u,v\nw,x,y,z,a,b,c"
+      ],
+      "expected": false,
+      "comment": "Одна из строк длиннее"
+    },
+    {
+      "arguments": [
+        "c1,c2,c3,c4,c5,c6,c7,c8,c9,c10\nr2c1,r2c2,r2c3,r2c4,r2c5,r2c6,r2c7,r2c8,r2c9,r2c10\nr3c1,r3c2,r3c3,r3c4,r3c5,r3c6,r3c7,r3c8,r3c9,r3c10\nr4c1,r4c2,r4c3,r4c4,r4c5,r4c6,r4c7,r4c8,r4c9,r4c10\nr5c1,r5c2,r5c3,r5c4,r5c5,r5c6,r5c7,r5c8,r5c9,r5c10\nr6c1,r6c2,r6c3,r6c4,r6c5,r6c6,r6c7,r6c8,r6c9,r6c10\nr7c1,r7c2,r7c3,r7c4,r7c5,r7c6,r7c7,r7c8,r7c9,r7c10\nr8c1,r8c2,r8c3,r8c4,r8c5,r8c6,r8c7,r8c8,r8c9,r8c10\nr9c1,r9c2,r9c3,r9c4,r9c5,r9c6,r9c7,r9c8,r9c9,r9c10\nr10c1,r10c2,r10c3,r10c4,r10c5,r10c6,r10c7,r10c8,r10c9,r10c10"
+      ],
+      "expected": true,
+      "comment": "Большой тест 10x10"
+    },
+    {
+      "arguments": [
+        "c1,c2,c3,c4,c5,c6,c7,c8,c9,c10\nr2c1,r2c2,r2c3,r2c4,r2c5,r2c6,r2c7,r2c8,r2c9,r2c10\nr3c1,r3c2,r3c3,r3c4,r3c5,r3c6,r3c7,r3c8,r3c9,r3c10\nr4c1,r4c2,r4c3,r4c4,r4c5,r4c6,r4c7,r4c8,r4c9\nr5c1,r5c2,r5c3,r5c4,r5c5,r5c6,r5c7,r5c8,r5c9,r5c10"
+      ],
+      "expected": false,
+      "comment": "Большой тест 10x10 с ошибкой в 4й строке"
+    }
+  ],
+  "examples": "```\nsolution(\"name,age\\nAlice,25\\nBob,30\") == True\nsolution(\"a,b\\nc\") == False\n```",
+  "solution": "def solution(csv_data):\n    return len(set(row.count(',') for row in csv_data.split('\\n'))) == 1",
+  "level": "easy",
+  "tags": [
+    "csv",
+    "validation",
+    "string"
+  ],
+  "visibility": "public",
+  "origin": "user",
+  "generator_lang": "py",
+  "time_to_solve_sec": 600
+}

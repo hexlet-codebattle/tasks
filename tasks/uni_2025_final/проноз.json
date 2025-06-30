@@ -1,0 +1,267 @@
+{
+  "asserts": [
+    {
+      "arguments": [
+        ["Fedor", "Ivan"],
+        ["Fedor", "Ivan"]
+      ],
+      "expected": 1
+    },
+    {
+      "arguments": [
+        ["Fedor", "Ivan"],
+        ["Ivan", "Fedor"]
+      ],
+      "expected": 0
+    },
+    {
+      "arguments": [
+        ["Ivan", "Maria", "Fedor"],
+        ["Maria", "Ivan", "Fedor"]
+      ],
+      "expected": 2
+    },
+    {
+      "arguments": [
+        ["Q", "M", "H", "F", "O", "B", "R", "S", "A"],
+        ["M", "H", "B", "A", "Q", "F", "O", "R", "S"]
+      ],
+      "expected": 26
+    },
+    {
+      "arguments": [
+        ["S", "U", "F", "E", "R", "M", "N", "I", "Q", "H"],
+        ["Q", "N", "M", "H", "S", "F", "E", "U", "I", "R"]
+      ],
+      "expected": 17
+    },
+    {
+      "arguments": [
+        ["T", "L", "J", "W", "X", "R", "M"],
+        ["X", "W", "R", "L", "J", "M", "T"]
+      ],
+      "expected": 8
+    },
+    {
+      "arguments": [
+        ["P", "K", "J", "D", "E", "Q", "Y", "U", "A", "T"],
+        ["Y", "K", "T", "J", "A", "P", "Q", "E", "U", "D"]
+      ],
+      "expected": 21
+    },
+    {
+      "arguments": [
+        ["P", "O", "Q", "B", "M", "J", "S", "Z"],
+        ["J", "O", "M", "B", "S", "Z", "Q", "P"]
+      ],
+      "expected": 12
+    },
+    {
+      "arguments": [
+        ["W", "Q", "A", "B", "E"],
+        ["A", "W", "B", "Q", "E"]
+      ],
+      "expected": 7
+    },
+    {
+      "arguments": [
+        ["D", "H", "F", "E", "A", "G", "Y", "T"],
+        ["Y", "G", "T", "A", "H", "D", "E", "F"]
+      ],
+      "expected": 6
+    },
+    {
+      "arguments": [
+        ["G", "V"],
+        ["V", "G"]
+      ],
+      "expected": 0
+    },
+    {
+      "arguments": [
+        ["E", "G", "N", "R", "L", "J"],
+        ["E", "R", "J", "N", "L", "G"]
+      ],
+      "expected": 8
+    },
+    {
+      "arguments": [
+        ["A", "B", "M", "V", "E"],
+        ["E", "A", "B", "V", "M"]
+      ],
+      "expected": 5
+    },
+    {
+      "arguments": [
+        ["Q", "K", "S", "C", "Y", "P"],
+        ["S", "P", "K", "Q", "Y", "C"]
+      ],
+      "expected": 7
+    },
+    {
+      "arguments": [
+        ["V", "Z", "E", "Q", "P", "X", "N", "H"],
+        ["Q", "E", "V", "P", "Z", "X", "H", "N"]
+      ],
+      "expected": 21
+    },
+    {
+      "arguments": [
+        ["P", "Z", "C", "L", "W", "A", "R", "N", "D"],
+        ["N", "C", "L", "A", "D", "W", "P", "Z", "R"]
+      ],
+      "expected": 16
+    },
+    {
+      "arguments": [
+        ["B", "F", "Y", "C", "W", "M", "A"],
+        ["B", "A", "M", "Y", "C", "F", "W"]
+      ],
+      "expected": 10
+    },
+    {
+      "arguments": [
+        ["Z", "T", "O", "B", "D", "M", "X", "K", "E", "A"],
+        ["E", "K", "D", "M", "A", "B", "T", "X", "Z", "O"]
+      ],
+      "expected": 11
+    },
+    {
+      "arguments": [
+        ["D", "F", "C", "A", "E", "M", "L", "S", "U", "H"],
+        ["L", "F", "E", "S", "U", "M", "H", "A", "C", "D"]
+      ],
+      "expected": 18
+    },
+    {
+      "arguments": [
+        ["D", "H", "G", "C"],
+        ["H", "C", "D", "G"]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        ["Q", "Z", "F", "K", "B", "V", "W", "S", "C"],
+        ["V", "K", "Q", "F", "C", "W", "S", "B", "Z"]
+      ],
+      "expected": 18
+    },
+    {
+      "arguments": [
+        ["R", "U", "N", "A", "Q", "X", "B"],
+        ["A", "X", "B", "U", "Q", "N", "R"]
+      ],
+      "expected": 6
+    },
+    {
+      "arguments": [
+        ["U", "P", "V"],
+        ["U", "P", "V"]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        ["C", "V", "M", "E", "N", "Z", "U"],
+        ["N", "Z", "M", "E", "U", "V", "C"]
+      ],
+      "expected": 6
+    },
+    {
+      "arguments": [
+        ["I", "J", "E", "N", "O", "F", "S"],
+        ["O", "N", "F", "J", "E", "S", "I"]
+      ],
+      "expected": 8
+    },
+    {
+      "arguments": [
+        ["F", "H", "I", "Y", "M"],
+        ["I", "Y", "M", "H", "F"]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        ["N", "G", "O"],
+        ["G", "N", "O"]
+      ],
+      "expected": 2
+    },
+    {
+      "arguments": [
+        ["M", "Y", "W", "I", "H", "P", "X", "A", "Q"],
+        ["X", "H", "A", "I", "W", "P", "M", "Q", "Y"]
+      ],
+      "expected": 13
+    },
+    {
+      "arguments": [
+        ["X", "R", "I", "B", "G", "H", "J"],
+        ["H", "G", "J", "X", "R", "I", "B"]
+      ],
+      "expected": 8
+    },
+    {
+      "arguments": [
+        ["H", "I", "S", "Y"],
+        ["S", "H", "Y", "I"]
+      ],
+      "expected": 3
+    },
+    {
+      "arguments": [
+        ["K", "L", "O", "J", "H", "Z", "D", "Q"],
+        ["Q", "K", "D", "O", "Z", "L", "J", "H"]
+      ],
+      "expected": 12
+    },
+    {
+      "arguments": [
+        ["R", "Z", "F", "H", "I", "S", "V", "P", "X", "Y"],
+        ["Y", "F", "Z", "V", "I", "P", "X", "S", "H", "R"]
+      ],
+      "expected": 18
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "The fan made a prediction in which order the winners of the University Battle would be placed. After the end of the battle, the order of the winners became known. The quality of the forecast is the number of pairs of participants $(p_i, p_j)$ such that participant $p_i$ outperformed participant $p_j$ both in the forecast and in the final results. Determine the quality of the forecast. The number of participants is up to 20, the results array is a permutation of the forecast array.",
+  "description_ru": "Болельщик сделал прогноз, в каком порядке расположатся победители Баттла вузов. После окончания баттла порядок победителей стал известен. Качество прогноза - это количество пар участников $(p_i, p_j)$ таких, что участник $p_i$ обгонял участника $p_j$ и в прогнозе, и в окончательных результатах. Определите качество прогноза. Количество участников до 20, массив результатов является перестановкой массива прогнозов.",
+  "examples": "```\nsolution([\"Fedor\", \"Ivan\"], [\"Fedor\", \"Ivan\"]) == 1\nsolution([\"Fedor\", \"Ivan\"], [\"Ivan\", \"Fedor\"]) == 0\nsolution([\"Ivan\", \"Maria\", \"Fedor\"], [\"Maria\", \"Ivan\", \"Fedor\"]]) == 2\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "predicted",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "string"
+        }
+      }
+    },
+    {
+      "argument_name": "real",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "string"
+        }
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "",
+  "time_to_solve_sec": 2000,
+  "name": "Прогноз",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(predicted : list, real : list):\n    ans = 0\n    for i in range(len(real)):\n        for j in range(i + 1, len(real)):\n            if predicted.index(real[i]) < predicted.index(real[j]):\n                ans += 1\n    return ans\n",
+  "tags": [],
+  "visibility": "public"
+}

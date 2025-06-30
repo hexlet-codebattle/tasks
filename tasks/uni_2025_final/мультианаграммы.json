@@ -1,0 +1,159 @@
+{
+  "asserts": [
+    {
+      "arguments": ["abbaab"],
+      "expected": 2
+    },
+    {
+      "arguments": ["aaa"],
+      "expected": 1
+    },
+    {
+      "arguments": ["abcba"],
+      "expected": 5
+    },
+    {
+      "arguments": ["a"],
+      "expected": 1
+    },
+    {
+      "arguments": ["deeaeed"],
+      "expected": 7
+    },
+    {
+      "arguments": ["daccabbcdecdbcbaaedcadbebccacdceaadcdbcb"],
+      "expected": 10
+    },
+    {
+      "arguments": ["ccbcbe"],
+      "expected": 6
+    },
+    {
+      "arguments": ["ddd"],
+      "expected": 1
+    },
+    {
+      "arguments": ["dccdaabcdcdaccddba"],
+      "expected": 9
+    },
+    {
+      "arguments": ["dbcbcdcdbbcd"],
+      "expected": 3
+    },
+    {
+      "arguments": ["edaeaaedaeaaeed"],
+      "expected": 5
+    },
+    {
+      "arguments": ["bbbbbb"],
+      "expected": 1
+    },
+    {
+      "arguments": ["cacbaddb"],
+      "expected": 8
+    },
+    {
+      "arguments": ["cbcaccba"],
+      "expected": 4
+    },
+    {
+      "arguments": ["deeded"],
+      "expected": 2
+    },
+    {
+      "arguments": ["bdaeceeebedeaece"],
+      "expected": 8
+    },
+    {
+      "arguments": ["bcaeceaebccaaecabeceabaceace"],
+      "expected": 7
+    },
+    {
+      "arguments": ["addaad"],
+      "expected": 2
+    },
+    {
+      "arguments": ["cccc"],
+      "expected": 1
+    },
+    {
+      "arguments": ["bebebe"],
+      "expected": 2
+    },
+    {
+      "arguments": ["eabdcedeecbaebceadeebcad"],
+      "expected": 6
+    },
+    {
+      "arguments": ["bbcbdeecbdbbdceebbcd"],
+      "expected": 10
+    },
+    {
+      "arguments": ["bbbb"],
+      "expected": 1
+    },
+    {
+      "arguments": ["bcadd"],
+      "expected": 5
+    },
+    {
+      "arguments": ["adcadacaaccdadacdcaaddacacad"],
+      "expected": 7
+    },
+    {
+      "arguments": ["ebddadedabbdedaddbea"],
+      "expected": 5
+    },
+    {
+      "arguments": ["eeee"],
+      "expected": 1
+    },
+    {
+      "arguments": ["d"],
+      "expected": 1
+    },
+    {
+      "arguments": ["cadacada"],
+      "expected": 4
+    },
+    {
+      "arguments": ["ddedabededeadddebeabededded"],
+      "expected": 9
+    },
+    {
+      "arguments": ["daad"],
+      "expected": 2
+    },
+    {
+      "arguments": ["ecadce"],
+      "expected": 6
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "Given a string $S$ ($|S| \\leq 40$), determine the minimum length of the string $P$, such that $S$ consists of the concatenation of anagrams of the string $P$.",
+  "description_ru": "Задана строка $S$ ($|S| \\leq 40$). Определите минимальную длину строки $P$, такую что $S$ состоит из конкатенации анаграмм строки $P$.",
+  "examples": "```\nsolution(\"abbaab\") == 2\nsolution(\"aaa\") == 1\nsolution(\"abcba\") == 5\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "s",
+      "type": {
+        "name": "string"
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "",
+  "time_to_solve_sec": 2000,
+  "name": "Мультианаграммы",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(s : str):    \n    for i in range(1, len(s) + 1):\n        if len(s) % i == 0:\n            parts = set()\n            for k in range(len(s) // i):\n                part = s[k * i:(k+1) * i]\n                parts.add(tuple(sorted(part)))\n        if len(parts) == 1:\n            return i\n",
+  "tags": [],
+  "visibility": "public"
+}

@@ -1,0 +1,516 @@
+{
+  "name": "Поиск_ошибок_в_логе",
+  "description_ru": "Дан лог ошибок за один день в виде массива пар `['HH:MM', 'текст_ошибки']` отсортированных по времени. Верните все уникальные одинаковые ошибки, происходившие более 3 раз за любой 5-минутный интервал, в порядке следования в логе.",
+  "description_en": "Given an error log for one day as an array of pairs `['HH:MM', 'error_text']` sorted by time, return all unique identical errors that occurred more than 3 times within any 5-minute interval, in the order they appear in the log.",
+  "input_signature": [
+    {
+      "argument_name": "log",
+      "type": {
+        "name": "array",
+        "nested": { "name": "array", "nested": { "name": "string" } }
+      }
+    }
+  ],
+  "output_signature": {
+    "type": { "name": "array", "nested": { "name": "string" } }
+  },
+  "asserts": [
+    {
+      "arguments": [
+        [
+          ["00:00", "Disk full on /dev/sda1"],
+          ["00:01", "Disk full on /dev/sda1"],
+          ["00:02", "Disk full on /dev/sda1"],
+          ["00:03", "Disk full on /dev/sda1"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1"],
+      "comment": "4 одинаковых ошибки в начале дня"
+    },
+    {
+      "arguments": [
+        [
+          ["23:56", "Out of memory (PID 1234)"],
+          ["23:57", "Out of memory (PID 1234)"],
+          ["23:58", "Out of memory (PID 1234)"],
+          ["23:59", "Out of memory (PID 1234)"]
+        ]
+      ],
+      "expected": ["Out of memory (PID 1234)"],
+      "comment": "4 одинаковых ошибки в конце дня"
+    },
+    {
+      "arguments": [
+        [
+          ["12:00", "Network timeout to api.service.com"],
+          ["12:01", "Network timeout to api.service.com"],
+          ["12:03", "Network timeout to api.service.com"],
+          ["12:04", "Network timeout to api.service.com"]
+        ]
+      ],
+      "expected": ["Network timeout to api.service.com"],
+      "comment": "4 за 5 минут, не подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["08:10", "CPU overload: 99%"],
+          ["08:12", "CPU overload: 99%"],
+          ["08:14", "CPU overload: 99%"],
+          ["08:16", "CPU overload: 99%"]
+        ]
+      ],
+      "expected": [],
+      "comment": "4 за 6 минут — не подходит"
+    },
+    {
+      "arguments": [
+        [
+          ["15:00", "Disk full on /dev/sdb2"],
+          ["15:01", "Disk full on /dev/sdb2"],
+          ["15:02", "Disk full on /dev/sdb2"],
+          ["15:03", "Disk full on /dev/sdb2"],
+          ["15:04", "Disk full on /dev/sdb2"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sdb2"],
+      "comment": "5 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["10:00", "Disk full on /dev/sda1"],
+          ["10:01", "Network timeout to db.local"],
+          ["10:02", "Disk full on /dev/sda1"],
+          ["10:03", "Disk full on /dev/sda1"],
+          ["10:04", "Disk full on /dev/sda1"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1"],
+      "comment": "3+1 в 5 минутах"
+    },
+    {
+      "arguments": [
+        [
+          ["11:00", "CPU overload: 100%"],
+          ["11:01", "CPU overload: 100%"],
+          ["11:02", "CPU overload: 100%"],
+          ["11:03", "CPU overload: 100%"],
+          ["11:10", "CPU overload: 100%"]
+        ]
+      ],
+      "expected": ["CPU overload: 100%"],
+      "comment": "4 подряд, 5-я вне окна"
+    },
+    {
+      "arguments": [
+        [
+          ["13:00", "Disk full on /dev/sda1"],
+          ["13:01", "Disk full on /dev/sda1"],
+          ["13:02", "Disk full on /dev/sda1"],
+          ["13:03", "Network timeout to db.local"],
+          ["13:04", "Disk full on /dev/sda1"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1"],
+      "comment": "4 одинаковые ошибки в 5 минутах"
+    },
+    {
+      "arguments": [
+        [
+          ["14:00", "Disk full on /dev/sdb2"],
+          ["14:01", "Disk full on /dev/sdb2"],
+          ["14:02", "Disk full on /dev/sdb2"],
+          ["14:03", "Disk full on /dev/sdb2"],
+          ["14:04", "Network timeout to cache.local"],
+          ["14:05", "Disk full on /dev/sdb2"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sdb2"],
+      "comment": "4 подряд, 5-я вне окна"
+    },
+    {
+      "arguments": [
+        [
+          ["16:00", "Disk full on /dev/sda1"],
+          ["16:01", "Disk full on /dev/sda1"],
+          ["16:02", "Disk full on /dev/sda1"],
+          ["16:03", "Disk full on /dev/sda1"],
+          ["16:04", "Disk full on /dev/sda1"],
+          ["16:05", "Disk full on /dev/sda1"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1"],
+      "comment": "6 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["17:00", "Disk full on /dev/sda1"],
+          ["17:01", "Disk full on /dev/sda1"],
+          ["17:02", "Disk full on /dev/sda1"],
+          ["17:03", "Disk full on /dev/sda1"],
+          ["17:04", "Disk full on /dev/sda1"],
+          ["17:05", "Network timeout to api.service.com"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1"],
+      "comment": "5 подряд, другая ошибка после"
+    },
+    {
+      "arguments": [
+        [
+          ["18:00", "Disk full on /dev/sda1"],
+          ["18:01", "Disk full on /dev/sda1"],
+          ["18:02", "Disk full on /dev/sda1"],
+          ["18:03", "Disk full on /dev/sda1"],
+          ["18:04", "Network timeout to api.service.com"],
+          ["18:05", "Network timeout to api.service.com"],
+          ["18:06", "Network timeout to api.service.com"],
+          ["18:07", "Network timeout to api.service.com"]
+        ]
+      ],
+      "expected": [
+        "Disk full on /dev/sda1",
+        "Network timeout to api.service.com"
+      ],
+      "comment": "две разные ошибки по 4 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["19:00", "Disk full on /dev/sdb2"],
+          ["19:01", "Disk full on /dev/sdb2"],
+          ["19:02", "Disk full on /dev/sdb2"],
+          ["19:03", "Disk full on /dev/sdb2"],
+          ["19:04", "Disk full on /dev/sdb2"],
+          ["19:05", "Disk full on /dev/sdb2"],
+          ["19:06", "Disk full on /dev/sdb2"],
+          ["19:07", "Disk full on /dev/sdb2"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sdb2"],
+      "comment": "много подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["20:00", "Disk full on /dev/sda1"],
+          ["20:01", "Disk full on /dev/sda1"],
+          ["20:02", "Disk full on /dev/sda1"],
+          ["20:03", "Disk full on /dev/sda1"],
+          ["20:04", "Disk full on /dev/sda1"],
+          ["20:05", "Disk full on /dev/sda1"],
+          ["20:06", "Disk full on /dev/sda1"],
+          ["20:07", "Disk full on /dev/sda1"],
+          ["20:08", "Disk full on /dev/sda1"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1"],
+      "comment": "ещё больше подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["21:00", "Disk full on /dev/sda1"],
+          ["21:01", "Disk full on /dev/sda1"],
+          ["21:02", "Disk full on /dev/sda1"],
+          ["21:03", "Disk full on /dev/sda1"],
+          ["21:04", "Disk full on /dev/sda1"],
+          ["21:05", "Disk full on /dev/sda1"],
+          ["21:06", "Disk full on /dev/sda1"],
+          ["21:07", "Disk full on /dev/sda1"],
+          ["21:08", "Disk full on /dev/sda1"],
+          ["21:09", "Disk full on /dev/sda1"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1"],
+      "comment": "10 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["22:00", "Disk full on /dev/sdb2"],
+          ["22:01", "Disk full on /dev/sdb2"],
+          ["22:02", "Disk full on /dev/sdb2"],
+          ["22:03", "Disk full on /dev/sdb2"],
+          ["22:04", "Disk full on /dev/sdb2"],
+          ["22:05", "Disk full on /dev/sdb2"],
+          ["22:06", "Disk full on /dev/sdb2"],
+          ["22:07", "Disk full on /dev/sdb2"],
+          ["22:08", "Disk full on /dev/sdb2"],
+          ["22:09", "Disk full on /dev/sdb2"],
+          ["22:10", "Disk full on /dev/sdb2"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sdb2"],
+      "comment": "11 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["09:00", "Disk full on /dev/sda1"],
+          ["09:01", "Network timeout to db.local"],
+          ["09:02", "Disk full on /dev/sda1"],
+          ["09:03", "Network timeout to db.local"],
+          ["09:04", "Disk full on /dev/sda1"],
+          ["09:05", "Network timeout to db.local"],
+          ["09:06", "Disk full on /dev/sda1"],
+          ["09:07", "Network timeout to db.local"]
+        ]
+      ],
+      "expected": [],
+      "comment": "чередование, ни одной ошибки нет 4 раз в 5 минутах"
+    },
+    {
+      "arguments": [
+        [
+          ["07:00", "Disk full on /dev/sda1"],
+          ["07:01", "Disk full on /dev/sda1"],
+          ["07:02", "Disk full on /dev/sda1"],
+          ["07:03", "Disk full on /dev/sda1"],
+          ["07:04", "Network timeout to cache.local"],
+          ["07:05", "Network timeout to cache.local"],
+          ["07:06", "Network timeout to cache.local"],
+          ["07:07", "Network timeout to cache.local"],
+          ["07:08", "Network timeout to cache.local"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1", "Network timeout to cache.local"],
+      "comment": "две ошибки, обе по 4 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["06:00", "Disk full on /dev/sdb2"],
+          ["06:01", "Disk full on /dev/sdb2"],
+          ["06:02", "Disk full on /dev/sdb2"],
+          ["06:03", "Disk full on /dev/sdb2"],
+          ["06:04", "Network timeout to cache.local"],
+          ["06:05", "Network timeout to cache.local"],
+          ["06:06", "Network timeout to cache.local"],
+          ["06:07", "Network timeout to cache.local"],
+          ["06:08", "Network timeout to cache.local"],
+          ["06:09", "Network timeout to cache.local"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sdb2", "Network timeout to cache.local"],
+      "comment": "две ошибки, одна 4, другая 6 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["05:00", "Disk full on /dev/sda1"],
+          ["05:01", "Disk full on /dev/sda1"],
+          ["05:02", "Disk full on /dev/sda1"],
+          ["05:03", "Disk full on /dev/sda1"],
+          ["05:04", "Network timeout to api.service.com"],
+          ["05:05", "Network timeout to api.service.com"],
+          ["05:06", "Network timeout to api.service.com"],
+          ["05:07", "Network timeout to api.service.com"],
+          ["05:08", "Network timeout to api.service.com"],
+          ["05:09", "Network timeout to api.service.com"],
+          ["05:10", "Network timeout to api.service.com"]
+        ]
+      ],
+      "expected": [
+        "Disk full on /dev/sda1",
+        "Network timeout to api.service.com"
+      ],
+      "comment": "две ошибки, одна 4, другая 7 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["04:00", "Disk full on /dev/sdb2"],
+          ["04:01", "Disk full on /dev/sdb2"],
+          ["04:02", "Disk full on /dev/sdb2"],
+          ["04:03", "Disk full on /dev/sdb2"],
+          ["04:04", "Network timeout to cache.local"],
+          ["04:05", "Network timeout to cache.local"],
+          ["04:06", "Network timeout to cache.local"],
+          ["04:07", "Network timeout to cache.local"],
+          ["04:08", "Network timeout to cache.local"],
+          ["04:09", "Network timeout to cache.local"],
+          ["04:10", "Network timeout to cache.local"],
+          ["04:11", "Network timeout to cache.local"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sdb2", "Network timeout to cache.local"],
+      "comment": "две ошибки, одна 4, другая 8 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["03:00", "Disk full on /dev/sda1"],
+          ["03:01", "Disk full on /dev/sda1"],
+          ["03:02", "Disk full on /dev/sda1"],
+          ["03:03", "Disk full on /dev/sda1"],
+          ["03:04", "Network timeout to db.local"],
+          ["03:05", "Network timeout to db.local"],
+          ["03:06", "Network timeout to db.local"],
+          ["03:07", "Network timeout to db.local"],
+          ["03:08", "Network timeout to db.local"],
+          ["03:09", "Network timeout to db.local"],
+          ["03:10", "Network timeout to db.local"],
+          ["03:11", "Network timeout to db.local"],
+          ["03:12", "Network timeout to db.local"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1", "Network timeout to db.local"],
+      "comment": "две ошибки, одна 4, другая 9 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["02:00", "Disk full on /dev/sdb2"],
+          ["02:01", "Disk full on /dev/sdb2"],
+          ["02:02", "Disk full on /dev/sdb2"],
+          ["02:03", "Disk full on /dev/sdb2"],
+          ["02:04", "Network timeout to api.service.com"],
+          ["02:05", "Network timeout to api.service.com"],
+          ["02:06", "Network timeout to api.service.com"],
+          ["02:07", "Network timeout to api.service.com"],
+          ["02:08", "Network timeout to api.service.com"],
+          ["02:09", "Network timeout to api.service.com"],
+          ["02:10", "Network timeout to api.service.com"],
+          ["02:11", "Network timeout to api.service.com"],
+          ["02:12", "Network timeout to api.service.com"],
+          ["02:13", "Network timeout to api.service.com"]
+        ]
+      ],
+      "expected": [
+        "Disk full on /dev/sdb2",
+        "Network timeout to api.service.com"
+      ],
+      "comment": "две ошибки, одна 4, другая 10 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["01:00", "Disk full on /dev/sda1"],
+          ["01:01", "Disk full on /dev/sda1"],
+          ["01:02", "Disk full on /dev/sda1"],
+          ["01:03", "Disk full on /dev/sda1"],
+          ["01:04", "Network timeout to cache.local"],
+          ["01:05", "Network timeout to cache.local"],
+          ["01:06", "Network timeout to cache.local"],
+          ["01:07", "Network timeout to cache.local"],
+          ["01:08", "Network timeout to cache.local"],
+          ["01:09", "Network timeout to cache.local"],
+          ["01:10", "Network timeout to cache.local"],
+          ["01:11", "Network timeout to cache.local"],
+          ["01:12", "Network timeout to cache.local"],
+          ["01:13", "Network timeout to cache.local"],
+          ["01:14", "Network timeout to cache.local"]
+        ]
+      ],
+      "expected": ["Disk full on /dev/sda1", "Network timeout to cache.local"],
+      "comment": "две ошибки, одна 4, другая 11 подряд"
+    },
+    {
+      "arguments": [
+        [
+          ["22:30", "File not found: /etc/passwd"],
+          ["22:31", "File not found: /etc/passwd"],
+          ["22:32", "File not found: /etc/passwd"],
+          ["22:33", "File not found: /etc/passwd"]
+        ]
+      ],
+      "expected": ["File not found: /etc/passwd"],
+      "comment": "4 подряд, новый тип ошибки"
+    },
+    {
+      "arguments": [
+        [
+          ["13:10", "Permission denied for user admin"],
+          ["13:11", "Permission denied for user admin"],
+          ["13:12", "Permission denied for user admin"],
+          ["13:13", "Permission denied for user admin"]
+        ]
+      ],
+      "expected": ["Permission denied for user admin"],
+      "comment": "4 подряд, новый тип ошибки"
+    },
+    {
+      "arguments": [
+        [
+          ["18:20", "Segmentation fault at 0x0040"],
+          ["18:21", "Segmentation fault at 0x0040"],
+          ["18:22", "Segmentation fault at 0x0040"],
+          ["18:23", "Segmentation fault at 0x0040"]
+        ]
+      ],
+      "expected": ["Segmentation fault at 0x0040"],
+      "comment": "4 подряд, новый тип ошибки"
+    },
+    {
+      "arguments": [
+        [
+          ["19:30", "Connection refused by smtp.mail.com"],
+          ["19:31", "Connection refused by smtp.mail.com"],
+          ["19:32", "Connection refused by smtp.mail.com"],
+          ["19:33", "Connection refused by smtp.mail.com"]
+        ]
+      ],
+      "expected": ["Connection refused by smtp.mail.com"],
+      "comment": "4 подряд, новый тип ошибки"
+    },
+    {
+      "arguments": [
+        [
+          ["20:40", "Broken pipe on socket 7"],
+          ["20:41", "Broken pipe on socket 7"],
+          ["20:42", "Broken pipe on socket 7"],
+          ["20:43", "Broken pipe on socket 7"]
+        ]
+      ],
+      "expected": ["Broken pipe on socket 7"],
+      "comment": "4 подряд, новый тип ошибки"
+    },
+    {
+      "arguments": [
+        [
+          ["21:50", "Invalid argument: -f"],
+          ["21:51", "Invalid argument: -f"],
+          ["21:52", "Invalid argument: -f"],
+          ["21:53", "Invalid argument: -f"]
+        ]
+      ],
+      "expected": ["Invalid argument: -f"],
+      "comment": "4 подряд, новый тип ошибки"
+    },
+    {
+      "arguments": [
+        [
+          ["22:00", "Disk full on /dev/sda1"],
+          ["22:01", "Out of memory (PID 4321)"],
+          ["22:02", "Network timeout to api.service.com"],
+          ["22:03", "CPU overload: 98%"]
+        ]
+      ],
+      "expected": [],
+      "comment": "все ошибки разные"
+    },
+    {
+      "arguments": [
+        [
+          ["23:00", "Disk full on /dev/sda1"],
+          ["23:01", "Disk full on /dev/sda1"],
+          ["23:02", "Disk full on /dev/sda1"],
+          ["23:10", "Disk full on /dev/sda1"]
+        ]
+      ],
+      "expected": [],
+      "comment": "3 подряд, 4-я вне окна"
+    }
+  ],
+  "examples": "```\nsolution([\n  [\"10:00\", \"Disk full on /dev/sda1\"],\n  [\"10:01\", \"Disk full on /dev/sda1\"],\n  [\"10:02\", \"Disk full on /dev/sda1\"],\n  [\"10:03\", \"Disk full on /dev/sda1\"]\n]) == [\"Disk full on /dev/sda1\"]\n```",
+  "solution": "def solution(log):\n d={}\n order=[]\n for t,e in log:\n  h,m=map(int,t.split(':'))\n  if e in d:d[e].append(h*60+m)\n  else:d[e]=[h*60+m];order.append(e)\n r=[]\n for e in order:\n  times=d[e]\n  for i in range(len(times)-3):\n   if times[i+3]-times[i]<=5:\n    r.append(e);break\n return r",
+  "level": "medium",
+  "tags": ["window", "errors"],
+  "visibility": "public",
+  "origin": "user",
+  "generator_lang": "py",
+  "time_to_solve_sec": 600
+}

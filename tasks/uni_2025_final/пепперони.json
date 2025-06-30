@@ -1,0 +1,164 @@
+{
+  "asserts": [
+    {
+      "arguments": [[1, 2, 3, 4]],
+      "expected": 7
+    },
+    {
+      "arguments": [[2, 1, 1, 2]],
+      "expected": 4
+    },
+    {
+      "arguments": [[7, 1, 2, 3, 1, 5]],
+      "expected": 13
+    },
+    {
+      "arguments": [[0, 9]],
+      "expected": 9
+    },
+    {
+      "arguments": [[4, 1, 4, 10, 8, 7]],
+      "expected": 25
+    },
+    {
+      "arguments": [
+        [4, 1, 1, 4, 4, 5, 0, 10, 3, 4, 4, 7, 9, 2, 1, 9, 0, 0, 6, 8]
+      ],
+      "expected": 50
+    },
+    {
+      "arguments": [[6, 7, 2, 2, 5, 10, 6, 8, 9, 3, 3, 4, 0, 8, 2, 5]],
+      "expected": 49
+    },
+    {
+      "arguments": [[3, 4, 4, 0, 1, 4, 1, 4, 6, 8, 9, 4, 3, 4, 1, 0, 8, 9]],
+      "expected": 46
+    },
+    {
+      "arguments": [[3, 1, 10, 9, 8, 2, 2, 5, 3, 7, 3, 5]],
+      "expected": 36
+    },
+    {
+      "arguments": [[1, 0, 9, 6, 3, 6, 10, 10, 3, 9]],
+      "expected": 38
+    },
+    {
+      "arguments": [[6, 2, 4, 6, 1, 4]],
+      "expected": 12
+    },
+    {
+      "arguments": [[4, 0, 3, 8]],
+      "expected": 12
+    },
+    {
+      "arguments": [[0, 1, 9, 6, 3, 8, 3, 2, 2, 6, 8, 6, 0, 3, 4, 4]],
+      "expected": 39
+    },
+    {
+      "arguments": [[5, 0, 0, 1, 8, 0, 8, 2, 1, 2, 1, 8, 9, 3, 8, 4, 2, 1]],
+      "expected": 42
+    },
+    {
+      "arguments": [[3, 0, 8, 8, 2, 0, 5, 7, 7, 4, 1, 1, 1, 8]],
+      "expected": 37
+    },
+    {
+      "arguments": [[7, 1, 1, 5, 10, 10, 5, 6, 10, 7, 1, 6]],
+      "expected": 48
+    },
+    {
+      "arguments": [[10, 4, 7, 2, 9, 3]],
+      "expected": 22
+    },
+    {
+      "arguments": [[0, 7, 7, 2, 6, 7, 5, 10, 0, 10, 9, 8, 4, 10]],
+      "expected": 51
+    },
+    {
+      "arguments": [[9, 3, 10, 8, 3, 6]],
+      "expected": 22
+    },
+    {
+      "arguments": [[9, 0, 4, 0, 3, 5, 6, 1, 4, 1, 6, 1, 2, 3, 7, 0]],
+      "expected": 29
+    },
+    {
+      "arguments": [[1, 7, 10, 5, 8, 8, 6, 7, 7, 10]],
+      "expected": 38
+    },
+    {
+      "arguments": [[0, 5, 0, 7, 3, 1, 9, 5, 5, 4, 2, 10, 0, 5]],
+      "expected": 36
+    },
+    {
+      "arguments": [[1, 3, 0, 1, 1, 9, 5, 7]],
+      "expected": 22
+    },
+    {
+      "arguments": [[0, 9, 6, 8, 7, 9, 6, 8, 9, 1, 5, 5, 5, 9, 5, 4]],
+      "expected": 62
+    },
+    {
+      "arguments": [[7, 2, 4, 1, 0, 1, 8, 0, 7, 2, 3, 10, 4, 4, 3, 1, 7, 9]],
+      "expected": 48
+    },
+    {
+      "arguments": [[5, 10, 9, 0, 9, 5, 2, 5, 9, 1, 0, 2]],
+      "expected": 38
+    },
+    {
+      "arguments": [[3, 6]],
+      "expected": 6
+    },
+    {
+      "arguments": [[0, 2, 6, 9, 8, 9, 4, 8, 1, 1, 1, 9, 10, 4, 5, 4, 3, 0]],
+      "expected": 51
+    },
+    {
+      "arguments": [[5, 3, 2, 6, 8, 6, 4, 3, 10, 1, 5, 10, 2, 1]],
+      "expected": 39
+    },
+    {
+      "arguments": [[3, 8]],
+      "expected": 8
+    },
+    {
+      "arguments": [[10, 1, 2, 2, 0, 7, 8, 2, 1, 3]],
+      "expected": 24
+    },
+    {
+      "arguments": [[3, 8, 3, 2]],
+      "expected": 11
+    }
+  ],
+  "asserts_examples": [],
+  "comment": null,
+  "description_en": "The pizza consists of $2N$ ($2N \\leq 20$) pieces. There is a certain amount of pepperoni on each piece. Vasya can take any $N$ consecutive pieces (half of the pizza). Determine the maximum total amount of pepperoni on the pieces Vasya can take.",
+  "description_ru": "Пицца состоит из $2N$ ($2N \\leq 20$) кусков. На каждом куске расположено некоторое количество пепперони. Вася может взять любые $N$ расположенных подряд кусков (половину пиццы). Определите максимальное суммарное количество пепперони на взятых Васей кусках.",
+  "examples": "```\nsolution([1, 2, 3, 4]) == 7\nsolution([2, 1, 1, 2]) == 4\nsolution([7, 1, 2, 3, 1, 5]) == 13\n```",
+  "generator_lang": "js",
+  "input_signature": [
+    {
+      "argument_name": "pepperonis",
+      "type": {
+        "name": "array",
+        "nested": {
+          "name": "integer"
+        }
+      }
+    }
+  ],
+  "level": "easy",
+  "time_to_solve_sec_comment": "",
+  "time_to_solve_sec": 2000,
+  "name": "Пепперони",
+  "origin": "user",
+  "output_signature": {
+    "type": {
+      "name": "integer"
+    }
+  },
+  "solution": "def solution(pepperonis : list):\n    n = len(pepperonis)\n    pep = pepperonis + pepperonis\n    ans = 0\n    for i in range(n):\n        ans = max(ans, sum(pep[i:i + n // 2]))\n    return ans\n",
+  "tags": [],
+  "visibility": "public"
+}

@@ -1,0 +1,195 @@
+level             = "easy"
+name              = "monitors_and_gpus"
+tags              = ["stdlib", "greedy", "matching"]
+time_to_solve_sec = 300
+
+description_en = """
+You have monitor counts $a = [a_0,a_1,a_2]$ and video card counts $b = [b_0,b_1,b_2]$:
+- $a_0$: HDMI-only monitors, $a_1$: DP-only monitors, $a_2$: monitors with both inputs
+- $b_0$: HDMI-only GPUs,   $b_1$: DP-only GPUs,   $b_2$: GPUs with both outputs
+
+Each monitor must connect to exactly one GPU, and each GPU to exactly one monitor.
+Return the maximum number of pairs that can be formed.
+"""
+
+description_ru = """
+Есть количества мониторов $a = [a_0,a_1,a_2]$ и видеокарт $b = [b_0,b_1,b_2]$:
+- $a_0$: мониторы только с HDMI, $a_1$: только с DP, $a_2$: с обоими входами
+- $b_0$: видеокарты только с HDMI, $b_1$: только с DP, $b_2$: с обоими выходами
+
+Каждый монитор должен быть подключён к одной видеокарте и наоборот.
+Верните максимально возможное число пар.
+"""
+
+limits = """
+- $a_i \\ge 0$, $b_i \\ge 0$ для всех $i \\in \\{0,1,2\\}$
+- $\\text{len}(a) = \\text{len}(b) = 3$
+"""
+
+solution = """
+def solution(a, b):
+    a = a[:]
+    b = b[:]
+    def take(i, j):
+        m = min(a[i], b[j])
+        a[i] -= m
+        b[j] -= m
+        return m
+    ans = 0
+    for i in (0, 1):
+        ans += take(i, i)  # strict-to-strict
+        ans += take(i, 2)  # strict monitor to flexible GPU
+        ans += take(2, i)  # flexible monitor to strict GPU
+    ans += take(2, 2)      # flexible-to-flexible
+    return ans
+"""
+
+examples = """
+solution([3,4,6], [2,3,8]) == 13
+solution([3,4,6], [2,11,0]) == 12
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[3, 4, 6], [2, 3, 8]]
+expected  = 13
+
+[[asserts]]
+arguments = [[3, 4, 6], [2, 11, 0]]
+expected  = 12
+
+[[asserts]]
+arguments = [[10, 10, 0], [8, 1, 2]]
+expected  = 11
+
+[[asserts]]
+arguments = [[8, 8, 5], [10, 0, 1]]
+expected  = 11
+
+[[asserts]]
+arguments = [[10, 3, 5], [4, 7, 4]]
+expected  = 15
+
+[[asserts]]
+arguments = [[2, 1, 0], [6, 8, 7]]
+expected  = 3
+
+[[asserts]]
+arguments = [[8, 7, 2], [0, 3, 3]]
+expected  = 6
+
+[[asserts]]
+arguments = [[7, 1, 2], [2, 2, 1]]
+expected  = 5
+
+[[asserts]]
+arguments = [[3, 8, 7], [7, 1, 2]]
+expected  = 10
+
+[[asserts]]
+arguments = [[3, 2, 9], [1, 9, 0]]
+expected  = 10
+
+[[asserts]]
+arguments = [[6, 8, 3], [7, 2, 10]]
+expected  = 17
+
+[[asserts]]
+arguments = [[6, 2, 2], [5, 1, 0]]
+expected  = 6
+
+[[asserts]]
+arguments = [[6, 2, 0], [10, 8, 8]]
+expected  = 8
+
+[[asserts]]
+arguments = [[7, 5, 3], [4, 3, 3]]
+expected  = 10
+
+[[asserts]]
+arguments = [[4, 9, 3], [2, 1, 1]]
+expected  = 4
+
+[[asserts]]
+arguments = [[0, 5, 10], [10, 9, 3]]
+expected  = 15
+
+[[asserts]]
+arguments = [[4, 1, 7], [0, 0, 5]]
+expected  = 5
+
+[[asserts]]
+arguments = [[5, 6, 3], [3, 9, 5]]
+expected  = 14
+
+[[asserts]]
+arguments = [[6, 4, 4], [7, 9, 6]]
+expected  = 14
+
+[[asserts]]
+arguments = [[8, 4, 10], [3, 4, 2]]
+expected  = 9
+
+[[asserts]]
+arguments = [[10, 1, 7], [9, 5, 6]]
+expected  = 18
+
+[[asserts]]
+arguments = [[4, 10, 9], [7, 2, 6]]
+expected  = 15
+
+[[asserts]]
+arguments = [[7, 0, 4], [1, 8, 2]]
+expected  = 7
+
+[[asserts]]
+arguments = [[7, 3, 4], [7, 3, 6]]
+expected  = 14
+
+[[asserts]]
+arguments = [[6, 8, 3], [8, 7, 5]]
+expected  = 17
+
+[[asserts]]
+arguments = [[0, 7, 2], [1, 5, 5]]
+expected  = 9
+
+[[asserts]]
+arguments = [[3, 9, 6], [2, 5, 4]]
+expected  = 11
+
+[[asserts]]
+arguments = [[6, 9, 5], [2, 3, 3]]
+expected  = 8
+
+[[asserts]]
+arguments = [[4, 5, 1], [6, 7, 1]]
+expected  = 10
+
+[[asserts]]
+arguments = [[9, 0, 3], [6, 3, 9]]
+expected  = 12
+
+[[asserts]]
+arguments = [[7, 2, 4], [6, 3, 10]]
+expected  = 13
+
+[[asserts]]
+arguments = [[6, 4, 0], [0, 7, 6]]
+expected  = 10

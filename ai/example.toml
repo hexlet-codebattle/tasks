@@ -1,0 +1,53 @@
+level             = "elementary"
+name              = "sum"
+tags              = ["math"]
+time_to_solve_sec = 15
+
+description_en = """
+Given two integers `a` and `b`, return their sum.
+"""
+
+description_ru = """
+Даны два целых числа `a` и `b`. Верните их сумму.
+"""
+
+limits = """
+- $0 \\leq a \\leq 30$
+- $0 \\leq b \\leq 30$
+"""
+
+solution = """
+def solution(a: int, b: int) -> int:
+    return a + b
+"""
+
+examples = """
+solution(0, 0) == 0
+solution(1, 2) == 3
+solution(-5, 7) == 2
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 2]
+comment   = "Simple positive numbers"
+expected  = 3
+
+[[asserts]]
+arguments = [-5, 7]
+comment   = "Negative and positive number"
+expected  = 2
+
+# should be ~ 30 asserts

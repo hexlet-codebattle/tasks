@@ -1,0 +1,208 @@
+level             = "medium"
+name              = "overlapping_intervals"
+tags              = ["array", "math", "sorting", "greedy", "intervals", "linear-scan"]
+time_to_solve_sec = 1200
+
+description_en = """
+You're given a list of integer intervals `[l, r)`.
+Each interval represents a **half-open** range that includes `l` but excludes `r`.
+Your task is to merge all overlapping intervals and return the **total length** covered by the merged ones.
+
+Two intervals only **overlap** if they share at least one integer point inside the range.
+If two intervals only **touch** (for example `[1,2)` and `[2,4)`), they are **not** merged.
+
+Zero-length intervals (`l == r`) contribute nothing.
+Intervals may appear in any order or be duplicated.
+"""
+
+description_ru = """
+Дан список целых интервалов `[l, r)`.
+Каждый интервал — это **полуоткрытый** диапазон, включающий `l`, но исключающий `r`.
+Нужно объединить все пересекающиеся интервалы и вернуть **суммарную длину**, покрытую объединёнными интервалами.
+
+Два интервала считаются пересекающимися, если они имеют хотя бы одну общую точку внутри диапазона.
+Если интервалы лишь **касаются** (например `[1,2)` и `[2,4)`), то они **не** объединяются.
+
+Интервалы могут быть в любом порядке, повторяться или иметь нулевую длину (`l == r`),
+но нулевые интервалы не дают вклада.
+"""
+
+limits = """
+- $1 \\leq l < r \\leq 1000$
+- Number of intervals $< 10$
+"""
+solution = """
+def solution(intervals):
+    s = sorted((l, r) for l, r in intervals if l < r)
+    if not s:
+        return 0
+    L, R = s[0]
+    total = 0
+    for l, r in s[1:]:
+        if l < R:
+            if r > R:
+                R = r
+        else:
+            total += R - L
+            L, R = l, r
+    return total + R - L
+"""
+
+examples = """
+solution([[1, 4], [2, 6], [8, 10]]) == 7
+solution([[1, 2], [2, 4]]) == 3
+solution([[1, 5], [2, 3]]) == 4
+solution([[1, 10], [2, 9], [3, 8], [4, 7]]) == 9
+"""
+
+[[input_signature]]
+argument_name = "intervals"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[[1, 4], [2, 6], [8, 10]]]
+comment   = "Overlap and disjoint"
+expected  = 7
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty input"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 1]]]
+comment   = "Zero-length interval"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 2], [2, 4]]]
+comment   = "Touching intervals should not merge"
+expected  = 3
+
+[[asserts]]
+arguments = [[[1, 5], [2, 3]]]
+comment   = "Contained interval"
+expected  = 4
+
+[[asserts]]
+arguments = [[[5, 7], [1, 3], [3, 5]]]
+comment   = "Chain of touching intervals"
+expected  = 6
+
+[[asserts]]
+arguments = [[[0, 10], [2, 4], [4, 6], [6, 8]]]
+comment   = "Nested and touching inside"
+expected  = 10
+
+[[asserts]]
+arguments = [[[100, 105], [103, 110]]]
+comment   = "Large numbers in range 1..1000"
+expected  = 10
+
+[[asserts]]
+arguments = [[[1, 10], [2, 9], [3, 8], [4, 7]]]
+comment   = "Multiple contained intervals"
+expected  = 9
+
+[[asserts]]
+arguments = [[[1, 3], [5, 7], [9, 11]]]
+comment   = "All disjoint intervals"
+expected  = 6
+
+[[asserts]]
+arguments = [[[1, 4], [3, 5], [4, 6]]]
+comment   = "Overlap and touch combo"
+expected  = 5
+
+[[asserts]]
+arguments = [[[2, 2], [2, 3], [3, 3]]]
+comment   = "Zero-length mixed with normal"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 1], [1, 2], [2, 3], [3, 4]]]
+comment   = "Sequential touch"
+expected  = 4
+
+[[asserts]]
+arguments = [[[10, 15], [12, 20], [5, 8], [8, 10]]]
+comment   = "Unsorted touch and overlap"
+expected  = 15
+
+[[asserts]]
+arguments = [[[0, 0]]]
+comment   = "Single zero-length interval"
+expected  = 0
+
+[[asserts]]
+arguments = [[[3, 5], [1, 2]]]
+comment   = "Two disjoint unsorted"
+expected  = 3
+
+[[asserts]]
+arguments = [[[1, 2], [1, 2], [1, 2]]]
+comment   = "Duplicate intervals"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 5], [5, 10], [10, 15]]]
+comment   = "Multiple touch points"
+expected  = 14
+
+[[asserts]]
+arguments = [[[0, 5], [5, 5], [5, 10]]]
+comment   = "Zero-length in between touch"
+expected  = 10
+
+[[asserts]]
+arguments = [[[0, 1], [0, 2], [0, 3]]]
+comment   = "Same start different ends"
+expected  = 3
+
+[[asserts]]
+arguments = [[[5, 6], [4, 7], [3, 8]]]
+comment   = "Same end varying start"
+expected  = 5
+
+[[asserts]]
+arguments = [[[0, 2], [1, 3], [2, 4], [3, 5]]]
+comment   = "Alternating overlap and touch"
+expected  = 5
+
+[[asserts]]
+arguments = [[[0, 100]]]
+comment   = "Single large interval"
+expected  = 100
+
+[[asserts]]
+arguments = [[[0, 3], [3, 6], [1, 5]]]
+comment   = "Overlap bridging touch"
+expected  = 6
+
+[[asserts]]
+arguments = [[[1, 4], [2, 2], [2, 3]]]
+comment   = "Zero-length nested start"
+expected  = 3
+
+[[asserts]]
+arguments = [[[1, 4], [4, 4], [4, 5]]]
+comment   = "Zero-length at boundary"
+expected  = 4
+
+[[asserts]]
+arguments = [[[1, 2], [3, 4], [2, 3]]]
+comment   = "Exactly covering 1..4 without overlap"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 1], [1, 1], [1, 2], [2, 2], [2, 3]]]
+comment   = "Many zeros at boundaries"
+expected  = 3

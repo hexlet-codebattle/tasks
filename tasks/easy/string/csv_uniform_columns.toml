@@ -1,0 +1,169 @@
+level             = "easy"
+name              = "csv_uniform_columns"
+tags              = ["string", "parsing"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a non-empty CSV string (rows are separated by newline, values by comma), check that **all rows** have the same number of columns.
+Return a boolean result.
+"""
+
+description_ru = """
+Дана непустая строка CSV (строки разделены переводом строки, значения — запятой). Проверьте, что **во всех строках** одинаковое число столбцов.
+Верните логическое значение.
+"""
+
+limits = """
+- $1 \\leq \\text{rows} < 1000$
+"""
+
+solution = """
+def solution(csv_data: str) -> bool:
+    rows = csv_data.split('\\n')
+    counts = [r.count(',') for r in rows]
+    return len(set(counts)) == 1
+"""
+
+examples = """
+solution("a,b\\nc") == False
+solution("name,age\\nAlice,25\\nBob,30") == True
+"""
+
+[[input_signature]]
+argument_name = "csv_data"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["name,age,city\nAlice,25,New York\nBob,30,London"]
+comment   = "All rows have 3 columns"
+expected  = true
+
+[[asserts]]
+arguments = ["a,b,c\n1,2,3\n4,5"]
+comment   = "Last row has 2 columns"
+expected  = false
+
+[[asserts]]
+arguments = ["x\ny\nz"]
+comment   = "Single column everywhere"
+expected  = true
+
+[[asserts]]
+arguments = ["a,b\nc,d,e"]
+expected  = false
+
+[[asserts]]
+arguments = ["single"]
+comment   = "One row, one column"
+expected  = true
+
+[[asserts]]
+arguments = ["a,b,c"]
+expected  = true
+
+[[asserts]]
+arguments = ["a,b\n,c"]
+comment   = "Empty values count as columns"
+expected  = true
+
+[[asserts]]
+arguments = ["a,,b\nc,,d"]
+expected  = true
+
+[[asserts]]
+arguments = [",\n,"]
+comment   = "Two rows, two columns"
+expected  = true
+
+[[asserts]]
+arguments = ["name,age\nAlice,25\nBob,30\nCharlie,35"]
+expected  = true
+
+[[asserts]]
+arguments = ["a\nb,c"]
+expected  = false
+
+[[asserts]]
+arguments = ["a,b,c,d\ne,f,g\nh,i,j,k"]
+expected  = false
+
+[[asserts]]
+arguments = [",,,\n,,,\n,,,"]
+comment   = "Four columns in each row"
+expected  = true
+
+[[asserts]]
+arguments = ["data\nmore,data\neven,more,data"]
+expected  = false
+
+[[asserts]]
+arguments = ["one,two,three\nfour,five,six\nseven,eight,nine"]
+expected  = true
+
+[[asserts]]
+arguments = ["a,b,c\nd,e,f\ng,h"]
+expected  = false
+
+[[asserts]]
+arguments = ["x,y\nz"]
+expected  = false
+
+[[asserts]]
+arguments = ["first,second\nthird,fourth\nfifth,sixth"]
+expected  = true
+
+[[asserts]]
+arguments = ["a,b,c\nd,e,f,g"]
+expected  = false
+
+[[asserts]]
+arguments = ["test,data,value\nmore,test,data\nfinal,test,value"]
+expected  = true
+
+[[asserts]]
+arguments = ["a\nb\nc\nd"]
+expected  = true
+
+[[asserts]]
+arguments = ["a,b\nc,d\ne"]
+expected  = false
+
+[[asserts]]
+arguments = [
+  "name,age,city,country\nAlice,25,New York,USA\nBob,30,London,UK\nCharlie,35,Paris,France",
+]
+expected = true
+
+[[asserts]]
+arguments = ["a,b,c\nd,e,f\ng,h,i\nj,k"]
+expected  = false
+
+[[asserts]]
+arguments = ["single,column\nanother,column\nthird,column"]
+expected  = true
+
+[[asserts]]
+arguments = ["empty,,values\nmore,,empty\nfinal,,values"]
+expected  = true
+
+[[asserts]]
+arguments = ["a,b,c,d,e\nf,g,h,i,j\nk,l,m,n,o"]
+expected  = true
+
+[[asserts]]
+arguments = ["start\nmiddle,value\nend"]
+expected  = false
+
+[[asserts]]
+arguments = [
+  "1,2,3,4,5\n6,7,8,9,10\n11,12,13,14,15\n16,17,18,19,20\n21,22,23,24,25",
+]
+expected = true
+
+[[asserts]]
+arguments = ["a,b\nc,d\ne,f\ng,h\ni,j\nk,l\nm,n\no,p\nq,r\ns,t"]
+expected  = true

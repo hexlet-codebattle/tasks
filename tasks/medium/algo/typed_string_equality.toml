@@ -1,0 +1,210 @@
+level             = "easy"
+name              = "typed_string_equality"
+tags              = ["algo", "string", "two-pointers", "stack"]
+time_to_solve_sec = 300
+
+description_en = """
+You're given two strings `a` and `b` that may contain the backspace character `"#"`.
+A `"#"` deletes the previous character if it exists (no effect at the start).
+After applying all backspaces, return `True` if the resulting texts are equal, otherwise return `False`.
+"""
+
+description_ru = """
+Даны две строки `a` и `b`, в которых может встречаться символ `"#"`.
+Символ `"#"` удаляет предыдущий символ, если он есть (в начале строки — без эффекта).
+После применения всех удалений верните `True`, если итоговые тексты равны, иначе `False`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(a) \\leq 50$
+- $0 \\leq \\text{len}(b) \\leq 50$
+"""
+
+solution = """
+def solution(a: str, b: str) -> bool:
+    i, j = len(a) - 1, len(b) - 1
+    sa = sb = 0
+    while i >= 0 or j >= 0:
+        while i >= 0 and (a[i] == '#' or sa):
+            sa += 1 if a[i] == '#' else -1; i -= 1
+        while j >= 0 and (b[j] == '#' or sb):
+            sb += 1 if b[j] == '#' else -1; j -= 1
+        if (i < 0) != (j < 0): return False
+        if i >= 0 and j >= 0 and a[i] != b[j]: return False
+        i -= 1; j -= 1
+    return True
+"""
+
+examples = """
+solution('####', '') == True
+solution('a', '') == False
+solution('ab#c', 'ad#c') == True
+solution('abc#', 'ab') == False
+solution('abc##d', 'abzz##d') == True
+solution('abc', 'ab#c') == False
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+
+[[asserts]]
+arguments = ["ab#c", "ad#c"]
+comment   = "Both reduce to 'ac'"
+expected  = true
+
+[[asserts]]
+arguments = ["a###", "#a#"]
+comment   = "All characters deleted"
+expected  = true
+
+[[asserts]]
+arguments = ["####", ""]
+comment   = "Only backspaces vs empty"
+expected  = true
+
+[[asserts]]
+arguments = ["", ""]
+comment   = "Both empty"
+expected  = true
+
+[[asserts]]
+arguments = ["#", ""]
+comment   = "Single backspace no-op at start"
+expected  = true
+
+[[asserts]]
+arguments = ["abc#d##c", "ad#c"]
+comment   = "Interleaved deletions"
+expected  = true
+
+[[asserts]]
+arguments = ["xy#z", "xzz#"]
+comment   = "Both reduce to 'xz'"
+expected  = true
+
+[[asserts]]
+arguments = ["bxj##tw", "bxo#j##tw"]
+comment   = "Skip runs align to 'btw'"
+expected  = true
+
+[[asserts]]
+arguments = ["aaa###", ""]
+comment   = "All removed by trailing backspaces"
+expected  = true
+
+[[asserts]]
+arguments = ["a#b#c#d", "####d"]
+comment   = "Sequential deletes leave 'd'"
+expected  = true
+
+[[asserts]]
+arguments = ["ab##", "c#d#"]
+comment   = "Both end up empty"
+expected  = true
+
+[[asserts]]
+arguments = ["abc#d", "abzz##d"]
+comment   = "Two deletes cancel 'zz'"
+expected  = true
+
+[[asserts]]
+arguments = ["ab#z", "az#z"]
+comment   = "Both reduce to 'az'"
+expected  = true
+
+[[asserts]]
+arguments = ["ab##c", "#a#c"]
+comment   = "Leading deletions balance"
+expected  = true
+
+[[asserts]]
+arguments = ["####x", "x"]
+comment   = "Excess backspaces before char"
+expected  = true
+
+# ---- False (15) ----
+[[asserts]]
+arguments = ["a#c", "b"]
+comment   = "'c' vs 'b'"
+expected  = false
+
+[[asserts]]
+arguments = ["a", ""]
+comment   = "Non-empty vs empty"
+expected  = false
+
+[[asserts]]
+arguments = ["abc", "ab#c"]
+comment   = "'abc' vs 'ac'"
+expected  = false
+
+[[asserts]]
+arguments = ["abc#", "ac"]
+comment   = "'ab' vs 'ac'"
+expected  = false
+
+[[asserts]]
+arguments = ["abc", "abd"]
+comment   = "Different last char"
+expected  = false
+
+[[asserts]]
+arguments = ["a#", "a"]
+comment   = "Left becomes empty"
+expected  = false
+
+[[asserts]]
+arguments = ["ab#", "b"]
+comment   = "'a' vs 'b'"
+expected  = false
+
+[[asserts]]
+arguments = ["##a", "a#"]
+comment   = "'a' vs empty"
+expected  = false
+
+[[asserts]]
+arguments = ["x#y", "xy#"]
+comment   = "'y' vs 'x'"
+expected  = false
+
+[[asserts]]
+arguments = ["###a", "a#"]
+comment   = "'a' vs empty"
+expected  = false
+
+[[asserts]]
+arguments = ["z##z", "z#z#"]
+comment   = "'z' vs empty"
+expected  = false
+
+[[asserts]]
+arguments = ["p#q", "pq#"]
+comment   = "'q' vs 'p'"
+expected  = false
+
+[[asserts]]
+arguments = ["long##text###", "lo"]
+comment   = "'lot' vs 'lo'"
+expected  = false
+
+[[asserts]]
+arguments = ["ab#c", "abc#"]
+comment   = "'ac' vs 'ab'"
+expected  = false
+
+[[asserts]]
+arguments = ["#b#c", "c#"]
+comment   = "'c' vs empty"
+expected  = false

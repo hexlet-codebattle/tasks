@@ -1,0 +1,170 @@
+level             = "medium"
+name              = "multi_anagram_chunks"
+tags              = ["string", "anagrams", "greedy"]
+time_to_solve_sec = 420
+
+description_en = """
+Given a string $s$, find the minimum length $|P|$ such that $s$ is a concatenation of anagrams of a string $P$.
+"""
+
+description_ru = """
+Дана строка $s$. Найдите минимальную длину $|P|$ такую, что $s$ — конкатенация анаграмм строки $P$.
+"""
+
+limits = """
+- $1 \\leq |s| \\leq 40$
+"""
+
+solution = """
+def solution(s : str):
+    for i in range(1, len(s) + 1):
+        if len(s) % i == 0:
+            parts = set()
+            for k in range(len(s) // i):
+                part = s[k * i:(k+1) * i]
+                parts.add(tuple(sorted(part)))
+        if len(parts) == 1:
+            return i
+"""
+
+examples = """
+solution("aaa") == 1
+solution("abcba") == 5
+solution("abbaab") == 2
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["abbaab"]
+expected  = 2
+
+[[asserts]]
+arguments = ["aaa"]
+expected  = 1
+
+[[asserts]]
+arguments = ["abcba"]
+expected  = 5
+
+[[asserts]]
+arguments = ["a"]
+expected  = 1
+
+[[asserts]]
+arguments = ["deeaeed"]
+expected  = 7
+
+[[asserts]]
+arguments = ["daccabbcdecdbcbaaedcadbebccacdceaadcdbcb"]
+expected  = 10
+
+[[asserts]]
+arguments = ["ccbcbe"]
+expected  = 6
+
+[[asserts]]
+arguments = ["ddd"]
+expected  = 1
+
+[[asserts]]
+arguments = ["dccdaabcdcdaccddba"]
+expected  = 9
+
+[[asserts]]
+arguments = ["dbcbcdcdbbcd"]
+expected  = 3
+
+[[asserts]]
+arguments = ["edaeaaedaeaaeed"]
+expected  = 5
+
+[[asserts]]
+arguments = ["bbbbbb"]
+expected  = 1
+
+[[asserts]]
+arguments = ["cacbaddb"]
+expected  = 8
+
+[[asserts]]
+arguments = ["cbcaccba"]
+expected  = 4
+
+[[asserts]]
+arguments = ["deeded"]
+expected  = 2
+
+[[asserts]]
+arguments = ["bdaeceeebedeaece"]
+expected  = 8
+
+[[asserts]]
+arguments = ["bcaeceaebccaaecabeceabaceace"]
+expected  = 7
+
+[[asserts]]
+arguments = ["addaad"]
+expected  = 2
+
+[[asserts]]
+arguments = ["cccc"]
+expected  = 1
+
+[[asserts]]
+arguments = ["bebebe"]
+expected  = 2
+
+[[asserts]]
+arguments = ["eabdcedeecbaebceadeebcad"]
+expected  = 6
+
+[[asserts]]
+arguments = ["bbcbdeecbdbbdceebbcd"]
+expected  = 10
+
+[[asserts]]
+arguments = ["bbbb"]
+expected  = 1
+
+[[asserts]]
+arguments = ["bcadd"]
+expected  = 5
+
+[[asserts]]
+arguments = ["adcadacaaccdadacdcaaddacacad"]
+expected  = 7
+
+[[asserts]]
+arguments = ["ebddadedabbdedaddbea"]
+expected  = 5
+
+[[asserts]]
+arguments = ["eeee"]
+expected  = 1
+
+[[asserts]]
+arguments = ["d"]
+expected  = 1
+
+[[asserts]]
+arguments = ["cadacada"]
+expected  = 4
+
+[[asserts]]
+arguments = ["ddedabededeadddebeabededded"]
+expected  = 9
+
+[[asserts]]
+arguments = ["daad"]
+expected  = 2
+
+[[asserts]]
+arguments = ["ecadce"]
+expected  = 6

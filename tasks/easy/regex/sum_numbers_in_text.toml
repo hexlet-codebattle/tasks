@@ -1,0 +1,205 @@
+level             = "easy"
+name              = "sum_numbers_in_text"
+tags              = ["string", "regex"]
+time_to_solve_sec = 240
+
+description_en = """
+You're given a string `s`.
+Find all integers in it (with optional leading `+` or `-` sign) and return their **sum**.
+Numbers are maximal runs of digits. Ignore letters, punctuation, and other non-number characters.
+If there are no numbers, return `0`.
+"""
+
+description_ru = """
+Дана строка `s`.
+Найдите в ней все целые числа (с необязательным знаком `+` или `-`) и верните их **сумму**.
+Числа — максимальные последовательности цифр. Игнорируйте буквы, знаки препинания и прочие символы.
+Если чисел нет, верните `0`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 42$
+"""
+
+solution = """
+import re
+
+def solution(s: str) -> int:
+    return sum(int(m) for m in re.findall(r'[+-]?\\d+', s))
+"""
+
+
+examples = """
+solution('') == 0
+solution('10 apples and 20 oranges') == 30
+solution('a1b2c3') == 6
+solution('–5') == -5
+solution('3.14 is pi') == 17
+solution('e-5 and e+6') == 1
+solution('007 leads 0003') == 10
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+# 30 comprehensive asserts
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = 0
+
+[[asserts]]
+arguments = ["no numbers here"]
+comment   = "No digits at all"
+expected  = 0
+
+[[asserts]]
+arguments = ["123"]
+comment   = "Single positive number"
+expected  = 123
+
+[[asserts]]
+arguments = ["-7"]
+comment   = "Single negative number"
+expected  = -7
+
+[[asserts]]
+arguments = ["+42"]
+comment   = "Signed positive number"
+expected  = 42
+
+[[asserts]]
+arguments = ["a1b2c3"]
+comment   = "Digits split by letters"
+expected  = 6
+
+[[asserts]]
+arguments = ["10 apples and 20 oranges"]
+comment   = "Two positives in a sentence"
+expected  = 30
+
+[[asserts]]
+arguments = ["007 leads 0003"]
+comment   = "Leading zeros"
+expected  = 10
+
+[[asserts]]
+arguments = ["-5 and -10"]
+comment   = "Two negatives"
+expected  = -15
+
+[[asserts]]
+arguments = ["+5-2+3"]
+comment   = "Adjacent signed numbers"
+expected  = 6
+
+[[asserts]]
+arguments = ["--5"]
+comment   = "Double minus: match starts at second '-'"
+expected  = -5
+
+[[asserts]]
+arguments = ["++10"]
+comment   = "Double plus: match starts at second '+'"
+expected  = 10
+
+[[asserts]]
+arguments = ["-+7"]
+comment   = "Minus then plus: +7 matches"
+expected  = 7
+
+[[asserts]]
+arguments = ["+-8"]
+comment   = "Plus then minus: -8 matches"
+expected  = -8
+
+[[asserts]]
+arguments = ["e-5 and e+6"]
+comment   = "Signs after letters"
+expected  = 1
+
+[[asserts]]
+arguments = ["3.14 is pi"]
+comment   = "Dot splits into two numbers: '3' and '14'"
+expected  = 17
+
+[[asserts]]
+arguments = ["price: -1000, tax: +200"]
+comment   = "Negative plus positive"
+expected  = -800
+
+[[asserts]]
+arguments = ["mix 0 and 00 and 000"]
+comment   = "Zeros only"
+expected  = 0
+
+[[asserts]]
+arguments = ["at boundaries -1,+1"]
+comment   = "Sum cancels to zero"
+expected  = 0
+
+[[asserts]]
+arguments = ["newlines 10\n-3\t+2 end"]
+comment   = "Whitespace-separated with newlines/tabs"
+expected  = 9
+
+[[asserts]]
+arguments = ["punctuation: --, ++, --0"]
+comment   = "Only '--0' contributes as 0"
+expected  = 0
+
+[[asserts]]
+arguments = ["en dash –5 and em dash —10"]
+comment   = "Unicode dashes are not signs; matches 5 and 10"
+expected  = 15
+
+[[asserts]]
+arguments = ["start-5middle+7end"]
+comment   = "Signs in the middle of words"
+expected  = 2
+
+[[asserts]]
+arguments = ["edge: -0 +0 0"]
+comment   = "Zero with signs"
+expected  = 0
+
+[[asserts]]
+arguments = ["huge: 999999999 and -1"]
+comment   = "Very large number"
+expected  = 999999998
+
+[[asserts]]
+arguments = ["prefix+suffix +123xyz-321abc"]
+comment   = "Signed numbers next to letters"
+expected  = -198
+
+[[asserts]]
+arguments = ["id=00012;delta=-0003"]
+comment   = "Leading zeros with sign"
+expected  = 9
+
+[[asserts]]
+arguments = ["scin 1e-9 and 2e+3"]
+comment   = "Scientific-like text; treat separately: 1 + (-9) + 2 + 3"
+expected  = -3
+
+[[asserts]]
+arguments = ["—5"]
+comment   = "Only em dash before a digit; counts as 5"
+expected  = 5
+
+[[asserts]]
+arguments = ["  -12 34  "]
+comment   = "Leading/trailing spaces"
+expected  = 22
+
+[[asserts]]
+arguments = ["mixed signs: +-10 -+20 --30 ++40"]
+comment   = "Several tricky sign combos"
+expected  = 20

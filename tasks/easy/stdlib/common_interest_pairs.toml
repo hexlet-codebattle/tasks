@@ -1,0 +1,884 @@
+level             = "easy"
+name              = "common_interest_pairs"
+tags              = ["stdlib", "sets", "pairs", "strings"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given two lists:
+
+- `names`: a list of **unique** friend names.
+- `interests`: a list where the `i`-th element is the list of interests of `names[i]`.
+
+All lists are non-empty, `names` and `interests` have the same length, and comparison of interests is **case-sensitive**.
+
+Return **all pairs** `['name1', 'name2']` such that the two friends share **at least one** common interest.
+
+Sorting:
+1) Inside each pair, the friend that appears earlier in `names` must go first.
+2) Pairs are sorted by the index of their first name, then by the index of their second name (both according to `names`).
+"""
+
+description_ru = """
+Даны два списка:
+
+- `names`: список **уникальных** имён.
+- `interests`: список, где `i`-й элемент — список интересов `names[i]`.
+
+Все списки непустые, длины `names` и `interests` совпадают, сравнение интересов **с учётом регистра**.
+
+Верните **все пары** `['имя1', 'имя2']`, у которых есть **хотя бы один** общий интерес.
+
+Сортировка:
+1) Внутри пары первым идёт тот, кто раньше встречается в `names`.
+2) Пары отсортированы по индексу первого имени, затем по индексу второго имени (оба по `names`).
+"""
+
+solution = """
+def solution(names, interests):
+    sets = [set(xs) for xs in interests]
+    res = []
+    n = len(names)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if sets[i] & sets[j]:
+                res.append([names[i], names[j]])
+    return res
+"""
+
+examples = """
+solution(
+    ['Ann', 'Boris', 'Ivan', 'Gala'],
+    [
+        ['movies', 'music'],
+        ['sports', 'movies'],
+        ['music', 'gaming'],
+        ['sports', 'movies']
+    ]
+) == [
+        ['Ann', 'Boris'],
+        ['Ann', 'Ivan'],
+        ['Ann', 'Gala'],
+        ['Boris', 'Gala']
+     ]
+"""
+
+[[input_signature]]
+argument_name = "names"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "interests"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "string"
+
+# --- Test cases ---
+
+[[asserts]]
+arguments = [
+  [
+    "Ann",
+    "Boris",
+    "Ivan",
+    "Gala",
+  ],
+  [
+    [
+      "movies",
+      "music",
+    ],
+    [
+      "sports",
+      "movies",
+    ],
+    [
+      "music",
+      "gaming",
+    ],
+    [
+      "sports",
+      "movies",
+    ],
+  ],
+]
+expected = [
+  [
+    "Ann",
+    "Boris",
+  ],
+  [
+    "Ann",
+    "Ivan",
+  ],
+  [
+    "Ann",
+    "Gala",
+  ],
+  [
+    "Boris",
+    "Gala",
+  ],
+]
+
+[[asserts]]
+arguments = [["Alice", "Bob"], [["hiking"], ["swimming"]]]
+comment   = "No common interests"
+expected  = []
+
+[[asserts]]
+arguments = [
+  [
+    "Daniel",
+    "Sarah",
+  ],
+  [
+    [
+      "python",
+      "golang",
+    ],
+    [
+      "Python",
+      "javascript",
+    ],
+  ],
+]
+comment = "Case sensitivity check"
+expected = []
+
+[[asserts]]
+arguments = [
+  [
+    "Chris",
+    "Diana",
+    "Ethan",
+  ],
+  [
+    [
+      "reading",
+      "baking",
+    ],
+    [
+      "baking",
+      "cycling",
+    ],
+    [
+      "reading",
+      "cycling",
+    ],
+  ],
+]
+comment = "Everyone shares interests with everyone"
+expected = [["Chris", "Diana"], ["Chris", "Ethan"], ["Diana", "Ethan"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Yana",
+    "Anna",
+    "Peter",
+  ],
+  [
+    [
+      "books",
+      "coffee",
+    ],
+    [
+      "coffee",
+      "tea",
+    ],
+    [
+      "books",
+    ],
+  ],
+]
+comment = "Order of names in result matters (Yana before Anna)"
+expected = [["Yana", "Anna"], ["Yana", "Peter"]]
+
+[[asserts]]
+arguments = [["Alice", "Bob"], [["reading"], ["reading"]]]
+comment   = "Simple pair with one common interest"
+expected  = [["Alice", "Bob"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Charlie",
+    "David",
+  ],
+  [
+    [
+      "coding",
+      "music",
+      "travel",
+    ],
+    [
+      "music",
+      "hiking",
+      "coding",
+    ],
+  ],
+]
+comment = "Pair with multiple common interests"
+expected = [["Charlie", "David"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Eve",
+    "Frank",
+    "Grace",
+  ],
+  [
+    [
+      "art",
+      "biking",
+    ],
+    [
+      "biking",
+      "cooking",
+    ],
+    [
+      "cooking",
+      "dance",
+    ],
+  ],
+]
+comment = "Chain of common interests"
+expected = [["Eve", "Frank"], ["Frank", "Grace"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Heidi",
+    "Ivan",
+    "Judy",
+  ],
+  [
+    [
+      "photography",
+      "yoga",
+    ],
+    [
+      "photography",
+      "zumba",
+    ],
+    [
+      "yoga",
+      "writing",
+    ],
+  ],
+]
+comment = "Forking common interests"
+expected = [["Heidi", "Ivan"], ["Heidi", "Judy"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Kevin",
+    "Liam",
+    "Mia",
+    "Noah",
+  ],
+  [
+    [
+      "gardening",
+    ],
+    [
+      "gardening",
+      "knitting",
+    ],
+    [
+      "knitting",
+      "language",
+    ],
+    [
+      "language",
+    ],
+  ],
+]
+comment = "Sequential common interests"
+expected = [["Kevin", "Liam"], ["Liam", "Mia"], ["Mia", "Noah"]]
+
+[[asserts]]
+arguments = [["Paul", "Rachel", "Simon"], [["apple"], ["banana"], ["cherry"]]]
+comment   = "Three people, no common interests"
+expected  = []
+
+[[asserts]]
+arguments = [
+  [
+    "Gordon",
+    "Jamie",
+    "Nigella",
+  ],
+  [
+    [
+      "baking",
+      "grilling",
+      "pasta",
+      "dessert",
+      "salad",
+    ],
+    [
+      "baking",
+    ],
+    [
+      "salad",
+    ],
+  ],
+]
+comment = "One person shares interest with two others"
+expected = [["Gordon", "Jamie"], ["Gordon", "Nigella"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Leo",
+    "Max",
+    "Nina",
+  ],
+  [
+    [
+      "chess",
+      "checkers",
+    ],
+    [
+      "checkers",
+      "go",
+    ],
+    [
+      "go",
+      "chess",
+    ],
+  ],
+]
+comment = "Circular common interests"
+expected = [["Leo", "Max"], ["Leo", "Nina"], ["Max", "Nina"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Anastasia",
+    "Bartholomew",
+    "Constance",
+  ],
+  [
+    [
+      "classical music",
+      "philosophy",
+    ],
+    [
+      "philosophy",
+      "quantum physics",
+    ],
+    [
+      "astronomy",
+      "classical music",
+    ],
+  ],
+]
+comment = "Interests with multiple words"
+expected = [["Anastasia", "Bartholomew"], ["Anastasia", "Constance"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Quinn",
+    "Rachel",
+    "Sam",
+    "Tina",
+    "Uma",
+  ],
+  [
+    [
+      "rock",
+      "pop",
+    ],
+    [
+      "pop",
+      "jazz",
+    ],
+    [
+      "jazz",
+      "classical",
+    ],
+    [
+      "classical",
+      "blues",
+    ],
+    [
+      "blues",
+      "rock",
+    ],
+  ],
+]
+comment = "Circular interests in a group of five"
+expected = [
+  [
+    "Quinn",
+    "Rachel",
+  ],
+  [
+    "Quinn",
+    "Uma",
+  ],
+  [
+    "Rachel",
+    "Sam",
+  ],
+  [
+    "Sam",
+    "Tina",
+  ],
+  [
+    "Tina",
+    "Uma",
+  ],
+]
+
+[[asserts]]
+arguments = [
+  [
+    "Victor",
+    "Wendy",
+    "Xavier",
+    "Yara",
+    "Zane",
+  ],
+  [
+    [
+      "movies",
+    ],
+    [
+      "movies",
+    ],
+    [
+      "movies",
+    ],
+    [
+      "movies",
+    ],
+    [
+      "movies",
+    ],
+  ],
+]
+comment = "One very common interest for all"
+expected = [
+  [
+    "Victor",
+    "Wendy",
+  ],
+  [
+    "Victor",
+    "Xavier",
+  ],
+  [
+    "Victor",
+    "Yara",
+  ],
+  [
+    "Victor",
+    "Zane",
+  ],
+  [
+    "Wendy",
+    "Xavier",
+  ],
+  [
+    "Wendy",
+    "Yara",
+  ],
+  [
+    "Wendy",
+    "Zane",
+  ],
+  [
+    "Xavier",
+    "Yara",
+  ],
+  [
+    "Xavier",
+    "Zane",
+  ],
+  [
+    "Yara",
+    "Zane",
+  ],
+]
+
+[[asserts]]
+arguments = [
+  [
+    "Adam",
+    "Ben",
+    "Chloe",
+    "David",
+  ],
+  [
+    [
+      "history",
+      "geography",
+    ],
+    [
+      "math",
+      "physics",
+    ],
+    [
+      "chemistry",
+      "biology",
+    ],
+    [
+      "literature",
+      "art",
+    ],
+  ],
+]
+comment = "No common interests, large group"
+expected = []
+
+[[asserts]]
+arguments = [["John", "Jane"], [["InterestName"], ["interestname"]]]
+comment   = "Different case (should not match)"
+expected  = []
+
+[[asserts]]
+arguments = [
+  [
+    "George",
+    "Harry",
+    "Ivy",
+  ],
+  [
+    [
+      "Board games",
+      "Video games",
+    ],
+    [
+      "Hiking",
+      "Board games",
+    ],
+    [
+      "Video games",
+    ],
+  ],
+]
+comment = "Interests with spaces"
+expected = [["George", "Harry"], ["George", "Ivy"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Fred",
+    "Greg",
+    "Helen",
+    "Oscar",
+  ],
+  [
+    [
+      "movies",
+      "books",
+    ],
+    [
+      "books",
+      "music",
+    ],
+    [
+      "music",
+      "movies",
+    ],
+    [
+      "sports",
+      "travel",
+    ],
+  ],
+]
+comment = "One person with no common interests"
+expected = [["Fred", "Greg"], ["Fred", "Helen"], ["Greg", "Helen"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Robert",
+    "Susan",
+  ],
+  [
+    [
+      "fiction",
+      "poetry",
+      "fiction",
+    ],
+    [
+      "non-fiction",
+      "poetry",
+      "non-fiction",
+    ],
+  ],
+]
+comment = "Repeated interests for one person"
+expected = [["Robert", "Susan"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Olivia",
+    "Liam",
+    "Emma",
+  ],
+  [
+    [
+      "hiking",
+      "fishing",
+    ],
+    [
+      "camping",
+      "hiking",
+    ],
+    [
+      "fishing",
+      "camping",
+    ],
+  ],
+]
+comment = "Result sorting check (by index)"
+expected = [["Olivia", "Liam"], ["Olivia", "Emma"], ["Liam", "Emma"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Noah",
+    "Ava",
+    "William",
+    "Sophia",
+  ],
+  [
+    [
+      "gardening",
+    ],
+    [
+      "baking",
+    ],
+    [
+      "gardening",
+    ],
+    [
+      "painting",
+    ],
+  ],
+]
+comment = "Only two in the group share an interest"
+expected = [["Noah", "William"]]
+
+[[asserts]]
+arguments = [
+  [
+    "James",
+    "Isabella",
+    "Oliver",
+    "Mia",
+    "Elijah",
+  ],
+  [
+    [
+      "art",
+      "books",
+      "cooking",
+    ],
+    [
+      "cooking",
+      "dance",
+      "science",
+    ],
+    [
+      "science",
+      "fashion",
+      "art",
+    ],
+    [
+      "gardening",
+      "history",
+    ],
+    [
+      "art",
+      "science",
+    ],
+  ],
+]
+comment = "Complex interest intersections"
+expected = [
+  [
+    "James",
+    "Isabella",
+  ],
+  [
+    "James",
+    "Oliver",
+  ],
+  [
+    "James",
+    "Elijah",
+  ],
+  [
+    "Isabella",
+    "Oliver",
+  ],
+  [
+    "Isabella",
+    "Elijah",
+  ],
+  [
+    "Oliver",
+    "Elijah",
+  ],
+]
+
+[[asserts]]
+arguments = [
+  [
+    "Frank",
+    "Grace",
+    "Henry",
+    "Iris",
+    "Jack",
+    "Kate",
+  ],
+  [
+    [
+      "action",
+    ],
+    [
+      "action",
+      "comedy",
+    ],
+    [
+      "comedy",
+      "drama",
+    ],
+    [
+      "drama",
+      "horror",
+    ],
+    [
+      "horror",
+      "sci-fi",
+    ],
+    [
+      "sci-fi",
+      "action",
+    ],
+  ],
+]
+comment = "Group of 6 people, chain structure"
+expected = [
+  [
+    "Frank",
+    "Grace",
+  ],
+  [
+    "Frank",
+    "Kate",
+  ],
+  [
+    "Grace",
+    "Henry",
+  ],
+  [
+    "Grace",
+    "Kate",
+  ],
+  [
+    "Henry",
+    "Iris",
+  ],
+  [
+    "Iris",
+    "Jack",
+  ],
+  [
+    "Jack",
+    "Kate",
+  ],
+]
+
+[[asserts]]
+arguments = [["Peter", "Sophia"], [["coffee☕", "tea"], ["tea", "water"]]]
+comment   = "Unicode characters in interests"
+expected  = [["Peter", "Sophia"]]
+
+[[asserts]]
+arguments = [["Alex", "Alexander"], [["coding"], ["coding"]]]
+comment   = "Names that are substrings of each other"
+expected  = [["Alex", "Alexander"]]
+
+[[asserts]]
+arguments = [
+  [
+    "Michael",
+    "Laura",
+  ],
+  [
+    [
+      "rock",
+      "rock",
+      "pop",
+    ],
+    [
+      "pop",
+      "jazz",
+      "jazz",
+    ],
+  ],
+]
+comment = "Duplicate interests in one person's list"
+expected = [["Michael", "Laura"]]
+
+[[asserts]]
+arguments = [["Steven"], [["running", "reading"]]]
+comment   = "One person in the list"
+expected  = []
+
+[[asserts]]
+arguments = [
+  [
+    "Albert",
+    "Marie",
+    "Isaac",
+  ],
+  [
+    [
+      "astronomy",
+      "biology",
+      "chemistry",
+      "geology",
+      "physics",
+      "philosophy",
+    ],
+    [
+      "mathematics",
+      "computer_science",
+      "statistics",
+      "logic",
+      "ai",
+      "linguistics",
+    ],
+    [
+      "philosophy",
+      "linguistics",
+    ],
+  ],
+]
+comment = "Long interest lists, few intersections"
+expected = [["Albert", "Isaac"], ["Marie", "Isaac"]]

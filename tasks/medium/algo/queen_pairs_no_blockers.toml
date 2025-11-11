@@ -1,0 +1,308 @@
+level             = "medium"
+name              = "queen_pairs_no_blockers"
+tags              = ["algo", "geometry", "hashing", "sorting"]
+time_to_solve_sec = 420
+
+description_en = """
+On an infinite chessboard there are $N$ queens, each at integer coordinates $(x_i, y_i)$.
+
+Count the number of unordered pairs of queens that **attack each other** (same row, column, or diagonal) **with no other queen between them**. Equivalently, on every line (fixed $x$, fixed $y$, fixed $x+y$, or fixed $x-y$), only **adjacent** queens in the sorted order contribute one pair.
+"""
+
+description_ru = """
+На бесконечной шахматной доске стоят $N$ ферзей с целочисленными координатами $(x_i, y_i)$.
+
+Посчитайте число неупорядоченных пар ферзей, которые **бьют друг друга** (одна горизонталь, вертикаль или диагональ) и **между ними нет других ферзей**. Эквивалентно: на каждой линии (фиксированные $x$, $y$, $x+y$ или $x-y$) вклад дают только **соседние** ферзи в отсортированном порядке.
+"""
+
+limits = """
+- $1 \\le N$
+- $x_i, y_i \\in \\mathbb{Z}$
+"""
+
+solution = """
+def solution(queens: list) -> int:
+    from collections import defaultdict
+    g = defaultdict(list)
+    for x, y in queens:
+        g[('x', x)].append(y)
+        g[('y', y)].append(x)
+        g[('s', x + y)].append(x)
+        g[('d', x - y)].append(x)
+    ans = 0
+    for arr in g.values():
+        arr.sort()
+        if arr:
+            ans += len(arr) - 1
+    return ans
+"""
+
+examples = """
+solution([[1, 1], [1, 2], [1, 3]]) == 2
+solution([[1, 1], [2, 2], [1, 2]]) == 3
+"""
+
+[[input_signature]]
+argument_name = "queens"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[[1, 1], [1, 2], [1, 3]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[1, 1], [2, 2], [1, 2]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[6, 4], [10, 8], [1, 6], [7, 7], [7, 3], [2, 7]]]
+expected  = 5
+
+[[asserts]]
+arguments = [[[3, 1]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[3, 7], [3, 8], [6, 3], [8, 8], [3, 4], [4, 7], [7, 8]]]
+expected  = 7
+
+[[asserts]]
+arguments = [[[2, 8]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[3, 7], [6, 2], [1, 6]]]
+expected  = 0
+
+[[asserts]]
+arguments = [
+  [
+    [
+      3,
+      2,
+    ],
+    [
+      1,
+      1,
+    ],
+    [
+      4,
+      1,
+    ],
+    [
+      2,
+      3,
+    ],
+    [
+      3,
+      3,
+    ],
+    [
+      1,
+      3,
+    ],
+    [
+      4,
+      2,
+    ],
+    [
+      2,
+      2,
+    ],
+    [
+      2,
+      1,
+    ],
+  ],
+]
+expected = 18
+
+[[asserts]]
+arguments = [[[3, 1], [1, 1], [2, 3], [3, 3], [1, 3], [1, 2], [2, 2], [2, 1]]]
+expected  = 16
+
+[[asserts]]
+arguments = [[[5, 7], [5, 9]]]
+expected  = 1
+
+[[asserts]]
+arguments = [[[8, 4], [1, 4], [5, 2], [1, 6]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[4, 2], [3, 2]]]
+expected  = 1
+
+[[asserts]]
+arguments = [[[2, 2], [2, 1], [1, 1]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[3, 2], [1, 2], [1, 1], [2, 3]]]
+expected  = 4
+
+[[asserts]]
+arguments = [[[3, 2], [2, 2], [1, 1], [1, 3]]]
+expected  = 4
+
+[[asserts]]
+arguments = [[[6, 4], [1, 7], [6, 1], [3, 3], [4, 6], [1, 2], [9, 9], [9, 8]]]
+expected  = 5
+
+[[asserts]]
+arguments = [[[4, 1]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[3, 2], [3, 1], [1, 1], [2, 3], [1, 3], [1, 2], [2, 2], [2, 1]]]
+expected  = 17
+
+[[asserts]]
+arguments = [[[1, 2], [2, 2], [1, 1], [2, 1]]]
+expected  = 6
+
+[[asserts]]
+arguments = [[[2, 2], [2, 1]]]
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 2], [2, 2], [2, 1], [1, 1]]]
+expected  = 6
+
+[[asserts]]
+arguments = [[[3, 1], [1, 1], [2, 3], [4, 2], [2, 1]]]
+expected  = 4
+
+[[asserts]]
+arguments = [[[2, 7], [2, 1], [4, 5], [7, 2], [8, 5]]]
+expected  = 4
+
+[[asserts]]
+arguments = [[[4, 3], [1, 3], [5, 6], [4, 2], [5, 8]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[7, 3]]]
+expected  = 0
+
+[[asserts]]
+arguments = [
+  [
+    [
+      5,
+      1,
+    ],
+    [
+      9,
+      6,
+    ],
+    [
+      1,
+      6,
+    ],
+    [
+      6,
+      7,
+    ],
+    [
+      3,
+      3,
+    ],
+    [
+      4,
+      6,
+    ],
+    [
+      9,
+      4,
+    ],
+    [
+      4,
+      2,
+    ],
+    [
+      2,
+      2,
+    ],
+    [
+      1,
+      4,
+    ],
+  ],
+]
+expected = 11
+
+[[asserts]]
+arguments = [[[5, 7], [1, 1], [9, 2], [7, 7], [7, 6]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[8, 4], [3, 4], [3, 7], [9, 7]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[3, 8], [5, 6], [6, 8], [3, 5], [3, 4], [2, 7], [6, 5]]]
+expected  = 10
+
+[[asserts]]
+arguments = [[[3, 2], [3, 1], [1, 1], [2, 3], [3, 3], [1, 3], [2, 2], [2, 1]]]
+expected  = 16
+
+[[asserts]]
+arguments = [
+  [
+    [
+      9,
+      6,
+    ],
+    [
+      4,
+      4,
+    ],
+    [
+      8,
+      2,
+    ],
+    [
+      8,
+      6,
+    ],
+    [
+      7,
+      1,
+    ],
+    [
+      2,
+      2,
+    ],
+    [
+      2,
+      5,
+    ],
+    [
+      8,
+      9,
+    ],
+    [
+      7,
+      3,
+    ],
+    [
+      8,
+      5,
+    ],
+  ],
+]
+expected = 13
+
+[[asserts]]
+arguments = [[[3, 2], [1, 4]]]
+expected  = 1

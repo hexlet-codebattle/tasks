@@ -1,0 +1,220 @@
+level             = "easy"
+name              = "rebus"
+tags              = ["stdlib", "string", "parsing"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given words describing pictures. Each word may have apostrophes (`'`) on the left and/or right. Each leading apostrophe removes one letter from the **left** of the word; each trailing apostrophe removes one letter from the **right**. If removals exceed the length, the result is empty. Concatenate all resulting fragments and return the final string.
+"""
+
+description_ru = """
+Даны слова, описывающие картинки. У каждого слова могут быть апострофы (`'`) слева и/или справа. Каждый ведущий апостроф удаляет одну букву слева; каждый замыкающий апостроф удаляет одну букву справа. Если удалений больше длины слова, результат — пустая строка. Сконкатенируйте все полученные фрагменты и верните итоговую строку.
+"""
+
+limits = """
+- $0 \\leq n = \\text{len(words)}$
+- $\\text{words}[i] \\in \\{\\text{letters},\\ '\\}^*$
+"""
+
+solution = """
+def solution(words: list) -> str:
+    def trim(w: str) -> str:
+        l = 0
+        while l < len(w) and w[l] == "'":
+            l += 1
+        r = 0
+        while r < len(w) and w[-1 - r] == "'":
+            r += 1
+        core = w[l:len(w)-r] if r > 0 else w[l:]
+        if len(core) <= l + r:
+            return ""
+        return core[l:len(core)-r] if r > 0 else core[l:]
+    return "".join(trim(w) for w in words)
+"""
+
+examples = """
+solution(["code", "''''barabaka''", "''kettle"]) == "codebattle"
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [["code", "''''barabaka''", "''kettle"]]
+expected  = "codebattle"
+
+[[asserts]]
+arguments = [["close'''''", "'''''remote'", "''''open", "dingdingdong''''"]]
+expected  = "dingding"
+
+[[asserts]]
+arguments = [["'''door", "''dingdingdong''''''''", "'''open"]]
+expected  = "rngn"
+
+[[asserts]]
+arguments = [["''dog"]]
+expected  = "g"
+
+[[asserts]]
+arguments = [["'''''refrigerator''''", "''to", "''cat", "open''", "''remote'"]]
+expected  = "gertopmot"
+
+[[asserts]]
+arguments = [
+  [
+    "rat'",
+    "''door",
+    "'''''''''permutation''",
+    "''to",
+    "'door",
+    "''www'",
+  ],
+]
+expected = "raoroor"
+
+[[asserts]]
+arguments = [["'close'''"]]
+expected  = "l"
+
+[[asserts]]
+arguments = [["''rat'", "''''''''''''dingdingdong", "''dog", "''close'''"]]
+expected  = "g"
+
+[[asserts]]
+arguments = [["'cat''"]]
+expected  = ""
+
+[[asserts]]
+arguments = [["'''rat"]]
+expected  = ""
+
+[[asserts]]
+arguments = [["'dog'", "''''''''refrigerator'''"]]
+expected  = "oa"
+
+[[asserts]]
+arguments = [
+  [
+    "''door''",
+    "''open",
+    "'''''''''''refrigerator",
+    "''''''permutation''",
+    "'a",
+    "'''remote'''",
+  ],
+]
+expected = "enrati"
+
+[[asserts]]
+arguments = [["cat'", "door", "a'"]]
+expected  = "cadoor"
+
+[[asserts]]
+arguments = [["''to", "'''dog", "a", "www'"]]
+expected  = "aww"
+
+[[asserts]]
+arguments = [["''''code", "cat", "open'''", "'rat", "''close"]]
+expected  = "catoatose"
+
+[[asserts]]
+arguments = [
+  [
+    "''''''''''dingdingdong",
+    "'''''''''''refrigerator'",
+    "'''cat",
+    "''www'",
+    "'''door'",
+    "'''dog",
+  ],
+]
+expected = "ng"
+
+[[asserts]]
+arguments = [["'cat", "'''''''''refrigerator'", "www''", "''code"]]
+expected  = "attowde"
+
+[[asserts]]
+arguments = [["'''''refrigerator'''", "''dog"]]
+expected  = "gerag"
+
+[[asserts]]
+arguments = [
+  [
+    "'dingdingdong'''''''''''",
+    "''''remote'",
+    "''''''''''refrigerator'",
+    "remote'''''",
+    "rat'",
+  ],
+]
+expected = "torra"
+
+[[asserts]]
+arguments = [["'''www", "'''rat", "'''pulse''", "'''''''''''permutation"]]
+expected  = ""
+
+[[asserts]]
+arguments = [["'''cat", "a'"]]
+expected  = ""
+
+[[asserts]]
+arguments = [["'open'''", "door'''", "to'"]]
+expected  = "dt"
+
+[[asserts]]
+arguments = [
+  [
+    "dingdingdong'''''''",
+    "'to'",
+    "'''''''dingdingdong''''",
+    "''www",
+    "'''remote",
+    "''close'''",
+  ],
+]
+expected = "dingdgwote"
+
+[[asserts]]
+arguments = [["''''''remote", "a", "'open"]]
+expected  = "apen"
+
+[[asserts]]
+arguments = [["to'", "''''''''''''refrigerator", "'''''remote", "''pulse''"]]
+expected  = "tel"
+
+[[asserts]]
+arguments = [
+  [
+    "'to",
+    "'a",
+    "'''''close",
+    "''''''refrigerator'''",
+    "close'''",
+    "''dingdingdong''''",
+  ],
+]
+expected = "oeraclngding"
+
+[[asserts]]
+arguments = [["''''''remote", "''''close", "'a", "'''''close", "'a", "''open'"]]
+expected  = "ee"
+
+[[asserts]]
+arguments = [["'dingdingdong'''''''''", "rat'''"]]
+expected  = "in"
+
+[[asserts]]
+arguments = [["''to", "''''dingdingdong'''''"]]
+expected  = "din"
+
+[[asserts]]
+arguments = [["''to"]]
+expected  = ""

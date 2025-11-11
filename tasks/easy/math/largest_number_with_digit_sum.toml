@@ -1,0 +1,175 @@
+level             = "easy"
+name              = "largest_number_with_digit_sum"
+tags              = ["greedy", "math", "strings"]
+time_to_solve_sec = 120
+
+description_en = """
+Given integers $A$ (digit sum) and $B$ (number of digits), construct the **largest** base-10 number with exactly $B$ digits and digit sum $A$. Return it as a string.
+"""
+
+description_ru = """
+Даны целые $A$ (сумма цифр) и $B$ (число цифр). Постройте **наибольшее** десятичное число из ровно $B$ цифр с суммой цифр $A$. Верните его в виде строки.
+"""
+
+limits = """
+- $0 \\leq A$
+- $1 \\leq B$
+- $A \\leq 9\\,B$
+"""
+
+solution = """
+def solution(a: int, b: int) -> str:
+    res = []
+    for _ in range(b):
+        d = 9 if a >= 9 else a
+        res.append(d)
+        a -= d
+    return "".join(map(str, res))
+"""
+
+examples = """
+solution(7, 1) == "7"
+solution(13, 2) == "94"
+solution(1, 3) == "100"
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [7, 1]
+expected  = "7"
+
+[[asserts]]
+arguments = [13, 2]
+expected  = "94"
+
+[[asserts]]
+arguments = [1, 3]
+expected  = "100"
+
+[[asserts]]
+arguments = [36, 4]
+expected  = "9999"
+
+[[asserts]]
+arguments = [2, 10]
+expected  = "2000000000"
+
+[[asserts]]
+arguments = [20, 5]
+expected  = "99200"
+
+[[asserts]]
+arguments = [15, 9]
+expected  = "960000000"
+
+[[asserts]]
+arguments = [81, 10]
+expected  = "9999999990"
+
+[[asserts]]
+arguments = [20, 4]
+expected  = "9920"
+
+[[asserts]]
+arguments = [60, 9]
+expected  = "999999600"
+
+[[asserts]]
+arguments = [34, 7]
+expected  = "9997000"
+
+[[asserts]]
+arguments = [34, 6]
+expected  = "999700"
+
+[[asserts]]
+arguments = [37, 5]
+expected  = "99991"
+
+[[asserts]]
+arguments = [12, 6]
+expected  = "930000"
+
+[[asserts]]
+arguments = [30, 5]
+expected  = "99930"
+
+[[asserts]]
+arguments = [35, 6]
+expected  = "999800"
+
+[[asserts]]
+arguments = [6, 3]
+expected  = "600"
+
+[[asserts]]
+arguments = [4, 8]
+expected  = "40000000"
+
+[[asserts]]
+arguments = [13, 4]
+expected  = "9400"
+
+[[asserts]]
+arguments = [7, 3]
+expected  = "700"
+
+[[asserts]]
+arguments = [44, 9]
+expected  = "999980000"
+
+[[asserts]]
+arguments = [29, 5]
+expected  = "99920"
+
+[[asserts]]
+arguments = [27, 9]
+expected  = "999000000"
+
+[[asserts]]
+arguments = [19, 7]
+expected  = "9910000"
+
+[[asserts]]
+arguments = [32, 9]
+expected  = "999500000"
+
+[[asserts]]
+arguments = [30, 5]
+expected  = "99930"
+
+[[asserts]]
+arguments = [84, 10]
+expected  = "9999999993"
+
+[[asserts]]
+arguments = [39, 8]
+expected  = "99993000"
+
+[[asserts]]
+arguments = [19, 7]
+expected  = "9910000"
+
+[[asserts]]
+arguments = [72, 8]
+expected  = "99999999"
+
+[[asserts]]
+arguments = [8, 2]
+expected  = "80"
+
+[[asserts]]
+arguments = [90, 10]
+expected  = "9999999999"

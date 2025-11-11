@@ -1,0 +1,170 @@
+level             = "medium"
+name              = "goldbach_conjecture"
+tags              = ["math", "number_theory", "primes"]
+time_to_solve_sec = 600
+
+description_en = """
+Represent an even integer $n>3$ as a sum of two prime numbers (primes may be identical). Return any valid pair $[p, q]$ such that $p+q=n$.
+"""
+
+description_ru = """
+Представьте чётное целое число $n>3$ в виде суммы двух простых чисел (простые могут совпадать). Верните любую корректную пару $[p, q]$, такую что $p+q=n$.
+"""
+
+limits = """
+$ n>3 $
+$ n \\bmod 2 = 0 $
+$ 4 \\le n \\le 10^6 $
+"""
+
+solution = """
+def solution(n: int):
+    s = [True]*(n+1)
+    s[0]=s[1]=False
+    for i in range(2, int(n**0.5)+1):
+        if s[i]:
+            s[i*i:n+1:i] = [False]*(((n - i*i)//i) + 1)
+    for a in range(2, n):
+        if s[a] and s[n-a]:
+            return [a, n-a]
+"""
+
+examples = """
+solution(8) == [3, 5]
+solution(6) == [3, 3]
+solution(58) == [5, 53]
+solution(130) == [3, 127]
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [410]
+expected  = [13, 397]
+
+[[asserts]]
+arguments = [140]
+expected  = [3, 137]
+
+[[asserts]]
+arguments = [348]
+expected  = [11, 337]
+
+[[asserts]]
+arguments = [266]
+expected  = [3, 263]
+
+[[asserts]]
+arguments = [500]
+expected  = [13, 487]
+
+[[asserts]]
+arguments = [244]
+expected  = [3, 241]
+
+[[asserts]]
+arguments = [270]
+expected  = [7, 263]
+
+[[asserts]]
+arguments = [484]
+expected  = [5, 479]
+
+[[asserts]]
+arguments = [6]
+comment   = "Smallest non-trivial even > 3 with equal primes"
+expected  = [3, 3]
+
+[[asserts]]
+arguments = [550]
+expected  = [3, 547]
+
+[[asserts]]
+arguments = [700]
+expected  = [17, 683]
+
+[[asserts]]
+arguments = [252]
+expected  = [11, 241]
+
+[[asserts]]
+arguments = [130]
+expected  = [3, 127]
+
+[[asserts]]
+arguments = [214]
+expected  = [3, 211]
+
+[[asserts]]
+arguments = [350]
+expected  = [3, 347]
+
+[[asserts]]
+arguments = [498]
+expected  = [7, 491]
+
+[[asserts]]
+arguments = [738]
+expected  = [5, 733]
+
+[[asserts]]
+arguments = [412]
+expected  = [3, 409]
+
+[[asserts]]
+arguments = [464]
+expected  = [3, 461]
+
+[[asserts]]
+arguments = [790]
+expected  = [3, 787]
+
+[[asserts]]
+arguments = [492]
+expected  = [5, 487]
+
+[[asserts]]
+arguments = [474]
+expected  = [7, 467]
+
+[[asserts]]
+arguments = [910]
+expected  = [3, 907]
+
+[[asserts]]
+arguments = [516]
+expected  = [7, 509]
+
+[[asserts]]
+arguments = [212]
+expected  = [13, 199]
+
+[[asserts]]
+arguments = [946]
+expected  = [5, 941]
+
+[[asserts]]
+arguments = [58]
+comment   = "Small even with a larger prime partner"
+expected  = [5, 53]
+
+[[asserts]]
+arguments = [8]
+comment   = "Basic example"
+expected  = [3, 5]
+
+[[asserts]]
+arguments = [118]
+expected  = [5, 113]
+
+[[asserts]]
+arguments = [166]
+expected  = [3, 163]

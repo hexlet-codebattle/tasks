@@ -1,0 +1,365 @@
+level             = "hard"
+name              = "task_similarity_cliques"
+tags              = ["algo", "graphs", "parsing"]
+time_to_solve_sec = 900
+
+description_en = """
+You are given a non-empty list of task strings `tasks`. Each task contains at least one word.
+
+Two tasks are **similar** if they share at least one common word, where a *word* is any maximal sequence of letters or digits; comparison is **case-insensitive** and **punctuation is ignored**.
+
+A **group** is a set of at least two tasks where **each** task is directly similar to **every other** task in that set (i.e., they form a clique). Return **all maximal cliques**.
+
+Sorting:
+1. Within each group, keep the original relative order from `tasks`.
+2. Sort the list of groups by the lexicographic order of their original indices (e.g., `[1, 5]` comes before `[2, 3]`).
+"""
+
+description_ru = """
+Дан непустой список строк задач `tasks`. В каждой задаче есть хотя бы одно слово.
+
+Две задачи считаются **похожими**, если у них есть хотя бы одно общее слово — последовательность букв или цифр; сравнение **без учёта регистра**, **знаки пунктуации игнорируются**.
+
+**Группа** — это набор из как минимум двух задач, где **каждая** задача напрямую похожа на **каждую другую** (то есть образуют клику). Верните **все максимальные клики**.
+
+Сортировка:
+1. Внутри каждой группы сохраняйте исходный относительный порядок из `tasks`.
+2. Список групп отсортируйте по лексикографическому порядку исходных индексов (например, `[1, 5]` перед `[2, 3]`).
+"""
+
+solution = """
+import re
+from collections import defaultdict
+
+def _words(s: str):
+    # sequences of letters (latin/cyrillic) or digits, case-insensitive
+    return set(re.findall(r'[a-zа-яё0-9]+', s.lower()))
+
+def solution(tasks):
+    n = len(tasks)
+    if n < 2:
+        return []
+
+    words = [_words(t) for t in tasks]
+
+    adj = defaultdict(set)
+    active = set()
+    for i in range(n):
+        if not words[i]:
+            continue
+        active.add(i)
+        for j in range(i + 1, n):
+            if not words[j]:
+                continue
+            if words[i] & words[j]:
+                adj[i].add(j)
+                adj[j].add(i)
+
+    cliques = []
+
+    def bronk(r, p, x):
+        if not p and not x:
+            if len(r) >= 2:
+                cliques.append(sorted(r))
+            return
+        for v in list(p):
+            bronk(r | {v}, p & adj[v], x & adj[v])
+            p.remove(v)
+            x.add(v)
+
+    bronk(set(), active.copy(), set())
+
+    uniq = sorted({tuple(c) for c in cliques})
+    res = []
+    for c in uniq:
+        group = [tasks[i] for i in c]  # indices already sorted => original order preserved
+        res.append(group)
+    return res
+"""
+
+examples = """
+solution(['call mom']) == []
+
+solution(
+    ['buy milk', 'buy bread', 'buy cheese']
+) == [
+    ['buy milk', 'buy bread', 'buy cheese']
+]
+
+solution(
+    ['watch a movie', 'write a movie review', 'buy cinema ticket']
+) == [
+    ['watch a movie', 'write a movie review']
+]
+"""
+
+[[input_signature]]
+argument_name = "tasks"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["buy milk", "buy bread", "buy cheese"]]
+expected  = [["buy milk", "buy bread", "buy cheese"]]
+
+[[asserts]]
+arguments = [["call mom"]]
+expected  = []
+
+[[asserts]]
+arguments = [["Buy Milk!", "buy bread."]]
+expected  = [["Buy Milk!", "buy bread."]]
+
+[[asserts]]
+arguments = [["read a book", "write a book review", "buy a new book"]]
+expected  = [["read a book", "write a book review", "buy a new book"]]
+
+[[asserts]]
+arguments = [["do homework", "check homework", "send homework"]]
+expected  = [["do homework", "check homework", "send homework"]]
+
+[[asserts]]
+arguments = [["call mom", "call dad", "call grandma"]]
+expected  = [["call mom", "call dad", "call grandma"]]
+
+[[asserts]]
+arguments = [["go shopping", "buy groceries", "make a grocery list"]]
+expected  = []
+
+[[asserts]]
+arguments = [["sign up for gym", "go to gym", "buy gym membership"]]
+expected  = [["sign up for gym", "go to gym", "buy gym membership"]]
+
+[[asserts]]
+arguments = [["watch a movie", "write a movie review", "buy cinema ticket"]]
+expected  = [["watch a movie", "write a movie review"]]
+
+[[asserts]]
+arguments = [["do exercise", "go jogging", "do yoga"]]
+expected  = [["do exercise", "do yoga"]]
+
+[[asserts]]
+arguments = [["buy train ticket", "buy bus ticket", "buy plane ticket"]]
+expected  = [["buy train ticket", "buy bus ticket", "buy plane ticket"]]
+
+[[asserts]]
+arguments = [["clean the house", "tidy up toys", "dust the shelves"]]
+expected  = [["clean the house", "dust the shelves"]]
+
+[[asserts]]
+arguments = [["wash the car", "fuel the car", "change car oil"]]
+expected  = [["wash the car", "fuel the car", "change car oil"]]
+
+[[asserts]]
+arguments = [["visit dentist", "call dentist", "buy toothpaste"]]
+expected  = [["visit dentist", "call dentist"]]
+
+[[asserts]]
+arguments = [["make a presentation", "send presentation", "show presentation"]]
+expected  = [["make a presentation", "send presentation", "show presentation"]]
+
+[[asserts]]
+arguments = [["buy a gift", "wrap a gift", "send a gift"]]
+expected  = [["buy a gift", "wrap a gift", "send a gift"]]
+
+[[asserts]]
+arguments = [["take a photo", "send a photo", "print a photo"]]
+expected  = [["take a photo", "send a photo", "print a photo"]]
+
+[[asserts]]
+arguments = [["sign up for courses", "attend courses", "pay for courses"]]
+expected  = [["sign up for courses", "attend courses", "pay for courses"]]
+
+[[asserts]]
+arguments = [["buy vegetables", "buy fruits", "make a salad"]]
+expected  = [["buy vegetables", "buy fruits"]]
+
+[[asserts]]
+arguments = [["walk the dog", "feed the dog", "wash the dog"]]
+expected  = [["walk the dog", "feed the dog", "wash the dog"]]
+
+[[asserts]]
+arguments = [["place an order", "pay for order", "track order"]]
+expected  = [["place an order", "pay for order", "track order"]]
+
+[[asserts]]
+arguments = [["read an article", "write an article", "publish an article"]]
+expected  = [["read an article", "write an article", "publish an article"]]
+
+[[asserts]]
+arguments = [["buy laptop", "set up laptop", "install software on laptop"]]
+expected  = [["buy laptop", "set up laptop", "install software on laptop"]]
+
+[[asserts]]
+arguments = [["submit report", "check report", "send report"]]
+expected  = [["submit report", "check report", "send report"]]
+
+[[asserts]]
+arguments = [["buy concert ticket", "go to concert", "write concert review"]]
+expected  = [["buy concert ticket", "go to concert", "write concert review"]]
+
+[[asserts]]
+arguments = [
+  [
+    "do renovation",
+    "buy renovation materials",
+    "clean after renovation",
+  ],
+]
+expected = [
+  [
+    "do renovation",
+    "buy renovation materials",
+    "clean after renovation",
+  ],
+]
+
+[[asserts]]
+arguments = [["sign up for manicure", "do manicure", "buy nail polish"]]
+expected  = [["sign up for manicure", "do manicure"]]
+
+[[asserts]]
+arguments = [["buy cat food", "wash the cat", "play with the cat"]]
+expected  = [["buy cat food", "wash the cat", "play with the cat"]]
+
+[[asserts]]
+arguments = [["make a translation", "send translation", "check translation"]]
+expected  = [["make a translation", "send translation", "check translation"]]
+
+[[asserts]]
+arguments = [["buy flowers", "water flowers", "give flowers"]]
+expected  = [["buy flowers", "water flowers", "give flowers"]]
+
+[[asserts]]
+arguments = [["a"]]
+expected  = []
+
+[[asserts]]
+arguments = [["a", "b"]]
+expected  = []
+
+[[asserts]]
+arguments = [["a b", "b c", "c d", "d e"]]
+expected  = [["a b", "b c"], ["b c", "c d"], ["c d", "d e"]]
+
+[[asserts]]
+arguments = [["one two", "two three", "three four", "four one"]]
+expected = [
+  [
+    "one two",
+    "two three",
+  ],
+  [
+    "one two",
+    "four one",
+  ],
+  [
+    "two three",
+    "three four",
+  ],
+  [
+    "three four",
+    "four one",
+  ],
+]
+
+[[asserts]]
+arguments = [["repeat repeat", "repeat repeat", "repeat repeat"]]
+expected  = [["repeat repeat", "repeat repeat", "repeat repeat"]]
+
+[[asserts]]
+arguments = [["task 1", "task 2", "task 3"]]
+expected  = [["task 1", "task 2", "task 3"]]
+
+[[asserts]]
+arguments = [["alpha beta", "beta gamma", "gamma delta", "delta alpha"]]
+expected = [
+  [
+    "alpha beta",
+    "beta gamma",
+  ],
+  [
+    "alpha beta",
+    "delta alpha",
+  ],
+  [
+    "beta gamma",
+    "gamma delta",
+  ],
+  [
+    "gamma delta",
+    "delta alpha",
+  ],
+]
+
+[[asserts]]
+arguments = [["apple pie", "apple juice", "orange juice"]]
+expected  = [["apple pie", "apple juice"], ["apple juice", "orange juice"]]
+
+[[asserts]]
+arguments = [
+  [
+    "long task with many words",
+    "another long task with many words",
+    "completely different",
+  ],
+]
+expected = [["long task with many words", "another long task with many words"]]
+
+[[asserts]]
+arguments = [["Task!", "task.", "TASK?"]]
+expected  = [["Task!", "task.", "TASK?"]]
+
+[[asserts]]
+arguments = [["123 buy", "buy 456", "789"]]
+expected  = [["123 buy", "buy 456"]]
+
+[[asserts]]
+arguments = [["one, two", "two; three", "three: four"]]
+expected  = [["one, two", "two; three"], ["two; three", "three: four"]]
+
+[[asserts]]
+arguments = [["repeat", "repeat", "unique"]]
+expected  = [["repeat", "repeat"]]
+
+[[asserts]]
+arguments = [["A b", "a B", "b a"]]
+expected  = [["A b", "a B", "b a"]]
+
+[[asserts]]
+arguments = [["first", "second", "third"]]
+expected  = []
+
+[[asserts]]
+arguments = [["one two three", "three four five", "five six seven"]]
+expected = [
+  [
+    "one two three",
+    "three four five",
+  ],
+  [
+    "three four five",
+    "five six seven",
+  ],
+]
+
+[[asserts]]
+arguments = [["unique task one", "unique task two", "unique task three"]]
+expected  = [["unique task one", "unique task two", "unique task three"]]
+
+[[asserts]]
+arguments = [["same", "same", "same"]]
+expected  = [["same", "same", "same"]]
+
+[[asserts]]
+arguments = [["no group here", "absolutely different", "nothing matches"]]
+expected  = []

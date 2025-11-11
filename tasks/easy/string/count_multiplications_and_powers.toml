@@ -1,0 +1,146 @@
+level             = "medium"
+name              = "count_multiplications_and_powers"
+tags              = ["string", "parsing", "math"]
+time_to_solve_sec = 240
+
+description_en = """
+You are given a valid arithmetic expression with numbers, single-letter variables, operation signs, and spaces.
+
+Multiplication is `*`, exponentiation is `**` (two consecutive asterisks with no space). The `*` sign **may be omitted** between a number and a variable written **adjacently** (e.g., `2x`), but spaces break this rule.
+
+Count the number of multiplications and the number of exponentiations. Return `[mul_count, pow_count]`.
+"""
+
+description_ru = """
+Дан корректный арифметический пример с числами, однобуквенными переменными, знаками операций и пробелами.
+
+Умножение — `*`, возведение в степень — `**` (две подряд звёздочки без пробела). Знак `*` **может быть опущен** между числом и переменной, если они записаны **подряд** (например, `2x`), но пробелы запрещают это.
+
+Посчитайте число умножений и число возведений в степень. Верните `[mul_count, pow_count]`.
+"""
+
+limits = """
+- $1 \\le \\text{len}(s) \\le 10^5$
+"""
+
+solution = """
+def solution(s: str):
+    pow_cnt = s.count('**')
+    t = s.replace('**', '#')
+    mul_cnt = t.count('*')
+    for i in range(len(t) - 1):
+        if t[i].isdigit() and t[i + 1].isalpha():
+            mul_cnt += 1
+    return [mul_cnt, pow_cnt]
+"""
+
+examples = """
+solution("3x+1") == [1, 0]
+solution("2**3 - 3") == [0, 1]
+solution("2**3 - 3*3 + 7*x - 2y") == [3, 1]
+solution("2**3**4 **    5") == [0, 3]
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = ["3x+1"]
+expected  = [1, 0]
+
+[[asserts]]
+arguments = ["2**3 - 3"]
+expected  = [0, 1]
+
+[[asserts]]
+arguments = ["2**3 - 3*3 + 7*x - 2y"]
+expected  = [3, 1]
+
+[[asserts]]
+arguments = ["2**3**4 **    5"]
+expected  = [0, 3]
+
+[[asserts]]
+arguments = ["x**y**2z*3*5"]
+expected  = [3, 2]
+
+[[asserts]]
+arguments = ["1+2+3+4"]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = ["1*2*3*4"]
+expected  = [3, 0]
+
+[[asserts]]
+arguments = ["1**2**3**4"]
+expected  = [0, 3]
+
+[[asserts]]
+arguments = ["1+2*3**4"]
+expected  = [1, 1]
+
+[[asserts]]
+arguments = ["1*2+3948-4**345**456645*34*232**23*23-3423+23223"]
+expected  = [4, 3]
+
+[[asserts]]
+arguments = [
+  "1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1**1",
+]
+expected = [0, 27]
+
+[[asserts]]
+arguments = ["x+y+z"]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = ["a*d*g"]
+expected  = [2, 0]
+
+[[asserts]]
+arguments = ["s+r*t"]
+expected  = [1, 0]
+
+[[asserts]]
+arguments = ["r**t"]
+expected  = [0, 1]
+
+[[asserts]]
+arguments = ["r+1"]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = ["2r+1"]
+expected  = [1, 0]
+
+[[asserts]]
+arguments = [
+  "2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+2a+1",
+]
+expected = [30, 0]
+
+[[asserts]]
+arguments = ["2**a**3**b**3**f  **5 ** g"]
+expected  = [0, 7]
+
+[[asserts]]
+arguments = ["2+a*3b*4c*5*d*6*e*7f*8"]
+expected  = [11, 0]
+
+[[asserts]]
+arguments = [
+  "a**2*b**2**3*c*d**4**e**5**6*d*f**5*4**h**m**p**o**i*i-23+2g+23+23g+234g",
+]
+expected = [10, 13]
+
+[[asserts]]
+arguments = ["-1"]
+expected  = [0, 0]

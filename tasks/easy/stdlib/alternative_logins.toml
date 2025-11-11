@@ -1,0 +1,236 @@
+level             = "easy"
+name              = "alternative_logins"
+tags              = ["stdlib", "string", "generation"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given a desired login `login` (which is unavailable) and a list `taken_logins`.
+
+Suggest **the first three** available alternatives by applying strategies in order:
+
+1) add `_` to the beginning and the end,
+2) replace all characters `o`, `l`, `s` with digits: `o→0`, `l→1`, `s→5`,
+3) append the smallest positive integer suffix; reuse this strategy as many times as needed.
+
+Skip any candidate already present in `taken_logins`. Return exactly three suggestions.
+"""
+
+description_ru = """
+Дан желаемый логин `login` (он недоступен) и список `taken_logins`.
+
+Нужно предложить **первые три** свободных варианта, последовательно применяя стратегии:
+
+1) добавить `_` в начало и конец,
+2) заменить все символы `o`, `l`, `s` цифрами: `o→0`, `l→1`, `s→5`,
+3) добавить минимально возможный целый положительный суффикс; повторять этот шаг по мере необходимости.
+
+Пропускайте варианты, которые уже встречаются в `taken_logins`. Верните ровно три предложения.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{login}) \\leq 30$
+- $0 \\leq \\text{len}(\\text{taken\\_logins}) \\leq 10^4$
+- $\\text{login} \\in [A\\!\\!\\_\\!\\!Za\\!\\!\\_\\!\\!z0\\!\\!\\_\\!\\!9\\_]^*$
+"""
+
+solution = """
+def solution(login: str, taken_logins: list[str]) -> list[str]:
+    res = []
+    taken = set(taken_logins)
+
+    # s1
+    s1 = f"_{login}_"
+    if s1 not in taken:
+        res.append(s1)
+        if len(res) == 3: return res
+
+    # s2
+    tr = str.maketrans({'o':'0','l':'1','s':'5'})
+    s2 = login.translate(tr)
+    if s2 != login and s2 not in taken:
+        res.append(s2)
+        if len(res) == 3: return res
+
+    # numeric suffixes
+    i = 1
+    base = login
+    while len(res) < 3:
+        cand = f"{base}{i}"
+        if cand not in taken:
+            res.append(cand)
+        i += 1
+    return res
+"""
+
+examples = """
+solution("user", ["user", "user1"]) == ["_user_", "u5er", "user2"]
+solution("solo", ["_solo_", "5010"]) == ["solo1", "solo2", "solo3"]
+"""
+
+[[input_signature]]
+argument_name = "login"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "taken_logins"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = ["losos", ["losos", "losos1"]]
+comment   = "Simple: underscore, leet, then numbers"
+expected  = ["_losos_", "10505", "losos2"]
+
+[[asserts]]
+arguments = ["login", []]
+comment   = "All strategies available"
+expected  = ["_login_", "10gin", "login1"]
+
+[[asserts]]
+arguments = ["hello", ["_hello_"]]
+comment   = "Underscore taken"
+expected  = ["he110", "hello1", "hello2"]
+
+[[asserts]]
+arguments = ["solo", ["_solo_", "5010"]]
+comment   = "Underscore & leet taken"
+expected  = ["solo1", "solo2", "solo3"]
+
+[[asserts]]
+arguments = ["admin", ["_admin_"]]
+comment   = "No leet chars present"
+expected  = ["admin1", "admin2", "admin3"]
+
+[[asserts]]
+arguments = ["master", ["master1", "master2", "master3"]]
+comment   = "Skips taken numeric suffixes"
+expected  = ["_master_", "ma5ter", "master4"]
+
+[[asserts]]
+arguments = ["new", ["_new_", "new1", "new2", "new3"]]
+comment   = "Only numeric choices left"
+expected  = ["new4", "new5", "new6"]
+
+[[asserts]]
+arguments = ["losos", ["_losos_", "10s0s"]]
+comment   = "Leet remains available"
+expected  = ["10505", "losos1", "losos2"]
+
+[[asserts]]
+arguments = ["password", ["_password_", "pa55w0rd", "password1", "password3"]]
+comment   = "Fill the gaps"
+expected  = ["password2", "password4", "password5"]
+
+[[asserts]]
+arguments = ["top", []]
+expected  = ["_top_", "t0p", "top1"]
+
+[[asserts]]
+arguments = [
+  "coder",
+  [
+    "_coder_",
+    "c0der",
+    "coder1",
+    "coder2",
+    "coder3",
+    "coder4",
+  ],
+]
+expected = ["coder5", "coder6", "coder7"]
+
+[[asserts]]
+arguments = ["lss", ["_lss_", "1s5"]]
+expected  = ["155", "lss1", "lss2"]
+
+[[asserts]]
+arguments = ["", ["_", "1"]]
+comment   = "Empty login"
+expected  = ["__", "2", "3"]
+
+[[asserts]]
+arguments = ["user1", ["_user1_"]]
+expected  = ["u5er1", "user11", "user12"]
+
+[[asserts]]
+arguments = ["user", ["User", "_user_"]]
+comment   = "Case sensitive"
+expected  = ["u5er", "user1", "user2"]
+
+[[asserts]]
+arguments = ["test", ["_test_", "test1"]]
+expected  = ["te5t", "test2", "test3"]
+
+[[asserts]]
+arguments = ["lol", []]
+expected  = ["_lol_", "101", "lol1"]
+
+[[asserts]]
+arguments = ["user_", ["_user__"]]
+expected  = ["u5er_", "user_1", "user_2"]
+
+[[asserts]]
+arguments = [
+  "file",
+  [
+    "_file_",
+    "file1",
+    "file2",
+    "file3",
+    "file4",
+    "file5",
+    "file6",
+    "file7",
+    "file8",
+    "file9",
+  ],
+]
+expected = ["fi1e", "file10", "file11"]
+
+[[asserts]]
+arguments = ["sole", ["_sole_", "s01e1"]]
+expected  = ["501e", "sole1", "sole2"]
+
+[[asserts]]
+arguments = ["s", []]
+expected  = ["_s_", "5", "s1"]
+
+[[asserts]]
+arguments = ["LoginUser", ["_LoginUser_"]]
+expected  = ["L0ginU5er", "LoginUser1", "LoginUser2"]
+
+[[asserts]]
+arguments = ["a_very_long_login_name_for_testing", []]
+expected = [
+  "_a_very_long_login_name_for_testing_",
+  "a_very_10ng_10gin_name_f0r_te5ting",
+  "a_very_long_login_name_for_testing1",
+]
+
+[[asserts]]
+arguments = ["z", ["_z_", "z"]]
+expected  = ["z1", "z2", "z3"]
+
+[[asserts]]
+arguments = ["login1", ["_login1_"]]
+expected  = ["10gin1", "login11", "login12"]
+
+[[asserts]]
+arguments = ["options", ["_options_", "0pti0n5", "options1"]]
+expected  = ["options2", "options3", "options4"]
+
+[[asserts]]
+arguments = ["hacker", ["_hacker_", "hacker1", "hacker3", "hacker4"]]
+expected  = ["hacker2", "hacker5", "hacker6"]
+
+[[asserts]]
+arguments = ["player", ["_player_", "p1ayer", "player2", "player3", "player5"]]
+expected  = ["player1", "player4", "player6"]

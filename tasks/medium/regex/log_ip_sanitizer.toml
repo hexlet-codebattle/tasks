@@ -1,0 +1,179 @@
+level             = "medium"
+name              = "log_ip_sanitizer"
+tags              = ["regex", "string"]
+time_to_solve_sec = 300
+
+description_en = """
+You're given a log line  as a string `s`.
+Replace every **valid** IPv4 address with the exact text `[REDACTED]`.
+
+A valid IPv4 is four decimal octets separated by dots: `a.b.c.d`, where each `a..d` is in `0..255`.
+Leading zeros are allowed (e.g. `001.002.003.004`).
+An IPv4 must not be part of a longer digit sequence (it's bounded by non-digits or string ends).
+
+Return the transformed string.
+Keep all other characters unchanged.
+If there are no valid IPv4 addresses, return the original string.
+"""
+
+description_ru = """
+Дана строка лога `s`.
+Замените все **корректные** IPv4-адреса на текст `[REDACTED]`.
+
+Корректный IPv4 — это четыре десятичных октета, разделённых точками: `a.b.c.d`, где каждое `a..d` в диапазоне `0..255`.
+Ведущие нули разрешены (например, `001.002.003.004`).
+IPv4 не должен быть частью более длинной цифровой последовательности (он ограничен нецифровыми символами или концами строки).
+
+Верните преобразованную строку.
+Все остальные символы должны остаться без изменений.
+Если корректных IPv4 нет — верните исходную строку.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 100$
+"""
+
+examples = """
+solution("no ip here") == "no ip here"
+solution("255.255.255.255") == "[REDACTED]"
+solution("ip=1.2.3.4, ok") == "ip=[REDACTED], ok"
+solution("256.0.0.1") == "256.0.0.1"
+solution("1.1.1.1 2.2.2.2") == "[REDACTED] [REDACTED]"
+"""
+
+solution = """
+import re
+
+def solution(s: str) -> str:
+    octet = r'(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)'
+    ipv4 = rf'(?<!\\d){octet}(?:\\.{octet}){{3}}(?!\\d)'
+    return re.sub(ipv4, '[REDACTED]', s)
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["no ip here"]
+expected  = "no ip here"
+
+[[asserts]]
+arguments = ["1.2.3.4"]
+expected  = "[REDACTED]"
+
+[[asserts]]
+arguments = ["0.0.0.0"]
+expected  = "[REDACTED]"
+
+[[asserts]]
+arguments = ["255.255.255.255"]
+expected  = "[REDACTED]"
+
+[[asserts]]
+arguments = ["001.002.003.004"]
+expected  = "[REDACTED]"
+
+[[asserts]]
+arguments = ["127.000.000.001"]
+expected  = "[REDACTED]"
+
+[[asserts]]
+arguments = ["256.0.0.1"]
+expected  = "256.0.0.1"
+
+[[asserts]]
+arguments = ["300.2.2.2"]
+expected  = "300.2.2.2"
+
+[[asserts]]
+arguments = ["999.999.999.999"]
+expected  = "999.999.999.999"
+
+[[asserts]]
+arguments = ["1.2.3.4,"]
+expected  = "[REDACTED],"
+
+[[asserts]]
+arguments = ["(1.2.3.4)"]
+expected  = "([REDACTED])"
+
+[[asserts]]
+arguments = ["ip=1.2.3.4;ok"]
+expected  = "ip=[REDACTED];ok"
+
+[[asserts]]
+arguments = ["x1.2.3.4y"]
+expected  = "x[REDACTED]y"
+
+[[asserts]]
+arguments = ["a1.2.3.400"]
+expected  = "a1.2.3.400"
+
+[[asserts]]
+arguments = ["1.2.3"]
+expected  = "1.2.3"
+
+[[asserts]]
+arguments = ["1.2.3.4.5"]
+expected  = "[REDACTED].5"
+
+[[asserts]]
+arguments = ["01.002.3.004"]
+expected  = "[REDACTED]"
+
+[[asserts]]
+arguments = ["10.0.0.1 10.0.0.2"]
+expected  = "[REDACTED] [REDACTED]"
+
+[[asserts]]
+arguments = ["10.10.10.010"]
+expected  = "[REDACTED]"
+
+[[asserts]]
+arguments = ["...1.2.3.4..."]
+expected  = "...[REDACTED]..."
+
+[[asserts]]
+arguments = ["edge:1.2.3.4"]
+expected  = "edge:[REDACTED]"
+
+[[asserts]]
+arguments = ["1.2.3.4:end"]
+expected  = "[REDACTED]:end"
+
+[[asserts]]
+arguments = ["0255.255.255.255"]
+expected  = "0255.255.255.255"
+
+[[asserts]]
+arguments = ["10.10.10.256"]
+expected  = "10.10.10.256"
+
+[[asserts]]
+arguments = [" 10.0.0.1 "]
+expected  = " [REDACTED] "
+
+[[asserts]]
+arguments = ["1.2.3.4 x"]
+expected  = "[REDACTED] x"
+
+[[asserts]]
+arguments = ["x 1.2.3.4"]
+expected  = "x [REDACTED]"
+
+[[asserts]]
+arguments = ["11.2.3.4"]
+expected  = "[REDACTED]"
+
+[[asserts]]
+arguments = ["1.2.3.499"]
+expected  = "1.2.3.499"
+
+[[asserts]]
+arguments = ["1.2.3.4,5.6.7.8"]
+expected  = "[REDACTED],[REDACTED]"

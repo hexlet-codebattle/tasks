@@ -1,0 +1,185 @@
+level             = "elementary"
+name              = "double_letters"
+tags              = ["strings"]
+time_to_solve_sec = 60
+
+description_en = """
+Given a string `s`, return a new string where every character is doubled.
+"""
+
+description_ru = """
+Дана строка `s`. Верните новую строку, в которой каждый символ продублирован.
+"""
+
+solution = """
+def solution(s: str) -> str:
+    return ''.join(c * 2 for c in s)
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 30$
+"""
+
+
+examples = """
+solution("") == ""
+solution("abc") == "aabbcc"
+solution("Hi!") == "HHii!!"
+solution("a b") == "aa  bb"
+"""
+
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = ""
+
+[[asserts]]
+arguments = ["z"]
+comment   = "Single character"
+expected  = "zz"
+
+[[asserts]]
+arguments = ["abc"]
+comment   = "Basic lowercase letters"
+expected  = "aabbcc"
+
+[[asserts]]
+arguments = ["Hi!"]
+comment   = "Mixed case with punctuation"
+expected  = "HHii!!"
+
+[[asserts]]
+arguments = ["a b"]
+comment   = "Space between letters"
+expected  = "aa  bb"
+
+[[asserts]]
+arguments = ["a1b2"]
+comment   = "Alphanumeric mix"
+expected  = "aa11bb22"
+
+[[asserts]]
+arguments = ["THE"]
+comment   = "All uppercase"
+expected  = "TTHHEE"
+
+[[asserts]]
+arguments = ["AaBb"]
+comment   = "Alternating case"
+expected  = "AAaaBBbb"
+
+[[asserts]]
+arguments = ["book"]
+comment   = "Word with repeated letter"
+expected  = "bbooookk"
+
+[[asserts]]
+arguments = ["Mississippi"]
+comment   = "Word with many repeats"
+expected  = "MMiissssiissssiippppii"
+
+[[asserts]]
+arguments = ["punct."]
+comment   = "Trailing punctuation"
+expected  = "ppuunncctt.."
+
+[[asserts]]
+arguments = ["no-dash"]
+comment   = "Hyphenated word"
+expected  = "nnoo--ddaasshh"
+
+[[asserts]]
+arguments = ["underscore_"]
+comment   = "Underscore at end"
+expected  = "uunnddeerrssccoorree__"
+
+[[asserts]]
+arguments = ["mix: A1!"]
+comment   = "Mixed symbols, letters, digits"
+expected  = "mmiixx::  AA11!!"
+
+[[asserts]]
+arguments = ["edge"]
+comment   = "Simple word"
+expected  = "eeddggee"
+
+[[asserts]]
+arguments = ["world"]
+comment   = "Another simple word"
+expected  = "wwoorrlldd"
+
+[[asserts]]
+arguments = ["dog"]
+comment   = "Short word"
+expected  = "ddoogg"
+
+[[asserts]]
+arguments = ["UPPER lower"]
+comment   = "Upper and lower with space"
+expected  = "UUPPPPEERR  lloowweerr"
+
+[[asserts]]
+arguments = ["palindrome"]
+comment   = "Common word"
+expected  = "ppaalliinnddrroommee"
+
+[[asserts]]
+arguments = ["repeat"]
+comment   = "Another common word"
+expected  = "rreeppeeaatt"
+
+[[asserts]]
+arguments = ["  lead"]
+comment   = "Two leading spaces"
+expected  = "    lleeaadd"
+
+[[asserts]]
+arguments = ["trail  "]
+comment   = "Two trailing spaces"
+expected  = "ttrraaiill    "
+
+[[asserts]]
+arguments = [" spaced "]
+comment   = "Single leading and trailing space"
+expected  = "  ssppaacceedd  "
+
+
+[[asserts]]
+arguments = ["0xFF"]
+comment   = "Hex-like pattern"
+expected  = "00xxFFFF"
+
+[[asserts]]
+arguments = ["Hello"]
+comment   = "Capitalized word"
+expected  = "HHeelllloo"
+
+[[asserts]]
+arguments = ["EdgeCases"]
+comment   = "CamelCase-like"
+expected  = "EEddggeeCCaasseess"
+
+[[asserts]]
+arguments = ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
+comment   = "50 repeated characters"
+expected  = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+[[asserts]]
+arguments = ["Python3.9"]
+comment   = "Letters, digits, and dot"
+expected  = "PPyytthhoonn33..99"
+
+[[asserts]]
+arguments = ["email@example.com"]
+comment   = "Typical email-like string"
+expected  = "eemmaaiill@@eexxaammppllee..ccoomm"

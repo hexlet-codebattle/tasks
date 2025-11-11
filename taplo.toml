@@ -1,0 +1,4 @@
+[formatting]
+align_entries     = true
+array_auto_expand = true
+reorder_keys      = true

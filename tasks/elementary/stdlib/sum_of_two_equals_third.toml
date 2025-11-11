@@ -1,0 +1,143 @@
+level             = "easy"
+name              = "sum_of_two_equals_third"
+tags              = ["math", "arrays"]
+time_to_solve_sec = 300
+
+description_en = """
+Given three integers `nums = [a, b, c]`, determine whether the sum of **two** of them equals the **third**.
+
+Return `True` if such a pair exists, otherwise return `False`.
+"""
+
+description_ru = """
+Даны три целых числа `nums = [a, b, c]`. Определите, существует ли пара чисел, сумма которых равна третьему.
+
+Верните `True`, если такая пара существует, иначе `False`.
+"""
+
+limits = """
+- $-10^6 \\leq a,b,c \\leq 10^6$
+"""
+
+solution = """
+def solution(nums: list) -> bool:
+    nums.sort()
+    return nums[0] + nums[1] == nums[2]
+"""
+
+examples = """
+solution([1, 2, 3]) == True
+solution([3, 1, 3]) == False
+solution([3, 1, 2]) == True
+"""
+
+[[input_signature]]
+argument_name = "nums"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+expected  = true
+
+[[asserts]]
+arguments = [[5, 5, 10]]
+expected  = true
+
+[[asserts]]
+arguments = [[3, 7, 10]]
+expected  = true
+
+[[asserts]]
+arguments = [[10, 15, 25]]
+expected  = true
+
+[[asserts]]
+arguments = [[100, 200, 300]]
+expected  = true
+
+[[asserts]]
+arguments = [[1000, 2000, 3000]]
+expected  = true
+
+[[asserts]]
+arguments = [[50, 50, 100]]
+expected  = true
+
+[[asserts]]
+arguments = [[123, 456, 579]]
+expected  = true
+
+[[asserts]]
+arguments = [[1, 999, 1000]]
+expected  = true
+
+[[asserts]]
+arguments = [[50000, 50000, 100000]]
+expected  = true
+
+
+[[asserts]]
+arguments = [[50571, 33109, 83680]]
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1, 3]]
+expected  = false
+
+[[asserts]]
+arguments = [[2, 2, 5]]
+expected  = false
+
+[[asserts]]
+arguments = [[10, 20, 40]]
+expected  = false
+
+[[asserts]]
+arguments = [[100, 200, 400]]
+expected  = false
+
+[[asserts]]
+arguments = [[1000, 2000, 4000]]
+expected  = false
+
+[[asserts]]
+arguments = [[5000, 5000, 11000]]
+expected  = false
+
+[[asserts]]
+arguments = [[999, 999, 1999]]
+expected  = false
+
+[[asserts]]
+arguments = [[5372, 4396, 7179]]
+expected  = false
+
+[[asserts]]
+arguments = [[58611, 74697, 89900]]
+expected  = false
+
+[[asserts]]
+arguments = [[1, 2, 4]]
+expected  = false
+
+[[asserts]]
+arguments = [[7, 8, 16]]
+expected  = false
+
+[[asserts]]
+arguments = [[99, 100, 200]]
+expected  = false
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+expected  = false
+
+[[asserts]]
+arguments = [[10000, 10000, 19999]]
+expected  = false

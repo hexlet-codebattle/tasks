@@ -1,0 +1,292 @@
+level             = "easy"
+name              = "cicd_config_validation"
+tags              = ["validation", "logic", "simulation"]
+time_to_solve_sec = 300
+
+description_en = """
+Tasks: `build`, `test`, `deploy`.
+
+A CI/CD config is a sequence of tasks. It is **valid** iff:
+- every `test` appears **after** some `build`,
+- every `deploy` appears **after** the **most recent** successful `test`,
+- any new `build` **invalidates** previous tests (so a following `deploy` must have a newer `test`).
+
+Given multiple configs, return an array of boolean verdicts.
+"""
+
+description_ru = """
+Задачи: `build`, `test`, `deploy`.
+
+Конфигурация (последовательность задач) считается **валидной**, если:
+- каждый `test` идёт **после** какого-либо `build`,
+- каждый `deploy` идёт **после** **последнего** успешного `test`,
+- новая `build` **инвалидирует** предыдущие тесты (последующий `deploy` должен иметь более новый `test`).
+
+Для набора конфигов верните массив логических вердиктов.
+"""
+
+limits = """
+- $1 \\leq \\text{len(configs)} \\leq 100$
+- $0 \\leq \\text{len(config)} \\leq 100$
+"""
+
+solution = """
+def solution(configs: list[list[str]]) -> list[bool]:
+    def ok(cfg):
+        last_build = -1
+        last_test  = -1
+        for i, x in enumerate(cfg):
+            if x == 'build':
+                last_build = i
+                # tests before this are invalidated
+            elif x == 'test':
+                if last_build == -1:
+                    return False
+                last_test = i
+            elif x == 'deploy':
+                if last_test == -1 or last_test < last_build:
+                    return False
+            else:
+                return False
+        return True
+    return [ok(c) for c in configs]
+"""
+
+examples = """
+solution(
+  [
+    ["build","test","deploy"],
+    ["build","test","build","deploy"]
+  ]
+) == [True, False]
+"""
+
+[[input_signature]]
+argument_name = "configs"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "boolean"
+
+# Asserts (converted 1:1 from your JSON)
+[[asserts]]
+arguments = [[["build", "test"], ["build", "deploy"]]]
+comment   = "Short mixed set 1/2"
+expected  = [true, false]
+
+[[asserts]]
+arguments = [[["build", "test", "build", "test", "deploy"]]]
+expected  = [true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "test",
+      "build",
+      "test",
+      "deploy",
+    ],
+    [
+      "build",
+      "test",
+      "deploy",
+      "deploy",
+    ],
+  ],
+]
+expected = [false, true]
+
+[[asserts]]
+arguments = [[["build", "test", "build"], ["deploy"]]]
+expected  = [true, false]
+
+[[asserts]]
+arguments = [[[], ["test"]]]
+expected  = [true, false]
+
+[[asserts]]
+arguments = [[["build"], ["deploy"]]]
+expected  = [true, false]
+
+[[asserts]]
+arguments = [[["build", "test"], ["test", "deploy"]]]
+expected  = [true, false]
+
+[[asserts]]
+arguments = [[["build", "deploy"], ["build", "test", "deploy"]]]
+expected  = [false, true]
+
+[[asserts]]
+arguments = [[["deploy", "build", "test"], ["test", "build", "deploy"]]]
+expected  = [false, false]
+
+[[asserts]]
+arguments = [[["build", "test", "build"], ["test", "test"]]]
+expected  = [true, false]
+
+[[asserts]]
+arguments = [[["build", "build", "test"], ["build", "test", "build", "deploy"]]]
+expected  = [true, false]
+
+[[asserts]]
+arguments = [[["build", "test", "test"], ["deploy", "deploy"]]]
+expected  = [true, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "build",
+      "test",
+      "build",
+      "test",
+    ],
+    [
+      "build",
+      "test",
+      "deploy",
+      "deploy",
+    ],
+  ],
+]
+expected = [true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "build",
+      "deploy",
+      "build",
+      "test",
+      "deploy",
+    ],
+    [
+      "build",
+      "test",
+      "build",
+      "test",
+      "deploy",
+    ],
+  ],
+]
+expected = [false, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "build",
+      "deploy",
+      "deploy",
+    ],
+    [
+      "build",
+      "test",
+      "deploy",
+      "build",
+      "deploy",
+    ],
+  ],
+]
+expected = [false, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "deploy",
+      "test",
+      "build",
+    ],
+    [
+      "build",
+      "test",
+      "deploy",
+      "build",
+    ],
+  ],
+]
+expected = [false, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "build",
+      "test",
+      "deploy",
+      "build",
+      "test",
+      "deploy",
+    ],
+    [
+      "build",
+      "build",
+      "build",
+      "test",
+      "test",
+      "deploy",
+      "deploy",
+      "deploy",
+    ],
+  ],
+]
+expected = [true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "build",
+      "test",
+      "deploy",
+      "build",
+      "test",
+    ],
+    [
+      "build",
+      "test",
+      "build",
+      "deploy",
+      "test",
+      "deploy",
+      "build",
+      "deploy",
+    ],
+  ],
+]
+expected = [true, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "build",
+      "test",
+      "build",
+      "test",
+      "build",
+      "test",
+    ],
+    [
+      "build",
+      "test",
+      "deploy",
+      "deploy",
+      "build",
+      "test",
+      "test",
+      "deploy",
+    ],
+  ],
+]
+expected = [true, true]

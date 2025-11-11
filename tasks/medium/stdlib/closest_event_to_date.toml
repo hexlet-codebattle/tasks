@@ -1,0 +1,663 @@
+level             = "medium"
+name              = "closest_event_to_date"
+tags              = ["stdlib", "date", "search"]
+time_to_solve_sec = 360
+
+description_en = """
+Given a list of events `(name, date)` with date in format `'YYYY-MM-DD'` and a target date,
+return the **name** of the event whose date is **closest** to the target.
+If several are equally close, choose the event with the **earliest date**; if still multiple, take the **first** in the list.
+"""
+
+description_ru = """
+Дан список событий `(название, дата)` с датой формата `'YYYY-MM-DD'` и целевая дата.
+Верните **название** события, дата которого **ближе всего** к целевой.
+Если несколько на одинаковом расстоянии, выберите событие с **минимальной датой**; если и тут несколько — **первое** в списке.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{events}) \\leq 10^5$
+- $\\text{date} = \\text{YYYY-MM-DD}$
+"""
+
+solution = """
+def solution(events, target_date):
+    from datetime import datetime
+    t = datetime.strptime(target_date, '%Y-%m-%d')
+    parsed = [(name, datetime.strptime(d, '%Y-%m-%d')) for name, d in events]
+    dists = [abs((d - t).days) for _, d in parsed]
+    md = min(dists)
+    cand_idx = [i for i, dd in enumerate(dists) if dd == md]
+    # Among candidates choose minimal date; if tie, the first by original order.
+    best_i = min(cand_idx, key=lambda i: parsed[i][1])
+    return parsed[best_i][0]
+"""
+
+examples = """
+solution([
+["concert", "2023-10-15"],
+["lecture", "2023-10-10"],
+["party", "2023-10-12"]
+],"2023-10-11") == "lecture"
+"""
+
+[[input_signature]]
+argument_name = "events"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "target_date"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "new year",
+      "2019-01-01",
+    ],
+    [
+      "christmas",
+      "2022-12-25",
+    ],
+    [
+      "independence day",
+      "2020-07-04",
+    ],
+  ],
+  "2020-07-05",
+]
+expected = "independence day"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "spring fest",
+      "2021-03-21",
+    ],
+    [
+      "summer fest",
+      "2021-06-21",
+    ],
+    [
+      "autumn fest",
+      "2021-09-21",
+    ],
+    [
+      "winter fest",
+      "2021-12-21",
+    ],
+  ],
+  "2021-09-20",
+]
+expected = "autumn fest"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "kickoff",
+      "2018-05-01",
+    ],
+    [
+      "milestone",
+      "2019-05-01",
+    ],
+    [
+      "release",
+      "2020-05-01",
+    ],
+    [
+      "planning",
+      "2021-05-01",
+    ],
+    [
+      "demo day",
+      "2022-05-01",
+    ],
+  ],
+  "2021-04-30",
+]
+expected = "planning"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "team sync",
+      "2017-01-01",
+    ],
+    [
+      "demo day",
+      "2018-02-02",
+    ],
+    [
+      "product review",
+      "2019-03-03",
+    ],
+    [
+      "retrospective",
+      "2020-04-04",
+    ],
+    [
+      "standup",
+      "2021-05-05",
+    ],
+    [
+      "all hands",
+      "2022-06-06",
+    ],
+    [
+      "strategy session",
+      "2023-07-07",
+    ],
+    [
+      "client call",
+      "2024-08-08",
+    ],
+    [
+      "sprint planning",
+      "2025-09-09",
+    ],
+    [
+      "roadmap review",
+      "2026-10-10",
+    ],
+  ],
+  "2023-07-08",
+]
+expected = "strategy session"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "kickoff",
+      "2010-01-01",
+    ],
+    [
+      "milestone",
+      "2011-01-01",
+    ],
+    [
+      "release",
+      "2012-01-01",
+    ],
+    [
+      "planning",
+      "2013-01-01",
+    ],
+    [
+      "demo day",
+      "2014-01-01",
+    ],
+    [
+      "product review",
+      "2015-01-01",
+    ],
+    [
+      "retrospective",
+      "2016-01-01",
+    ],
+    [
+      "standup",
+      "2017-01-01",
+    ],
+    [
+      "all hands",
+      "2018-01-01",
+    ],
+    [
+      "strategy session",
+      "2019-01-01",
+    ],
+    [
+      "client call",
+      "2020-01-01",
+    ],
+    [
+      "sprint planning",
+      "2021-01-01",
+    ],
+    [
+      "roadmap review",
+      "2022-01-01",
+    ],
+    [
+      "team sync",
+      "2023-01-01",
+    ],
+    [
+      "deadline",
+      "2024-01-01",
+    ],
+  ],
+  "2010-01-01",
+]
+expected = "kickoff"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "birthday",
+      "2023-04-15",
+    ],
+    [
+      "wedding",
+      "2023-04-20",
+    ],
+    [
+      "conference",
+      "2023-04-10",
+    ],
+  ],
+  "2023-04-12",
+]
+expected = "conference"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "hackathon",
+      "2022-11-01",
+    ],
+    [
+      "meetup",
+      "2022-11-05",
+    ],
+    [
+      "webinar",
+      "2022-11-03",
+    ],
+  ],
+  "2022-11-04",
+]
+expected = "webinar"
+
+[[asserts]]
+arguments = [[["exam", "2021-06-10"], ["holiday", "2021-06-01"]], "2021-06-05"]
+expected  = "holiday"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "release",
+      "2020-12-31",
+    ],
+    [
+      "deadline",
+      "2021-01-01",
+    ],
+  ],
+  "2021-01-01",
+]
+expected = "deadline"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "party",
+      "2022-07-04",
+    ],
+    [
+      "picnic",
+      "2022-07-10",
+    ],
+    [
+      "workshop",
+      "2022-07-01",
+    ],
+  ],
+  "2022-07-05",
+]
+expected = "party"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "concert",
+      "2023-10-15",
+    ],
+    [
+      "lecture",
+      "2023-10-10",
+    ],
+    [
+      "party",
+      "2023-10-12",
+    ],
+  ],
+  "2023-10-11",
+]
+expected = "lecture"
+
+[[asserts]]
+arguments = [[["a", "2022-01-01"], ["b", "2022-01-03"]], "2022-01-02"]
+expected  = "a"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "marathon",
+      "2024-04-21",
+    ],
+    [
+      "expo",
+      "2024-04-22",
+    ],
+    [
+      "summit",
+      "2024-04-23",
+    ],
+  ],
+  "2024-04-22",
+]
+expected = "expo"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "launch",
+      "2025-01-01",
+    ],
+    [
+      "review",
+      "2025-01-15",
+    ],
+    [
+      "update",
+      "2025-01-30",
+    ],
+  ],
+  "2025-01-20",
+]
+expected = "review"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "meeting",
+      "2023-03-01",
+    ],
+    [
+      "call",
+      "2023-03-02",
+    ],
+    [
+      "deadline",
+      "2023-03-03",
+    ],
+  ],
+  "2023-03-02",
+]
+expected = "call"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "final",
+      "2022-12-25",
+    ],
+    [
+      "preparation",
+      "2022-12-24",
+    ],
+    [
+      "afterparty",
+      "2022-12-26",
+    ],
+  ],
+  "2022-12-25",
+]
+expected = "final"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "interview",
+      "2021-09-10",
+    ],
+    [
+      "offer",
+      "2021-09-15",
+    ],
+  ],
+  "2021-09-12",
+]
+expected = "interview"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "exam",
+      "2020-06-01",
+    ],
+    [
+      "exam retake",
+      "2020-06-15",
+    ],
+  ],
+  "2020-06-10",
+]
+expected = "exam retake"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "christmas",
+      "2022-12-25",
+    ],
+    [
+      "new year",
+      "2023-01-01",
+    ],
+  ],
+  "2022-12-31",
+]
+expected = "new year"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "black friday",
+      "2023-11-24",
+    ],
+    [
+      "cyber monday",
+      "2023-11-27",
+    ],
+  ],
+  "2023-11-25",
+]
+expected = "black friday"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "independence day",
+      "2022-07-04",
+    ],
+    [
+      "labor day",
+      "2022-09-05",
+    ],
+  ],
+  "2022-08-01",
+]
+expected = "independence day"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "valentine's day",
+      "2023-02-14",
+    ],
+    [
+      "easter",
+      "2023-04-09",
+    ],
+  ],
+  "2023-03-01",
+]
+expected = "valentine's day"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "hackathon",
+      "2022-11-01",
+    ],
+    [
+      "meetup",
+      "2022-11-05",
+    ],
+    [
+      "webinar",
+      "2022-11-03",
+    ],
+  ],
+  "2022-11-02",
+]
+expected = "hackathon"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "birthday",
+      "2023-04-15",
+    ],
+    [
+      "wedding",
+      "2023-04-20",
+    ],
+    [
+      "conference",
+      "2023-04-10",
+    ],
+  ],
+  "2023-04-18",
+]
+expected = "wedding"
+
+[[asserts]]
+arguments = [[["exam", "2021-06-10"], ["holiday", "2021-06-01"]], "2021-06-09"]
+expected  = "exam"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "release",
+      "2020-12-31",
+    ],
+    [
+      "deadline",
+      "2021-01-01",
+    ],
+  ],
+  "2020-12-30",
+]
+expected = "release"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "party",
+      "2022-07-04",
+    ],
+    [
+      "picnic",
+      "2022-07-10",
+    ],
+    [
+      "workshop",
+      "2022-07-01",
+    ],
+  ],
+  "2022-07-09",
+]
+expected = "picnic"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "marathon",
+      "2024-04-21",
+    ],
+    [
+      "expo",
+      "2024-04-22",
+    ],
+    [
+      "summit",
+      "2024-04-23",
+    ],
+  ],
+  "2024-04-20",
+]
+expected = "marathon"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "team sync",
+      "2022-01-01",
+    ],
+    [
+      "demo day",
+      "2022-01-03",
+    ],
+  ],
+  "2022-01-02",
+]
+expected = "team sync"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "kickoff",
+      "2022-01-01",
+    ],
+    [
+      "milestone",
+      "2022-01-03",
+    ],
+    [
+      "release",
+      "2022-01-05",
+    ],
+  ],
+  "2022-01-04",
+]
+expected = "milestone"

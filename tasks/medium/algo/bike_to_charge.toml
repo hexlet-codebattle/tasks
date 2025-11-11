@@ -1,0 +1,207 @@
+level             = "medium"
+name              = "bike_to_charge"
+tags              = ["algo", "string", "greedy", "two-pointers", "prefix-scan"]
+time_to_solve_sec = 300
+
+description_en = """
+You're given a one-dimensional street as a string `s` made from the characters:
+`"C"` (charging station), `"B"` (bike), and `"."` (empty).
+Each second, a bike can move `1` position left or right.
+Every `"B"` goes to its **nearest** `"C"` along a shortest path (time equals the absolute distance).
+Return the **sum** of times for all bikes.
+There is at least one `"C"`. If there are no `"B"`, return `0`.
+"""
+
+description_ru = """
+Дана одномерная улица — строка `s` из символов: `"C"` (станция), `"B"` (велосипед) и `"."` (пусто).
+За `1` секунду велосипед может сдвинуться на `1` позицию влево или вправо.
+Каждый `"B"` едет к **ближайшей** `"C"` по кратчайшему пути (время — модуль разности позиций).
+Верните **сумму** времен для всех велосипедов.
+Гарантируется, что есть хотя бы одна `"C"`. Если нет `"B"`, верните `0`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(s) \\leq 17$
+- $s \\in \\{\\text{"C"}, \\text{"B"}, \\text{"."}\\}^*$
+"""
+
+solution = """
+def solution(s: str) -> int:
+    n=len(s);INF=10**9;L=[INF]*n;R=[INF]*n;last=-INF
+    for i in range(n):
+        ch=s[i]
+        if ch=='C':last=i
+        L[i]=i-last if last>-INF else INF
+    last=INF
+    for i in range(n-1,-1,-1):
+        if s[i]=='C':last=i
+        R[i]=last-i if last<INF else INF
+    total=0
+    for i in range(n):
+        if s[i]=='B':total+=min(L[i],R[i])
+    return total
+"""
+
+examples = """
+solution("C.C") == 0
+solution("B.C") == 2
+solution("B.B.C") == 6
+"""
+
+
+[[input_signature]]
+argument_name = "line"
+[input_signature.type]
+name = "string"
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["B.C"]
+comment   = "Basic gap with one dot between B and C"
+expected  = 2
+
+[[asserts]]
+arguments = ["CB"]
+comment   = "Two chars, station left of bike"
+expected  = 1
+
+[[asserts]]
+arguments = ["C.B"]
+comment   = "Three chars, bike two steps from station"
+expected  = 2
+
+[[asserts]]
+arguments = ["BC"]
+comment   = "Two chars, station right of bike"
+expected  = 1
+
+[[asserts]]
+arguments = ["C..B.BC"]
+comment   = "Two bikes and two stations; each chooses nearest"
+expected  = 4
+
+[[asserts]]
+arguments = ["C..."]
+comment   = "Only a station; no bikes"
+expected  = 0
+
+[[asserts]]
+arguments = ["..B..C..B."]
+comment   = "Single station between two bikes at different sides"
+expected  = 6
+
+[[asserts]]
+arguments = ["C.B.B.C"]
+comment   = "Bikes between two stations; symmetric distances"
+expected  = 4
+
+[[asserts]]
+arguments = ["B..C.."]
+comment   = "Bike to the left of a single station"
+expected  = 3
+
+[[asserts]]
+arguments = ["....C....B"]
+comment   = "Bike near right edge; single station to the left"
+expected  = 5
+
+[[asserts]]
+arguments = ["B....C...."]
+comment   = "Bike at left edge; single station to the right"
+expected  = 5
+
+[[asserts]]
+arguments = ["CB.BC"]
+comment   = "Stations at ends; bikes choose nearest end"
+expected  = 2
+
+[[asserts]]
+arguments = ["B.B.B.C"]
+comment   = "Many bikes all pulled to an end station"
+expected  = 12
+
+[[asserts]]
+arguments = ["CBBBBB"]
+comment   = "Station at start; increasing distances 1..5"
+expected  = 15
+
+[[asserts]]
+arguments = ["BBBBB.C"]
+comment   = "Station at end; distances 6,5,4,3,2 sum to 20"
+expected  = 20
+
+[[asserts]]
+arguments = ["C...B...C"]
+comment   = "Bike exactly between two stations; pick either"
+expected  = 4
+
+[[asserts]]
+arguments = ["BCB"]
+comment   = "Station between two bikes; both distance 1"
+expected  = 2
+
+[[asserts]]
+arguments = ["B.C.B"]
+comment   = "Two bikes on sides of a central station"
+expected  = 4
+
+[[asserts]]
+arguments = [".....C....."]
+comment   = "Longer line with only one station; no bikes"
+expected  = 0
+
+[[asserts]]
+arguments = [".B.C."]
+comment   = "Short line with one bike and one station"
+expected  = 2
+
+[[asserts]]
+arguments = ["..B..C"]
+comment   = "Trailing station; bike to the left"
+expected  = 3
+
+[[asserts]]
+arguments = [".B...C...B."]
+comment   = "Two bikes, one station centered; equal distances"
+expected  = 8
+
+[[asserts]]
+arguments = ["CCCCCCCCCCCCC"]
+comment   = "All stations; zero distance for all"
+expected  = 0
+
+[[asserts]]
+arguments = ["B..B..B..C.."]
+comment   = "Three bikes pulled to a single station on the right"
+expected  = 18
+
+[[asserts]]
+arguments = ["C..B..B..B.."]
+comment   = "Three bikes pulled to a single station on the left"
+expected  = 18
+
+[[asserts]]
+arguments = ["CB....B....C"]
+comment   = "Stations at both ends; inner bikes choose nearest end"
+expected  = 6
+
+[[asserts]]
+arguments = ["C"]
+comment   = "Minimal length line with only a station"
+expected  = 0
+
+[[asserts]]
+arguments = ["C.B.C"]
+comment   = "Tie case: bike equidistant to two stations"
+expected  = 2
+
+[[asserts]]
+arguments = ["BCBCBC"]
+comment   = "Alternating bikes and stations; all distances are 1"
+expected  = 3
+
+[[asserts]]
+arguments = ["B....B....C...C.."]
+comment   = "Max length 17; two bikes choose nearest among two stations"
+expected  = 15

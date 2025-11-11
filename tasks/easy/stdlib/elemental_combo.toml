@@ -1,0 +1,228 @@
+level             = "easy"
+name              = "elemental_combo"
+tags              = ["stdlib", "simulation", "array", "state"]
+time_to_solve_sec = 300
+
+description_en = """
+The target starts in state `neutral`. You are given an array of attacks:
+- `fireball` deals $20$ damage, or $40$ if the target was `wet`, then sets state to `neutral`.
+- `water_blast` deals $15$ damage and sets state to `wet`.
+
+Return the total damage.
+"""
+
+description_ru = """
+Цель изначально в состоянии `neutral`. Дан массив атак:
+- `fireball` наносит $20$ урона, а если цель была `wet`, то $40$, затем состояние становится `neutral`.
+- `water_blast` наносит $15$ урона и устанавливает состояние `wet`.
+
+Верните суммарный урон.
+"""
+
+limits = """
+- $0 \\le \\text{len(attacks)} \\le 42$
+"""
+
+solution = """
+def solution(attacks):
+    dmg, st = 0, 'neutral'
+    for a in attacks:
+        if a == 'fireball':
+            dmg += 40 if st == 'wet' else 20
+            st = 'neutral'
+        else:  # water_blast
+            dmg += 15
+            st = 'wet'
+    return dmg
+"""
+
+examples = """
+solution(['water_blast', 'fireball']) == 55
+solution(['fireball', 'water_blast']) == 35
+"""
+
+[[input_signature]]
+argument_name = "attacks"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty sequence"
+expected  = 0
+
+[[asserts]]
+arguments = [["fireball"]]
+expected  = 20
+
+[[asserts]]
+arguments = [["water_blast"]]
+expected  = 15
+
+[[asserts]]
+arguments = [["water_blast", "fireball"]]
+expected  = 55
+
+[[asserts]]
+arguments = [["fireball", "water_blast"]]
+expected  = 35
+
+[[asserts]]
+arguments = [["fireball", "fireball"]]
+expected  = 40
+
+[[asserts]]
+arguments = [["water_blast", "water_blast"]]
+expected  = 30
+
+[[asserts]]
+arguments = [["fireball", "water_blast", "fireball"]]
+expected  = 75
+
+[[asserts]]
+arguments = [["water_blast", "fireball", "water_blast"]]
+expected  = 70
+
+[[asserts]]
+arguments = [["water_blast", "fireball", "fireball"]]
+expected  = 75
+
+[[asserts]]
+arguments = [["fireball", "fireball", "water_blast", "fireball", "fireball"]]
+expected  = 115
+
+[[asserts]]
+arguments = [["water_blast", "water_blast", "water_blast"]]
+expected  = 45
+
+[[asserts]]
+arguments = [["fireball", "fireball", "fireball"]]
+expected  = 60
+
+[[asserts]]
+arguments = [["water_blast", "fireball", "water_blast", "fireball"]]
+expected  = 110
+
+[[asserts]]
+arguments = [["fireball", "water_blast", "fireball", "water_blast"]]
+expected  = 90
+
+[[asserts]]
+arguments = [
+  [
+    "water_blast",
+    "water_blast",
+    "fireball",
+    "fireball",
+    "water_blast",
+    "fireball",
+  ],
+]
+expected = 145
+
+[[asserts]]
+arguments = [
+  [
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+  ],
+]
+expected = 145
+
+[[asserts]]
+arguments = [["fireball", "fireball", "fireball", "fireball", "fireball"]]
+expected  = 100
+
+[[asserts]]
+arguments = [
+  [
+    "water_blast",
+    "water_blast",
+    "water_blast",
+    "water_blast",
+    "water_blast",
+  ],
+]
+expected = 75
+
+[[asserts]]
+arguments = [
+  [
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+  ],
+]
+expected = 180
+
+[[asserts]]
+arguments = [
+  [
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+  ],
+]
+expected = 255
+
+[[asserts]]
+arguments = [
+  [
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+    "water_blast",
+    "fireball",
+  ],
+]
+expected = 275
+
+[[asserts]]
+arguments = [
+  [
+    "water_blast",
+    "fireball",
+    "fireball",
+    "water_blast",
+    "water_blast",
+  ],
+]
+expected = 105
+
+[[asserts]]
+arguments = [
+  [
+    "fireball",
+    "water_blast",
+    "water_blast",
+    "fireball",
+    "fireball",
+    "water_blast",
+  ],
+]
+expected = 125

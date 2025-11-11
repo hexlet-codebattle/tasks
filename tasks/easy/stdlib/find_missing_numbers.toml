@@ -1,0 +1,198 @@
+level             = "easy"
+name              = "find_missing_numbers"
+tags              = ["stdlib", "array", "set", "search"]
+time_to_solve_sec = 180
+
+description_en = """
+You are given a list `nums` that should contain all integers from `1` to `n` (inclusive),
+but some numbers are missing. Return a list of **all missing numbers** in ascending order.
+"""
+
+description_ru = """
+Дан список `nums`, который должен содержать все числа от `1` до `n` включительно,
+но некоторые числа пропущены. Верните список **всех пропущенных чисел** в порядке возрастания.
+"""
+
+solution = """
+def solution(nums: list, n: int) -> list:
+    s = set(nums)
+    return [i for i in range(1, n + 1) if i not in s]
+"""
+
+limits = """
+- $n \\leq 42$
+- $1 \\leq \\text{nums}[i] \\leq n$
+"""
+
+examples = """
+solution([1, 2, 4, 6], 6) == [3, 5]
+"""
+
+[[input_signature]]
+argument_name = "nums"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+# --- Test cases ---
+
+# Edge case: n = 1, empty list
+[[asserts]]
+arguments = [[], 1]
+expected  = [1]
+
+# Edge case: n = 1, complete list
+[[asserts]]
+arguments = [[1], 1]
+expected  = []
+
+# Edge case: empty list, small n
+[[asserts]]
+arguments = [[], 5]
+expected  = [1, 2, 3, 4, 5]
+
+# Edge case: empty list, larger n
+[[asserts]]
+arguments = [[], 15]
+expected  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+# Edge case: complete list, no missing numbers
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10]
+expected  = []
+
+# Edge case: only first element missing
+[[asserts]]
+arguments = [[2, 3, 4, 5], 5]
+expected  = [1]
+
+# Edge case: only last element missing
+[[asserts]]
+arguments = [[1, 2, 3, 4], 5]
+expected  = [5]
+
+# Edge case: only one element present (first)
+[[asserts]]
+arguments = [[1], 10]
+expected  = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Edge case: only one element present (last)
+[[asserts]]
+arguments = [[10], 10]
+expected  = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Edge case: only one element present (middle)
+[[asserts]]
+arguments = [[5], 10]
+expected  = [1, 2, 3, 4, 6, 7, 8, 9, 10]
+
+# Test case: single missing number in middle
+[[asserts]]
+arguments = [[1, 2, 3, 5, 6], 6]
+expected  = [4]
+
+# Test case: single missing number at start
+[[asserts]]
+arguments = [[2, 3, 4, 5, 6], 6]
+expected  = [1]
+
+# Test case: single missing number at end
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 6]
+expected  = [6]
+
+# Test case: multiple consecutive missing at start
+[[asserts]]
+arguments = [[4, 5, 6], 6]
+expected  = [1, 2, 3]
+
+# Test case: multiple consecutive missing at end
+[[asserts]]
+arguments = [[1, 2, 3], 6]
+expected  = [4, 5, 6]
+
+# Test case: multiple consecutive missing in middle
+[[asserts]]
+arguments = [[1, 2, 6, 7, 8], 8]
+expected  = [3, 4, 5]
+
+# Test case: alternating pattern (all even missing)
+[[asserts]]
+arguments = [[1, 3, 5, 7, 9], 10]
+expected  = [2, 4, 6, 8, 10]
+
+# Test case: alternating pattern (all odd missing)
+[[asserts]]
+arguments = [[2, 4, 6, 8, 10], 10]
+expected  = [1, 3, 5, 7, 9]
+
+# Test case: sparse array with many missing
+[[asserts]]
+arguments = [[1, 5, 10], 10]
+expected  = [2, 3, 4, 6, 7, 8, 9]
+
+# Test case: numbers in unsorted order
+[[asserts]]
+arguments = [[5, 2, 8, 1, 9], 10]
+expected  = [3, 4, 6, 7, 10]
+
+# Test case: duplicates in input (edge case based on limits)
+[[asserts]]
+arguments = [[1, 1, 3, 3, 5, 5], 6]
+expected  = [2, 4, 6]
+
+# Test case: pattern - powers of 2
+[[asserts]]
+arguments = [[1, 2, 4, 8, 16], 16]
+expected  = [3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15]
+
+# Test case: pattern - squares
+[[asserts]]
+arguments = [[1, 4, 9, 16], 16]
+expected  = [2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15]
+
+# Test case: pattern - triangular numbers
+[[asserts]]
+arguments = [[1, 3, 6, 10, 15], 15]
+expected  = [2, 4, 5, 7, 8, 9, 11, 12, 13, 14]
+
+# Test case: pattern - primes
+[[asserts]]
+arguments = [[2, 3, 5, 7, 11, 13, 17, 19], 20]
+expected  = [1, 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20]
+
+# Test case: pattern - multiples of 3
+[[asserts]]
+arguments = [[3, 6, 9, 12, 15], 15]
+expected  = [1, 2, 4, 5, 7, 8, 10, 11, 13, 14]
+
+# Test case: pattern - multiples of 5
+[[asserts]]
+arguments = [[5, 10, 15, 20], 20]
+expected  = [1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19]
+
+# Test case: two missing numbers at different positions
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15], 15]
+expected  = [6, 12]
+
+# Test case: three missing numbers with gaps
+[[asserts]]
+arguments = [[1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19], 19]
+expected  = [5, 10, 15]
+
+# Test case: larger n with multiple missing
+[[asserts]]
+arguments = [[1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20], 20]
+expected  = [3, 6, 9, 12, 15, 18]

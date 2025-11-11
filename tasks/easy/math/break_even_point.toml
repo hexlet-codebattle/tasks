@@ -1,0 +1,183 @@
+level             = "easy"
+name              = "break_even_point"
+tags              = ["math", "greedy"]
+time_to_solve_sec = 240
+
+description_en = """
+A machine costs $A$. Raw materials per item cost $B$. Each item sells for $C$ (guaranteed $C>B$).
+
+Find the smallest integer $n$ such that the profit covers the machine cost:
+$$n\\,(C-B) \\ge A.$$
+Return $n$.
+"""
+
+description_ru = """
+Станок стоит $A$. Сырьё на один товар стоит $B$. Цена продажи — $C$ (гарантируется $C>B$).
+
+Найдите минимальное целое $n$, при котором прибыль покрывает стоимость станка:
+$$n\\,(C-B) \\ge A.$$
+Верните $n$.
+"""
+
+limits = """
+- $0 \\le A \\le 100$
+- $0 \\le B < C \\le 100$
+"""
+
+solution = """
+def solution(a: int, b: int, c: int) -> int:
+    income = c - b
+    return (a + income - 1) // income
+"""
+
+examples = """
+solution(10, 1, 2) == 10
+solution(10, 2, 4) == 5
+solution(11, 2, 4) == 6
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "c"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [10, 1, 2]
+expected  = 10
+
+[[asserts]]
+arguments = [10, 2, 4]
+expected  = 5
+
+[[asserts]]
+arguments = [11, 2, 4]
+expected  = 6
+
+[[asserts]]
+arguments = [24, 7, 16]
+expected  = 3
+
+[[asserts]]
+arguments = [67, 5, 13]
+expected  = 9
+
+[[asserts]]
+arguments = [52, 1, 2]
+expected  = 52
+
+[[asserts]]
+arguments = [33, 3, 5]
+expected  = 17
+
+[[asserts]]
+arguments = [81, 3, 7]
+expected  = 21
+
+[[asserts]]
+arguments = [49, 10, 14]
+expected  = 13
+
+[[asserts]]
+arguments = [16, 8, 13]
+expected  = 4
+
+[[asserts]]
+arguments = [82, 9, 16]
+expected  = 12
+
+[[asserts]]
+arguments = [42, 4, 6]
+expected  = 21
+
+[[asserts]]
+arguments = [60, 2, 6]
+expected  = 15
+
+[[asserts]]
+arguments = [53, 3, 6]
+expected  = 18
+
+[[asserts]]
+arguments = [70, 7, 8]
+expected  = 70
+
+[[asserts]]
+arguments = [39, 6, 7]
+expected  = 39
+
+[[asserts]]
+arguments = [39, 3, 5]
+expected  = 20
+
+[[asserts]]
+arguments = [57, 9, 14]
+expected  = 12
+
+[[asserts]]
+arguments = [79, 5, 13]
+expected  = 10
+
+[[asserts]]
+arguments = [56, 10, 19]
+expected  = 7
+
+[[asserts]]
+arguments = [21, 2, 9]
+expected  = 3
+
+[[asserts]]
+arguments = [69, 10, 16]
+expected  = 12
+
+[[asserts]]
+arguments = [80, 2, 7]
+expected  = 16
+
+[[asserts]]
+arguments = [64, 7, 17]
+expected  = 7
+
+[[asserts]]
+arguments = [43, 9, 15]
+expected  = 8
+
+[[asserts]]
+arguments = [98, 5, 11]
+expected  = 17
+
+[[asserts]]
+arguments = [61, 2, 9]
+expected  = 9
+
+[[asserts]]
+arguments = [13, 5, 14]
+expected  = 2
+
+[[asserts]]
+arguments = [54, 2, 11]
+expected  = 6
+
+[[asserts]]
+arguments = [23, 6, 15]
+expected  = 3
+
+[[asserts]]
+arguments = [83, 9, 17]
+expected  = 11
+
+[[asserts]]
+arguments = [47, 6, 12]
+expected  = 8

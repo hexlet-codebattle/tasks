@@ -1,0 +1,179 @@
+level             = "easy"
+name              = "same_side_of_line"
+tags              = ["math", "geometry"]
+time_to_solve_sec = 300
+
+description_en = """
+Given three lists: `[a,b,c]` for the line $ax+by+c=0$, point $[x_1,y_1]$, and point $[x_2,y_2]$.
+Return `true` if both points lie on the same side of the line; otherwise return `false`.
+It is guaranteed that neither point lies on the line.
+"""
+
+description_ru = """
+Даны три списка: `[a,b,c]` для прямой $ax+by+c=0$, точки $[x_1,y_1]$ и точки $[x_2,y_2]$.
+Верните `true`, если обе точки по одну сторону прямой; иначе `false`.
+Гарантируется, что ни одна точка не лежит на прямой.
+"""
+
+limits = """
+$ a^2+b^2>0 $
+$ a,b,c\\in\\mathbb{Z} $
+$ (x_1,y_1),(x_2,y_2)\\in\\mathbb{Z}^2 $
+$ a x_1+b y_1+c\\ne0 $
+$ a x_2+b y_2+c\\ne0 $
+"""
+
+solution = """
+def solution(line, point1, point2):
+    a,b,c = line
+    x1,y1 = point1
+    x2,y2 = point2
+    s1 = a*x1 + b*y1 + c
+    s2 = a*x2 + b*y2 + c
+    return s1*s2 > 0
+"""
+
+examples = """
+solution([1, 1, 1], [2, 0], [3, 0]) == True
+solution([2, -3, 5], [0, 0], [3, 2]) == False
+"""
+
+[[input_signature]]
+argument_name = "line"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "point1"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "point2"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[18, -15, 3], [-9, -4], [6, 7]]
+expected  = false
+
+[[asserts]]
+arguments = [[12, 1, 19], [7, 3], [4, -3]]
+expected  = true
+
+[[asserts]]
+arguments = [[8, 19, -5], [2, 0], [-4, -2]]
+expected  = false
+
+[[asserts]]
+arguments = [[-13, 17, 8], [10, -7], [0, 2]]
+expected  = false
+
+[[asserts]]
+arguments = [[4, 4, -13], [-5, 10], [9, 8]]
+expected  = true
+
+[[asserts]]
+arguments = [[-8, 11, -8], [-6, -6], [-4, -1]]
+expected  = false
+
+[[asserts]]
+arguments = [[16, 9, 3], [0, -2], [7, 5]]
+expected  = false
+
+[[asserts]]
+arguments = [[19, 16, -19], [-8, 9], [10, 5]]
+expected  = false
+
+[[asserts]]
+arguments = [[-1, -4, 20], [-5, 7], [-8, 5]]
+expected  = false
+
+[[asserts]]
+arguments = [[12, -6, 5], [-5, 10], [-7, -3]]
+expected  = true
+
+[[asserts]]
+arguments = [[5, 17, 9], [5, -7], [7, -7]]
+expected  = true
+
+[[asserts]]
+arguments = [[-13, -4, -2], [2, -4], [-3, 1]]
+expected  = false
+
+[[asserts]]
+arguments = [[-16, -11, 4], [-1, -4], [-1, -2]]
+expected  = true
+
+[[asserts]]
+arguments = [[-19, -6, -20], [7, 5], [-4, 1]]
+expected  = false
+
+[[asserts]]
+arguments = [[8, -12, 11], [-1, -1], [9, 3]]
+expected  = true
+
+[[asserts]]
+arguments = [[8, 3, 5], [-9, -10], [-3, 0]]
+expected  = true
+
+[[asserts]]
+arguments = [[11, -14, -13], [4, 7], [2, 10]]
+expected  = true
+
+[[asserts]]
+arguments = [[-2, -8, 13], [3, -8], [-8, -2]]
+expected  = true
+
+[[asserts]]
+arguments = [[-20, -9, 13], [-1, 0], [7, 3]]
+expected  = false
+
+[[asserts]]
+arguments = [[-2, -12, -6], [1, 9], [-6, -8]]
+expected  = false
+
+[[asserts]]
+arguments = [[-4, -7, 19], [-5, -3], [0, 3]]
+expected  = false
+
+[[asserts]]
+arguments = [[15, -19, -18], [-10, -10], [10, 6]]
+expected  = true
+
+[[asserts]]
+arguments = [[-18, -10, -13], [5, -6], [-7, 9]]
+expected  = false
+
+[[asserts]]
+arguments = [[3, 15, 6], [-8, 8], [10, -2]]
+expected  = true
+
+[[asserts]]
+arguments = [[19, -14, 1], [1, -4], [-2, -4]]
+expected  = true
+
+[[asserts]]
+arguments = [[-8, 15, -1], [1, -9], [-1, -2]]
+expected  = true
+
+[[asserts]]
+arguments = [[18, -1, -15], [-5, 8], [-9, 2]]
+expected  = true
+
+[[asserts]]
+arguments = [[20, -5, 13], [-9, 6], [8, 8]]
+expected  = false
+
+[[asserts]]
+arguments = [[-2, 5, -17], [5, 0], [-9, -6]]
+expected  = true

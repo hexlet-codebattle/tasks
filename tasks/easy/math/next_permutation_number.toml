@@ -1,0 +1,175 @@
+level             = "easy"
+name              = "next_permutation_number"
+tags              = ["math", "permutation", "greedy"]
+time_to_solve_sec = 420
+
+description_en = """
+Given an integer $n$, find the **smallest** number greater than $n$ that can be obtained by permuting the digits of $n$. If no such number exists, return $-1$.
+"""
+
+description_ru = """
+Дано целое число $n$. Найдите **минимальное** число, строго большее $n$, которое можно получить перестановкой цифр $n$. Если такого числа не существует, верните $-1$.
+"""
+
+limits = """
+- $1 \\le n \\le 10^6$
+"""
+
+solution = """
+def solution(x: int) -> int:
+    s = list(str(x))
+    i = len(s) - 2
+    while i >= 0 and s[i] >= s[i+1]:
+        i -= 1
+    if i < 0:
+        return -1
+    j = len(s) - 1
+    while s[j] <= s[i]:
+        j -= 1
+    s[i], s[j] = s[j], s[i]
+    s[i+1:] = reversed(s[i+1:])
+    y = int(''.join(s))
+    return y if y > x else -1
+"""
+
+examples = """
+solution(123) == 132
+solution(110) == -1
+solution(3298) == 3829
+"""
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [123]
+expected  = 132
+
+[[asserts]]
+arguments = [110]
+expected  = -1
+
+[[asserts]]
+arguments = [3298]
+expected  = 3829
+
+[[asserts]]
+arguments = [786237]
+expected  = 786273
+
+[[asserts]]
+arguments = [453210]
+expected  = 501234
+
+[[asserts]]
+arguments = [633505]
+expected  = 633550
+
+[[asserts]]
+arguments = [332521]
+expected  = 335122
+
+[[asserts]]
+arguments = [120484]
+expected  = 120844
+
+[[asserts]]
+arguments = [831591]
+expected  = 831915
+
+[[asserts]]
+arguments = [873316]
+expected  = 873361
+
+[[asserts]]
+arguments = [726210]
+expected  = 760122
+
+[[asserts]]
+arguments = [127411]
+expected  = 141127
+
+[[asserts]]
+arguments = [657888]
+expected  = 658788
+
+[[asserts]]
+arguments = [941390]
+expected  = 941903
+
+[[asserts]]
+arguments = [551826]
+expected  = 551862
+
+[[asserts]]
+arguments = [583545]
+expected  = 583554
+
+[[asserts]]
+arguments = [856791]
+expected  = 856917
+
+[[asserts]]
+arguments = [629097]
+expected  = 629709
+
+[[asserts]]
+arguments = [417238]
+expected  = 417283
+
+[[asserts]]
+arguments = [614667]
+expected  = 614676
+
+[[asserts]]
+arguments = [566108]
+expected  = 566180
+
+[[asserts]]
+arguments = [393407]
+expected  = 393470
+
+[[asserts]]
+arguments = [534475]
+expected  = 534547
+
+[[asserts]]
+arguments = [880914]
+expected  = 880941
+
+[[asserts]]
+arguments = [595113]
+expected  = 595131
+
+[[asserts]]
+arguments = [820371]
+expected  = 820713
+
+[[asserts]]
+arguments = [289957]
+expected  = 289975
+
+[[asserts]]
+arguments = [668522]
+expected  = 682256
+
+[[asserts]]
+arguments = [461498]
+expected  = 461849
+
+[[asserts]]
+arguments = [668659]
+expected  = 668695
+
+[[asserts]]
+arguments = [999999]
+expected  = -1
+
+[[asserts]]
+arguments = [1]
+expected  = -1

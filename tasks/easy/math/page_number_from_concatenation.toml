@@ -1,0 +1,206 @@
+level             = "easy"
+name              = "page_number_from_concatenation"
+tags              = ["math", "string", "parsing"]
+time_to_solve_sec = 300
+
+description_en = """
+A footer looked like: `Page K of N`, but all non-digits got erased, leaving a string `s` of digits only.
+
+Count how many ways to split `s` into two positive integers $(K, N)$ (by inserting exactly one cut) such that:
+- neither $K$ nor $N$ has a leading zero;
+- $K \\le N$.
+
+Return this count.
+"""
+
+description_ru = """
+В подвале страницы была надпись вида: `Страница K из N`, но все нецифровые символы исчезли, и осталась строка `s` из цифр.
+
+Найдите число способов разрезать `s` ровно в одном месте на пару положительных чисел $(K, N)$ так, чтобы:
+- у $K$ и $N$ нет ведущих нулей;
+- $K \\le N$.
+
+Верните это количество.
+"""
+
+limits = """
+- $1 \\le \\text{len}(s) \\le 100$
+- $s \\in \\{0,1,2,3,4,5,6,7,8,9\\}^+$
+"""
+
+solution = """
+def solution(s: str) -> int:
+    n = len(s)
+    ans = 0
+    for i in range(1, n):
+        a, b = s[:i], s[i:]
+        if a[0] == '0' or b[0] == '0':
+            continue
+        if int(a) <= int(b):
+            ans += 1
+    return ans
+"""
+
+examples = """
+solution("101321") == 2
+solution("012") == 0
+solution("9999") == 2
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["101321"]
+expected  = 2
+
+[[asserts]]
+arguments = ["012"]
+expected  = 0
+
+[[asserts]]
+arguments = ["9999"]
+expected  = 2
+
+[[asserts]]
+arguments = ["1"]
+expected  = 0
+
+[[asserts]]
+arguments = [
+  "5747163098460578381510946085728755048294531514725019310057823354639932054694629256305593813135",
+]
+expected = 41
+
+[[asserts]]
+arguments = ["344850395442783747514"]
+expected  = 9
+
+[[asserts]]
+arguments = [
+  "7826239814818844606263645194299990602162512553989718598851836594847254783",
+]
+expected = 33
+
+[[asserts]]
+arguments = [
+  "9907250810061134184108409076855184809944240511539131060232062502556",
+]
+expected = 26
+
+[[asserts]]
+arguments = ["9246663888367197214128123033838966441126050891790024899356413060"]
+expected  = 30
+
+[[asserts]]
+arguments = [
+  "718246433695410944757908416098876201167652971541277312363868878795341612463792734",
+]
+expected = 36
+
+[[asserts]]
+arguments = ["70240188332983445470"]
+expected  = 7
+
+[[asserts]]
+arguments = [
+  "1715516247198453806167444002175959004025704343216003526294732531196",
+]
+expected = 30
+
+[[asserts]]
+arguments = [
+  "628685488416884984231541837701921975706332154761255328972373697982566358014352550950",
+]
+expected = 39
+
+[[asserts]]
+arguments = ["946215236104625148203337766721442896656170541418580551864"]
+expected  = 26
+
+[[asserts]]
+arguments = ["8324115619278893475774468578975445681001933671566712024706884"]
+expected  = 30
+
+[[asserts]]
+arguments = [
+  "815384642020064372287993533225415171424839471669884233465795593561756889887349021395729653183",
+]
+expected = 43
+
+[[asserts]]
+arguments = ["71981875298883543197015986376282403040253"]
+expected  = 19
+
+[[asserts]]
+arguments = ["9599809971869678235090497671468775038307374810765123516490103840"]
+expected  = 28
+
+[[asserts]]
+arguments = ["8637408780651116437"]
+expected  = 7
+
+[[asserts]]
+arguments = ["8523331594248936994686348913767408898384182029061"]
+expected  = 24
+
+[[asserts]]
+arguments = ["629747448"]
+expected  = 4
+
+[[asserts]]
+arguments = [
+  "395181988929943848982019168147448830979169681566619882803650773837959832820782",
+]
+expected = 36
+
+[[asserts]]
+arguments = [
+  "567582401772332623852333857544013451735425841738727939621356314749334130419020610138526967",
+]
+expected = 43
+
+[[asserts]]
+arguments = [
+  "224699603296290989712082584656247854365662381531131412014574350505791267117883",
+]
+expected = 36
+
+[[asserts]]
+arguments = [
+  "10010128037692359965504422094664430996437909929333821523271114024348179743526081318475673633727",
+]
+expected = 39
+
+[[asserts]]
+arguments = ["16501179937565541123566088829287197353296188890467452171"]
+expected  = 26
+
+[[asserts]]
+arguments = ["14185541294897907852759"]
+expected  = 11
+
+[[asserts]]
+arguments = ["0"]
+expected  = 0
+
+[[asserts]]
+arguments = ["440406314562727418979621691019704"]
+expected  = 14
+
+[[asserts]]
+arguments = ["2985408489752850240"]
+expected  = 8
+
+[[asserts]]
+arguments = ["45358699"]
+expected  = 4
+
+[[asserts]]
+arguments = ["077693218208684658"]
+expected  = 0

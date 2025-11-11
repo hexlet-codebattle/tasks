@@ -1,0 +1,181 @@
+level             = "medium"
+name              = "compress_repeats"
+tags              = ["algo", "string", "linear-scan"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a string `s`, compress consecutive repeated characters.
+
+- Replace a group of the same character of length `k ≥ 3` with `char + k`.
+- Keep groups of length `1` or `2` unchanged.
+"""
+
+
+description_ru = """
+Дана строка `s`, нужно сжать подряд идущие одинаковые символы.
+
+- Группу одинаковых символов длины `k ≥ 3` заменить на `символ + k`.
+- Группы длины `1` или `2` оставить без изменений.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 100$
+"""
+
+
+solution = """
+def solution(s: str) -> str:
+    if not s:
+        return ""
+    out, cnt = [], 1
+    for i in range(1, len(s) + 1):
+        if i < len(s) and s[i] == s[i - 1]:
+            cnt += 1
+        else:
+            ch = s[i - 1]
+            out.append(ch + str(cnt) if cnt >= 3 else ch * cnt)
+            cnt = 1
+    return "".join(out)
+"""
+
+examples = """
+solution('') == ''
+solution('aa') == 'aa'
+solution('aaaa') == 'a4'
+solution('aaabcccdd') == 'a3bc3dd'
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string stays empty"
+expected  = ""
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single character unchanged"
+expected  = "a"
+
+[[asserts]]
+arguments = ["aa"]
+comment   = "Two same characters unchanged"
+expected  = "aa"
+
+[[asserts]]
+arguments = ["aaa"]
+comment   = "Exactly 3 compresses"
+expected  = "a3"
+
+[[asserts]]
+arguments = ["aaaa"]
+comment   = "Run of 4 compresses to a4"
+expected  = "a4"
+
+[[asserts]]
+arguments = ["aaabcccdd"]
+comment   = "Mixed groups; example from prompt"
+expected  = "a3bc3dd"
+
+[[asserts]]
+arguments = ["xxxxxyyzzzz"]
+comment   = "Multiple runs, some kept, some compressed"
+expected  = "x5yyz4"
+
+[[asserts]]
+arguments = ["abbbbbc"]
+comment   = "Single long run in the middle"
+expected  = "ab5c"
+
+[[asserts]]
+arguments = ["bbbbaaa"]
+comment   = "Two compressed runs back-to-back"
+expected  = "b4a3"
+
+[[asserts]]
+arguments = ["AaaAA"]
+comment   = "Case-sensitive; different chars by case"
+expected  = "AaaAA"
+
+[[asserts]]
+arguments = ["abcccd"]
+comment   = "Short groups around a compressed one"
+expected  = "abc3d"
+
+[[asserts]]
+arguments = ["aaaBBBccc"]
+comment   = "Three separate compressed runs with mixed case"
+expected  = "a3B3c3"
+
+[[asserts]]
+arguments = ["aabbaa"]
+comment   = "Only pairs; nothing compresses"
+expected  = "aabbaa"
+
+[[asserts]]
+arguments = ["----___"]
+comment   = "Punctuation runs: hyphens and underscores"
+expected  = "-4_3"
+
+[[asserts]]
+arguments = ["xyzzz"]
+comment   = "Short prefix then compressed suffix"
+expected  = "xyz3"
+
+[[asserts]]
+arguments = ["zzzyx"]
+comment   = "Compressed prefix then singles"
+expected  = "z3yx"
+
+[[asserts]]
+arguments = ["aaabbaaacccaaaaa"]
+comment   = "Several runs of various lengths"
+expected  = "a3bba3c3a5"
+
+[[asserts]]
+arguments = ["qwerty"]
+comment   = "No repeats at all"
+expected  = "qwerty"
+
+[[asserts]]
+arguments = ["mmmmnmmmm"]
+comment   = "Two compressed runs separated by a single char"
+expected  = "m4nm4"
+
+[[asserts]]
+arguments = ["zzzzzzzzzz"]
+comment   = "Ten of the same char -> multi-digit count"
+expected  = "z10"
+
+[[asserts]]
+arguments = [
+  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+]
+comment = "100 'a' characters -> multi-digit count"
+expected = "a100"
+
+[[asserts]]
+arguments = ["baaa"]
+comment   = "Compressed at end with leading single"
+expected  = "ba3"
+
+[[asserts]]
+arguments = ["aaab"]
+comment   = "Compressed at start with trailing single"
+expected  = "a3b"
+
+[[asserts]]
+arguments = ["baaac"]
+comment   = "Compressed in the middle surrounded by singles"
+expected  = "ba3c"
+
+[[asserts]]
+arguments = ["ccccccbbbbbaaaadde"]
+comment   = "Mix of long, medium, and short runs"
+expected  = "c6b5a4dde"

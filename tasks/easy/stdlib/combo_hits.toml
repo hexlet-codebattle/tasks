@@ -1,0 +1,268 @@
+level             = "easy"
+name              = "combo_hits"
+tags              = ["stdlib", "array", "simulation"]
+time_to_solve_sec = 200
+
+description_en = """
+You receive actions: `hit` or `miss`.
+A `hit` deals $10 \\times m$ damage, where the combo multiplier $m$ starts at $1$ and increases by $1$ for each **consecutive** `hit`.
+A `miss` resets the combo to $0$ (so the next `hit` uses multiplier $1$).
+
+Return the **total** damage.
+"""
+
+description_ru = """
+Дана последовательность действий: `hit` или `miss`.
+`hit` наносит урон $10 \\times m$, где множитель $m$ начинается с $1$ и увеличивается на $1$ за каждый **последовательный** `hit`.
+`miss` сбрасывает комбо до $0$ (следующий `hit` будет с множителем $1$).
+
+Верните **суммарный** урон.
+"""
+
+limits = """
+- $0 \\leq \\text{len(actions)} \\leq 100$
+"""
+
+solution = """
+def solution(actions: list[str]) -> int:
+    total = 0
+    combo = 0
+    for a in actions:
+        if a == 'hit':
+            combo += 1
+            total += 10 * combo
+        else:
+            combo = 0
+    return total
+"""
+
+examples = """
+solution(['hit','hit','miss','hit']) == 40
+solution(['hit','hit','hit']) == 60
+"""
+
+[[input_signature]]
+argument_name = "actions"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+expected  = 0
+
+[[asserts]]
+arguments = [["hit"]]
+expected  = 10
+
+[[asserts]]
+arguments = [["miss"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["hit", "hit"]]
+expected  = 30
+
+[[asserts]]
+arguments = [["hit", "miss"]]
+expected  = 10
+
+[[asserts]]
+arguments = [["miss", "hit"]]
+expected  = 10
+
+[[asserts]]
+arguments = [["miss", "miss"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["hit", "hit", "miss", "hit"]]
+expected  = 40
+
+[[asserts]]
+arguments = [["hit", "hit", "hit"]]
+expected  = 60
+
+[[asserts]]
+arguments = [["miss", "hit", "hit", "miss"]]
+expected  = 30
+
+[[asserts]]
+arguments = [["hit", "hit", "hit", "hit", "hit"]]
+expected  = 150
+
+[[asserts]]
+arguments = [["miss", "miss", "miss", "miss", "miss"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["hit", "miss", "hit", "miss", "hit"]]
+expected  = 30
+
+[[asserts]]
+arguments = [["hit", "hit", "miss", "hit", "hit", "hit", "miss", "hit"]]
+expected  = 100
+
+[[asserts]]
+arguments = [
+  [
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+  ],
+]
+expected = 550
+
+[[asserts]]
+arguments = [
+  [
+    "hit",
+    "hit",
+    "miss",
+    "hit",
+    "hit",
+    "miss",
+    "hit",
+    "hit",
+    "miss",
+    "hit",
+    "hit",
+    "miss",
+    "hit",
+    "hit",
+    "miss",
+  ],
+]
+expected = 150
+
+[[asserts]]
+arguments = [["miss", "hit", "miss", "hit", "miss", "hit", "miss"]]
+expected  = 30
+
+[[asserts]]
+arguments = [["hit", "miss", "hit", "hit", "miss", "hit", "hit", "hit"]]
+expected  = 100
+
+[[asserts]]
+arguments = [
+  [
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+  ],
+]
+expected = 2100
+
+[[asserts]]
+arguments = [
+  [
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+    "miss",
+  ],
+]
+expected = 0
+
+[[asserts]]
+arguments = [
+  [
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+    "hit",
+    "miss",
+  ],
+]
+expected = 100
+
+[[asserts]]
+arguments = [["hit", "hit", "hit", "miss", "hit", "hit", "miss", "hit"]]
+expected  = 100
+
+[[asserts]]
+arguments = [["miss", "hit", "hit", "hit", "hit", "hit"]]
+expected  = 150
+
+[[asserts]]
+arguments = [["hit", "hit", "hit", "hit", "hit", "miss"]]
+expected  = 150
+
+[[asserts]]
+arguments = [
+  [
+    "hit",
+    "hit",
+    "hit",
+    "hit",
+    "miss",
+    "hit",
+    "hit",
+    "hit",
+    "miss",
+    "hit",
+    "hit",
+    "miss",
+    "hit",
+  ],
+]
+expected = 200

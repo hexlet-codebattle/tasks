@@ -1,0 +1,150 @@
+level             = "easy"
+name              = "keyboard_right_neighbor"
+tags              = ["stdlib", "strings"]
+time_to_solve_sec = 240
+
+description_en = """
+Given a lowercase English letter `letter`, return the letter that is immediately to its right on a standard QWERTY keyboard **in the same row**, with wrap-around.
+
+Rows are: `qwertyuiop`, `asdfghjkl`, `zxcvbnm`.
+
+For example: after `p` comes `q`, after `l` comes `a`, after `m` comes `z`.
+"""
+
+description_ru = """
+Дана строчная английская буква `letter`. Верните букву, которая находится на стандартной клавиатуре QWERTY **справа от неё в той же строке** с переходом в начало строки.
+
+Строки: `qwertyuiop`, `asdfghjkl`, `zxcvbnm`.
+
+Например: после `p` идёт `q`, после `l` — `a`, после `m` — `z`.
+"""
+
+solution = """
+def solution(letter: str) -> str:
+    rows = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm']
+    for row in rows:
+        if letter in row:
+            i = (row.find(letter) + 1) % len(row)
+            return row[i]
+"""
+
+examples = """
+solution('q') == 'w'
+solution('w') == 'e'
+solution('p') == 'q'
+"""
+
+[[input_signature]]
+argument_name = "letter"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["q"]
+expected  = "w"
+
+[[asserts]]
+arguments = ["w"]
+expected  = "e"
+
+[[asserts]]
+arguments = ["e"]
+expected  = "r"
+
+[[asserts]]
+arguments = ["r"]
+expected  = "t"
+
+[[asserts]]
+arguments = ["t"]
+expected  = "y"
+
+[[asserts]]
+arguments = ["y"]
+expected  = "u"
+
+[[asserts]]
+arguments = ["u"]
+expected  = "i"
+
+[[asserts]]
+arguments = ["i"]
+expected  = "o"
+
+[[asserts]]
+arguments = ["o"]
+expected  = "p"
+
+[[asserts]]
+arguments = ["p"]
+comment   = "Wrap-around at end of top row"
+expected  = "q"
+
+[[asserts]]
+arguments = ["a"]
+expected  = "s"
+
+[[asserts]]
+arguments = ["s"]
+expected  = "d"
+
+[[asserts]]
+arguments = ["d"]
+expected  = "f"
+
+[[asserts]]
+arguments = ["f"]
+expected  = "g"
+
+[[asserts]]
+arguments = ["g"]
+expected  = "h"
+
+[[asserts]]
+arguments = ["h"]
+expected  = "j"
+
+[[asserts]]
+arguments = ["j"]
+expected  = "k"
+
+[[asserts]]
+arguments = ["k"]
+expected  = "l"
+
+[[asserts]]
+arguments = ["l"]
+comment   = "Wrap-around at end of middle row"
+expected  = "a"
+
+[[asserts]]
+arguments = ["z"]
+expected  = "x"
+
+[[asserts]]
+arguments = ["x"]
+expected  = "c"
+
+[[asserts]]
+arguments = ["c"]
+expected  = "v"
+
+[[asserts]]
+arguments = ["v"]
+expected  = "b"
+
+[[asserts]]
+arguments = ["b"]
+expected  = "n"
+
+[[asserts]]
+arguments = ["n"]
+expected  = "m"
+
+[[asserts]]
+arguments = ["m"]
+comment   = "Wrap-around at end of bottom row"
+expected  = "z"

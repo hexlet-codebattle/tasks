@@ -1,0 +1,618 @@
+level             = "medium"
+name              = "most_frequent_item_in_month"
+tags              = ["stdlib", "dict", "date", "array"]
+time_to_solve_sec = 360
+
+description_en = """
+Given purchases as `(item, date)` with date in `'YYYY-MM-DD'` and a month `'YYYY-MM'`,
+return the item bought **most frequently** in that month.
+If several items tie, return the one appearing **first** in the original list.
+"""
+
+description_ru = """
+Дан список покупок `(товар, дата)` с датой формата `'YYYY-MM-DD'` и месяц `'YYYY-MM'`.
+Верните товар, купленный **чаще всего** в этом месяце.
+Если несколько товаров встречаются одинаково часто, верните тот, который встречается **первым** в исходном списке.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{purchases}) \\leq 10^5$
+- $\\text{date} = \\text{YYYY-MM-DD}$
+"""
+
+solution = """
+def solution(purchases, month):
+    cnt, first_pos = {}, {}
+    for i, (name, date) in enumerate(purchases):
+        if date.startswith(month):
+            cnt[name] = cnt.get(name, 0) + 1
+            if name not in first_pos:
+                first_pos[name] = i
+    if not cnt:
+        return ""
+    return max(cnt, key=lambda k: (cnt[k], -first_pos[k]))
+"""
+
+examples = """
+solution([
+ ["milk","2023-09-15"],
+ ["bread","2023-09-20"],
+ ["milk","2023-09-25"],
+ ["eggs","2023-10-01"]
+],"2023-09") == "milk"
+"""
+
+[[input_signature]]
+argument_name = "purchases"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "month"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "apple",
+      "2023-09-01",
+    ],
+    [
+      "cheese",
+      "2023-09-02",
+    ],
+    [
+      "juice",
+      "2023-09-03",
+    ],
+    [
+      "carrot",
+      "2023-09-04",
+    ],
+  ],
+  "2023-09",
+]
+comment = "All different, return first"
+expected = "apple"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "cola",
+      "2023-09-01",
+    ],
+    [
+      "cola",
+      "2023-09-02",
+    ],
+    [
+      "pepsi",
+      "2023-09-03",
+    ],
+    [
+      "pepsi",
+      "2023-09-04",
+    ],
+    [
+      "sprite",
+      "2023-09-05",
+    ],
+    [
+      "pepsi",
+      "2023-09-06",
+    ],
+  ],
+  "2023-09",
+]
+comment = "pepsi appears 3 times"
+expected = "pepsi"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "iphone",
+      "2023-09-10",
+    ],
+    [
+      "samsung",
+      "2023-09-11",
+    ],
+    [
+      "iphone",
+      "2023-09-12",
+    ],
+    [
+      "dyson",
+      "2023-09-13",
+    ],
+  ],
+  "2023-09",
+]
+expected = "iphone"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "banana",
+      "2023-09-01",
+    ],
+    [
+      "banana",
+      "2022-09-01",
+    ],
+    [
+      "banana",
+      "2021-09-01",
+    ],
+    [
+      "orange",
+      "2023-09-02",
+    ],
+  ],
+  "2023-09",
+]
+expected = "banana"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "shirt",
+      "2023-09-01",
+    ],
+    [
+      "jeans",
+      "2023-09-02",
+    ],
+    [
+      "shirt",
+      "2023-09-03",
+    ],
+    [
+      "shoes",
+      "2023-09-04",
+    ],
+    [
+      "jeans",
+      "2023-09-05",
+    ],
+  ],
+  "2023-09",
+]
+expected = "shirt"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "fairy",
+      "2023-09-01",
+    ],
+    [
+      "persil",
+      "2023-09-02",
+    ],
+    [
+      "fairy",
+      "2023-09-03",
+    ],
+    [
+      "persil",
+      "2023-09-04",
+    ],
+    [
+      "ariel",
+      "2023-09-05",
+    ],
+  ],
+  "2023-09",
+]
+expected = "fairy"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "kinder",
+      "2023-09-01",
+    ],
+    [
+      "nutella",
+      "2023-09-02",
+    ],
+    [
+      "nutella",
+      "2023-09-03",
+    ],
+    [
+      "nutella",
+      "2023-09-04",
+    ],
+    [
+      "kinder",
+      "2023-09-05",
+    ],
+  ],
+  "2023-09",
+]
+expected = "nutella"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "lays",
+      "2023-09-01",
+    ],
+    [
+      "pringles",
+      "2023-09-02",
+    ],
+    [
+      "lays",
+      "2023-09-03",
+    ],
+    [
+      "pringles",
+      "2023-09-04",
+    ],
+    [
+      "lays",
+      "2023-09-05",
+    ],
+    [
+      "pringles",
+      "2023-09-06",
+    ],
+  ],
+  "2023-09",
+]
+expected = "lays"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "nike",
+      "2023-09-01",
+    ],
+    [
+      "adidas",
+      "2023-09-02",
+    ],
+    [
+      "nike",
+      "2023-09-03",
+    ],
+    [
+      "adidas",
+      "2023-09-04",
+    ],
+    [
+      "nike",
+      "2023-09-05",
+    ],
+  ],
+  "2023-09",
+]
+expected = "nike"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "ipad",
+      "2023-09-01",
+    ],
+    [
+      "ipad",
+      "2022-09-01",
+    ],
+    [
+      "ipad",
+      "2021-09-01",
+    ],
+    [
+      "macbook",
+      "2023-09-02",
+    ],
+  ],
+  "2023-09",
+]
+expected = "ipad"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "lego",
+      "2023-09-01",
+    ],
+    [
+      "lego",
+      "2023-09-02",
+    ],
+    [
+      "lego",
+      "2023-09-03",
+    ],
+    [
+      "lego",
+      "2023-09-04",
+    ],
+  ],
+  "2023-09",
+]
+expected = "lego"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "maybelline",
+      "2023-09-01",
+    ],
+    [
+      "loreal",
+      "2023-09-02",
+    ],
+    [
+      "maybelline",
+      "2023-09-03",
+    ],
+    [
+      "loreal",
+      "2023-09-04",
+    ],
+    [
+      "nivea",
+      "2023-09-05",
+    ],
+  ],
+  "2023-09",
+]
+expected = "maybelline"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "coke",
+      "2023-09-01",
+    ],
+    [
+      "coke ",
+      "2023-09-02",
+    ],
+    [
+      "coke",
+      "2023-09-03",
+    ],
+  ],
+  "2023-09",
+]
+expected = "coke"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "coke",
+      "2023-09-01",
+    ],
+    [
+      "Coke",
+      "2023-09-02",
+    ],
+    [
+      "coke",
+      "2023-09-03",
+    ],
+  ],
+  "2023-09",
+]
+expected = "coke"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "blender",
+      "2023-09-01",
+    ],
+    [
+      "blender ",
+      "2023-09-02",
+    ],
+    [
+      "blender",
+      "2023-09-03",
+    ],
+  ],
+  "2023-09",
+]
+expected = "blender"
+
+[[asserts]]
+arguments = [[["", "2023-09-01"], ["", "2023-09-02"]], "2023-09"]
+expected  = ""
+
+[[asserts]]
+arguments = [[], "2023-09"]
+expected  = ""
+
+[[asserts]]
+arguments = [[["cola", "2023-08-15"]], "2023-09"]
+expected  = ""
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "toyota",
+      "2023-09-01",
+    ],
+    [
+      "toyota",
+      "2023-09-01",
+    ],
+    [
+      "honda",
+      "2023-09-01",
+    ],
+  ],
+  "2023-09",
+]
+expected = "toyota"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "sony",
+      "2023-09-01",
+    ],
+    [
+      "lg",
+      "2023-09-01",
+    ],
+    [
+      "sony",
+      "2023-10-01",
+    ],
+    [
+      "lg",
+      "2023-10-01",
+    ],
+  ],
+  "2023-09",
+]
+expected = "sony"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "dell",
+      "2023-09-01",
+    ],
+    [
+      "dell",
+      "2022-09-01",
+    ],
+    [
+      "dell",
+      "2021-09-01",
+    ],
+    [
+      "hp",
+      "2023-09-02",
+    ],
+  ],
+  "2023-09",
+]
+expected = "dell"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "tesla",
+      "2020-02-29",
+    ],
+    [
+      "ford",
+      "2020-02-28",
+    ],
+    [
+      "tesla",
+      "2020-02-01",
+    ],
+  ],
+  "2020-02",
+]
+expected = "tesla"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "puma",
+      "2023-09-30",
+    ],
+    [
+      "reebok",
+      "2023-09-01",
+    ],
+    [
+      "puma",
+      "2023-09-01",
+    ],
+    [
+      "reebok",
+      "2023-09-30",
+    ],
+  ],
+  "2023-09",
+]
+expected = "puma"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "uniqlo",
+      "2023-09-15",
+    ],
+    [
+      "gap",
+      "2023-09-15",
+    ],
+    [
+      "gap",
+      "2022-09-15",
+    ],
+    [
+      "uniqlo",
+      "2022-09-15",
+    ],
+  ],
+  "2022-09",
+]
+expected = "gap"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "lego",
+      "2023-09-15",
+    ],
+    [
+      "hasbro",
+      "2023-09-15",
+    ],
+    [
+      "lego",
+      "2022-09-15",
+    ],
+    [
+      "hasbro",
+      "2022-09-15",
+    ],
+  ],
+  "2023-09",
+]
+expected = "lego"

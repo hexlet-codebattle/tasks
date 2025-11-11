@@ -1,0 +1,1130 @@
+level             = "medium"
+name              = "frequent_errors_in_window"
+tags              = ["stdlib", "string", "map"]
+time_to_solve_sec = 540
+
+description_en = """
+You are given a day's error log as an array of pairs `["HH:MM", "error_text"]` sorted by time. Return all **unique** error texts that occurred at least $4$ times within **any** $5$-minute interval, preserving the order of first appearance in the log.
+"""
+
+description_ru = """
+Дан лог за день в виде массива пар `["HH:MM", "текст_ошибки"]`, отсортированных по времени. Верните все **уникальные** тексты ошибок, которые встречались не менее $4$ раз в **любом** интервале длиной $5$ минут, сохранив порядок первого появления в логе.
+"""
+
+limits = """
+- $0 \\leq \\text{len(log)} \\leq 100$
+- $00\\!:\\!00 \\leq t \\leq 23\\!:\\!59$
+"""
+
+solution = """
+def solution(log):
+    d, order = {}, []
+    for t, e in log:
+        h, m = map(int, t.split(':'))
+        tm = h * 60 + m
+        if e not in d:
+            d[e] = [tm]
+            order.append(e)
+        else:
+            d[e].append(tm)
+    res = []
+    for e in order:
+        times = d[e]
+        ok = False
+        for i in range(len(times) - 3):
+            if times[i + 3] - times[i] <= 5:
+                ok = True
+                break
+        if ok:
+            res.append(e)
+    return res
+"""
+
+examples = """
+solution(
+  [
+    ["10:00","Disk full on /dev/sda1"],
+    ["10:01","Disk full on /dev/sda1"],
+    ["10:02","Disk full on /dev/sda1"],
+    ["10:03","Disk full on /dev/sda1"]
+  ]
+) == ["Disk full on /dev/sda1"]
+"""
+
+[[input_signature]]
+argument_name = "log"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+# --- Full asserts preserved ---
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "00:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "00:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "00:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "00:03",
+      "Disk full on /dev/sda1",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "23:56",
+      "Out of memory (PID 1234)",
+    ],
+    [
+      "23:57",
+      "Out of memory (PID 1234)",
+    ],
+    [
+      "23:58",
+      "Out of memory (PID 1234)",
+    ],
+    [
+      "23:59",
+      "Out of memory (PID 1234)",
+    ],
+  ],
+]
+expected = ["Out of memory (PID 1234)"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "12:00",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "12:01",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "12:03",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "12:04",
+      "Network timeout to api.service.com",
+    ],
+  ],
+]
+expected = ["Network timeout to api.service.com"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "08:10",
+      "CPU overload: 99%",
+    ],
+    [
+      "08:12",
+      "CPU overload: 99%",
+    ],
+    [
+      "08:14",
+      "CPU overload: 99%",
+    ],
+    [
+      "08:16",
+      "CPU overload: 99%",
+    ],
+  ],
+]
+expected = []
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "15:00",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "15:01",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "15:02",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "15:03",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "15:04",
+      "Disk full on /dev/sdb2",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sdb2"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "10:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "10:01",
+      "Network timeout to db.local",
+    ],
+    [
+      "10:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "10:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "10:04",
+      "Disk full on /dev/sda1",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "11:00",
+      "CPU overload: 100%",
+    ],
+    [
+      "11:01",
+      "CPU overload: 100%",
+    ],
+    [
+      "11:02",
+      "CPU overload: 100%",
+    ],
+    [
+      "11:03",
+      "CPU overload: 100%",
+    ],
+    [
+      "11:10",
+      "CPU overload: 100%",
+    ],
+  ],
+]
+expected = ["CPU overload: 100%"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "13:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "13:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "13:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "13:03",
+      "Network timeout to db.local",
+    ],
+    [
+      "13:04",
+      "Disk full on /dev/sda1",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "14:00",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "14:01",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "14:02",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "14:03",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "14:04",
+      "Network timeout to cache.local",
+    ],
+    [
+      "14:05",
+      "Disk full on /dev/sdb2",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sdb2"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "16:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "16:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "16:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "16:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "16:04",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "16:05",
+      "Disk full on /dev/sda1",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "17:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "17:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "17:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "17:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "17:04",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "17:05",
+      "Network timeout to api.service.com",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "18:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "18:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "18:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "18:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "18:04",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "18:05",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "18:06",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "18:07",
+      "Network timeout to api.service.com",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1", "Network timeout to api.service.com"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "19:00",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "19:01",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "19:02",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "19:03",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "19:04",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "19:05",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "19:06",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "19:07",
+      "Disk full on /dev/sdb2",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sdb2"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "20:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "20:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "20:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "20:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "20:04",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "20:05",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "20:06",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "20:07",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "20:08",
+      "Disk full on /dev/sda1",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "21:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:04",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:05",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:06",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:07",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:08",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "21:09",
+      "Disk full on /dev/sda1",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "22:00",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:01",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:02",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:03",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:04",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:05",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:06",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:07",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:08",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:09",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "22:10",
+      "Disk full on /dev/sdb2",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sdb2"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "09:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "09:01",
+      "Network timeout to db.local",
+    ],
+    [
+      "09:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "09:03",
+      "Network timeout to db.local",
+    ],
+    [
+      "09:04",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "09:05",
+      "Network timeout to db.local",
+    ],
+    [
+      "09:06",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "09:07",
+      "Network timeout to db.local",
+    ],
+  ],
+]
+expected = []
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "07:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "07:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "07:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "07:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "07:04",
+      "Network timeout to cache.local",
+    ],
+    [
+      "07:05",
+      "Network timeout to cache.local",
+    ],
+    [
+      "07:06",
+      "Network timeout to cache.local",
+    ],
+    [
+      "07:07",
+      "Network timeout to cache.local",
+    ],
+    [
+      "07:08",
+      "Network timeout to cache.local",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1", "Network timeout to cache.local"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "06:00",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "06:01",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "06:02",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "06:03",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "06:04",
+      "Network timeout to cache.local",
+    ],
+    [
+      "06:05",
+      "Network timeout to cache.local",
+    ],
+    [
+      "06:06",
+      "Network timeout to cache.local",
+    ],
+    [
+      "06:07",
+      "Network timeout to cache.local",
+    ],
+    [
+      "06:08",
+      "Network timeout to cache.local",
+    ],
+    [
+      "06:09",
+      "Network timeout to cache.local",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sdb2", "Network timeout to cache.local"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "05:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "05:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "05:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "05:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "05:04",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "05:05",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "05:06",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "05:07",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "05:08",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "05:09",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "05:10",
+      "Network timeout to api.service.com",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1", "Network timeout to api.service.com"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "04:00",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "04:01",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "04:02",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "04:03",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "04:04",
+      "Network timeout to cache.local",
+    ],
+    [
+      "04:05",
+      "Network timeout to cache.local",
+    ],
+    [
+      "04:06",
+      "Network timeout to cache.local",
+    ],
+    [
+      "04:07",
+      "Network timeout to cache.local",
+    ],
+    [
+      "04:08",
+      "Network timeout to cache.local",
+    ],
+    [
+      "04:09",
+      "Network timeout to cache.local",
+    ],
+    [
+      "04:10",
+      "Network timeout to cache.local",
+    ],
+    [
+      "04:11",
+      "Network timeout to cache.local",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sdb2", "Network timeout to cache.local"]
+
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "02:00",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "02:01",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "02:02",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "02:03",
+      "Disk full on /dev/sdb2",
+    ],
+    [
+      "02:04",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:05",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:06",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:07",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:08",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:09",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:10",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:11",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:12",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "02:13",
+      "Network timeout to api.service.com",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sdb2", "Network timeout to api.service.com"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "01:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "01:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "01:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "01:03",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "01:04",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:05",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:06",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:07",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:08",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:09",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:10",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:11",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:12",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:13",
+      "Network timeout to cache.local",
+    ],
+    [
+      "01:14",
+      "Network timeout to cache.local",
+    ],
+  ],
+]
+expected = ["Disk full on /dev/sda1", "Network timeout to cache.local"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "22:30",
+      "File not found: /etc/passwd",
+    ],
+    [
+      "22:31",
+      "File not found: /etc/passwd",
+    ],
+    [
+      "22:32",
+      "File not found: /etc/passwd",
+    ],
+    [
+      "22:33",
+      "File not found: /etc/passwd",
+    ],
+  ],
+]
+expected = ["File not found: /etc/passwd"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "13:10",
+      "Permission denied for user admin",
+    ],
+    [
+      "13:11",
+      "Permission denied for user admin",
+    ],
+    [
+      "13:12",
+      "Permission denied for user admin",
+    ],
+    [
+      "13:13",
+      "Permission denied for user admin",
+    ],
+  ],
+]
+expected = ["Permission denied for user admin"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "18:20",
+      "Segmentation fault at 0x0040",
+    ],
+    [
+      "18:21",
+      "Segmentation fault at 0x0040",
+    ],
+    [
+      "18:22",
+      "Segmentation fault at 0x0040",
+    ],
+    [
+      "18:23",
+      "Segmentation fault at 0x0040",
+    ],
+  ],
+]
+expected = ["Segmentation fault at 0x0040"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "19:30",
+      "Connection refused by smtp.mail.com",
+    ],
+    [
+      "19:31",
+      "Connection refused by smtp.mail.com",
+    ],
+    [
+      "19:32",
+      "Connection refused by smtp.mail.com",
+    ],
+    [
+      "19:33",
+      "Connection refused by smtp.mail.com",
+    ],
+  ],
+]
+expected = ["Connection refused by smtp.mail.com"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "20:40",
+      "Broken pipe on socket 7",
+    ],
+    [
+      "20:41",
+      "Broken pipe on socket 7",
+    ],
+    [
+      "20:42",
+      "Broken pipe on socket 7",
+    ],
+    [
+      "20:43",
+      "Broken pipe on socket 7",
+    ],
+  ],
+]
+expected = ["Broken pipe on socket 7"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "21:50",
+      "Invalid argument: -f",
+    ],
+    [
+      "21:51",
+      "Invalid argument: -f",
+    ],
+    [
+      "21:52",
+      "Invalid argument: -f",
+    ],
+    [
+      "21:53",
+      "Invalid argument: -f",
+    ],
+  ],
+]
+expected = ["Invalid argument: -f"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "22:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "22:01",
+      "Out of memory (PID 4321)",
+    ],
+    [
+      "22:02",
+      "Network timeout to api.service.com",
+    ],
+    [
+      "22:03",
+      "CPU overload: 98%",
+    ],
+  ],
+]
+expected = []
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "23:00",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "23:01",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "23:02",
+      "Disk full on /dev/sda1",
+    ],
+    [
+      "23:10",
+      "Disk full on /dev/sda1",
+    ],
+  ],
+]
+expected = []

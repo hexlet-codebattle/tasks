@@ -1,0 +1,182 @@
+level             = "easy"
+name              = "weighted_drop_by_roll"
+tags              = ["stdlib", "map", "sorting", "simulation"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given item weights as a dictionary `{ "item": WEIGHT }` and an integer `roll` from $1$ to the sum of all weights.
+Items are sorted by weight (ascending), then by name (alphabetically), and occupy consecutive intervals proportional to their weight.
+Return the item corresponding to the given `roll`.
+"""
+
+description_ru = """
+Дан словарь весов предметов `{ "item": WEIGHT }` и целое число `roll` от $1$ до суммы всех весов.
+Предметы сортируются по весу (по возрастанию), затем по имени (по алфавиту), и занимают подряд идущие интервалы, пропорциональные весу.
+Верните предмет, соответствующий данному `roll`.
+"""
+
+limits = """
+- $1 \\leq \\text{roll} \\leq \\sum \\text{weights}$
+- $\\text{weight}_i \\ge 0$, $\\exists i: \\text{weight}_i > 0$
+"""
+
+solution = """
+def solution(weights: dict, roll: int) -> str:
+    items = sorted(weights.items(), key=lambda x: (x[1], x[0]))
+    acc = 0
+    for name, w in items:
+        acc += w
+        if roll <= acc:
+            return name
+"""
+
+examples = """
+solution({ "sword": 10, "shield": 20 }, 15) == "shield"
+solution({ "wood": 70, "iron": 25, "diamond": 5 }, 30) == "iron"
+solution({ "topaz": 1, "sapphire": 1, "ruby": 1 }, 2) == "sapphire"
+"""
+
+[[input_signature]]
+argument_name = "weights"
+[input_signature.type]
+name = "hash"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "roll"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [{ sword = 10, shield = 20 }, 15]
+comment   = "Example"
+expected  = "shield"
+
+[[asserts]]
+arguments = [{ sword = 10, shield = 20 }, 10]
+comment   = "Boundary: first interval end"
+expected  = "sword"
+
+[[asserts]]
+arguments = [{ sword = 10, shield = 20 }, 30]
+comment   = "Boundary: last interval end"
+expected  = "shield"
+
+[[asserts]]
+arguments = [{ sword = 10, shield = 20 }, 1]
+expected  = "sword"
+
+[[asserts]]
+arguments = [{ ruby = 10, amber = 10 }, 15]
+comment   = "Equal weights → alphabetical"
+expected  = "ruby"
+
+[[asserts]]
+arguments = [{ ruby = 20, amber = 10 }, 15]
+expected  = "ruby"
+
+[[asserts]]
+arguments = [{ armor = 50, sword = 25, potion = 25 }, 50]
+expected  = "sword"
+
+[[asserts]]
+arguments = [{ armor = 50, sword = 25, potion = 25 }, 51]
+expected  = "armor"
+
+[[asserts]]
+arguments = [{ gem = 100 }, 42]
+expected  = "gem"
+
+[[asserts]]
+arguments = [{ dust = 1, rock = 99 }, 1]
+expected  = "dust"
+
+[[asserts]]
+arguments = [{ helmet = 15, boots = 15, gloves = 15 }, 30]
+comment   = "Equal weights order: boots, gloves, helmet"
+expected  = "gloves"
+
+[[asserts]]
+arguments = [{ helmet = 15, boots = 15, gloves = 15 }, 31]
+expected  = "helmet"
+
+[[asserts]]
+arguments = [{ wood = 70, iron = 25, diamond = 5 }, 30]
+expected  = "iron"
+
+[[asserts]]
+arguments = [{ wood = 70, iron = 25, diamond = 5 }, 31]
+expected  = "wood"
+
+[[asserts]]
+arguments = [{ wood = 70, iron = 25, diamond = 5 }, 100]
+expected  = "wood"
+
+[[asserts]]
+arguments = [{ axe = 10, bow = 20, crossbow = 30 }, 60]
+expected  = "crossbow"
+
+[[asserts]]
+arguments = [{ axe = 10, bow = 20, crossbow = 30 }, 30]
+expected  = "bow"
+
+[[asserts]]
+arguments = [{ axe = 10, bow = 20, crossbow = 30 }, 31]
+expected  = "crossbow"
+
+[[asserts]]
+arguments = [{ topaz = 1, sapphire = 1, ruby = 1 }, 1]
+comment   = "Equal weights → alphabetical: ruby, sapphire, topaz"
+expected  = "ruby"
+
+[[asserts]]
+arguments = [{ topaz = 1, sapphire = 1, ruby = 1 }, 2]
+expected  = "sapphire"
+
+[[asserts]]
+arguments = [{ topaz = 1, sapphire = 1, ruby = 1 }, 3]
+expected  = "topaz"
+
+[[asserts]]
+arguments = [{ orb = 1000, rune = 1000, talisman = 1000 }, 2500]
+expected  = "talisman"
+
+[[asserts]]
+arguments = [{ gold = 1, silver = 1, bronze = 1, platinum = 1 }, 2]
+comment   = "Equal weights alphabetical: bronze, gold, platinum, silver"
+expected  = "gold"
+
+[[asserts]]
+arguments = [{ dagger = 5, staff = 5, wand = 5 }, 10]
+expected  = "staff"
+
+[[asserts]]
+arguments = [{ opal = 1, pearl = 100, ivory = 1 }, 1]
+comment   = "Equal small weights alphabetical: ivory, opal"
+expected  = "ivory"
+
+[[asserts]]
+arguments = [{ opal = 1, pearl = 100, ivory = 1 }, 2]
+expected  = "opal"
+
+[[asserts]]
+arguments = [{ opal = 1, pearl = 100, ivory = 1 }, 102]
+expected  = "pearl"
+
+[[asserts]]
+arguments = [
+  { ruby = 5, sapphire = 5, emerald = 10, diamond = 1, amethyst = 15, topaz = 10, opal = 20, garnet = 1, mace = 8, spear = 8 },
+  48,
+]
+expected = "topaz"
+
+[[asserts]]
+arguments = [
+  { helmet = 10, boots = 10, gloves = 10, cuirass = 25, greaves = 25, gauntlets = 25, pauldrons = 25, sword = 15, shield = 15, potion = 5, elixir = 5, scroll = 1, grimoire = 1, orb = 2 },
+  161,
+]
+expected = "pauldrons"

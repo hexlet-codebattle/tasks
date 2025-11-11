@@ -1,0 +1,190 @@
+level             = "easy"
+name              = "sheet_drying_on_rope"
+tags              = ["math", "geometry", "logic"]
+time_to_solve_sec = 240
+
+description_en = """
+A sheet has size $A\\times B$ centimeters. A rope of length $L$ hangs at height $H$ above the floor.
+
+You throw the sheet over the rope so it is folded **exactly in half** along one side. Determine if it is possible to place the sheet so that:
+- it fits entirely on the rope, and
+- it does **not** touch the floor (strictly).
+
+This is possible iff either $A \\le L$ and $2H > B$, or $B \\le L$ and $2H > A$.
+"""
+
+description_ru = """
+Простыня имеет размеры $A\\times B$ сантиметров. Верёвка длиной $L$ висит на высоте $H$ над полом.
+
+Простыню перекидывают через верёвку так, что она сложена **ровно пополам** по одной из сторон. Требуется определить, можно ли разместить простыню так, чтобы:
+- она полностью помещалась на верёвке, и
+- **строго** не касалась пола.
+
+Это возможно тогда и только тогда, когда либо $A \\le L$ и $2H > B$, либо $B \\le L$ и $2H > A$.
+"""
+
+limits = """
+- $1 \\le A,B,H,L \\le 10^9$
+"""
+
+solution = """
+def solution(a: int, b: int, h: int, l: int) -> bool:
+    return (a <= l and 2*h > b) or (b <= l and 2*h > a)
+"""
+
+examples = """
+solution(10, 20, 15, 15) == True
+solution(10, 30, 15, 15) == False
+solution(15, 19, 10, 15) == True
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "h"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "l"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [10, 20, 15, 15]
+expected  = true
+
+[[asserts]]
+arguments = [10, 30, 15, 15]
+expected  = false
+
+[[asserts]]
+arguments = [15, 19, 10, 15]
+expected  = true
+
+[[asserts]]
+arguments = [15, 15, 18, 2]
+expected  = false
+
+[[asserts]]
+arguments = [9, 24, 13, 16]
+expected  = true
+
+[[asserts]]
+arguments = [11, 14, 21, 5]
+expected  = false
+
+[[asserts]]
+arguments = [11, 12, 21, 20]
+expected  = true
+
+[[asserts]]
+arguments = [11, 27, 20, 13]
+expected  = true
+
+[[asserts]]
+arguments = [11, 13, 14, 28]
+expected  = true
+
+[[asserts]]
+arguments = [18, 26, 15, 27]
+expected  = true
+
+[[asserts]]
+arguments = [6, 23, 24, 16]
+expected  = true
+
+[[asserts]]
+arguments = [25, 26, 28, 18]
+expected  = false
+
+[[asserts]]
+arguments = [27, 25, 1, 27]
+expected  = false
+
+[[asserts]]
+arguments = [1, 19, 27, 23]
+expected  = true
+
+[[asserts]]
+arguments = [8, 21, 26, 19]
+expected  = true
+
+[[asserts]]
+arguments = [7, 19, 10, 19]
+expected  = true
+
+[[asserts]]
+arguments = [10, 28, 11, 23]
+expected  = false
+
+[[asserts]]
+arguments = [1, 30, 6, 1]
+expected  = false
+
+[[asserts]]
+arguments = [26, 6, 4, 11]
+expected  = false
+
+[[asserts]]
+arguments = [14, 22, 12, 6]
+expected  = false
+
+[[asserts]]
+arguments = [28, 22, 7, 28]
+expected  = false
+
+[[asserts]]
+arguments = [25, 2, 5, 17]
+expected  = false
+
+[[asserts]]
+arguments = [7, 11, 8, 10]
+expected  = true
+
+[[asserts]]
+arguments = [26, 9, 30, 4]
+expected  = false
+
+[[asserts]]
+arguments = [29, 18, 28, 26]
+expected  = true
+
+[[asserts]]
+arguments = [18, 3, 9, 29]
+expected  = true
+
+[[asserts]]
+arguments = [4, 26, 5, 3]
+expected  = false
+
+[[asserts]]
+arguments = [15, 24, 24, 1]
+expected  = false
+
+[[asserts]]
+arguments = [1, 21, 3, 30]
+expected  = true
+
+[[asserts]]
+arguments = [12, 22, 8, 4]
+expected  = false
+
+[[asserts]]
+arguments = [19, 23, 16, 20]
+expected  = true
+
+[[asserts]]
+arguments = [18, 24, 16, 28]
+expected  = true

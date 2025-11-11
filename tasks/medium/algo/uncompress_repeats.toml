@@ -1,0 +1,178 @@
+level             = "medium"
+name              = "uncompress_repeats"
+tags              = ["algo", "string", "linear-scan"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a string `s`, uncompress it based on the following rules:
+
+- Expand a character followed by an integer `k` (e.g., `a3`, `z10`) into that character repeated `k` times.
+- Characters not followed by digits remain unchanged (this naturally preserves singles and pairs like `a`, `aa`).
+"""
+
+description_ru = """
+Дана строка `s`, нужно восстановить строку из сжатого вида:
+
+- Если за символом следует целое число `k` (например, `a3`, `z10`), заменить это на повторение символа `k` раз.
+- Символы без последующих цифр остаются без изменений (тем самым одиночные и парные символы — `a`, `aa` — сохраняются).
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 100$
+- $0 \\leq k \\leq 100$
+"""
+
+solution = """
+def solution(s: str) -> str:
+    out = []
+    i = 0
+    n = len(s)
+    while i < n:
+        ch = s[i]
+        i += 1
+        j = i
+        while j < n and s[j].isdigit():
+            j += 1
+        if j > i:
+            count = int(s[i:j])
+            out.append(ch * count)
+            i = j
+        else:
+            out.append(ch)
+    return "".join(out)
+"""
+
+examples = """
+solution('') == ''
+solution('a4') == 'aaaa'
+solution('a3bc3dd') == 'aaabcccdd'
+solution('z10') == 'zzzzzzzzzz'
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string stays empty"
+expected  = ""
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single character unchanged"
+expected  = "a"
+
+[[asserts]]
+arguments = ["aa"]
+comment   = "Two same characters unchanged"
+expected  = "aa"
+
+[[asserts]]
+arguments = ["a3"]
+comment   = "Exactly 3 expands"
+expected  = "aaa"
+
+[[asserts]]
+arguments = ["a4"]
+comment   = "Run of 4 expands from a4"
+expected  = "aaaa"
+
+[[asserts]]
+arguments = ["a3bc3dd"]
+comment   = "Mixed groups; inverse of the prompt example"
+expected  = "aaabcccdd"
+
+[[asserts]]
+arguments = ["x5yyz4"]
+comment   = "Multiple runs, some plain, some expanded"
+expected  = "xxxxxyyzzzz"
+
+[[asserts]]
+arguments = ["ab5c"]
+comment   = "Single long run in the middle"
+expected  = "abbbbbc"
+
+[[asserts]]
+arguments = ["b4a3"]
+comment   = "Two expanded runs back-to-back"
+expected  = "bbbbaaa"
+
+[[asserts]]
+arguments = ["AaaAA"]
+comment   = "Case-sensitive; no digits -> unchanged"
+expected  = "AaaAA"
+
+[[asserts]]
+arguments = ["abc3d"]
+comment   = "Short groups around an expanded one"
+expected  = "abcccd"
+
+[[asserts]]
+arguments = ["a3B3c3"]
+comment   = "Three separate expanded runs with mixed case"
+expected  = "aaaBBBccc"
+
+[[asserts]]
+arguments = ["aabbaa"]
+comment   = "Only pairs; nothing expands"
+expected  = "aabbaa"
+
+[[asserts]]
+arguments = ["xyz3"]
+comment   = "Short prefix then expanded suffix"
+expected  = "xyzzz"
+
+[[asserts]]
+arguments = ["z3yx"]
+comment   = "Expanded prefix then singles"
+expected  = "zzzyx"
+
+[[asserts]]
+arguments = ["a3bba3c3a5"]
+comment   = "Several runs of various lengths"
+expected  = "aaabbaaacccaaaaa"
+
+[[asserts]]
+arguments = ["qwerty"]
+comment   = "No counts at all"
+expected  = "qwerty"
+
+[[asserts]]
+arguments = ["m4nm4"]
+comment   = "Two expanded runs separated by a single char"
+expected  = "mmmmnmmmm"
+
+[[asserts]]
+arguments = ["z10"]
+comment   = "Ten of the same char -> multi-digit count"
+expected  = "zzzzzzzzzz"
+
+[[asserts]]
+arguments = ["a100"]
+comment   = "100 'a' characters -> multi-digit count"
+expected  = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+[[asserts]]
+arguments = ["ba3"]
+comment   = "Expanded at end with leading single"
+expected  = "baaa"
+
+[[asserts]]
+arguments = ["a3b"]
+comment   = "Expanded at start with trailing single"
+expected  = "aaab"
+
+[[asserts]]
+arguments = ["ba3c"]
+comment   = "Expanded in the middle surrounded by singles"
+expected  = "baaac"
+
+[[asserts]]
+arguments = ["c6b5a4dde"]
+comment   = "Mix of long, medium, and short runs"
+expected  = "ccccccbbbbbaaaadde"

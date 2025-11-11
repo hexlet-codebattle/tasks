@@ -1,0 +1,164 @@
+level             = "easy"
+name              = "max_divisible_by_30"
+tags              = ["math", "greedy"]
+time_to_solve_sec = 200
+
+description_en = """
+Given an integer $N$ ($0 \\leq N \\leq 10^9$), rearrange its digits to obtain the **maximum** number divisible by $30$.
+If impossible, return $-1$.
+"""
+
+description_ru = """
+Дано целое число $N$ ($0 \\leq N \\leq 10^9$). Переставьте его цифры, чтобы получить **максимальное** число, кратное $30$.
+Если это невозможно, верните $-1$.
+"""
+
+limits = """
+- $0 \\leq N \\leq 10^9$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    s = str(n)
+    if '0' not in s or sum(int(d) for d in s) % 3 != 0:
+        return -1
+    return int(''.join(sorted(s, reverse=True)))
+"""
+
+examples = """
+solution(105) == 510
+solution(322) == -1
+solution(30) == 30
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [105]
+expected  = 510
+
+[[asserts]]
+arguments = [322]
+expected  = -1
+
+[[asserts]]
+arguments = [30]
+expected  = 30
+
+[[asserts]]
+arguments = [893083911]
+expected  = 998833110
+
+[[asserts]]
+arguments = [280587678]
+expected  = 888776520
+
+[[asserts]]
+arguments = [629904342]
+expected  = 996443220
+
+[[asserts]]
+arguments = [903813795]
+expected  = 998753310
+
+[[asserts]]
+arguments = [22621710]
+expected  = 76222110
+
+[[asserts]]
+arguments = [709234782]
+expected  = 987743220
+
+[[asserts]]
+arguments = [27189840]
+expected  = 98874210
+
+[[asserts]]
+arguments = [502728939]
+expected  = 998753220
+
+[[asserts]]
+arguments = [860352987]
+expected  = 988765320
+
+[[asserts]]
+arguments = [857507070]
+expected  = 877755000
+
+[[asserts]]
+arguments = [775301715]
+expected  = 777553110
+
+[[asserts]]
+arguments = [730306518]
+expected  = 876533100
+
+[[asserts]]
+arguments = [557807814]
+expected  = 887755410
+
+[[asserts]]
+arguments = [320012625]
+expected  = 653222100
+
+[[asserts]]
+arguments = [230767938]
+expected  = 987763320
+
+[[asserts]]
+arguments = [80090631]
+expected  = 98631000
+
+[[asserts]]
+arguments = [228949056]
+expected  = 998654220
+
+[[asserts]]
+arguments = [702401652]
+expected  = 765422100
+
+[[asserts]]
+arguments = [608262012]
+expected  = 866222100
+
+[[asserts]]
+arguments = [607174044]
+expected  = 776444100
+
+[[asserts]]
+arguments = [204969762]
+expected  = 997664220
+
+[[asserts]]
+arguments = [567260568]
+expected  = 876665520
+
+[[asserts]]
+arguments = [465238980]
+expected  = 988654320
+
+[[asserts]]
+arguments = [348320388]
+expected  = 888433320
+
+[[asserts]]
+arguments = [507957429]
+expected  = 997755420
+
+[[asserts]]
+arguments = [850017702]
+expected  = 877521000
+
+[[asserts]]
+arguments = [467044410]
+expected  = 764444100
+
+[[asserts]]
+arguments = [3333]
+expected  = -1

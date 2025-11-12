@@ -1,0 +1,165 @@
+level             = "elementary"
+name              = "additive_inverse"
+tags              = ["array", "math", "sign"]
+time_to_solve_sec = 90
+
+description_en = """
+Given an array of integers $x$, return an array of their additive inverses, i.e., for each $x_i$ return $-x_i$.
+"""
+
+description_ru = """
+Дан массив целых чисел $x$. Верните массив их аддитивных инверсий: для каждого $x_i$ верните $-x_i$.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(x) \\leq 10^5$
+- $-10^4 \\leq x_i \\leq 10^4$
+"""
+
+solution = """
+def solution(numbers):
+    return [-v for v in numbers]
+"""
+
+examples = """
+solution([-5, 25, 125]) == [5, -25, -125]
+solution([1, -2, 3, 0]) == [-1, 2, -3, 0]
+solution([1, 1, 1, 10]) == [-1, -1, -1, -10]
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, -2, 3, -4, -5]]
+comment   = "Mixed signs from original"
+expected  = [-1, 2, -3, 4, 5]
+
+[[asserts]]
+arguments = [[1, 1, 1, 10]]
+comment   = "All positives"
+expected  = [-1, -1, -1, -10]
+
+[[asserts]]
+arguments = [[-5, 25, 125]]
+comment   = "From original"
+expected  = [5, -25, -125]
+
+[[asserts]]
+arguments = [[0]]
+comment   = "Zero remains zero"
+expected  = [0]
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "Many zeros"
+expected  = [0, 0, 0]
+
+[[asserts]]
+arguments = [[-1, -1, -1]]
+comment   = "All negatives -1"
+expected  = [1, 1, 1]
+
+[[asserts]]
+arguments = [[-1000, 1000]]
+comment   = "Edge of value range"
+expected  = [1000, -1000]
+
+[[asserts]]
+arguments = [[2, -2]]
+comment   = "Simple pair"
+expected  = [-2, 2]
+
+[[asserts]]
+arguments = [[7]]
+comment   = "Single positive"
+expected  = [-7]
+
+[[asserts]]
+arguments = [[-7]]
+comment   = "Single negative"
+expected  = [7]
+
+[[asserts]]
+arguments = [[3, 0, -3]]
+comment   = "Symmetry around zero"
+expected  = [-3, 0, 3]
+
+[[asserts]]
+arguments = [[10, -10, 5, -5]]
+comment   = "Pairs cancel conceptually"
+expected  = [-10, 10, -5, 5]
+
+[[asserts]]
+arguments = [[9999, -9999]]
+comment   = "Near upper absolute bound"
+expected  = [-9999, 9999]
+
+[[asserts]]
+arguments = [[4, 8, 15, 16, 23, 42]]
+comment   = "Random positives"
+expected  = [-4, -8, -15, -16, -23, -42]
+
+[[asserts]]
+arguments = [[-4, -8, -15, -16, -23, -42]]
+comment   = "Random negatives"
+expected  = [4, 8, 15, 16, 23, 42]
+
+[[asserts]]
+arguments = [[-10, -20, 30, -40, 50]]
+comment   = "Mixed sizable values"
+expected  = [10, 20, -30, 40, -50]
+
+[[asserts]]
+arguments = [[1, -1, 1, -1, 1, -1]]
+comment   = "Alternating signs"
+expected  = [-1, 1, -1, 1, -1, 1]
+
+[[asserts]]
+arguments = [[100, 0, -100, 50, -50, 0]]
+comment   = "Include zeros in mix"
+expected  = [-100, 0, 100, -50, 50, 0]
+
+[[asserts]]
+arguments = [[-12, 34, -56, 78, -90]]
+comment   = "Arbitrary set"
+expected  = [12, -34, 56, -78, 90]
+
+[[asserts]]
+arguments = [[-3, -2, -1, 0, 1, 2, 3]]
+comment   = "Progression around zero"
+expected  = [3, 2, 1, 0, -1, -2, -3]
+
+[[asserts]]
+arguments = [[-100, -50, -1]]
+comment   = "All negative"
+expected  = [100, 50, 1]
+
+[[asserts]]
+arguments = [[50, 25, 0]]
+comment   = "Positives with zero"
+expected  = [-50, -25, 0]
+
+[[asserts]]
+arguments = [[-999, 123, -456, 789]]
+comment   = "Mixed medium values"
+expected  = [999, -123, 456, -789]
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty input"
+expected  = []
+
+[[asserts]]
+arguments = [[-10000, 10000, 0]]
+comment   = "Hard bounds and zero"
+expected  = [10000, -10000, 0]

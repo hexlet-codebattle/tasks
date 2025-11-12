@@ -1,0 +1,160 @@
+level             = "elementary"
+name              = "age_to_days"
+tags              = ["math", "training"]
+time_to_solve_sec = 60
+
+description_en = """
+Convert age in years $a$ to days, assuming $365$ days in a year and ignoring leap years.
+"""
+
+description_ru = """
+Преобразуйте возраст в годах $a$ в дни, считая $365$ дней в году и игнорируя високосные годы.
+"""
+
+limits = """
+- $0 \\leq a \\leq 120$
+"""
+
+solution = """
+def solution(age: int) -> int:
+    return age * 365
+"""
+
+examples = """
+solution(0) == 0
+solution(12) == 4380
+solution(23) == 8395
+"""
+
+[[input_signature]]
+argument_name = "age"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+comment   = "Newborn"
+expected  = 0
+
+[[asserts]]
+arguments = [1]
+comment   = "One year"
+expected  = 365
+
+[[asserts]]
+arguments = [2]
+comment   = "Two years"
+expected  = 730
+
+[[asserts]]
+arguments = [3]
+comment   = "Small age"
+expected  = 1095
+
+[[asserts]]
+arguments = [5]
+comment   = "Kindergarten age"
+expected  = 1825
+
+[[asserts]]
+arguments = [7]
+comment   = "Primary school"
+expected  = 2555
+
+[[asserts]]
+arguments = [10]
+comment   = "Round age"
+expected  = 3650
+
+[[asserts]]
+arguments = [12]
+comment   = "From original tests"
+expected  = 4380
+
+[[asserts]]
+arguments = [15]
+comment   = "Teen"
+expected  = 5475
+
+[[asserts]]
+arguments = [18]
+comment   = "Adult threshold"
+expected  = 6570
+
+[[asserts]]
+arguments = [20]
+comment   = "Round number"
+expected  = 7300
+
+[[asserts]]
+arguments = [21]
+comment   = "Just over 20"
+expected  = 7665
+
+[[asserts]]
+arguments = [23]
+comment   = "From original tests"
+expected  = 8395
+
+[[asserts]]
+arguments = [25]
+comment   = "Quarter century"
+expected  = 9125
+
+[[asserts]]
+arguments = [30]
+comment   = "Thirty"
+expected  = 10950
+
+[[asserts]]
+arguments = [33]
+comment   = "Early thirties"
+expected  = 12045
+
+[[asserts]]
+arguments = [40]
+comment   = "Midlife"
+expected  = 14600
+
+[[asserts]]
+arguments = [50]
+comment   = "Half century"
+expected  = 18250
+
+[[asserts]]
+arguments = [60]
+comment   = "Senior"
+expected  = 21900
+
+[[asserts]]
+arguments = [70]
+comment   = "Seventies"
+expected  = 25550
+
+[[asserts]]
+arguments = [80]
+comment   = "Eighties"
+expected  = 29200
+
+[[asserts]]
+arguments = [90]
+comment   = "Nineties"
+expected  = 32850
+
+[[asserts]]
+arguments = [100]
+comment   = "Centenarian"
+expected  = 36500
+
+[[asserts]]
+arguments = [110]
+comment   = "Supercentenarian range"
+expected  = 40150
+
+[[asserts]]
+arguments = [120]
+comment   = "Upper bound"
+expected  = 43800

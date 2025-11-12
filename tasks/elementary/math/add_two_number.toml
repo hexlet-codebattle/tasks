@@ -1,0 +1,160 @@
+level             = "elementary"
+name              = "add_two_number"
+tags              = ["math", "training"]
+time_to_solve_sec = 60
+
+description_en = """
+Given a two-digit integer $n$, return the sum of its digits.
+"""
+
+description_ru = """
+Дано двузначное целое число $n$. Верните сумму его цифр.
+"""
+
+limits = """
+- $10 \\leq n \\leq 99$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    return n // 10 + n % 10
+"""
+
+examples = """
+solution(10) == 1
+solution(12) == 3
+solution(99) == 18
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [10]
+comment   = "Lowest two-digit number"
+expected  = 1
+
+[[asserts]]
+arguments = [11]
+comment   = "Both digits same small"
+expected  = 2
+
+[[asserts]]
+arguments = [12]
+comment   = "Basic"
+expected  = 3
+
+[[asserts]]
+arguments = [19]
+comment   = "Edge within teens"
+expected  = 10
+
+[[asserts]]
+arguments = [20]
+comment   = "Multiple of ten"
+expected  = 2
+
+[[asserts]]
+arguments = [21]
+comment   = "Low twenties"
+expected  = 3
+
+[[asserts]]
+arguments = [34]
+comment   = "Mid-range"
+expected  = 7
+
+[[asserts]]
+arguments = [40]
+comment   = "Round ten"
+expected  = 4
+
+[[asserts]]
+arguments = [58]
+comment   = "Different digits"
+expected  = 13
+
+[[asserts]]
+arguments = [60]
+comment   = "Zero in ones place"
+expected  = 6
+
+[[asserts]]
+arguments = [67]
+comment   = "Sum over 10"
+expected  = 13
+
+[[asserts]]
+arguments = [70]
+comment   = "Round ten high"
+expected  = 7
+
+[[asserts]]
+arguments = [73]
+comment   = "Prime tens digit"
+expected  = 10
+
+[[asserts]]
+arguments = [80]
+comment   = "Round ten"
+expected  = 8
+
+[[asserts]]
+arguments = [81]
+comment   = "Nine in ones place"
+expected  = 9
+
+[[asserts]]
+arguments = [88]
+comment   = "Both digits equal high"
+expected  = 16
+
+[[asserts]]
+arguments = [90]
+comment   = "Ninety"
+expected  = 9
+
+[[asserts]]
+arguments = [91]
+comment   = "Over ninety"
+expected  = 10
+
+[[asserts]]
+arguments = [95]
+comment   = "Large sum"
+expected  = 14
+
+[[asserts]]
+arguments = [96]
+comment   = "Near upper bound"
+expected  = 15
+
+[[asserts]]
+arguments = [97]
+comment   = "Near upper bound"
+expected  = 16
+
+[[asserts]]
+arguments = [98]
+comment   = "Near upper bound"
+expected  = 17
+
+[[asserts]]
+arguments = [99]
+comment   = "Largest two-digit number"
+expected  = 18
+
+[[asserts]]
+arguments = [44]
+comment   = "Balanced digits"
+expected  = 8
+
+[[asserts]]
+arguments = [57]
+comment   = "Random mixed digits"
+expected  = 12

@@ -1,0 +1,255 @@
+level             = "medium"
+name              = "anagram_finder"
+tags              = ["string", "hashing", "sorting"]
+time_to_solve_sec = 360
+
+description_en = """
+Given an array of lowercase words $w$, group words that are anagrams.
+Return an array of groups (each a string array) where each group has size $\\ge 2$.
+Inside each group, words are sorted lexicographically (duplicates allowed).
+Groups are sorted by their first element, then by group size.
+If there are no anagrams, return `[["anagrams not found!"]]`.
+"""
+
+description_ru = """
+Дан массив слов в нижнем регистре $w$. Сгруппируйте слова-анаграммы.
+Верните массив групп (каждая — массив строк) только с группами размера $\\ge 2$.
+Внутри группы слова отсортированы лексикографически (дубликаты допускаются).
+Группы отсортированы по первому слову, затем по размеру группы.
+Если анаграмм нет, верните `[["anagrams not found!"]]`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(w) \\leq 5\\cdot 42$
+- $1 \\leq \\text{len}(w_i) \\leq 30$
+- $w_i \\in [a\\!\\dots\\!z]^*$
+"""
+
+solution = """
+def solution(w):
+    from collections import defaultdict
+    groups = defaultdict(list)
+    for s in w:
+        key = ''.join(sorted(s))
+        groups[key].append(s)
+    # keep only groups with >=2
+    kept = []
+    for key, arr in groups.items():
+        if len(arr) >= 2:
+            arr.sort()
+            kept.append(arr)
+    if not kept:
+        return [["anagrams not found!"]]
+    kept.sort(key=lambda g: (g[0], len(g)))
+    return kept
+"""
+
+examples = """
+solution(["a","b","c"]) == [["anagrams not found!"]]
+solution(["ab","ba","cd","dc"]) == [["ab","ba"],["cd","dc"]]
+solution(["eat","tea","tan","ate","nat","bat"]) == [["ate","eat","tea"],["nat","tan"]]
+"""
+
+[[input_signature]]
+argument_name = "w"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["veer", "lake", "item", "kale", "mite", "ever", "rev"]]
+comment   = "Three groups, sorted by first word"
+expected  = [["ever", "veer"], ["item", "mite"], ["kale", "lake"]]
+
+[[asserts]]
+arguments = [["meat", "mat", "team", "mate", "eat", "mate"]]
+comment   = "Only the meat/mate/team group qualifies; words sorted"
+expected  = [["mate", "mate", "meat", "team"]]
+
+[[asserts]]
+arguments = [["there", "is", "no", "anagrams", "foo", "bar"]]
+comment   = "No anagrams at all"
+expected  = [["anagrams not found!"]]
+
+[[asserts]]
+arguments = [
+  [
+    "cough",
+    "guohc",
+    "guohc",
+    "water",
+    "water",
+    "trnwie",
+    "nitwer",
+    "distribution",
+    "oriintdusbti",
+    "gelugaan",
+    "nuaegalg",
+    "osls",
+    "osls",
+  ],
+]
+comment = "Multiple groups with duplicates"
+expected = [
+  [
+    "cough",
+    "guohc",
+    "guohc",
+  ],
+  [
+    "distribution",
+    "oriintdusbti",
+  ],
+  [
+    "gelugaan",
+    "nuaegalg",
+  ],
+  [
+    "nitwer",
+    "trnwie",
+  ],
+  [
+    "osls",
+    "osls",
+  ],
+  [
+    "water",
+    "water",
+  ],
+]
+
+[[asserts]]
+arguments = [["ab", "ba", "ab", "bca", "cab", "abc", "zzz"]]
+comment   = "Two groups; sorted groups and words"
+expected  = [["ab", "ab", "ba"], ["abc", "bca", "cab"]]
+
+[[asserts]]
+arguments = [["a", "a"]]
+comment   = "Single-letter duplicates"
+expected  = [["a", "a"]]
+
+[[asserts]]
+arguments = [["a", "b", "c"]]
+comment   = "No group >=2"
+expected  = [["anagrams not found!"]]
+
+[[asserts]]
+arguments = [["abc", "acb", "bac", "bca", "cab", "cba"]]
+comment   = "All are one large group"
+expected  = [["abc", "acb", "bac", "bca", "cab", "cba"]]
+
+[[asserts]]
+arguments = [
+  [
+    "listen",
+    "silent",
+    "enlist",
+    "inlets",
+    "google",
+    "gogole",
+    "elints",
+  ],
+]
+comment = "Classic anagram set"
+expected = [
+  [
+    "elints",
+    "enlist",
+    "inlets",
+    "listen",
+    "silent",
+  ],
+  [
+    "gogole",
+    "google",
+  ],
+]
+
+[[asserts]]
+arguments = [["dusty", "stud", "study", "rust", "tsur", "udsty"]]
+comment   = "Two groups"
+expected  = [["dusty", "study", "udsty"], ["rust", "tsur"]]
+
+[[asserts]]
+arguments = [["abc", "def", "fed", "cba", "gh", "hg", "zzz", "z"]]
+comment   = "Several small groups"
+expected  = [["abc", "cba"], ["def", "fed"], ["gh", "hg"]]
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty input"
+expected  = [["anagrams not found!"]]
+
+[[asserts]]
+arguments = [["aaaa", "aaaa", "aaaa"]]
+comment   = "All identical"
+expected  = [["aaaa", "aaaa", "aaaa"]]
+
+[[asserts]]
+arguments = [["loop", "polo", "pool", "loco", "cool"]]
+comment   = "Two groups of size 3 and 2"
+expected  = [["cool", "loco"], ["loop", "polo", "pool"]]
+
+[[asserts]]
+arguments = [["abc", "abd", "acb", "bad", "dba", "bca"]]
+comment   = "Two groups abc and abd"
+expected  = [["abc", "acb", "bca"], ["abd", "bad", "dba"]]
+
+[[asserts]]
+arguments = [["xyz", "xzy", "yxz", "yzx", "zxy", "zyx", "a"]]
+comment   = "All permutations of xyz are one group"
+expected  = [["xyz", "xzy", "yxz", "yzx", "zxy", "zyx"]]
+
+[[asserts]]
+arguments = [["abc", "bca", "cab", "abcd", "bcad", "dacb", "dbca", "zz", "zz"]]
+comment = "One 3-group, one 4-group, one 2-group; sorted by first word"
+expected = [
+  [
+    "abc",
+    "bca",
+    "cab",
+  ],
+  [
+    "abcd",
+    "bcad",
+    "dacb",
+    "dbca",
+  ],
+  [
+    "zz",
+    "zz",
+  ],
+]
+
+[[asserts]]
+arguments = [["abc", "bac", "ccc", "ccc", "bcc", "cbc"]]
+comment   = "Two groups with duplicates"
+expected  = [["abc", "bac"], ["bcc", "cbc"], ["ccc", "ccc"]]
+
+[[asserts]]
+arguments = [["note", "tone", "stone", "tones", "onset", "seton"]]
+comment   = "One group of note/tone and one large group of onset/seton/stone/tones"
+expected  = [["note", "tone"], ["onset", "seton", "stone", "tones"]]
+
+[[asserts]]
+arguments = [["rail", "liar", "lair", "riali", "arial"]]
+comment   = "Two groups: liar-family and arial/riali not anagrams"
+expected  = [["lair", "liar", "rail"]]
+
+[[asserts]]
+arguments = [["abc", "cba", "bca", "abcd", "abdc", "abcd", "dcab", "cadb"]]
+comment   = "Group sizes 3 and 5 (abcd group has duplicate)"
+expected  = [["abc", "bca", "cba"], ["abcd", "abcd", "abdc", "cadb", "dcab"]]
+
+[[asserts]]
+arguments = [["zzz", "zzz", "zzz", "zzzz", "zzzz"]]
+comment   = "Two groups of repeated letters"
+expected  = [["zzz", "zzz", "zzz"], ["zzzz", "zzzz"]]

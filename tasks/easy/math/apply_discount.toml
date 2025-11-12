@@ -1,0 +1,177 @@
+level             = "easy"
+name              = "apply_discount"
+tags              = ["math", "array"]
+time_to_solve_sec = 200
+
+description_en = """
+You are given two equal-length arrays: prices $p$ and discounts $d$.
+For each index $i$, compute $\\max(p_i - d_i, 0)$ and return the sum of these values.
+"""
+
+description_ru = """
+Даны два массива одинаковой длины: цены $p$ и скидки $d$.
+Для каждого индекса $i$ вычислите $\\max(p_i - d_i, 0)$ и верните сумму этих значений.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(p) = \\text{len}(d) \\leq 42$
+- $0 \\leq p_i, d_i \\leq 10^6$
+"""
+
+solution = """
+def solution(prices, discounts):
+    s = 0
+    for a,b in zip(prices, discounts):
+        x = a - b
+        if x > 0:
+            s += x
+    return s
+"""
+
+examples = """
+solution([10, 15], [10, 10]) == 5
+solution([2, 4, 6, 10], [1, 5, 7, 9]) == 2
+solution([10, 20, 40, 100], [9, 18, 40, 200]) == 3
+"""
+
+[[input_signature]]
+argument_name = "prices"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "discounts"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[10, 15], [10, 10]]
+comment   = "From original: 0 + 5"
+expected  = 5
+
+[[asserts]]
+arguments = [[2, 4, 6, 10], [1, 5, 7, 9]]
+comment   = "1 + 0 + 0 + 1"
+expected  = 2
+
+[[asserts]]
+arguments = [[10, 20, 40, 100], [9, 18, 40, 200]]
+comment   = "1 + 2 + 0 + 0"
+expected  = 3
+
+[[asserts]]
+arguments = [[10, 20, 40, 100], [1, 2, 30, 50]]
+comment   = "9 + 18 + 10 + 50"
+expected  = 87
+
+[[asserts]]
+arguments = [[0], [0]]
+comment   = "Zero case"
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 0, 0], [1, 2, 3]]
+comment   = "All clamp to zero"
+expected  = 0
+
+[[asserts]]
+arguments = [[100], [0]]
+comment   = "No discount"
+expected  = 100
+
+[[asserts]]
+arguments = [[100], [100]]
+comment   = "Exact cancellation"
+expected  = 0
+
+[[asserts]]
+arguments = [[100], [200]]
+comment   = "Negative intermediate becomes zero"
+expected  = 0
+
+[[asserts]]
+arguments = [[1000000], [1000000]]
+comment   = "Upper bound cancel"
+expected  = 0
+
+[[asserts]]
+arguments = [[1000000], [0]]
+comment   = "Upper bound no discount"
+expected  = 1000000
+
+[[asserts]]
+arguments = [[500000, 500000], [499999, 1]]
+comment   = "Both positive after discount"
+expected  = 500_000
+
+[[asserts]]
+arguments = [[10, 0, 10, 0], [9, 1, 11, 2]]
+comment   = "Some negatives clamp to zero"
+expected  = 1
+
+[[asserts]]
+arguments = [[3, 3, 3], [1, 1, 10]]
+comment   = "Only first two contribute"
+expected  = 4
+
+[[asserts]]
+arguments = [[7, 14, 21], [7, 7, 7]]
+comment   = "Half off scenario; last two positive"
+expected  = 21
+
+[[asserts]]
+arguments = [[9, 8, 7, 6, 5], [10, 10, 10, 10, 10]]
+comment   = "All clamp to zero (discounts larger)"
+expected  = 0
+
+[[asserts]]
+arguments = [[100, 200, 300, 400], [50, 50, 50, 50]]
+comment   = "Uniform discount"
+expected  = 800
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
+comment   = "Staircase"
+expected  = 10
+
+[[asserts]]
+arguments = [[10], [11]]
+comment   = "Single, clamps to zero"
+expected  = 0
+
+[[asserts]]
+arguments = [[11], [10]]
+comment   = "Single, positive"
+expected  = 1
+
+[[asserts]]
+arguments = [[12345, 67890, 13579, 24680], [54321, 1000, 13579, 20000]]
+comment   = "Mix with zeroes and positives"
+expected  = 71570
+
+[[asserts]]
+arguments = [[999999, 1, 500000], [1, 2, 600000]]
+comment   = "Edge behaviors mixed"
+expected  = 999998
+
+[[asserts]]
+arguments = [[42, 42, 42, 42, 42], [41, 42, 43, 0, 1000]]
+comment   = "Varied outcomes"
+expected  = 43
+
+[[asserts]]
+arguments = [[0, 100, 0, 100], [0, 0, 100, 100]]
+comment   = "Zeros and equals"
+expected  = 100
+
+[[asserts]]
+arguments = [[], []]
+comment   = "Empty arrays"
+expected  = 0

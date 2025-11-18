@@ -1,0 +1,277 @@
+level             = "elementary"
+name              = "book_authors"
+tags              = ["string", "array", "hash_map"]
+time_to_solve_sec = 250
+
+description_en = """
+You are given a list of books `books`. Each book is represented as a hash (dictionary) with string keys and string values, and contains at least the key `"authors"`.
+
+Return a list of author strings in the **same order** as the books in the input. For each book, take the value of its `"authors"` field.
+"""
+
+description_ru = """
+Вам дан список книг `books`. Каждая книга представлена хешем (словарём) с строковыми ключами и строковыми значениями и содержит как минимум ключ `"authors"`.
+
+Верните список строк с именами авторов в **том же порядке**, в котором книги идут во входном списке. Для каждой книги возьмите значение поля `"authors"`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{books}) \\leq 50$
+"""
+
+solution = """
+from typing import List, Dict
+
+def solution(books: List[Dict[str, str]]) -> List[str]:
+    return [b.get("authors", "") for b in books]
+"""
+
+examples = """
+solution([]) == []
+solution([{"name": "Some book", "authors": "Some authors", "pages": "123"}]) == ["Some authors"]
+solution([
+    {"name": "SICP", "authors": "Harold Abelson, Gerald Jay Sussman, Julie Sussman", "pages": "657"},
+    {"name": "Ruby Under a Microscope", "authors": "Pat Shaughnessy", "pages": "360"}
+]) == [
+    "Harold Abelson, Gerald Jay Sussman, Julie Sussman",
+    "Pat Shaughnessy"
+]
+"""
+
+[[input_signature]]
+argument_name = "books"
+[input_signature.type]
+name   = "array"
+nested = { name = "hash", nested = { name = "string" } }
+
+[output_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[[asserts]]
+arguments = [[]]
+comment   = "No books, no authors"
+expected  = []
+
+[[asserts]]
+arguments = [[{ name = "Some book", authors = "Some authors", pages = "123" }]]
+comment   = "Single book, single author string"
+expected  = ["Some authors"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Some book", authors = "Some authors", pages = "123" },
+    { name = "Sample", authors = "Authors", pages = "321" },
+  ],
+]
+comment = "Two simple books, order preserved"
+expected = ["Some authors", "Authors"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "SICP", authors = "Harold Abelson, Gerald Jay Sussman, Julie Sussman", pages = "657" },
+    { name = "Ruby Under a Microscope", authors = "Pat Shaughnessy", pages = "360" },
+    { name = "How to Design Programs.", authors = "Matthias Felleisen, Robert Bruce Findler, Matthew Flatt, Shriram Krishnamurthi", pages = "720" },
+  ],
+]
+comment = "Original example with multiple famous books"
+expected = [
+  "Harold Abelson, Gerald Jay Sussman, Julie Sussman",
+  "Pat Shaughnessy",
+  "Matthias Felleisen, Robert Bruce Findler, Matthew Flatt, Shriram Krishnamurthi",
+]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Book A", authors = "Alice", pages = "200" },
+    { name = "Book B", authors = "Bob", pages = "150" },
+    { name = "Book C", authors = "Charlie", pages = "300" },
+  ],
+]
+comment = "Three books with single authors"
+expected = ["Alice", "Bob", "Charlie"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Book A", authors = "Alice, Bob", pages = "200" },
+    { name = "Book B", authors = "Charlie, Dana", pages = "150" },
+  ],
+]
+comment = "Multiple authors in a single string"
+expected = ["Alice, Bob", "Charlie, Dana"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Book A", authors = "Alice, Bob, Charlie", pages = "200" },
+  ],
+]
+comment = "Three authors in one field"
+expected = ["Alice, Bob, Charlie"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Book A", authors = "Alice", pages = "200" },
+    { name = "Book B", authors = "Alice", pages = "220" },
+  ],
+]
+comment = "Same author on multiple books"
+expected = ["Alice", "Alice"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Book A", authors = "Alice", pages = "200" },
+    { name = "Book B", authors = "Alice, Bob", pages = "220" },
+    { name = "Book C", authors = "Bob", pages = "240" },
+  ],
+]
+comment = "Author appears alone and in groups"
+expected = ["Alice", "Alice, Bob", "Bob"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Short", authors = "A", pages = "10" },
+    { name = "Long", authors = "Author With A Very Long Name", pages = "999" },
+  ],
+]
+comment = "Very short and very long author names"
+expected = ["A", "Author With A Very Long Name"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Empty Pages", authors = "Alice", pages = "" },
+    { name = "Numeric Pages", authors = "Bob", pages = "0" },
+  ],
+]
+comment = "Pages field irrelevant, only authors matter"
+expected = ["Alice", "Bob"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Extra Field Book", authors = "Alice", pages = "100", language = "EN" },
+  ],
+]
+comment = "Extra fields do not affect result"
+expected = ["Alice"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Leading Space", authors = " Alice", pages = "100" },
+    { name = "Trailing Space", authors = "Bob ", pages = "200" },
+  ],
+]
+comment = "Authors are taken exactly as stored, spaces preserved"
+expected = [" Alice", "Bob "]
+
+[[asserts]]
+arguments = [[{ name = "Comma Only", authors = ", , ,", pages = "100" }]]
+comment   = "Strange author string is still returned as-is"
+expected  = [", , ,"]
+
+[[asserts]]
+arguments = [[{ name = "Empty Author", authors = "", pages = "100" }]]
+comment   = "Empty author field is allowed and returned"
+expected  = [""]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Book 1", authors = "Author 1", pages = "100" },
+    { name = "Book 2", authors = "Author 2", pages = "200" },
+    { name = "Book 3", authors = "Author 3", pages = "300" },
+    { name = "Book 4", authors = "Author 4", pages = "400" },
+  ],
+]
+comment = "Several books, straightforward extraction"
+expected = ["Author 1", "Author 2", "Author 3", "Author 4"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "No Pages 1", authors = "Author A" },
+    { name = "No Pages 2", authors = "Author B" },
+  ],
+]
+comment = "Missing pages field, only authors required"
+expected = ["Author A", "Author B"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Mixed 1", authors = "Author A, Author B", pages = "123" },
+    { name = "Mixed 2", authors = "Single Author", pages = "456" },
+    { name = "Mixed 3", authors = "X, Y, Z", pages = "789" },
+  ],
+]
+comment = "Mixture of single and multiple authors"
+expected = ["Author A, Author B", "Single Author", "X, Y, Z"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Case Test 1", authors = "alice", pages = "111" },
+    { name = "Case Test 2", authors = "ALICE", pages = "222" },
+    { name = "Case Test 3", authors = "Alice", pages = "333" },
+  ],
+]
+comment = "Case sensitivity in author names kept as-is"
+expected = ["alice", "ALICE", "Alice"]
+
+[[asserts]]
+arguments = [[{ name = "Numeric Author", authors = "12345", pages = "100" }]]
+comment   = "Author field may contain digits"
+expected  = ["12345"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Punctuation", authors = "Dr. A, Prof. B", pages = "150" },
+  ],
+]
+comment = "Author string with punctuation and titles"
+expected = ["Dr. A, Prof. B"]
+
+[[asserts]]
+arguments = [[{ name = "Spaces Only Author", authors = "   ", pages = "10" }]]
+comment   = "Authors string with spaces is preserved"
+expected  = ["   "]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Multiword 1", authors = "First Last", pages = "101" },
+    { name = "Multiword 2", authors = "Another Author Name", pages = "202" },
+  ],
+]
+comment = "Multiword names are preserved"
+expected = ["First Last", "Another Author Name"]
+
+[[asserts]]
+arguments = [
+  [
+    { name = "Reordered Fields", pages = "101", authors = "Author A" },
+    { authors = "Author B", name = "No Pages Yet", pages = "202" },
+  ],
+]
+comment = "Field order in hashes does not matter"
+expected = ["Author A", "Author B"]
+
+[[asserts]]
+arguments = [
+  [
+    { authors = "Only Authors Field" },
+    { authors = "Another Authors Only" },
+  ],
+]
+comment = "Minimal objects containing only authors"
+expected = ["Only Authors Field", "Another Authors Only"]

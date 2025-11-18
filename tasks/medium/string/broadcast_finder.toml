@@ -1,0 +1,213 @@
+level             = "medium"
+name              = "broadcast_finder"
+tags              = ["string", "network"]
+time_to_solve_sec = 180
+
+description_en = """
+You are given a string `address` containing an IPv4 address with a subnet mask in CIDR notation: `"a.b.c.d/n"`.
+
+If `address` is a **valid** IPv4 CIDR:
+
+- Interpret `a.b.c.d` as an IPv4 address.
+- Interpret `n` as an integer prefix length ($0 \\leq n \\leq 32$).
+- Compute the **broadcast address** of that network (the last IPv4 address in the subnet) and return it as a dotted string, for example `"192.168.0.255"`.
+
+If `address` is **invalid** (wrong format, invalid octet, or invalid prefix length), return the string `"invalid adress!!111"`.
+"""
+
+description_ru = """
+Дана строка `address`, содержащая IPv4-адрес с маской подсети в нотации CIDR: `"a.b.c.d/n"`.
+
+Если `address` — **корректный** IPv4 CIDR:
+
+- Воспринимайте `a.b.c.d` как IPv4-адрес.
+- Воспринимайте `n` как целый префикс ($0 \\leq n \\leq 32$).
+- Вычислите **адрес широковещания** для этой сети (последний IPv4-адрес подсети) и верните его в виде строки, например `"192.168.0.255"`.
+
+Если `address` **некорректен** (неправильный формат, неверный октет или некорректная длина префикса), верните строку `"invalid adress!!111"`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{address}) \\leq 50$
+- $0 \\leq a,b,c,d \\leq 255$
+- $0 \\leq n \\leq 32$
+"""
+
+solution = """
+def solution(address: str) -> str:
+    try:
+        ip_part, mask_part = address.split("/")
+        n = int(mask_part)
+        if n < 0 or n > 32:
+            return "invalid adress!!111"
+        octets = ip_part.split(".")
+        if len(octets) != 4:
+            return "invalid adress!!111"
+        nums = []
+        for o in octets:
+            v = int(o)
+            if v < 0 or v > 255:
+                return "invalid adress!!111"
+            nums.append(v)
+        ip_int = (nums[0] << 24) | (nums[1] << 16) | (nums[2] << 8) | nums[3]
+        host_bits = 32 - n
+        if host_bits > 0:
+            ip_int |= (1 << host_bits) - 1
+        # if host_bits == 0, broadcast == ip itself
+        return ".".join(str((ip_int >> shift) & 255) for shift in (24, 16, 8, 0))
+    except Exception:
+        return "invalid adress!!111"
+"""
+
+examples = """
+solution("10.0.0.1/32") == "10.0.0.1"
+solution("10.0.0.1/24") == "10.0.0.255"
+solution("0.0.0.0/0") == "255.255.255.255"
+solution("192.168.100.1/12") == "192.175.255.255"
+solution("198.201.121.1/15") == "198.201.255.255"
+solution("201.224.121.12/30") == "201.224.121.15"
+solution("0.168.100.1/33") == "invalid adress!!111"
+"""
+
+[[input_signature]]
+argument_name = "address"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["192.168.100.1/12"]
+comment   = "Original example with /12 network"
+expected  = "192.175.255.255"
+
+[[asserts]]
+arguments = ["198.201.121.1/15"]
+comment   = "Original example with /15 network"
+expected  = "198.201.255.255"
+
+[[asserts]]
+arguments = ["201.224.121.12/30"]
+comment   = "Original example with small /30 network"
+expected  = "201.224.121.15"
+
+[[asserts]]
+arguments = ["0.168.100.1/33"]
+comment   = "Original example with invalid prefix length > 32"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["10.0.0.1/24"]
+comment   = "/24 network, classic class A style private net"
+expected  = "10.0.0.255"
+
+[[asserts]]
+arguments = ["10.0.0.1/32"]
+comment   = "/32 network, single-address broadcast equals IP"
+expected  = "10.0.0.1"
+
+[[asserts]]
+arguments = ["0.0.0.0/0"]
+comment   = "Default route network, broadcast for whole IPv4 space"
+expected  = "255.255.255.255"
+
+[[asserts]]
+arguments = ["255.255.255.255/32"]
+comment   = "Highest address with /32 mask"
+expected  = "255.255.255.255"
+
+[[asserts]]
+arguments = ["172.16.5.10/16"]
+comment   = "Private /16 network broadcast"
+expected  = "172.16.255.255"
+
+[[asserts]]
+arguments = ["192.0.2.0/31"]
+comment   = "/31 network starting at even address"
+expected  = "192.0.2.1"
+
+[[asserts]]
+arguments = ["192.0.2.1/31"]
+comment   = "/31 network where IP is already broadcast"
+expected  = "192.0.2.1"
+
+[[asserts]]
+arguments = ["203.0.113.10/29"]
+comment   = "/29 network, 8 addresses per block"
+expected  = "203.0.113.15"
+
+[[asserts]]
+arguments = ["1.2.3.4/0"]
+comment   = "Host part fully wildcarded, broadcast is all ones"
+expected  = "255.255.255.255"
+
+[[asserts]]
+arguments = ["192.168.1.1/25"]
+comment   = "Upper half of a /24 split into /25 subnets"
+expected  = "192.168.1.127"
+
+[[asserts]]
+arguments = ["192.168.1.130/25"]
+comment   = "Address in second /25 block"
+expected  = "192.168.1.255"
+
+[[asserts]]
+arguments = ["1.2.3/24"]
+comment   = "Missing one octet"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["1.2.3.256/24"]
+comment   = "Octet out of range (>255)"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["1.2.3.4/33"]
+comment   = "Prefix length too large"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["1.2.3.4/-1"]
+comment   = "Negative prefix length"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["1.2.3.4/"]
+comment   = "Missing prefix part after slash"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["/24"]
+comment   = "Missing IP part before slash"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["not_an_ip"]
+comment   = "Completely invalid format"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["1234"]
+comment   = "Single numeric token, not IPv4"
+expected  = "invalid adress!!111"
+
+[[asserts]]
+arguments = ["192.168.001.001/24"]
+comment   = "Leading zeros in octets still allowed if numeric"
+expected  = "192.168.1.255"
+
+[[asserts]]
+arguments = ["000.000.000.000/1"]
+comment   = "Valid zeros with small prefix"
+expected  = "127.255.255.255"
+
+[[asserts]]
+arguments = ["255.0.0.1/8"]
+comment   = "Broadcast of a /8 with first octet 255"
+expected  = "255.255.255.255"
+
+[[asserts]]
+arguments = ["8.8.8.8/32"]
+comment   = "Public DNS IP with /32 mask"
+expected  = "8.8.8.8"

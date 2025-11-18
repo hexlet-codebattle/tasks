@@ -1,0 +1,208 @@
+level             = "easy"
+name              = "base_n"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a non-negative integer `num` and an integer `base`, check whether `num` can be written as a valid base-`base` number.
+
+Treat `num` as a sequence of decimal digits; it is valid if **every digit** is strictly less than `base`.
+"""
+
+description_ru = """
+Дано неотрицательное целое число `num` и целое число `base`. Проверьте, может ли `num` быть корректной записью числа в системе счисления с основанием `base`.
+
+Считайте, что `num` — это последовательность десятичных цифр; запись корректна, если **каждая цифра** строго меньше `base`.
+"""
+
+limits = """
+- $0 \\leq num \\leq 10^5$
+- $1 \\leq base \\leq 9$
+"""
+
+solution = """
+def solution(num: int, base: int) -> bool:
+    if num == 0:
+        return True
+    if base < 1 or base > 9 or num < 0:
+        return False
+    n = num
+    while n > 0:
+        d = n % 10
+        if d >= base:
+            return False
+        n //= 10
+    return True
+"""
+
+examples = """
+solution(1010, 2) == True
+solution(5511, 8) == True
+solution(6161, 3) == False
+solution(2341, 4) == False
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "base"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+# --- TEST CASES (30 total) ---
+
+[[asserts]]
+arguments = [6161, 3]
+comment   = "Digit 6 is not allowed in base 3"
+expected  = false
+
+[[asserts]]
+arguments = [1010, 2]
+comment   = "Only digits 0 and 1, valid for base 2"
+expected  = true
+
+[[asserts]]
+arguments = [2341, 4]
+comment   = "Digit 4 is not allowed in base 4 (only 0..3)"
+expected  = false
+
+[[asserts]]
+arguments = [5511, 8]
+comment   = "All digits 0..7, valid in base 8"
+expected  = true
+
+[[asserts]]
+arguments = [2222, 3]
+comment   = "All digits are 2, less than base 3"
+expected  = true
+
+[[asserts]]
+arguments = [2301, 3]
+comment   = "Digit 3 is not allowed in base 3"
+expected  = false
+
+[[asserts]]
+arguments = [7, 8]
+comment   = "Single digit, maximal allowed digit for base 8"
+expected  = true
+
+[[asserts]]
+arguments = [8, 8]
+comment   = "Digit 8 is not allowed in base 8"
+expected  = false
+
+[[asserts]]
+arguments = [70, 8]
+comment   = "Digits 7 and 0 are valid in base 8"
+expected  = true
+
+[[asserts]]
+arguments = [89, 9]
+comment   = "Digit 9 is not allowed in base 9"
+expected  = false
+
+[[asserts]]
+arguments = [98, 9]
+comment   = "Digit 9 is not allowed in base 9"
+expected  = false
+
+[[asserts]]
+arguments = [808, 9]
+comment   = "Digits 8 and 0 are all less than 9"
+expected  = true
+
+[[asserts]]
+arguments = [909, 9]
+comment   = "Digit 9 is not allowed in base 9"
+expected  = false
+
+[[asserts]]
+arguments = [0, 2]
+comment   = "Zero is considered valid for any base"
+expected  = true
+
+[[asserts]]
+arguments = [0, 9]
+comment   = "Zero is valid in base 9 as well"
+expected  = true
+
+[[asserts]]
+arguments = [123, 4]
+comment   = "Digits 1, 2, 3 are all less than 4"
+expected  = true
+
+[[asserts]]
+arguments = [123, 3]
+comment   = "Digit 3 is not allowed in base 3"
+expected  = false
+
+[[asserts]]
+arguments = [777, 8]
+comment   = "All digits are 7, the maximum allowed in base 8"
+expected  = true
+
+[[asserts]]
+arguments = [88, 8]
+comment   = "Digit 8 invalid in base 8"
+expected  = false
+
+[[asserts]]
+arguments = [3210, 4]
+comment   = "Digits 0,1,2,3 all valid in base 4"
+expected  = true
+
+[[asserts]]
+arguments = [4321, 4]
+comment   = "Digit 4 is not allowed in base 4"
+expected  = false
+
+[[asserts]]
+arguments = [5555, 6]
+comment   = "Digit 5 is the largest allowed in base 6"
+expected  = true
+
+[[asserts]]
+arguments = [5656, 6]
+comment   = "Digit 6 is not allowed in base 6"
+expected  = false
+
+[[asserts]]
+arguments = [1111, 2]
+comment   = "All ones, valid binary representation"
+expected  = true
+
+[[asserts]]
+arguments = [1011, 2]
+comment   = "Another valid binary-like number"
+expected  = true
+
+[[asserts]]
+arguments = [0, 1]
+comment   = "Zero considered valid even for base 1 in this definition"
+expected  = true
+
+[[asserts]]
+arguments = [10, 1]
+comment   = "Digit 1 is not less than base 1"
+expected  = false
+
+[[asserts]]
+arguments = [100, 1]
+comment   = "Any digit other than 0 is invalid for base 1"
+expected  = false
+
+[[asserts]]
+arguments = [19, 9]
+comment   = "Digit 9 is not allowed in base 9"
+expected  = false
+
+[[asserts]]
+arguments = [8080, 9]
+comment   = "All digits 8 and 0 are valid in base 9"
+expected  = true

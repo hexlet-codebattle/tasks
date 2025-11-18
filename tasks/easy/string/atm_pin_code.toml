@@ -1,0 +1,192 @@
+level             = "easy"
+name              = "atm_pin_code"
+tags              = ["strings"]
+time_to_solve_sec = 45
+
+description_en = """
+ATM machines allow only 4-digit or 6-digit PIN codes, and they must contain **digits only**.
+
+Given a string `pin`, check whether it is a valid PIN code.
+"""
+
+description_ru = """
+Банкомат принимает только 4-значные или 6-значные ПИН-коды, которые должны состоять **только из цифр**.
+
+По заданной строке `pin` проверьте, является ли она корректным ПИН-кодом.
+"""
+
+limits = """
+- $0 \\leq \\text{len(pin)} \\leq 20$
+"""
+
+solution = """
+def solution(pin: str) -> bool:
+    return len(pin) in (4, 6) and pin.isdigit()
+"""
+
+examples = """
+solution("1234") == True
+solution("123456") == True
+solution("12345") == False
+solution("some pin code") == False
+"""
+
+[[input_signature]]
+argument_name = "pin"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+# --- TEST CASES (30 total) ---
+
+[[asserts]]
+arguments = ["1234"]
+comment   = "Valid 4-digit PIN"
+expected  = true
+
+[[asserts]]
+arguments = ["0000"]
+comment   = "Valid 4-digit PIN with all zeros"
+expected  = true
+
+[[asserts]]
+arguments = ["9999"]
+comment   = "Valid 4-digit PIN with all nines"
+expected  = true
+
+[[asserts]]
+arguments = ["123456"]
+comment   = "Valid 6-digit PIN"
+expected  = true
+
+[[asserts]]
+arguments = ["000000"]
+comment   = "Valid 6-digit PIN with all zeros"
+expected  = true
+
+[[asserts]]
+arguments = ["098765"]
+comment   = "Valid 6-digit PIN with leading zero"
+expected  = true
+
+[[asserts]]
+arguments = ["12345"]
+comment   = "Invalid length: 5 digits"
+expected  = false
+
+[[asserts]]
+arguments = ["1234567"]
+comment   = "Invalid length: 7 digits"
+expected  = false
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string is not a valid PIN"
+expected  = false
+
+[[asserts]]
+arguments = ["12"]
+comment   = "Too short: only 2 digits"
+expected  = false
+
+[[asserts]]
+arguments = ["abcd"]
+comment   = "Only letters, no digits"
+expected  = false
+
+[[asserts]]
+arguments = ["12a4"]
+comment   = "Contains a non-digit character"
+expected  = false
+
+[[asserts]]
+arguments = ["12 34"]
+comment   = "Contains a space inside"
+expected  = false
+
+[[asserts]]
+arguments = [" 1234"]
+comment   = "Leading space is not allowed"
+expected  = false
+
+[[asserts]]
+arguments = ["1234 "]
+comment   = "Trailing space is not allowed"
+expected  = false
+
+[[asserts]]
+arguments = ["12\n34"]
+comment   = "Contains a newline character"
+expected  = false
+
+[[asserts]]
+arguments = ["123"]
+comment   = "Too short: 3 digits"
+expected  = false
+
+[[asserts]]
+arguments = ["12345678"]
+comment   = "Too long: 8 digits"
+expected  = false
+
+[[asserts]]
+arguments = ["+1234"]
+comment   = "Plus sign is not a digit"
+expected  = false
+
+[[asserts]]
+arguments = ["-1234"]
+comment   = "Minus sign is not a digit"
+expected  = false
+
+[[asserts]]
+arguments = ["000"]
+comment   = "3-digit code is invalid"
+expected  = false
+
+[[asserts]]
+arguments = ["00000"]
+comment   = "5-digit code is invalid"
+expected  = false
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Single-digit string"
+expected  = false
+
+[[asserts]]
+arguments = ["a234"]
+comment   = "Starts with a letter"
+expected  = false
+
+[[asserts]]
+arguments = ["123b"]
+comment   = "Ends with a letter"
+expected  = false
+
+[[asserts]]
+arguments = ["12.3"]
+comment   = "Contains a dot"
+expected  = false
+
+[[asserts]]
+arguments = ["999999"]
+comment   = "Valid 6-digit PIN with all nines"
+expected  = true
+
+[[asserts]]
+arguments = ["1230"]
+comment   = "Valid 4-digit PIN with a zero at the end"
+expected  = true
+
+[[asserts]]
+arguments = ["830056"]
+comment   = "Valid 6-digit PIN with mixed digits"
+expected  = true
+
+[[asserts]]
+arguments = ["42"]
+comment   = "2-digit numeric string is not valid length"
+expected  = false

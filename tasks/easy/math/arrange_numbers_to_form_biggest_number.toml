@@ -1,0 +1,194 @@
+level             = "easy"
+name              = "arrange_numbers_to_form_biggest_number"
+tags              = ["math", "array"]
+time_to_solve_sec = 200
+
+description_en = """
+Construct the largest possible number by concatenating all integers from the given array in some order.
+
+Return the result as a string, because the number can be very large and exceed the usual integer range.
+"""
+
+description_ru = """
+Сконструируйте наибольшее возможное число, конкатенируя все числа из заданного массива в некотором порядке.
+
+Верните результат в виде строки, так как число может быть очень большим и выходить за пределы диапазона целого типа.
+"""
+
+limits = """
+- $1 \\leq \\text{len(numbers)} \\leq 5$
+- $0 \\leq numbers_i \\leq 500$
+"""
+
+solution = """
+def solution(numbers):
+    s = list(map(str, numbers))
+    s.sort(key=lambda x: x * 3, reverse=True)
+    return "".join(s)
+"""
+
+examples = """
+solution([0, 0, 0]) == "000"
+solution([3, 24, 4]) == "4324"
+solution([1, 34, 3, 98, 9, 76, 45, 4]) == "998764543431"
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [[1, 34, 3, 98, 9, 76, 45, 4]]
+comment   = "Mixed small and large numbers from the original examples"
+expected  = "998764543431"
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6]]
+comment   = "Simple increasing sequence should be reversed"
+expected  = "654321"
+
+[[asserts]]
+arguments = [[481, 428, 385, 202, 2, 197, 106, 10]]
+comment   = "Larger multi-digit numbers mixed with small ones"
+expected  = "481428385220219710610"
+
+[[asserts]]
+arguments = [[54, 546, 548, 60]]
+comment   = "Classic tricky ordering example with similar prefixes"
+expected  = "6054854654"
+
+[[asserts]]
+arguments = [[43, 44, 12, 324, 90, 9, 88, 89]]
+comment   = "Multiple close prefixes and a dominating 9"
+expected  = "9908988444332412"
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single element array"
+expected  = "1"
+
+[[asserts]]
+arguments = [[1, 1]]
+comment   = "Two identical numbers"
+expected  = "11"
+
+[[asserts]]
+arguments = [[1, 2, 223]]
+comment   = "Three numbers with one significantly larger prefix"
+expected  = "22321"
+
+[[asserts]]
+arguments = [[9, 91]]
+comment   = "Choose 9 before 91 because 991 > 919"
+expected  = "991"
+
+[[asserts]]
+arguments = [[9, 34, 30, 5, 3]]
+comment   = "Several options where concatenation order matters"
+expected  = "9534330"
+
+[[asserts]]
+arguments = [[10, 2]]
+comment   = "Two numbers with different digit counts"
+expected  = "210"
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "All zeros, result keeps leading zeros"
+expected  = "000"
+
+[[asserts]]
+arguments = [[0, 1]]
+comment   = "Zero should go after a positive number"
+expected  = "10"
+
+[[asserts]]
+arguments = [[12, 121]]
+comment   = "121 should precede 12 because 12112 < 12121"
+expected  = "12121"
+
+[[asserts]]
+arguments = [[121, 12]]
+comment   = "Order is the same as for [12, 121]"
+expected  = "12121"
+
+[[asserts]]
+arguments = [[30, 3, 34, 5, 9]]
+comment   = "Similar to a classic largest-number-by-arranging problem"
+expected  = "9534330"
+
+[[asserts]]
+arguments = [[8, 89]]
+comment   = "89 should go before 8"
+expected  = "898"
+
+[[asserts]]
+arguments = [[98, 9]]
+comment   = "9 should go before 98"
+expected  = "998"
+
+[[asserts]]
+arguments = [[100, 9, 8]]
+comment   = "Multi-digit 100 goes last"
+expected  = "98100"
+
+[[asserts]]
+arguments = [[10, 101]]
+comment   = "Compare 10110 vs 10101, 101 before 10"
+expected  = "10110"
+
+[[asserts]]
+arguments = [[40, 404]]
+comment   = "Choose order by comparing 40440 vs 40404"
+expected  = "40440"
+
+[[asserts]]
+arguments = [[420, 42, 4]]
+comment   = "4 dominates 42 and 420 in concatenation order"
+expected  = "442420"
+
+[[asserts]]
+arguments = [[11, 111]]
+comment   = "All ones, but order still determined by concatenation"
+expected  = "11111"
+
+[[asserts]]
+arguments = [[500, 50, 5]]
+comment   = "5 must come before 50 and 500"
+expected  = "550500"
+
+[[asserts]]
+arguments = [[32, 323]]
+comment   = "323 before 32 because 32332 > 32323"
+expected  = "32332"
+
+[[asserts]]
+arguments = [[7, 70, 702]]
+comment   = "Single-digit 7 should go first"
+expected  = "770702"
+
+[[asserts]]
+arguments = [[2, 20, 202, 21]]
+comment   = "Several close prefixes starting with 2"
+expected  = "22120220"
+
+[[asserts]]
+arguments = [[15, 151]]
+comment   = "151 before 15 gives larger concatenation"
+expected  = "15151"
+
+[[asserts]]
+arguments = [[90, 909, 9]]
+comment   = "Single 9 dominates, 909 next, then 90"
+expected  = "990990"
+
+[[asserts]]
+arguments = [[333, 33, 3]]
+comment   = "Repeated digit 3 with different lengths"
+expected  = "333333"

@@ -1,0 +1,190 @@
+level             = "elementary"
+name              = "array_two_digit_sum"
+tags              = ["array", "training"]
+time_to_solve_sec = 120
+
+description_en = """
+Given an array of two-digit integers, compute the digit sum of each number, then return the total sum of all digit sums.
+"""
+
+description_ru = """
+Дан массив двузначных целых чисел. Посчитайте сумму цифр каждого числа, затем верните общую сумму всех таких сумм.
+"""
+
+limits = """
+- $3 \\leq \\text{len(numbers)} \\leq 10$
+- $10 \\leq numbers_i \\leq 99$
+"""
+
+solution = """
+def solution(numbers):
+    return sum((n // 10) + (n % 10) for n in numbers)
+"""
+
+examples = """
+solution([10, 11, 12]) == 6
+solution([11, 22, 33, 44]) == 20
+solution([99, 99, 99, 99, 99, 99]) == 108
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+# --- TEST CASES (30 total) ---
+
+[[asserts]]
+arguments = [[10, 11, 12]]
+comment   = "Example: 1+0 + 1+1 + 1+2"
+expected  = 6
+
+[[asserts]]
+arguments = [[11, 22, 33, 44]]
+comment   = "Example: (1+1)+(2+2)+(3+3)+(4+4)"
+expected  = 20
+
+[[asserts]]
+arguments = [[99, 99, 99, 99, 99, 99]]
+comment   = "Example: each 9+9 = 18, repeated 6 times"
+expected  = 108
+
+[[asserts]]
+arguments = [[10, 20, 30]]
+comment   = "Zeros in second digit"
+expected  = 6
+
+[[asserts]]
+arguments = [[12, 34, 56]]
+comment   = "Straightforward digit sums"
+expected  = 21
+
+[[asserts]]
+arguments = [[98, 76, 54]]
+comment   = "Descending pairs"
+expected  = 39
+
+[[asserts]]
+arguments = [[19, 29, 39, 49]]
+comment   = "Mixed tens with fixed ones"
+expected  = 46
+
+[[asserts]]
+arguments = [[55, 55, 55]]
+comment   = "All identical numbers"
+expected  = 30
+
+[[asserts]]
+arguments = [[10, 99, 88, 77]]
+comment   = "Varied extremes"
+expected  = 49
+
+[[asserts]]
+arguments = [[21, 22, 23, 24, 25]]
+comment   = "Tens increasing"
+expected  = 25
+
+[[asserts]]
+arguments = [[90, 91, 92, 93]]
+comment   = "Nines in tens place"
+expected  = 42
+
+[[asserts]]
+arguments = [[44, 45, 46]]
+comment   = "Starts from 4"
+expected  = 27
+
+[[asserts]]
+arguments = [[67, 76]]
+comment   = "Two-element high pairs"
+expected  = 26
+
+[[asserts]]
+arguments = [[11, 12, 13, 14, 15]]
+comment   = "Many small digit sums"
+expected  = 20
+
+[[asserts]]
+arguments = [[88, 77, 66, 55]]
+comment   = "Repeated descending"
+expected  = 52
+
+[[asserts]]
+arguments = [[23, 32, 41]]
+comment   = "Reordered digits"
+expected  = 15
+
+[[asserts]]
+arguments = [[99, 98, 97]]
+comment   = "Large-digit region"
+expected  = 51
+
+[[asserts]]
+arguments = [[10, 11, 99]]
+comment   = "Mix of min and max values"
+expected  = 21
+
+[[asserts]]
+arguments = [[34, 43]]
+comment   = "Mirrored digits"
+expected  = 14
+
+[[asserts]]
+arguments = [[56, 65]]
+comment   = "Mirrored mid-range"
+expected  = 22
+
+[[asserts]]
+arguments = [[72, 27]]
+comment   = "Reversed tens/ones"
+expected  = 18
+
+[[asserts]]
+arguments = [[14, 41]]
+comment   = "Two mirrored pairs"
+expected  = 10
+
+[[asserts]]
+arguments = [[18, 81]]
+comment   = "High mirrored numbers"
+expected  = 18
+
+[[asserts]]
+arguments = [[22, 22, 22, 22]]
+comment   = "Uniform low digit sums"
+expected  = 16
+
+[[asserts]]
+arguments = [[33, 44, 55]]
+comment   = "Simple sequence"
+expected  = 24
+
+[[asserts]]
+arguments = [[78, 87]]
+comment   = "Mirrored digits in high range"
+expected  = 30
+
+[[asserts]]
+arguments = [[66, 77, 88, 99]]
+comment   = "Four high-value pairs"
+expected  = 60
+
+[[asserts]]
+arguments = [[15, 16, 17, 18, 19]]
+comment   = "Increasing ones place"
+expected  = 40
+
+[[asserts]]
+arguments = [[25, 52, 35]]
+comment   = "Shuffled compositions"
+expected  = 22
+
+[[asserts]]
+arguments = [[47, 74]]
+comment   = "Another mirrored pair"
+expected  = 22

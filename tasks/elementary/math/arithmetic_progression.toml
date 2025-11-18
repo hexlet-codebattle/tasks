@@ -1,0 +1,189 @@
+level             = "elementary"
+name              = "arithmetic_progression"
+tags              = ["math"]
+time_to_solve_sec = 30
+
+description_en = """
+Calculate the sum of the arithmetic progression from $1$ to $n$ (inclusive).
+
+Return the value $1 + 2 + \\dots + n$.
+"""
+
+description_ru = """
+Рассчитайте сумму арифметической прогрессии от $1$ до $n$ (включительно).
+
+Верните значение $1 + 2 + \\dots + n$.
+"""
+
+limits = """
+- $1 \\leq n \\leq 30$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    return n * (n + 1) // 2
+"""
+
+examples = """
+solution(1) == 1
+solution(5) == 15
+solution(10) == 55
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+comment   = "Minimum allowed n"
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+comment   = "First two numbers: 1 + 2"
+expected  = 3
+
+[[asserts]]
+arguments = [3]
+comment   = "1 + 2 + 3"
+expected  = 6
+
+[[asserts]]
+arguments = [4]
+comment   = "Small n, triangular number 4"
+expected  = 10
+
+[[asserts]]
+arguments = [5]
+comment   = "Example from description"
+expected  = 15
+
+[[asserts]]
+arguments = [6]
+comment   = "Even n in lower range"
+expected  = 21
+
+[[asserts]]
+arguments = [7]
+comment   = "Prime n in lower range"
+expected  = 28
+
+[[asserts]]
+arguments = [8]
+comment   = "Power-of-two n"
+expected  = 36
+
+[[asserts]]
+arguments = [9]
+comment   = "Odd n near 10"
+expected  = 45
+
+[[asserts]]
+arguments = [10]
+comment   = "Round number n = 10"
+expected  = 55
+
+[[asserts]]
+arguments = [11]
+comment   = "First two-digit prime n"
+expected  = 66
+
+[[asserts]]
+arguments = [12]
+comment   = "Even dozen"
+expected  = 78
+
+[[asserts]]
+arguments = [13]
+comment   = "Prime n in the middle of range"
+expected  = 91
+
+[[asserts]]
+arguments = [14]
+comment   = "Even n just below 15"
+expected  = 105
+
+[[asserts]]
+arguments = [15]
+comment   = "Middle of 1..30"
+expected  = 120
+
+[[asserts]]
+arguments = [16]
+comment   = "Power-of-two in mid range"
+expected  = 136
+
+[[asserts]]
+arguments = [17]
+comment   = "Prime n above the middle"
+expected  = 153
+
+[[asserts]]
+arguments = [18]
+comment   = "Multiple of 3 in upper half"
+expected  = 171
+
+[[asserts]]
+arguments = [19]
+comment   = "Prime n close to 20"
+expected  = 190
+
+[[asserts]]
+arguments = [20]
+comment   = "Round number n = 20"
+expected  = 210
+
+[[asserts]]
+arguments = [21]
+comment   = "Multiple of 7"
+expected  = 231
+
+[[asserts]]
+arguments = [22]
+comment   = "Even n slightly above 20"
+expected  = 253
+
+[[asserts]]
+arguments = [23]
+comment   = "Prime n near upper bound"
+expected  = 276
+
+[[asserts]]
+arguments = [24]
+comment   = "Even n, sum is a round 300"
+expected  = 300
+
+[[asserts]]
+arguments = [25]
+comment   = "Quarter of a hundred"
+expected  = 325
+
+[[asserts]]
+arguments = [26]
+comment   = "Even n near upper bound"
+expected  = 351
+
+[[asserts]]
+arguments = [27]
+comment   = "Multiple of 9 in upper range"
+expected  = 378
+
+[[asserts]]
+arguments = [28]
+comment   = "Even n close to maximum"
+expected  = 406
+
+[[asserts]]
+arguments = [29]
+comment   = "Largest prime in allowed range"
+expected  = 435
+
+[[asserts]]
+arguments = [30]
+comment   = "Maximum allowed n"
+expected  = 465

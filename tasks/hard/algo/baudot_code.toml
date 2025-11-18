@@ -1,0 +1,320 @@
+level             = "hard"
+name              = "baudot_code"
+tags              = ["string", "decryption"]
+time_to_solve_sec = 600
+
+description_en = """
+The Baudot code or International Teleprinter Code was invented by Emile Baudot in 1870. It was used for teleprinter messages instead of morse code. Baudot uses five bits per character, allowing up to 32 distinct characters. The code uses up-shift and down-shift modes like a typewriter.
+
+In Baudot code, each five bits transmitted must be interpreted according to whether they are up-shifted (figures) or down-shifted (letters). The bit pattern `ooooo` represents letters shift and `oo.oo` represents figures shift. All characters transmitted after `oo.oo` but before `ooooo` are treated as figures. All characters transmitted after `ooooo` are treated as letters until `oo.oo` is recognized.
+
+Mapping table (o = 1, . = 0):
+
+```
+| Code  | Letter         | Figure         |
+|-------|----------------|----------------|
+| .o.o. | R              | 4              |
+| .o.oo | J              | (not alloc.)   |
+| .ooo. | C              | :              |
+| oo.o. | G              | (not alloc.)   |
+| .o..o | D              | (not alloc.)   |
+| .oooo | K              | (              |
+| .oo.. | N              | ,              |
+| ...oo | A              | -              |
+| ..... | BLANK          | BLANK          |
+| oo.oo | Figures shift  | Figures shift  |
+| ..oo. | I              | 8              |
+| oo... | O              | 9              |
+| oooo. | V              | =              |
+| o..o. | L              | )              |
+| .oo.o | F              | (not alloc.)   |
+| ....o | E              | 3              |
+| ..ooo | U              | 7              |
+| oo..o | B              | ?              |
+| ..o.. | SPACE          | SPACE          |
+| ooooo | Letters shift  | Letters shift  |
+| ooo.. | M              | :              |
+| o..oo | W              | 2              |
+| o.oo. | P              | 0              |
+| ..o.o | S              | ,              |
+| ooo.o | X              | /              |
+| o...o | Z              | +              |
+| o.ooo | Q              | 1              |
+| o.o.. | H              | (not alloc.)   |
+| o.o.o | Y              | 6              |
+| o.... | T              | 5              |
+```
+
+Given a Baudot code string `code`, decode and return the message.
+"""
+
+description_ru = """
+Код Бодо или Международный код телепринтера был изобретён Эмилем Бодо в 1870 году. Он использовался для сообщений телепринтера вместо азбуки Морзе. Код Бодо использует пять битов на символ, что позволяет использовать до 32 отдельных символов. В коде используются режимы верхнего и нижнего регистра, как в пишущей машинке.
+
+В коде Бодо каждые пять передаваемых битов должны интерпретироваться в зависимости от того, находятся ли они в режиме цифр (верхний регистр) или букв (нижний регистр). Последовательность битов `ooooo` представляет переключение на буквы, а `oo.oo` — на цифры. Все символы, передаваемые после `oo.oo` до `ooooo`, рассматриваются как цифры. Все символы после `ooooo` рассматриваются как буквы до распознавания `oo.oo`.
+
+Таблица соответствия (o = 1, . = 0):
+
+```
+| Код   | Буква              | Цифра              |
+|-------|--------------------|--------------------|
+| .o.o. | R                  | 4                  |
+| .o.oo | J                  | (не выделено)      |
+| .ooo. | C                  | :                  |
+| oo.o. | G                  | (не выделено)      |
+| .o..o | D                  | (не выделено)      |
+| .oooo | K                  | (                  |
+| .oo.. | N                  | ,                  |
+| ...oo | A                  | -                  |
+| ..... | ПРОПУСК            | ПРОПУСК            |
+| oo.oo | Переключение цифры | Переключение цифры |
+| ..oo. | I                  | 8                  |
+| oo... | O                  | 9                  |
+| oooo. | V                  | =                  |
+| o..o. | L                  | )                  |
+| .oo.o | F                  | (не выделено)      |
+| ....o | E                  | 3                  |
+| ..ooo | U                  | 7                  |
+| oo..o | B                  | ?                  |
+| ..o.. | ПРОБЕЛ             | ПРОБЕЛ             |
+| ooooo | Переключение буквы | Переключение буквы |
+| ooo.. | M                  | :                  |
+| o..oo | W                  | 2                  |
+| o.oo. | P                  | 0                  |
+| ..o.o | S                  | ,                  |
+| ooo.o | X                  | /                  |
+| o...o | Z                  | +                  |
+| o.ooo | Q                  | 1                  |
+| o.o.. | H                  | (не выделено)      |
+| o.o.o | Y                  | 6                  |
+| o.... | T                  | 5                  |
+```
+
+Дан код Бодо в виде строки `code`. Декодируйте и верните сообщение.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(code) \\leq 1000$
+- $code$ consists of characters `'o'` and `'.'`
+- $\\text{len}(code)$ is divisible by $5$
+"""
+
+solution = """
+def solution(c: str) -> str:
+    d = {
+        ".o.o.": ["R", "4"],
+        ".o.oo": ["J", ""],
+        ".ooo.": ["C", ":"],
+        "oo.o.": ["G", ""],
+        ".o..o": ["D", ""],
+        ".oooo": ["K", "("],
+        ".oo..": ["N", ","],
+        "...oo": ["A", "-"],
+        ".....": [" ", " "],
+        "oo.oo": ["", ""],      # figures shift
+        "..oo.": ["I", "8"],
+        "oo...": ["O", "9"],
+        "oooo.": ["V", "="],
+        "o..o.": ["L", ")"],
+        ".oo.o": ["F", ""],
+        "....o": ["E", "3"],
+        "..ooo": ["U", "7"],
+        "oo..o": ["B", "?"],
+        "..o..": [" ", " "],
+        "ooooo": ["", ""],      # letters shift
+        "ooo..": ["M", ":"],
+        "o..oo": ["W", "2"],
+        "o.oo.": ["P", "0"],
+        "..o.o": ["S", ","],
+        "ooo.o": ["X", "/"],
+        "o...o": ["Z", "+"],
+        "o.ooo": ["Q", "1"],
+        "o.o..": ["H", ""],
+        "o.o.o": ["Y", "6"],
+        "o....": ["T", "5"],
+    }
+    s, r = 0, ""
+    for i in range(0, len(c), 5):
+        w = c[i:i+5]
+        if w == "ooooo":
+            s = 0        # letters mode
+        elif w == "oo.oo":
+            s = 1        # figures mode
+        else:
+            r += d[w][s]
+    return r
+"""
+
+examples = """
+solution("ooooo....o") == "E"
+solution("oo.oo....o") == "3"
+solution("o.o......oo..o.o..o.oo...") == "HELLO"
+"""
+[[input_signature]]
+argument_name = "code"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [
+  "oo.ooo.o.o.o.o.o.oo.ooooo.oooo..o......o.oo..oo.....ooooo.o.o.o..",
+]
+comment = "Basic figures and letters shift"
+expected = "640K ENOUGH"
+
+[[asserts]]
+arguments = [
+  "oo.ooo.oooooooo.oooooo..o..o..ooooooo.oooooo...o..o.oooo.oo.o.oo.o.oo.ooooooo..oo.o.oo........o..o.o",
+]
+comment = "Complex mixed mode message"
+expected = "1KB = 1000BYTES"
+
+[[asserts]]
+arguments = [
+  "oo.ooo.oooooooo.oooo..oo.oo..o..o..oo.oooooo.ooooo..o..oo.ooo.oooo.oo.o..oo.o.o.ooooooo..oo.o.oo........o..o.o",
+]
+comment = "Extended mixed mode message"
+expected = "1KIB = 1024BYTES"
+
+[[asserts]]
+arguments = ["ooooo....o"]
+comment   = "Single letter"
+expected  = "E"
+
+[[asserts]]
+arguments = ["oo.oo....o"]
+comment   = "Single figure"
+expected  = "3"
+
+[[asserts]]
+arguments = ["ooooo....."]
+comment   = "Space in letter mode"
+expected  = " "
+
+[[asserts]]
+arguments = ["oo.oo....."]
+comment   = "Space in figure mode"
+expected  = " "
+
+[[asserts]]
+arguments = ["o.o......oo..o.o..o.oo..."]
+comment   = "Simple word in letter mode"
+expected  = "HELLO"
+
+[[asserts]]
+arguments = ["oo.oooo...oooo.o...."]
+comment   = "Simple expression in figure mode"
+expected  = "9=5"
+
+[[asserts]]
+arguments = ["o.o......oo..o.o..o.oo........o..oooo....o.o.o..o..o..o"]
+comment   = "Two words with space"
+expected  = "HELLO WORLD"
+
+[[asserts]]
+arguments = ["oo.oo....oo...o.o.o."]
+comment   = "Arithmetic with shift"
+expected  = "3+4"
+
+[[asserts]]
+arguments = ["ooooo...oo"]
+comment   = "Letter A"
+expected  = "A"
+
+[[asserts]]
+arguments = ["oo.oo...oo"]
+comment   = "Minus sign"
+expected  = "-"
+
+[[asserts]]
+arguments = ["ooooooo..o"]
+comment   = "Letter B"
+expected  = "B"
+
+[[asserts]]
+arguments = ["oo.oooo..o"]
+comment   = "Question mark"
+expected  = "?"
+
+[[asserts]]
+arguments = ["ooooo.ooo."]
+comment   = "Letter C"
+expected  = "C"
+
+[[asserts]]
+arguments = ["oo.oo.ooo."]
+comment   = "Colon"
+expected  = ":"
+
+[[asserts]]
+arguments = ["ooooo.oooo"]
+comment   = "Letter K"
+expected  = "K"
+
+[[asserts]]
+arguments = ["oo.oo.oooo"]
+comment   = "Left parenthesis"
+expected  = "("
+
+[[asserts]]
+arguments = ["oo.ooo.ooo..ooo"]
+comment   = "Two digits"
+expected  = "17"
+
+[[asserts]]
+arguments = ["o.o.o....o..o.o....."]
+comment   = "Word with trailing space"
+expected  = "YES "
+
+[[asserts]]
+arguments = ["...ooo.oo.o.oo.o..o.....o"]
+comment   = "Five letter word"
+expected  = "APPLE"
+
+[[asserts]]
+arguments = ["oo.oooo...o.oo.o.oo.o.oo.o...."]
+comment   = "Number with zeros"
+expected  = "90005"
+
+[[asserts]]
+arguments = ["...oo..oo..o.o........oo...o.o"]
+comment   = "Two short words"
+expected  = "AIR IS"
+
+[[asserts]]
+arguments = ["oo.ooo....o.oooo...o..ooo"]
+comment   = "Simple addition"
+expected  = "51+7"
+
+[[asserts]]
+arguments = [".o.o...ooo.oo.."]
+comment   = "Three letter word"
+expected  = "RUN"
+
+[[asserts]]
+arguments = ["oo.ooo.ooo"]
+comment   = "Single digit one"
+expected  = "1"
+
+[[asserts]]
+arguments = ["oo.oo..ooo"]
+comment   = "Single digit seven"
+expected  = "7"
+
+[[asserts]]
+arguments = ["oo...o...o"]
+comment   = "Two letter abbreviation"
+expected  = "OZ"
+
+[[asserts]]
+arguments = ["oo.oooo...ooooo.....oo.ooo...oooooo.....oo.ooo.o.oooooo....."]
+comment   = "Spaced arithmetic with trailing space"
+expected  = "9 + 6 "
+
+[[asserts]]
+arguments = [".oo..oo..."]
+comment   = "Two letter word NO"
+expected  = "NO"

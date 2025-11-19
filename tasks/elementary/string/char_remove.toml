@@ -1,0 +1,193 @@
+level             = "elementary"
+name              = "char_remove"
+tags              = ["string", "array"]
+time_to_solve_sec = 120
+
+description_en = """
+Write a function that takes an array of strings `words` and a string `character`, and returns a new array of strings where all occurrences of `character` are removed from every string in `words`.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает массив строк `words` и строку `character`, затем возвращает новый массив строк, в котором все вхождения `character` удалены из каждой строки массива `words`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(character) \\leq 1$
+- $0 \\leq \\text{len}(words) \\leq 20$
+"""
+
+solution = """
+def solution(words, character):
+    return [w.replace(character, "") for w in words]
+"""
+
+examples = """
+solution(["test", "two", "example"], "t") == ["es", "wo", "example"]
+solution(["foo", "bar", "frontend"], "z") == ["foo", "bar", "frontend"]
+solution(["learn", "clojure", "be", "happy"], "l") == ["earn", "cojure", "be", "happy"]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[[input_signature]]
+argument_name = "character"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[[asserts]]
+arguments = [["test", "two", "example"], "t"]
+comment   = "Remove 't' from mixed words"
+expected  = ["es", "wo", "example"]
+
+[[asserts]]
+arguments = [["learn", "clojure", "be", "happy"], "l"]
+comment   = "Remove 'l' from several words"
+expected  = ["earn", "cojure", "be", "happy"]
+
+[[asserts]]
+arguments = [["foo", "bar", "frontend"], "z"]
+comment   = "Character not present in any word"
+expected  = ["foo", "bar", "frontend"]
+
+[[asserts]]
+arguments = [["aaa", "aba", "baa"], "a"]
+comment   = "All letters removed from some words"
+expected  = ["", "b", "b"]
+
+[[asserts]]
+arguments = [["hello", "there", "general"], "e"]
+comment   = "Remove 'e' appearing multiple times"
+expected  = ["hllo", "thr", "gnral"]
+
+[[asserts]]
+arguments = [["hello", "world"], "o"]
+comment   = "Remove 'o' from two words"
+expected  = ["hell", "wrld"]
+
+[[asserts]]
+arguments = [["hello", "world"], "x"]
+comment   = "No changes when character is absent"
+expected  = ["hello", "world"]
+
+[[asserts]]
+arguments = [["apple", "grape", "pear", "plum"], "p"]
+comment   = "Remove 'p' from words with different counts"
+expected  = ["ale", "grae", "ear", "lum"]
+
+[[asserts]]
+arguments = [["code", "cool", "car"], "c"]
+comment   = "Remove 'c' at the beginning"
+expected  = ["ode", "ool", "ar"]
+
+[[asserts]]
+arguments = [["ring", "long", "g"], "g"]
+comment   = "Remove 'g' including word that becomes empty"
+expected  = ["rin", "lon", ""]
+
+[[asserts]]
+arguments = [["Apple", "ALARM", "area"], "A"]
+comment   = "Case-sensitive removal of uppercase 'A'"
+expected  = ["pple", "LRM", "area"]
+
+[[asserts]]
+arguments = [["Apple", "banana"], "a"]
+comment   = "Lowercase 'a' does not remove uppercase 'A'"
+expected  = ["Apple", "bnn"]
+
+[[asserts]]
+arguments = [["lll", "hello", "small"], "l"]
+comment   = "Remove 'l' from heavily repeated words"
+expected  = ["", "heo", "sma"]
+
+[[asserts]]
+arguments = [["home", "time", "summer"], "m"]
+comment   = "Remove 'm' from the middle"
+expected  = ["hoe", "tie", "suer"]
+
+[[asserts]]
+arguments = [["a", "aa", "aaa"], "a"]
+comment   = "All words become empty"
+expected  = ["", "", ""]
+
+[[asserts]]
+arguments = [["river", "road", "rock", "r"], "r"]
+comment   = "Remove 'r' at beginning and inside"
+expected  = ["ive", "oad", "ock", ""]
+
+[[asserts]]
+arguments = [["frontend", "end", "noon"], "n"]
+comment   = "Remove 'n' including multiple occurrences"
+expected  = ["froted", "ed", "oo"]
+
+[[asserts]]
+arguments = [["see", "bee", "tree"], "e"]
+comment   = "All vowels removed except others"
+expected  = ["s", "b", "tr"]
+
+[[asserts]]
+arguments = [["test", "two", "t"], "t"]
+comment   = "Single-letter word becomes empty"
+expected  = ["es", "wo", ""]
+
+[[asserts]]
+arguments = [["blue", "black", "green"], "b"]
+comment   = "Remove 'b' from first letter only"
+expected  = ["lue", "lack", "green"]
+
+[[asserts]]
+arguments = [["c", "abc", "ccc", "cocoa"], "c"]
+comment   = "Remove 'c' from several patterns"
+expected  = ["", "ab", "", "ooa"]
+
+[[asserts]]
+arguments = [["alpha", "beta", "gamma"], "z"]
+comment   = "Character not found in any word"
+expected  = ["alpha", "beta", "gamma"]
+
+[[asserts]]
+arguments = [["foo", "bar", "baz", "zoo"], "o"]
+comment   = "Remove 'o' including full removal from 'foo' and 'zoo'"
+expected  = ["f", "bar", "baz", "z"]
+
+[[asserts]]
+arguments = [["hello", "hi", "hey", "h"], "h"]
+comment   = "Remove starting 'h' and standalone 'h'"
+expected  = ["ello", "i", "ey", ""]
+
+[[asserts]]
+arguments = [["index", "inside", "iron"], "i"]
+comment   = "Remove lowercase 'i' from many positions"
+expected  = ["ndex", "nsde", "ron"]
+
+[[asserts]]
+arguments = [["red", "gold", "cold"], "d"]
+comment   = "Remove 'd' from the end of words"
+expected  = ["re", "gol", "col"]
+
+[[asserts]]
+arguments = [["y", "yellow", "candy"], "y"]
+comment   = "Remove 'y' at beginning and end"
+expected  = ["", "ellow", "cand"]
+
+[[asserts]]
+arguments = [["book", "look", "cook"], "k"]
+comment   = "Remove trailing 'k' from all words"
+expected  = ["boo", "loo", "coo"]
+
+[[asserts]]
+arguments = [["go", "big", "dog", "egg"], "g"]
+comment   = "Remove 'g' appearing in various positions"
+expected  = ["o", "bi", "do", "e"]
+
+[[asserts]]
+arguments = [["clojure", "lisp", "scala", "elixir"], "l"]
+comment   = "Remove 'l' from functional language names"
+expected  = ["cojure", "isp", "scaa", "eixir"]

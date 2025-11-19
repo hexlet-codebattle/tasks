@@ -1,0 +1,124 @@
+level             = "elementary"
+name              = "celsius_to_fahrenheit"
+tags              = ["conversion", "physics"]
+time_to_solve_sec = 120
+
+description_en = """
+Convert a temperature from Celsius to Fahrenheit using the formula
+$F = \\left\\lfloor \\frac{9}{5} C + 32 \\right\\rfloor$.
+Use floor rounding for the result.
+"""
+
+description_ru = """
+Преобразуйте температуру из градусов Цельсия в Фаренгейты по формуле
+$F = \\left\\lfloor \\frac{9}{5} C + 32 \\right\\rfloor$.
+Используйте округление вниз.
+"""
+
+limits = """
+- $-100 \\leq C \\leq 100$
+"""
+
+solution = """
+def solution(temperature: int) -> int:
+    return (9 * temperature) // 5 + 32
+"""
+
+examples = """
+solution(0) == 32
+solution(35) == 95
+solution(-12) == 10
+"""
+
+[[input_signature]]
+argument_name = "temperature"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [35]
+comment   = "Standard positive temperature"
+expected  = 95
+
+[[asserts]]
+arguments = [-12]
+comment   = "Negative Celsius"
+expected  = 10
+
+[[asserts]]
+arguments = [0]
+comment   = "Freezing point of water"
+expected  = 32
+
+[[asserts]]
+arguments = [-100]
+comment   = "Minimum test boundary"
+expected  = -148
+
+[[asserts]]
+arguments = [100]
+comment   = "Maximum test boundary"
+expected  = 212
+
+[[asserts]]
+arguments = [1]
+comment   = "Just above freezing"
+expected  = 33
+
+[[asserts]]
+arguments = [-1]
+comment   = "Just below freezing"
+expected  = 30
+
+[[asserts]]
+arguments = [10]
+comment   = "Small positive"
+expected  = 50
+
+[[asserts]]
+arguments = [-10]
+comment   = "Small negative"
+expected  = 14
+
+[[asserts]]
+arguments = [37]
+comment   = "Human body temperature"
+expected  = 98
+
+[[asserts]]
+arguments = [20]
+comment   = "Room temperature"
+expected  = 68
+
+[[asserts]]
+arguments = [15]
+comment   = "Mild temperature"
+expected  = 59
+
+[[asserts]]
+arguments = [-40]
+comment   = "Special case where Celsius equals Fahrenheit"
+expected  = -40
+
+[[asserts]]
+arguments = [99]
+comment   = "Just below boiling point"
+expected  = 210
+
+[[asserts]]
+arguments = [49]
+comment   = "Warm temperature"
+expected  = 120
+
+[[asserts]]
+arguments = [3]
+comment   = "Small positive"
+expected  = 37
+
+[[asserts]]
+arguments = [-3]
+comment   = "Small negative"
+expected  = 26

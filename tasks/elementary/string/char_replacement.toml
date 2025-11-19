@@ -1,0 +1,196 @@
+level             = "elementary"
+name              = "char_replacement"
+tags              = ["string", "array"]
+time_to_solve_sec = 120
+
+description_en = """
+Write a function that takes an array of strings `words`, a string `character`, and a string `replacement`.
+Return a new array of strings where every occurrence of `character` in every word is replaced with `replacement`.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает массив строк `words`, строку `character` и строку `replacement`.
+Верните новый массив строк, в котором каждое вхождение `character` в каждой строке заменено на `replacement`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(character) \\leq 1$
+- $1 \\leq \\text{len}(replacement) \\leq 1$
+- $0 \\leq \\text{len}(words) \\leq 20$
+"""
+
+solution = """
+def solution(words, character, replacement):
+    return [w.replace(character, replacement) for w in words]
+"""
+
+examples = """
+solution(["foo", "bar", "frontend"], "z", "Y") == ["foo", "bar", "frontend"]
+solution(["test", "string", "example"], "t", "d") == ["desd", "sdring", "example"]
+solution(["learn", "clojure", "be", "happy"], "l", "L") == ["Learn", "cLojure", "be", "happy"]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[[input_signature]]
+argument_name = "character"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "replacement"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[[asserts]]
+arguments = [["test", "string", "example"], "t", "d"]
+comment   = "Replace 't' with 'd'"
+expected  = ["desd", "sdring", "example"]
+
+[[asserts]]
+arguments = [["learn", "clojure", "be", "happy"], "l", "L"]
+comment   = "Replace lowercase 'l' with uppercase 'L'"
+expected  = ["Learn", "cLojure", "be", "happy"]
+
+[[asserts]]
+arguments = [["foo", "bar", "frontend"], "z", "Y"]
+comment   = "Character not present, no changes"
+expected  = ["foo", "bar", "frontend"]
+
+[[asserts]]
+arguments = [["aaa", "aba", "baa"], "a", "x"]
+comment   = "Replace all 'a' with 'x'"
+expected  = ["xxx", "xbx", "bxx"]
+
+[[asserts]]
+arguments = [["hello", "there", "general"], "e", "E"]
+comment   = "Multiple 'e' replaced"
+expected  = ["hEllo", "thErE", "gEnEral"]
+
+[[asserts]]
+arguments = [["hello", "world"], "o", "0"]
+comment   = "Replace vowel with digit"
+expected  = ["hell0", "w0rld"]
+
+[[asserts]]
+arguments = [["apple", "grape", "pear", "plum"], "p", "P"]
+comment   = "Replace 'p' at different positions"
+expected  = ["aPPle", "graPe", "Pear", "Plum"]
+
+[[asserts]]
+arguments = [["code", "cool", "car"], "c", "C"]
+comment   = "Replace leading character"
+expected  = ["Code", "Cool", "Car"]
+
+[[asserts]]
+arguments = [["ring", "long", "g"], "g", "X"]
+comment   = "Replace 'g' including single-letter case"
+expected  = ["rinX", "lonX", "X"]
+
+[[asserts]]
+arguments = [["Apple", "ALARM", "area"], "A", "x"]
+comment   = "Case-sensitive replacement"
+expected  = ["xpple", "xLxRM", "area"]
+
+[[asserts]]
+arguments = [["Apple", "banana"], "a", "Z"]
+comment   = "Lowercase 'a' replaced, uppercase 'A' kept"
+expected  = ["Apple", "bZnZnZ"]
+
+[[asserts]]
+arguments = [["lll", "hello", "small"], "l", "1"]
+comment   = "Multiple occurrences replaced with digit"
+expected  = ["111", "he11o", "sma11"]
+
+[[asserts]]
+arguments = [["home", "time", "summer"], "m", "_"]
+comment   = "Replace 'm' with underscore"
+expected  = ["ho_e", "ti_e", "su__er"]
+
+[[asserts]]
+arguments = [["a", "aa", "aaa"], "a", "b"]
+comment   = "Replace character in all words"
+expected  = ["b", "bb", "bbb"]
+
+[[asserts]]
+arguments = [["river", "road", "rock", "r"], "r", "Q"]
+comment   = "Replace 'r' at start and inside"
+expected  = ["QiveQ", "Qoad", "Qock", "Q"]
+
+[[asserts]]
+arguments = [["frontend", "end", "noon"], "n", "N"]
+comment   = "Replace lowercase 'n' in many positions"
+expected  = ["froNteNd", "eNd", "NooN"]
+
+[[asserts]]
+arguments = [["see", "bee", "tree"], "e", "*"]
+comment   = "Replace vowels with '*'"
+expected  = ["s**", "b**", "tr**"]
+
+[[asserts]]
+arguments = [["test", "two", "t"], "t", "_"]
+comment   = "Single-letter word replaced entirely"
+expected  = ["_es_", "_wo", "_"]
+
+[[asserts]]
+arguments = [["blue", "black", "green"], "b", "$"]
+comment   = "Replace only leading 'b' occurrences"
+expected  = ["$lue", "$lack", "green"]
+
+[[asserts]]
+arguments = [["c", "abc", "ccc", "cocoa"], "c", "#"]
+comment   = "Replace 'c' across patterns"
+expected  = ["#", "ab#", "###", "#o#oa"]
+
+[[asserts]]
+arguments = [["alpha", "beta", "gamma"], "z", "!"]
+comment   = "Character not found, unchanged"
+expected  = ["alpha", "beta", "gamma"]
+
+[[asserts]]
+arguments = [["foo", "bar", "baz", "zoo"], "o", "!"]
+comment   = "Replace 'o' with '!'"
+expected  = ["f!!", "bar", "baz", "z!!"]
+
+[[asserts]]
+arguments = [["hello", "hi", "hey", "h"], "h", "?"]
+comment   = "Replace beginning 'h'"
+expected  = ["?ello", "?i", "?ey", "?"]
+
+[[asserts]]
+arguments = [["index", "inside", "iron"], "i", "I"]
+comment   = "Replace lowercase 'i' with uppercase"
+expected  = ["Index", "InsIde", "Iron"]
+
+[[asserts]]
+arguments = [["red", "gold", "cold"], "d", "%"]
+comment   = "Replace trailing 'd'"
+expected  = ["re%", "gol%", "col%"]
+
+[[asserts]]
+arguments = [["y", "yellow", "candy"], "y", "@"]
+comment   = "Replace 'y' at start and end"
+expected  = ["@", "@ellow", "cand@"]
+
+[[asserts]]
+arguments = [["book", "look", "cook"], "k", "K"]
+comment   = "Replace trailing character"
+expected  = ["booK", "looK", "cooK"]
+
+[[asserts]]
+arguments = [["go", "big", "dog", "egg"], "g", "*"]
+comment   = "Replace 'g' across various positions"
+expected  = ["*o", "bi*", "do*", "e**"]
+
+[[asserts]]
+arguments = [["clojure", "lisp", "scala", "elixir"], "l", "~"]
+comment   = "Replace 'l' in language names"
+expected  = ["c~ojure", "~isp", "sca~a", "e~ixir"]

@@ -1,0 +1,185 @@
+level             = "easy"
+name              = "capitalized_words_number"
+tags              = ["string"]
+time_to_solve_sec = 200
+
+description_en = """
+Given a string `s`, count how many **words** in it start with a capital letter.
+
+A word is any substring separated by spaces. A word **counts** if its **first character** is an uppercase letter (`'A'`–`'Z'`), even if it is followed by punctuation (for example, `"Hello,"` is counted).
+"""
+
+description_ru = """
+По заданной строке `s` подсчитайте, сколько в ней **слов** начинается с заглавной буквы.
+
+Слово — это любая подстрока, отделённая пробелами. Слово **засчитывается**, если его **первый символ** — заглавная латинская буква (`'A'`–`'Z'`), даже если далее следует пунктуация (например, `"Hello,"` считается).
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 1000$
+"""
+
+solution = """
+def solution(s: str) -> int:
+    count = 0
+    for w in s.split(" "):
+        if w and w[0].isupper():
+            count += 1
+    return count
+"""
+
+examples = """
+solution("loRem ipSum") == 0
+solution("lorem ipsum.") == 0
+solution("Lorem Ipsum Caesar") == 3
+solution("Lorem ipsum, Hello") == 2
+solution("lorem, ipsum Hello CaeSar") == 2
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["lorem ipsum."]
+comment   = "No words starting with a capital letter"
+expected  = 0
+
+[[asserts]]
+arguments = ["Lorem ipsum, Hello"]
+comment   = "Two capitalized words: Lorem, Hello"
+expected  = 2
+
+[[asserts]]
+arguments = ["lorem, ipsum Hello CaeSar"]
+comment   = "Hello and CaeSar start with uppercase"
+expected  = 2
+
+[[asserts]]
+arguments = ["loRem ipSum"]
+comment   = "Uppercase not at the first character"
+expected  = 0
+
+[[asserts]]
+arguments = ["Lorem Ipsum Caesar"]
+comment   = "All three words start with uppercase"
+expected  = 3
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string has no words"
+expected  = 0
+
+[[asserts]]
+arguments = ["   "]
+comment   = "Only spaces, no words with first character"
+expected  = 0
+
+[[asserts]]
+arguments = ["Hello"]
+comment   = "Single capitalized word"
+expected  = 1
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Single lowercase word"
+expected  = 0
+
+[[asserts]]
+arguments = ["Hello, world!"]
+comment   = "Hello, starts with uppercase, world! does not"
+expected  = 1
+
+[[asserts]]
+arguments = ["Hello, World!"]
+comment   = "Both Hello, and World! start with uppercase"
+expected  = 2
+
+[[asserts]]
+arguments = ["(Hello) World"]
+comment   = "Words start with '(' and 'W'; only World counts as it starts with uppercase W"
+expected  = 1
+
+[[asserts]]
+arguments = ["\"Hello\" World"]
+comment   = "First characters '\"' and 'W'; only World counts as it starts with uppercase W"
+expected  = 1
+
+[[asserts]]
+arguments = ["A b C d"]
+comment   = "A and C are counted"
+expected  = 2
+
+[[asserts]]
+arguments = ["ABC def GHI"]
+comment   = "ABC and GHI start with uppercase"
+expected  = 2
+
+[[asserts]]
+arguments = ["abc DEF ghi"]
+comment   = "Only DEF starts with uppercase"
+expected  = 1
+
+[[asserts]]
+arguments = ["hello   World"]
+comment   = "Extra spaces, only World counts"
+expected  = 1
+
+[[asserts]]
+arguments = ["Hello world  Foo"]
+comment   = "Hello and Foo start with uppercase"
+expected  = 2
+
+[[asserts]]
+arguments = ["HELLO WORLD"]
+comment   = "Both words start with uppercase H and W"
+expected  = 2
+
+[[asserts]]
+arguments = ["123abc Hello"]
+comment   = "Word starting with digit is not counted, Hello is"
+expected  = 1
+
+[[asserts]]
+arguments = ["_Hello World"]
+comment   = "Word starting with '_' is not counted, World is"
+expected  = 1
+
+[[asserts]]
+arguments = ["Hello-world Foo-bar"]
+comment   = "Split by spaces, both Hello-world and Foo-bar start with uppercase"
+expected  = 2
+
+[[asserts]]
+arguments = ["a B c D e F"]
+comment   = "B, D and F are counted"
+expected  = 3
+
+[[asserts]]
+arguments = ["Lorem ipsum. Dolor sit Amet."]
+comment   = "Lorem, Dolor, Amet. start with uppercase"
+expected  = 3
+
+[[asserts]]
+arguments = ["Mixed CASE Words like JavaScript and HTML"]
+comment   = "Mixed, CASE, Words, JavaScript and HTML are counted"
+expected  = 5
+
+[[asserts]]
+arguments = ["no Capitals here"]
+comment   = "Only 'Capitals' starts with uppercase"
+expected  = 1
+
+[[asserts]]
+arguments = ["Edge UpperCase lowerCase"]
+comment   = "Edge and UpperCase start with uppercase"
+expected  = 2
+
+[[asserts]]
+arguments = ["already Capitalized Words."]
+comment   = "already is lowercase, Capitalized and Words. counted"
+expected  = 2

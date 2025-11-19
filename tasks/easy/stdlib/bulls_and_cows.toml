@@ -1,0 +1,201 @@
+level             = "easy"
+name              = "bulls_and_cows"
+tags              = ["stdlib"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given two 4-digit integers: `secret` and `guess`.
+
+For each position:
+
+- If the digit in `guess` is the **same** as in `secret` and in the **same position**, it counts as a **bull**.
+- If the digit appears in `secret` but in a **different position**, it counts as a **cow**.
+
+Return an array `[bulls, cows]` with the number of bulls and cows for this pair.
+
+Although in the classic game all digits are different, your function must correctly handle **any** 4-digit numbers, including ones with repeated digits.
+"""
+
+description_ru = """
+Даны два четырёхзначных числа: `secret` и `guess`.
+
+Для каждой позиции:
+
+- Если цифра в `guess` совпадает с цифрой в `secret` и стоит на **том же месте**, это **бык**.
+- Если цифра присутствует в `secret`, но стоит на **другом месте**, это **корова**.
+
+Верните массив `[bulls, cows]` с количеством быков и коров для этой пары.
+
+Хотя в классической игре все цифры различны, ваша функция должна корректно обрабатывать **любые** четырёхзначные числа, включая числа с повторяющимися цифрами.
+"""
+
+limits = """
+- $1000 \\leq secret \\leq 9999$
+- $1000 \\leq guess \\leq 9999$
+"""
+
+solution = """
+from collections import Counter
+from typing import List
+
+def solution(secret: int, guess: int) -> List[int]:
+    s = str(secret)
+    g = str(guess)
+    bulls = sum(1 for i in range(4) if s[i] == g[i])
+    cs, cg = Counter(s), Counter(g)
+    cows = sum(min(cs[d], cg[d]) for d in cs) - bulls
+    return [bulls, cows]
+"""
+
+examples = """
+solution(1234, 5678) == [0, 0]
+solution(1234, 4321) == [0, 4]
+solution(4182, 4273) == [1, 1]
+solution(4271, 1234) == [1, 2]
+solution(4271, 4271) == [4, 0]
+solution(4271, 5682) == [0, 1]
+"""
+
+[[input_signature]]
+argument_name = "secret"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "guess"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name   = "array"
+nested = { name = "integer" }
+
+[[asserts]]
+arguments = [4271, 1234]
+comment   = "Given example: one bull (2) and two cows (1 and 4)"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [4271, 5682]
+comment   = "Given example: one cow (2), no bulls"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [4271, 4271]
+comment   = "Given example: all digits correct and in place"
+expected  = [4, 0]
+
+[[asserts]]
+arguments = [4182, 4273]
+comment   = "Given example: one bull, one cow"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [1234, 5678]
+comment   = "No common digits"
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [1234, 4321]
+comment   = "All digits present but all in wrong positions"
+expected  = [0, 4]
+
+[[asserts]]
+arguments = [1234, 1278]
+comment   = "Two bulls, no cows"
+expected  = [2, 0]
+
+[[asserts]]
+arguments = [1234, 1782]
+comment   = "One bull, one cow"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [9876, 6789]
+comment   = "All digits present but all displaced"
+expected  = [0, 4]
+
+[[asserts]]
+arguments = [1111, 1111]
+comment   = "All digits equal with repeats"
+expected  = [4, 0]
+
+[[asserts]]
+arguments = [1122, 2211]
+comment   = "All digits present but all in wrong positions with repeats"
+expected  = [0, 4]
+
+[[asserts]]
+arguments = [9090, 9009]
+comment   = "Two bulls, two cows with repeated digits"
+expected  = [2, 2]
+
+[[asserts]]
+arguments = [1023, 1023]
+comment   = "Exact match with a zero digit"
+expected  = [4, 0]
+
+[[asserts]]
+arguments = [1023, 1302]
+comment   = "One bull, three cows, all digits shared"
+expected  = [1, 3]
+
+[[asserts]]
+arguments = [9087, 7890]
+comment   = "All digits present, all displaced"
+expected  = [0, 4]
+
+[[asserts]]
+arguments = [2468, 8642]
+comment   = "Even digits, reversed order blocks"
+expected  = [0, 4]
+
+[[asserts]]
+arguments = [1357, 1357]
+comment   = "Odd digits, all correct"
+expected  = [4, 0]
+
+[[asserts]]
+arguments = [1357, 7531]
+comment   = "Same digits, rotated positions"
+expected  = [0, 4]
+
+[[asserts]]
+arguments = [1234, 1294]
+comment   = "Three digits correct and in place"
+expected  = [3, 0]
+
+[[asserts]]
+arguments = [1234, 1203]
+comment   = "Two bulls, one cow"
+expected  = [2, 1]
+
+[[asserts]]
+arguments = [1234, 9834]
+comment   = "Two bulls, remaining digits different"
+expected  = [2, 0]
+
+[[asserts]]
+arguments = [5678, 7618]
+comment   = "Two bulls and one additional shared digit"
+expected  = [2, 1]
+
+[[asserts]]
+arguments = [5678, 5768]
+comment   = "Two bulls and two cows"
+expected  = [2, 2]
+
+[[asserts]]
+arguments = [5678, 5670]
+comment   = "Three digits correct, last digit different"
+expected  = [3, 0]
+
+[[asserts]]
+arguments = [5678, 8567]
+comment   = "All digits present but permuted"
+expected  = [0, 4]
+
+[[asserts]]
+arguments = [1023, 9876]
+comment   = "No common digits between secret and guess"
+expected  = [0, 0]

@@ -1,0 +1,182 @@
+level             = "elementary"
+name              = "celsius_to_kelvin"
+tags              = ["conversion", "physics"]
+time_to_solve_sec = 100
+
+description_en = """
+Convert a temperature from Celsius to Kelvin using the formula
+$K = C + 273$.
+"""
+
+description_ru = """
+Преобразуйте температуру из градусов Цельсия в Кельвины по формуле
+$K = C + 273$.
+"""
+
+limits = """
+- $-273 \\leq C \\leq 500$
+"""
+
+solution = """
+def solution(temperature: int) -> int:
+    return temperature + 273
+"""
+
+examples = """
+solution(0) == 273
+solution(35) == 308
+solution(-12) == 261
+"""
+
+[[input_signature]]
+argument_name = "temperature"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [35]
+comment   = "Typical positive value"
+expected  = 308
+
+[[asserts]]
+arguments = [-12]
+comment   = "Negative temperature"
+expected  = 261
+
+[[asserts]]
+arguments = [0]
+comment   = "Freezing point"
+expected  = 273
+
+[[asserts]]
+arguments = [-273]
+comment   = "Lower boundary"
+expected  = 0
+
+[[asserts]]
+arguments = [500]
+comment   = "Upper boundary"
+expected  = 773
+
+[[asserts]]
+arguments = [1]
+comment   = "Just above zero"
+expected  = 274
+
+[[asserts]]
+arguments = [-1]
+comment   = "Just below zero"
+expected  = 272
+
+[[asserts]]
+arguments = [10]
+comment   = "Small positive"
+expected  = 283
+
+[[asserts]]
+arguments = [-10]
+comment   = "Small negative"
+expected  = 263
+
+[[asserts]]
+arguments = [100]
+comment   = "Boiling-equivalent Celsius"
+expected  = 373
+
+[[asserts]]
+arguments = [250]
+comment   = "Upper mid-range"
+expected  = 523
+
+[[asserts]]
+arguments = [-250]
+comment   = "Lower mid-range"
+expected  = 23
+
+[[asserts]]
+arguments = [37]
+comment   = "Human body temperature"
+expected  = 310
+
+[[asserts]]
+arguments = [20]
+comment   = "Room temperature"
+expected  = 293
+
+[[asserts]]
+arguments = [15]
+comment   = "Mild temperature"
+expected  = 288
+
+[[asserts]]
+arguments = [-40]
+comment   = "Special Celsius value"
+expected  = 233
+
+[[asserts]]
+arguments = [222]
+comment   = "Random positive"
+expected  = 495
+
+[[asserts]]
+arguments = [-222]
+comment   = "Random negative"
+expected  = 51
+
+[[asserts]]
+arguments = [300]
+comment   = "High positive temperature"
+expected  = 573
+
+[[asserts]]
+arguments = [-100]
+comment   = "High negative temperature"
+expected  = 173
+
+[[asserts]]
+arguments = [49]
+comment   = "Warm temperature"
+expected  = 322
+
+[[asserts]]
+arguments = [-49]
+comment   = "Cold temperature"
+expected  = 224
+
+[[asserts]]
+arguments = [3]
+comment   = "Small positive value"
+expected  = 276
+
+[[asserts]]
+arguments = [-3]
+comment   = "Small negative value"
+expected  = 270
+
+[[asserts]]
+arguments = [451]
+comment   = "High Kelvin reference"
+expected  = 724
+
+[[asserts]]
+arguments = [99]
+comment   = "Just below 100"
+expected  = 372
+
+[[asserts]]
+arguments = [-99]
+comment   = "Just above -100"
+expected  = 174
+
+[[asserts]]
+arguments = [123]
+comment   = "Arbitrary positive"
+expected  = 396
+
+[[asserts]]
+arguments = [-123]
+comment   = "Arbitrary negative"
+expected  = 150

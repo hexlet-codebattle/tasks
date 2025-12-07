@@ -1,0 +1,160 @@
+level             = "medium"
+name              = "happy_numbers"
+tags              = ["math"]
+time_to_solve_sec = 600
+
+description_en = """
+Happy numbers are positive integers that follow a particular formula: take each individual digit, square it, and then sum the squares to get a new number. Repeat with the new number and eventually, you might get to a number whose squared sum is $1$. This is a happy number. An unhappy number (or sad number) is one that loops endlessly. Write a function that determines if a number is happy or not.
+"""
+
+description_ru = """
+Счастливые числа - это положительные целые числа, которые вычисляются следующим образом: каждую цифру числа возведите в квадрат, затем сложите получившиеся значение, чтобы получить новое число. Повторите процесс с получившимся числом и т.д. У вас может получится число, сумма квадратов которого равна $1$. Это счастливое число. Несчастливое (или грустное) число - такое число, которое бесконечно повторяется. Напишите функцию которая определяет счастливое число или нет.
+"""
+
+limits = """
+- $1 \\leq n \\leq 10^9$
+"""
+
+solution = """
+def solution(n):
+    seen = set()
+    while n != 1 and n not in seen:
+        seen.add(n)
+        n = sum(int(d) ** 2 for d in str(n))
+    return n == 1
+"""
+
+examples = """
+solution(7) == True
+solution(2) == False
+solution(189) == False
+solution(986543210) == True
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [7]
+expected  = true
+
+[[asserts]]
+arguments = [986543210]
+expected  = true
+
+[[asserts]]
+arguments = [2]
+expected  = false
+
+[[asserts]]
+arguments = [189]
+expected  = false
+
+[[asserts]]
+arguments = [1]
+expected  = true
+
+[[asserts]]
+arguments = [10]
+expected  = true
+
+[[asserts]]
+arguments = [13]
+expected  = true
+
+[[asserts]]
+arguments = [19]
+expected  = true
+
+[[asserts]]
+arguments = [23]
+expected  = true
+
+[[asserts]]
+arguments = [28]
+expected  = true
+
+[[asserts]]
+arguments = [31]
+expected  = true
+
+[[asserts]]
+arguments = [32]
+expected  = true
+
+[[asserts]]
+arguments = [44]
+expected  = true
+
+[[asserts]]
+arguments = [49]
+expected  = true
+
+[[asserts]]
+arguments = [68]
+expected  = true
+
+[[asserts]]
+arguments = [70]
+expected  = true
+
+[[asserts]]
+arguments = [79]
+expected  = true
+
+[[asserts]]
+arguments = [82]
+expected  = true
+
+[[asserts]]
+arguments = [86]
+expected  = true
+
+[[asserts]]
+arguments = [91]
+expected  = true
+
+[[asserts]]
+arguments = [94]
+expected  = true
+
+[[asserts]]
+arguments = [97]
+expected  = true
+
+[[asserts]]
+arguments = [100]
+expected  = true
+
+[[asserts]]
+arguments = [3]
+expected  = false
+
+[[asserts]]
+arguments = [4]
+expected  = false
+
+[[asserts]]
+arguments = [5]
+expected  = false
+
+[[asserts]]
+arguments = [6]
+expected  = false
+
+[[asserts]]
+arguments = [8]
+expected  = false
+
+[[asserts]]
+arguments = [9]
+expected  = false
+
+[[asserts]]
+arguments = [11]
+expected  = false

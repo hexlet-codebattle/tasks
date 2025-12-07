@@ -1,0 +1,346 @@
+level             = "easy"
+name              = "imposter_search"
+tags              = ["collections", "strings", "games"]
+time_to_solve_sec = 300
+
+description_en = """
+Create a function that find imposters in array of players, each player has its own role. If no imposters were found, return `["there are no imposters here!"]`. If in array presented only imposters, return `["imposters are everywhere!"]`. In other cases return array of imposters names.
+"""
+
+description_ru = """
+Создайте функцию, которая находит самозванцев (imposter) в массиве игроков, у каждого игрока своя роль. Если самозванцев нет, верните `["there are no imposters here!"]`. Если в массиве только самозванцы, верните `["imposters are everywhere!"]`. В ином случае верните массив с именами самозванцев.
+"""
+
+solution = """
+def solution(players):
+    imposters = [name for name, role in players if role == "imposter"]
+
+    if len(imposters) == len(players):
+        return ["imposters are everywhere!"]
+    elif len(imposters) == 0:
+        return ["there are no imposters here!"]
+    else:
+        return imposters
+"""
+
+examples = """
+solution([["Harry", "crewmate"]]) == ["there are no imposters here!"]
+solution([["Jack", "imposter"]]) == ["imposters are everywhere!"]
+solution([["Daniel", "crewmate"], ["Vasya", "imposter"], ["Jack", "imposter"]]) == ["Vasya", "Jack"]
+"""
+
+[[input_signature]]
+argument_name = "players"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Daniel",
+      "crewmate",
+    ],
+    [
+      "Vasya",
+      "imposter",
+    ],
+    [
+      "Jack",
+      "imposter",
+    ],
+  ],
+]
+expected = ["Vasya", "Jack"]
+
+[[asserts]]
+arguments = [[["Harry", "crewmate"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [[["Jack", "imposter"]]]
+expected  = ["imposters are everywhere!"]
+
+[[asserts]]
+arguments = [[["Alice", "doctor"], ["Bob", "officer"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [[["Eve", "imposter"], ["Frank", "imposter"]]]
+expected  = ["imposters are everywhere!"]
+
+[[asserts]]
+arguments = [[["Tom", "crewmate"], ["Jerry", "imposter"]]]
+expected  = ["Jerry"]
+
+[[asserts]]
+arguments = [[["Mike", "officer"], ["Sarah", "imposter"], ["John", "doctor"]]]
+expected  = ["Sarah"]
+
+[[asserts]]
+arguments = [[["Alex", "ghost"], ["Sam", "crewmate"], ["Chris", "officer"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Player1",
+      "imposter",
+    ],
+    [
+      "Player2",
+      "imposter",
+    ],
+    [
+      "Player3",
+      "imposter",
+    ],
+  ],
+]
+expected = ["imposters are everywhere!"]
+
+[[asserts]]
+arguments = [[["Anna", "crewmate"], ["Ben", "imposter"], ["Carl", "crewmate"]]]
+expected  = ["Ben"]
+
+[[asserts]]
+arguments = [[["David", "officer"], ["Emma", "doctor"], ["Fiona", "ghost"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [[["George", "imposter"]]]
+expected  = ["imposters are everywhere!"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Helen",
+      "crewmate",
+    ],
+    [
+      "Ivan",
+      "imposter",
+    ],
+    [
+      "Julia",
+      "imposter",
+    ],
+    [
+      "Kate",
+      "doctor",
+    ],
+  ],
+]
+expected = ["Ivan", "Julia"]
+
+[[asserts]]
+arguments = [[["Leo", "officer"], ["Mark", "crewmate"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Nina",
+      "imposter",
+    ],
+    [
+      "Oscar",
+      "imposter",
+    ],
+    [
+      "Paul",
+      "crewmate",
+    ],
+  ],
+]
+expected = ["Nina", "Oscar"]
+
+[[asserts]]
+arguments = [[["Quinn", "ghost"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Rachel",
+      "crewmate",
+    ],
+    [
+      "Steve",
+      "officer",
+    ],
+    [
+      "Tina",
+      "doctor",
+    ],
+    [
+      "Uma",
+      "ghost",
+    ],
+  ],
+]
+expected = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Victor",
+      "imposter",
+    ],
+    [
+      "Wendy",
+      "crewmate",
+    ],
+    [
+      "Xavier",
+      "imposter",
+    ],
+  ],
+]
+expected = ["Victor", "Xavier"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Yara",
+      "crewmate",
+    ],
+    [
+      "Zack",
+      "imposter",
+    ],
+    [
+      "Amy",
+      "crewmate",
+    ],
+    [
+      "Brad",
+      "imposter",
+    ],
+    [
+      "Cathy",
+      "crewmate",
+    ],
+  ],
+]
+expected = ["Zack", "Brad"]
+
+[[asserts]]
+arguments = [[["Dan", "officer"], ["Eve", "ghost"], ["Fred", "doctor"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Grace",
+      "imposter",
+    ],
+    [
+      "Hugo",
+      "imposter",
+    ],
+    [
+      "Iris",
+      "imposter",
+    ],
+    [
+      "Jack",
+      "imposter",
+    ],
+  ],
+]
+expected = ["imposters are everywhere!"]
+
+[[asserts]]
+arguments = [[["Kim", "crewmate"], ["Luke", "crewmate"], ["Mary", "crewmate"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [[["Nate", "imposter"], ["Olive", "crewmate"]]]
+expected  = ["Nate"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Pete",
+      "crewmate",
+    ],
+    [
+      "Rose",
+      "imposter",
+    ],
+    [
+      "Sean",
+      "crewmate",
+    ],
+    [
+      "Tara",
+      "imposter",
+    ],
+    [
+      "Uma",
+      "crewmate",
+    ],
+  ],
+]
+expected = ["Rose", "Tara"]
+
+[[asserts]]
+arguments = [[["Vince", "officer"], ["Wade", "imposter"]]]
+expected  = ["Wade"]
+
+[[asserts]]
+arguments = [[["Xena", "doctor"], ["Yoda", "crewmate"], ["Zara", "ghost"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [[["Adam", "imposter"], ["Beth", "imposter"]]]
+expected  = ["imposters are everywhere!"]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "Cole",
+      "crewmate",
+    ],
+    [
+      "Dana",
+      "imposter",
+    ],
+    [
+      "Evan",
+      "crewmate",
+    ],
+    [
+      "Faye",
+      "officer",
+    ],
+  ],
+]
+expected = ["Dana"]
+
+[[asserts]]
+arguments = [[["Gabe", "crewmate"]]]
+expected  = ["there are no imposters here!"]
+
+[[asserts]]
+arguments = [[["Hope", "imposter"], ["Iris", "crewmate"], ["Jake", "imposter"]]]
+expected  = ["Hope", "Jake"]

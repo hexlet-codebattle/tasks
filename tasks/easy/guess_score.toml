@@ -1,0 +1,169 @@
+level             = "easy"
+name              = "guess_score"
+tags              = ["collections", "games"]
+time_to_solve_sec = 300
+
+description_en = """
+Write a function that takes the assumed and real soccer match scores as the arguments and returns $2$ if the score is correct, $1$ if the winner is correct but the score is wrong and $0$ if the winner is wrong.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает предсказанный счет и настоящий счет футбольного матча. Верните $2$, если счета совпали, $1$ если победитель предсказан верно, но очки отличаются, $0$ если предсказание оказалось полностью неверным.
+"""
+
+solution = """
+def solution(guess, actual):
+    g1, g2 = guess
+    a1, a2 = actual
+
+    if guess == actual:
+        return 2
+    elif (g1 - g2 == a1 - a2 == 0) or ((g1 - g2) * (a1 - a2) > 0):
+        return 1
+    else:
+        return 0
+"""
+
+examples = """
+solution([1, 2], [2, 1]) == 0
+solution([2, 2], [3, 3]) == 1
+solution([1, 1], [1, 1]) == 2
+solution([3, 1], [3, 1]) == 2
+"""
+
+[[input_signature]]
+argument_name = "guess"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "actual"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, 2], [2, 1]]
+expected  = 0
+
+[[asserts]]
+arguments = [[2, 2], [3, 3]]
+expected  = 1
+
+[[asserts]]
+arguments = [[3, 1], [3, 1]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 1], [1, 1]]
+expected  = 2
+
+[[asserts]]
+arguments = [[2, 1], [3, 0]]
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 0], [0, 0]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 0], [2, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[3, 2], [2, 3]]
+expected  = 0
+
+[[asserts]]
+arguments = [[5, 0], [5, 0]]
+expected  = 2
+
+[[asserts]]
+arguments = [[2, 3], [1, 2]]
+expected  = 1
+
+[[asserts]]
+arguments = [[4, 4], [2, 2]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 3], [3, 1]]
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 1], [0, 2]]
+expected  = 1
+
+[[asserts]]
+arguments = [[2, 0], [1, 0]]
+expected  = 1
+
+[[asserts]]
+arguments = [[3, 3], [3, 3]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2], [1, 2]]
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 2], [1, 3]]
+expected  = 1
+
+[[asserts]]
+arguments = [[4, 1], [2, 0]]
+expected  = 1
+
+[[asserts]]
+arguments = [[2, 2], [1, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 0], [0, 1]]
+expected  = 0
+
+[[asserts]]
+arguments = [[5, 3], [5, 3]]
+expected  = 2
+
+[[asserts]]
+arguments = [[3, 0], [0, 3]]
+expected  = 0
+
+[[asserts]]
+arguments = [[2, 1], [2, 1]]
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 3], [0, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[4, 2], [3, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 1], [2, 2]]
+expected  = 1
+
+[[asserts]]
+arguments = [[3, 4], [4, 3]]
+expected  = 0
+
+[[asserts]]
+arguments = [[6, 0], [6, 0]]
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 4], [1, 5]]
+expected  = 1
+
+[[asserts]]
+arguments = [[2, 3], [3, 4]]
+expected  = 1

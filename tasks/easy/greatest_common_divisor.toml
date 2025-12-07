@@ -1,0 +1,163 @@
+level             = "easy"
+name              = "greatest_common_divisor"
+tags              = ["math"]
+time_to_solve_sec = 200
+
+description_en = """
+Create a function that calculates GCD (Greatest Common Divisor).
+"""
+
+description_ru = """
+Создайте функцию, которая находит наибольший общий делитель.
+"""
+
+limits = """
+- $1 \\leq x, y \\leq 1000$
+"""
+
+solution = """
+def solution(x, y):
+    while y:
+        x, y = y, x % y
+    return x
+"""
+
+examples = """
+solution(8, 24) == 8
+solution(8, 26) == 2
+solution(15, 50) == 5
+solution(42, 56) == 14
+"""
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "y"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [8, 24]
+expected  = 8
+
+[[asserts]]
+arguments = [8, 26]
+expected  = 2
+
+[[asserts]]
+arguments = [42, 56]
+expected  = 14
+
+[[asserts]]
+arguments = [15, 50]
+expected  = 5
+
+[[asserts]]
+arguments = [1, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [10, 5]
+expected  = 5
+
+[[asserts]]
+arguments = [12, 18]
+expected  = 6
+
+[[asserts]]
+arguments = [21, 14]
+expected  = 7
+
+[[asserts]]
+arguments = [100, 50]
+expected  = 50
+
+[[asserts]]
+arguments = [17, 19]
+expected  = 1
+
+[[asserts]]
+arguments = [36, 48]
+expected  = 12
+
+[[asserts]]
+arguments = [81, 153]
+expected  = 9
+
+[[asserts]]
+arguments = [25, 35]
+expected  = 5
+
+[[asserts]]
+arguments = [60, 48]
+expected  = 12
+
+[[asserts]]
+arguments = [13, 13]
+expected  = 13
+
+[[asserts]]
+arguments = [7, 21]
+expected  = 7
+
+[[asserts]]
+arguments = [16, 24]
+expected  = 8
+
+[[asserts]]
+arguments = [99, 66]
+expected  = 33
+
+[[asserts]]
+arguments = [45, 75]
+expected  = 15
+
+[[asserts]]
+arguments = [32, 48]
+expected  = 16
+
+[[asserts]]
+arguments = [20, 30]
+expected  = 10
+
+[[asserts]]
+arguments = [11, 22]
+expected  = 11
+
+[[asserts]]
+arguments = [9, 27]
+expected  = 9
+
+[[asserts]]
+arguments = [64, 96]
+expected  = 32
+
+[[asserts]]
+arguments = [49, 77]
+expected  = 7
+
+[[asserts]]
+arguments = [144, 120]
+expected  = 24
+
+[[asserts]]
+arguments = [5, 10]
+expected  = 5
+
+[[asserts]]
+arguments = [28, 42]
+expected  = 14
+
+[[asserts]]
+arguments = [72, 108]
+expected  = 36
+
+[[asserts]]
+arguments = [55, 121]
+expected  = 11

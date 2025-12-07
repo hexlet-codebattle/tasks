@@ -1,0 +1,151 @@
+level             = "elementary"
+name              = "how_many_digits"
+tags              = ["strings"]
+time_to_solve_sec = 120
+
+description_en = """
+Imagine you took all the numbers from $1$ to $n$ and concatenated them together into a long string. How many digits are there between $0$ and $n$? Write a function that can calculate this.
+"""
+
+description_ru = """
+Представьте, что вы берете все числа от $1$ до $n$ и соединяете их в одну большую строку. Как много цифр между $0$ и $n$? Создайте функцию, которая рассчитывает это.
+"""
+
+limits = """
+- $1 \\leq n \\leq 100000$
+"""
+
+solution = """
+def solution(n):
+    return len(''.join(str(i) for i in range(1, n)))
+"""
+
+examples = """
+solution(10) == 9
+solution(100) == 189
+solution(2021) == 6973
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [10]
+expected  = 9
+
+[[asserts]]
+arguments = [100]
+expected  = 189
+
+[[asserts]]
+arguments = [2021]
+expected  = 6973
+
+[[asserts]]
+arguments = [2]
+expected  = 1
+
+[[asserts]]
+arguments = [5]
+expected  = 4
+
+[[asserts]]
+arguments = [11]
+expected  = 11
+
+[[asserts]]
+arguments = [15]
+expected  = 19
+
+[[asserts]]
+arguments = [20]
+expected  = 29
+
+[[asserts]]
+arguments = [25]
+expected  = 39
+
+[[asserts]]
+arguments = [50]
+expected  = 89
+
+[[asserts]]
+arguments = [99]
+expected  = 187
+
+[[asserts]]
+arguments = [101]
+expected  = 192
+
+[[asserts]]
+arguments = [150]
+expected  = 339
+
+[[asserts]]
+arguments = [200]
+expected  = 489
+
+[[asserts]]
+arguments = [250]
+expected  = 639
+
+[[asserts]]
+arguments = [500]
+expected  = 1389
+
+[[asserts]]
+arguments = [1000]
+expected  = 2889
+
+[[asserts]]
+arguments = [1500]
+expected  = 4889
+
+[[asserts]]
+arguments = [2000]
+expected  = 6889
+
+[[asserts]]
+arguments = [3000]
+expected  = 10889
+
+[[asserts]]
+arguments = [5000]
+expected  = 18889
+
+[[asserts]]
+arguments = [10000]
+expected  = 38889
+
+[[asserts]]
+arguments = [3]
+expected  = 2
+
+[[asserts]]
+arguments = [4]
+expected  = 3
+
+[[asserts]]
+arguments = [6]
+expected  = 5
+
+[[asserts]]
+arguments = [7]
+expected  = 6
+
+[[asserts]]
+arguments = [8]
+expected  = 7
+
+[[asserts]]
+arguments = [9]
+expected  = 8
+
+[[asserts]]
+arguments = [12]
+expected  = 13

@@ -1,0 +1,166 @@
+level             = "easy"
+name              = "excel_sheet_column_title"
+tags              = ["excel"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a positive integer, return its corresponding column title as it appears in an Excel sheet.
+
+For example: $1 \\rightarrow A$, $2 \\rightarrow B$, $3 \\rightarrow C$, $\\ldots$, $26 \\rightarrow Z$, $27 \\rightarrow AA$, $28 \\rightarrow AB$
+"""
+
+description_ru = """
+Дано положительное целое число, верните соответствующее ему название столбца страницы Excel.
+
+Например: $1 \\rightarrow A$, $2 \\rightarrow B$, $3 \\rightarrow C$, $\\ldots$, $26 \\rightarrow Z$, $27 \\rightarrow AA$, $28 \\rightarrow AB$
+"""
+
+limits = """
+- $1 \\leq \\text{num} \\leq 500000$
+"""
+
+solution = """
+def solution(num: int) -> str:
+    result = ""
+    while num > 0:
+        num -= 1
+        result = chr(ord('A') + num % 26) + result
+        num //= 26
+    return result
+"""
+
+examples = """
+solution(1) == "A"
+solution(26) == "Z"
+solution(666) == "YP"
+solution(2458) == "CPN"
+solution(24568) == "AJHX"
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [1]
+expected  = "A"
+
+[[asserts]]
+arguments = [26]
+expected  = "Z"
+
+[[asserts]]
+arguments = [666]
+expected  = "YP"
+
+[[asserts]]
+arguments = [2458]
+expected  = "CPN"
+
+[[asserts]]
+arguments = [24568]
+expected  = "AJHX"
+
+[[asserts]]
+arguments = [2]
+expected  = "B"
+
+[[asserts]]
+arguments = [3]
+expected  = "C"
+
+[[asserts]]
+arguments = [27]
+expected  = "AA"
+
+[[asserts]]
+arguments = [28]
+expected  = "AB"
+
+[[asserts]]
+arguments = [52]
+expected  = "AZ"
+
+[[asserts]]
+arguments = [53]
+expected  = "BA"
+
+[[asserts]]
+arguments = [702]
+expected  = "ZZ"
+
+[[asserts]]
+arguments = [703]
+expected  = "AAA"
+
+[[asserts]]
+arguments = [704]
+expected  = "AAB"
+
+[[asserts]]
+arguments = [731]
+expected  = "ABC"
+
+[[asserts]]
+arguments = [16900]
+expected  = "XYZ"
+
+[[asserts]]
+arguments = [19010]
+expected  = "ABCD"
+
+[[asserts]]
+arguments = [18279]
+expected  = "AAAA"
+
+[[asserts]]
+arguments = [475254]
+expected  = "ZZZZ"
+
+[[asserts]]
+arguments = [4]
+expected  = "D"
+
+[[asserts]]
+arguments = [5]
+expected  = "E"
+
+[[asserts]]
+arguments = [6]
+expected  = "F"
+
+[[asserts]]
+arguments = [29]
+expected  = "AC"
+
+[[asserts]]
+arguments = [30]
+expected  = "AD"
+
+[[asserts]]
+arguments = [31]
+expected  = "AE"
+
+[[asserts]]
+arguments = [677]
+expected  = "ZA"
+
+[[asserts]]
+arguments = [678]
+expected  = "ZB"
+
+[[asserts]]
+arguments = [679]
+expected  = "ZC"
+
+[[asserts]]
+arguments = [728]
+expected  = "AAZ"
+
+[[asserts]]
+arguments = [729]
+expected  = "ABA"

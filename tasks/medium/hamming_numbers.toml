@@ -1,0 +1,174 @@
+level             = "medium"
+name              = "hamming_numbers"
+tags              = ["math", "algorithms"]
+time_to_solve_sec = 600
+
+description_en = """
+The sequence of Hamming numbers $1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, 32, 36, \\ldots$ consists of all numbers of the form $2^i \\cdot 3^j \\cdot 5^k$ where $i$, $j$ and $k$ are non-negative integers. Generate $n$-th number.
+"""
+
+description_ru = """
+Последовательность чисел Хэмминга $1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, 32, 36, \\ldots$ состоит из всех чисел вида $2^i \\cdot 3^j \\cdot 5^k$, где $i$, $j$ и $k$ - неотрицательные целые числа. Сгенерируйте $n$-ое число Хэмминга.
+"""
+
+limits = """
+- $1 \\leq n \\leq 1000$
+"""
+
+solution = """
+def solution(n):
+    h = [1]
+    i2 = i3 = i5 = 0
+
+    while len(h) < n:
+        next_2 = h[i2] * 2
+        next_3 = h[i3] * 3
+        next_5 = h[i5] * 5
+
+        next_h = min(next_2, next_3, next_5)
+        h.append(next_h)
+
+        if next_h == next_2:
+            i2 += 1
+        if next_h == next_3:
+            i3 += 1
+        if next_h == next_5:
+            i5 += 1
+
+    return h[n - 1]
+"""
+
+examples = """
+solution(5) == 5
+solution(20) == 36
+solution(500) == 937500
+solution(1000) == 51200000
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [20]
+expected  = 36
+
+[[asserts]]
+arguments = [5]
+expected  = 5
+
+[[asserts]]
+arguments = [500]
+expected  = 937500
+
+[[asserts]]
+arguments = [1000]
+expected  = 51200000
+
+[[asserts]]
+arguments = [1]
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+expected  = 2
+
+[[asserts]]
+arguments = [3]
+expected  = 3
+
+[[asserts]]
+arguments = [4]
+expected  = 4
+
+[[asserts]]
+arguments = [10]
+expected  = 12
+
+[[asserts]]
+arguments = [15]
+expected  = 24
+
+[[asserts]]
+arguments = [25]
+expected  = 54
+
+[[asserts]]
+arguments = [30]
+expected  = 80
+
+[[asserts]]
+arguments = [50]
+expected  = 243
+
+[[asserts]]
+arguments = [100]
+expected  = 1536
+
+[[asserts]]
+arguments = [150]
+expected  = 5832
+
+[[asserts]]
+arguments = [200]
+expected  = 16200
+
+[[asserts]]
+arguments = [250]
+expected  = 38880
+
+[[asserts]]
+arguments = [300]
+expected  = 82944
+
+[[asserts]]
+arguments = [350]
+expected  = 164025
+
+[[asserts]]
+arguments = [400]
+expected  = 311040
+
+[[asserts]]
+arguments = [450]
+expected  = 546750
+
+[[asserts]]
+arguments = [6]
+expected  = 6
+
+[[asserts]]
+arguments = [7]
+expected  = 8
+
+[[asserts]]
+arguments = [8]
+expected  = 9
+
+[[asserts]]
+arguments = [9]
+expected  = 10
+
+[[asserts]]
+arguments = [11]
+expected  = 15
+
+[[asserts]]
+arguments = [12]
+expected  = 16
+
+[[asserts]]
+arguments = [13]
+expected  = 18
+
+[[asserts]]
+arguments = [14]
+expected  = 20
+
+[[asserts]]
+arguments = [16]
+expected  = 25

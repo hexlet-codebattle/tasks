@@ -184,10 +184,10 @@ A **type object** contains:
 ### Limits Example
 ```
 limits = """
-- $0 \leq a \leq 30$
-- $0 \leq b \leq 30$
-- $1 \leq \text{len}(s) \leq 17$
-- $s \in \{\text{"C"}, \text{"B"}, \text{"."}\}^*$
+- $0 \\leq a \\leq 30$
+- $0 \\leq \\text{len}(\\text{login}) \\leq 30$
+- $0 \\leq \\text{len}(\\text{taken\\_logins}) \\leq 10^4$
+- $\\text{login} \\in \\{A{-}Z, a{-}z, 0{-}9, \\_\\}^*$
 """
 ```
 

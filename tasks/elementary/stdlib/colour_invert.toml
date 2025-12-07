@@ -1,0 +1,189 @@
+level             = "elementary"
+name              = "colour_invert"
+tags              = ["training"]
+time_to_solve_sec = 120
+
+description_en = """
+You are given an RGB color as an array of three integers `[r, g, b]`, where each component is in the range $[0, 255]$.
+
+Return the inverted color, where each component is replaced by $255 - v$.
+"""
+
+description_ru = """
+Вам дан цвет в формате RGB как массив из трёх целых чисел `[r, g, b]`, каждое из которых лежит в диапазоне $[0, 255]$.
+
+Верните инвертированный цвет, в котором каждая компонента заменяется на $255 - v$.
+"""
+
+limits = """
+- $0 \\leq colours[i] \\leq 255$
+- $\\text{len}(colours) = 3$
+"""
+
+solution = """
+def solution(colours: list[int]) -> list[int]:
+    return [255 - c for c in colours]
+"""
+
+examples = """
+solution([255, 255, 255]) == [0, 0, 0]
+solution([0, 0, 0]) == [255, 255, 255]
+solution([165, 170, 221]) == [90, 85, 34]
+"""
+
+[[input_signature]]
+argument_name = "colours"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[255, 255, 255]]
+comment   = "Invert white to black"
+expected  = [0, 0, 0]
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "Invert black to white"
+expected  = [255, 255, 255]
+
+[[asserts]]
+arguments = [[165, 170, 221]]
+comment   = "Given example of arbitrary color"
+expected  = [90, 85, 34]
+
+[[asserts]]
+arguments = [[255, 0, 0]]
+comment   = "Invert pure red"
+expected  = [0, 255, 255]
+
+[[asserts]]
+arguments = [[0, 255, 0]]
+comment   = "Invert pure green"
+expected  = [255, 0, 255]
+
+[[asserts]]
+arguments = [[0, 0, 255]]
+comment   = "Invert pure blue"
+expected  = [255, 255, 0]
+
+[[asserts]]
+arguments = [[128, 128, 128]]
+comment   = "Invert mid-gray"
+expected  = [127, 127, 127]
+
+[[asserts]]
+arguments = [[10, 20, 30]]
+comment   = "Low values become high"
+expected  = [245, 235, 225]
+
+[[asserts]]
+arguments = [[200, 150, 100]]
+comment   = "Mixed mid-high components"
+expected  = [55, 105, 155]
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "Very dark color"
+expected  = [254, 253, 252]
+
+[[asserts]]
+arguments = [[254, 253, 252]]
+comment   = "Near-white inverted back"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [[100, 0, 200]]
+comment   = "Zero in middle, two non-zero ends"
+expected  = [155, 255, 55]
+
+[[asserts]]
+arguments = [[50, 100, 150]]
+comment   = "Increasing sequence"
+expected  = [205, 155, 105]
+
+[[asserts]]
+arguments = [[123, 45, 67]]
+comment   = "Random mid-range color"
+expected  = [132, 210, 188]
+
+[[asserts]]
+arguments = [[89, 34, 210]]
+comment   = "High blue component"
+expected  = [166, 221, 45]
+
+[[asserts]]
+arguments = [[17, 34, 51]]
+comment   = "Small components inverted"
+expected  = [238, 221, 204]
+
+[[asserts]]
+arguments = [[250, 125, 0]]
+comment   = "Very bright red component"
+expected  = [5, 130, 255]
+
+[[asserts]]
+arguments = [[75, 25, 225]]
+comment   = "Dominant blue component"
+expected  = [180, 230, 30]
+
+[[asserts]]
+arguments = [[30, 60, 90]]
+comment   = "Evenly spaced components"
+expected  = [225, 195, 165]
+
+[[asserts]]
+arguments = [[200, 200, 0]]
+comment   = "Yellowish color invert"
+expected  = [55, 55, 255]
+
+[[asserts]]
+arguments = [[0, 200, 200]]
+comment   = "Cyan-like color invert"
+expected  = [255, 55, 55]
+
+[[asserts]]
+arguments = [[200, 0, 200]]
+comment   = "Magenta-like color invert"
+expected  = [55, 255, 55]
+
+[[asserts]]
+arguments = [[5, 250, 100]]
+comment   = "Two extremes and one middle"
+expected  = [250, 5, 155]
+
+[[asserts]]
+arguments = [[7, 8, 9]]
+comment   = "Near-black color"
+expected  = [248, 247, 246]
+
+[[asserts]]
+arguments = [[100, 200, 250]]
+comment   = "Dominant blue component"
+expected  = [155, 55, 5]
+
+[[asserts]]
+arguments = [[23, 42, 99]]
+comment   = "Random mid-low components"
+expected  = [232, 213, 156]
+
+[[asserts]]
+arguments = [[177, 0, 77]]
+comment   = "Strong red and green invert"
+expected  = [78, 255, 178]
+
+[[asserts]]
+arguments = [[33, 66, 99]]
+comment   = "Regular step of 33"
+expected  = [222, 189, 156]
+
+[[asserts]]
+arguments = [[149, 201, 33]]
+comment   = "Mixed high and low values"
+expected  = [106, 54, 222]

@@ -1,6 +1,10 @@
-import { defineConfig } from 'vite';
-import fs from 'fs/promises';
-import path from 'path';
+import { defineConfig } from "vite";
+import fs from "fs/promises";
+import path from "path";
+import { exec } from "child_process";
+import { promisify } from "util";
+
+const execAsync = promisify(exec);
 
 export default defineConfig({
   server: {
@@ -8,12 +12,62 @@ export default defineConfig({
   },
   plugins: [
     {
-      name: 'tasks-api',
+      name: "tasks-api",
       configureServer(server) {
-        server.middlewares.use('/api/tasks.json', async (req, res, next) => {
-          if (req.method === 'GET') {
+        const releaseDir = path.resolve(process.cwd(), "..", "release");
+        const tasksDir = path.resolve(process.cwd(), "..", "tasks");
+
+        let isRebuilding = false;
+        let rebuildQueued = false;
+
+        // Watch both the release and tasks directories for changes
+        server.watcher.add(releaseDir);
+        server.watcher.add(tasksDir);
+
+        // Listen for changes in tasks directory and rebuild
+        server.watcher.on("change", async (file) => {
+          if (file.includes("/tasks/") && file.endsWith(".toml")) {
+            console.log(`\n📝 Task file changed: ${path.basename(file)}`);
+
+            if (isRebuilding) {
+              rebuildQueued = true;
+              return;
+            }
+
+            isRebuilding = true;
+            console.log("🔨 Rebuilding tasks...");
+
             try {
-              const releaseDir = path.resolve(process.cwd(), '..', 'release');
+              const projectRoot = path.resolve(process.cwd(), "..");
+              await execAsync("python3 test_solutions.py tasks || python test_solutions.py tasks", {
+                cwd: projectRoot,
+              });
+              console.log("✅ Rebuild complete! Changes will hot-reload automatically.\n");
+
+              // Trigger a module reload for the API endpoint
+              server.ws.send({
+                type: "full-reload",
+                path: "*",
+              });
+            } catch (error) {
+              console.error("❌ Rebuild failed:", error.message);
+            } finally {
+              isRebuilding = false;
+
+              if (rebuildQueued) {
+                rebuildQueued = false;
+                // Trigger rebuild again if changes happened during rebuild
+                setTimeout(() => {
+                  server.watcher.emit("change", file);
+                }, 100);
+              }
+            }
+          }
+        });
+
+        server.middlewares.use("/api/tasks.json", async (req, res, next) => {
+          if (req.method === "GET") {
+            try {
               const tasks = [];
 
               async function scanDirectory(dir) {
@@ -24,7 +78,7 @@ export default defineConfig({
 
                   if (entry.isDirectory()) {
                     await scanDirectory(fullPath);
-                  } else if (entry.name.endsWith('.json')) {
+                  } else if (entry.name.endsWith(".json")) {
                     try {
                       const content = await fs.readFile(fullPath, "utf8");
                       const data = JSON.parse(content);
@@ -52,17 +106,22 @@ export default defineConfig({
 
               // Sort tasks by level and name
               tasks.sort((a, b) => {
-                const levelOrder = { easy: 1, elementary: 2, medium: 3, hard: 4 };
+                const levelOrder = {
+                  easy: 1,
+                  elementary: 2,
+                  medium: 3,
+                  hard: 4,
+                };
                 const aLevel = levelOrder[a.level] || 999;
                 const bLevel = levelOrder[b.level] || 999;
                 if (aLevel !== bLevel) return aLevel - bLevel;
                 return a.name.localeCompare(b.name);
               });
 
-              res.setHeader('Content-Type', 'application/json');
+              res.setHeader("Content-Type", "application/json");
               res.end(JSON.stringify(tasks));
             } catch (e) {
-              console.error('API Error:', e);
+              console.error("API Error:", e);
               res.statusCode = 500;
               res.end(JSON.stringify({ error: String(e) }));
             }

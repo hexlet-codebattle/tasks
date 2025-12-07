@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "convert_and_reverse"
+tags              = ["strings"]
+time_to_solve_sec = 180
+
+description_en = """
+Reverse input number and convert it to string. Keep number sign.
+"""
+
+description_ru = """
+Переверните введенное число и конвертируйте его в строку, сохраняя знак.
+"""
+
+limits = """
+- $-999999 \\leq \\text{number} \\leq 999999$
+"""
+
+solution = """
+def solution(number: int) -> str:
+    sign = '-' if number < 0 else ''
+    return sign + str(abs(number))[::-1]
+"""
+
+examples = """
+solution(0) == "0"
+solution(-12345) == "-54321"
+solution(1234123) == "3214321"
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [1234123]
+comment   = "Large positive number"
+expected  = "3214321"
+
+[[asserts]]
+arguments = [-12345]
+comment   = "Negative number"
+expected  = "-54321"
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero"
+expected  = "0"
+
+[[asserts]]
+arguments = [1]
+comment   = "Single digit positive"
+expected  = "1"
+
+[[asserts]]
+arguments = [-1]
+comment   = "Single digit negative"
+expected  = "-1"
+
+[[asserts]]
+arguments = [12]
+comment   = "Two digit positive"
+expected  = "21"
+
+[[asserts]]
+arguments = [-98]
+comment   = "Two digit negative"
+expected  = "-89"
+
+[[asserts]]
+arguments = [100]
+comment   = "Number ending with zeros"
+expected  = "001"
+
+[[asserts]]
+arguments = [-500]
+comment   = "Negative ending with zeros"
+expected  = "-005"
+
+[[asserts]]
+arguments = [1000]
+comment   = "Multiple trailing zeros"
+expected  = "0001"
+
+[[asserts]]
+arguments = [123]
+comment   = "Three digit positive"
+expected  = "321"
+
+[[asserts]]
+arguments = [-456]
+comment   = "Three digit negative"
+expected  = "-654"
+
+[[asserts]]
+arguments = [9999]
+comment   = "All same digits"
+expected  = "9999"
+
+[[asserts]]
+arguments = [-7777]
+comment   = "Negative all same digits"
+expected  = "-7777"
+
+[[asserts]]
+arguments = [10203]
+comment   = "Number with zeros in middle"
+expected  = "30201"
+
+[[asserts]]
+arguments = [-40506]
+comment   = "Negative with zeros in middle"
+expected  = "-60504"
+
+[[asserts]]
+arguments = [999999]
+comment   = "Maximum positive value"
+expected  = "999999"
+
+[[asserts]]
+arguments = [-999999]
+comment   = "Maximum negative value"
+expected  = "-999999"
+
+[[asserts]]
+arguments = [111111]
+comment   = "All ones"
+expected  = "111111"
+
+[[asserts]]
+arguments = [-222222]
+comment   = "Negative all twos"
+expected  = "-222222"
+
+[[asserts]]
+arguments = [102030]
+comment   = "Pattern with zeros"
+expected  = "030201"
+
+[[asserts]]
+arguments = [-506070]
+comment   = "Negative pattern with zeros"
+expected  = "-070605"
+
+[[asserts]]
+arguments = [54321]
+comment   = "Descending digits"
+expected  = "12345"
+
+[[asserts]]
+arguments = [-98765]
+comment   = "Negative descending digits"
+expected  = "-56789"
+
+[[asserts]]
+arguments = [2468]
+comment   = "Even digits ascending"
+expected  = "8642"
+
+[[asserts]]
+arguments = [-1357]
+comment   = "Negative odd digits ascending"
+expected  = "-7531"
+
+[[asserts]]
+arguments = [800008]
+comment   = "Palindrome-like number"
+expected  = "800008"
+
+[[asserts]]
+arguments = [-600006]
+comment   = "Negative palindrome-like"
+expected  = "-600006"
+
+[[asserts]]
+arguments = [192837]
+comment   = "Random sequence"
+expected  = "738291"
+
+[[asserts]]
+arguments = [-564738]
+comment   = "Negative random sequence"
+expected  = "-837465"

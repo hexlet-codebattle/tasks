@@ -1,6 +1,6 @@
 level             = "elementary"
 name              = "redundant_team_member"
-tags              = ["greedy", "arrays"]
+tags              = ["greedy", "array"]
 time_to_solve_sec = 120
 
 description_en = """

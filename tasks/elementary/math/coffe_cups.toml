@@ -1,0 +1,194 @@
+level             = "elementary"
+name              = "coffe_cups"
+tags              = ["math", "training"]
+time_to_solve_sec = 120
+
+description_en = """
+For each $6$ coffee cups you buy, you get $1$ extra cup for free.
+
+Given an integer $n$ — the number of cups you buy — return the total number of cups you receive.
+"""
+
+description_ru = """
+За каждые $6$ купленных чашек кофе вы получаете ещё $1$ чашку бесплатно.
+
+Дано целое число $n$ — количество купленных чашек. Верните общее количество чашек.
+"""
+
+limits = """
+- $0 \\leq cups \\leq 1000$
+"""
+
+solution = """
+def solution(cups: int) -> int:
+    return cups + cups // 6
+"""
+
+examples = """
+solution(12) == 14
+solution(240) == 280
+solution(831) == 969
+"""
+
+[[input_signature]]
+argument_name = "cups"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [12]
+comment   = "Given example with two free cups"
+expected  = 14
+
+[[asserts]]
+arguments = [240]
+comment   = "Large multiple of 6"
+expected  = 280
+
+[[asserts]]
+arguments = [831]
+comment   = "Non-multiple, many free cups"
+expected  = 969
+
+[[asserts]]
+arguments = [5]
+comment   = "No free cups yet"
+expected  = 5
+
+[[asserts]]
+arguments = [6]
+comment   = "Exactly one free cup"
+expected  = 7
+
+[[asserts]]
+arguments = [7]
+comment   = "One free cup, one extra paid"
+expected  = 8
+
+[[asserts]]
+arguments = [8]
+comment   = "Still only one free cup"
+expected  = 9
+
+[[asserts]]
+arguments = [9]
+comment   = "Still only one free cup"
+expected  = 10
+
+[[asserts]]
+arguments = [10]
+comment   = "Only one free cup for 10 bought"
+expected  = 11
+
+[[asserts]]
+arguments = [11]
+comment   = "One free cup before second bonus starts"
+expected  = 12
+
+[[asserts]]
+arguments = [13]
+comment   = "Two free cups for 13 bought"
+expected  = 15
+
+[[asserts]]
+arguments = [17]
+comment   = "Two free cups up to 17 bought"
+expected  = 19
+
+[[asserts]]
+arguments = [18]
+comment   = "Three free cups at 18 bought"
+expected  = 21
+
+[[asserts]]
+arguments = [19]
+comment   = "Three free cups after crossing 18"
+expected  = 22
+
+[[asserts]]
+arguments = [20]
+comment   = "Three free cups still"
+expected  = 23
+
+[[asserts]]
+arguments = [21]
+comment   = "Three free cups, 21 bought"
+expected  = 24
+
+[[asserts]]
+arguments = [22]
+comment   = "Three free cups up to 23"
+expected  = 25
+
+[[asserts]]
+arguments = [23]
+comment   = "Still only three free cups"
+expected  = 26
+
+[[asserts]]
+arguments = [24]
+comment   = "Four free cups when 24 bought"
+expected  = 28
+
+[[asserts]]
+arguments = [25]
+comment   = "Four free cups up to 29 bought"
+expected  = 29
+
+[[asserts]]
+arguments = [30]
+comment   = "Five free cups at 30 bought"
+expected  = 35
+
+[[asserts]]
+arguments = [31]
+comment   = "Five free cups between 30 and 35"
+expected  = 36
+
+[[asserts]]
+arguments = [36]
+comment   = "Six free cups at 36 bought"
+expected  = 42
+
+[[asserts]]
+arguments = [37]
+comment   = "Six free cups until 41"
+expected  = 43
+
+[[asserts]]
+arguments = [48]
+comment   = "Eight free cups at 48 bought"
+expected  = 56
+
+[[asserts]]
+arguments = [49]
+comment   = "Eight free cups until 53"
+expected  = 57
+
+[[asserts]]
+arguments = [50]
+comment   = "Eight free cups at 50 bought"
+expected  = 58
+
+[[asserts]]
+arguments = [60]
+comment   = "Ten free cups at 60 bought"
+expected  = 70
+
+[[asserts]]
+arguments = [99]
+comment   = "16 free cups at 99 bought"
+expected  = 115
+
+[[asserts]]
+arguments = [100]
+comment   = "16 free cups at 100 bought"
+expected  = 116
+
+[[asserts]]
+arguments = [1000]
+comment   = "166 free cups for 1000 bought"
+expected  = 1166

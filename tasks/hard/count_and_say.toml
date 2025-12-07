@@ -1,0 +1,209 @@
+level             = "hard"
+name              = "count_and_say"
+tags              = ["strings", "games"]
+time_to_solve_sec = 900
+
+description_en = """
+Conway's "Look and Say" sequence is a sequence of numbers in which each term "reads aloud" the digits of the previous term.
+
+- `1` is read off as "one 1"
+- `11` is read off as "two 1's"
+- `21` is read off as "one 2, then one 1"
+- `1211` is read off as "one 1, then one 2, then two 1's"
+
+Given a string description, convert it back to the numeric representation.
+"""
+
+description_ru = """
+Последовательность Конвэя "Посмотри и Скажи" - это последовательность чисел, в которой в каждом терме цифры "читаются вслух".
+
+- `1` читается как "one 1"
+- `11` читается как "two 1's"
+- `21` читается как "one 2, then one 1"
+- `1211` читается как "one 1, then one 2, then two 1's"
+
+Дана строка с описанием, преобразуйте её обратно в числовое представление.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{text}) \\leq 200$
+"""
+
+solution = """
+def solution(text: str) -> str:
+    num_map = {"one": 1, "two": 2, "three": 3}
+    text = text.replace("'s", "")
+    parts = text.split(", then ")
+    result = []
+    for part in parts:
+        words = part.split()
+        count = num_map[words[0]]
+        digit = words[1]
+        result.append(digit * count)
+    return ''.join(result)
+"""
+
+examples = """
+solution("two 1's") == "11"
+solution("one 2, then one 1") == "21"
+solution("one 1, then one 2, then two 1's") == "1211"
+solution("three 1, then two 2's, then one 1") == "111221"
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["three 1, then two 2's, then one 1"]
+comment   = "Multiple groups with apostrophes"
+expected  = "111221"
+
+[[asserts]]
+arguments = ["two 1's"]
+comment   = "Single group"
+expected  = "11"
+
+[[asserts]]
+arguments = ["one 2, then one 1"]
+comment   = "Two groups"
+expected  = "21"
+
+[[asserts]]
+arguments = ["one 1, then one 2, then two 1's"]
+comment   = "Three groups"
+expected  = "1211"
+
+[[asserts]]
+arguments = ["one 1"]
+comment   = "Simplest case"
+expected  = "1"
+
+[[asserts]]
+arguments = ["three 2"]
+comment   = "Three of same digit"
+expected  = "222"
+
+[[asserts]]
+arguments = ["two 3's"]
+comment   = "Two threes with apostrophe"
+expected  = "33"
+
+[[asserts]]
+arguments = ["one 4, then one 5"]
+comment   = "Sequential digits"
+expected  = "45"
+
+[[asserts]]
+arguments = ["two 6's, then one 7"]
+comment   = "Mixed with and without apostrophe"
+expected  = "667"
+
+[[asserts]]
+arguments = ["one 8, then three 9"]
+comment   = "Larger digit group"
+expected  = "8999"
+
+[[asserts]]
+arguments = ["three 0"]
+comment   = "Three zeros"
+expected  = "000"
+
+[[asserts]]
+arguments = ["one 0, then one 1, then one 2"]
+comment   = "Sequential from zero"
+expected  = "012"
+
+[[asserts]]
+arguments = ["two 5's, then two 4's"]
+comment   = "Two pairs"
+expected  = "5544"
+
+[[asserts]]
+arguments = ["three 3, then three 3"]
+comment   = "Repeated groups"
+expected  = "333333"
+
+[[asserts]]
+arguments = ["one 9, then one 8, then one 7"]
+comment   = "Descending sequence"
+expected  = "987"
+
+[[asserts]]
+arguments = ["two 0's, then two 1's, then two 2's"]
+comment   = "Pattern of twos"
+expected  = "001122"
+
+[[asserts]]
+arguments = ["one 5, then two 6's, then three 7"]
+comment   = "Increasing counts"
+expected  = "566777"
+
+[[asserts]]
+arguments = ["three 8, then two 9's, then one 0"]
+comment   = "Decreasing counts"
+expected  = "888990"
+
+[[asserts]]
+arguments = ["one 1, then one 1, then one 1"]
+comment   = "Three separate ones"
+expected  = "111"
+
+[[asserts]]
+arguments = ["two 2's, then one 3, then two 4's"]
+comment   = "Mixed pattern"
+expected  = "22344"
+
+[[asserts]]
+arguments = ["one 6, then one 7, then one 8, then one 9"]
+comment   = "Four groups"
+expected  = "6789"
+
+[[asserts]]
+arguments = ["three 1, then one 2, then one 3, then one 4"]
+comment   = "Four groups mixed counts"
+expected  = "111234"
+
+[[asserts]]
+arguments = ["two 9's, then three 8, then one 7"]
+comment   = "Complex pattern"
+expected  = "998887"
+
+[[asserts]]
+arguments = ["one 0, then one 0, then one 0"]
+comment   = "Multiple zero groups"
+expected  = "000"
+
+[[asserts]]
+arguments = ["three 5, then three 5"]
+comment   = "Double group of same"
+expected  = "555555"
+
+[[asserts]]
+arguments = ["two 1's, then two 2's, then two 3's, then two 4's"]
+comment   = "Five groups ascending"
+expected  = "11223344"
+
+[[asserts]]
+arguments = ["one 9, then two 8's, then three 7"]
+comment   = "Increasing count descending digits"
+expected  = "988777"
+
+[[asserts]]
+arguments = ["three 0, then two 1's, then one 2"]
+comment   = "Decreasing count ascending digits"
+expected  = "000112"
+
+[[asserts]]
+arguments = ["one 4, then one 5, then one 6, then one 7, then one 8"]
+comment   = "Five sequential singles"
+expected  = "45678"
+
+[[asserts]]
+arguments = ["two 3's, then three 2, then two 1's"]
+comment   = "Descending digits mixed counts"
+expected  = "3322211"

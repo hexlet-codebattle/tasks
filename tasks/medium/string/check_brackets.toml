@@ -1,0 +1,199 @@
+level             = "medium"
+name              = "check_brackets"
+tags              = ["string"]
+time_to_solve_sec = 420
+
+description_en = """
+Check whether all brackets in the given string are balanced.
+
+Brackets can be round `"()"`, square `"[]"`, curly `"{}"`, and angle `"<>"`.
+
+Ignore all non-bracket characters. Return `True` if every opening bracket has a matching closing bracket in the correct order, otherwise return `False`.
+"""
+
+description_ru = """
+Проверьте, сбалансированы ли все скобки в заданной строке.
+
+Скобки могут быть круглыми `"()"`, квадратными `"[]"`, фигурными `"{}"` и угловыми `"<>"`.
+
+Игнорируйте все не-скобочные символы. Верните `True`, если каждая открывающая скобка имеет соответствующую закрывающую в правильном порядке, иначе верните `False`.
+"""
+
+solution = """
+def solution(brackets: str) -> bool:
+    m = {"(": ")", "[": "]", "{": "}", "<": ">"}
+    stack = []
+    for ch in brackets:
+        if ch in m:
+            stack.append(ch)
+        elif ch in m.values():
+            if not stack or m[stack[-1]] != ch:
+                return False
+            stack.pop()
+    return not stack
+"""
+
+examples = """
+solution("())") == False
+solution("{)][(}") == False
+solution("()[]{}<>") == True
+solution("<(){[]}>") == True
+"""
+
+[[input_signature]]
+argument_name = "brackets"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["( {)  } "]
+comment   = "Mismatched curly and round brackets"
+expected  = false
+
+[[asserts]]
+arguments = ["()[]{}<>"]
+comment   = "All four types, simple balanced sequence"
+expected  = true
+
+[[asserts]]
+arguments = ["<(){[]}>"]
+comment   = "Nested mix of all bracket types"
+expected  = true
+
+[[asserts]]
+arguments = ["())"]
+comment   = "Extra closing parenthesis"
+expected  = false
+
+[[asserts]]
+arguments = ["()("]
+comment   = "Unclosed opening parenthesis at the end"
+expected  = false
+
+[[asserts]]
+arguments = ["{)][(}"]
+comment   = "Wrong nesting order"
+expected  = false
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string is trivially balanced"
+expected  = true
+
+[[asserts]]
+arguments = ["   "]
+comment   = "Only spaces, no brackets"
+expected  = true
+
+[[asserts]]
+arguments = ["([])"]
+comment   = "Simple nested round and square"
+expected  = true
+
+[[asserts]]
+arguments = ["({[]})"]
+comment   = "Three types properly nested"
+expected  = true
+
+[[asserts]]
+arguments = ["<(<{}[]>[])>"]
+comment   = "Deeply nested with all types"
+expected  = true
+
+[[asserts]]
+arguments = ["([]){}<()>"]
+comment   = "Multiple balanced groups in sequence"
+expected  = true
+
+[[asserts]]
+arguments = ["(([[{{<<>>}}]]))"]
+comment   = "Symmetric nesting of all bracket types"
+expected  = true
+
+[[asserts]]
+arguments = ["[<>({}){}[([])<>]]"]
+comment   = "Complex but balanced structure"
+expected  = true
+
+[[asserts]]
+arguments = ["("]
+comment   = "Single opening parenthesis"
+expected  = false
+
+[[asserts]]
+arguments = [")"]
+comment   = "Single closing parenthesis"
+expected  = false
+
+[[asserts]]
+arguments = ["["]
+comment   = "Single opening square bracket"
+expected  = false
+
+[[asserts]]
+arguments = ["]"]
+comment   = "Single closing square bracket"
+expected  = false
+
+[[asserts]]
+arguments = ["{"]
+comment   = "Single opening curly bracket"
+expected  = false
+
+[[asserts]]
+arguments = ["}"]
+comment   = "Single closing curly bracket"
+expected  = false
+
+[[asserts]]
+arguments = ["<"]
+comment   = "Single opening angle bracket"
+expected  = false
+
+[[asserts]]
+arguments = [">"]
+comment   = "Single closing angle bracket"
+expected  = false
+
+[[asserts]]
+arguments = ["([)]"]
+comment   = "Incorrect crossing of round and square brackets"
+expected  = false
+
+[[asserts]]
+arguments = ["((()"]
+comment   = "Too many opening parentheses"
+expected  = false
+
+[[asserts]]
+arguments = ["(([])"]
+comment   = "Unclosed outer parenthesis"
+expected  = false
+
+[[asserts]]
+arguments = ["([<{ }]>)]"]
+comment   = "Mismatched closing order with spaces inside"
+expected  = false
+
+[[asserts]]
+arguments = ["<(])>"]
+comment   = "Wrong order inside angle brackets"
+expected  = false
+
+[[asserts]]
+arguments = ["<([]){()}>"]
+comment   = "Angle outer, mix of square and round inside"
+expected  = true
+
+[[asserts]]
+arguments = ["()[[]]{{}}<<>>"]
+comment   = "Several independent balanced groups"
+expected  = true
+
+[[asserts]]
+arguments = ["([<>])(<{}[]>)[()]"]
+comment   = "Sequence of complex balanced groups"
+expected  = true

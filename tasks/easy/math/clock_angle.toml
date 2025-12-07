@@ -1,0 +1,202 @@
+level             = "easy"
+name              = "clock_angle"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a time on an analog clock in hours and minutes, compute the angle (in degrees) between the hour and minute hands.
+
+The hour hand moves $30^\\circ$ per full hour and $0.5^\\circ$ per minute. The minute hand moves $6^\\circ$ per minute.
+
+Return the absolute angle between the two hands (not necessarily the smaller angle).
+"""
+
+description_ru = """
+Задано время на аналоговых часах в часах и минутах. Вычислите угол (в градусах) между часовой и минутной стрелками.
+
+Часовая стрелка движется на $30^\\circ$ за каждый полный час и на $0.5^\\circ$ за каждую минуту. Минутная стрелка движется на $6^\\circ$ за каждую минуту.
+
+Верните абсолютное значение угла между стрелками (не обязательно меньший угол).
+"""
+
+limits = """
+- $0 \\leq hour \\leq 11$
+- $0 \\leq minute \\leq 59$
+"""
+
+solution = """
+def solution(hour: int, minute: int) -> float:
+    h_angle = hour * 30 + minute * 0.5
+    m_angle = minute * 6
+    return abs(h_angle - m_angle)
+"""
+
+examples = """
+solution(0, 0) == 0.0
+solution(3, 15) == 7.5
+solution(0, 15) == 82.5
+solution(0, 50) == 275.0
+"""
+
+[[input_signature]]
+argument_name = "hour"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "minute"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "float"
+
+[[asserts]]
+arguments = [3, 15]
+comment   = "Given example: hour slightly past 3"
+expected  = 7.5
+
+[[asserts]]
+arguments = [0, 0]
+comment   = "Both hands at 12"
+expected  = 0.0
+
+[[asserts]]
+arguments = [0, 15]
+comment   = "Hour at 0, minute at 3 on the clock"
+expected  = 82.5
+
+[[asserts]]
+arguments = [0, 50]
+comment   = "Large angle when minute near 10"
+expected  = 275.0
+
+[[asserts]]
+arguments = [3, 45]
+comment   = "Given: hour between 3 and 4, minute at 9"
+expected  = 157.5
+
+[[asserts]]
+arguments = [0, 30]
+comment   = "Hour at 0, minute at 6 on the clock"
+expected  = 165.0
+
+[[asserts]]
+arguments = [0, 5]
+comment   = "Minute at 1 on the clock"
+expected  = 27.5
+
+[[asserts]]
+arguments = [1, 0]
+comment   = "Hour exactly at 1, minute at 12"
+expected  = 30.0
+
+[[asserts]]
+arguments = [1, 15]
+comment   = "Quarter past 1"
+expected  = 52.5
+
+[[asserts]]
+arguments = [1, 30]
+comment   = "Half past 1"
+expected  = 135.0
+
+[[asserts]]
+arguments = [2, 0]
+comment   = "Two o'clock sharp"
+expected  = 60.0
+
+[[asserts]]
+arguments = [2, 20]
+comment   = "Twenty past 2"
+expected  = 50.0
+
+[[asserts]]
+arguments = [2, 40]
+comment   = "Forty past 2"
+expected  = 160.0
+
+[[asserts]]
+arguments = [3, 0]
+comment   = "Three o'clock sharp"
+expected  = 90.0
+
+[[asserts]]
+arguments = [3, 30]
+comment   = "Half past 3"
+expected  = 75.0
+
+[[asserts]]
+arguments = [4, 0]
+comment   = "Four o'clock sharp"
+expected  = 120.0
+
+[[asserts]]
+arguments = [4, 45]
+comment   = "Quarter to 5"
+expected  = 127.5
+
+[[asserts]]
+arguments = [5, 0]
+comment   = "Five o'clock sharp"
+expected  = 150.0
+
+[[asserts]]
+arguments = [5, 30]
+comment   = "Half past 5, hands almost aligned"
+expected  = 15.0
+
+[[asserts]]
+arguments = [6, 0]
+comment   = "Six o'clock, opposite directions"
+expected  = 180.0
+
+[[asserts]]
+arguments = [6, 15]
+comment   = "Quarter past 6"
+expected  = 97.5
+
+[[asserts]]
+arguments = [7, 0]
+comment   = "Seven o'clock sharp"
+expected  = 210.0
+
+[[asserts]]
+arguments = [7, 30]
+comment   = "Half past 7, small angle"
+expected  = 45.0
+
+[[asserts]]
+arguments = [8, 20]
+comment   = "Twenty past 8"
+expected  = 130.0
+
+[[asserts]]
+arguments = [9, 45]
+comment   = "Quarter to 10, hands close"
+expected  = 22.5
+
+[[asserts]]
+arguments = [10, 10]
+comment   = "Ten past 10, large angle"
+expected  = 245.0
+
+[[asserts]]
+arguments = [10, 30]
+comment   = "Half past 10"
+expected  = 135.0
+
+[[asserts]]
+arguments = [11, 0]
+comment   = "Eleven o'clock sharp, large angle"
+expected  = 330.0
+
+[[asserts]]
+arguments = [11, 59]
+comment   = "Almost 12, hands very close"
+expected  = 5.5
+
+[[asserts]]
+arguments = [6, 59]
+comment   = "Almost 7, minute hand near 12"
+expected  = 144.5

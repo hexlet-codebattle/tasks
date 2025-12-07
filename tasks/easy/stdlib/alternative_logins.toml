@@ -30,7 +30,7 @@ description_ru = """
 limits = """
 - $0 \\leq \\text{len}(\\text{login}) \\leq 30$
 - $0 \\leq \\text{len}(\\text{taken\\_logins}) \\leq 10^4$
-- $\\text{login} \\in [A\\!\\!\\_\\!\\!Za\\!\\!\\_\\!\\!z0\\!\\!\\_\\!\\!9\\_]^*$
+- $\\text{login} \\in \\{A{-}Z, a{-}z, 0{-}9, \\_\\}^*$
 """
 
 solution = """

@@ -536,6 +536,8 @@ class TestRunner:
         task_name = "Unknown"
 
         failed_tasks: Dict[str, Dict[str, Any]] = {}
+        # task -> display_name -> list[(index, TestResult)]
+        failed_test_details: Dict[str, Dict[str, List[tuple[int, TestResult]]]] = {}
 
         for display_name, (test_results, current_task_name) in sorted(results.items()):
             task_name = current_task_name
@@ -566,9 +568,10 @@ class TestRunner:
 
             print(f"{status} ({passed}/{total} tests, {pass_rate:.1f}%)")
 
-            # Only show details of failed tests unless verbose
+            # Collect / print test details
             for i, result in enumerate(test_results, 1):
-                if verbose or not result.passed:
+                if verbose:
+                    # old behavior: print everything (or only failures) inline
                     if result.passed and not verbose:
                         continue
                     print("\n" + colored("─" * 80, "blue"))
@@ -601,6 +604,10 @@ class TestRunner:
                                 print(colored("\n📊 Comparison:", "magenta", attrs=["bold"]))
                                 diff = difflib.ndiff([str(expected_str)], [str(actual_str)])
                                 print("  " + "\n  ".join(diff))
+                else:
+                    # non-verbose: just collect failed tests for end-of-output printing
+                    if not result.passed:
+                        failed_test_details.setdefault(task_name, {}).setdefault(display_name, []).append((i, result))
 
         if total_tests > 0:
             print("\n" + colored("Overall results:", "white", attrs=["bold"]))
@@ -628,6 +635,48 @@ class TestRunner:
                             f"{colored(task, 'cyan')} - failed {colored(stats['failed'], 'red')} of {stats['total']} tests ({fail_rate:.1f}%)"
                         )
                         print(f"  Files: {', '.join(stats['files'])}")
+
+                # Now print all failed test details at the very end (non-verbose mode)
+                if not verbose and failed_test_details:
+                    print("\n" + colored("Detailed failed tests (grouped by task and file):", "white", attrs=["bold"]))
+                    print(colored("═" * 80, "blue"))
+
+                    for task, files in failed_test_details.items():
+                        print(f"\n{colored('Task:', 'white', attrs=['bold'])} {colored(task, 'cyan', attrs=['bold'])}")
+                        for display_name, tests in files.items():
+                            print(f"\n{colored('File:', 'white', attrs=['bold'])} {colored(display_name, 'cyan')}")
+                            for index, result in tests:
+                                print("\n" + colored("─" * 80, "blue"))
+                                print(colored(f"Test #{index}: ❌ TEST FAILED", "red", attrs=["bold"]))
+
+                                print(colored("\n📥 Arguments:", "cyan", attrs=["bold"]))
+                                if not isinstance(result.arguments, (list, tuple)):
+                                    print(f"  Argument: {self.format_value(result.arguments)}")
+                                else:
+                                    for j, arg in enumerate(result.arguments):
+                                        print(f"  Argument {j + 1}: {self.format_value(arg)}")
+
+                                print(colored("\n✓ Expected result:", "green", attrs=["bold"]))
+                                print(f"  {self.format_value(result.expected, color='green')}")
+
+                                print(colored("\n⨯ Actual result:", "red", attrs=["bold"]))
+                                print(f"  {self.format_value(result.actual, color='red')}")
+
+                                differences = self.find_difference(result.actual, result.expected)
+                                if differences:
+                                    print(colored("\n🔍 Difference details:", "yellow", attrs=["bold"]))
+                                    for diff in differences:
+                                        print(f"  • {diff}")
+
+                                expected_str = self.format_value(result.expected)
+                                actual_str = self.format_value(result.actual)
+                                if isinstance(result.expected, (int, float, str, bool)) and isinstance(
+                                    result.actual, (int, float, str, bool)
+                                ):
+                                    if str(expected_str) != str(actual_str):
+                                        print(colored("\n📊 Comparison:", "magenta", attrs=["bold"]))
+                                        diff = difflib.ndiff([str(expected_str)], [str(actual_str)])
+                                        print("  " + "\n  ".join(diff))
 
                 print(f"\n{colored('Task:', 'white', attrs=['bold'])} {colored(task_name, 'cyan', attrs=['bold'])}")
                 sys.exit(1)

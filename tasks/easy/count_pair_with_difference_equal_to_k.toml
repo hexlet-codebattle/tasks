@@ -1,0 +1,200 @@
+level             = "easy"
+name              = "count_pair_with_difference_equal_to_k"
+tags              = ["collections"]
+time_to_solve_sec = 500
+
+description_en = """
+Given an integer array and a positive integer $k$, count all distinct pairs with difference equal to $k$. Order of numbers matters.
+"""
+
+description_ru = """
+Дан массив целых чисел и положительное целое число $k$, сосчитайте все различные пары чисел, разность которых по модулю равна $k$. Порядок чисел важен.
+"""
+
+limits = """
+- $0 \\leq k \\leq 20$
+- $5 \\leq \\text{len}(\\text{pairs}) \\leq 100$
+- $0 \\leq \\text{pairs}[i] \\leq 100$
+"""
+
+solution = """
+def solution(pairs: list, k: int) -> int:
+    seen = set()
+    for i in range(len(pairs)):
+        for j in range(i + 1, len(pairs)):
+            if abs(pairs[i] - pairs[j]) == k:
+                seen.add((pairs[i], pairs[j]))
+    return len(seen)
+"""
+
+examples = """
+solution([1, 5, 3, 4, 2], 3) == 2
+solution([8, 12, 16, 4, 0, 20], 4) == 5
+solution([1, 2, 3, 4, 4, 2, 2, 1], 0) == 3
+solution([1, 4, 3, 0, 2, 5, 7, 8, 9, 6], 3) == 7
+"""
+
+[[input_signature]]
+argument_name = "pairs"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, 5, 3, 4, 2], 3]
+comment   = "Basic case with k=3"
+expected  = 2
+
+[[asserts]]
+arguments = [[8, 12, 16, 4, 0, 20], 4]
+comment   = "Multiple pairs with k=4"
+expected  = 5
+
+[[asserts]]
+arguments = [[1, 4, 3, 0, 2, 5, 7, 8, 9, 6], 3]
+comment   = "Larger array with k=3"
+expected  = 7
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 4, 2, 2, 1], 0]
+comment   = "Identical pairs with k=0"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 2, 3], 1]
+comment   = "Sequential array"
+expected  = 2
+
+[[asserts]]
+arguments = [[5, 5, 5, 5], 0]
+comment   = "All same values k=0"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 6, 11, 16], 5]
+comment   = "All pairs match"
+expected  = 3
+
+[[asserts]]
+arguments = [[10, 20, 30], 10]
+comment   = "Simple ascending with k=10"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 2]
+comment   = "Sequential with k=2"
+expected  = 3
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4, 5], 1]
+comment   = "Zero to five with k=1"
+expected  = 5
+
+[[asserts]]
+arguments = [[10, 5, 15, 20], 5]
+comment   = "Unordered with k=5"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1], 0]
+comment   = "Five identical k=0"
+expected  = 1
+
+[[asserts]]
+arguments = [[2, 4, 6, 8, 10], 2]
+comment   = "Even numbers k=2"
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 3, 5, 7, 9], 2]
+comment   = "Odd numbers k=2"
+expected  = 4
+
+[[asserts]]
+arguments = [[10, 15, 20, 25, 30], 5]
+comment   = "Multiples of 5 with k=5"
+expected  = 4
+
+[[asserts]]
+arguments = [[0, 0, 0], 0]
+comment   = "Three zeros k=0"
+expected  = 1
+
+[[asserts]]
+arguments = [[7, 14, 21], 7]
+comment   = "Multiples of 7 with k=7"
+expected  = 2
+
+[[asserts]]
+arguments = [[100, 50, 75, 25], 25]
+comment   = "Large values k=25"
+expected  = 3
+
+[[asserts]]
+arguments = [[3, 6, 9, 12, 15], 3]
+comment   = "Multiples of 3 with k=3"
+expected  = 4
+
+[[asserts]]
+arguments = [[8, 16, 24, 32], 8]
+comment   = "Multiples of 8 with k=8"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 11, 21, 31], 10]
+comment   = "Pattern with k=10"
+expected  = 3
+
+[[asserts]]
+arguments = [[5, 10, 15, 20, 25, 30], 5]
+comment   = "Six elements k=5"
+expected  = 5
+
+[[asserts]]
+arguments = [[2, 2, 4, 4], 2]
+comment   = "Duplicate pairs"
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 5, 10, 15, 20], 5]
+comment   = "Starting from zero k=5"
+expected  = 4
+
+[[asserts]]
+arguments = [[12, 18, 24, 30], 6]
+comment   = "Multiples of 6 with k=6"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 4, 7, 10, 13], 3]
+comment   = "Arithmetic progression k=3"
+expected  = 4
+
+[[asserts]]
+arguments = [[9, 18, 27, 36], 9]
+comment   = "Multiples of 9 with k=9"
+expected  = 3
+
+[[asserts]]
+arguments = [[11, 22, 33, 44, 55], 11]
+comment   = "Multiples of 11 with k=11"
+expected  = 4
+
+[[asserts]]
+arguments = [[6, 12, 18, 24, 30, 36], 6]
+comment   = "Six multiples of 6"
+expected  = 5
+
+[[asserts]]
+arguments = [[4, 8, 12, 16, 20], 4]
+comment   = "Multiples of 4 with k=4"
+expected  = 4

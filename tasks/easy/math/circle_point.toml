@@ -1,0 +1,206 @@
+level             = "easy"
+name              = "circle_point"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given a circle on the plane centered at the origin $(0, 0)$ with radius $r$ and a point with coordinates $(x, y)$.
+
+Determine whether the point lies inside or on the boundary of the circle.
+
+Formally, return `True` if $x^2 + y^2 \\le r^2$, otherwise return `False`.
+"""
+
+description_ru = """
+Дана окружность на плоскости с центром в начале координат $(0, 0)$ и радиусом $r$, а также точка с координатами $(x, y)$.
+
+Определите, находится ли точка внутри окружности или на её границе.
+
+Формально, верните `True`, если выполняется неравенство $x^2 + y^2 \\le r^2$, иначе верните `False`.
+"""
+
+limits = """
+- $-50 \\leq x \\leq 50$
+- $-50 \\leq y \\leq 50$
+- $1 \\leq r \\leq 100$
+"""
+
+solution = """
+def solution(x: int, y: int, r: int) -> bool:
+    return x * x + y * y <= r * r
+"""
+
+examples = """
+solution(-1, 2, 5) == True
+solution(-1, 3, 1) == False
+solution(10, 3, 5) == False
+solution(-50, 0, 100) == True
+"""
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "y"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "r"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [10, 3, 5]
+comment   = "Given: clearly outside small circle"
+expected  = false
+
+[[asserts]]
+arguments = [-50, 0, 100]
+comment   = "On the boundary of a large circle"
+expected  = true
+
+[[asserts]]
+arguments = [-1, 2, 5]
+comment   = "Inside circle, small coordinates"
+expected  = true
+
+[[asserts]]
+arguments = [-50, 50, 100]
+comment   = "On boundary: x^2 + y^2 = 5000, r^2 = 10000"
+expected  = true
+
+[[asserts]]
+arguments = [-1, 3, 1]
+comment   = "Outside: distance > radius"
+expected  = false
+
+[[asserts]]
+arguments = [0, 0, 1]
+comment   = "Center point is always inside"
+expected  = true
+
+[[asserts]]
+arguments = [0, 0, 50]
+comment   = "Center with large radius"
+expected  = true
+
+[[asserts]]
+arguments = [3, 4, 5]
+comment   = "Classic 3-4-5 triangle, on boundary"
+expected  = true
+
+[[asserts]]
+arguments = [3, 4, 4]
+comment   = "Same direction, but too short radius"
+expected  = false
+
+[[asserts]]
+arguments = [5, 0, 5]
+comment   = "On boundary along x-axis"
+expected  = true
+
+[[asserts]]
+arguments = [0, 5, 5]
+comment   = "On boundary along y-axis"
+expected  = true
+
+[[asserts]]
+arguments = [5, 5, 7]
+comment   = "Outside circle: distance roughly 7.07"
+expected  = false
+
+[[asserts]]
+arguments = [5, 5, 6]
+comment   = "Still outside, even with bigger radius"
+expected  = false
+
+[[asserts]]
+arguments = [-3, 4, 5]
+comment   = "Negative x, still on boundary"
+expected  = true
+
+[[asserts]]
+arguments = [-3, -4, 5]
+comment   = "Both coordinates negative, on boundary"
+expected  = true
+
+[[asserts]]
+arguments = [7, 7, 10]
+comment   = "Inside a circle of radius 10"
+expected  = true
+
+[[asserts]]
+arguments = [7, 7, 9]
+comment   = "Outside for radius 9"
+expected  = false
+
+[[asserts]]
+arguments = [10, 0, 10]
+comment   = "On boundary, positive x-axis"
+expected  = true
+
+[[asserts]]
+arguments = [0, -10, 10]
+comment   = "On boundary, negative y-axis"
+expected  = true
+
+[[asserts]]
+arguments = [8, 6, 10]
+comment   = "Inside: 8^2 + 6^2 = 100 = r^2"
+expected  = true
+
+[[asserts]]
+arguments = [8, 6, 9]
+comment   = "Outside for smaller radius"
+expected  = false
+
+[[asserts]]
+arguments = [-50, -50, 71]
+comment   = "Inside large circle: distance < 71"
+expected  = true
+
+[[asserts]]
+arguments = [-50, -50, 70]
+comment   = "Outside: distance slightly > 70"
+expected  = false
+
+[[asserts]]
+arguments = [1, 1, 1]
+comment   = "Distance sqrt(2) > 1"
+expected  = false
+
+[[asserts]]
+arguments = [1, 1, 2]
+comment   = "Now clearly inside"
+expected  = true
+
+[[asserts]]
+arguments = [49, 0, 50]
+comment   = "Inside large circle, close to boundary"
+expected  = true
+
+[[asserts]]
+arguments = [49, 10, 50]
+comment   = "Outside: x^2 + y^2 > r^2"
+expected  = false
+
+[[asserts]]
+arguments = [30, 40, 50]
+comment   = "3-4-5 scaled by 10, on boundary"
+expected  = true
+
+[[asserts]]
+arguments = [30, 40, 49]
+comment   = "Same point but radius too small"
+expected  = false
+
+[[asserts]]
+arguments = [0, 50, 50]
+comment   = "Top of circle on y-axis"
+expected  = true

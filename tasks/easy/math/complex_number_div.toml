@@ -1,0 +1,147 @@
+level             = "medium"
+name              = "complex_number_div"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given two complex numbers, each represented as an array of two integers `[a, b]` corresponding to $a + bi$.
+
+Implement a function that divides the first complex number by the second one and returns the result as an array `[x, y]`, where $x$ is the real part and $y$ is the imaginary part. Use floor rounding (apply $\\lfloor\\cdot\\rfloor$) to both parts. If division by zero occurs, return `[0, 0]`.
+"""
+
+description_ru = """
+Даны два комплексных числа, каждое представлено массивом из двух целых чисел `[a, b]`, соответствующих $a + bi$.
+
+Реализуйте функцию, которая делит первое комплексное число на второе и возвращает результат в виде массива `[x, y]`, где $x$ — вещественная часть, а $y$ — мнимая. Применяйте округление вниз (функция $\\lfloor\\cdot\\rfloor$) к обеим частям. Если происходит деление на ноль, верните `[0, 0]`.
+"""
+
+solution = """
+from math import floor
+
+def solution(first, second):
+    a, b = first
+    c, d = second
+    try:
+        denom = c * c + d * d
+        real = floor((a * c + b * d) / denom)
+        imag = floor((b * c - a * d) / denom)
+        return [real, imag]
+    except ZeroDivisionError:
+        return [0, 0]
+"""
+
+examples = """
+solution([0, 0], [1, 1]) == [0, 0]
+solution([5, 5], [0, 0]) == [0, 0]
+solution([3, 10], [3, 1]) == [1, 2]
+solution([30, 2], [2, 1]) == [12, -6]
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[3, 10], [3, 1]]
+comment   = "Example from original tests"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [[30, 2], [2, 1]]
+comment   = "Positive division"
+expected  = [12, -6]
+
+[[asserts]]
+arguments = [[77, -11], [1, 11]]
+comment   = "Negative imaginary result"
+expected  = [-1, -8]
+
+[[asserts]]
+arguments = [[30, 11], [-12, 1]]
+comment   = "Division with negative real part"
+expected  = [-3, -2]
+
+[[asserts]]
+arguments = [[0, 0], [1, 1]]
+comment   = "Zero numerator"
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [[5, 5], [1, 1]]
+comment   = "(5+5i)/(1+i)"
+expected  = [5, 0]
+
+[[asserts]]
+arguments = [[-5, 5], [1, 1]]
+comment   = "Negative real numerator"
+expected  = [0, 5]
+
+[[asserts]]
+arguments = [[10, 0], [2, 0]]
+comment   = "Real division only"
+expected  = [5, 0]
+
+[[asserts]]
+arguments = [[0, 10], [0, 2]]
+comment   = "Pure imaginary division"
+expected  = [5, 0]
+
+[[asserts]]
+arguments = [[7, -3], [4, 0]]
+comment   = "Divide by real only, negative imaginary"
+expected  = [1, -1]
+
+[[asserts]]
+arguments = [[7, -3], [0, 4]]
+comment   = "Divide by imaginary only"
+expected  = [-1, -2]
+
+[[asserts]]
+arguments = [[-8, -6], [2, 3]]
+comment   = "Result with zero imaginary"
+expected  = [-3, 0]
+
+[[asserts]]
+arguments = [[15, 20], [3, 4]]
+comment   = "Exact division, zero imaginary"
+expected  = [5, 0]
+
+[[asserts]]
+arguments = [[9, 12], [3, 4]]
+comment   = "Scaled classic Pythagorean triple"
+expected  = [3, 0]
+
+[[asserts]]
+arguments = [[-9, 12], [3, 4]]
+comment   = "Negative real, positive imaginary"
+expected  = [0, 2]
+
+[[asserts]]
+arguments = [[9, -12], [3, 4]]
+comment   = "Negative imaginary"
+expected  = [-1, -3]
+
+[[asserts]]
+arguments = [[1, 2], [0, 1]]
+comment   = "Divide by i"
+expected  = [2, -1]
+
+[[asserts]]
+arguments = [[1, 2], [0, 2]]
+comment   = "Divide by 2i, floor rounding"
+expected  = [1, -1]

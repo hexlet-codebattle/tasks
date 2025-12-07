@@ -1,0 +1,186 @@
+level             = "elementary"
+name              = "cube_sum"
+tags              = ["math"]
+time_to_solve_sec = 120
+
+description_en = """
+Given an integer `n`, return the sum of cubes of all integers from $1$ to $n$ inclusive.
+"""
+
+description_ru = """
+Дано целое число `n`. Верните сумму кубов всех целых чисел от $1$ до $n$ включительно.
+"""
+
+limits = """
+- $1 \\leq n \\leq 30$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    return sum(i * i * i for i in range(1, n + 1))
+"""
+
+examples = """
+solution(1) == 1
+solution(2) == 9
+solution(5) == 225
+solution(10) == 3025
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+comment   = "Minimum n"
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+comment   = "First non-trivial case"
+expected  = 9
+
+[[asserts]]
+arguments = [3]
+comment   = "1^3 + 2^3 + 3^3"
+expected  = 36
+
+[[asserts]]
+arguments = [4]
+comment   = "Check small n"
+expected  = 100
+
+[[asserts]]
+arguments = [5]
+comment   = "Middle of small range"
+expected  = 225
+
+[[asserts]]
+arguments = [6]
+comment   = "Sequential check"
+expected  = 441
+
+[[asserts]]
+arguments = [7]
+comment   = "Sequential check"
+expected  = 784
+
+[[asserts]]
+arguments = [8]
+comment   = "Sequential check"
+expected  = 1296
+
+[[asserts]]
+arguments = [9]
+comment   = "Sequential check"
+expected  = 2025
+
+[[asserts]]
+arguments = [10]
+comment   = "n = 10"
+expected  = 3025
+
+[[asserts]]
+arguments = [11]
+comment   = "n = 11"
+expected  = 4356
+
+[[asserts]]
+arguments = [12]
+comment   = "n = 12"
+expected  = 6084
+
+[[asserts]]
+arguments = [13]
+comment   = "n = 13"
+expected  = 8281
+
+[[asserts]]
+arguments = [14]
+comment   = "n = 14"
+expected  = 11025
+
+[[asserts]]
+arguments = [15]
+comment   = "n = 15"
+expected  = 14400
+
+[[asserts]]
+arguments = [16]
+comment   = "n = 16"
+expected  = 18496
+
+[[asserts]]
+arguments = [17]
+comment   = "n = 17"
+expected  = 23409
+
+[[asserts]]
+arguments = [18]
+comment   = "n = 18"
+expected  = 29241
+
+[[asserts]]
+arguments = [19]
+comment   = "n = 19"
+expected  = 36100
+
+[[asserts]]
+arguments = [20]
+comment   = "Original test case n = 20"
+expected  = 44100
+
+[[asserts]]
+arguments = [21]
+comment   = "n = 21"
+expected  = 53361
+
+[[asserts]]
+arguments = [22]
+comment   = "n = 22"
+expected  = 64009
+
+[[asserts]]
+arguments = [23]
+comment   = "n = 23"
+expected  = 76176
+
+[[asserts]]
+arguments = [24]
+comment   = "n = 24"
+expected  = 90000
+
+[[asserts]]
+arguments = [25]
+comment   = "Quarter hundred"
+expected  = 105625
+
+[[asserts]]
+arguments = [26]
+comment   = "n = 26"
+expected  = 123201
+
+[[asserts]]
+arguments = [27]
+comment   = "n = 27"
+expected  = 142884
+
+[[asserts]]
+arguments = [28]
+comment   = "n = 28"
+expected  = 164836
+
+[[asserts]]
+arguments = [29]
+comment   = "n = 29"
+expected  = 189225
+
+[[asserts]]
+arguments = [30]
+comment   = "Maximum n"
+expected  = 216225

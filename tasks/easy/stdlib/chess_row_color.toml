@@ -1,0 +1,201 @@
+level             = "easy"
+name              = "chess_row_color"
+tags              = ["string"]
+time_to_solve_sec = 300
+
+description_en = """
+Determine the color of a square on a standard chessboard.
+
+The board has columns from `A` to `H` and rows from `1` to `8`. Square `A1` is black, and colors alternate both along rows and columns.
+
+You are given the column letter `row` and the row number `column`. Return `"black"` or `"white"` for the color of the square.
+"""
+
+description_ru = """
+Определите цвет клетки на стандартной шахматной доске.
+
+Доска имеет столбцы от `A` до `H` и строки от `1` до `8`. Клетка `A1` чёрная, и цвета чередуются по строкам и столбцам.
+
+Даны буква столбца `row` и номер строки `column`. Верните `"black"` или `"white"` в зависимости от цвета клетки.
+"""
+
+limits = """
+- $row \\in \\{A, B, C, D, E, F, G, H\\}$
+- $1 \\leq column \\leq 8$
+"""
+
+solution = """
+def solution(row: str, column: int) -> str:
+    files = {c: i + 1 for i, c in enumerate("ABCDEFGH")}
+    return "black" if (files[row] + column) % 2 == 0 else "white"
+"""
+
+examples = """
+solution("A", 1) == "black"
+solution("A", 8) == "white"
+solution("E", 4) == "white"
+solution("H", 8) == "black"
+"""
+
+[[input_signature]]
+argument_name = "row"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "column"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["A", 1]
+comment   = "Given: A1 is black"
+expected  = "black"
+
+[[asserts]]
+arguments = ["H", 8]
+comment   = "Opposite corner of A1"
+expected  = "black"
+
+[[asserts]]
+arguments = ["D", 4]
+comment   = "Center-ish black square"
+expected  = "black"
+
+[[asserts]]
+arguments = ["G", 7]
+comment   = "Another black square near corner"
+expected  = "black"
+
+[[asserts]]
+arguments = ["A", 8]
+comment   = "Same file as A1 but far rank"
+expected  = "white"
+
+[[asserts]]
+arguments = ["H", 1]
+comment   = "Same rank as A1 but far file"
+expected  = "white"
+
+[[asserts]]
+arguments = ["E", 8]
+comment   = "Edge square, white color"
+expected  = "white"
+
+[[asserts]]
+arguments = ["E", 4]
+comment   = "Middle area white square"
+expected  = "white"
+
+[[asserts]]
+arguments = ["A", 2]
+comment   = "Next rank from A1, color flips"
+expected  = "white"
+
+[[asserts]]
+arguments = ["A", 3]
+comment   = "A-file odd rank is black"
+expected  = "black"
+
+[[asserts]]
+arguments = ["A", 4]
+comment   = "A-file even rank is white"
+expected  = "white"
+
+[[asserts]]
+arguments = ["A", 5]
+comment   = "Alternating pattern continues"
+expected  = "black"
+
+[[asserts]]
+arguments = ["A", 6]
+comment   = "Farther up on A-file"
+expected  = "white"
+
+[[asserts]]
+arguments = ["A", 7]
+comment   = "Near top on A-file"
+expected  = "black"
+
+[[asserts]]
+arguments = ["B", 1]
+comment   = "Next file from A1, color flips"
+expected  = "white"
+
+[[asserts]]
+arguments = ["B", 2]
+comment   = "B-file alternating color"
+expected  = "black"
+
+[[asserts]]
+arguments = ["B", 3]
+comment   = "B-file odd rank is white"
+expected  = "white"
+
+[[asserts]]
+arguments = ["B", 4]
+comment   = "B-file even rank is black"
+expected  = "black"
+
+[[asserts]]
+arguments = ["B", 5]
+comment   = "Upper B-file white"
+expected  = "white"
+
+[[asserts]]
+arguments = ["B", 6]
+comment   = "Upper B-file black"
+expected  = "black"
+
+[[asserts]]
+arguments = ["B", 7]
+comment   = "Near top, white square"
+expected  = "white"
+
+[[asserts]]
+arguments = ["B", 8]
+comment   = "Top on B-file, black square"
+expected  = "black"
+
+[[asserts]]
+arguments = ["C", 1]
+comment   = "Third file, bottom rank"
+expected  = "black"
+
+[[asserts]]
+arguments = ["C", 2]
+comment   = "C2 should be white"
+expected  = "white"
+
+[[asserts]]
+arguments = ["C", 3]
+comment   = "C3 should be black"
+expected  = "black"
+
+[[asserts]]
+arguments = ["C", 4]
+comment   = "C4 should be white"
+expected  = "white"
+
+[[asserts]]
+arguments = ["C", 5]
+comment   = "C5 should be black"
+expected  = "black"
+
+[[asserts]]
+arguments = ["C", 6]
+comment   = "C6 should be white"
+expected  = "white"
+
+[[asserts]]
+arguments = ["C", 7]
+comment   = "C7 should be black"
+expected  = "black"
+
+[[asserts]]
+arguments = ["C", 8]
+comment   = "C8 should be white"
+expected  = "white"

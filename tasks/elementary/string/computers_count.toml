@@ -1,0 +1,155 @@
+level             = "elementary"
+name              = "computers_count"
+tags              = ["string", "training"]
+time_to_solve_sec = 30
+
+description_en = """
+Given an integer `number`, return a string with the number and the correct English form of the word `"computer"`.
+
+If `number` is equal to $1$, return `"1 computer"`. In all other cases return `"<number> computers"`.
+"""
+
+description_ru = """
+По заданному целому числу `number` верните строку с числом и правильной английской формой слова `"computer"`.
+
+Если `number` равно $1$, верните `"1 computer"`. Во всех остальных случаях верните `"<number> computers"`.
+"""
+
+solution = """
+def solution(number: int) -> str:
+    return "1 computer" if number == 1 else f"{number} computers"
+"""
+
+examples = """
+solution(1) == "1 computer"
+solution(2) == "2 computers"
+solution(512) == "512 computers"
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [1]
+expected  = "1 computer"
+
+[[asserts]]
+arguments = [2]
+expected  = "2 computers"
+
+[[asserts]]
+arguments = [3]
+expected  = "3 computers"
+
+[[asserts]]
+arguments = [4]
+expected  = "4 computers"
+
+[[asserts]]
+arguments = [5]
+expected  = "5 computers"
+
+[[asserts]]
+arguments = [6]
+expected  = "6 computers"
+
+[[asserts]]
+arguments = [7]
+expected  = "7 computers"
+
+[[asserts]]
+arguments = [8]
+expected  = "8 computers"
+
+[[asserts]]
+arguments = [9]
+expected  = "9 computers"
+
+[[asserts]]
+arguments = [10]
+expected  = "10 computers"
+
+[[asserts]]
+arguments = [11]
+expected  = "11 computers"
+
+[[asserts]]
+arguments = [12]
+expected  = "12 computers"
+
+[[asserts]]
+arguments = [13]
+expected  = "13 computers"
+
+[[asserts]]
+arguments = [14]
+expected  = "14 computers"
+
+[[asserts]]
+arguments = [15]
+expected  = "15 computers"
+
+[[asserts]]
+arguments = [16]
+expected  = "16 computers"
+
+[[asserts]]
+arguments = [17]
+expected  = "17 computers"
+
+[[asserts]]
+arguments = [18]
+expected  = "18 computers"
+
+[[asserts]]
+arguments = [19]
+expected  = "19 computers"
+
+[[asserts]]
+arguments = [20]
+expected  = "20 computers"
+
+[[asserts]]
+arguments = [21]
+expected  = "21 computers"
+
+[[asserts]]
+arguments = [22]
+expected  = "22 computers"
+
+[[asserts]]
+arguments = [23]
+expected  = "23 computers"
+
+[[asserts]]
+arguments = [24]
+expected  = "24 computers"
+
+[[asserts]]
+arguments = [25]
+expected  = "25 computers"
+
+[[asserts]]
+arguments = [99]
+expected  = "99 computers"
+
+[[asserts]]
+arguments = [100]
+expected  = "100 computers"
+
+[[asserts]]
+arguments = [101]
+expected  = "101 computers"
+
+[[asserts]]
+arguments = [512]
+expected  = "512 computers"
+
+[[asserts]]
+arguments = [1024]
+expected  = "1024 computers"

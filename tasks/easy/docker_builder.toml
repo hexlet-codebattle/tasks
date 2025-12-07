@@ -1,0 +1,201 @@
+level             = "easy"
+name              = "docker_builder"
+tags              = ["strings", "codebattle"]
+time_to_solve_sec = 180
+
+description_en = """
+Create a function that creates a docker build command from `language`, `version`, and `path` (which can be an empty string) for codebattle.
+"""
+
+description_ru = """
+Создайте функцию, которая генерирует команду сборки docker образа для codebattle с помощью `language`, `version` и `path` (который может быть пустой строкой).
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{path}) \\leq 100$
+- $1 \\leq \\text{len}(\\text{version}) \\leq 30$
+- $1 \\leq \\text{len}(\\text{language}) \\leq 20$
+"""
+
+solution = """
+def solution(language: str, version: str, path: str) -> str:
+    cmd = f"docker build -t codebattle/{language}:{version}"
+    if path:
+        cmd += f" -f {path}"
+    cmd += " ."
+    return cmd
+"""
+
+examples = """
+solution("clojure", "1.1.2:slim", "") == "docker build -t codebattle/clojure:1.1.2:slim ."
+solution("ruby", "3.0.2:latest", "") == "docker build -t codebattle/ruby:3.0.2:latest ."
+solution("elixir", "1.12.2:alpine", "./Some/Dockerfile") == "docker build -t codebattle/elixir:1.12.2:alpine -f ./Some/Dockerfile ."
+"""
+
+[[input_signature]]
+argument_name = "language"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "version"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "path"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["clojure", "1.1.2:slim", ""]
+comment   = "Clojure without path"
+expected  = "docker build -t codebattle/clojure:1.1.2:slim ."
+
+[[asserts]]
+arguments = ["ruby", "3.0.2:latest", ""]
+comment   = "Ruby without path"
+expected  = "docker build -t codebattle/ruby:3.0.2:latest ."
+
+[[asserts]]
+arguments = ["elixir", "1.12.2:alpine", "./Some/Dockerfile"]
+comment   = "Elixir with path"
+expected  = "docker build -t codebattle/elixir:1.12.2:alpine -f ./Some/Dockerfile ."
+
+[[asserts]]
+arguments = ["python", "3.9.0:slim", ""]
+comment   = "Python without path"
+expected  = "docker build -t codebattle/python:3.9.0:slim ."
+
+[[asserts]]
+arguments = ["javascript", "14.17.0:alpine", "./docker/Dockerfile"]
+comment   = "JavaScript with path"
+expected  = "docker build -t codebattle/javascript:14.17.0:alpine -f ./docker/Dockerfile ."
+
+[[asserts]]
+arguments = ["go", "1.16.5:latest", ""]
+comment   = "Go without path"
+expected  = "docker build -t codebattle/go:1.16.5:latest ."
+
+[[asserts]]
+arguments = ["rust", "1.53.0:slim", "./build/Dockerfile"]
+comment   = "Rust with path"
+expected  = "docker build -t codebattle/rust:1.53.0:slim -f ./build/Dockerfile ."
+
+[[asserts]]
+arguments = ["java", "11.0.11:jdk", ""]
+comment   = "Java without path"
+expected  = "docker build -t codebattle/java:11.0.11:jdk ."
+
+[[asserts]]
+arguments = ["php", "8.0.8:cli", "./php/Dockerfile"]
+comment   = "PHP with path"
+expected  = "docker build -t codebattle/php:8.0.8:cli -f ./php/Dockerfile ."
+
+[[asserts]]
+arguments = ["kotlin", "1.5.21:latest", ""]
+comment   = "Kotlin without path"
+expected  = "docker build -t codebattle/kotlin:1.5.21:latest ."
+
+[[asserts]]
+arguments = ["typescript", "4.3.5:alpine", "./ts/Dockerfile"]
+comment   = "TypeScript with path"
+expected  = "docker build -t codebattle/typescript:4.3.5:alpine -f ./ts/Dockerfile ."
+
+[[asserts]]
+arguments = ["haskell", "8.10.4:slim", ""]
+comment   = "Haskell without path"
+expected  = "docker build -t codebattle/haskell:8.10.4:slim ."
+
+[[asserts]]
+arguments = ["scala", "2.13.6:latest", "./scala/Dockerfile"]
+comment   = "Scala with path"
+expected  = "docker build -t codebattle/scala:2.13.6:latest -f ./scala/Dockerfile ."
+
+[[asserts]]
+arguments = ["dart", "2.13.4:stable", ""]
+comment   = "Dart without path"
+expected  = "docker build -t codebattle/dart:2.13.4:stable ."
+
+[[asserts]]
+arguments = ["erlang", "24.0.3:alpine", "./erlang/Dockerfile"]
+comment   = "Erlang with path"
+expected  = "docker build -t codebattle/erlang:24.0.3:alpine -f ./erlang/Dockerfile ."
+
+[[asserts]]
+arguments = ["cpp", "10.3.0:gcc", ""]
+comment   = "C++ without path"
+expected  = "docker build -t codebattle/cpp:10.3.0:gcc ."
+
+[[asserts]]
+arguments = ["csharp", "5.0.8:sdk", "./csharp/Dockerfile"]
+comment   = "C# with path"
+expected  = "docker build -t codebattle/csharp:5.0.8:sdk -f ./csharp/Dockerfile ."
+
+[[asserts]]
+arguments = ["swift", "5.4.2:latest", ""]
+comment   = "Swift without path"
+expected  = "docker build -t codebattle/swift:5.4.2:latest ."
+
+[[asserts]]
+arguments = ["perl", "5.34.0:slim", "./perl/Dockerfile"]
+comment   = "Perl with path"
+expected  = "docker build -t codebattle/perl:5.34.0:slim -f ./perl/Dockerfile ."
+
+[[asserts]]
+arguments = ["r", "4.1.0:latest", ""]
+comment   = "R without path"
+expected  = "docker build -t codebattle/r:4.1.0:latest ."
+
+[[asserts]]
+arguments = ["julia", "1.6.2:alpine", "./julia/Dockerfile"]
+comment   = "Julia with path"
+expected  = "docker build -t codebattle/julia:1.6.2:alpine -f ./julia/Dockerfile ."
+
+[[asserts]]
+arguments = ["lua", "5.4.3:latest", ""]
+comment   = "Lua without path"
+expected  = "docker build -t codebattle/lua:5.4.3:latest ."
+
+[[asserts]]
+arguments = ["ocaml", "4.12.0:slim", "./ocaml/Dockerfile"]
+comment   = "OCaml with path"
+expected  = "docker build -t codebattle/ocaml:4.12.0:slim -f ./ocaml/Dockerfile ."
+
+[[asserts]]
+arguments = ["fsharp", "5.0.2:sdk", ""]
+comment   = "F# without path"
+expected  = "docker build -t codebattle/fsharp:5.0.2:sdk ."
+
+[[asserts]]
+arguments = ["nim", "1.4.8:alpine", "./nim/Dockerfile"]
+comment   = "Nim with path"
+expected  = "docker build -t codebattle/nim:1.4.8:alpine -f ./nim/Dockerfile ."
+
+[[asserts]]
+arguments = ["crystal", "1.1.1:latest", ""]
+comment   = "Crystal without path"
+expected  = "docker build -t codebattle/crystal:1.1.1:latest ."
+
+[[asserts]]
+arguments = ["zig", "0.8.0:slim", "./zig/Dockerfile"]
+comment   = "Zig with path"
+expected  = "docker build -t codebattle/zig:0.8.0:slim -f ./zig/Dockerfile ."
+
+[[asserts]]
+arguments = ["v", "0.2.4:latest", ""]
+comment   = "V without path"
+expected  = "docker build -t codebattle/v:0.2.4:latest ."
+
+[[asserts]]
+arguments = ["d", "2.097.0:alpine", "./d/Dockerfile"]
+comment   = "D with path"
+expected  = "docker build -t codebattle/d:2.097.0:alpine -f ./d/Dockerfile ."
+
+[[asserts]]
+arguments = ["fortran", "11.1.0:latest", ""]
+comment   = "Fortran without path"
+expected  = "docker build -t codebattle/fortran:11.1.0:latest ."

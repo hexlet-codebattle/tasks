@@ -1,0 +1,198 @@
+level             = "easy"
+name              = "disjoint_sets"
+tags              = ["math", "collections"]
+time_to_solve_sec = 180
+
+description_en = """
+Given two sets represented by two arrays, check if the given two sets are disjoint or not. Given arrays have no duplicates.
+"""
+
+description_ru = """
+Дано два множества, представляющих собой два массива. Проверьте, отсутствует ли пересечение между этими двумя множествами.
+"""
+
+limits = """
+- $0 \\leq \\text{arr1}[i] \\leq 20$
+- $0 \\leq \\text{arr2}[i] \\leq 20$
+- $1 \\leq \\text{len}(\\text{arr1}) \\leq 20$
+- $1 \\leq \\text{len}(\\text{arr2}) \\leq 20$
+"""
+
+solution = """
+def solution(arr1: list, arr2: list) -> bool:
+    return len(set(arr1) & set(arr2)) == 0
+"""
+
+examples = """
+solution([12, 34, 11, 9, 3], [7, 2, 1, 5]) == True
+solution([12, 34, 11, 9, 3], [2, 1, 3, 5]) == False
+solution([15, 16, 7, 2, 1], [14, 20, 8, 6, 0]) == True
+solution([1, 2, 4, 5, 8, 9], [2, 1, 3, 5, 9]) == False
+"""
+
+[[input_signature]]
+argument_name = "arr1"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "arr2"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[12, 34, 11, 9, 3], [7, 2, 1, 5]]
+comment   = "No common elements"
+expected  = true
+
+[[asserts]]
+arguments = [[12, 34, 11, 9, 3], [2, 1, 3, 5]]
+comment   = "Has common element 3"
+expected  = false
+
+[[asserts]]
+arguments = [[15, 16, 7, 2, 1], [14, 20, 8, 6, 0]]
+comment   = "Completely disjoint"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 4, 5, 8, 9], [2, 1, 3, 5, 9]]
+comment   = "Multiple common elements"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 2, 3], [4, 5, 6]]
+comment   = "Simple disjoint sets"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3], [3, 4, 5]]
+comment   = "One common element"
+expected  = false
+
+[[asserts]]
+arguments = [[10, 20, 30], [40, 50, 60]]
+comment   = "Disjoint larger numbers"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 10, 15], [10, 20, 30]]
+comment   = "Share element 10"
+expected  = false
+
+[[asserts]]
+arguments = [[1], [2]]
+comment   = "Single elements disjoint"
+expected  = true
+
+[[asserts]]
+arguments = [[1], [1]]
+comment   = "Single elements same"
+expected  = false
+
+[[asserts]]
+arguments = [[7, 14, 21], [8, 16, 24]]
+comment   = "Multiples disjoint"
+expected  = true
+
+[[asserts]]
+arguments = [[2, 4, 6, 8], [1, 3, 5, 7]]
+comment   = "Even and odd"
+expected  = true
+
+[[asserts]]
+arguments = [[2, 4, 6, 8], [4, 8, 12]]
+comment   = "Common even numbers"
+expected  = false
+
+[[asserts]]
+arguments = [[11, 13, 17, 19], [23, 29, 31]]
+comment   = "Primes disjoint"
+expected  = true
+
+[[asserts]]
+arguments = [[10, 20, 30, 40], [15, 25, 35]]
+comment   = "No overlap"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 10, 15, 20], [20, 25, 30]]
+comment   = "Share element 20"
+expected  = false
+
+[[asserts]]
+arguments = [[0, 1, 2], [3, 4, 5]]
+comment   = "Starting from zero"
+expected  = true
+
+[[asserts]]
+arguments = [[0, 1, 2], [2, 3, 4]]
+comment   = "Share element 2"
+expected  = false
+
+[[asserts]]
+arguments = [[100, 200, 300], [150, 250, 350]]
+comment   = "Large numbers disjoint"
+expected  = true
+
+[[asserts]]
+arguments = [[50, 60, 70], [60, 70, 80]]
+comment   = "Multiple common"
+expected  = false
+
+[[asserts]]
+arguments = [[9, 18, 27], [12, 24, 36]]
+comment   = "Different multiples"
+expected  = true
+
+[[asserts]]
+arguments = [[3, 6, 9, 12], [6, 12, 18]]
+comment   = "Common multiples of 3"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 4, 9, 16], [25, 36, 49]]
+comment   = "Squares disjoint"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 4, 9], [9, 16, 25]]
+comment   = "Share square 9"
+expected  = false
+
+[[asserts]]
+arguments = [[7, 8, 9], [10, 11, 12]]
+comment   = "Consecutive ranges"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 6, 7, 8], [8, 9, 10]]
+comment   = "Overlap at 8"
+expected  = false
+
+[[asserts]]
+arguments = [[13, 26, 39], [14, 28, 42]]
+comment   = "Different multiples"
+expected  = true
+
+[[asserts]]
+arguments = [[15, 30, 45], [30, 60, 90]]
+comment   = "Share 30"
+expected  = false
+
+[[asserts]]
+arguments = [[2, 3, 5, 7], [11, 13, 17]]
+comment   = "Small and larger primes"
+expected  = true
+
+[[asserts]]
+arguments = [[2, 3, 5, 7], [5, 11, 13]]
+comment   = "Share prime 5"
+expected  = false

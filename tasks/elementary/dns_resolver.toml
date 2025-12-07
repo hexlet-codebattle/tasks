@@ -1,0 +1,259 @@
+level             = "elementary"
+name              = "dns_resolver"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that picks up an IP from `domains` by `domain` name. If there is no record, then return `"DNS_PROBE_FINISHED_NXDOMAIN"`.
+"""
+
+description_ru = """
+Создайте функцию, которая достает из `domains` IP, связанный с именем `domain`. Если такая запись отсутствует, то верните `"DNS_PROBE_FINISHED_NXDOMAIN"`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{domain}) \\leq 50$
+- $1 \\leq \\text{len}(\\text{domains}) \\leq 50$
+"""
+
+solution = """
+def solution(domains: dict, domain: str) -> str:
+    return domains.get(domain, "DNS_PROBE_FINISHED_NXDOMAIN")
+"""
+
+examples = """
+solution({"hexlet.io": "234.214.199.63"}, "hexlet.io") == "234.214.199.63"
+solution({"some.com": "127.0.0.1"}, "test.net") == "DNS_PROBE_FINISHED_NXDOMAIN"
+solution({"rubyonrails.org": "211.116.107.5", "clojure.org": "103.95.84.1"}, "clojure.org") == "103.95.84.1"
+"""
+
+[[input_signature]]
+argument_name = "domains"
+[input_signature.type]
+name = "hash"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "domain"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [
+  { "rubyonrails.org" = "211.116.107.5", "clojure.org" = "103.95.84.1", "phoenixframework.org" = "234.214.199.63", "reactjs.org" = "20.199.101.214" },
+  "clojure.org",
+]
+comment = "Found domain"
+expected = "103.95.84.1"
+
+[[asserts]]
+arguments = [
+  { "rhythm.ru" = "201.116.147.4", "building.ru" = "103.176.11.27", "hexlet.io" = "234.214.199.63", "brass.ru" = "201.116.147.4" },
+  "hexlet.io",
+]
+comment = "Found hexlet"
+expected = "234.214.199.63"
+
+[[asserts]]
+arguments = [{ "some.com" = "127.0.0.1" }, "test.net"]
+comment   = "Domain not found"
+expected  = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [{ "google.com" = "142.250.185.46" }, "google.com"]
+comment   = "Single domain found"
+expected  = "142.250.185.46"
+
+[[asserts]]
+arguments = [{ "google.com" = "142.250.185.46" }, "yahoo.com"]
+comment   = "Single domain not found"
+expected  = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "localhost" = "127.0.0.1", "example.com" = "93.184.216.34" },
+  "localhost",
+]
+comment = "Localhost found"
+expected = "127.0.0.1"
+
+[[asserts]]
+arguments = [
+  { "github.com" = "140.82.121.4", "stackoverflow.com" = "151.101.1.69" },
+  "gitlab.com",
+]
+comment = "Different domain"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "api.github.com" = "140.82.121.6", "github.com" = "140.82.121.4" },
+  "api.github.com",
+]
+comment = "Subdomain found"
+expected = "140.82.121.6"
+
+[[asserts]]
+arguments = [{ "test.local" = "192.168.1.1" }, "prod.local"]
+comment   = "Local domain not found"
+expected  = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "example.org" = "93.184.216.34", "example.net" = "93.184.216.35", "example.com" = "93.184.216.36" },
+  "example.org",
+]
+comment = "Multiple TLDs"
+expected = "93.184.216.34"
+
+[[asserts]]
+arguments = [
+  { "mail.google.com" = "172.217.14.101", "drive.google.com" = "172.217.14.110" },
+  "calendar.google.com",
+]
+comment = "Different Google subdomain"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [{ "cdn.jsdelivr.net" = "104.16.85.20" }, "cdn.jsdelivr.net"]
+comment   = "CDN domain"
+expected  = "104.16.85.20"
+
+[[asserts]]
+arguments = [
+  { "dev.local" = "10.0.0.1", "staging.local" = "10.0.0.2", "prod.local" = "10.0.0.3" },
+  "staging.local",
+]
+comment = "Staging environment"
+expected = "10.0.0.2"
+
+[[asserts]]
+arguments = [{ "app.herokuapp.com" = "54.165.23.45" }, "web.herokuapp.com"]
+comment   = "Different Heroku subdomain"
+expected  = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "db.internal" = "172.16.0.10", "cache.internal" = "172.16.0.11" },
+  "db.internal",
+]
+comment = "Internal database"
+expected = "172.16.0.10"
+
+[[asserts]]
+arguments = [
+  { "nodejs.org" = "104.20.23.46", "python.org" = "151.101.228.223" },
+  "ruby-lang.org",
+]
+comment = "Different language site"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "api.example.com" = "192.0.2.1", "www.example.com" = "192.0.2.2" },
+  "www.example.com",
+]
+comment = "WWW subdomain"
+expected = "192.0.2.2"
+
+[[asserts]]
+arguments = [
+  { "redis.local" = "127.0.0.1", "postgres.local" = "127.0.0.2" },
+  "mongo.local",
+]
+comment = "Database not found"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "cdn1.site.com" = "203.0.113.1", "cdn2.site.com" = "203.0.113.2" },
+  "cdn1.site.com",
+]
+comment = "First CDN server"
+expected = "203.0.113.1"
+
+[[asserts]]
+arguments = [{ "api.v1.service.io" = "198.51.100.1" }, "api.v2.service.io"]
+comment   = "Different API version"
+expected  = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "blog.example.com" = "192.0.2.10", "shop.example.com" = "192.0.2.11" },
+  "blog.example.com",
+]
+comment = "Blog subdomain"
+expected = "192.0.2.10"
+
+[[asserts]]
+arguments = [
+  { "frontend.app" = "10.1.1.1", "backend.app" = "10.1.1.2" },
+  "middleware.app",
+]
+comment = "Missing middleware"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "test1.dev" = "172.20.0.1", "test2.dev" = "172.20.0.2", "test3.dev" = "172.20.0.3" },
+  "test2.dev",
+]
+comment = "Second test server"
+expected = "172.20.0.2"
+
+[[asserts]]
+arguments = [
+  { "primary.dns" = "8.8.8.8", "secondary.dns" = "8.8.4.4" },
+  "tertiary.dns",
+]
+comment = "Tertiary DNS not found"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "service.kubernetes.local" = "10.96.0.1" },
+  "service.kubernetes.local",
+]
+comment = "Kubernetes service"
+expected = "10.96.0.1"
+
+[[asserts]]
+arguments = [
+  { "web1.cluster" = "192.168.100.1", "web2.cluster" = "192.168.100.2" },
+  "web3.cluster",
+]
+comment = "Third web server not found"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [{ "load-balancer.cloud" = "203.0.113.100" }, "load-balancer.cloud"]
+comment   = "Load balancer"
+expected  = "203.0.113.100"
+
+[[asserts]]
+arguments = [
+  { "auth.service" = "10.10.10.1", "payment.service" = "10.10.10.2" },
+  "notification.service",
+]
+comment = "Notification service not found"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"
+
+[[asserts]]
+arguments = [
+  { "metrics.monitoring" = "172.30.0.5", "logs.monitoring" = "172.30.0.6" },
+  "metrics.monitoring",
+]
+comment = "Metrics service"
+expected = "172.30.0.5"
+
+[[asserts]]
+arguments = [
+  { "region-us.api" = "198.51.100.10", "region-eu.api" = "198.51.100.11" },
+  "region-asia.api",
+]
+comment = "Asia region not found"
+expected = "DNS_PROBE_FINISHED_NXDOMAIN"

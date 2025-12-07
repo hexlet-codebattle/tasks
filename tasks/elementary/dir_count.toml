@@ -1,0 +1,218 @@
+level             = "elementary"
+name              = "dir_count"
+tags              = ["strings"]
+time_to_solve_sec = 120
+
+description_en = """
+Implement a function that counts how many paths in the given list contain at least one directory.
+
+"Path with a directory" is **any string that contains the character "/"**.
+"""
+
+description_ru = """
+Реализуйте функцию, которая подсчитывает, сколько путей в переданном массиве содержат хотя бы одну директорию.
+
+В рамках этой задачи «путь с директорией» — это **любая строка, в которой есть символ "/"**.
+"""
+
+limits = """
+Ограничения:
+- 2 ≤ len(filepaths) ≤ 50
+- 1 ≤ len(filepaths[i]) ≤ 100
+"""
+
+solution = """
+def solution(filepaths: list) -> int:
+    return sum(1 for path in filepaths if '/' in path)
+"""
+
+examples = """
+solution(["brain-games.exe", "task-manager.rb"]) == 0
+solution(["C:/Projects/something.txt", "file.exe"]) == 1
+solution(["C:/Users/Beethoven_5.mp3", "/usr/bin", "/var/www"]) == 3
+"""
+
+[[input_signature]]
+argument_name = "filepaths"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["C:/Projects/something.txt", "file.exe"]]
+comment   = "One path with a directory"
+expected  = 1
+
+[[asserts]]
+arguments = [["brain-games.exe", "gendiff.sh", "task-manager.rb"]]
+comment   = "No directories"
+expected  = 0
+
+[[asserts]]
+arguments = [
+  [
+    "C:/Users/JohnDoe/Music/Beethoven_5.mp3",
+    "/usr/bin",
+    "/var/www/myprojectt",
+  ],
+]
+comment = "Three paths with directories"
+expected = 3
+
+[[asserts]]
+arguments = [["file.txt", "document.pdf"]]
+comment   = "Two files, no directories"
+expected  = 0
+
+[[asserts]]
+arguments = [["/home/user/file.txt", "local.exe"]]
+comment   = "One with a directory, one without"
+expected  = 1
+
+[[asserts]]
+arguments = [["/var/log/system.log", "/etc/config", "/usr/bin/app"]]
+comment   = "All have directories"
+expected  = 3
+
+[[asserts]]
+arguments = [["D:/Documents/report.docx", "E:/Music/song.mp3"]]
+comment   = "Windows-style paths with directories"
+expected  = 2
+
+[[asserts]]
+arguments = [["app.exe", "tool.sh", "script.rb", "program.py"]]
+comment   = "Four files, no directories"
+expected  = 0
+
+[[asserts]]
+arguments = [["/root/data", "file.txt", "/home/test"]]
+comment   = "Mixed with and without directories"
+expected  = 2
+
+[[asserts]]
+arguments = [["C:/Program Files/app.exe", "installer.msi"]]
+comment   = "One path with a directory, one without"
+expected  = 1
+
+[[asserts]]
+arguments = [["/usr/local/bin/command", "/opt/software/app"]]
+comment   = "Two Unix-style paths"
+expected  = 2
+
+[[asserts]]
+arguments = [["test.js", "index.html", "style.css"]]
+comment   = "Web files, no directories"
+expected  = 0
+
+[[asserts]]
+arguments = [
+  [
+    "C:/Users/Documents/file.txt",
+    "D:/Projects/code.py",
+    "E:/Data/info.json",
+  ],
+]
+comment = "Three Windows-style paths with directories"
+expected = 3
+
+[[asserts]]
+arguments = [["/home/user/project/src/main.cpp", "build.sh"]]
+comment   = "One deep path with directories and one plain file"
+expected  = 1
+
+[[asserts]]
+arguments = [["image.png", "photo.jpg", "picture.gif"]]
+comment   = "Image files without directories"
+expected  = 0
+
+[[asserts]]
+arguments = [["/var/www/html/index.html", "/etc/nginx/nginx.conf"]]
+comment   = "Web server paths with directories"
+expected  = 2
+
+[[asserts]]
+arguments = [["C:/Windows/System32/cmd.exe", "notepad.exe", "D:/Tools/app.exe"]]
+comment   = "Mixed Windows paths and plain file"
+expected  = 2
+
+[[asserts]]
+arguments = [["audio.mp3", "video.mp4", "text.txt"]]
+comment   = "Media files without directories"
+expected  = 0
+
+[[asserts]]
+arguments = [["/usr/share/doc/manual.pdf", "/tmp/cache"]]
+comment   = "Documentation and temp paths with directories"
+expected  = 2
+
+[[asserts]]
+arguments = [["script.sh", "config.yaml", "/home/config/settings.json"]]
+comment   = "Two files, one path with a directory"
+expected  = 1
+
+[[asserts]]
+arguments = [["F:/Backup/data.zip", "G:/Archive/old.tar"]]
+comment   = "Archive files with directories in paths"
+expected  = 2
+
+[[asserts]]
+arguments = [["tool.exe", "utility.bat"]]
+comment   = "Two executables without directories"
+expected  = 0
+
+[[asserts]]
+arguments = [["/opt/app/bin/run", "/lib/library.so", "local.dll"]]
+comment   = "Two with directories, one without"
+expected  = 2
+
+[[asserts]]
+arguments = [
+  [
+    "C:/Temp/test.txt",
+    "D:/Data/info.csv",
+    "E:/Logs/error.log",
+    "file.txt",
+  ],
+]
+comment = "Three paths with directories, one plain file"
+expected = 3
+
+[[asserts]]
+arguments = [["readme.md", "license.txt", "changelog.md"]]
+comment   = "Documentation files without directories"
+expected  = 0
+
+[[asserts]]
+arguments = [["/home/user/.config/app.conf", "/root/.bashrc"]]
+comment   = "Hidden config files with directories"
+expected  = 2
+
+[[asserts]]
+arguments = [
+  [
+    "C:/Projects/Web/src/index.js",
+    "package.json",
+    "D:/Work/data.json",
+  ],
+]
+comment = "Two paths with directories, one without"
+expected = 2
+
+[[asserts]]
+arguments = [["app", "tool", "utility"]]
+comment   = "No extensions and no directories"
+expected  = 0
+
+[[asserts]]
+arguments = [["/var/log/app.log", "/var/log/system.log", "/var/log/error.log"]]
+comment   = "All log files with directories"
+expected  = 3
+
+[[asserts]]
+arguments = [["main.py", "utils.py", "/src/lib/helper.py"]]
+comment   = "Two files without directories, one with"
+expected  = 1

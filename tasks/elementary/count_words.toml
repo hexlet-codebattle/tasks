@@ -1,0 +1,187 @@
+level             = "elementary"
+name              = "count_words"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 100
+
+description_en = """
+Given a text, return the number of words in it.
+"""
+
+description_ru = """
+Дан текст, верните количество слов в нем.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{text}) \\leq 100$
+"""
+
+solution = """
+def solution(text: str) -> int:
+    if not text or text.isspace():
+        return 0
+    return len(text.split())
+"""
+
+examples = """
+solution("") == 0
+solution("The quick brown fox") == 4
+solution("The cat in the hat is back") == 7
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["The quick brown fox"]
+comment   = "Simple sentence"
+expected  = 4
+
+[[asserts]]
+arguments = ["The cat in the hat is back"]
+comment   = "Longer sentence"
+expected  = 7
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = 0
+
+[[asserts]]
+arguments = ["Hello"]
+comment   = "Single word"
+expected  = 1
+
+[[asserts]]
+arguments = ["Hello World"]
+comment   = "Two words"
+expected  = 2
+
+[[asserts]]
+arguments = ["One two three"]
+comment   = "Three words"
+expected  = 3
+
+[[asserts]]
+arguments = ["A B C D E"]
+comment   = "Five single letters"
+expected  = 5
+
+[[asserts]]
+arguments = ["Programming is fun and exciting"]
+comment   = "Five words sentence"
+expected  = 5
+
+[[asserts]]
+arguments = ["   "]
+comment   = "Only spaces"
+expected  = 0
+
+[[asserts]]
+arguments = ["  Hello  World  "]
+comment   = "Extra spaces around"
+expected  = 2
+
+[[asserts]]
+arguments = ["Multiple   spaces   between   words"]
+comment   = "Multiple spaces between"
+expected  = 4
+
+[[asserts]]
+arguments = ["I love coding"]
+comment   = "Three word sentence"
+expected  = 3
+
+[[asserts]]
+arguments = ["Python is awesome"]
+comment   = "Three words about Python"
+expected  = 3
+
+[[asserts]]
+arguments = ["This is a test sentence with many words"]
+comment   = "Eight words"
+expected  = 8
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single character"
+expected  = 1
+
+[[asserts]]
+arguments = ["The quick brown fox jumps over the lazy dog"]
+comment   = "Nine words pangram"
+expected  = 9
+
+[[asserts]]
+arguments = ["Count all the words"]
+comment   = "Four words"
+expected  = 4
+
+[[asserts]]
+arguments = ["One"]
+comment   = "Single word one"
+expected  = 1
+
+[[asserts]]
+arguments = ["Software development is challenging but rewarding"]
+comment   = "Six words"
+expected  = 6
+
+[[asserts]]
+arguments = ["Testing one two three four five"]
+comment   = "Six words numbered"
+expected  = 6
+
+[[asserts]]
+arguments = ["Learn something new every day"]
+comment   = "Five words motivational"
+expected  = 5
+
+[[asserts]]
+arguments = ["Hello there how are you"]
+comment   = "Five words greeting"
+expected  = 5
+
+[[asserts]]
+arguments = ["Word"]
+comment   = "Single word capital"
+expected  = 1
+
+[[asserts]]
+arguments = ["Make it work make it right make it fast"]
+comment   = "Nine words motto"
+expected  = 9
+
+[[asserts]]
+arguments = ["Practice makes perfect"]
+comment   = "Three words saying"
+expected  = 3
+
+[[asserts]]
+arguments = ["Keep calm and carry on"]
+comment   = "Five words slogan"
+expected  = 5
+
+[[asserts]]
+arguments = ["Just do it"]
+comment   = "Three words command"
+expected  = 3
+
+[[asserts]]
+arguments = ["Never give up on your dreams"]
+comment   = "Six words inspiration"
+expected  = 6
+
+[[asserts]]
+arguments = ["Code quality matters a lot"]
+comment   = "Five words statement"
+expected  = 5
+
+[[asserts]]
+arguments = ["Simple and elegant solution"]
+comment   = "Four words description"
+expected  = 4

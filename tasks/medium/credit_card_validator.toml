@@ -1,0 +1,208 @@
+level             = "medium"
+name              = "credit_card_validator"
+tags              = ["strings"]
+time_to_solve_sec = 700
+
+description_en = """
+Credit card numbers can be validated with a process called the Luhn algorithm.
+
+Simply stated, the Luhn algorithm works like this:
+
+1. From the rightmost digit, which is the check digit, moving left, double the value of every second digit; if the product of this doubling operation is greater than $9$ (e.g., $8 \\times 2 = 16$), then sum the digits of the products (e.g., $16: 1 + 6 = 7$, $18: 1 + 8 = 9$).
+2. Take the sum of all the digits.
+3. If the total modulo $10$ is equal to $0$ (if the total ends in zero) then the number is valid according to the Luhn formula; else it is not valid.
+"""
+
+description_ru = """
+Номер кредитной карты можно проверить на правильность с помощью алгоритма Луна.
+
+Проще говоря, алгоритм Луна работает так:
+
+1. Начиная с самой правой цифры, которая является контрольной, двигаясь влево, удваивается значение каждой второй цифры; если произведение операции удвоения больше $9$ (например, $8 \\times 2 = 16$), тогда суммируются цифры произведения (например, $16: 1 + 6 = 7$, $18: 1 + 8 = 9$).
+2. Все полученные в результате преобразования числа складываются.
+3. Если сумма кратна $10$ (заканчивается нулём), то номер карты верен по формуле Луна; в противном случае номер неправильный.
+"""
+
+limits = """
+- $12 \\leq \\text{len}(\\text{arr}) \\leq 19$
+- $\\text{arr} \\in \\{0{-}9\\}^*$
+"""
+
+solution = """
+def solution(arr: str) -> bool:
+    digits = [int(d) for d in arr]
+    total = 0
+    for i, d in enumerate(reversed(digits)):
+        if i % 2 == 1:
+            d *= 2
+            if d > 9:
+                d = d // 10 + d % 10
+        total += d
+    return total % 10 == 0
+"""
+
+examples = """
+solution("4222222222222") == True
+solution("38520000023237") == True
+solution("4408041234567893") == True
+solution("1234567890123456") == False
+solution("4408042234567893") == False
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["4408041234567893"]
+comment   = "Valid card number"
+expected  = true
+
+[[asserts]]
+arguments = ["1234567890123456"]
+comment   = "Invalid card number"
+expected  = false
+
+[[asserts]]
+arguments = ["4408042234567893"]
+comment   = "Invalid variation"
+expected  = false
+
+[[asserts]]
+arguments = ["38520000023237"]
+comment   = "Valid Diners Club"
+expected  = true
+
+[[asserts]]
+arguments = ["4222222222222"]
+comment   = "Valid test card"
+expected  = true
+
+[[asserts]]
+arguments = ["79927398713"]
+comment   = "Valid 11 digit"
+expected  = true
+
+[[asserts]]
+arguments = ["79927398714"]
+comment   = "Invalid check digit"
+expected  = false
+
+[[asserts]]
+arguments = ["378282246310005"]
+comment   = "Valid Amex"
+expected  = true
+
+[[asserts]]
+arguments = ["378282246310006"]
+comment   = "Invalid Amex"
+expected  = false
+
+[[asserts]]
+arguments = ["5555555555554444"]
+comment   = "Valid Mastercard"
+expected  = true
+
+[[asserts]]
+arguments = ["5555555555554445"]
+comment   = "Invalid Mastercard"
+expected  = false
+
+[[asserts]]
+arguments = ["4111111111111111"]
+comment   = "Valid Visa test"
+expected  = true
+
+[[asserts]]
+arguments = ["4111111111111112"]
+comment   = "Invalid Visa"
+expected  = false
+
+[[asserts]]
+arguments = ["6011111111111117"]
+comment   = "Valid Discover"
+expected  = true
+
+[[asserts]]
+arguments = ["6011111111111118"]
+comment   = "Invalid Discover"
+expected  = false
+
+[[asserts]]
+arguments = ["3530111333300000"]
+comment   = "Valid JCB"
+expected  = true
+
+[[asserts]]
+arguments = ["3530111333300001"]
+comment   = "Invalid JCB"
+expected  = false
+
+[[asserts]]
+arguments = ["30569309025904"]
+comment   = "Valid Diners"
+expected  = true
+
+[[asserts]]
+arguments = ["30569309025905"]
+comment   = "Invalid Diners"
+expected  = false
+
+[[asserts]]
+arguments = ["38520000023238"]
+comment   = "Invalid check"
+expected  = false
+
+[[asserts]]
+arguments = ["6011000990139424"]
+comment   = "Valid Discover 2"
+expected  = true
+
+[[asserts]]
+arguments = ["6011000990139425"]
+comment   = "Invalid Discover 2"
+expected  = false
+
+[[asserts]]
+arguments = ["371449635398431"]
+comment   = "Valid Amex 2"
+expected  = true
+
+[[asserts]]
+arguments = ["371449635398432"]
+comment   = "Invalid Amex 2"
+expected  = false
+
+[[asserts]]
+arguments = ["5105105105105100"]
+comment   = "Valid MC test"
+expected  = true
+
+[[asserts]]
+arguments = ["5105105105105101"]
+comment   = "Invalid MC test"
+expected  = false
+
+[[asserts]]
+arguments = ["4012888888881881"]
+comment   = "Valid Visa 2"
+expected  = true
+
+[[asserts]]
+arguments = ["4012888888881882"]
+comment   = "Invalid Visa 2"
+expected  = false
+
+[[asserts]]
+arguments = ["3566002020360505"]
+comment   = "Valid JCB 2"
+expected  = true
+
+[[asserts]]
+arguments = ["3566002020360506"]
+comment   = "Invalid JCB 2"
+expected  = false

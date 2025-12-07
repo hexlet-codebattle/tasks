@@ -1,0 +1,204 @@
+level             = "easy"
+name              = "difference_of_squares"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Find the difference between the square of the sum and the sum of the squares of the first $N$ natural numbers.
+
+The square of the sum of the first ten natural numbers is:
+
+$(1 + 2 + ... + 10)^2 = 55^2 = 3025$
+
+The sum of the squares of the first ten natural numbers is:
+
+$1^2 + 2^2 + ... + 10^2 = 385$
+
+Hence, the difference between the square of the sum and the sum of the squares is $3025 - 385 = 2640$.
+"""
+
+description_ru = """
+Найдите разность между квадратом суммы и суммой квадратов первых $N$ натуральных чисел.
+
+Квадрат суммы первых десяти натуральных чисел это:
+
+$(1 + 2 + ... + 10)^2 = 55^2 = 3025$
+
+Сумма квадратов первых десяти натуральных чисел это:
+
+$1^2 + 2^2 + ... + 10^2 = 385$
+
+Таким образом, разность между квадратом суммы и суммой квадратов первых десяти натуральных чисел это $3025 - 385 = 2640$.
+"""
+
+limits = """
+- $1 \\leq n \\leq 200$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    sum_of_nums = sum(range(1, n + 1))
+    square_of_sum = sum_of_nums ** 2
+    sum_of_squares = sum(i ** 2 for i in range(1, n + 1))
+    return square_of_sum - sum_of_squares
+"""
+
+examples = """
+solution(1) == 0
+solution(5) == 170
+solution(25) == 100100
+solution(100) == 25164150
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [5]
+comment   = "Five natural numbers"
+expected  = 170
+
+[[asserts]]
+arguments = [100]
+comment   = "One hundred"
+expected  = 25164150
+
+[[asserts]]
+arguments = [25]
+comment   = "Twenty five"
+expected  = 100100
+
+[[asserts]]
+arguments = [1]
+comment   = "Single number"
+expected  = 0
+
+[[asserts]]
+arguments = [2]
+comment   = "Two numbers"
+expected  = 4
+
+[[asserts]]
+arguments = [3]
+comment   = "Three numbers"
+expected  = 22
+
+[[asserts]]
+arguments = [4]
+comment   = "Four numbers"
+expected  = 70
+
+[[asserts]]
+arguments = [6]
+comment   = "Six numbers"
+expected  = 350
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven numbers"
+expected  = 644
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight numbers"
+expected  = 1092
+
+[[asserts]]
+arguments = [9]
+comment   = "Nine numbers"
+expected  = 1740
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten numbers"
+expected  = 2640
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleven numbers"
+expected  = 3850
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelve numbers"
+expected  = 5434
+
+[[asserts]]
+arguments = [13]
+comment   = "Thirteen numbers"
+expected  = 7462
+
+[[asserts]]
+arguments = [14]
+comment   = "Fourteen numbers"
+expected  = 10010
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteen numbers"
+expected  = 13160
+
+[[asserts]]
+arguments = [20]
+comment   = "Twenty numbers"
+expected  = 41230
+
+[[asserts]]
+arguments = [30]
+comment   = "Thirty numbers"
+expected  = 206770
+
+[[asserts]]
+arguments = [40]
+comment   = "Forty numbers"
+expected  = 650260
+
+[[asserts]]
+arguments = [50]
+comment   = "Fifty numbers"
+expected  = 1582700
+
+[[asserts]]
+arguments = [60]
+comment   = "Sixty numbers"
+expected  = 3275090
+
+[[asserts]]
+arguments = [70]
+comment   = "Seventy numbers"
+expected  = 6058430
+
+[[asserts]]
+arguments = [80]
+comment   = "Eighty numbers"
+expected  = 10323720
+
+[[asserts]]
+arguments = [90]
+comment   = "Ninety numbers"
+expected  = 16521960
+
+[[asserts]]
+arguments = [110]
+comment   = "One hundred ten"
+expected  = 36821290
+
+[[asserts]]
+arguments = [120]
+comment   = "One hundred twenty"
+expected  = 52124380
+
+[[asserts]]
+arguments = [150]
+comment   = "One hundred fifty"
+expected  = 127119350
+
+[[asserts]]
+arguments = [200]
+comment   = "Two hundred"
+expected  = 401323300

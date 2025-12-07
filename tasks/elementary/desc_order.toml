@@ -1,0 +1,188 @@
+level             = "elementary"
+name              = "desc_order"
+tags              = ["math"]
+time_to_solve_sec = 150
+
+description_en = """
+Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order.
+
+Essentially, rearrange the digits to create the highest possible number.
+"""
+
+description_ru = """
+Создайте функцию, которая из цифр заданного числа собирает наибольшее возможное число.
+"""
+
+limits = """
+- $0 \\leq \\text{num} \\leq 10^9$
+"""
+
+solution = """
+def solution(num: int) -> int:
+    return int(''.join(sorted(str(num), reverse=True)))
+"""
+
+examples = """
+solution(0) == 0
+solution(42145) == 54421
+solution(145263) == 654321
+solution(987654321) == 987654321
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero"
+expected  = 0
+
+[[asserts]]
+arguments = [42145]
+comment   = "Mixed digits"
+expected  = 54421
+
+[[asserts]]
+arguments = [145263]
+comment   = "Six digits"
+expected  = 654321
+
+[[asserts]]
+arguments = [987654321]
+comment   = "Already descending"
+expected  = 987654321
+
+[[asserts]]
+arguments = [1]
+comment   = "Single digit"
+expected  = 1
+
+[[asserts]]
+arguments = [123]
+comment   = "Ascending three digits"
+expected  = 321
+
+[[asserts]]
+arguments = [999]
+comment   = "All nines"
+expected  = 999
+
+[[asserts]]
+arguments = [111]
+comment   = "All ones"
+expected  = 111
+
+[[asserts]]
+arguments = [54321]
+comment   = "Five descending"
+expected  = 54321
+
+[[asserts]]
+arguments = [12345]
+comment   = "Five ascending"
+expected  = 54321
+
+[[asserts]]
+arguments = [2019]
+comment   = "Year example"
+expected  = 9210
+
+[[asserts]]
+arguments = [10200]
+comment   = "With zeros"
+expected  = 21000
+
+[[asserts]]
+arguments = [9876]
+comment   = "Four descending"
+expected  = 9876
+
+[[asserts]]
+arguments = [1234]
+comment   = "Four ascending"
+expected  = 4321
+
+[[asserts]]
+arguments = [505050]
+comment   = "Alternating zeros"
+expected  = 555000
+
+[[asserts]]
+arguments = [888888]
+comment   = "All eights"
+expected  = 888888
+
+[[asserts]]
+arguments = [102030]
+comment   = "Pattern with zeros"
+expected  = 321000
+
+[[asserts]]
+arguments = [7654]
+comment   = "Four digits descending"
+expected  = 7654
+
+[[asserts]]
+arguments = [8523]
+comment   = "Random four digits"
+expected  = 8532
+
+[[asserts]]
+arguments = [90807]
+comment   = "Five with zeros"
+expected  = 98700
+
+[[asserts]]
+arguments = [777777]
+comment   = "All sevens"
+expected  = 777777
+
+[[asserts]]
+arguments = [13579]
+comment   = "Odd digits ascending"
+expected  = 97531
+
+[[asserts]]
+arguments = [24680]
+comment   = "Even digits ascending"
+expected  = 86420
+
+[[asserts]]
+arguments = [100000]
+comment   = "One with zeros"
+expected  = 100000
+
+[[asserts]]
+arguments = [999999]
+comment   = "Six nines"
+expected  = 999999
+
+[[asserts]]
+arguments = [192837]
+comment   = "Random six digits"
+expected  = 987321
+
+[[asserts]]
+arguments = [564738]
+comment   = "Another random six"
+expected  = 876543
+
+[[asserts]]
+arguments = [1000000000]
+comment   = "One billion"
+expected  = 1000000000
+
+[[asserts]]
+arguments = [987654320]
+comment   = "Nine digits with zero"
+expected  = 987654320
+
+[[asserts]]
+arguments = [123456789]
+comment   = "All digits ascending"
+expected  = 987654321

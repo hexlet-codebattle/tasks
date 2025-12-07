@@ -1,0 +1,196 @@
+level             = "easy"
+name              = "create_picture"
+tags              = ["collections", "strings", "graphics"]
+time_to_solve_sec = 300
+
+description_en = """
+Given an array of words, write a function that returns a picture (array) with borders made from asterisks `*` using the longest words.
+"""
+
+description_ru = """
+Дан массив слов, напишите функцию, которая возвращает картинку (массив) с границей из звездочек `*`, внутри границы находятся самые длинные слова.
+"""
+
+limits = """
+- $2 \\leq \\text{len}(\\text{words}) \\leq 50$
+- $1 \\leq \\text{len}(\\text{words}[i]) \\leq 30$
+"""
+
+solution = """
+def solution(words: list) -> list:
+    max_len = max(len(w) for w in words)
+    longest = [w for w in words if len(w) == max_len]
+    border = '*' * (max_len + 2)
+    result = [border]
+    for word in longest:
+        result.append('*' + word + '*')
+    result.append(border)
+    return result
+"""
+
+examples = """
+solution(["a", "bc", "def"]) == ["*****", "*def*", "*****"]
+solution(["some", "word", "foo", "bar"]) == ["******", "*some*", "*word*", "******"]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["a", "bc", "def"]]
+comment   = "One longest word"
+expected  = ["*****", "*def*", "*****"]
+
+[[asserts]]
+arguments = [["some", "word", "foo", "bar"]]
+comment   = "Two longest words"
+expected  = ["******", "*some*", "*word*", "******"]
+
+[[asserts]]
+arguments = [["hi", "hello"]]
+comment   = "Two words one longer"
+expected  = ["*******", "*hello*", "*******"]
+
+[[asserts]]
+arguments = [["cat", "dog", "pig"]]
+comment   = "All same length"
+expected  = ["*****", "*cat*", "*dog*", "*pig*", "*****"]
+
+[[asserts]]
+arguments = [["x"]]
+comment   = "Single character"
+expected  = ["***", "*x*", "***"]
+
+[[asserts]]
+arguments = [["test"]]
+comment   = "Single word"
+expected  = ["******", "*test*", "******"]
+
+[[asserts]]
+arguments = [["a", "bb", "ccc", "dd", "e"]]
+comment   = "One longest three chars"
+expected  = ["*****", "*ccc*", "*****"]
+
+[[asserts]]
+arguments = [["red", "blue", "green"]]
+comment   = "Green is longest"
+expected  = ["*******", "*green*", "*******"]
+
+[[asserts]]
+arguments = [["short", "longer", "longest"]]
+comment   = "Increasing lengths"
+expected  = ["*********", "*longest*", "*********"]
+
+[[asserts]]
+arguments = [["apple", "grape", "melon"]]
+comment   = "Two five letter words"
+expected  = ["*******", "*apple*", "*grape*", "*melon*", "*******"]
+
+[[asserts]]
+arguments = [["one", "two", "three", "four"]]
+comment   = "Three and four are longest"
+expected  = ["*******", "*three*", "*******"]
+
+[[asserts]]
+arguments = [["aa", "bb", "cc"]]
+comment   = "All two chars"
+expected  = ["****", "*aa*", "*bb*", "*cc*", "****"]
+
+[[asserts]]
+arguments = [["zoo", "elephant"]]
+comment   = "Elephant longest"
+expected  = ["**********", "*elephant*", "**********"]
+
+[[asserts]]
+arguments = [["tiny", "small", "large", "huge"]]
+comment   = "Two five letter words"
+expected  = ["*******", "*small*", "*large*", "*******"]
+
+[[asserts]]
+arguments = [["run", "jump", "walk", "fly"]]
+comment   = "Jump and walk longest"
+expected  = ["******", "*jump*", "*walk*", "******"]
+
+[[asserts]]
+arguments = [["code", "program"]]
+comment   = "Program longest"
+expected  = ["*********", "*program*", "*********"]
+
+[[asserts]]
+arguments = [["sun", "moon", "star", "sky"]]
+comment   = "Moon and star longest"
+expected  = ["******", "*moon*", "*star*", "******"]
+
+[[asserts]]
+arguments = [["up", "down", "left", "right"]]
+comment   = "Right is longest"
+expected  = ["*******", "*right*", "*******"]
+
+[[asserts]]
+arguments = [["a", "ab", "abc", "abcd"]]
+comment   = "Increasing sequence"
+expected  = ["******", "*abcd*", "******"]
+
+[[asserts]]
+arguments = [["hello", "world"]]
+comment   = "Both five chars"
+expected  = ["*******", "*hello*", "*world*", "*******"]
+
+[[asserts]]
+arguments = [["car", "bus", "train", "bike"]]
+comment   = "Train longest"
+expected  = ["*******", "*train*", "*******"]
+
+[[asserts]]
+arguments = [["red", "blue", "cyan", "gray"]]
+comment   = "Blue cyan gray longest"
+expected  = ["******", "*blue*", "*cyan*", "*gray*", "******"]
+
+[[asserts]]
+arguments = [["fast", "slow", "quick"]]
+comment   = "Three five letter words"
+expected  = ["*******", "*quick*", "*******"]
+
+[[asserts]]
+arguments = [["pen", "pencil", "marker"]]
+comment   = "Pencil and marker longest"
+expected  = ["********", "*pencil*", "*marker*", "********"]
+
+[[asserts]]
+arguments = [["ice", "fire", "water", "earth"]]
+comment   = "Water and earth longest"
+expected  = ["*******", "*water*", "*earth*", "*******"]
+
+[[asserts]]
+arguments = [["day", "week", "month", "year"]]
+comment   = "Month longest"
+expected  = ["*******", "*month*", "*******"]
+
+[[asserts]]
+arguments = [["hot", "cold", "warm", "cool"]]
+comment   = "All four chars"
+expected  = ["******", "*cold*", "*warm*", "*cool*", "******"]
+
+[[asserts]]
+arguments = [["dog", "cat", "mouse", "rat"]]
+comment   = "Mouse longest"
+expected  = ["*******", "*mouse*", "*******"]
+
+[[asserts]]
+arguments = [["first", "second", "third"]]
+comment   = "Second longest"
+expected  = ["********", "*second*", "********"]
+
+[[asserts]]
+arguments = [["alpha", "beta", "gamma", "delta"]]
+comment   = "Alpha gamma delta longest"
+expected  = ["*******", "*alpha*", "*gamma*", "*delta*", "*******"]

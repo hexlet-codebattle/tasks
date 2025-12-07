@@ -1,0 +1,190 @@
+level             = "easy"
+name              = "function_max"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Implement the function $f(x)$ defined by:
+
+$$
+f(x) =
+\\begin{cases}
+x^{2}, & -2 \\le x < 2,\\\\
+x^{2} + 4x + 5, & x \\ge 2,\\\\
+4, & x < -2.
+\\end{cases}
+$$
+
+Using this function for $n$ given numbers, compute all the values $f(x)$.
+Among the computed values, find the largest one.
+"""
+
+description_ru = """
+Создайте функцию $f(x)$, определённую следующим образом:
+
+$$
+f(x) =
+\\begin{cases}
+x^{2}, & -2 \\le x < 2,\\\\
+x^{2} + 4x + 5, & x \\ge 2,\\\\
+4, & x < -2.
+\\end{cases}
+$$
+
+Примените эту функцию к целочисленному массиву из $n$ элементов и вычислите все значения $f(x)$.
+Среди полученных значений найдите наибольшее.
+"""
+
+limits = """
+- $-100 \\leq \\text{arr}[i] \\leq 100$
+- $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
+"""
+
+solution = """
+def solution(arr):
+    def f(x):
+        if -2 <= x < 2:
+            return x * x
+        elif x >= 2:
+            return x * x + 4 * x + 5
+        else:
+            return 4
+    return max(f(x) for x in arr)
+"""
+
+examples = """
+solution([1, -2, 0, -1]) == 4
+solution([6, -12, 22]) == 577
+solution([-1, -2, -100, 0]) == 4
+solution([3, 17, 11, 10, 5]) == 362
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, -2, 0, -1]]
+expected  = 4
+
+[[asserts]]
+arguments = [[3, 17, 11, 10, 5]]
+expected  = 362
+
+[[asserts]]
+arguments = [[6, -12, 22]]
+expected  = 577
+
+[[asserts]]
+arguments = [[-1, -2, -100, 0]]
+expected  = 4
+
+[[asserts]]
+arguments = [[2]]
+expected  = 17
+
+[[asserts]]
+arguments = [[5]]
+expected  = 50
+
+[[asserts]]
+arguments = [[10]]
+expected  = 145
+
+[[asserts]]
+arguments = [[-3]]
+expected  = 4
+
+[[asserts]]
+arguments = [[-10]]
+expected  = 4
+
+[[asserts]]
+arguments = [[0]]
+expected  = 0
+
+[[asserts]]
+arguments = [[1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[-1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[2, 3, 4]]
+expected  = 37
+
+[[asserts]]
+arguments = [[0, 1, -1, -2]]
+expected  = 4
+
+[[asserts]]
+arguments = [[7, 8, 9]]
+expected  = 122
+
+[[asserts]]
+arguments = [[-5, -6, -7]]
+expected  = 4
+
+[[asserts]]
+arguments = [[15, 20, 25]]
+expected  = 730
+
+[[asserts]]
+arguments = [[1, 1, 1, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[-2, -1, 0, 1]]
+expected  = 4
+
+[[asserts]]
+arguments = [[2, 5, 10, 15]]
+expected  = 290
+
+[[asserts]]
+arguments = [[3, 6, 9, 12]]
+expected  = 197
+
+[[asserts]]
+arguments = [[-20, -10, 0, 10]]
+expected  = 145
+
+[[asserts]]
+arguments = [[50]]
+expected  = 2705
+
+[[asserts]]
+arguments = [[100]]
+expected  = 10405
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+expected  = 0
+
+[[asserts]]
+arguments = [[-100, 100]]
+expected  = 10405
+
+[[asserts]]
+arguments = [[4, 5, 6, 7]]
+expected  = 82
+
+[[asserts]]
+arguments = [[11, 12, 13]]
+expected  = 226
+
+[[asserts]]
+arguments = [[-50, 50]]
+expected  = 2705
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+expected  = 50

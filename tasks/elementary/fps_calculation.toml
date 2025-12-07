@@ -1,0 +1,161 @@
+level             = "elementary"
+name              = "fps_calculation"
+tags              = ["graphics"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that returns the number of frames shown in a given number of minutes for a certain FPS. Note: FPS stands for "frames per second" and it's the number of frames a computer screen shows every second.
+"""
+
+description_ru = """
+Создайте функцию, которая рассчитывает количество кадров, показанных в заданном количестве минут для определенного FPS. Примечание: FPS означает "количество кадров в секунду" и это количество кадров, показываемых каждую секунду на экране компьютера.
+"""
+
+limits = """
+- $1 \\leq \\text{minutes} \\leq 1000$
+- $1 \\leq \\text{fps} \\leq 240$
+"""
+
+solution = """
+def solution(minutes, fps):
+    return minutes * fps * 60
+"""
+
+examples = """
+solution(1, 1) == 60
+solution(10, 1) == 600
+solution(10, 25) == 15000
+"""
+
+[[input_signature]]
+argument_name = "minutes"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "fps"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 1]
+expected  = 60
+
+[[asserts]]
+arguments = [10, 1]
+expected  = 600
+
+[[asserts]]
+arguments = [10, 25]
+expected  = 15000
+
+[[asserts]]
+arguments = [1, 30]
+expected  = 1800
+
+[[asserts]]
+arguments = [1, 60]
+expected  = 3600
+
+[[asserts]]
+arguments = [2, 30]
+expected  = 3600
+
+[[asserts]]
+arguments = [5, 60]
+expected  = 18000
+
+[[asserts]]
+arguments = [1, 120]
+expected  = 7200
+
+[[asserts]]
+arguments = [3, 24]
+expected  = 4320
+
+[[asserts]]
+arguments = [1, 144]
+expected  = 8640
+
+[[asserts]]
+arguments = [10, 60]
+expected  = 36000
+
+[[asserts]]
+arguments = [15, 30]
+expected  = 27000
+
+[[asserts]]
+arguments = [20, 25]
+expected  = 30000
+
+[[asserts]]
+arguments = [1, 240]
+expected  = 14400
+
+[[asserts]]
+arguments = [5, 120]
+expected  = 36000
+
+[[asserts]]
+arguments = [2, 144]
+expected  = 17280
+
+[[asserts]]
+arguments = [30, 60]
+expected  = 108000
+
+[[asserts]]
+arguments = [60, 30]
+expected  = 108000
+
+[[asserts]]
+arguments = [1, 90]
+expected  = 5400
+
+[[asserts]]
+arguments = [10, 120]
+expected  = 72000
+
+[[asserts]]
+arguments = [25, 24]
+expected  = 36000
+
+[[asserts]]
+arguments = [100, 60]
+expected  = 360000
+
+[[asserts]]
+arguments = [50, 30]
+expected  = 90000
+
+[[asserts]]
+arguments = [7, 60]
+expected  = 25200
+
+[[asserts]]
+arguments = [12, 25]
+expected  = 18000
+
+[[asserts]]
+arguments = [8, 144]
+expected  = 69120
+
+[[asserts]]
+arguments = [4, 240]
+expected  = 57600
+
+[[asserts]]
+arguments = [3, 100]
+expected  = 18000
+
+[[asserts]]
+arguments = [6, 50]
+expected  = 18000
+
+[[asserts]]
+arguments = [9, 40]
+expected  = 21600

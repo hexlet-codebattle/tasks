@@ -1,0 +1,134 @@
+level             = "hard"
+name              = "four_is_magic"
+tags              = ["strings", "games"]
+time_to_solve_sec = 900
+
+description_en = """
+Write a function that takes an integer number and returns an English text sequence starting with the English cardinal representation of that integer, the word 'is' and then the English cardinal representation of the count of characters that made up the first word, followed by a comma. Continue the sequence by using the previous count word as the first word of the next phrase, append 'is' and the cardinal count of the letters in that word. Continue until you reach four. Since four has four characters, finish by adding the words 'four is magic' and a period. All integers will eventually wind up at four. Input number is not greater than $20$.
+"""
+
+description_ru = """
+Напишите функцию, которая берет целое число и возвращает текстовую последовательность на английском языке, начинающуюся со словесного представления исходного числа, далее следует слово 'is' и словесное представление количества букв получившегося первого слова, за которым следует запятая. Продолжите последовательность используя предыдущее получившееся слово как первое, добавьте 'is' и словесное представление количества букв получившегося слова. Продолжайте пока представление количества символов не станет равным 'four'. Так как 'four' состоит из четырех символов, завершите последовательность добавив слова 'four is magic' и точку. Все целые числа в конечном итоге сойдутся к четырём. Гарантируется, что переданное число не больше $20$.
+"""
+
+limits = """
+- $0 \\leq n \\leq 20$
+"""
+
+solution = """
+def solution(num):
+    words = ["zero", "one", "two", "three", "four", "five", "six", "seven",
+             "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+             "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+
+    def stringify(n):
+        if n == 4:
+            return "four is magic."
+        word = words[n]
+        count = len(word)
+        return f"{word} is {words[count]}, {stringify(count)}"
+
+    return stringify(num).capitalize()
+"""
+
+examples = """
+solution(4) == "Four is magic."
+solution(0) == "Zero is four, four is magic."
+solution(5) == "Five is four, four is magic."
+solution(3) == "Three is five, five is four, four is magic."
+solution(10) == "Ten is three, three is five, five is four, four is magic."
+solution(15) == "Fifteen is seven, seven is five, five is four, four is magic."
+solution(20) == "Twenty is six, six is three, three is five, five is four, four is magic."
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [0]
+expected  = "Zero is four, four is magic."
+
+[[asserts]]
+arguments = [4]
+expected  = "Four is magic."
+
+[[asserts]]
+arguments = [3]
+expected  = "Three is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [5]
+expected  = "Five is four, four is magic."
+
+[[asserts]]
+arguments = [10]
+expected  = "Ten is three, three is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [15]
+expected  = "Fifteen is seven, seven is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [20]
+expected  = "Twenty is six, six is three, three is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [1]
+expected  = "One is three, three is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [2]
+expected  = "Two is three, three is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [6]
+expected  = "Six is three, three is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [7]
+expected  = "Seven is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [8]
+expected  = "Eight is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [9]
+expected  = "Nine is four, four is magic."
+
+[[asserts]]
+arguments = [11]
+expected  = "Eleven is six, six is three, three is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [12]
+expected  = "Twelve is six, six is three, three is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [13]
+expected  = "Thirteen is eight, eight is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [14]
+expected  = "Fourteen is eight, eight is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [16]
+expected  = "Sixteen is seven, seven is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [17]
+expected  = "Seventeen is nine, nine is four, four is magic."
+
+[[asserts]]
+arguments = [18]
+expected  = "Eighteen is eight, eight is five, five is four, four is magic."
+
+[[asserts]]
+arguments = [19]
+expected  = "Nineteen is eight, eight is five, five is four, four is magic."

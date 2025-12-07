@@ -1,0 +1,154 @@
+level             = "elementary"
+name              = "fizzbuzz"
+tags              = ["strings", "games"]
+time_to_solve_sec = 120
+
+description_en = """
+If a number is divisible by $3$, return "Fizz". If a number is divisible by $5$, return "Buzz". If a number is divisible by $3$ and $5$, return "FizzBuzz". Otherwise, return an empty string.
+"""
+
+description_ru = """
+Если число делится на $3$, верните "Fizz". Если число делится на $5$, верните "Buzz". Если число делится на $3$ и $5$, верните "FizzBuzz". В ином случае верните пустую строку.
+"""
+
+solution = """
+def solution(n):
+    return ("Fizz" if n % 3 == 0 else "") + ("Buzz" if n % 5 == 0 else "")
+"""
+
+examples = """
+solution(7) == ""
+solution(3) == "Fizz"
+solution(5) == "Buzz"
+solution(50) == "Buzz"
+solution(15) == "FizzBuzz"
+solution(150) == "FizzBuzz"
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [3]
+expected  = "Fizz"
+
+[[asserts]]
+arguments = [5]
+expected  = "Buzz"
+
+[[asserts]]
+arguments = [15]
+expected  = "FizzBuzz"
+
+[[asserts]]
+arguments = [50]
+expected  = "Buzz"
+
+[[asserts]]
+arguments = [150]
+expected  = "FizzBuzz"
+
+[[asserts]]
+arguments = [5175]
+expected  = "FizzBuzz"
+
+[[asserts]]
+arguments = [1]
+expected  = ""
+
+[[asserts]]
+arguments = [2]
+expected  = ""
+
+[[asserts]]
+arguments = [4]
+expected  = ""
+
+[[asserts]]
+arguments = [6]
+expected  = "Fizz"
+
+[[asserts]]
+arguments = [9]
+expected  = "Fizz"
+
+[[asserts]]
+arguments = [10]
+expected  = "Buzz"
+
+[[asserts]]
+arguments = [12]
+expected  = "Fizz"
+
+[[asserts]]
+arguments = [20]
+expected  = "Buzz"
+
+[[asserts]]
+arguments = [30]
+expected  = "FizzBuzz"
+
+[[asserts]]
+arguments = [45]
+expected  = "FizzBuzz"
+
+[[asserts]]
+arguments = [60]
+expected  = "FizzBuzz"
+
+[[asserts]]
+arguments = [7]
+expected  = ""
+
+[[asserts]]
+arguments = [11]
+expected  = ""
+
+[[asserts]]
+arguments = [13]
+expected  = ""
+
+[[asserts]]
+arguments = [21]
+expected  = "Fizz"
+
+[[asserts]]
+arguments = [25]
+expected  = "Buzz"
+
+[[asserts]]
+arguments = [27]
+expected  = "Fizz"
+
+[[asserts]]
+arguments = [33]
+expected  = "Fizz"
+
+[[asserts]]
+arguments = [35]
+expected  = "Buzz"
+
+[[asserts]]
+arguments = [75]
+expected  = "FizzBuzz"
+
+[[asserts]]
+arguments = [90]
+expected  = "FizzBuzz"
+
+[[asserts]]
+arguments = [100]
+expected  = "Buzz"
+
+[[asserts]]
+arguments = [99]
+expected  = "Fizz"
+
+[[asserts]]
+arguments = [105]
+expected  = "FizzBuzz"

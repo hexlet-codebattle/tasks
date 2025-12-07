@@ -1,0 +1,154 @@
+level             = "easy"
+name              = "first_repeating_element"
+tags              = ["collections"]
+time_to_solve_sec = 300
+
+description_en = """
+Given an array of integers, find the first repeating element in it. If nothing is found return `-1`.
+"""
+
+description_ru = """
+Дан массив целых чисел, найдите первый повторяющийся в нём элемент. Если такого элемента нет, верните `-1`.
+"""
+
+limits = """
+- $2 \\leq \\text{len}(\\text{arr}) \\leq 100$
+"""
+
+solution = """
+def solution(arr):
+    counts = {}
+    for num in arr:
+        counts[num] = counts.get(num, 0) + 1
+
+    for num in arr:
+        if counts[num] > 1:
+            return num
+    return -1
+"""
+
+examples = """
+solution([2, 20, 8, 7, 16]) == -1
+solution([8, 8, 7, 4, 9, 4, 7]) == 8
+solution([6, 10, 7, 4, 9, 4, 7]) == 7
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+# asserts (все числа положительные < 100)
+
+[[asserts]]
+arguments = [[10, 5, 3, 4, 3, 5, 6]]
+expected  = 5
+
+[[asserts]]
+arguments = [[6, 10, 7, 4, 9, 4, 7]]
+expected  = 7
+
+[[asserts]]
+arguments = [[8, 8, 7, 4, 9, 4, 7]]
+expected  = 8
+
+[[asserts]]
+arguments = [[2, 20, 8, 7, 16]]
+expected  = -1
+
+[[asserts]]
+arguments = [[3, 9, 4, 11, 15, 14, 11, 1, 1, 7, 7, 8]]
+expected  = 11
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+expected  = -1
+
+[[asserts]]
+arguments = [[1, 1, 1, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 4, 3, 2, 1, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[10, 20, 30, 10]]
+expected  = 10
+
+[[asserts]]
+arguments = [[7, 8, 9, 7, 8]]
+expected  = 7
+
+[[asserts]]
+arguments = [[50, 60, 50]]
+expected  = 50
+
+[[asserts]]
+arguments = [[5, 5, 5]]
+expected  = 5
+
+[[asserts]]
+arguments = [[15, 16, 17, 15, 16]]
+expected  = 15
+
+[[asserts]]
+arguments = [[2, 3, 4, 5, 6, 7, 8, 9, 10, 2]]
+expected  = 2
+
+[[asserts]]
+arguments = [[50, 60, 70, 80, 90, 50]]
+expected  = 50
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+expected  = -1
+
+[[asserts]]
+arguments = [[11, 22, 33, 44, 55, 66]]
+expected  = -1
+
+[[asserts]]
+arguments = [[3, 3]]
+expected  = 3
+
+[[asserts]]
+arguments = [[25, 25, 25]]
+expected  = 25
+
+[[asserts]]
+arguments = [[5, 10, 15, 20, 25, 30, 35, 5]]
+expected  = 5
+
+[[asserts]]
+arguments = [[42, 42, 42]]
+expected  = 42
+
+[[asserts]]
+arguments = [[1, 2, 3, 2, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[7, 6, 5, 4, 3, 2, 1, 7]]
+expected  = 7
+
+[[asserts]]
+arguments = [[25, 50, 75, 25]]
+expected  = 25
+
+[[asserts]]
+arguments = [[9, 8, 7, 6, 5, 4, 3, 2, 1, 9]]
+expected  = 9
+
+[[asserts]]
+arguments = [[33, 44, 55, 66, 77, 88, 99]]
+expected  = -1

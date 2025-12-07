@@ -1,0 +1,162 @@
+level             = "easy"
+name              = "garland_word"
+tags              = ["strings", "games"]
+time_to_solve_sec = 300
+
+description_en = """
+Write function that, given a lowercase word, returns the degree of the word if it's a garland word and $0$ otherwise. A garland word is one that starts and ends with the same $N$ letters in the same order, for some $N$ greater than $0$, but less that the length of the word.
+"""
+
+description_ru = """
+Напишите функцию, которая принимает слово в нижнем регистре, и возвращает степень слова, если это слово-гирлянда и $0$ в противном случае. Слово-гирлянда - такое слово, которое начинается и заканчивается одними и теми же $N$ буквами расположенными в одном и том же порядке. $N$ больше $0$, но меньше длины слова.
+"""
+
+limits = """
+- $2 \\leq \\text{len}(\\text{word}) \\leq 50$
+"""
+
+solution = """
+def solution(word):
+    for n in range(len(word) - 1, 0, -1):
+        if word[:n] == word[-n:]:
+            return n
+    return 0
+"""
+
+examples = """
+solution("aab") == 0
+solution("onion") == 2
+solution("ceramic") == 1
+solution("alfalfa") == 4
+solution("programmer") == 0
+solution("abracadabra") == 4
+solution("undergrounder") == 5
+"""
+
+[[input_signature]]
+argument_name = "word"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["onion"]
+expected  = 2
+
+[[asserts]]
+arguments = ["aab"]
+expected  = 0
+
+[[asserts]]
+arguments = ["ceramic"]
+expected  = 1
+
+[[asserts]]
+arguments = ["programmer"]
+expected  = 0
+
+[[asserts]]
+arguments = ["alfalfa"]
+expected  = 4
+
+[[asserts]]
+arguments = ["abracadabra"]
+expected  = 4
+
+[[asserts]]
+arguments = ["undergrounder"]
+expected  = 5
+
+[[asserts]]
+arguments = ["aa"]
+expected  = 1
+
+[[asserts]]
+arguments = ["ab"]
+expected  = 0
+
+[[asserts]]
+arguments = ["aba"]
+expected  = 1
+
+[[asserts]]
+arguments = ["abab"]
+expected  = 2
+
+[[asserts]]
+arguments = ["abc"]
+expected  = 0
+
+[[asserts]]
+arguments = ["abcabc"]
+expected  = 3
+
+[[asserts]]
+arguments = ["testtest"]
+expected  = 4
+
+[[asserts]]
+arguments = ["hello"]
+expected  = 0
+
+[[asserts]]
+arguments = ["papa"]
+expected  = 2
+
+[[asserts]]
+arguments = ["abcdefabc"]
+expected  = 3
+
+[[asserts]]
+arguments = ["programming"]
+expected  = 0
+
+[[asserts]]
+arguments = ["banana"]
+expected  = 0
+
+[[asserts]]
+arguments = ["level"]
+expected  = 1
+
+[[asserts]]
+arguments = ["racecar"]
+expected  = 1
+
+[[asserts]]
+arguments = ["radar"]
+expected  = 1
+
+[[asserts]]
+arguments = ["noon"]
+expected  = 1
+
+[[asserts]]
+arguments = ["kayak"]
+expected  = 1
+
+[[asserts]]
+arguments = ["refer"]
+expected  = 1
+
+[[asserts]]
+arguments = ["xyzxyz"]
+expected  = 3
+
+[[asserts]]
+arguments = ["abcdefgh"]
+expected  = 0
+
+[[asserts]]
+arguments = ["testingtesting"]
+expected  = 7
+
+[[asserts]]
+arguments = ["abcabcabc"]
+expected  = 6
+
+[[asserts]]
+arguments = ["python"]
+expected  = 0

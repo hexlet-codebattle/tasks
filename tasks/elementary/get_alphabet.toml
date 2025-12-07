@@ -1,0 +1,152 @@
+level             = "elementary"
+name              = "get_alphabet"
+tags              = ["training", "strings"]
+time_to_solve_sec = 150
+
+description_en = """
+Return an alphabet of a given string; the given string is represented as an array of characters. An alphabet of a string is the set of all distinct characters used in that string. The resulting string goes in order from $a$ to $z$.
+"""
+
+description_ru = """
+Верните алфавит переданной строки; строка представляет собой массив символов. Алфавит строки - это набор всех различных символов, присутствующих в строке. Символы результирующей строки расположены в порядке от $a$ до $z$.
+"""
+
+solution = """
+def solution(s):
+    return "".join(sorted(set(s)))
+"""
+
+examples = """
+solution("4123214") == "1234"
+solution("asfsfdss") == "adfs"
+solution("acgtgcgagtg") == "acgt"
+solution("+++[><<]<-.") == "+-.<>[]"
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["asfsfdss"]
+expected  = "adfs"
+
+[[asserts]]
+arguments = ["acgtgcgagtg"]
+expected  = "acgt"
+
+[[asserts]]
+arguments = ["4123214"]
+expected  = "1234"
+
+[[asserts]]
+arguments = ["+++[><<]<-."]
+expected  = "+-.<>[]"
+
+[[asserts]]
+arguments = ["aaa"]
+expected  = "a"
+
+[[asserts]]
+arguments = ["abc"]
+expected  = "abc"
+
+[[asserts]]
+arguments = ["zzaabb"]
+expected  = "abz"
+
+[[asserts]]
+arguments = ["hello"]
+expected  = "ehlo"
+
+[[asserts]]
+arguments = ["world"]
+expected  = "dlorw"
+
+[[asserts]]
+arguments = ["programming"]
+expected  = "agimnopr"
+
+[[asserts]]
+arguments = ["aabbccddee"]
+expected  = "abcde"
+
+[[asserts]]
+arguments = ["12345"]
+expected  = "12345"
+
+[[asserts]]
+arguments = ["54321"]
+expected  = "12345"
+
+[[asserts]]
+arguments = ["999888777"]
+expected  = "789"
+
+[[asserts]]
+arguments = ["zyx"]
+expected  = "xyz"
+
+[[asserts]]
+arguments = ["aaabbbccc"]
+expected  = "abc"
+
+[[asserts]]
+arguments = ["test"]
+expected  = "est"
+
+[[asserts]]
+arguments = ["aardvark"]
+expected  = "adkrv"
+
+[[asserts]]
+arguments = ["banana"]
+expected  = "abn"
+
+[[asserts]]
+arguments = ["mississippi"]
+expected  = "imps"
+
+[[asserts]]
+arguments = ["abcdefghijklmnopqrstuvwxyz"]
+expected  = "abcdefghijklmnopqrstuvwxyz"
+
+[[asserts]]
+arguments = ["zyxwvutsrqponmlkjihgfedcba"]
+expected  = "abcdefghijklmnopqrstuvwxyz"
+
+[[asserts]]
+arguments = ["a"]
+expected  = "a"
+
+[[asserts]]
+arguments = ["aa"]
+expected  = "a"
+
+[[asserts]]
+arguments = ["abba"]
+expected  = "ab"
+
+[[asserts]]
+arguments = ["aAbBcC"]
+expected  = "ABCabc"
+
+[[asserts]]
+arguments = ["123abc321"]
+expected  = "123abc"
+
+[[asserts]]
+arguments = ["!@#$%"]
+expected  = "!#$%@"
+
+[[asserts]]
+arguments = ["aBcDeFgH"]
+expected  = "BDFHaceg"
+
+[[asserts]]
+arguments = ["00112233"]
+expected  = "0123"

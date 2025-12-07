@@ -1,0 +1,166 @@
+level             = "medium"
+name              = "find_palindrome"
+tags              = ["strings"]
+time_to_solve_sec = 600
+
+description_en = """
+A palindrome is a string that is written the same forward as it is in reverse. Write a function to return the longest palindrome in a given string.
+"""
+
+description_ru = """
+Палиндром - слово или фраза, которые одинаково читаются слева направо и справа налево. Создайте функцию которая находит наидлиннейший палиндром в строке.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(s) \\leq 100$
+"""
+
+solution = """
+def solution(s):
+    def expand(l, r):
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            l, r = l - 1, r + 1
+        return s[l+1:r]
+
+    longest = ""
+    for i in range(len(s)):
+        for p in [expand(i, i), expand(i, i+1)]:
+            if len(p) > len(longest):
+                longest = p
+    return longest
+"""
+
+examples = """
+solution("abba") == "abba"
+solution("xyzzy") == "yzzy"
+solution("abacabad") == "abacaba"
+solution("bartarcarracecarbartar") == "racecar"
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["xyzzy"]
+expected  = "yzzy"
+
+[[asserts]]
+arguments = ["afbbbfjdjklgdfdhfdkjfffhhfffjkdfhdhkyejejfjkd"]
+expected  = "dhfdkjfffhhfffjkdfhd"
+
+[[asserts]]
+arguments = ["bartarcarracecarbartar"]
+expected  = "racecar"
+
+[[asserts]]
+arguments = ["3.1415926535897932384626433832795028841971"]
+expected  = "46264"
+
+[[asserts]]
+arguments = ["abba"]
+expected  = "abba"
+
+[[asserts]]
+arguments = ["aa"]
+expected  = "aa"
+
+[[asserts]]
+arguments = ["aabbaa"]
+expected  = "aabbaa"
+
+[[asserts]]
+arguments = ["racecar"]
+expected  = "racecar"
+
+[[asserts]]
+arguments = ["noon"]
+expected  = "noon"
+
+[[asserts]]
+arguments = ["level"]
+expected  = "level"
+
+[[asserts]]
+arguments = ["abcdcba"]
+expected  = "abcdcba"
+
+[[asserts]]
+arguments = ["abacabad"]
+expected  = "abacaba"
+
+[[asserts]]
+arguments = ["forgeeksskeegfor"]
+expected  = "geeksskeeg"
+
+[[asserts]]
+arguments = ["madam"]
+expected  = "madam"
+
+[[asserts]]
+arguments = ["civic"]
+expected  = "civic"
+
+[[asserts]]
+arguments = ["radar"]
+expected  = "radar"
+
+[[asserts]]
+arguments = ["refer"]
+expected  = "refer"
+
+[[asserts]]
+arguments = ["rotator"]
+expected  = "rotator"
+
+[[asserts]]
+arguments = ["abccba"]
+expected  = "abccba"
+
+[[asserts]]
+arguments = ["123454321"]
+expected  = "123454321"
+
+[[asserts]]
+arguments = ["abaaba"]
+expected  = "abaaba"
+
+[[asserts]]
+arguments = ["abaxabaxabb"]
+expected  = "baxabaxab"
+
+[[asserts]]
+arguments = ["abacabadabacaba"]
+expected  = "abacabadabacaba"
+
+[[asserts]]
+arguments = ["kayak"]
+expected  = "kayak"
+
+[[asserts]]
+arguments = ["sagas"]
+expected  = "sagas"
+
+[[asserts]]
+arguments = ["abcddcba"]
+expected  = "abcddcba"
+
+[[asserts]]
+arguments = ["abccbazzwwzza"]
+expected  = "azzwwzza"
+
+[[asserts]]
+arguments = ["racecarxxyy"]
+expected  = "racecar"
+
+[[asserts]]
+arguments = ["xyzaabbaaxy"]
+expected  = "aabbaa"
+
+[[asserts]]
+arguments = ["testtt"]
+expected  = "ttt"

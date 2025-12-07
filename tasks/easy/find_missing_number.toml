@@ -1,0 +1,181 @@
+level             = "easy"
+name              = "find_missing_number"
+tags              = ["collections"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a sequence of integers from $1$ to $N$ in a random order. One of the numbers is missing (the others are found exactly once). $N$ is not known beforehand. Determine the missing number.
+"""
+
+description_ru = """
+Дана последовательность целых чисел от $1$ до $n$ в случайном порядке. Одно число отсутствует, $n$ заранее неизвестно. Найдите отсутствующее число.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
+"""
+
+solution = """
+def solution(arr):
+    n = len(arr) + 1
+    return n * (n + 1) // 2 - sum(arr)
+"""
+
+examples = """
+solution([1, 2, 3, 5]) == 4
+solution([1, 3, 4, 5]) == 2
+solution([2, 3, 4, 5]) == 1
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[2, 3, 4, 5]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 3, 4, 5]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3, 5]]
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 10]]
+expected  = 9
+
+[[asserts]]
+arguments = [[2]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 4]]
+expected  = 3
+
+[[asserts]]
+arguments = [[3, 1, 2, 5]]
+expected  = 4
+
+[[asserts]]
+arguments = [[5, 4, 3, 2, 1, 7]]
+expected  = 6
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 7, 8, 9, 10]]
+expected  = 6
+
+[[asserts]]
+arguments = [[10, 9, 8, 7, 6, 5, 4, 3, 2]]
+expected  = 1
+
+[[asserts]]
+arguments = [[2, 3, 4, 5, 6, 7, 8, 9, 10]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9]]
+expected  = 10
+
+[[asserts]]
+arguments = [[1, 3]]
+expected  = 2
+
+[[asserts]]
+arguments = [[4, 2, 1]]
+expected  = 3
+
+[[asserts]]
+arguments = [[5, 1, 3, 2]]
+expected  = 4
+
+[[asserts]]
+arguments = [[6, 5, 4, 3, 2]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 6]]
+expected  = 5
+
+[[asserts]]
+arguments = [[7, 6, 5, 4, 3, 2, 1]]
+expected  = 8
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7]]
+expected  = 8
+
+[[asserts]]
+arguments = [[8, 7, 6, 5, 4, 3, 1]]
+expected  = 2
+
+[[asserts]]
+arguments = [[2, 4, 6, 8, 10, 12, 11, 9, 7, 5, 3]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 3, 5, 7, 9, 11, 2, 4, 6, 8, 10]]
+expected  = 12
+
+[[asserts]]
+arguments = [[15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]
+expected  = 16
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]]
+expected  = 16
+
+[[asserts]]
+arguments = [
+  [
+    11,
+    1,
+    12,
+    2,
+    13,
+    3,
+    14,
+    4,
+    15,
+    5,
+    16,
+    6,
+    17,
+    7,
+    18,
+    8,
+    19,
+    9,
+    20,
+    10,
+  ],
+]
+expected = 21
+
+[[asserts]]
+arguments = [[3, 1]]
+expected  = 2
+
+[[asserts]]
+arguments = [[4, 3, 2]]
+expected  = 1
+
+[[asserts]]
+arguments = [[6, 4, 2, 1, 3]]
+expected  = 5
+
+[[asserts]]
+arguments = [[9, 8, 7, 6, 5, 4, 3, 2]]
+expected  = 1

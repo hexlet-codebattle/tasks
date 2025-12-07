@@ -1,0 +1,194 @@
+level             = "easy"
+name              = "excel_sheet_column_number"
+tags              = ["stdlib"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a column title (as it appears in an Excel sheet), return its corresponding column number.
+
+For example: $A \\rightarrow 1$, $B \\rightarrow 2$, $C \\rightarrow 3$, $\\ldots$, $Z \\rightarrow 26$, $AA \\rightarrow 27$, $AB \\rightarrow 28$
+"""
+
+description_ru = """
+Дано имя столбца (как оно отображается на странице Excel), верните соответствующий номер этого столбца.
+
+Например: $A \\rightarrow 1$, $B \\rightarrow 2$, $C \\rightarrow 3$, $\\ldots$, $Z \\rightarrow 26$, $AA \\rightarrow 27$, $AB \\rightarrow 28$
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{title}) \\leq 7$
+- $\\text{title} \\in \\{A{-}Z\\}^*$
+"""
+
+solution = """
+def solution(title: str) -> int:
+    result = 0
+    for char in title:
+        result = result * 26 + (ord(char) - ord('A') + 1)
+    return result
+"""
+
+examples = """
+solution("A") == 1
+solution("Z") == 26
+solution("YP") == 666
+solution("CPN") == 2458
+solution("AJHX") == 24568
+"""
+
+[[input_signature]]
+argument_name = "title"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["YP"]
+comment   = "Two letter column"
+expected  = 666
+
+[[asserts]]
+arguments = ["Z"]
+comment   = "Last single letter"
+expected  = 26
+
+[[asserts]]
+arguments = ["A"]
+comment   = "First column"
+expected  = 1
+
+[[asserts]]
+arguments = ["CPN"]
+comment   = "Three letter column"
+expected  = 2458
+
+[[asserts]]
+arguments = ["AJHX"]
+comment   = "Four letter column"
+expected  = 24568
+
+[[asserts]]
+arguments = ["B"]
+comment   = "Second column"
+expected  = 2
+
+[[asserts]]
+arguments = ["AA"]
+comment   = "First double A"
+expected  = 27
+
+[[asserts]]
+arguments = ["AB"]
+comment   = "Column AB"
+expected  = 28
+
+[[asserts]]
+arguments = ["AZ"]
+comment   = "Column AZ"
+expected  = 52
+
+[[asserts]]
+arguments = ["BA"]
+comment   = "Column BA"
+expected  = 53
+
+[[asserts]]
+arguments = ["ZZ"]
+comment   = "Double Z"
+expected  = 702
+
+[[asserts]]
+arguments = ["AAA"]
+comment   = "Triple A"
+expected  = 703
+
+[[asserts]]
+arguments = ["ABC"]
+comment   = "Column ABC"
+expected  = 731
+
+[[asserts]]
+arguments = ["XYZ"]
+comment   = "Column XYZ"
+expected  = 16900
+
+[[asserts]]
+arguments = ["C"]
+comment   = "Third column"
+expected  = 3
+
+[[asserts]]
+arguments = ["D"]
+comment   = "Fourth column"
+expected  = 4
+
+[[asserts]]
+arguments = ["E"]
+comment   = "Fifth column"
+expected  = 5
+
+[[asserts]]
+arguments = ["AC"]
+comment   = "Column AC"
+expected  = 29
+
+[[asserts]]
+arguments = ["AD"]
+comment   = "Column AD"
+expected  = 30
+
+[[asserts]]
+arguments = ["AE"]
+comment   = "Column AE"
+expected  = 31
+
+[[asserts]]
+arguments = ["BZ"]
+comment   = "Column BZ"
+expected  = 78
+
+[[asserts]]
+arguments = ["CA"]
+comment   = "Column CA"
+expected  = 79
+
+[[asserts]]
+arguments = ["ZA"]
+comment   = "Column ZA"
+expected  = 677
+
+[[asserts]]
+arguments = ["ZY"]
+comment   = "Column ZY"
+expected  = 701
+
+[[asserts]]
+arguments = ["AAB"]
+comment   = "Column AAB"
+expected  = 704
+
+[[asserts]]
+arguments = ["AAZ"]
+comment   = "Column AAZ"
+expected  = 728
+
+[[asserts]]
+arguments = ["ABA"]
+comment   = "Column ABA"
+expected  = 729
+
+[[asserts]]
+arguments = ["BAA"]
+comment   = "Column BAA"
+expected  = 1379
+
+[[asserts]]
+arguments = ["ZZZ"]
+comment   = "Triple Z"
+expected  = 18278
+
+[[asserts]]
+arguments = ["AJHZ"]
+expected  = 24570

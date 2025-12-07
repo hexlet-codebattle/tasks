@@ -1,0 +1,153 @@
+level             = "elementary"
+name              = "find_nemo"
+tags              = ["strings"]
+time_to_solve_sec = 120
+
+description_en = """
+You are given a string of words. You need to find the word `Nemo`, and return a string like this: "I found Nemo at [the order of the word you find nemo]!". If you can't find Nemo, return "I can't find Nemo :(".
+"""
+
+description_ru = """
+Создайте функцию, которая ищет `Nemo` в строке и если он был найден, возвращает "I found Nemo at [позиция Немо в строке]!". Если Немо не был найден, то верните "I can't find Nemo :(".
+"""
+
+solution = """
+def solution(sentence):
+    words = sentence.split()
+    return f"I found Nemo at {words.index('Nemo') + 1}!" if "Nemo" in words else "I can't find Nemo :("
+"""
+
+examples = """
+solution("Hi Nemo") == "I found Nemo at 2!"
+solution("Nemo is me") == "I found Nemo at 1!"
+solution("Hello world") == "I can't find Nemo :("
+solution("Nemo James Nemo") == "I found Nemo at 1!"
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Hello world"]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["Hi Nemo"]
+expected  = "I found Nemo at 2!"
+
+[[asserts]]
+arguments = ["Nemo James Nemo"]
+expected  = "I found Nemo at 1!"
+
+[[asserts]]
+arguments = ["Nemo is me"]
+expected  = "I found Nemo at 1!"
+
+[[asserts]]
+arguments = ["I am looking for Nemo"]
+expected  = "I found Nemo at 5!"
+
+[[asserts]]
+arguments = ["Where is Nemo hiding"]
+expected  = "I found Nemo at 3!"
+
+[[asserts]]
+arguments = ["No fish here"]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["Nemo"]
+expected  = "I found Nemo at 1!"
+
+[[asserts]]
+arguments = ["Finding Nemo"]
+expected  = "I found Nemo at 2!"
+
+[[asserts]]
+arguments = ["Hello"]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["Dory and Nemo"]
+expected  = "I found Nemo at 3!"
+
+[[asserts]]
+arguments = ["Marlin searches for Nemo"]
+expected  = "I found Nemo at 4!"
+
+[[asserts]]
+arguments = ["The clownfish Nemo lives in the ocean"]
+expected  = "I found Nemo at 3!"
+
+[[asserts]]
+arguments = [""]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["Nemo Nemo Nemo"]
+expected  = "I found Nemo at 1!"
+
+[[asserts]]
+arguments = ["One two three Nemo five"]
+expected  = "I found Nemo at 4!"
+
+[[asserts]]
+arguments = ["Fish tank coral"]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["Hello Nemo goodbye"]
+expected  = "I found Nemo at 2!"
+
+[[asserts]]
+arguments = ["Let me find Nemo now"]
+expected  = "I found Nemo at 4!"
+
+[[asserts]]
+arguments = ["Nemo swimming"]
+expected  = "I found Nemo at 1!"
+
+[[asserts]]
+arguments = ["Ocean Nemo"]
+expected  = "I found Nemo at 2!"
+
+[[asserts]]
+arguments = ["The adventure of Nemo begins"]
+expected  = "I found Nemo at 4!"
+
+[[asserts]]
+arguments = ["Just words no fish"]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["A B C Nemo"]
+expected  = "I found Nemo at 4!"
+
+[[asserts]]
+arguments = ["Test test test"]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["Looking everywhere for Nemo today"]
+expected  = "I found Nemo at 4!"
+
+[[asserts]]
+arguments = ["Random words here"]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["Start middle Nemo end"]
+expected  = "I found Nemo at 3!"
+
+[[asserts]]
+arguments = ["Where"]
+expected  = "I can't find Nemo :("
+
+[[asserts]]
+arguments = ["First second third fourth fifth Nemo"]
+expected  = "I found Nemo at 6!"

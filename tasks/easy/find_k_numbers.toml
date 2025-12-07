@@ -1,0 +1,163 @@
+level             = "easy"
+name              = "find_k_numbers"
+tags              = ["collections"]
+time_to_solve_sec = 250
+
+description_en = """
+Given an unsorted array of integers, find the Kth largest element.
+"""
+
+description_ru = """
+Дан неупорядоченный массив целых чисел. Найдите K-й наибольший элемент.
+"""
+
+limits = """
+- $1 \\leq k \\leq \\text{len}(\\text{arr}) \\leq 100$
+"""
+
+solution = """
+def solution(arr, k):
+    return sorted(arr, reverse=True)[k - 1]
+"""
+
+examples = """
+solution([1], 1) == 1
+solution([5, 5, 5, 5, 5], 1) == 5
+solution([1, 2, 3, 4, 5, 6], 2) == 5
+solution([3, 2, 1, 5, 6, 4], 4) == 3
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6], 2]
+expected  = 5
+
+[[asserts]]
+arguments = [[1], 1]
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 5, 5, 5, 5], 1]
+expected  = 5
+
+[[asserts]]
+arguments = [[3, 2, 1, 5, 6, 4], 4]
+expected  = 3
+
+[[asserts]]
+arguments = [[10, 20, 30], 1]
+expected  = 30
+
+[[asserts]]
+arguments = [[10, 20, 30], 2]
+expected  = 20
+
+[[asserts]]
+arguments = [[10, 20, 30], 3]
+expected  = 10
+
+[[asserts]]
+arguments = [[7, 10, 4, 3, 20, 15], 3]
+expected  = 10
+
+[[asserts]]
+arguments = [[100], 1]
+expected  = 100
+
+[[asserts]]
+arguments = [[1, 2], 1]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2], 2]
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 3, 9, 1, 7], 2]
+expected  = 7
+
+[[asserts]]
+arguments = [[5, 3, 9, 1, 7], 5]
+expected  = 1
+
+[[asserts]]
+arguments = [[15, 12, 18, 10, 20], 1]
+expected  = 20
+
+[[asserts]]
+arguments = [[15, 12, 18, 10, 20], 4]
+expected  = 12
+
+[[asserts]]
+arguments = [[8, 8, 8], 2]
+expected  = 8
+
+[[asserts]]
+arguments = [[2, 2, 2, 2], 3]
+expected  = 2
+
+[[asserts]]
+arguments = [[99, 1, 50], 2]
+expected  = 50
+
+[[asserts]]
+arguments = [[11, 22, 33, 44, 55], 3]
+expected  = 33
+
+[[asserts]]
+arguments = [[100, 90, 80, 70, 60], 1]
+expected  = 100
+
+[[asserts]]
+arguments = [[100, 90, 80, 70, 60], 5]
+expected  = 60
+
+[[asserts]]
+arguments = [[6, 5, 4, 3, 2, 1], 1]
+expected  = 6
+
+[[asserts]]
+arguments = [[6, 5, 4, 3, 2, 1], 6]
+expected  = 1
+
+[[asserts]]
+arguments = [[42, 17, 89, 63, 31], 3]
+expected  = 42
+
+[[asserts]]
+arguments = [[25, 25, 10, 10, 5], 1]
+expected  = 25
+
+[[asserts]]
+arguments = [[25, 25, 10, 10, 5], 3]
+expected  = 10
+
+[[asserts]]
+arguments = [[1, 1, 1, 2, 2, 2], 4]
+expected  = 1
+
+[[asserts]]
+arguments = [[9, 7, 5, 3, 1], 3]
+expected  = 5
+
+[[asserts]]
+arguments = [[13, 27, 18, 26], 2]
+expected  = 26
+
+[[asserts]]
+arguments = [[45, 23, 67, 12, 89, 34], 4]
+expected  = 34

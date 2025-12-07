@@ -1,0 +1,197 @@
+level             = "easy"
+name              = "factorial_trailing_zeroes"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Return the number of trailing zeroes in $n!$
+
+For example: $5! = 120$, the number of trailing zeros is $1$; $10! = 3628800$, the number of trailing zeros is $2$.
+"""
+
+description_ru = """
+Верните количество конечных нулей в $n!$
+
+Например: $5! = 120$ - число конечных нулей - $1$; $10! = 3628800$ - число конечных нулей - $2$.
+"""
+
+limits = """
+- $0 \\leq n \\leq 100$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    count = 0
+    i = 5
+    while i <= n:
+        count += n // i
+        i *= 5
+    return count
+"""
+
+examples = """
+solution(0) == 0
+solution(5) == 1
+solution(7) == 1
+solution(23) == 4
+solution(28) == 6
+solution(99) == 22
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [28]
+comment   = "Factorial of 28"
+expected  = 6
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero factorial"
+expected  = 0
+
+[[asserts]]
+arguments = [5]
+comment   = "Five factorial"
+expected  = 1
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven factorial"
+expected  = 1
+
+[[asserts]]
+arguments = [23]
+comment   = "Twenty-three factorial"
+expected  = 4
+
+[[asserts]]
+arguments = [99]
+comment   = "Ninety-nine factorial"
+expected  = 22
+
+[[asserts]]
+arguments = [1]
+comment   = "One factorial"
+expected  = 0
+
+[[asserts]]
+arguments = [2]
+comment   = "Two factorial"
+expected  = 0
+
+[[asserts]]
+arguments = [3]
+comment   = "Three factorial"
+expected  = 0
+
+[[asserts]]
+arguments = [4]
+comment   = "Four factorial"
+expected  = 0
+
+[[asserts]]
+arguments = [6]
+comment   = "Six factorial"
+expected  = 1
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten factorial"
+expected  = 2
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteen factorial"
+expected  = 3
+
+[[asserts]]
+arguments = [20]
+comment   = "Twenty factorial"
+expected  = 4
+
+[[asserts]]
+arguments = [25]
+comment   = "Twenty-five factorial"
+expected  = 6
+
+[[asserts]]
+arguments = [30]
+comment   = "Thirty factorial"
+expected  = 7
+
+[[asserts]]
+arguments = [35]
+comment   = "Thirty-five factorial"
+expected  = 8
+
+[[asserts]]
+arguments = [40]
+comment   = "Forty factorial"
+expected  = 9
+
+[[asserts]]
+arguments = [45]
+comment   = "Forty-five factorial"
+expected  = 10
+
+[[asserts]]
+arguments = [50]
+comment   = "Fifty factorial"
+expected  = 12
+
+[[asserts]]
+arguments = [55]
+comment   = "Fifty-five factorial"
+expected  = 13
+
+[[asserts]]
+arguments = [60]
+comment   = "Sixty factorial"
+expected  = 14
+
+[[asserts]]
+arguments = [65]
+comment   = "Sixty-five factorial"
+expected  = 15
+
+[[asserts]]
+arguments = [70]
+comment   = "Seventy factorial"
+expected  = 16
+
+[[asserts]]
+arguments = [75]
+comment   = "Seventy-five factorial"
+expected  = 18
+
+[[asserts]]
+arguments = [80]
+comment   = "Eighty factorial"
+expected  = 19
+
+[[asserts]]
+arguments = [85]
+comment   = "Eighty-five factorial"
+expected  = 20
+
+[[asserts]]
+arguments = [90]
+comment   = "Ninety factorial"
+expected  = 21
+
+[[asserts]]
+arguments = [95]
+comment   = "Ninety-five factorial"
+expected  = 22
+
+[[asserts]]
+arguments = [100]
+comment   = "One hundred factorial"
+expected  = 24

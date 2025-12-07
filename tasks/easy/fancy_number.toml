@@ -1,0 +1,187 @@
+level             = "easy"
+name              = "fancy_number"
+tags              = ["strings", "games"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a number, find whether it is fancy or not.
+
+A fancy number is one which when rotated $180$ degrees is the same.
+
+When rotated: $6$ becomes $9$, $9$ becomes $6$, and $8$, $1$, $0$ remain themselves (do not change).
+"""
+
+description_ru = """
+Дано число, определите причудливое оно или нет.
+
+Число является причудливым, если при развороте на $180$ градусов остается самим собой.
+
+При повороте: $6$ становится $9$, $9$ становится $6$, а $8$, $1$ и $0$ остаются сами собой (не меняются).
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{num\\_str}) \\leq 10$
+- $\\text{num\\_str} \\in \\{0, 1, 6, 8, 9\\}^*$
+"""
+
+solution = """
+def solution(num_str: str) -> bool:
+    mapping = {'0': '0', '1': '1', '6': '9', '8': '8', '9': '6'}
+    rotated = ''
+    for char in reversed(num_str):
+        if char not in mapping:
+            return False
+        rotated += mapping[char]
+    return rotated == num_str
+"""
+
+examples = """
+solution("96") == True
+solution("916") == True
+solution("996") == False
+solution("9081806") == True
+solution("9088806") == True
+"""
+
+[[input_signature]]
+argument_name = "num_str"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["9081806"]
+comment   = "Fancy seven digit"
+expected  = true
+
+[[asserts]]
+arguments = ["916"]
+comment   = "Fancy three digit"
+expected  = true
+
+[[asserts]]
+arguments = ["9088806"]
+comment   = "Fancy with eights"
+expected  = true
+
+[[asserts]]
+arguments = ["996"]
+comment   = "Not symmetric"
+expected  = false
+
+[[asserts]]
+arguments = ["96"]
+comment   = "Simple fancy pair"
+expected  = true
+
+[[asserts]]
+arguments = ["0"]
+comment   = "Single zero"
+expected  = true
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Single one"
+expected  = true
+
+[[asserts]]
+arguments = ["8"]
+comment   = "Single eight"
+expected  = true
+
+[[asserts]]
+arguments = ["6"]
+comment   = "Single six not fancy"
+expected  = false
+
+[[asserts]]
+arguments = ["9"]
+comment   = "Single nine not fancy"
+expected  = false
+
+[[asserts]]
+arguments = ["69"]
+comment   = "Sixty-nine fancy"
+expected  = true
+
+[[asserts]]
+arguments = ["88"]
+comment   = "Double eight"
+expected  = true
+
+[[asserts]]
+arguments = ["11"]
+comment   = "Double one"
+expected  = true
+
+[[asserts]]
+arguments = ["00"]
+comment   = "Double zero"
+expected  = true
+
+[[asserts]]
+arguments = ["101"]
+comment   = "One zero one"
+expected  = true
+
+[[asserts]]
+arguments = ["808"]
+comment   = "Eight zero eight"
+expected  = true
+
+[[asserts]]
+arguments = ["609"]
+comment   = "Six zero nine"
+expected  = true
+
+[[asserts]]
+arguments = ["1881"]
+comment   = "Fancy four digit"
+expected  = true
+
+[[asserts]]
+arguments = ["1001"]
+comment   = "One zero zero one"
+expected  = true
+
+[[asserts]]
+arguments = ["9696"]
+comment   = "Nine six nine six"
+expected  = true
+
+[[asserts]]
+arguments = ["6889"]
+comment   = "Fancy six eight eight nine"
+expected  = true
+
+[[asserts]]
+arguments = ["8008"]
+comment   = "Eight zero zero eight"
+expected  = true
+
+[[asserts]]
+arguments = ["9119"]
+comment   = "Nine one one nine"
+expected  = false
+
+[[asserts]]
+arguments = ["60109"]
+comment   = "Five digit fancy"
+expected  = true
+
+[[asserts]]
+arguments = ["90806"]
+comment   = "Five digit fancy variant"
+expected  = true
+
+[[asserts]]
+arguments = ["111"]
+comment   = "Triple one"
+expected  = true
+
+[[asserts]]
+arguments = ["888"]
+comment   = "Triple eight"
+expected  = true

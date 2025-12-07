@@ -1,0 +1,201 @@
+level             = "easy"
+name              = "fibonacci"
+tags              = ["math", "recursion"]
+time_to_solve_sec = 400
+
+description_en = """
+Return the $N$-th item in the Fibonacci sequence.
+
+Hint: The first item in the sequence is $0$.
+"""
+
+description_ru = """
+Верните $n$-ый элемент последовательности Фибоначчи.
+
+Подсказка: первый элемент последовательности равен $0$.
+"""
+
+limits = """
+- $0 \\leq n \\leq 30$
+"""
+
+solution = """
+def solution(num: int) -> int:
+    if num <= 1:
+        return num
+    a, b = 0, 1
+    for _ in range(2, num + 1):
+        a, b = b, a + b
+    return b
+"""
+
+examples = """
+solution(0) == 0
+solution(1) == 1
+solution(4) == 3
+solution(7) == 13
+solution(10) == 55
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [7]
+comment   = "Seventh Fibonacci"
+expected  = 13
+
+[[asserts]]
+arguments = [0]
+comment   = "First element zero"
+expected  = 0
+
+[[asserts]]
+arguments = [1]
+comment   = "Second element one"
+expected  = 1
+
+[[asserts]]
+arguments = [4]
+comment   = "Fourth element"
+expected  = 3
+
+[[asserts]]
+arguments = [10]
+comment   = "Tenth element"
+expected  = 55
+
+[[asserts]]
+arguments = [2]
+comment   = "Third element"
+expected  = 1
+
+[[asserts]]
+arguments = [3]
+comment   = "Fourth element check"
+expected  = 2
+
+[[asserts]]
+arguments = [5]
+comment   = "Fifth element"
+expected  = 5
+
+[[asserts]]
+arguments = [6]
+comment   = "Sixth element"
+expected  = 8
+
+[[asserts]]
+arguments = [8]
+comment   = "Eighth element"
+expected  = 21
+
+[[asserts]]
+arguments = [9]
+comment   = "Ninth element"
+expected  = 34
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleventh element"
+expected  = 89
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelfth element"
+expected  = 144
+
+[[asserts]]
+arguments = [13]
+comment   = "Thirteenth element"
+expected  = 233
+
+[[asserts]]
+arguments = [14]
+comment   = "Fourteenth element"
+expected  = 377
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteenth element"
+expected  = 610
+
+[[asserts]]
+arguments = [16]
+comment   = "Sixteenth element"
+expected  = 987
+
+[[asserts]]
+arguments = [17]
+comment   = "Seventeenth element"
+expected  = 1597
+
+[[asserts]]
+arguments = [18]
+comment   = "Eighteenth element"
+expected  = 2584
+
+[[asserts]]
+arguments = [19]
+comment   = "Nineteenth element"
+expected  = 4181
+
+[[asserts]]
+arguments = [20]
+comment   = "Twentieth element"
+expected  = 6765
+
+[[asserts]]
+arguments = [21]
+comment   = "Twenty-first element"
+expected  = 10946
+
+[[asserts]]
+arguments = [22]
+comment   = "Twenty-second element"
+expected  = 17711
+
+[[asserts]]
+arguments = [23]
+comment   = "Twenty-third element"
+expected  = 28657
+
+[[asserts]]
+arguments = [24]
+comment   = "Twenty-fourth element"
+expected  = 46368
+
+[[asserts]]
+arguments = [25]
+comment   = "Twenty-fifth element"
+expected  = 75025
+
+[[asserts]]
+arguments = [26]
+comment   = "Twenty-sixth element"
+expected  = 121393
+
+[[asserts]]
+arguments = [27]
+comment   = "Twenty-seventh element"
+expected  = 196418
+
+[[asserts]]
+arguments = [28]
+comment   = "Twenty-eighth element"
+expected  = 317811
+
+[[asserts]]
+arguments = [29]
+comment   = "Twenty-ninth element"
+expected  = 514229
+
+[[asserts]]
+arguments = [30]
+comment   = "Thirtieth element"
+expected  = 832040

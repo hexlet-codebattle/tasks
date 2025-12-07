@@ -1,0 +1,198 @@
+level             = "elementary"
+name              = "equality_count"
+tags              = ["math", "training"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that takes an array of three integers and returns the amount of integers which are of equal value.
+
+Note: Function must return $0$, $2$, or $3$.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает три числа и возвращает количество чисел, которые равны.
+
+Примечание: функция должна возвращать $0$, $2$ или $3$.
+"""
+
+limits = """
+- $\\text{len}(\\text{numbers}) = 3$
+- $0 \\leq \\text{numbers}[i] \\leq 100$
+"""
+
+solution = """
+def solution(numbers: list) -> int:
+    unique_count = len(set(numbers))
+    if unique_count == 3:
+        return 0
+    elif unique_count == 2:
+        return 2
+    else:
+        return 3
+"""
+
+examples = """
+solution([1, 2, 3]) == 0
+solution([1, 1, 3]) == 2
+solution([3, 3, 3]) == 3
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "All different"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 1, 3]]
+comment   = "Two equal"
+expected  = 2
+
+[[asserts]]
+arguments = [[3, 3, 3]]
+comment   = "All equal"
+expected  = 3
+
+[[asserts]]
+arguments = [[5, 5, 5]]
+comment   = "Three fives"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 2, 1]]
+comment   = "First and last equal"
+expected  = 2
+
+[[asserts]]
+arguments = [[7, 8, 9]]
+comment   = "Sequential different"
+expected  = 0
+
+[[asserts]]
+arguments = [[10, 10, 10]]
+comment   = "Three tens"
+expected  = 3
+
+[[asserts]]
+arguments = [[4, 5, 4]]
+comment   = "First and last four"
+expected  = 2
+
+[[asserts]]
+arguments = [[2, 3, 4]]
+comment   = "Three different"
+expected  = 0
+
+[[asserts]]
+arguments = [[6, 6, 7]]
+comment   = "Two sixes"
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "Three zeros"
+expected  = 3
+
+[[asserts]]
+arguments = [[15, 20, 25]]
+comment   = "Different multiples"
+expected  = 0
+
+[[asserts]]
+arguments = [[8, 9, 8]]
+comment   = "Eight twice"
+expected  = 2
+
+[[asserts]]
+arguments = [[11, 11, 11]]
+comment   = "Three elevens"
+expected  = 3
+
+[[asserts]]
+arguments = [[3, 7, 9]]
+comment   = "Odd numbers different"
+expected  = 0
+
+[[asserts]]
+arguments = [[12, 12, 15]]
+comment   = "Two twelves"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+comment   = "Three ones"
+expected  = 3
+
+[[asserts]]
+arguments = [[20, 30, 40]]
+comment   = "Tens different"
+expected  = 0
+
+[[asserts]]
+arguments = [[5, 10, 5]]
+comment   = "Five twice"
+expected  = 2
+
+[[asserts]]
+arguments = [[7, 7, 7]]
+comment   = "Three sevens"
+expected  = 3
+
+[[asserts]]
+arguments = [[2, 4, 6]]
+comment   = "Even numbers different"
+expected  = 0
+
+[[asserts]]
+arguments = [[9, 9, 12]]
+comment   = "Two nines"
+expected  = 2
+
+[[asserts]]
+arguments = [[100, 100, 100]]
+comment   = "Three hundreds"
+expected  = 3
+
+[[asserts]]
+arguments = [[13, 17, 19]]
+comment   = "Primes different"
+expected  = 0
+
+[[asserts]]
+arguments = [[25, 25, 30]]
+comment   = "Two twenty-fives"
+expected  = 2
+
+[[asserts]]
+arguments = [[50, 50, 50]]
+comment   = "Three fifties"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 5, 9]]
+comment   = "Spread numbers"
+expected  = 0
+
+[[asserts]]
+arguments = [[14, 14, 18]]
+comment   = "Two fourteens"
+expected  = 2
+
+[[asserts]]
+arguments = [[2, 2, 2]]
+comment   = "Three twos"
+expected  = 3
+
+[[asserts]]
+arguments = [[10, 20, 30]]
+comment   = "Multiples of ten"
+expected  = 0

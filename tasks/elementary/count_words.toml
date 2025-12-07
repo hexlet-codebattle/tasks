@@ -1,7 +1,7 @@
 level             = "elementary"
 name              = "count_words"
 tags              = ["strings", "collections"]
-time_to_solve_sec = 100
+time_to_solve_sec = 120
 
 description_en = """
 Given a text, return the number of words in it.

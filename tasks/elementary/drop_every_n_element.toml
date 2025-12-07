@@ -1,0 +1,195 @@
+level             = "elementary"
+name              = "drop_every_n_element"
+tags              = ["collections"]
+time_to_solve_sec = 120
+
+description_en = """
+Drop every $N$-th element from a list.
+"""
+
+description_ru = """
+Удалите каждый $n$-ый элемент из массива.
+"""
+
+limits = """
+- $2 \\leq n \\leq 20$
+- $0 \\leq \\text{list}[i] \\leq 100$
+- $1 \\leq \\text{len}(\\text{list}) \\leq 100$
+"""
+
+solution = """
+def solution(num: int, list: list) -> list:
+    return [list[i] for i in range(len(list)) if (i + 1) % num != 0]
+"""
+
+examples = """
+solution(5, [0, 1, 2, 3]) == [0, 1, 2, 3]
+solution(2, [0, 1, 2, 3, 4, 5, 6, 7]) == [0, 2, 4, 6]
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "list"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [2, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
+comment   = "Drop every 2nd element"
+expected  = [0, 2, 4, 6, 8]
+
+[[asserts]]
+arguments = [5, [0, 1, 2, 3]]
+comment   = "N larger than list"
+expected  = [0, 1, 2, 3]
+
+[[asserts]]
+arguments = [3, [1, 2, 3, 4, 5, 6, 7, 8, 9]]
+comment   = "Drop every 3rd element"
+expected  = [1, 2, 4, 5, 7, 8]
+
+[[asserts]]
+arguments = [4, [10, 20, 30, 40, 50, 60, 70, 80]]
+comment   = "Drop every 4th element"
+expected  = [10, 20, 30, 50, 60, 70]
+
+[[asserts]]
+arguments = [2, [1, 2, 3, 4, 5]]
+comment   = "Drop evens from small list"
+expected  = [1, 3, 5]
+
+[[asserts]]
+arguments = [3, [0, 1, 2, 3, 4, 5]]
+comment   = "Drop multiples of 3"
+expected  = [0, 1, 3, 4]
+
+[[asserts]]
+arguments = [10, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+comment   = "Drop last element only"
+expected  = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+[[asserts]]
+arguments = [2, [5, 10, 15, 20]]
+comment   = "Drop every 2nd from four"
+expected  = [5, 15]
+
+[[asserts]]
+arguments = [3, [7, 8, 9]]
+comment   = "Drop last of three"
+expected  = [7, 8]
+
+[[asserts]]
+arguments = [4, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]]
+comment   = "Drop every 4th from twelve"
+expected  = [1, 2, 3, 5, 6, 7, 9, 10, 11]
+
+[[asserts]]
+arguments = [5, [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]]
+comment   = "Drop every 5th"
+expected  = [10, 20, 30, 40, 60, 70, 80, 90]
+
+[[asserts]]
+arguments = [2, [1, 2]]
+comment   = "Two elements drop second"
+expected  = [1]
+
+[[asserts]]
+arguments = [6, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]]
+comment   = "Drop every 6th"
+expected  = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11]
+
+[[asserts]]
+arguments = [3, [5, 10, 15, 20, 25, 30]]
+comment   = "Drop every 3rd from six"
+expected  = [5, 10, 20, 25]
+
+[[asserts]]
+arguments = [7, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]]
+comment   = "Drop every 7th"
+expected  = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13]
+
+[[asserts]]
+arguments = [2, [0, 0, 0, 0, 0, 0]]
+comment   = "All zeros drop evens"
+expected  = [0, 0, 0]
+
+[[asserts]]
+arguments = [4, [11, 22, 33, 44]]
+comment   = "Four elements drop fourth"
+expected  = [11, 22, 33]
+
+[[asserts]]
+arguments = [3, [1, 1, 1, 1, 1, 1, 1, 1, 1]]
+comment   = "All ones drop every 3rd"
+expected  = [1, 1, 1, 1, 1, 1]
+
+[[asserts]]
+arguments = [8, [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]]
+comment   = "Drop 8th element"
+expected  = [10, 20, 30, 40, 50, 60, 70, 90, 100]
+
+[[asserts]]
+arguments = [2, [3, 6, 9, 12, 15, 18]]
+comment   = "Multiples of 3 drop evens"
+expected  = [3, 9, 15]
+
+[[asserts]]
+arguments = [5, [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]]
+comment   = "Even numbers drop 5th"
+expected  = [2, 4, 6, 8, 12, 14, 16, 18]
+
+[[asserts]]
+arguments = [3, [100, 200, 300, 400, 500, 600]]
+comment   = "Hundreds drop 3rd"
+expected  = [100, 200, 400, 500]
+
+[[asserts]]
+arguments = [9, [1, 2, 3, 4, 5, 6, 7, 8, 9]]
+comment   = "Drop last of nine"
+expected  = [1, 2, 3, 4, 5, 6, 7, 8]
+
+[[asserts]]
+arguments = [2, [7, 14, 21, 28, 35, 42]]
+comment   = "Multiples of 7 drop evens"
+expected  = [7, 21, 35]
+
+[[asserts]]
+arguments = [4, [0, 1, 2, 3, 4, 5, 6, 7]]
+comment   = "Zero to seven drop 4th"
+expected  = [0, 1, 2, 4, 5, 6]
+
+[[asserts]]
+arguments = [6, [5, 10, 15, 20, 25, 30]]
+comment   = "Drop 6th of six"
+expected  = [5, 10, 15, 20, 25]
+
+[[asserts]]
+arguments = [3, [2, 4, 8, 16, 32, 64]]
+comment   = "Powers of 2 drop 3rd"
+expected  = [2, 4, 16, 32]
+
+[[asserts]]
+arguments = [10, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+comment   = "Ten ones drop 10th"
+expected  = [1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+[[asserts]]
+arguments = [2, [50, 60, 70, 80, 90, 100]]
+comment   = "Tens drop evens"
+expected  = [50, 70, 90]
+
+[[asserts]]
+arguments = [5, [15, 25, 35, 45, 55]]
+comment   = "Fives drop 5th"
+expected  = [15, 25, 35, 45]

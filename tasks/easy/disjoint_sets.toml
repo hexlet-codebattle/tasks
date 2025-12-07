@@ -1,7 +1,7 @@
 level             = "easy"
 name              = "disjoint_sets"
 tags              = ["math", "collections"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 Given two sets represented by two arrays, check if the given two sets are disjoint or not. Given arrays have no duplicates.

@@ -1,7 +1,7 @@
 level             = "easy"
 name              = "docker_builder"
 tags              = ["strings", "codebattle"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 Create a function that creates a docker build command from `language`, `version`, and `path` (which can be an empty string) for codebattle.

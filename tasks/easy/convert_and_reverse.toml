@@ -1,7 +1,7 @@
 level             = "easy"
 name              = "convert_and_reverse"
 tags              = ["strings"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 Reverse input number and convert it to string. Keep number sign.

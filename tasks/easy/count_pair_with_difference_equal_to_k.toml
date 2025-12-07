@@ -1,7 +1,7 @@
 level             = "easy"
 name              = "count_pair_with_difference_equal_to_k"
 tags              = ["collections"]
-time_to_solve_sec = 500
+time_to_solve_sec = 300
 
 description_en = """
 Given an integer array and a positive integer $k$, count all distinct pairs with difference equal to $k$. Order of numbers matters.

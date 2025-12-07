@@ -1,7 +1,7 @@
 level             = "elementary"
 name              = "desc_order"
 tags              = ["math"]
-time_to_solve_sec = 150
+time_to_solve_sec = 120
 
 description_en = """
 Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order.

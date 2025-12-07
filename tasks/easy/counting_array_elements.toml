@@ -1,7 +1,7 @@
 level             = "easy"
 name              = "counting_array_elements"
 tags              = ["hash-maps"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Return a hash map that shows how many times each element occurs in the given array.

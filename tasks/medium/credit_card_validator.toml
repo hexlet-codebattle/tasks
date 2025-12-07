@@ -1,7 +1,7 @@
 level             = "medium"
 name              = "credit_card_validator"
 tags              = ["strings"]
-time_to_solve_sec = 700
+time_to_solve_sec = 600
 
 description_en = """
 Credit card numbers can be validated with a process called the Luhn algorithm.

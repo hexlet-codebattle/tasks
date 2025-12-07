@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "drop_odd"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 200
+
+description_en = """
+You are given a string of words. Drop each word with odd length.
+"""
+
+description_ru = """
+Создайте функцию, которая удаляет слова с нечетной длиной в строке.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{sentence}) \\leq 10$
+"""
+
+solution = """
+def solution(sentence: str) -> str:
+    words = sentence.split()
+    even_words = [w for w in words if len(w) % 2 == 0]
+    return ' '.join(even_words)
+"""
+
+examples = """
+solution("learn clojure be happy") == "be"
+solution("words with odd length") == "with length"
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["learn clojure be happy"]
+comment   = "One even length word"
+expected  = "be"
+
+[[asserts]]
+arguments = ["some test words with odd length"]
+comment   = "Multiple even words"
+expected  = "some test with length"
+
+[[asserts]]
+arguments = ["hi there"]
+comment   = "One even one odd"
+expected  = "hi"
+
+[[asserts]]
+arguments = ["one two three"]
+comment   = "All odd length"
+expected  = ""
+
+[[asserts]]
+arguments = ["code"]
+comment   = "Single even word"
+expected  = "code"
+
+[[asserts]]
+arguments = ["test"]
+comment   = "Single even word test"
+expected  = "test"
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Single odd word"
+expected  = ""
+
+[[asserts]]
+arguments = ["good code wins"]
+comment   = "Three even words"
+expected  = "good code wins"
+
+[[asserts]]
+arguments = ["keep only even size"]
+comment   = "Three even one odd"
+expected  = "keep only even size"
+
+[[asserts]]
+arguments = ["a bb ccc dddd"]
+comment   = "Increasing lengths"
+expected  = "bb dddd"
+
+[[asserts]]
+arguments = ["this is a test"]
+comment   = "Mixed lengths"
+expected  = "this is test"
+
+[[asserts]]
+arguments = ["no odd here"]
+comment   = "Two even two odd"
+expected  = "no here"
+
+[[asserts]]
+arguments = ["work hard play hard"]
+comment   = "All four letters"
+expected  = "work hard play hard"
+
+[[asserts]]
+arguments = ["filter out words"]
+comment   = "One even two odd"
+expected  = "filter"
+
+[[asserts]]
+arguments = ["python rocks"]
+comment   = "One even one odd"
+expected  = "python"
+
+[[asserts]]
+arguments = ["drop the odd ones"]
+comment   = "Specific instruction"
+expected  = "drop ones"
+
+[[asserts]]
+arguments = ["best code ever made"]
+comment   = "Three even one odd"
+expected  = "best code ever made"
+
+[[asserts]]
+arguments = ["we do it"]
+comment   = "Three even words"
+expected  = "we do it"
+
+[[asserts]]
+arguments = ["long words are hard"]
+comment   = "Two four letter words"
+expected  = "long hard"
+
+[[asserts]]
+arguments = ["test your code"]
+comment   = "Two even one odd"
+expected  = "test your code"
+
+[[asserts]]
+arguments = ["time to code"]
+comment   = "Three even length"
+expected  = "time to code"
+
+[[asserts]]
+arguments = ["keep it simple"]
+comment   = "Two even one odd"
+expected  = "keep it simple"
+
+[[asserts]]
+arguments = ["fast and easy"]
+comment   = "Two even one odd"
+expected  = "fast easy"
+
+[[asserts]]
+arguments = ["make good apps"]
+comment   = "Two even one odd"
+expected  = "make good apps"
+
+[[asserts]]
+arguments = ["data flow here"]
+comment   = "Three even length"
+expected  = "data flow here"
+
+[[asserts]]
+arguments = ["nice work done"]
+comment   = "Two even one odd"
+expected  = "nice work done"
+
+[[asserts]]
+arguments = ["find bugs fast"]
+comment   = "Three even length"
+expected  = "find bugs fast"
+
+[[asserts]]
+arguments = ["read this book"]
+comment   = "Two even one odd"
+expected  = "read this book"
+
+[[asserts]]
+arguments = ["open file"]
+comment   = "Two even length"
+expected  = "open file"
+
+[[asserts]]
+arguments = ["show me"]
+comment   = "Two even length"
+expected  = "show me"

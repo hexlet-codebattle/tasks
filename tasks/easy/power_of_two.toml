@@ -1,0 +1,189 @@
+level             = "easy"
+name              = "power_of_two"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Determine if a given integer is a power of two.
+
+A number is a power of two if it can be expressed as $2^k$ for some non-negative integer $k$.
+"""
+
+description_ru = """
+Определите, является ли данное число степенью двойки.
+
+Число является степенью двойки, если его можно выразить как $2^k$ для некоторого неотрицательного целого числа $k$.
+"""
+
+limits = """
+- $0 \\leq \\text{num} \\leq 10^6$
+"""
+
+solution = """
+def solution(num: int) -> bool:
+    return num > 0 and (num & (num - 1)) == 0
+"""
+
+examples = """
+solution(1) == True
+solution(16) == True
+solution(20) == False
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [16]
+comment   = "2^4"
+expected  = true
+
+[[asserts]]
+arguments = [20]
+comment   = "Not a power of two"
+expected  = false
+
+[[asserts]]
+arguments = [1]
+comment   = "2^0"
+expected  = true
+
+[[asserts]]
+arguments = [258]
+comment   = "Not power of two"
+expected  = false
+
+[[asserts]]
+arguments = [512]
+comment   = "2^9"
+expected  = true
+
+[[asserts]]
+arguments = [513]
+comment   = "One more than power"
+expected  = false
+
+[[asserts]]
+arguments = [1024]
+comment   = "2^10"
+expected  = true
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero is not power"
+expected  = false
+
+[[asserts]]
+arguments = [2]
+comment   = "2^1"
+expected  = true
+
+[[asserts]]
+arguments = [4]
+comment   = "2^2"
+expected  = true
+
+[[asserts]]
+arguments = [8]
+comment   = "2^3"
+expected  = true
+
+[[asserts]]
+arguments = [32]
+comment   = "2^5"
+expected  = true
+
+[[asserts]]
+arguments = [64]
+comment   = "2^6"
+expected  = true
+
+[[asserts]]
+arguments = [128]
+comment   = "2^7"
+expected  = true
+
+[[asserts]]
+arguments = [256]
+comment   = "2^8"
+expected  = true
+
+[[asserts]]
+arguments = [3]
+comment   = "Not power"
+expected  = false
+
+[[asserts]]
+arguments = [5]
+comment   = "Not power"
+expected  = false
+
+[[asserts]]
+arguments = [7]
+comment   = "Not power"
+expected  = false
+
+[[asserts]]
+arguments = [15]
+comment   = "One less than 16"
+expected  = false
+
+[[asserts]]
+arguments = [31]
+comment   = "One less than 32"
+expected  = false
+
+[[asserts]]
+arguments = [63]
+comment   = "One less than 64"
+expected  = false
+
+[[asserts]]
+arguments = [127]
+comment   = "One less than 128"
+expected  = false
+
+[[asserts]]
+arguments = [255]
+comment   = "One less than 256"
+expected  = false
+
+[[asserts]]
+arguments = [2048]
+comment   = "2^11"
+expected  = true
+
+[[asserts]]
+arguments = [4096]
+comment   = "2^12"
+expected  = true
+
+[[asserts]]
+arguments = [8192]
+comment   = "2^13"
+expected  = true
+
+[[asserts]]
+arguments = [16384]
+comment   = "2^14"
+expected  = true
+
+[[asserts]]
+arguments = [32768]
+comment   = "2^15"
+expected  = true
+
+[[asserts]]
+arguments = [65536]
+comment   = "2^16"
+expected  = true
+
+[[asserts]]
+arguments = [100]
+comment   = "Not power"
+expected  = false

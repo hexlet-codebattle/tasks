@@ -1,0 +1,191 @@
+level             = "easy"
+name              = "positive_dominant"
+tags              = ["array", "math"]
+time_to_solve_sec = 300
+
+description_en = """
+Check if the count of unique positive numbers is greater than the count of unique negative numbers in the array (zeros are ignored).
+"""
+
+description_ru = """
+Проверьте, больше ли количество уникальных положительных чисел, чем количество уникальных отрицательных чисел в массиве (нули игнорируются).
+"""
+
+limits = """
+- $1 \\leq |\\text{numbers}| \\leq 100$
+- $-1000 \\leq \\text{numbers}[i] \\leq 1000$
+"""
+
+solution = """
+def solution(numbers: list) -> bool:
+    uniq = set(numbers)
+    pos = len([x for x in uniq if x > 0])
+    neg = len([x for x in uniq if x < 0])
+    return pos > neg
+"""
+
+examples = """
+solution([1, 2, 3, -3, -4]) == True
+solution([1, -1, -2, -3, -4]) == False
+solution([1, 1, 2, 2, 3, 3, -4, -4]) == True
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[1, 2, 3, -3, -4]]
+comment   = "Three positive two negative unique"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1, 2, 2, 3, 3, -4, -4]]
+comment   = "Duplicates three vs one"
+expected  = true
+
+[[asserts]]
+arguments = [[1, -1, -2, -3, -4]]
+comment   = "One positive four negative"
+expected  = false
+
+[[asserts]]
+arguments = [[10, 1, -2, -2, -3, -4]]
+comment   = "Two positive three negative"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 2, 3, -3, -4, -5]]
+comment   = "Equal count"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 2, 3, 4]]
+comment   = "All positive"
+expected  = true
+
+[[asserts]]
+arguments = [[-1, -2, -3, -4]]
+comment   = "All negative"
+expected  = false
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "All zeros"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 0, -1]]
+comment   = "One each with zero"
+expected  = false
+
+[[asserts]]
+arguments = [[5, 5, 5, -1]]
+comment   = "Repeated positive one negative"
+expected  = false
+
+[[asserts]]
+arguments = [[10, 20, -5]]
+comment   = "Two positive one negative"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, -1, -2]]
+comment   = "Two vs two"
+expected  = false
+
+[[asserts]]
+arguments = [[7, 8, 9, -1, -2]]
+comment   = "Three positive two negative"
+expected  = true
+
+[[asserts]]
+arguments = [[-10, -20, -30, 1]]
+comment   = "Three negative one positive"
+expected  = false
+
+[[asserts]]
+arguments = [[100, 200, 300, -100, -200]]
+comment   = "Three vs two large"
+expected  = true
+
+[[asserts]]
+arguments = [[0, 1, 2, 0, -1, 0]]
+comment   = "With multiple zeros"
+expected  = true
+
+[[asserts]]
+arguments = [[15, 15, -5, -5, -10]]
+comment   = "One positive two negative unique"
+expected  = false
+
+[[asserts]]
+arguments = [[4, 5, 6, 7, -1, -2, -3]]
+comment   = "Four vs three"
+expected  = true
+
+[[asserts]]
+arguments = [[-7, -8, 1, 2]]
+comment   = "Two each"
+expected  = false
+
+[[asserts]]
+arguments = [[50, -10, -20, -30, -40]]
+comment   = "One positive four negative"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, -1]]
+comment   = "Five positive one negative"
+expected  = true
+
+[[asserts]]
+arguments = [[0, 0, 1, -1, -2]]
+comment   = "One positive two negative with zeros"
+expected  = false
+
+[[asserts]]
+arguments = [[11, 22, 33, -11, -22]]
+comment   = "Three positive two negative"
+expected  = true
+
+[[asserts]]
+arguments = [[-5, -10, -15, -20, 1, 2]]
+comment   = "Four negative two positive"
+expected  = false
+
+[[asserts]]
+arguments = [[9, 8, 7, -1, -2, -3]]
+comment   = "Three vs three"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 1, 1, 2, 2, -3]]
+comment   = "Two unique positive one negative"
+expected  = true
+
+[[asserts]]
+arguments = [[100, -50, -60, -70, -80, -90]]
+comment   = "One positive five negative"
+expected  = false
+
+[[asserts]]
+arguments = [[3, 6, 9, 12, -3, -6]]
+comment   = "Four positive two negative"
+expected  = true
+
+[[asserts]]
+arguments = [[-1, -1, -1, -1, 1, 2, 3]]
+comment   = "One negative three positive unique"
+expected  = true
+
+[[asserts]]
+arguments = [[0, 5, 10, 0, -5, -10, 0]]
+comment   = "Two each with zeros"
+expected  = false

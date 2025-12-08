@@ -1,0 +1,185 @@
+level             = "elementary"
+name              = "polygon_angles_sum"
+tags              = ["math"]
+time_to_solve_sec = 120
+
+description_en = """
+Given an $n$-sided regular polygon, calculate the total sum of internal angles in degrees.
+"""
+
+description_ru = """
+Дан $n$-сторонний правильный многоугольник. Рассчитайте сумму внутренних углов в градусах.
+"""
+
+limits = """
+- $3 \\leq n \\leq 1000$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    return (n - 2) * 180
+"""
+
+examples = """
+solution(3) == 180
+solution(4) == 360
+solution(6) == 720
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [3]
+comment   = "Triangle"
+expected  = 180
+
+[[asserts]]
+arguments = [4]
+comment   = "Square"
+expected  = 360
+
+[[asserts]]
+arguments = [6]
+comment   = "Hexagon"
+expected  = 720
+
+[[asserts]]
+arguments = [5]
+comment   = "Pentagon"
+expected  = 540
+
+[[asserts]]
+arguments = [8]
+comment   = "Octagon"
+expected  = 1080
+
+[[asserts]]
+arguments = [7]
+comment   = "Heptagon"
+expected  = 900
+
+[[asserts]]
+arguments = [10]
+comment   = "Decagon"
+expected  = 1440
+
+[[asserts]]
+arguments = [12]
+comment   = "Dodecagon"
+expected  = 1800
+
+[[asserts]]
+arguments = [9]
+comment   = "Nonagon"
+expected  = 1260
+
+[[asserts]]
+arguments = [15]
+comment   = "Pentadecagon"
+expected  = 2340
+
+[[asserts]]
+arguments = [20]
+comment   = "Icosagon"
+expected  = 3240
+
+[[asserts]]
+arguments = [11]
+comment   = "Hendecagon"
+expected  = 1620
+
+[[asserts]]
+arguments = [13]
+comment   = "Tridecagon"
+expected  = 1980
+
+[[asserts]]
+arguments = [14]
+comment   = "Tetradecagon"
+expected  = 2160
+
+[[asserts]]
+arguments = [16]
+comment   = "Hexadecagon"
+expected  = 2520
+
+[[asserts]]
+arguments = [18]
+comment   = "Octadecagon"
+expected  = 2880
+
+[[asserts]]
+arguments = [25]
+comment   = "25-gon"
+expected  = 4140
+
+[[asserts]]
+arguments = [30]
+comment   = "30-gon"
+expected  = 5040
+
+[[asserts]]
+arguments = [17]
+comment   = "Heptadecagon"
+expected  = 2700
+
+[[asserts]]
+arguments = [19]
+comment   = "Enneadecagon"
+expected  = 3060
+
+[[asserts]]
+arguments = [22]
+comment   = "22-gon"
+expected  = 3600
+
+[[asserts]]
+arguments = [24]
+comment   = "24-gon"
+expected  = 3960
+
+[[asserts]]
+arguments = [26]
+comment   = "26-gon"
+expected  = 4320
+
+[[asserts]]
+arguments = [28]
+comment   = "28-gon"
+expected  = 4680
+
+[[asserts]]
+arguments = [50]
+comment   = "50-gon"
+expected  = 8640
+
+[[asserts]]
+arguments = [100]
+comment   = "100-gon"
+expected  = 17640
+
+[[asserts]]
+arguments = [21]
+comment   = "21-gon"
+expected  = 3420
+
+[[asserts]]
+arguments = [23]
+comment   = "23-gon"
+expected  = 3780
+
+[[asserts]]
+arguments = [27]
+comment   = "27-gon"
+expected  = 4500
+
+[[asserts]]
+arguments = [36]
+comment   = "36-gon"
+expected  = 6120

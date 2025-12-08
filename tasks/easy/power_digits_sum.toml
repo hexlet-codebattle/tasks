@@ -1,0 +1,189 @@
+level             = "easy"
+name              = "power_digits_sum"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Calculate the sum of digits of $2^n$.
+
+For example, $2^{15} = 32768$, and the sum of its digits is $3 + 2 + 7 + 6 + 8 = 26$.
+"""
+
+description_ru = """
+Подсчитайте сумму цифр числа $2^n$.
+
+Например, $2^{15} = 32768$, и сумма его цифр равна $3 + 2 + 7 + 6 + 8 = 26$.
+"""
+
+limits = """
+- $0 \\leq n \\leq 100$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    return sum(int(d) for d in str(2 ** n))
+"""
+
+examples = """
+solution(8) == 13
+solution(15) == 26
+solution(20) == 31
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [8]
+comment   = "2^8 = 256"
+expected  = 13
+
+[[asserts]]
+arguments = [15]
+comment   = "2^15 = 32768"
+expected  = 26
+
+[[asserts]]
+arguments = [0]
+comment   = "2^0 = 1"
+expected  = 1
+
+[[asserts]]
+arguments = [1]
+comment   = "2^1 = 2"
+expected  = 2
+
+[[asserts]]
+arguments = [2]
+comment   = "2^2 = 4"
+expected  = 4
+
+[[asserts]]
+arguments = [3]
+comment   = "2^3 = 8"
+expected  = 8
+
+[[asserts]]
+arguments = [4]
+comment   = "2^4 = 16"
+expected  = 7
+
+[[asserts]]
+arguments = [5]
+comment   = "2^5 = 32"
+expected  = 5
+
+[[asserts]]
+arguments = [6]
+comment   = "2^6 = 64"
+expected  = 10
+
+[[asserts]]
+arguments = [7]
+comment   = "2^7 = 128"
+expected  = 11
+
+[[asserts]]
+arguments = [9]
+comment   = "2^9 = 512"
+expected  = 8
+
+[[asserts]]
+arguments = [10]
+comment   = "2^10 = 1024"
+expected  = 7
+
+[[asserts]]
+arguments = [11]
+comment   = "2^11 = 2048"
+expected  = 14
+
+[[asserts]]
+arguments = [12]
+comment   = "2^12 = 4096"
+expected  = 19
+
+[[asserts]]
+arguments = [13]
+comment   = "2^13 = 8192"
+expected  = 20
+
+[[asserts]]
+arguments = [14]
+comment   = "2^14 = 16384"
+expected  = 22
+
+[[asserts]]
+arguments = [16]
+comment   = "2^16 = 65536"
+expected  = 25
+
+[[asserts]]
+arguments = [17]
+comment   = "2^17 = 131072"
+expected  = 14
+
+[[asserts]]
+arguments = [18]
+comment   = "2^18 = 262144"
+expected  = 19
+
+[[asserts]]
+arguments = [19]
+comment   = "2^19 = 524288"
+expected  = 29
+
+[[asserts]]
+arguments = [20]
+comment   = "2^20 = 1048576"
+expected  = 31
+
+[[asserts]]
+arguments = [21]
+comment   = "2^21 = 2097152"
+expected  = 26
+
+[[asserts]]
+arguments = [22]
+comment   = "2^22 = 4194304"
+expected  = 25
+
+[[asserts]]
+arguments = [23]
+comment   = "2^23 = 8388608"
+expected  = 41
+
+[[asserts]]
+arguments = [24]
+comment   = "2^24 = 16777216"
+expected  = 37
+
+[[asserts]]
+arguments = [25]
+comment   = "2^25 = 33554432"
+expected  = 29
+
+[[asserts]]
+arguments = [30]
+comment   = "2^30 large"
+expected  = 37
+
+[[asserts]]
+arguments = [35]
+comment   = "2^35 very large"
+expected  = 59
+
+[[asserts]]
+arguments = [40]
+comment   = "2^40 huge"
+expected  = 61
+
+[[asserts]]
+arguments = [50]
+comment   = "2^50 massive"
+expected  = 76

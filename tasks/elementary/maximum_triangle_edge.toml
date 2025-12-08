@@ -1,0 +1,195 @@
+level             = "elementary"
+name              = "maximum_triangle_edge"
+tags              = ["math"]
+time_to_solve_sec = 150
+
+description_en = """
+Create a function that finds the maximum possible length of a triangle's third edge, where all side lengths are integers.
+
+Given two sides of a triangle, the third side must satisfy the triangle inequality: the sum of any two sides must be greater than the third side. The maximum integer length occurs just before the sum of the two given sides.
+"""
+
+description_ru = """
+Создайте функцию, которая рассчитывает максимальную возможную длину третьей стороны треугольника, где все длины сторон — целые числа.
+
+Даны две стороны треугольника, третья сторона должна удовлетворять неравенству треугольника: сумма любых двух сторон должна быть больше третьей стороны. Максимальная целочисленная длина возникает непосредственно перед суммой двух данных сторон.
+"""
+
+limits = """
+- $1 \\leq \\text{first} \\leq 100$
+- $1 \\leq \\text{second} \\leq 100$
+"""
+
+solution = """
+def solution(first: int, second: int) -> int:
+    return first + second - 1
+"""
+
+examples = """
+solution(3, 5) == 7
+solution(9, 2) == 10
+solution(8, 10) == 17
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [8, 10]
+comment   = "Standard case"
+expected  = 17
+
+[[asserts]]
+arguments = [5, 7]
+comment   = "Medium sides"
+expected  = 11
+
+[[asserts]]
+arguments = [9, 2]
+comment   = "One large one small"
+expected  = 10
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "Both minimum"
+expected  = 1
+
+[[asserts]]
+arguments = [1, 2]
+comment   = "Small triangle"
+expected  = 2
+
+[[asserts]]
+arguments = [3, 4]
+comment   = "Pythagorean start"
+expected  = 6
+
+[[asserts]]
+arguments = [5, 12]
+comment   = "Pythagorean sides"
+expected  = 16
+
+[[asserts]]
+arguments = [10, 10]
+comment   = "Isosceles base"
+expected  = 19
+
+[[asserts]]
+arguments = [7, 7]
+comment   = "Equal sides"
+expected  = 13
+
+[[asserts]]
+arguments = [15, 20]
+comment   = "Larger sides"
+expected  = 34
+
+[[asserts]]
+arguments = [1, 10]
+comment   = "Very different lengths"
+expected  = 10
+
+[[asserts]]
+arguments = [6, 8]
+comment   = "Even numbers"
+expected  = 13
+
+[[asserts]]
+arguments = [5, 5]
+comment   = "Equal fives"
+expected  = 9
+
+[[asserts]]
+arguments = [2, 3]
+comment   = "Small consecutive"
+expected  = 4
+
+[[asserts]]
+arguments = [11, 13]
+comment   = "Larger consecutive"
+expected  = 23
+
+[[asserts]]
+arguments = [20, 21]
+comment   = "Large consecutive"
+expected  = 40
+
+[[asserts]]
+arguments = [3, 3]
+comment   = "Equal threes"
+expected  = 5
+
+[[asserts]]
+arguments = [4, 4]
+comment   = "Equal fours"
+expected  = 7
+
+[[asserts]]
+arguments = [12, 15]
+comment   = "Multiple of three"
+expected  = 26
+
+[[asserts]]
+arguments = [8, 8]
+comment   = "Equal eights"
+expected  = 15
+
+[[asserts]]
+arguments = [7, 24]
+comment   = "Pythagorean variant"
+expected  = 30
+
+[[asserts]]
+arguments = [9, 9]
+comment   = "Equal nines"
+expected  = 17
+
+[[asserts]]
+arguments = [10, 15]
+comment   = "Ten and fifteen"
+expected  = 24
+
+[[asserts]]
+arguments = [6, 6]
+comment   = "Equal sixes"
+expected  = 11
+
+[[asserts]]
+arguments = [13, 14]
+comment   = "Thirteen and fourteen"
+expected  = 26
+
+[[asserts]]
+arguments = [25, 30]
+comment   = "Larger numbers"
+expected  = 54
+
+[[asserts]]
+arguments = [2, 2]
+comment   = "Equal twos"
+expected  = 3
+
+[[asserts]]
+arguments = [100, 100]
+comment   = "Maximum equal sides"
+expected  = 199
+
+[[asserts]]
+arguments = [1, 100]
+comment   = "Minimum and maximum"
+expected  = 100
+
+[[asserts]]
+arguments = [50, 50]
+comment   = "Equal fifties"
+expected  = 99

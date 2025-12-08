@@ -1,0 +1,194 @@
+level             = "easy"
+name              = "more_than_medium"
+tags              = ["string"]
+time_to_solve_sec = 350
+
+description_en = """
+Given a sentence (as string), return an array of words which are longer than the average length of all the words.
+
+Words are separated by a whitespace. If there is a trailing period (dot), it should be omitted. If there is no result, return `["there is no result!"]`.
+"""
+
+description_ru = """
+Дано предложение (строкой), верните массив слов, длина которых превышает среднюю длину всех слов.
+
+Слова разделены пробелом. Если присутствует точка, её следует пропустить. Если результата нет, верните `["there is no result!"]`.
+"""
+
+limits = """
+- $1 \\leq |\\text{sentence}| \\leq 1000$
+"""
+
+solution = """
+def solution(sentence: str) -> list:
+    import re
+    words = re.findall(r'\\w+', sentence)
+    if not words:
+        return ["there is no result!"]
+
+    average = sum(len(word) for word in words) / len(words)
+    result = [word for word in words if len(word) > average]
+
+    return result if result else ["there is no result!"]
+"""
+
+examples = """
+solution("test") == ["there is no result!"]
+solution("This is a sample string") == ["This", "sample", "string"]
+solution("Some another sample") == ["another", "sample"]
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = ["test"]
+comment   = "Single word"
+expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["This is a sample string"]
+comment   = "Multiple words, some longer"
+expected  = ["This", "sample", "string"]
+
+[[asserts]]
+arguments = ["Some another sample"]
+comment   = "Three words"
+expected  = ["another", "sample"]
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Single word hello"
+expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["programming is fun"]
+comment   = "Programming longer than average"
+expected  = ["programming"]
+
+[[asserts]]
+arguments = ["a bb ccc dddd"]
+comment   = "Increasing lengths"
+expected  = ["ccc", "dddd"]
+
+[[asserts]]
+arguments = ["short"]
+comment   = "Single word short"
+expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["one two three four five"]
+comment   = "Five words"
+expected  = ["three", "four", "five"]
+
+[[asserts]]
+arguments = ["The quick brown fox jumps"]
+comment   = "Five words with the"
+expected  = ["quick", "brown", "jumps"]
+
+[[asserts]]
+arguments = ["aa bb cc dd ee"]
+comment   = "All equal length"
+expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["hello world from python"]
+comment   = "Four words"
+expected  = ["python"]
+
+[[asserts]]
+arguments = ["test case for this task"]
+comment   = "Five words equal length"
+expected  = ["test", "case", "this", "task"]
+
+[[asserts]]
+arguments = ["a ab abc abcd"]
+comment   = "Increasing a sequence"
+expected  = ["abc", "abcd"]
+
+[[asserts]]
+arguments = ["short longer longest"]
+comment   = "Three words increasing"
+expected  = ["longest"]
+
+[[asserts]]
+arguments = ["one"]
+comment   = "Single word one"
+expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["testing code quality"]
+comment   = "Three words"
+expected  = ["testing", "quality"]
+
+[[asserts]]
+arguments = ["The cat sat on mat"]
+comment   = "Five words"
+expected  = ["The", "cat", "sat", "mat"]
+
+[[asserts]]
+arguments = ["algorithm design patterns"]
+comment   = "Three words technical"
+expected  = ["algorithm", "patterns"]
+
+[[asserts]]
+arguments = ["a b c d e f g"]
+comment   = "Seven single letters"
+expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["Python Java JavaScript C"]
+comment   = "Programming languages"
+expected  = ["Python", "JavaScript"]
+
+[[asserts]]
+arguments = ["short medium longerword"]
+comment   = "Three increasing words"
+expected  = ["longerword"]
+
+[[asserts]]
+arguments = ["same same same same"]
+comment   = "All same word"
+expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["code review session today"]
+comment   = "Four words"
+expected  = ["review", "session"]
+
+[[asserts]]
+arguments = ["functional programming paradigm"]
+comment   = "Three long words"
+expected  = ["functional", "programming"]
+
+[[asserts]]
+arguments = ["ab cd ef gh ij"]
+comment   = "Five two letter words"
+expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["machine learning artificial intelligence"]
+comment   = "Four words AI"
+expected  = ["artificial", "intelligence"]
+
+[[asserts]]
+arguments = ["x xy xyz"]
+comment   = "Three x words"
+expected  = ["xyz"]
+
+[[asserts]]
+arguments = ["development environment setup complete"]
+comment   = "Four words dev"
+expected  = ["development", "environment"]
+
+[[asserts]]
+arguments = ["equal equal equal"]
+comment   = "Three equal words"
+expected  = ["there is no result!"]

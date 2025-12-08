@@ -1,0 +1,215 @@
+level             = "easy"
+name              = "moving_sum"
+tags              = ["array"]
+time_to_solve_sec = 300
+
+description_en = """
+Return the `sliding sums` array of `numbers` with window size equal to `window`.
+
+For example, the sums of array `[1, 2, 3, 4, 5]` with window `2` will be:
+```
+[(1 + 2), (2 + 3), (3 + 4), (4 + 5)] → [3, 5, 7, 9]
+```
+
+If the size of the window is larger than the size of the array, return the array with the sum of all the numbers.
+"""
+
+description_ru = """
+Верните массив `скользящих сумм` массива чисел `numbers` с размером окна равным `window`.
+
+Например, суммы массива `[1, 2, 3, 4, 5]` с окном `2` будут `[(1 + 2), (2 + 3), (3 + 4), (4 + 5)] → [3, 5, 7, 9]`.
+
+Если размер окна больше размера массива, то верните массив с суммой всех чисел.
+"""
+
+limits = """
+- $1 \\leq \\text{window} \\leq 100$
+- $1 \\leq |\\text{numbers}| \\leq 100$
+- $-100 \\leq \\text{numbers}[i] \\leq 100$
+"""
+
+solution = """
+def solution(numbers: list, window: int) -> list:
+    if len(numbers) < window:
+        return [sum(numbers)]
+
+    result = []
+    for i in range(len(numbers) - window + 1):
+        result.append(sum(numbers[i:i + window]))
+
+    return result
+"""
+
+examples = """
+solution([1, 2, 3, 4, 5], 2) == [3, 5, 7, 9]
+solution([1, 2, 3, 4, 5], 3) == [6, 9, 12]
+solution([1, 2, 3, 4, 5], 4) == [10, 14]
+solution([1, 2, 3, 4, 5], 6) == [15]
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "window"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 2]
+comment   = "Window size 2"
+expected  = [3, 5, 7, 9]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 3]
+comment   = "Window size 3"
+expected  = [6, 9, 12]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 4]
+comment   = "Window size 4"
+expected  = [10, 14]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 6]
+comment   = "Window larger than array"
+expected  = [15]
+
+[[asserts]]
+arguments = [[10, 20, 30], 2]
+comment   = "Simple window 2"
+expected  = [30, 50]
+
+[[asserts]]
+arguments = [[5], 1]
+comment   = "Single element"
+expected  = [5]
+
+[[asserts]]
+arguments = [[1, 2, 3], 1]
+comment   = "Window size 1"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [[7, 14, 21, 28], 2]
+comment   = "Multiples of 7"
+expected  = [21, 35, 49]
+
+[[asserts]]
+arguments = [[2, 4, 6, 8, 10], 5]
+comment   = "Window equals array size"
+expected  = [30]
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1], 3]
+comment   = "All ones"
+expected  = [3, 3, 3]
+
+[[asserts]]
+arguments = [[-1, -2, -3, -4], 2]
+comment   = "Negative numbers"
+expected  = [-3, -5, -7]
+
+[[asserts]]
+arguments = [[100, 200, 300, 400], 3]
+comment   = "Large numbers"
+expected  = [600, 900]
+
+[[asserts]]
+arguments = [[5, 10, 15], 4]
+comment   = "Window larger"
+expected  = [30]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6], 2]
+comment   = "Six elements window 2"
+expected  = [3, 5, 7, 9, 11]
+
+[[asserts]]
+arguments = [[3, 6, 9, 12, 15], 4]
+comment   = "Multiples of 3"
+expected  = [30, 42]
+
+[[asserts]]
+arguments = [[0, 0, 0, 0], 2]
+comment   = "All zeros"
+expected  = [0, 0, 0]
+
+[[asserts]]
+arguments = [[10, -5, 15, -10, 20], 3]
+comment   = "Mixed positive negative"
+expected  = [20, 0, 25]
+
+[[asserts]]
+arguments = [[2, 4, 6], 1]
+comment   = "Window 1"
+expected  = [2, 4, 6]
+
+[[asserts]]
+arguments = [[50, 100], 2]
+comment   = "Two elements"
+expected  = [150]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7], 3]
+comment   = "Seven elements"
+expected  = [6, 9, 12, 15, 18]
+
+[[asserts]]
+arguments = [[9, 8, 7, 6, 5], 2]
+comment   = "Decreasing sequence"
+expected  = [17, 15, 13, 11]
+
+[[asserts]]
+arguments = [[5, 5, 5, 5, 5], 1]
+comment   = "All fives window 1"
+expected  = [5, 5, 5, 5, 5]
+
+[[asserts]]
+arguments = [[1, 2], 3]
+comment   = "Window larger than 2"
+expected  = [3]
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50], 5]
+comment   = "Tens window 5"
+expected  = [150]
+
+[[asserts]]
+arguments = [[3, 7, 11, 15], 2]
+comment   = "Arithmetic progression"
+expected  = [10, 18, 26]
+
+[[asserts]]
+arguments = [[2, 2, 2], 2]
+comment   = "All twos"
+expected  = [4, 4]
+
+[[asserts]]
+arguments = [[1, 3, 5, 7, 9], 3]
+comment   = "Odd numbers"
+expected  = [9, 15, 21]
+
+[[asserts]]
+arguments = [[100], 1]
+comment   = "Single 100"
+expected  = [100]
+
+[[asserts]]
+arguments = [[6, 12, 18, 24, 30], 4]
+comment   = "Multiples of 6"
+expected  = [60, 84]
+
+[[asserts]]
+arguments = [[15, 30, 45], 2]
+comment   = "Multiples of 15"
+expected  = [45, 75]

@@ -1,0 +1,190 @@
+level             = "elementary"
+name              = "passengers_and_driver"
+tags              = ["math"]
+time_to_solve_sec = 120
+
+description_en = """
+A typical car can hold three passengers and one driver, allowing four people to travel somewhere.
+
+Given $n$ number of people, calculate how many cars are needed to seat everyone comfortably.
+"""
+
+description_ru = """
+Обычная машина может вместить в себя три пассажира и водителя, позволяя им вчетвером доехать куда-либо.
+
+Дано $n$ человек, рассчитайте сколько машин потребуется, чтобы все доехали в комфорте.
+"""
+
+limits = """
+- $0 \\leq \\text{people} \\leq 100$
+"""
+
+solution = """
+def solution(people: int) -> int:
+    import math
+    return math.ceil(people / 4)
+"""
+
+examples = """
+solution(0) == 0
+solution(4) == 1
+solution(13) == 4
+"""
+
+[[input_signature]]
+argument_name = "people"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+comment   = "No people"
+expected  = 0
+
+[[asserts]]
+arguments = [13]
+comment   = "Thirteen people"
+expected  = 4
+
+[[asserts]]
+arguments = [4]
+comment   = "Exactly one car"
+expected  = 1
+
+[[asserts]]
+arguments = [9]
+comment   = "Nine people"
+expected  = 3
+
+[[asserts]]
+arguments = [1]
+comment   = "Single person"
+expected  = 1
+
+[[asserts]]
+arguments = [5]
+comment   = "Five people"
+expected  = 2
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight people"
+expected  = 2
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelve people"
+expected  = 3
+
+[[asserts]]
+arguments = [16]
+comment   = "Sixteen people"
+expected  = 4
+
+[[asserts]]
+arguments = [20]
+comment   = "Twenty people"
+expected  = 5
+
+[[asserts]]
+arguments = [3]
+comment   = "Three people"
+expected  = 1
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven people"
+expected  = 2
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleven people"
+expected  = 3
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteen people"
+expected  = 4
+
+[[asserts]]
+arguments = [17]
+comment   = "Seventeen people"
+expected  = 5
+
+[[asserts]]
+arguments = [2]
+comment   = "Two people"
+expected  = 1
+
+[[asserts]]
+arguments = [6]
+comment   = "Six people"
+expected  = 2
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten people"
+expected  = 3
+
+[[asserts]]
+arguments = [14]
+comment   = "Fourteen people"
+expected  = 4
+
+[[asserts]]
+arguments = [18]
+comment   = "Eighteen people"
+expected  = 5
+
+[[asserts]]
+arguments = [21]
+comment   = "Twenty-one people"
+expected  = 6
+
+[[asserts]]
+arguments = [25]
+comment   = "Twenty-five people"
+expected  = 7
+
+[[asserts]]
+arguments = [30]
+comment   = "Thirty people"
+expected  = 8
+
+[[asserts]]
+arguments = [40]
+comment   = "Forty people"
+expected  = 10
+
+[[asserts]]
+arguments = [50]
+comment   = "Fifty people"
+expected  = 13
+
+[[asserts]]
+arguments = [100]
+comment   = "Hundred people"
+expected  = 25
+
+[[asserts]]
+arguments = [19]
+comment   = "Nineteen people"
+expected  = 5
+
+[[asserts]]
+arguments = [23]
+comment   = "Twenty-three people"
+expected  = 6
+
+[[asserts]]
+arguments = [27]
+comment   = "Twenty-seven people"
+expected  = 7
+
+[[asserts]]
+arguments = [31]
+comment   = "Thirty-one people"
+expected  = 8

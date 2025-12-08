@@ -1,0 +1,207 @@
+level             = "elementary"
+name              = "pie_slice"
+tags              = ["math"]
+time_to_solve_sec = 150
+
+description_en = """
+Create a function that determines whether or not it's possible to split a pie fairly given these three parameters:
+- Total number of slices
+- Number of recipients
+- How many slices each person gets
+
+Return `True` if there are enough slices for everyone to get their share, `False` otherwise.
+"""
+
+description_ru = """
+Создайте функцию, которая проверяет, возможно ли честно разделить пирог по трем параметрам:
+- Всего кусков
+- Количество людей
+- Сколько кусков получит каждый человек
+
+Верните `True`, если кусков достаточно для всех, `False` в противном случае.
+"""
+
+limits = """
+- $1 \\leq \\text{total} \\leq 100$
+- $1 \\leq \\text{people} \\leq 50$
+- $1 \\leq \\text{each} \\leq 20$
+"""
+
+solution = """
+def solution(total: int, people: int, each: int) -> bool:
+    return total >= people * each
+"""
+
+examples = """
+solution(15, 5, 3) == True
+solution(8, 3, 2) == True
+solution(10, 4, 4) == False
+"""
+
+[[input_signature]]
+argument_name = "total"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "people"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "each"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [15, 5, 3]
+comment   = "Exactly enough"
+expected  = true
+
+[[asserts]]
+arguments = [8, 3, 2]
+comment   = "More than enough"
+expected  = true
+
+[[asserts]]
+arguments = [10, 4, 4]
+comment   = "Not enough"
+expected  = false
+
+[[asserts]]
+arguments = [26, 13, 2]
+comment   = "Exactly enough for 13"
+expected  = true
+
+[[asserts]]
+arguments = [12, 3, 4]
+comment   = "Exactly divides"
+expected  = true
+
+[[asserts]]
+arguments = [10, 5, 2]
+comment   = "Exactly enough for 5"
+expected  = true
+
+[[asserts]]
+arguments = [20, 4, 5]
+comment   = "Exactly 20 slices"
+expected  = true
+
+[[asserts]]
+arguments = [9, 3, 3]
+comment   = "Three each"
+expected  = true
+
+[[asserts]]
+arguments = [8, 3, 3]
+comment   = "One short"
+expected  = false
+
+[[asserts]]
+arguments = [100, 10, 10]
+comment   = "Large numbers exact"
+expected  = true
+
+[[asserts]]
+arguments = [50, 10, 5]
+comment   = "Fifty slices"
+expected  = true
+
+[[asserts]]
+arguments = [24, 6, 4]
+comment   = "Six people four each"
+expected  = true
+
+[[asserts]]
+arguments = [23, 6, 4]
+comment   = "One short for six"
+expected  = false
+
+[[asserts]]
+arguments = [16, 4, 4]
+comment   = "Sixteen slices"
+expected  = true
+
+[[asserts]]
+arguments = [15, 4, 4]
+comment   = "One short for sixteen"
+expected  = false
+
+[[asserts]]
+arguments = [30, 10, 3]
+comment   = "Thirty slices"
+expected  = true
+
+[[asserts]]
+arguments = [25, 5, 5]
+comment   = "Five each for five"
+expected  = true
+
+[[asserts]]
+arguments = [21, 7, 3]
+comment   = "Seven people"
+expected  = true
+
+[[asserts]]
+arguments = [20, 7, 3]
+comment   = "One short for seven"
+expected  = false
+
+[[asserts]]
+arguments = [40, 8, 5]
+comment   = "Forty slices"
+expected  = true
+
+[[asserts]]
+arguments = [35, 7, 5]
+comment   = "Thirty-five slices"
+expected  = true
+
+[[asserts]]
+arguments = [34, 7, 5]
+comment   = "One short for thirty-five"
+expected  = false
+
+[[asserts]]
+arguments = [18, 9, 2]
+comment   = "Nine people two each"
+expected  = true
+
+[[asserts]]
+arguments = [12, 6, 2]
+comment   = "Six people two each"
+expected  = true
+
+[[asserts]]
+arguments = [11, 6, 2]
+comment   = "One short for twelve"
+expected  = false
+
+[[asserts]]
+arguments = [60, 12, 5]
+comment   = "Sixty slices"
+expected  = true
+
+[[asserts]]
+arguments = [48, 12, 4]
+comment   = "Twelve people four each"
+expected  = true
+
+[[asserts]]
+arguments = [36, 9, 4]
+comment   = "Thirty-six slices"
+expected  = true
+
+[[asserts]]
+arguments = [42, 7, 6]
+comment   = "Forty-two slices"
+expected  = true
+
+[[asserts]]
+arguments = [41, 7, 6]
+comment   = "One short for forty-two"
+expected  = false

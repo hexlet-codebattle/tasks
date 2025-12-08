@@ -1,0 +1,201 @@
+level             = "medium"
+name              = "perfect_numbers"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Determine if a given number is "perfect".
+
+A perfect number is a positive integer that is equal to the sum of its proper positive divisors (the sum of its positive divisors excluding the number itself).
+
+For example, $6$ is perfect because its divisors are $1, 2, 3$ and $1 + 2 + 3 = 6$.
+"""
+
+description_ru = """
+Определите является ли переданное число совершенным.
+
+Положительное целое число является совершенным, если оно равно сумме своих собственных делителей (то есть всех положительных делителей, отличных от самого числа).
+
+Например, $6$ - совершенное число, потому что его делители $1, 2, 3$ и $1 + 2 + 3 = 6$.
+"""
+
+limits = """
+- $0 \\leq \\text{num} \\leq 10000$
+"""
+
+solution = """
+def solution(num: int) -> bool:
+    if num <= 1:
+        return False
+
+    divisors_sum = 0
+    for i in range(1, num // 2 + 1):
+        if num % i == 0:
+            divisors_sum += i
+
+    return divisors_sum == num
+"""
+
+examples = """
+solution(6) == True
+solution(7) == False
+solution(28) == True
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [6]
+comment   = "First perfect number"
+expected  = true
+
+[[asserts]]
+arguments = [7]
+comment   = "Not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [496]
+comment   = "Third perfect number"
+expected  = true
+
+[[asserts]]
+arguments = [500]
+comment   = "Close but not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [8128]
+comment   = "Fourth perfect number"
+expected  = true
+
+[[asserts]]
+arguments = [1]
+comment   = "One is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [28]
+comment   = "Second perfect number"
+expected  = true
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [2]
+comment   = "Two is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelve is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [100]
+comment   = "Hundred is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [120]
+comment   = "120 is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [200]
+comment   = "200 is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [495]
+comment   = "495 close to 496"
+expected  = false
+
+[[asserts]]
+arguments = [497]
+comment   = "497 close to 496"
+expected  = false
+
+[[asserts]]
+arguments = [1000]
+comment   = "1000 is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [8127]
+comment   = "One less than 8128"
+expected  = false
+
+[[asserts]]
+arguments = [8129]
+comment   = "One more than 8128"
+expected  = false
+
+[[asserts]]
+arguments = [27]
+comment   = "27 close to 28"
+expected  = false
+
+[[asserts]]
+arguments = [29]
+comment   = "29 close to 28"
+expected  = false
+
+[[asserts]]
+arguments = [5]
+comment   = "5 close to 6"
+expected  = false
+
+[[asserts]]
+arguments = [3]
+comment   = "Three is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [4]
+comment   = "Four is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [16]
+comment   = "Sixteen is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [32]
+comment   = "Thirty-two is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [64]
+comment   = "Sixty-four is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [128]
+comment   = "128 is not perfect"
+expected  = false
+
+[[asserts]]
+arguments = [256]
+comment   = "256 is not perfect"
+expected  = false

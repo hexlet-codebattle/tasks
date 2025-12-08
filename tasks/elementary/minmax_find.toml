@@ -1,0 +1,135 @@
+level             = "elementary"
+name              = "minmax_find"
+tags              = ["collections"]
+time_to_solve_sec = 150
+
+description_en = """
+Create a function that takes an array of numbers and return both the minimum and maximum numbers.
+"""
+
+description_ru = """
+Напишите функцию, которая принимает массив чисел и возвращает его минимальное и максимальное значения.
+"""
+
+solution = """
+def solution(numbers: list[int]) -> list[int]:
+    return [min(numbers), max(numbers)]
+"""
+
+examples = """
+solution([0, 1]) == [0, 1]
+solution([-3, 2, 10, 22]) == [-3, 22]
+solution([30, 30, 31, 32]) == [30, 32]
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[0, 0, 0, 1, 1, 1]]
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [[30, 30, 31, 32]]
+expected  = [30, 32]
+
+[[asserts]]
+arguments = [[-3, 2, 10, 22]]
+expected  = [-3, 22]
+
+[[asserts]]
+arguments = [[5]]
+expected  = [5, 5]
+
+[[asserts]]
+arguments = [[-50, -50, -50]]
+expected  = [-50, -50]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+expected  = [1, 5]
+
+[[asserts]]
+arguments = [[-10, -5, 0, 5, 10]]
+expected  = [-10, 10]
+
+[[asserts]]
+arguments = [[100, 200, 300]]
+expected  = [100, 300]
+
+[[asserts]]
+arguments = [[-100, -200, -300]]
+expected  = [-300, -100]
+
+[[asserts]]
+arguments = [[42, 42, 42, 42]]
+expected  = [42, 42]
+
+[[asserts]]
+arguments = [[0, 0, 0, 0, 0]]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [[-1, 0, 1]]
+expected  = [-1, 1]
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50]]
+expected  = [10, 50]
+
+[[asserts]]
+arguments = [[-50, -40, -30, -20, -10]]
+expected  = [-50, -10]
+
+[[asserts]]
+arguments = [[7, 3, 9, 1, 5]]
+expected  = [1, 9]
+
+[[asserts]]
+arguments = [[15, 15, 15]]
+expected  = [15, 15]
+
+[[asserts]]
+arguments = [[-25, 25]]
+expected  = [-25, 25]
+
+[[asserts]]
+arguments = [[1000, 1]]
+expected  = [1, 1000]
+
+[[asserts]]
+arguments = [[-1000, -1]]
+expected  = [-1000, -1]
+
+[[asserts]]
+arguments = [[50, 40, 30, 20, 10]]
+expected  = [10, 50]
+
+[[asserts]]
+arguments = [[0, -50, 50]]
+expected  = [-50, 50]
+
+[[asserts]]
+arguments = [[13, 7, 21, 3, 19]]
+expected  = [3, 21]
+
+[[asserts]]
+arguments = [[-13, -7, -21, -3, -19]]
+expected  = [-21, -3]
+
+[[asserts]]
+arguments = [[99, 1, 50, 25, 75]]
+expected  = [1, 99]
+
+[[asserts]]
+arguments = [[-99, -1, -50, -25, -75]]
+expected  = [-99, -1]

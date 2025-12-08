@@ -1,0 +1,189 @@
+level             = "elementary"
+name              = "max_abs_elem"
+tags              = ["collections"]
+time_to_solve_sec = 150
+
+description_en = """
+Find the maximum absolute value of an array.
+"""
+
+description_ru = """
+Найдите максимальное по модулю число в массиве.
+"""
+
+limits = """
+- $-100 \\leq arr[i] \\leq 100$
+- $2 \\leq \\text{len}(arr) \\leq 20$
+"""
+
+solution = """
+def solution(arr: list[int]) -> int:
+    return max(abs(x) for x in arr)
+"""
+
+examples = """
+solution([-1, -1]) == 1
+solution([1, -2, 3, 4]) == 4
+solution([2, 0, -16, -1]) == 16
+solution([122, -113, 100]) == 122
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, -2, 3, 4]]
+comment   = "Mixed positive and negative"
+expected  = 4
+
+[[asserts]]
+arguments = [[2, 0, -16, -1]]
+comment   = "Negative has largest absolute value"
+expected  = 16
+
+[[asserts]]
+arguments = [[-1, -1]]
+comment   = "All same negative values"
+expected  = 1
+
+[[asserts]]
+arguments = [[122, -113, 100]]
+comment   = "Large values with close magnitudes"
+expected  = 122
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "All zeros"
+expected  = 0
+
+[[asserts]]
+arguments = [[5, 5, 5]]
+comment   = "All same positive values"
+expected  = 5
+
+[[asserts]]
+arguments = [[-10, -10, -10]]
+comment   = "All same negative values"
+expected  = 10
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "Ascending positive sequence"
+expected  = 5
+
+[[asserts]]
+arguments = [[-1, -2, -3, -4, -5]]
+comment   = "Descending negative sequence"
+expected  = 5
+
+[[asserts]]
+arguments = [[10, -10]]
+comment   = "Equal magnitude opposite signs"
+expected  = 10
+
+[[asserts]]
+arguments = [[-50, 49]]
+comment   = "Negative slightly larger"
+expected  = 50
+
+[[asserts]]
+arguments = [[49, -50]]
+comment   = "Positive slightly smaller"
+expected  = 50
+
+[[asserts]]
+arguments = [[100, -99, 0, 1]]
+comment   = "Maximum positive dominates"
+expected  = 100
+
+[[asserts]]
+arguments = [[-100, 99, 0, 1]]
+comment   = "Maximum negative dominates"
+expected  = 100
+
+[[asserts]]
+arguments = [[0, 1, -1]]
+comment   = "Small values around zero"
+expected  = 1
+
+[[asserts]]
+arguments = [[15, -20, 10, -5]]
+comment   = "Random mixed values"
+expected  = 20
+
+[[asserts]]
+arguments = [[7, 14, 21, 28]]
+comment   = "Multiples of 7 ascending"
+expected  = 28
+
+[[asserts]]
+arguments = [[-7, -14, -21, -28]]
+comment   = "Multiples of 7 descending negative"
+expected  = 28
+
+[[asserts]]
+arguments = [[33, -44, 55, -66]]
+comment   = "Alternating signs increasing magnitude"
+expected  = 66
+
+[[asserts]]
+arguments = [[-1, 0, 1, 2]]
+comment   = "Small consecutive values"
+expected  = 2
+
+[[asserts]]
+arguments = [[80, -85, 70, -60]]
+comment   = "Large values close together"
+expected  = 85
+
+[[asserts]]
+arguments = [[12, 34, -56, 78]]
+comment   = "Various two-digit numbers"
+expected  = 78
+
+[[asserts]]
+arguments = [[-12, -34, 56, -78]]
+comment   = "Various two-digit numbers negative heavy"
+expected  = 78
+
+[[asserts]]
+arguments = [[3, -3, 6, -6, 9]]
+comment   = "Multiples of 3 with pairs"
+expected  = 9
+
+[[asserts]]
+arguments = [[25, -30, 35, -40]]
+comment   = "Multiples of 5 ascending magnitude"
+expected  = 40
+
+[[asserts]]
+arguments = [[1, 1, 1, -1, -1]]
+comment   = "Mostly ones with negatives"
+expected  = 1
+
+[[asserts]]
+arguments = [[17, -18, 19, -20, 21]]
+comment   = "Consecutive around 20"
+expected  = 21
+
+[[asserts]]
+arguments = [[-95, -90, -85, 80]]
+comment   = "Large negatives with one positive"
+expected  = 95
+
+[[asserts]]
+arguments = [[42, -43, 44, -45]]
+comment   = "Numbers around 40 alternating"
+expected  = 45
+
+[[asserts]]
+arguments = [[8, 16, -24, 32]]
+comment   = "Multiples of 8"
+expected  = 32

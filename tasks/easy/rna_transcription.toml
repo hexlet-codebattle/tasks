@@ -1,0 +1,159 @@
+level             = "easy"
+name              = "rna_transcription"
+tags              = ["strings"]
+time_to_solve_sec = 250
+
+description_en = """
+Given a DNA strand, return its RNA complement.
+Both DNA and RNA strands are a sequence of nucleotides.
+DNA's nucleotides are adenine (A), cytosine (C), guanine (G) and thymidine (T).
+RNA's nucleotides are adenine (A), cytosine (C), guanine (G) and uracil (U).
+The transcribed RNA strand of a DNA strand is formed by replacing each nucleotide with its complement:
+G -> C, C -> G, T -> A, A -> U.
+"""
+
+description_ru = """
+Дана цепь ДНК, постройте комплементарную цепь РНК.
+И ДНК и РНК - это последовательность нуклеотидов.
+Нуклеотиды ДНК - это аденин (A), цитозин (C), гуанин (G) и тимин (T).
+Нуклеотиды РНК - аденин (A), цитозин (C), гуанин (G) и урацил (U).
+Транскрибируемая цепь РНК цепи ДНК образуется путем замены каждого нуклеотида на комплементарный ему:
+G -> C, C -> G, T -> A, A -> U.
+"""
+
+solution = """
+def solution(dna: str) -> str:
+    t = {'C': 'G', 'G': 'C', 'A': 'U', 'T': 'A'}
+    return "".join(t[n] for n in dna)
+"""
+
+examples = """
+solution("C") == "G"
+solution("G") == "C"
+solution("A") == "U"
+solution("ACGTGGTCTTAA") == "UGCACCAGAAUU"
+"""
+
+[[input_signature]]
+argument_name = "dna"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["C"]
+expected  = "G"
+
+[[asserts]]
+arguments = ["G"]
+expected  = "C"
+
+[[asserts]]
+arguments = ["A"]
+expected  = "U"
+
+[[asserts]]
+arguments = ["ACGTGGTCTTAA"]
+expected  = "UGCACCAGAAUU"
+
+[[asserts]]
+arguments = ["GCTA"]
+expected  = "CGAU"
+
+[[asserts]]
+arguments = ["AAAA"]
+expected  = "UUUU"
+
+[[asserts]]
+arguments = ["TTTT"]
+expected  = "AAAA"
+
+[[asserts]]
+arguments = ["GGGG"]
+expected  = "CCCC"
+
+[[asserts]]
+arguments = ["CCCC"]
+expected  = "GGGG"
+
+[[asserts]]
+arguments = ["ATGC"]
+expected  = "UACG"
+
+[[asserts]]
+arguments = ["CGAT"]
+expected  = "GCUA"
+
+[[asserts]]
+arguments = ["TACG"]
+expected  = "AUGC"
+
+[[asserts]]
+arguments = ["GCAT"]
+expected  = "CGUA"
+
+[[asserts]]
+arguments = ["ACGT"]
+expected  = "UGCA"
+
+[[asserts]]
+arguments = ["TGCA"]
+expected  = "ACGU"
+
+[[asserts]]
+arguments = ["AATTCCGG"]
+expected  = "UUAAGGCC"
+
+[[asserts]]
+arguments = ["GCGCGCGC"]
+expected  = "CGCGCGCG"
+
+[[asserts]]
+arguments = ["ATATATATAT"]
+expected  = "UAUAUAUAUA"
+
+[[asserts]]
+arguments = ["CGCGTATAGC"]
+expected  = "GCGCAUAUCG"
+
+[[asserts]]
+arguments = ["AGTC"]
+expected  = "UCAG"
+
+[[asserts]]
+arguments = ["TCAG"]
+expected  = "AGUC"
+
+[[asserts]]
+arguments = ["GATC"]
+expected  = "CUAG"
+
+[[asserts]]
+arguments = ["CTAG"]
+expected  = "GAUC"
+
+[[asserts]]
+arguments = ["AGCTTAGC"]
+expected  = "UCGAAUCG"
+
+[[asserts]]
+arguments = ["TTAACCGG"]
+expected  = "AAUUGGCC"
+
+[[asserts]]
+arguments = ["GGCCAATT"]
+expected  = "CCGGUUAA"
+
+[[asserts]]
+arguments = ["ACGTACGT"]
+expected  = "UGCAUGCA"
+
+[[asserts]]
+arguments = ["TGCATGCA"]
+expected  = "ACGUACGU"
+
+[[asserts]]
+arguments = ["AACCGGTT"]
+expected  = "UUGGCCAA"

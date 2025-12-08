@@ -1,0 +1,191 @@
+level             = "elementary"
+name              = "repdigit_number"
+tags              = ["math"]
+time_to_solve_sec = 150
+
+description_en = """
+A repdigit is a positive number composed out of the same digit.
+
+Create a function that checks if an integer is a repdigit or not.
+"""
+
+description_ru = """
+Однообразное число (репдиджит) - это положительное число, составленное из одной и той же цифры.
+
+Создайте функцию, которая проверяет является ли переданное число репдиджитом.
+"""
+
+limits = """
+- $10 \\leq number \\leq 999999999$
+"""
+
+solution = """
+def solution(number: int) -> bool:
+    s = str(number)
+    return len(set(s)) == 1
+"""
+
+examples = """
+solution(10) == False
+solution(66) == True
+solution(111) == True
+solution(112) == False
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [66]
+comment   = "Two sixes"
+expected  = true
+
+[[asserts]]
+arguments = [111]
+comment   = "Three ones"
+expected  = true
+
+[[asserts]]
+arguments = [112]
+comment   = "Mixed digits"
+expected  = false
+
+[[asserts]]
+arguments = [10]
+comment   = "Different digits"
+expected  = false
+
+[[asserts]]
+arguments = [11]
+comment   = "Two ones smallest repdigit"
+expected  = true
+
+[[asserts]]
+arguments = [22]
+comment   = "Two twos"
+expected  = true
+
+[[asserts]]
+arguments = [33]
+comment   = "Two threes"
+expected  = true
+
+[[asserts]]
+arguments = [44]
+comment   = "Two fours"
+expected  = true
+
+[[asserts]]
+arguments = [55]
+comment   = "Two fives"
+expected  = true
+
+[[asserts]]
+arguments = [77]
+comment   = "Two sevens"
+expected  = true
+
+[[asserts]]
+arguments = [88]
+comment   = "Two eights"
+expected  = true
+
+[[asserts]]
+arguments = [99]
+comment   = "Two nines"
+expected  = true
+
+[[asserts]]
+arguments = [222]
+comment   = "Three twos"
+expected  = true
+
+[[asserts]]
+arguments = [333]
+comment   = "Three threes"
+expected  = true
+
+[[asserts]]
+arguments = [444]
+comment   = "Three fours"
+expected  = true
+
+[[asserts]]
+arguments = [555]
+comment   = "Three fives"
+expected  = true
+
+[[asserts]]
+arguments = [666]
+comment   = "Three sixes"
+expected  = true
+
+[[asserts]]
+arguments = [777]
+comment   = "Three sevens"
+expected  = true
+
+[[asserts]]
+arguments = [888]
+comment   = "Three eights"
+expected  = true
+
+[[asserts]]
+arguments = [999]
+comment   = "Three nines"
+expected  = true
+
+[[asserts]]
+arguments = [1111]
+comment   = "Four ones"
+expected  = true
+
+[[asserts]]
+arguments = [2222]
+comment   = "Four twos"
+expected  = true
+
+[[asserts]]
+arguments = [3333]
+comment   = "Four threes"
+expected  = true
+
+[[asserts]]
+arguments = [4444]
+comment   = "Four fours"
+expected  = true
+
+[[asserts]]
+arguments = [123]
+comment   = "Sequential not repdigit"
+expected  = false
+
+[[asserts]]
+arguments = [456]
+comment   = "Another sequential"
+expected  = false
+
+[[asserts]]
+arguments = [789]
+comment   = "High sequential"
+expected  = false
+
+[[asserts]]
+arguments = [1234]
+comment   = "Four sequential"
+expected  = false
+
+[[asserts]]
+arguments = [5555]
+comment   = "Four fives"
+expected  = true
+
+[[asserts]]
+arguments = [9999]
+comment   = "Four nines"
+expected  = true

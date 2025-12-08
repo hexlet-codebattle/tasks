@@ -1,0 +1,198 @@
+level             = "elementary"
+name              = "mood_check"
+tags              = ["strings"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that takes in a current mood and return a sentence in the following format:
+
+`"Today, I am feeling {mood}."`
+
+If the mood is an empty string, return `"Today, I am feeling neutral."`
+"""
+
+description_ru = """
+Создайте функцию, которая принимает нынешнее настроение и возвращает отформатированную строку:
+
+`"Today, I am feeling {mood}."`
+
+Если настроение - пустая строка, верните `"Today, I am feeling neutral."`
+"""
+
+limits = """
+- $0 \\leq \\text{len}(mood) \\leq 50$
+"""
+
+solution = """
+def solution(mood: str) -> str:
+    if not mood:
+        return "Today, I am feeling neutral."
+    return f"Today, I am feeling {mood}."
+"""
+
+examples = """
+solution("") == "Today, I am feeling neutral."
+solution("sad") == "Today, I am feeling sad."
+solution("good") == "Today, I am feeling good."
+solution("happy") == "Today, I am feeling happy."
+solution("excited") == "Today, I am feeling excited."
+solution("confused") == "Today, I am feeling confused."
+"""
+
+[[input_signature]]
+argument_name = "mood"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty mood returns neutral"
+expected  = "Today, I am feeling neutral."
+
+[[asserts]]
+arguments = ["happy"]
+comment   = "Happy mood"
+expected  = "Today, I am feeling happy."
+
+[[asserts]]
+arguments = ["sad"]
+comment   = "Sad mood"
+expected  = "Today, I am feeling sad."
+
+[[asserts]]
+arguments = ["good"]
+comment   = "Good mood"
+expected  = "Today, I am feeling good."
+
+[[asserts]]
+arguments = ["excited"]
+comment   = "Excited mood"
+expected  = "Today, I am feeling excited."
+
+[[asserts]]
+arguments = ["confused"]
+comment   = "Confused mood"
+expected  = "Today, I am feeling confused."
+
+[[asserts]]
+arguments = ["tired"]
+comment   = "Tired mood"
+expected  = "Today, I am feeling tired."
+
+[[asserts]]
+arguments = ["angry"]
+comment   = "Angry mood"
+expected  = "Today, I am feeling angry."
+
+[[asserts]]
+arguments = ["peaceful"]
+comment   = "Peaceful mood"
+expected  = "Today, I am feeling peaceful."
+
+[[asserts]]
+arguments = ["anxious"]
+comment   = "Anxious mood"
+expected  = "Today, I am feeling anxious."
+
+[[asserts]]
+arguments = ["hopeful"]
+comment   = "Hopeful mood"
+expected  = "Today, I am feeling hopeful."
+
+[[asserts]]
+arguments = ["grateful"]
+comment   = "Grateful mood"
+expected  = "Today, I am feeling grateful."
+
+[[asserts]]
+arguments = ["motivated"]
+comment   = "Motivated mood"
+expected  = "Today, I am feeling motivated."
+
+[[asserts]]
+arguments = ["relaxed"]
+comment   = "Relaxed mood"
+expected  = "Today, I am feeling relaxed."
+
+[[asserts]]
+arguments = ["stressed"]
+comment   = "Stressed mood"
+expected  = "Today, I am feeling stressed."
+
+[[asserts]]
+arguments = ["joyful"]
+comment   = "Joyful mood"
+expected  = "Today, I am feeling joyful."
+
+[[asserts]]
+arguments = ["melancholic"]
+comment   = "Melancholic mood"
+expected  = "Today, I am feeling melancholic."
+
+[[asserts]]
+arguments = ["energetic"]
+comment   = "Energetic mood"
+expected  = "Today, I am feeling energetic."
+
+[[asserts]]
+arguments = ["bored"]
+comment   = "Bored mood"
+expected  = "Today, I am feeling bored."
+
+[[asserts]]
+arguments = ["content"]
+comment   = "Content mood"
+expected  = "Today, I am feeling content."
+
+[[asserts]]
+arguments = ["frustrated"]
+comment   = "Frustrated mood"
+expected  = "Today, I am feeling frustrated."
+
+[[asserts]]
+arguments = ["optimistic"]
+comment   = "Optimistic mood"
+expected  = "Today, I am feeling optimistic."
+
+[[asserts]]
+arguments = ["lonely"]
+comment   = "Lonely mood"
+expected  = "Today, I am feeling lonely."
+
+[[asserts]]
+arguments = ["inspired"]
+comment   = "Inspired mood"
+expected  = "Today, I am feeling inspired."
+
+[[asserts]]
+arguments = ["nervous"]
+comment   = "Nervous mood"
+expected  = "Today, I am feeling nervous."
+
+[[asserts]]
+arguments = ["calm"]
+comment   = "Calm mood"
+expected  = "Today, I am feeling calm."
+
+[[asserts]]
+arguments = ["worried"]
+comment   = "Worried mood"
+expected  = "Today, I am feeling worried."
+
+[[asserts]]
+arguments = ["enthusiastic"]
+comment   = "Enthusiastic mood"
+expected  = "Today, I am feeling enthusiastic."
+
+[[asserts]]
+arguments = ["disappointed"]
+comment   = "Disappointed mood"
+expected  = "Today, I am feeling disappointed."
+
+[[asserts]]
+arguments = ["proud"]
+comment   = "Proud mood"
+expected  = "Today, I am feeling proud."

@@ -1,0 +1,139 @@
+level             = "elementary"
+name              = "reverse_even"
+tags              = ["strings"]
+time_to_solve_sec = 150
+
+description_en = """
+You are given a string of words. Reverse each word with even length.
+"""
+
+description_ru = """
+Создайте функцию, которая переворачивает слова с четной длиной в строке.
+"""
+
+solution = """
+def solution(sentence: str) -> str:
+    words = sentence.split()
+    return " ".join(word[::-1] if len(word) % 2 == 0 else word for word in words)
+"""
+
+examples = """
+solution("learn ruby be happy") == "learn ybur eb happy"
+solution("some test words with even length") == "emos tset words htiw neve htgnel"
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["learn ruby be happy"]
+expected  = "learn ybur eb happy"
+
+[[asserts]]
+arguments = ["some test words with even length"]
+expected  = "emos tset words htiw neve htgnel"
+
+[[asserts]]
+arguments = ["hello world"]
+expected  = "hello world"
+
+[[asserts]]
+arguments = ["a bb ccc dddd"]
+expected  = "a bb ccc dddd"
+
+[[asserts]]
+arguments = ["ab cd ef"]
+expected  = "ba dc fe"
+
+[[asserts]]
+arguments = ["test"]
+expected  = "tset"
+
+[[asserts]]
+arguments = ["odd"]
+expected  = "odd"
+
+[[asserts]]
+arguments = ["even"]
+expected  = "neve"
+
+[[asserts]]
+arguments = ["a"]
+expected  = "a"
+
+[[asserts]]
+arguments = ["ab"]
+expected  = "ba"
+
+[[asserts]]
+arguments = ["abc def"]
+expected  = "abc def"
+
+[[asserts]]
+arguments = ["one two three four"]
+expected  = "one two three ruof"
+
+[[asserts]]
+arguments = ["the quick brown fox"]
+expected  = "the quick brown fox"
+
+[[asserts]]
+arguments = ["programming is fun"]
+expected  = "programming si fun"
+
+[[asserts]]
+arguments = ["code every day"]
+expected  = "edoc every day"
+
+[[asserts]]
+arguments = ["python java ruby"]
+expected  = "nohtyp avaj ybur"
+
+[[asserts]]
+arguments = ["small big tiny huge"]
+expected  = "small big ynit eguh"
+
+[[asserts]]
+arguments = ["abcd efgh ijkl"]
+expected  = "dcba hgfe lkji"
+
+[[asserts]]
+arguments = ["cat dog bird fish"]
+expected  = "cat dog drib hsif"
+
+[[asserts]]
+arguments = ["we love coding"]
+expected  = "ew evol gnidoc"
+
+[[asserts]]
+arguments = ["this task is easy"]
+expected  = "siht ksat si ysae"
+
+[[asserts]]
+arguments = ["reverse words with even count"]
+expected  = "reverse words htiw neve count"
+
+[[asserts]]
+arguments = ["one"]
+expected  = "one"
+
+[[asserts]]
+arguments = ["four"]
+expected  = "ruof"
+
+[[asserts]]
+arguments = ["x"]
+expected  = "x"
+
+[[asserts]]
+arguments = ["xy"]
+expected  = "yx"
+
+[[asserts]]
+arguments = ["xyz"]
+expected  = "xyz"

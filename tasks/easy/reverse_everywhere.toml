@@ -1,0 +1,145 @@
+level             = "easy"
+name              = "reverse_everywhere"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 230
+
+description_en = """
+Reverse each character of word in array and after that reverse array itself.
+"""
+
+description_ru = """
+Переверните каждое слово в массиве слов, а затем и сам массив.
+"""
+
+solution = """
+def solution(words: list[str]) -> list[str]:
+    return [word[::-1] for word in words][::-1]
+"""
+
+examples = """
+solution(["clojure", "is", "awesome"]) == ["emosewa", "si", "erujolc"]
+solution(["ruby", "brings", "joy"]) == ["yoj", "sgnirb", "ybur"]
+solution(["some", "sample", "data"]) == ["atad", "elpmas", "emos"]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[output_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[[asserts]]
+arguments = [["clojure", "is", "awesome"]]
+expected  = ["emosewa", "si", "erujolc"]
+
+[[asserts]]
+arguments = [["ruby", "brings", "joy"]]
+expected  = ["yoj", "sgnirb", "ybur"]
+
+[[asserts]]
+arguments = [["some", "sample", "data"]]
+expected  = ["atad", "elpmas", "emos"]
+
+[[asserts]]
+arguments = [["hello", "world"]]
+expected  = ["dlrow", "olleh"]
+
+[[asserts]]
+arguments = [["a", "b", "c"]]
+expected  = ["c", "b", "a"]
+
+[[asserts]]
+arguments = [["python"]]
+expected  = ["nohtyp"]
+
+[[asserts]]
+arguments = [["one", "two", "three"]]
+expected  = ["eerht", "owt", "eno"]
+
+[[asserts]]
+arguments = [["test", "data"]]
+expected  = ["atad", "tset"]
+
+[[asserts]]
+arguments = [["code", "every", "day"]]
+expected  = ["yad", "yreve", "edoc"]
+
+[[asserts]]
+arguments = [["abc", "def", "ghi"]]
+expected  = ["ihg", "fed", "cba"]
+
+[[asserts]]
+arguments = [["red", "green", "blue"]]
+expected  = ["eulb", "neerg", "der"]
+
+[[asserts]]
+arguments = [["cat", "dog"]]
+expected  = ["god", "tac"]
+
+[[asserts]]
+arguments = [["first", "second", "third", "fourth"]]
+expected  = ["htruof", "driht", "dnoces", "tsrif"]
+
+[[asserts]]
+arguments = [["x"]]
+expected  = ["x"]
+
+[[asserts]]
+arguments = [["ab", "cd"]]
+expected  = ["dc", "ba"]
+
+[[asserts]]
+arguments = [["the", "quick", "brown", "fox"]]
+expected  = ["xof", "nworb", "kciuq", "eht"]
+
+[[asserts]]
+arguments = [["reverse", "each", "word"]]
+expected  = ["drow", "hcae", "esrever"]
+
+[[asserts]]
+arguments = [["programming", "is", "fun"]]
+expected  = ["nuf", "si", "gnimmargorp"]
+
+[[asserts]]
+arguments = [["left", "right"]]
+expected  = ["thgir", "tfel"]
+
+[[asserts]]
+arguments = [["up", "down", "left", "right"]]
+expected  = ["thgir", "tfel", "nwod", "pu"]
+
+[[asserts]]
+arguments = [["alpha", "beta", "gamma"]]
+expected  = ["ammag", "ateb", "ahpla"]
+
+[[asserts]]
+arguments = [["java", "python", "ruby", "go"]]
+expected  = ["og", "ybur", "nohtyp", "avaj"]
+
+[[asserts]]
+arguments = [["one"]]
+expected  = ["eno"]
+
+[[asserts]]
+arguments = [["a", "b"]]
+expected  = ["b", "a"]
+
+[[asserts]]
+arguments = [["test", "case", "data", "input"]]
+expected  = ["tupni", "atad", "esac", "tset"]
+
+[[asserts]]
+arguments = [["simple", "example"]]
+expected  = ["elpmaxe", "elpmis"]
+
+[[asserts]]
+arguments = [["reverse", "words"]]
+expected  = ["sdrow", "esrever"]
+
+[[asserts]]
+arguments = [["clojure", "rocks"]]
+expected  = ["skcor", "erujolc"]

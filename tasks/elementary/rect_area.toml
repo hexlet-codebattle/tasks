@@ -1,0 +1,193 @@
+level             = "elementary"
+name              = "rect_area"
+tags              = ["math"]
+time_to_solve_sec = 100
+
+description_en = """
+Calculate the area of a rectangle given its length and width.
+"""
+
+description_ru = """
+Рассчитайте площадь прямоугольника по переданной длине и ширине.
+"""
+
+limits = """
+- $0 \\leq width \\leq 10000$
+- $0 \\leq length \\leq 10000$
+"""
+
+solution = """
+def solution(width: int, length: int) -> int:
+    return width * length
+"""
+
+examples = """
+solution(0, 0) == 0
+solution(1, 2) == 2
+solution(3, 3) == 9
+solution(15, 9) == 135
+solution(64, 64) == 4096
+"""
+
+[[input_signature]]
+argument_name = "width"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "length"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 0]
+comment   = "Zero dimensions"
+expected  = 0
+
+[[asserts]]
+arguments = [1, 2]
+comment   = "Small rectangle"
+expected  = 2
+
+[[asserts]]
+arguments = [3, 3]
+comment   = "Square"
+expected  = 9
+
+[[asserts]]
+arguments = [64, 64]
+comment   = "Large square"
+expected  = 4096
+
+[[asserts]]
+arguments = [15, 9]
+comment   = "Standard rectangle"
+expected  = 135
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "Unit square"
+expected  = 1
+
+[[asserts]]
+arguments = [10, 20]
+comment   = "10 by 20"
+expected  = 200
+
+[[asserts]]
+arguments = [5, 5]
+comment   = "5x5 square"
+expected  = 25
+
+[[asserts]]
+arguments = [7, 8]
+comment   = "7 by 8"
+expected  = 56
+
+[[asserts]]
+arguments = [12, 15]
+comment   = "12 by 15"
+expected  = 180
+
+[[asserts]]
+arguments = [100, 100]
+comment   = "100x100 square"
+expected  = 10000
+
+[[asserts]]
+arguments = [1, 100]
+comment   = "Thin rectangle"
+expected  = 100
+
+[[asserts]]
+arguments = [100, 1]
+comment   = "Tall rectangle"
+expected  = 100
+
+[[asserts]]
+arguments = [25, 25]
+comment   = "25x25 square"
+expected  = 625
+
+[[asserts]]
+arguments = [30, 40]
+comment   = "30 by 40"
+expected  = 1200
+
+[[asserts]]
+arguments = [50, 60]
+comment   = "50 by 60"
+expected  = 3000
+
+[[asserts]]
+arguments = [11, 13]
+comment   = "Prime dimensions"
+expected  = 143
+
+[[asserts]]
+arguments = [17, 19]
+comment   = "Two primes"
+expected  = 323
+
+[[asserts]]
+arguments = [8, 16]
+comment   = "Powers of 2 related"
+expected  = 128
+
+[[asserts]]
+arguments = [20, 20]
+comment   = "20x20 square"
+expected  = 400
+
+[[asserts]]
+arguments = [33, 44]
+comment   = "33 by 44"
+expected  = 1452
+
+[[asserts]]
+arguments = [55, 66]
+comment   = "55 by 66"
+expected  = 3630
+
+[[asserts]]
+arguments = [77, 88]
+comment   = "77 by 88"
+expected  = 6776
+
+[[asserts]]
+arguments = [99, 99]
+comment   = "99x99 square"
+expected  = 9801
+
+[[asserts]]
+arguments = [6, 9]
+comment   = "6 by 9"
+expected  = 54
+
+[[asserts]]
+arguments = [14, 21]
+comment   = "14 by 21"
+expected  = 294
+
+[[asserts]]
+arguments = [18, 27]
+comment   = "18 by 27"
+expected  = 486
+
+[[asserts]]
+arguments = [22, 33]
+comment   = "22 by 33"
+expected  = 726
+
+[[asserts]]
+arguments = [45, 67]
+comment   = "45 by 67"
+expected  = 3015
+
+[[asserts]]
+arguments = [123, 456]
+comment   = "Large rectangle"
+expected  = 56088

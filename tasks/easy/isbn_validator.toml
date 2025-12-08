@@ -1,0 +1,189 @@
+level             = "easy"
+name              = "isbn_validator"
+tags              = ["strings"]
+time_to_solve_sec = 250
+
+description_en = """
+Validate given ISBN identifier.
+
+An ISBN is a ten digit code which identifies a book. The first nine digits represent the book and the last digit is used to make sure the ISBN is correct.
+
+To verify an ISBN you obtain the sum of 10 times the first digit, 9 times the second digit, 8 times the third digit ... all the way till you add 1 times the last digit. If the sum leaves no remainder when divided by 11 the code is valid ISBN.
+"""
+
+description_ru = """
+Проверьте на правильность данный ISBN идентификатор.
+
+ISBN - это десятизначный код, который идентифицирует книгу. Первые девять цифр представляют книгу, а последняя используется для проверки корректности.
+
+Для проверки ISBN нужно просуммировать 10 раз первую цифру, 9 раз вторую, 8 раз третью и так далее, в конце нужно прибавить 1 раз последнюю цифру. Если при делении полученной суммы на 11 нет остатка, то ISBN корректен.
+"""
+
+limits = """
+- $\\text{len}(code) \\leq 20$
+"""
+
+solution = """
+def solution(code: str) -> bool:
+    digits = [int(d) for d in code if d.isdigit()]
+    if len(digits) != 10:
+        return False
+    total = sum((10 - i) * d for i, d in enumerate(digits))
+    return total % 11 == 0
+"""
+
+examples = """
+solution("0-85131-041-8") == False
+solution("85-359-0277-5") == True
+solution("0-85131-041-9") == True
+solution("0-684-84328-5") == True
+solution("960-425-059-0") == True
+"""
+
+[[input_signature]]
+argument_name = "code"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["0-684-84328-5"]
+comment   = "Valid ISBN with dashes"
+expected  = true
+
+[[asserts]]
+arguments = ["960-425-059-0"]
+comment   = "Valid ISBN international"
+expected  = true
+
+[[asserts]]
+arguments = ["85-359-0277-5"]
+comment   = "Valid ISBN different format"
+expected  = true
+
+[[asserts]]
+arguments = ["0-85131-041-9"]
+comment   = "Valid ISBN"
+expected  = true
+
+[[asserts]]
+arguments = ["0-85131-041-8"]
+comment   = "Invalid ISBN wrong checksum"
+expected  = false
+
+[[asserts]]
+arguments = ["0306406152"]
+comment   = "Valid ISBN no dashes"
+expected  = true
+
+[[asserts]]
+arguments = ["1234567890"]
+comment   = "Invalid ISBN sequence"
+expected  = false
+
+[[asserts]]
+arguments = ["99921-58-10-7"]
+comment   = "Valid ISBN format variation"
+expected  = true
+
+[[asserts]]
+arguments = ["9971-5-0210-0"]
+comment   = "Valid ISBN"
+expected  = true
+
+[[asserts]]
+arguments = ["960-425-059-1"]
+comment   = "Invalid last digit"
+expected  = false
+
+[[asserts]]
+arguments = ["0-670-82162-4"]
+comment   = "Valid ISBN"
+expected  = true
+
+[[asserts]]
+arguments = ["0-14-028333-7"]
+comment   = "Valid ISBN Penguin"
+expected  = false
+
+[[asserts]]
+arguments = ["0-14-028333-6"]
+comment   = "Invalid checksum"
+expected  = false
+
+[[asserts]]
+arguments = ["123"]
+comment   = "Too short"
+expected  = false
+
+[[asserts]]
+arguments = ["123456789012345"]
+comment   = "Too long"
+expected  = false
+
+[[asserts]]
+arguments = ["0-19-853453-1"]
+comment   = "Valid ISBN Oxford"
+expected  = true
+
+[[asserts]]
+arguments = ["0-19-853453-0"]
+comment   = "Invalid Oxford ISBN"
+expected  = false
+
+[[asserts]]
+arguments = ["0-395-19395-8"]
+comment   = "Valid ISBN"
+expected  = true
+
+[[asserts]]
+arguments = ["0-395-19395-7"]
+comment   = "Invalid"
+expected  = false
+
+[[asserts]]
+arguments = ["1-56619-909-3"]
+comment   = "Valid ISBN"
+expected  = true
+
+[[asserts]]
+arguments = ["0-684-84328-4"]
+comment   = "Invalid checksum off by one"
+expected  = false
+
+[[asserts]]
+arguments = ["0-684-84328-6"]
+comment   = "Invalid checksum off by one up"
+expected  = false
+
+[[asserts]]
+arguments = ["0-7167-0344-0"]
+comment   = "Valid ISBN"
+expected  = true
+
+[[asserts]]
+arguments = ["0-262-03293-7"]
+comment   = "Valid MIT Press ISBN"
+expected  = true
+
+[[asserts]]
+arguments = ["0-521-26514-3"]
+comment   = "Valid Cambridge ISBN"
+expected  = false
+
+[[asserts]]
+arguments = ["0-439-02348-0"]
+comment   = "Invalid Scholastic ISBN"
+expected  = false
+
+[[asserts]]
+arguments = ["0-13-110362-8"]
+comment   = "Valid Prentice Hall ISBN"
+expected  = true
+
+[[asserts]]
+arguments = ["0-13-110362-7"]
+comment   = "Invalid Prentice Hall ISBN"
+expected  = false

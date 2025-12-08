@@ -1,0 +1,214 @@
+level             = "elementary"
+name              = "missing_third_angle"
+tags              = ["math"]
+time_to_solve_sec = 180
+
+description_en = """
+2 out of 3 angles are given in a triangle, in degrees.
+
+Write a function that classifies the missing angle as `"acute"`, `"right"`, or `"obtuse"`.
+
+- An acute angle is less than 90 degrees.
+- A right angle is exactly 90 degrees.
+- An obtuse angle is greater than 90 degrees (but less than 180 degrees).
+
+The sum of angles of any triangle is always 180 degrees.
+"""
+
+description_ru = """
+Даны 2 угла треугольника из 3-х, углы даны в градусах.
+
+Напишите функцию классифицирующую отсутствующий угол как острый - `"acute"`, прямой - `"right"` или тупой - `"obtuse"`.
+
+- Острый угол меньше 90 градусов.
+- Прямой угол равен точно 90 градусам.
+- Тупой угол больше 90 градусов (но меньше 180 градусов).
+
+Сумма углов любого треугольника всегда равна 180 градусам.
+"""
+
+limits = """
+- $1 \\leq first \\leq 179$
+- $1 \\leq second \\leq 179$
+- $1 \\leq first + second \\leq 179$
+"""
+
+solution = """
+def solution(first: int, second: int) -> str:
+    third = 180 - first - second
+    if third > 90:
+        return "obtuse"
+    elif third < 90:
+        return "acute"
+    else:
+        return "right"
+"""
+
+examples = """
+solution(45, 45) == "right"
+solution(27, 59) == "obtuse"
+solution(100, 11) == "acute"
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [27, 59]
+comment   = "Missing angle is obtuse"
+expected  = "obtuse"
+
+[[asserts]]
+arguments = [100, 11]
+comment   = "Missing angle is acute"
+expected  = "acute"
+
+[[asserts]]
+arguments = [45, 45]
+comment   = "Missing angle is right"
+expected  = "right"
+
+[[asserts]]
+arguments = [30, 60]
+comment   = "Common 30-60-90 triangle"
+expected  = "right"
+
+[[asserts]]
+arguments = [60, 60]
+comment   = "Equilateral triangle"
+expected  = "acute"
+
+[[asserts]]
+arguments = [20, 30]
+comment   = "Missing obtuse angle"
+expected  = "obtuse"
+
+[[asserts]]
+arguments = [50, 50]
+comment   = "Isosceles with acute missing"
+expected  = "acute"
+
+[[asserts]]
+arguments = [10, 80]
+comment   = "Right angle exactly"
+expected  = "right"
+
+[[asserts]]
+arguments = [89, 1]
+comment   = "Right angle boundary"
+expected  = "right"
+
+[[asserts]]
+arguments = [1, 89]
+comment   = "Right angle boundary reversed"
+expected  = "right"
+
+[[asserts]]
+arguments = [70, 70]
+comment   = "Large isosceles acute"
+expected  = "acute"
+
+[[asserts]]
+arguments = [80, 80]
+comment   = "Small acute missing angle"
+expected  = "acute"
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "Extreme obtuse"
+expected  = "obtuse"
+
+[[asserts]]
+arguments = [90, 45]
+comment   = "One right given acute missing"
+expected  = "acute"
+
+[[asserts]]
+arguments = [90, 80]
+comment   = "One right given small acute missing"
+expected  = "acute"
+
+[[asserts]]
+arguments = [45, 50]
+comment   = "Two acute given acute missing"
+expected  = "acute"
+
+[[asserts]]
+arguments = [40, 60]
+comment   = "Two moderate acute angles"
+expected  = "acute"
+
+[[asserts]]
+arguments = [35, 55]
+comment   = "Right angle exactly 90"
+expected  = "right"
+
+[[asserts]]
+arguments = [25, 75]
+comment   = "Acute with 80 degree missing"
+expected  = "acute"
+
+[[asserts]]
+arguments = [15, 75]
+comment   = "Right triangle variant"
+expected  = "right"
+
+[[asserts]]
+arguments = [10, 10]
+comment   = "Very large obtuse missing"
+expected  = "obtuse"
+
+[[asserts]]
+arguments = [85, 5]
+comment   = "Right angle exact"
+expected  = "right"
+
+[[asserts]]
+arguments = [5, 85]
+comment   = "Right angle exact reversed"
+expected  = "right"
+
+[[asserts]]
+arguments = [44, 46]
+comment   = "Right angle missing"
+expected  = "right"
+
+[[asserts]]
+arguments = [50, 40]
+comment   = "Right angle exactly"
+expected  = "right"
+
+[[asserts]]
+arguments = [33, 57]
+comment   = "Right angle missing"
+expected  = "right"
+
+[[asserts]]
+arguments = [78, 12]
+comment   = "Right angle from unequal acute"
+expected  = "right"
+
+[[asserts]]
+arguments = [22, 68]
+comment   = "Right angle from small and large"
+expected  = "right"
+
+[[asserts]]
+arguments = [55, 35]
+comment   = "Right angle exact"
+expected  = "right"
+
+[[asserts]]
+arguments = [91, 89]
+comment   = "Zero degree missing impossible but acute by math"
+expected  = "acute"

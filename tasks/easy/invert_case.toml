@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "invert_case"
+tags              = ["strings"]
+time_to_solve_sec = 200
+
+description_en = """
+Implement a function that changes the case of each letter in the text to the opposite.
+"""
+
+description_ru = """
+Создайте функцию, которая меняет регистр каждого символа в тексте на противоположный.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(text) \\leq 1000$
+"""
+
+solution = """
+def solution(text: str) -> str:
+    return text.swapcase()
+"""
+
+examples = """
+solution("MiXeD cAsE") == "mIxEd CaSe"
+solution("Hello, World.") == "hELLO, wORLD."
+solution("I Love CLOJURE!") == "i lOVE clojure!"
+solution("frontend? WHAT is IT?") == "FRONTEND? what IS it?"
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Hello, World."]
+comment   = "Mixed case with punctuation"
+expected  = "hELLO, wORLD."
+
+[[asserts]]
+arguments = ["I Love CLOJURE!"]
+comment   = "Multiple words mixed case"
+expected  = "i lOVE clojure!"
+
+[[asserts]]
+arguments = ["MiXeD cAsE"]
+comment   = "Alternating case"
+expected  = "mIxEd CaSe"
+
+[[asserts]]
+arguments = ["frontend? WHAT is IT?"]
+comment   = "Question with mixed case"
+expected  = "FRONTEND? what IS it?"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = ""
+
+[[asserts]]
+arguments = ["HELLO"]
+comment   = "All uppercase"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "All lowercase"
+expected  = "HELLO"
+
+[[asserts]]
+arguments = ["123"]
+comment   = "Only digits"
+expected  = "123"
+
+[[asserts]]
+arguments = ["!@#$%"]
+comment   = "Only special characters"
+expected  = "!@#$%"
+
+[[asserts]]
+arguments = ["Hello123World"]
+comment   = "Mixed with numbers"
+expected  = "hELLO123wORLD"
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single lowercase letter"
+expected  = "A"
+
+[[asserts]]
+arguments = ["Z"]
+comment   = "Single uppercase letter"
+expected  = "z"
+
+[[asserts]]
+arguments = ["The Quick Brown Fox"]
+comment   = "Sentence case"
+expected  = "tHE qUICK bROWN fOX"
+
+[[asserts]]
+arguments = ["JUMPS over THE lazy DOG"]
+comment   = "Mixed sentence"
+expected  = "jumps OVER the LAZY dog"
+
+[[asserts]]
+arguments = ["Programming123Is456Fun"]
+comment   = "CamelCase with numbers"
+expected  = "pROGRAMMING123iS456fUN"
+
+[[asserts]]
+arguments = ["ABC def GHI jkl"]
+comment   = "Alternating word case"
+expected  = "abc DEF ghi JKL"
+
+[[asserts]]
+arguments = ["HeLLo WoRLd"]
+comment   = "Strange mixed case"
+expected  = "hEllO wOrlD"
+
+[[asserts]]
+arguments = ["test TEST test"]
+comment   = "Repeated word different cases"
+expected  = "TEST test TEST"
+
+[[asserts]]
+arguments = ["CamelCaseExample"]
+comment   = "CamelCase string"
+expected  = "cAMELcASEeXAMPLE"
+
+[[asserts]]
+arguments = ["snake_case_example"]
+comment   = "Snake case"
+expected  = "SNAKE_CASE_EXAMPLE"
+
+[[asserts]]
+arguments = ["CONSTANT_VALUE"]
+comment   = "Constant style"
+expected  = "constant_value"
+
+[[asserts]]
+arguments = ["PascalCaseExample"]
+comment   = "PascalCase"
+expected  = "pASCALcASEeXAMPLE"
+
+[[asserts]]
+arguments = ["HTML5 and CSS3"]
+comment   = "Technical terms with numbers"
+expected  = "html5 AND css3"
+
+[[asserts]]
+arguments = ["JavaScript"]
+comment   = "Single tech word"
+expected  = "jAVAsCRIPT"
+
+[[asserts]]
+arguments = ["iPhone15Pro"]
+comment   = "Product name with number"
+expected  = "IpHONE15pRO"
+
+[[asserts]]
+arguments = ["WiFi-5GHz"]
+comment   = "Hyphenated tech term"
+expected  = "wIfI-5ghz"
+
+[[asserts]]
+arguments = ["IOError"]
+comment   = "All caps error name"
+expected  = "ioerror"
+
+[[asserts]]
+arguments = ["firstName"]
+comment   = "camelCase variable"
+expected  = "FIRSTnAME"
+
+[[asserts]]
+arguments = ["XMLHttpRequest"]
+comment   = "Mixed abbreviation"
+expected  = "xmlhTTPrEQUEST"
+
+[[asserts]]
+arguments = ["UTF-8"]
+comment   = "Encoding with dash and number"
+expected  = "utf-8"

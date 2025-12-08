@@ -1,0 +1,209 @@
+level             = "easy"
+name              = "isomorphic_strings"
+tags              = ["strings"]
+time_to_solve_sec = 280
+
+description_en = """
+Given two strings, determine if they are isomorphic.
+
+Two strings are isomorphic if the characters in s can be replaced to get t. All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
+"""
+
+description_ru = """
+Даны две строки, определите изоморфны ли они.
+
+Две строки являются изоморфными, если символы в одной строке можно заменить так, чтобы получить другую строку. Все вхождения определенного символа должны быть заменены другим символом, с сохранением порядка символов. Два различных символа не могут быть отражены на один и тот же итоговый, но символ может быть отражен на самого себя.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s1) \\leq 1000$
+- $\\text{len}(s1) = \\text{len}(s2)$
+"""
+
+solution = """
+def solution(s1: str, s2: str) -> bool:
+    if len(s1) != len(s2):
+        return False
+
+    def get_pattern(s):
+        mapping = {}
+        pattern = []
+        for c in s:
+            if c not in mapping:
+                mapping[c] = len(mapping)
+            pattern.append(mapping[c])
+        return pattern
+
+    return get_pattern(s1) == get_pattern(s2)
+"""
+
+examples = """
+solution("aa", "bb") == True
+solution("ca", "ab") == True
+solution("egg", "add") == True
+solution("foo", "bar") == False
+solution("aabb", "abab") == False
+"""
+
+[[input_signature]]
+argument_name = "s1"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "s2"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["egg", "add"]
+comment   = "Classic isomorphic example"
+expected  = true
+
+[[asserts]]
+arguments = ["paper", "title"]
+comment   = "Word isomorphism"
+expected  = true
+
+[[asserts]]
+arguments = ["ca", "ab"]
+comment   = "Simple two letter isomorphism"
+expected  = true
+
+[[asserts]]
+arguments = ["aa", "bb"]
+comment   = "Same letter repeated"
+expected  = true
+
+[[asserts]]
+arguments = ["aedor", "eiruw"]
+comment   = "Five letter isomorphism"
+expected  = true
+
+[[asserts]]
+arguments = ["foo", "bar"]
+comment   = "Not isomorphic"
+expected  = false
+
+[[asserts]]
+arguments = ["aabb", "abab"]
+comment   = "Different pattern"
+expected  = false
+
+[[asserts]]
+arguments = ["", ""]
+comment   = "Empty strings"
+expected  = true
+
+[[asserts]]
+arguments = ["a", "a"]
+comment   = "Single same character"
+expected  = true
+
+[[asserts]]
+arguments = ["a", "b"]
+comment   = "Single different characters"
+expected  = true
+
+[[asserts]]
+arguments = ["abc", "def"]
+comment   = "Simple sequence"
+expected  = true
+
+[[asserts]]
+arguments = ["abc", "abc"]
+comment   = "Identical strings"
+expected  = true
+
+[[asserts]]
+arguments = ["aba", "bab"]
+comment   = "Palindrome pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["abba", "cddc"]
+comment   = "Mirror pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["abcd", "abcd"]
+comment   = "All unique same"
+expected  = true
+
+[[asserts]]
+arguments = ["abcabc", "xyzxyz"]
+comment   = "Repeating pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["aabbcc", "xxyyzz"]
+comment   = "Paired pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["abba", "abab"]
+comment   = "Different symmetry"
+expected  = false
+
+[[asserts]]
+arguments = ["abcdefg", "hijklmn"]
+comment   = "All unique mapping"
+expected  = true
+
+[[asserts]]
+arguments = ["aaa", "bbb"]
+comment   = "All same repeated"
+expected  = true
+
+[[asserts]]
+arguments = ["abc", "aaa"]
+comment   = "Unique to same not valid"
+expected  = false
+
+[[asserts]]
+arguments = ["aaa", "abc"]
+comment   = "Same to unique not valid"
+expected  = false
+
+[[asserts]]
+arguments = ["ab", "aa"]
+comment   = "Two to one mapping invalid"
+expected  = false
+
+[[asserts]]
+arguments = ["aa", "ab"]
+comment   = "One to two mapping invalid"
+expected  = false
+
+[[asserts]]
+arguments = ["abcabc", "defdef"]
+comment   = "Repeating blocks"
+expected  = true
+
+[[asserts]]
+arguments = ["abcabc", "defghi"]
+comment   = "Repeat vs unique"
+expected  = false
+
+[[asserts]]
+arguments = ["hello", "world"]
+comment   = "Two l's vs unique"
+expected  = false
+
+[[asserts]]
+arguments = ["hello", "abccd"]
+comment   = "Same double letter pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["badc", "baba"]
+comment   = "Different occurrence patterns"
+expected  = false
+
+[[asserts]]
+arguments = ["abcdefghij", "jihgfedcba"]
+comment   = "All unique different order"
+expected  = true

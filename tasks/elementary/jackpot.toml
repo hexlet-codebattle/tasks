@@ -1,0 +1,187 @@
+level             = "elementary"
+name              = "jackpot"
+tags              = ["strings", "games"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that takes in an array (slot machine outcome) and returns true if all elements in the array are identical, and false otherwise. The array will contain 3 elements.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает массив из трех элементов представляющих собой результат запуска слот-машины из казино. Проверьте, является ли комбинация элементов удачной (все элементы равны).
+"""
+
+limits = """
+- $\\text{len}(elements) = 3$
+"""
+
+solution = """
+def solution(elements: list[str]) -> bool:
+    return len(set(elements)) == 1
+"""
+
+examples = """
+solution(["@", "@", "@"]) == True
+solution(["abc", "abc", "abb"]) == False
+solution(["9919", "9919", "9919"]) == True
+"""
+
+[[input_signature]]
+argument_name = "elements"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [["9919", "9919", "9919"]]
+comment   = "All same numbers"
+expected  = true
+
+[[asserts]]
+arguments = [["abc", "abc", "abb"]]
+comment   = "Two same one different"
+expected  = false
+
+[[asserts]]
+arguments = [["@", "@", "@"]]
+comment   = "All same symbol"
+expected  = true
+
+[[asserts]]
+arguments = [["cherry", "cherry", "cherry"]]
+comment   = "All same word"
+expected  = true
+
+[[asserts]]
+arguments = [["lemon", "lemon", "orange"]]
+comment   = "Two lemons one orange"
+expected  = false
+
+[[asserts]]
+arguments = [["7", "7", "7"]]
+comment   = "Lucky sevens"
+expected  = true
+
+[[asserts]]
+arguments = [["bar", "bar", "bar"]]
+comment   = "All bars"
+expected  = true
+
+[[asserts]]
+arguments = [["cherry", "lemon", "orange"]]
+comment   = "All different"
+expected  = false
+
+[[asserts]]
+arguments = [["apple", "apple", "banana"]]
+comment   = "Two apples one banana"
+expected  = false
+
+[[asserts]]
+arguments = [["X", "X", "X"]]
+comment   = "All X"
+expected  = true
+
+[[asserts]]
+arguments = [["star", "star", "moon"]]
+comment   = "Two stars one moon"
+expected  = false
+
+[[asserts]]
+arguments = [["bell", "bell", "bell"]]
+comment   = "All bells"
+expected  = true
+
+[[asserts]]
+arguments = [["grape", "grape", "grape"]]
+comment   = "All grapes"
+expected  = true
+
+[[asserts]]
+arguments = [["diamond", "diamond", "ruby"]]
+comment   = "Two diamonds one ruby"
+expected  = false
+
+[[asserts]]
+arguments = [["gold", "gold", "gold"]]
+comment   = "All gold"
+expected  = true
+
+[[asserts]]
+arguments = [["A", "A", "A"]]
+comment   = "All letter A"
+expected  = true
+
+[[asserts]]
+arguments = [["A", "B", "C"]]
+comment   = "All different letters"
+expected  = false
+
+[[asserts]]
+arguments = [["1", "1", "1"]]
+comment   = "All ones"
+expected  = true
+
+[[asserts]]
+arguments = [["1", "2", "3"]]
+comment   = "Sequential numbers"
+expected  = false
+
+[[asserts]]
+arguments = [["heart", "heart", "spade"]]
+comment   = "Card suits mixed"
+expected  = false
+
+[[asserts]]
+arguments = [["club", "club", "club"]]
+comment   = "All clubs"
+expected  = true
+
+[[asserts]]
+arguments = [["777", "777", "777"]]
+comment   = "Triple sevens"
+expected  = true
+
+[[asserts]]
+arguments = [["777", "888", "999"]]
+comment   = "Different triple numbers"
+expected  = false
+
+[[asserts]]
+arguments = [["win", "win", "win"]]
+comment   = "All wins"
+expected  = true
+
+[[asserts]]
+arguments = [["win", "lose", "win"]]
+comment   = "Mixed result"
+expected  = false
+
+[[asserts]]
+arguments = [["bonus", "bonus", "bonus"]]
+comment   = "All bonus"
+expected  = true
+
+[[asserts]]
+arguments = [["free", "free", "spin"]]
+comment   = "Two free one spin"
+expected  = false
+
+[[asserts]]
+arguments = [["wild", "wild", "wild"]]
+comment   = "All wild"
+expected  = true
+
+[[asserts]]
+arguments = [["", "", ""]]
+comment   = "All empty strings"
+expected  = true
+
+[[asserts]]
+arguments = [["test", "test", ""]]
+comment   = "Two same one empty"
+expected  = false

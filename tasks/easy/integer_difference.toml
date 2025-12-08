@@ -1,0 +1,202 @@
+level             = "easy"
+name              = "integer_difference"
+tags              = ["collections"]
+time_to_solve_sec = 450
+
+description_en = """
+Find how many pairs $X, Y$ there are in the array, such that $|X - Y|$ is equal to the first argument.
+"""
+
+description_ru = """
+Найдите сколько в массиве существует пар $X, Y$, таких что модуль значения выражения $(X - Y)$ равен первому аргументу.
+"""
+
+limits = """
+- $0 \\leq differ \\leq 50$
+- $2 \\leq \\text{len}(arr) \\leq 20$
+- $-30 \\leq arr[i] \\leq 40$
+"""
+
+solution = """
+def solution(differ: int, arr: list[int]) -> int:
+    c = 0
+    for i in range(len(arr)):
+        for j in range(i + 1, len(arr)):
+            if abs(arr[i] - arr[j]) == differ:
+                c += 1
+    return c
+"""
+
+examples = """
+solution(1, [-1, 1, 0]) == 2
+solution(2, [1, 1, 3, 3]) == 4
+solution(3, [-2, 0, -2, 3, 3, 1]) == 4
+solution(4, [1, 1, 5, 6, 9, 16, 27]) == 3
+solution(7, [1, 5, -2, 2, -5, 7, -2]) == 3
+solution(12, [6, 6, 2, -11, 9, -3, 9, 12, 0, -11, 7]) == 3
+"""
+
+[[input_signature]]
+argument_name = "differ"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [4, [1, 1, 5, 6, 9, 16, 27]]
+comment   = "Multiple pairs with difference 4"
+expected  = 3
+
+[[asserts]]
+arguments = [2, [1, 1, 3, 3]]
+comment   = "All elements form pairs"
+expected  = 4
+
+[[asserts]]
+arguments = [12, [6, 6, 2, -11, 9, -3, 9, 12, 0, -11, 7]]
+comment   = "Large array with negatives"
+expected  = 3
+
+[[asserts]]
+arguments = [7, [1, 5, -2, 2, -5, 7, -2]]
+comment   = "Mixed positive and negative values"
+expected  = 3
+
+[[asserts]]
+arguments = [1, [-1, 1, 0]]
+comment   = "Small array with consecutive values"
+expected  = 2
+
+[[asserts]]
+arguments = [3, [-2, 0, -2, 3, 3, 1]]
+comment   = "Array with duplicates"
+expected  = 4
+
+[[asserts]]
+arguments = [0, [5, 5, 5, 5]]
+comment   = "Zero difference with identical elements"
+expected  = 6
+
+[[asserts]]
+arguments = [0, [1, 2, 3, 4]]
+comment   = "Zero difference with distinct elements"
+expected  = 0
+
+[[asserts]]
+arguments = [1, [1, 2, 3, 4, 5]]
+comment   = "Consecutive sequence difference 1"
+expected  = 4
+
+[[asserts]]
+arguments = [2, [1, 3, 5, 7, 9]]
+comment   = "Arithmetic sequence difference 2"
+expected  = 4
+
+[[asserts]]
+arguments = [5, [0, 5, 10, 15, 20]]
+comment   = "Multiples of 5 with difference 5"
+expected  = 4
+
+[[asserts]]
+arguments = [10, [1, 11, 21, 31]]
+comment   = "Large difference between consecutive elements"
+expected  = 3
+
+[[asserts]]
+arguments = [3, [1, 4, 7, 10, 13]]
+comment   = "Arithmetic progression with step 3"
+expected  = 4
+
+[[asserts]]
+arguments = [1, [5, 4, 3, 2, 1]]
+comment   = "Descending sequence"
+expected  = 4
+
+[[asserts]]
+arguments = [8, [-4, 4, -12, 12]]
+comment   = "Symmetric around zero"
+expected  = 3
+
+[[asserts]]
+arguments = [15, [0, 15, 30]]
+comment   = "Three elements forming pairs"
+expected  = 2
+
+[[asserts]]
+arguments = [6, [1, 7, 13, 19]]
+comment   = "Consistent difference between consecutive"
+expected  = 3
+
+[[asserts]]
+arguments = [4, [10, 6, 2, -2]]
+comment   = "Descending with negative endpoint"
+expected  = 3
+
+[[asserts]]
+arguments = [20, [10, 30, 50, 70]]
+comment   = "Large differences in sequence"
+expected  = 3
+
+[[asserts]]
+arguments = [1, [0, 1, 1, 2, 2, 3]]
+comment   = "Multiple duplicates with difference 1"
+expected  = 8
+
+[[asserts]]
+arguments = [5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+comment   = "Long sequence with difference 5"
+expected  = 5
+
+[[asserts]]
+arguments = [11, [-5, 6, 17, -16, 28]]
+comment   = "Scattered values with specific difference"
+expected  = 4
+
+[[asserts]]
+arguments = [0, [7, 7, 7]]
+comment   = "Three identical elements"
+expected  = 3
+
+[[asserts]]
+arguments = [2, [0, 2, 0, 2]]
+comment   = "Alternating pattern"
+expected  = 4
+
+[[asserts]]
+arguments = [9, [1, 10, 19, 28]]
+comment   = "Step of 9 in sequence"
+expected  = 3
+
+[[asserts]]
+arguments = [13, [-13, 0, 13, 26]]
+comment   = "Multiples of 13"
+expected  = 3
+
+[[asserts]]
+arguments = [7, [3, 10, 17, 24, 31]]
+comment   = "Five element arithmetic sequence"
+expected  = 4
+
+[[asserts]]
+arguments = [1, [-2, -1, 0, 1, 2]]
+comment   = "Sequence through zero"
+expected  = 4
+
+[[asserts]]
+arguments = [25, [0, 25, -25, 50]]
+comment   = "Large steps with negatives"
+expected  = 3
+
+[[asserts]]
+arguments = [3, [6, 3, 9, 0, 12]]
+comment   = "Multiples of 3 unordered"
+expected  = 4

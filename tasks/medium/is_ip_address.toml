@@ -1,0 +1,193 @@
+level             = "medium"
+name              = "is_ip_address"
+tags              = ["network", "strings"]
+time_to_solve_sec = 450
+
+description_en = """
+Create a function that checks if `address` is an IPv4 address.
+"""
+
+description_ru = """
+Создайте функцию, которая проверяет, является ли `address` адресом IPv4.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(address) \\leq 100$
+"""
+
+solution = """
+def solution(address: str) -> bool:
+    parts = address.split('.')
+    if len(parts) != 4:
+        return False
+    try:
+        return all(0 <= int(p) <= 255 for p in parts)
+    except ValueError:
+        return False
+"""
+
+examples = """
+solution("clojure") == False
+solution("127.0.0.1") == True
+solution("127.-20.12.1") == False
+solution("127.260.12.1") == False
+solution("192.168.100.5") == True
+"""
+
+[[input_signature]]
+argument_name = "address"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["192.168.100.5"]
+comment   = "Valid private IP"
+expected  = true
+
+[[asserts]]
+arguments = ["127.0.0.1"]
+comment   = "Localhost"
+expected  = true
+
+[[asserts]]
+arguments = ["127.260.12.1"]
+comment   = "Out of range octet"
+expected  = false
+
+[[asserts]]
+arguments = ["127.-20.12.1"]
+comment   = "Negative octet"
+expected  = false
+
+[[asserts]]
+arguments = ["clojure"]
+comment   = "Not an IP address"
+expected  = false
+
+[[asserts]]
+arguments = [">;-~htQOvnV"]
+comment   = "Random string"
+expected  = false
+
+[[asserts]]
+arguments = ["0.0.0.0"]
+comment   = "All zeros valid"
+expected  = true
+
+[[asserts]]
+arguments = ["255.255.255.255"]
+comment   = "Maximum valid IP"
+expected  = true
+
+[[asserts]]
+arguments = ["1.2.3"]
+comment   = "Only three octets"
+expected  = false
+
+[[asserts]]
+arguments = ["1.2.3.4.5"]
+comment   = "Five octets"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1.1"]
+comment   = "Common router IP"
+expected  = true
+
+[[asserts]]
+arguments = ["10.0.0.1"]
+comment   = "Class A private"
+expected  = true
+
+[[asserts]]
+arguments = ["172.16.0.1"]
+comment   = "Class B private"
+expected  = true
+
+[[asserts]]
+arguments = ["8.8.8.8"]
+comment   = "Google DNS"
+expected  = true
+
+[[asserts]]
+arguments = ["1.1.1.1"]
+comment   = "Cloudflare DNS"
+expected  = true
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = false
+
+[[asserts]]
+arguments = ["..."]
+comment   = "Only dots"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1"]
+comment   = "Missing octet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1.1.1"]
+comment   = "Extra octet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.01.1"]
+comment   = "Leading zero valid"
+expected  = true
+
+[[asserts]]
+arguments = ["abc.def.ghi.jkl"]
+comment   = "Letters instead of numbers"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1.256"]
+comment   = "Last octet too large"
+expected  = false
+
+[[asserts]]
+arguments = ["256.1.1.1"]
+comment   = "First octet too large"
+expected  = false
+
+[[asserts]]
+arguments = ["1.256.1.1"]
+comment   = "Second octet too large"
+expected  = false
+
+[[asserts]]
+arguments = ["1.1.256.1"]
+comment   = "Third octet too large"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.-1.1"]
+comment   = "Negative third octet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1.-1"]
+comment   = "Negative fourth octet"
+expected  = false
+
+[[asserts]]
+arguments = ["-1.0.0.0"]
+comment   = "Negative first octet"
+expected  = false
+
+[[asserts]]
+arguments = ["192 168 1 1"]
+comment   = "Spaces instead of dots"
+expected  = false
+
+[[asserts]]
+arguments = ["192,168,1,1"]
+comment   = "Commas instead of dots"
+expected  = false

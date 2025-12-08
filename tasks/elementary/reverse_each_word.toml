@@ -1,0 +1,185 @@
+level             = "elementary"
+name              = "reverse_each_word"
+tags              = ["strings"]
+time_to_solve_sec = 150
+
+description_en = """
+Given a string as input, reverse each word, but keep the word order the same. Words are separated by whitespaces.
+"""
+
+description_ru = """
+На вход подается строка, переверните каждое слово, но сохраните порядок слов. Слова разделены пробелом.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 1000$
+"""
+
+solution = """
+def solution(s: str) -> str:
+    return ' '.join(word[::-1] for word in s.split(' '))
+"""
+
+examples = """
+solution("m'I ,eniF .sknahT dnA ?uoY") == "I'm Fine, Thanks. And You?"
+solution("Hello there, and how are you?") == "olleH ,ereht dna woh era ?uoy"
+solution("The quick brown fox jumps over the lazy dog") == "ehT kciuq nworb xof spmuj revo eht yzal god"
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Hello there, and how are you?"]
+comment   = "Sentence with punctuation"
+expected  = "olleH ,ereht dna woh era ?uoy"
+
+[[asserts]]
+arguments = ["m'I ,eniF .sknahT dnA ?uoY"]
+comment   = "Already reversed"
+expected  = "I'm Fine, Thanks. And You?"
+
+[[asserts]]
+arguments = ["The quick brown fox jumps over the lazy dog"]
+comment   = "Pangram sentence"
+expected  = "ehT kciuq nworb xof spmuj revo eht yzal god"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = ""
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Single word"
+expected  = "olleh"
+
+[[asserts]]
+arguments = ["a b c"]
+comment   = "Single letters"
+expected  = "a b c"
+
+[[asserts]]
+arguments = ["abc"]
+comment   = "Single word three letters"
+expected  = "cba"
+
+[[asserts]]
+arguments = ["hello world"]
+comment   = "Two words"
+expected  = "olleh dlrow"
+
+[[asserts]]
+arguments = ["one two three"]
+comment   = "Three words"
+expected  = "eno owt eerht"
+
+[[asserts]]
+arguments = ["Programming is fun"]
+comment   = "Simple sentence"
+expected  = "gnimmargorP si nuf"
+
+[[asserts]]
+arguments = ["Python JavaScript Java"]
+comment   = "Programming languages"
+expected  = "nohtyP tpircSavaJ avaJ"
+
+[[asserts]]
+arguments = ["12345"]
+comment   = "Numbers as string"
+expected  = "54321"
+
+[[asserts]]
+arguments = ["one 123 two"]
+comment   = "Mixed words and numbers"
+expected  = "eno 321 owt"
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single character"
+expected  = "a"
+
+[[asserts]]
+arguments = ["ab"]
+comment   = "Two characters"
+expected  = "ba"
+
+[[asserts]]
+arguments = ["first second third fourth"]
+comment   = "Four words"
+expected  = "tsrif dnoces driht htruof"
+
+[[asserts]]
+arguments = ["Hello World!"]
+comment   = "With exclamation"
+expected  = "olleH !dlroW"
+
+[[asserts]]
+arguments = ["Good morning everyone"]
+comment   = "Greeting"
+expected  = "dooG gninrom enoyreve"
+
+[[asserts]]
+arguments = ["Test case number one"]
+comment   = "Test description"
+expected  = "tseT esac rebmun eno"
+
+[[asserts]]
+arguments = ["alpha beta gamma delta"]
+comment   = "Greek letters"
+expected  = "ahpla ateb ammag atled"
+
+[[asserts]]
+arguments = ["north south east west"]
+comment   = "Directions"
+expected  = "htron htuos tsae tsew"
+
+[[asserts]]
+arguments = ["red green blue"]
+comment   = "Colors"
+expected  = "der neerg eulb"
+
+[[asserts]]
+arguments = ["spring summer autumn winter"]
+comment   = "Seasons"
+expected  = "gnirps remmus nmutua retniw"
+
+[[asserts]]
+arguments = ["Monday Tuesday Wednesday"]
+comment   = "Days of week"
+expected  = "yadnoM yadseuT yadsendeW"
+
+[[asserts]]
+arguments = ["apple banana cherry"]
+comment   = "Fruits"
+expected  = "elppa ananab yrrehc"
+
+[[asserts]]
+arguments = ["dog cat bird"]
+comment   = "Animals"
+expected  = "god tac drib"
+
+[[asserts]]
+arguments = ["book pen desk"]
+comment   = "Objects"
+expected  = "koob nep ksed"
+
+[[asserts]]
+arguments = ["quick fast rapid"]
+comment   = "Synonyms"
+expected  = "kciuq tsaf dipar"
+
+[[asserts]]
+arguments = ["happy sad angry"]
+comment   = "Emotions"
+expected  = "yppah das yrgna"
+
+[[asserts]]
+arguments = ["big small medium"]
+comment   = "Sizes"
+expected  = "gib llams muidem"

@@ -1,0 +1,180 @@
+level             = "elementary"
+name              = "largest_number"
+tags              = ["math"]
+time_to_solve_sec = 150
+
+description_en = """
+Given an integer $n$, return the largest number that contains exactly $n$ digits.
+"""
+
+description_ru = """
+Дано число $n$, найдите наибольшее число, которое содержит ровно $n$ цифр.
+"""
+
+limits = """
+- $1 \\leq n \\leq 9$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    return 10 ** n - 1
+"""
+
+examples = """
+solution(1) == 9
+solution(2) == 99
+solution(7) == 9999999
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+comment   = "Single digit maximum"
+expected  = 9
+
+[[asserts]]
+arguments = [2]
+comment   = "Two digit maximum"
+expected  = 99
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven digit maximum"
+expected  = 9999999
+
+[[asserts]]
+arguments = [3]
+comment   = "Three digit maximum"
+expected  = 999
+
+[[asserts]]
+arguments = [4]
+comment   = "Four digit maximum"
+expected  = 9999
+
+[[asserts]]
+arguments = [5]
+comment   = "Five digit maximum"
+expected  = 99999
+
+[[asserts]]
+arguments = [6]
+comment   = "Six digit maximum"
+expected  = 999999
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight digit maximum"
+expected  = 99999999
+
+[[asserts]]
+arguments = [9]
+comment   = "Nine digit maximum"
+expected  = 999999999
+
+[[asserts]]
+arguments = [9]
+comment   = "Nine digit maximum"
+expected  = 999999999
+
+[[asserts]]
+arguments = [1]
+comment   = "Verify single digit again"
+expected  = 9
+
+[[asserts]]
+arguments = [2]
+comment   = "Verify two digits again"
+expected  = 99
+
+[[asserts]]
+arguments = [3]
+comment   = "Verify three digits again"
+expected  = 999
+
+[[asserts]]
+arguments = [4]
+comment   = "Verify four digits again"
+expected  = 9999
+
+[[asserts]]
+arguments = [5]
+comment   = "Verify five digits again"
+expected  = 99999
+
+[[asserts]]
+arguments = [6]
+comment   = "Verify six digits again"
+expected  = 999999
+
+[[asserts]]
+arguments = [7]
+comment   = "Verify seven digits again"
+expected  = 9999999
+
+[[asserts]]
+arguments = [8]
+comment   = "Verify eight digits again"
+expected  = 99999999
+
+[[asserts]]
+arguments = [9]
+comment   = "Verify nine digits again"
+expected  = 999999999
+
+[[asserts]]
+arguments = [1]
+comment   = "Boundary case smallest"
+expected  = 9
+
+[[asserts]]
+arguments = [9]
+comment   = "Boundary case largest"
+expected  = 999999999
+
+[[asserts]]
+arguments = [2]
+comment   = "Small value test"
+expected  = 99
+
+[[asserts]]
+arguments = [3]
+comment   = "Small value test 2"
+expected  = 999
+
+[[asserts]]
+arguments = [4]
+comment   = "Medium value test"
+expected  = 9999
+
+[[asserts]]
+arguments = [5]
+comment   = "Medium value test 2"
+expected  = 99999
+
+[[asserts]]
+arguments = [6]
+comment   = "Large value test"
+expected  = 999999
+
+[[asserts]]
+arguments = [7]
+comment   = "Large value test 2"
+expected  = 9999999
+
+[[asserts]]
+arguments = [8]
+comment   = "Very large value test"
+expected  = 99999999
+
+[[asserts]]
+arguments = [9]
+comment   = "Very large value test 2"
+expected  = 999999999

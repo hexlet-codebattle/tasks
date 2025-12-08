@@ -1,0 +1,149 @@
+level             = "elementary"
+name              = "sam_with_frodo"
+tags              = ["collections", "strings"]
+time_to_solve_sec = 150
+
+description_en = """
+Sam and Frodo need to be close. If they are side by side in the array, your function should return true. If there is other persons between them, return false.
+"""
+
+description_ru = """
+Сэму и Фродо надо держаться вместе. Проверьте, нет ли между ними других персонажей.
+"""
+
+solution = """
+def solution(persons: list[str]) -> bool:
+    if "Sam" not in persons or "Frodo" not in persons:
+        return False
+    return abs(persons.index("Sam") - persons.index("Frodo")) == 1
+"""
+
+examples = """
+solution(["Sam", "Frodo"]) == True
+solution(["Frodo", "Sam"]) == True
+solution(["Sam", "Orc", "Frodo"]) == False
+solution(["Sam", "Frodo", "Troll", "Balrog", "Human"]) == True
+solution(["Orc", "Sam", "Frodo", "Gandalf", "Legolas"]) == True
+solution(["Orc", "Frodo", "Treant", "Saruman", "Sam"]) == False
+"""
+
+[[input_signature]]
+argument_name = "persons"
+[input_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [["Sam", "Frodo", "Troll", "Balrog", "Human"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Orc", "Sam", "Frodo", "Gandalf", "Legolas"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Orc", "Frodo", "Treant", "Saruman", "Sam"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Sam", "Frodo"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Frodo", "Sam"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Sam", "Orc", "Frodo"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Gandalf", "Sam", "Frodo", "Legolas"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Gandalf", "Frodo", "Sam", "Legolas"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Sam", "Gandalf", "Frodo"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Frodo", "Gandalf", "Sam"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Orc", "Troll", "Sam", "Frodo"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Orc", "Troll", "Frodo", "Sam"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Sam", "Frodo", "Orc", "Troll"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Frodo", "Sam", "Orc", "Troll"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Balrog", "Sam", "Orc", "Frodo", "Elf"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Aragorn", "Frodo", "Legolas", "Sam"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Sam", "Treant", "Frodo"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Human", "Sam", "Frodo", "Wizard"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Wizard", "Frodo", "Sam", "Human"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Orc", "Human", "Sam", "Frodo", "Elf"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Elf", "Frodo", "Sam", "Human", "Orc"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Sam", "Wizard", "Orc", "Frodo"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Frodo", "Wizard", "Orc", "Sam"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Gandalf", "Aragorn", "Sam", "Frodo", "Legolas", "Gimli"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Gandalf", "Sam", "Aragorn", "Frodo", "Legolas"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Bilbo", "Frodo", "Sam", "Merry", "Pippin"]]
+expected  = true
+
+[[asserts]]
+arguments = [["Bilbo", "Sam", "Merry", "Frodo", "Pippin"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Sauron", "Saruman", "Frodo", "Sam", "Gollum"]]
+expected  = true

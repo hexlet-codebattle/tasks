@@ -1,0 +1,188 @@
+level             = "elementary"
+name              = "string_only_digits"
+tags              = ["strings"]
+time_to_solve_sec = 120
+
+description_en = """
+Check whether the given text contains only digit characters.
+"""
+
+description_ru = """
+Проверьте, все ли символы в тексте являются цифрами.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(text) \\leq 1000$
+"""
+
+solution = """
+def solution(text: str) -> bool:
+    return text.isdigit() and len(text) > 0
+"""
+
+examples = """
+solution("1231012") == True
+solution("sometest") == False
+solution("test1012") == False
+solution("6001667522") == True
+solution("hello1world") == False
+solution("sensefruitquestion") == False
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["sometest"]
+comment   = "Only letters"
+expected  = false
+
+[[asserts]]
+arguments = ["1231012"]
+comment   = "Only digits"
+expected  = true
+
+[[asserts]]
+arguments = ["test1012"]
+comment   = "Mixed letters and digits"
+expected  = false
+
+[[asserts]]
+arguments = ["6001667522"]
+comment   = "Long digit string"
+expected  = true
+
+[[asserts]]
+arguments = ["hello1world"]
+comment   = "Word digit word"
+expected  = false
+
+[[asserts]]
+arguments = ["sensefruitquestion"]
+comment   = "Only words"
+expected  = false
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = false
+
+[[asserts]]
+arguments = ["0"]
+comment   = "Single zero"
+expected  = true
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Single one"
+expected  = true
+
+[[asserts]]
+arguments = ["9"]
+comment   = "Single nine"
+expected  = true
+
+[[asserts]]
+arguments = ["123"]
+comment   = "Three digits"
+expected  = true
+
+[[asserts]]
+arguments = ["abc"]
+comment   = "Three letters"
+expected  = false
+
+[[asserts]]
+arguments = ["123abc"]
+comment   = "Digits then letters"
+expected  = false
+
+[[asserts]]
+arguments = ["abc123"]
+comment   = "Letters then digits"
+expected  = false
+
+[[asserts]]
+arguments = ["12 34"]
+comment   = "Digits with space"
+expected  = false
+
+[[asserts]]
+arguments = ["12-34"]
+comment   = "Digits with dash"
+expected  = false
+
+[[asserts]]
+arguments = ["12.34"]
+comment   = "Digits with dot"
+expected  = false
+
+[[asserts]]
+arguments = ["1234567890"]
+comment   = "All ten digits"
+expected  = true
+
+[[asserts]]
+arguments = ["0000"]
+comment   = "Multiple zeros"
+expected  = true
+
+[[asserts]]
+arguments = ["1111"]
+comment   = "Repeated ones"
+expected  = true
+
+[[asserts]]
+arguments = ["42"]
+comment   = "Two digit number"
+expected  = true
+
+[[asserts]]
+arguments = ["100"]
+comment   = "Three digit number"
+expected  = true
+
+[[asserts]]
+arguments = ["1000000"]
+comment   = "Large number"
+expected  = true
+
+[[asserts]]
+arguments = ["test"]
+comment   = "Simple word"
+expected  = false
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Another word"
+expected  = false
+
+[[asserts]]
+arguments = ["1a"]
+comment   = "Digit and letter"
+expected  = false
+
+[[asserts]]
+arguments = ["a1"]
+comment   = "Letter and digit"
+expected  = false
+
+[[asserts]]
+arguments = ["123!"]
+comment   = "Digits with exclamation"
+expected  = false
+
+[[asserts]]
+arguments = ["#123"]
+comment   = "Hash before digits"
+expected  = false
+
+[[asserts]]
+arguments = ["99999"]
+comment   = "Repeated nines"
+expected  = true

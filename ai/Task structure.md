@@ -69,12 +69,12 @@ You are generating programming tasks in **TOML format**. Follow this specificati
 ### **`examples`** *(required)*
 - **Type:** `string`
 - **Description:** Usage examples showing function calls and expected results
-- **Format:** Fenced code block with assertions
+- **Format:** Fenced code block with assertions, they should be sorted by length of the string.
 - **Example:**
   ```
   solution(0, 0) == 0
-  solution(1, 2) == 3
-  solution(-5, 7) == 2
+  solution(1, 20) == 3
+  solution(-5, 700) == 2
   ```
 
 ### **`solution`** *(required)*
@@ -104,8 +104,8 @@ You are generating programming tasks in **TOML format**. Follow this specificati
 
 ### **`time_to_solve_sec`** *(required)*
 - **Type:** `number`
-- **Description:** Recommended solving time in seconds for average users
-- **Example:** `60`
+- **Description:** Recommended solving time in seconds for average users. For elementory 100-200 sec, easy 200-300 sec, medium 300-600 sec, hard 600-90 sec.
+- **Example:** `100`
 
 ### **`comment`** *(optional)*
 - **Type:** `string`

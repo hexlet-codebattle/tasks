@@ -1,0 +1,186 @@
+level             = "elementary"
+name              = "integer_count"
+tags              = ["math"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that counts the integer's number of digits.
+"""
+
+description_ru = """
+Создайте функцию, которая подсчитывает количество цифр в числе.
+"""
+
+limits = """
+- $-1000000 \\leq num \\leq 1000000$
+"""
+
+solution = """
+def solution(num: int) -> int:
+    return len(str(abs(num)))
+"""
+
+examples = """
+solution(45) == 2
+solution(-123) == 3
+solution(976543) == 6
+solution(-12345) == 5
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [45]
+comment   = "Two digit positive number"
+expected  = 2
+
+[[asserts]]
+arguments = [-123]
+comment   = "Three digit negative number"
+expected  = 3
+
+[[asserts]]
+arguments = [-12345]
+comment   = "Five digit negative number"
+expected  = 5
+
+[[asserts]]
+arguments = [976543]
+comment   = "Six digit positive number"
+expected  = 6
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero has one digit"
+expected  = 1
+
+[[asserts]]
+arguments = [1]
+comment   = "Single digit positive"
+expected  = 1
+
+[[asserts]]
+arguments = [-1]
+comment   = "Single digit negative"
+expected  = 1
+
+[[asserts]]
+arguments = [9]
+comment   = "Largest single digit"
+expected  = 1
+
+[[asserts]]
+arguments = [-9]
+comment   = "Largest single digit negative"
+expected  = 1
+
+[[asserts]]
+arguments = [10]
+comment   = "Smallest two digit"
+expected  = 2
+
+[[asserts]]
+arguments = [-10]
+comment   = "Smallest two digit negative"
+expected  = 2
+
+[[asserts]]
+arguments = [99]
+comment   = "Largest two digit"
+expected  = 2
+
+[[asserts]]
+arguments = [-99]
+comment   = "Largest two digit negative"
+expected  = 2
+
+[[asserts]]
+arguments = [100]
+comment   = "Three digit milestone"
+expected  = 3
+
+[[asserts]]
+arguments = [-100]
+comment   = "Three digit milestone negative"
+expected  = 3
+
+[[asserts]]
+arguments = [999]
+comment   = "Largest three digit"
+expected  = 3
+
+[[asserts]]
+arguments = [-999]
+comment   = "Largest three digit negative"
+expected  = 3
+
+[[asserts]]
+arguments = [1000]
+comment   = "Four digit milestone"
+expected  = 4
+
+[[asserts]]
+arguments = [-1000]
+comment   = "Four digit milestone negative"
+expected  = 4
+
+[[asserts]]
+arguments = [12345]
+comment   = "Five digit positive"
+expected  = 5
+
+[[asserts]]
+arguments = [-54321]
+comment   = "Five digit negative"
+expected  = 5
+
+[[asserts]]
+arguments = [100000]
+comment   = "Six digit milestone"
+expected  = 6
+
+[[asserts]]
+arguments = [-100000]
+comment   = "Six digit milestone negative"
+expected  = 6
+
+[[asserts]]
+arguments = [999999]
+comment   = "Largest six digit"
+expected  = 6
+
+[[asserts]]
+arguments = [-999999]
+comment   = "Largest six digit negative"
+expected  = 6
+
+[[asserts]]
+arguments = [1000000]
+comment   = "Maximum value boundary"
+expected  = 7
+
+[[asserts]]
+arguments = [-1000000]
+comment   = "Minimum value boundary"
+expected  = 7
+
+[[asserts]]
+arguments = [7777]
+comment   = "Four repeating digits"
+expected  = 4
+
+[[asserts]]
+arguments = [-8888]
+comment   = "Four repeating digits negative"
+expected  = 4
+
+[[asserts]]
+arguments = [50505]
+comment   = "Five digit alternating pattern"
+expected  = 5

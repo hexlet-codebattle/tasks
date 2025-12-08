@@ -1,0 +1,162 @@
+level             = "elementary"
+name              = "make_me"
+tags              = ["string"]
+time_to_solve_sec = 250
+
+description_en = """
+Create a function that changes specific emotion words into emoticons.
+
+Given a sentence as a string, replace the words `smile`, `grin`, `sad`, `shocked` with their corresponding emoticons:
+
+- `smile` → `:D`
+- `grin` → `:)`
+- `sad` → `:(`
+- `shocked` → `D:`
+"""
+
+description_ru = """
+Создайте функцию, которая заменяет слова-эмоции на соответствующие смайлики.
+
+Дано предложение в виде строки, замените слова `smile`, `grin`, `sad`, `shocked`  на соответствующие смайлики:
+
+- `smile` → `:D`
+- `grin` → `:)`
+- `sad` → `:(`
+- `shocked` → `D:`
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{sentence}) \\leq 100$
+"""
+
+solution = """
+def solution(sentence: str) -> str:
+    emotions = {
+        "smile": ":D",
+        "grin": ":)",
+        "sad": ":(",
+        "shocked": "D:",
+    }
+    words = sentence.split()
+    words[-1] = emotions[words[-1]]
+    return " ".join(words)
+"""
+
+examples = """
+solution("I feel sad") == "I feel :("
+solution("This is grin") == "This is :)"
+solution("Make me smile") == "Make me :D"
+solution("Today I am shocked") == "Today I am D:"
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Make me smile"]
+comment   = "Replace smile with happy face"
+expected  = "Make me :D"
+
+[[asserts]]
+arguments = ["Make me grin"]
+comment   = "Replace grin with smile"
+expected  = "Make me :)"
+
+[[asserts]]
+arguments = ["Make me sad"]
+comment   = "Replace sad with sad face"
+expected  = "Make me :("
+
+[[asserts]]
+arguments = ["Make me shocked"]
+comment   = "Replace shocked with shocked face"
+expected  = "Make me D:"
+
+
+[[asserts]]
+arguments = ["I feel smile"]
+comment   = "Different prefix smile"
+expected  = "I feel :D"
+
+[[asserts]]
+arguments = ["I feel grin"]
+comment   = "Different prefix grin"
+expected  = "I feel :)"
+
+[[asserts]]
+arguments = ["I feel sad"]
+comment   = "Different prefix sad"
+expected  = "I feel :("
+
+[[asserts]]
+arguments = ["I feel shocked"]
+comment   = "Different prefix shocked"
+expected  = "I feel D:"
+
+
+[[asserts]]
+arguments = ["Today I am smile"]
+comment   = "Longer sentence smile"
+expected  = "Today I am :D"
+
+[[asserts]]
+arguments = ["Today I am grin"]
+comment   = "Longer sentence grin"
+expected  = "Today I am :)"
+
+[[asserts]]
+arguments = ["Today I am sad"]
+comment   = "Longer sentence sad"
+expected  = "Today I am :("
+
+[[asserts]]
+arguments = ["Today I am shocked"]
+comment   = "Longer sentence shocked"
+expected  = "Today I am D:"
+
+
+[[asserts]]
+arguments = ["She looks smile"]
+comment   = "Third person smile"
+expected  = "She looks :D"
+
+[[asserts]]
+arguments = ["She looks grin"]
+comment   = "Third person grin"
+expected  = "She looks :)"
+
+[[asserts]]
+arguments = ["She looks sad"]
+comment   = "Third person sad"
+expected  = "She looks :("
+
+[[asserts]]
+arguments = ["She looks shocked"]
+comment   = "Third person shocked"
+expected  = "She looks D:"
+
+
+[[asserts]]
+arguments = ["This is smile"]
+comment   = "Simple sentence smile"
+expected  = "This is :D"
+
+[[asserts]]
+arguments = ["This is grin"]
+comment   = "Simple sentence grin"
+expected  = "This is :)"
+
+[[asserts]]
+arguments = ["This is sad"]
+comment   = "Simple sentence sad"
+expected  = "This is :("
+
+[[asserts]]
+arguments = ["This is shocked"]
+comment   = "Simple sentence shocked"
+expected  = "This is D:"

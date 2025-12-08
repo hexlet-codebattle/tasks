@@ -1,0 +1,197 @@
+level             = "easy"
+name              = "least_common_multiple"
+tags              = ["math"]
+time_to_solve_sec = 250
+
+description_en = """
+Create a function that calculates the LCM (Least Common Multiple) of two positive integers.
+
+The LCM of two integers $x$ and $y$ is the smallest positive integer that is divisible by both $x$ and $y$.
+"""
+
+description_ru = """
+Создайте функцию, которая возвращает НОК (Наименьшее общее кратное) двух положительных целых чисел.
+
+НОК двух целых чисел $x$ и $y$ — это наименьшее положительное целое число, которое делится и на $x$, и на $y$.
+"""
+
+limits = """
+- $1 \\leq x \\leq 100$
+- $1 \\leq y \\leq 100$
+"""
+
+solution = """
+def solution(x: int, y: int) -> int:
+    from math import gcd
+    return abs(x * y) // gcd(x, y)
+"""
+
+examples = """
+solution(4, 5) == 20
+solution(4, 6) == 12
+solution(10, 30) == 30
+solution(10, 32) == 160
+"""
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "y"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [4, 5]
+comment   = "Coprime numbers"
+expected  = 20
+
+[[asserts]]
+arguments = [4, 6]
+comment   = "Common factor of 2"
+expected  = 12
+
+[[asserts]]
+arguments = [10, 30]
+comment   = "One divides the other"
+expected  = 30
+
+[[asserts]]
+arguments = [10, 32]
+comment   = "Power of 2 and 10"
+expected  = 160
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "Both ones"
+expected  = 1
+
+[[asserts]]
+arguments = [1, 100]
+comment   = "One with large number"
+expected  = 100
+
+[[asserts]]
+arguments = [12, 18]
+comment   = "Common factor of 6"
+expected  = 36
+
+[[asserts]]
+arguments = [15, 20]
+comment   = "Common factor of 5"
+expected  = 60
+
+[[asserts]]
+arguments = [7, 14]
+comment   = "One is double the other"
+expected  = 14
+
+[[asserts]]
+arguments = [9, 12]
+comment   = "Common factor of 3"
+expected  = 36
+
+[[asserts]]
+arguments = [8, 12]
+comment   = "Powers and multiples"
+expected  = 24
+
+[[asserts]]
+arguments = [6, 9]
+comment   = "Both multiples of 3"
+expected  = 18
+
+[[asserts]]
+arguments = [21, 14]
+comment   = "Common factor of 7"
+expected  = 42
+
+[[asserts]]
+arguments = [25, 30]
+comment   = "Common factor of 5"
+expected  = 150
+
+[[asserts]]
+arguments = [3, 7]
+comment   = "Two small primes"
+expected  = 21
+
+[[asserts]]
+arguments = [11, 13]
+comment   = "Two primes"
+expected  = 143
+
+[[asserts]]
+arguments = [5, 5]
+comment   = "Same numbers"
+expected  = 5
+
+[[asserts]]
+arguments = [2, 3]
+comment   = "Smallest primes"
+expected  = 6
+
+[[asserts]]
+arguments = [16, 24]
+comment   = "Powers of 2 involved"
+expected  = 48
+
+[[asserts]]
+arguments = [20, 25]
+comment   = "Multiples of 5"
+expected  = 100
+
+[[asserts]]
+arguments = [18, 24]
+comment   = "Common factor of 6"
+expected  = 72
+
+[[asserts]]
+arguments = [30, 45]
+comment   = "Common factor of 15"
+expected  = 90
+
+[[asserts]]
+arguments = [7, 9]
+comment   = "Coprime single digit"
+expected  = 63
+
+[[asserts]]
+arguments = [8, 10]
+comment   = "Common factor of 2"
+expected  = 40
+
+[[asserts]]
+arguments = [14, 21]
+comment   = "Common factor of 7"
+expected  = 42
+
+[[asserts]]
+arguments = [15, 25]
+comment   = "Both multiples of 5"
+expected  = 75
+
+[[asserts]]
+arguments = [22, 33]
+comment   = "Common factor of 11"
+expected  = 66
+
+[[asserts]]
+arguments = [28, 35]
+comment   = "Common factor of 7"
+expected  = 140
+
+[[asserts]]
+arguments = [40, 50]
+comment   = "Both multiples of 10"
+expected  = 200
+
+[[asserts]]
+arguments = [13, 17]
+comment   = "Two medium primes"
+expected  = 221

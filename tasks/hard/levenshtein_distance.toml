@@ -1,0 +1,211 @@
+level             = "hard"
+name              = "levenshtein_distance"
+tags              = ["algo", "string"]
+time_to_solve_sec = 900
+
+description_en = """
+Calculate the Levenshtein distance between two strings.
+
+The Levenshtein distance is a metric for measuring the difference between two strings. It is the minimum number of single-character edits (insertions, deletions, or substitutions) required to change one string into the other.
+"""
+
+description_ru = """
+Рассчитайте расстояние Левенштейна между двумя строками.
+
+Расстояние Левенштейна — это метрика для измерения разницы между двумя строками. Это минимальное количество односимвольных операций редактирования (вставок, удалений или замен), необходимых для преобразования одной строки в другую.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s1) \\leq 100$
+- $0 \\leq \\text{len}(s2) \\leq 100$
+"""
+
+solution = """
+def solution(s1: str, s2: str) -> int:
+    m, n = len(s1), len(s2)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+
+    for i in range(m + 1):
+        dp[i][0] = i
+    for j in range(n + 1):
+        dp[0][j] = j
+
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if s1[i-1] == s2[j-1]:
+                dp[i][j] = dp[i-1][j-1]
+            else:
+                dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
+
+    return dp[m][n]
+"""
+
+examples = """
+solution("", "123456") == 6
+solution("xyx", "xyyyx") == 2
+solution("kitten", "sitting") == 3
+solution("clojure", "closure") == 1
+"""
+
+[[input_signature]]
+argument_name = "s1"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "s2"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["kitten", "sitting"]
+comment   = "Classic example"
+expected  = 3
+
+[[asserts]]
+arguments = ["clojure", "closure"]
+comment   = "One character substitution"
+expected  = 1
+
+[[asserts]]
+arguments = ["xyx", "xyyyx"]
+comment   = "Two insertions"
+expected  = 2
+
+[[asserts]]
+arguments = ["", "123456"]
+comment   = "Empty to string"
+expected  = 6
+
+[[asserts]]
+arguments = ["", ""]
+comment   = "Both empty"
+expected  = 0
+
+[[asserts]]
+arguments = ["abc", "abc"]
+comment   = "Identical strings"
+expected  = 0
+
+[[asserts]]
+arguments = ["abc", ""]
+comment   = "String to empty"
+expected  = 3
+
+[[asserts]]
+arguments = ["a", "b"]
+comment   = "Single char substitution"
+expected  = 1
+
+[[asserts]]
+arguments = ["ab", "ba"]
+comment   = "Swap two characters"
+expected  = 2
+
+[[asserts]]
+arguments = ["cat", "cut"]
+comment   = "Middle char substitution"
+expected  = 1
+
+[[asserts]]
+arguments = ["saturday", "sunday"]
+comment   = "Longer strings with deletions"
+expected  = 3
+
+[[asserts]]
+arguments = ["book", "back"]
+comment   = "Two substitutions"
+expected  = 2
+
+[[asserts]]
+arguments = ["hello", "hallo"]
+comment   = "One substitution"
+expected  = 1
+
+[[asserts]]
+arguments = ["python", "pyton"]
+comment   = "One deletion"
+expected  = 1
+
+[[asserts]]
+arguments = ["test", "text"]
+comment   = "One substitution at end"
+expected  = 1
+
+[[asserts]]
+arguments = ["flower", "flow"]
+comment   = "Delete suffix"
+expected  = 2
+
+[[asserts]]
+arguments = ["flow", "flower"]
+comment   = "Add suffix"
+expected  = 2
+
+[[asserts]]
+arguments = ["intention", "execution"]
+comment   = "Multiple operations"
+expected  = 5
+
+[[asserts]]
+arguments = ["horse", "ros"]
+comment   = "Multiple deletions"
+expected  = 3
+
+[[asserts]]
+arguments = ["ros", "horse"]
+comment   = "Multiple insertions"
+expected  = 3
+
+[[asserts]]
+arguments = ["abc", "def"]
+comment   = "All substitutions"
+expected  = 3
+
+[[asserts]]
+arguments = ["abcdef", "azced"]
+comment   = "Mix of operations"
+expected  = 3
+
+[[asserts]]
+arguments = ["sunday", "saturday"]
+comment   = "Reverse of earlier test"
+expected  = 3
+
+[[asserts]]
+arguments = ["game", "fame"]
+comment   = "First char substitution"
+expected  = 1
+
+[[asserts]]
+arguments = ["table", "cable"]
+comment   = "First char substitution"
+expected  = 1
+
+[[asserts]]
+arguments = ["night", "light"]
+comment   = "First char substitution"
+expected  = 1
+
+[[asserts]]
+arguments = ["write", "right"]
+comment   = "Multiple operations needed"
+expected  = 4
+
+[[asserts]]
+arguments = ["algorithm", "altruistic"]
+comment   = "Longer complex strings"
+expected  = 6
+
+[[asserts]]
+arguments = ["distance", "difference"]
+comment   = "Many differences"
+expected  = 5
+
+[[asserts]]
+arguments = ["thought", "through"]
+comment   = "Similar endings"
+expected  = 2

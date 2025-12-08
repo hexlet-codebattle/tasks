@@ -1,0 +1,195 @@
+level             = "easy"
+name              = "leap_year_count"
+tags              = ["math"]
+time_to_solve_sec = 280
+
+description_en = """
+Given a range of years as an array of two numbers, return the number of leap years within the range (inclusive).
+
+Leap years are all divisible by $4$, with the exception of centuries, which are not leap years unless they are divisible by $400$.
+"""
+
+description_ru = """
+Дан временной отрезок в годах, представленный массивом из двух чисел. Определите количество високосных лет в этом промежутке (включительно).
+
+Любой год, который делится на $4$ без остатка, является високосным годом. Однако есть исключение: год, который делится без остатка на $100$, является високосным годом только в том случае, если он также без остатка делится на $400$.
+"""
+
+limits = """
+- $1700 \\leq \\text{years}[0] \\leq 2300$
+- $1700 \\leq \\text{years}[1] \\leq 2300$
+- $\\text{years}[0] \\leq \\text{years}[1]$
+"""
+
+solution = """
+def solution(years: list) -> int:
+    def is_leap(y):
+        return y % 4 == 0 and (y % 100 != 0 or y % 400 == 0)
+    return sum(1 for y in range(years[0], years[1] + 1) if is_leap(y))
+"""
+
+examples = """
+solution([1980, 1984]) == 2
+solution([2000, 2025]) == 7
+solution([1800, 2000]) == 49
+"""
+
+[[input_signature]]
+argument_name = "years"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1980, 1984]]
+comment   = "Small range with 2 leap years"
+expected  = 2
+
+[[asserts]]
+arguments = [[2000, 2025]]
+comment   = "Range spanning 2000"
+expected  = 7
+
+[[asserts]]
+arguments = [[1800, 2000]]
+comment   = "Long range 200 years"
+expected  = 49
+
+[[asserts]]
+arguments = [[2000, 2000]]
+comment   = "Single year 2000"
+expected  = 1
+
+[[asserts]]
+arguments = [[1900, 1900]]
+comment   = "Single year 1900 not leap"
+expected  = 0
+
+[[asserts]]
+arguments = [[2020, 2020]]
+comment   = "Single year 2020"
+expected  = 1
+
+[[asserts]]
+arguments = [[1996, 2004]]
+comment   = "Range with multiple leap years"
+expected  = 3
+
+[[asserts]]
+arguments = [[1897, 1903]]
+comment   = "Range around 1900 no leaps"
+expected  = 0
+
+[[asserts]]
+arguments = [[2096, 2104]]
+comment   = "Range around 2100"
+expected  = 2
+
+[[asserts]]
+arguments = [[2100, 2100]]
+comment   = "Year 2100 not leap"
+expected  = 0
+
+[[asserts]]
+arguments = [[1700, 1750]]
+comment   = "18th century range"
+expected  = 12
+
+[[asserts]]
+arguments = [[1750, 1800]]
+comment   = "Range ending at 1800"
+expected  = 12
+
+[[asserts]]
+arguments = [[1800, 1850]]
+comment   = "19th century start"
+expected  = 12
+
+[[asserts]]
+arguments = [[1850, 1900]]
+comment   = "Range ending at 1900"
+expected  = 12
+
+[[asserts]]
+arguments = [[1900, 1950]]
+comment   = "20th century start"
+expected  = 12
+
+[[asserts]]
+arguments = [[1950, 2000]]
+comment   = "Range ending at 2000"
+expected  = 13
+
+[[asserts]]
+arguments = [[2000, 2050]]
+comment   = "21st century start"
+expected  = 13
+
+[[asserts]]
+arguments = [[2050, 2100]]
+comment   = "Range ending at 2100"
+expected  = 12
+
+[[asserts]]
+arguments = [[2100, 2150]]
+comment   = "Range starting at 2100"
+expected  = 12
+
+[[asserts]]
+arguments = [[2150, 2200]]
+comment   = "22nd century mid"
+expected  = 12
+
+[[asserts]]
+arguments = [[2200, 2250]]
+comment   = "23rd century range"
+expected  = 12
+
+[[asserts]]
+arguments = [[2250, 2300]]
+comment   = "Range ending at 2300"
+expected  = 12
+
+[[asserts]]
+arguments = [[1996, 1996]]
+comment   = "Single leap year 1996"
+expected  = 1
+
+[[asserts]]
+arguments = [[1997, 1997]]
+comment   = "Single non-leap 1997"
+expected  = 0
+
+[[asserts]]
+arguments = [[2004, 2012]]
+comment   = "Olympic years range"
+expected  = 3
+
+[[asserts]]
+arguments = [[1988, 1992]]
+comment   = "Late 80s early 90s"
+expected  = 2
+
+[[asserts]]
+arguments = [[2016, 2024]]
+comment   = "Recent leap years"
+expected  = 3
+
+[[asserts]]
+arguments = [[1700, 1700]]
+comment   = "Year 1700 not leap"
+expected  = 0
+
+[[asserts]]
+arguments = [[1704, 1708]]
+comment   = "Early 1700s range"
+expected  = 2
+
+[[asserts]]
+arguments = [[2292, 2300]]
+comment   = "End of range 2300 not leap"
+expected  = 2

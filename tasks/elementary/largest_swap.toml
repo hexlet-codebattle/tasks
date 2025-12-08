@@ -1,0 +1,191 @@
+level             = "elementary"
+name              = "largest_swap"
+tags              = ["math"]
+time_to_solve_sec = 200
+
+description_en = """
+Write a function that checks if a two-digit number is the largest of two possible digit swaps.
+
+For example, `87` is the largest because swapping digits gives `78`, which is smaller. But `27` is not the largest because swapping gives `72`, which is larger.
+"""
+
+description_ru = """
+Создайте функцию, которая проверяет, является ли двузначное число наибольшим из двух возможных чисел, образованных перестановкой цифр исходного числа.
+
+Например, `87` — это наибольшее, потому что перестановка цифр дает `78`, которое меньше. Но `27` не является наибольшим, потому что перестановка дает `72`, которое больше.
+"""
+
+limits = """
+- $10 \\leq \\text{number} \\leq 99$
+"""
+
+solution = """
+def solution(number: int) -> bool:
+    return number // 10 > number % 10
+"""
+
+examples = """
+solution(14) == False
+solution(27) == False
+solution(43) == True
+solution(87) == True
+solution(99) == False
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [14]
+comment   = "1 < 4, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [27]
+comment   = "2 < 7, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [43]
+comment   = "4 > 3, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [87]
+comment   = "8 > 7, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [99]
+comment   = "Equal digits, swap same"
+expected  = false
+
+[[asserts]]
+arguments = [10]
+comment   = "Smallest two-digit number"
+expected  = true
+
+[[asserts]]
+arguments = [21]
+comment   = "2 > 1, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [12]
+comment   = "1 < 2, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [31]
+comment   = "3 > 1, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [13]
+comment   = "1 < 3, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [54]
+comment   = "5 > 4, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [45]
+comment   = "4 < 5, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [76]
+comment   = "7 > 6, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [67]
+comment   = "6 < 7, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [98]
+comment   = "9 > 8, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [89]
+comment   = "8 < 9, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [55]
+comment   = "Equal digits"
+expected  = false
+
+[[asserts]]
+arguments = [66]
+comment   = "Equal digits"
+expected  = false
+
+[[asserts]]
+arguments = [32]
+comment   = "3 > 2, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [23]
+comment   = "2 < 3, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [91]
+comment   = "9 > 1, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [19]
+comment   = "1 < 9, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [65]
+comment   = "6 > 5, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [56]
+comment   = "5 < 6, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [42]
+comment   = "4 > 2, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [24]
+comment   = "2 < 4, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [85]
+comment   = "8 > 5, already largest"
+expected  = true
+
+[[asserts]]
+arguments = [58]
+comment   = "5 < 8, swap gives larger"
+expected  = false
+
+[[asserts]]
+arguments = [11]
+comment   = "Equal digits"
+expected  = false
+
+[[asserts]]
+arguments = [97]
+comment   = "9 > 7, already largest"
+expected  = true

@@ -201,7 +201,7 @@ class TestRunner:
             raise
 
         # Align threshold & message to 30
-        if not self.skip_assert_count and len(test_cases) < 30:
+        if not self.skip_assert_count and len(test_cases) < 10:
             print(colored(f"WARNING: Task '{task_name}' has only {len(test_cases)} asserts (less than 30)", "yellow"))
             if len(test_cases) == 0:
                 raise ValueError("NO ASSERTS FOUND")

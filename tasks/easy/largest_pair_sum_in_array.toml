@@ -1,0 +1,195 @@
+level             = "easy"
+name              = "largest_pair_sum_in_array"
+tags              = ["array"]
+time_to_solve_sec = 250
+
+description_en = """
+Given an array of integers `arr`, find the largest pair sum in it.
+
+A pair sum is the sum of the two largest numbers in the array. For example, the largest pair sum in `[12, 34, 10, 6, 40]` is `74` (sum of `34` and `40`).
+"""
+
+description_ru = """
+Дан массив целых чисел `arr`, найдите в нем сумму наибольшей пары чисел.
+
+Сумма пары — это сумма двух наибольших чисел в массиве. Например, сумма наибольшей пары чисел в `[12, 34, 10, 6, 40]` это `74` (сумма `34` и `40`).
+"""
+
+limits = """
+- $1 \\leq \\text{len}(arr) \\leq 100$
+- $-100 \\leq arr[i] \\leq 100$
+"""
+
+solution = """
+def solution(arr: list) -> int:
+    s = sorted(arr)
+    return s[-1] + s[-2] if len(s) > 1 else s[0]
+"""
+
+examples = """
+solution([1]) == 1
+solution([1, 2, 3, 4, 5, 6]) == 11
+solution([12, 34, 10, 6, 40]) == 74
+solution([12, 40, 10, 6, 40]) == 80
+solution([12, -34, 10, 6, 40]) == 52
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single element array"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6]]
+comment   = "Ascending sequence"
+expected  = 11
+
+[[asserts]]
+arguments = [[12, 34, 10, 6, 40]]
+comment   = "Classic example"
+expected  = 74
+
+[[asserts]]
+arguments = [[12, 40, 10, 6, 40]]
+comment   = "Duplicate maximum"
+expected  = 80
+
+[[asserts]]
+arguments = [[12, -34, 10, 6, 40]]
+comment   = "With negative number"
+expected  = 52
+
+[[asserts]]
+arguments = [[5, 5]]
+comment   = "Two equal elements"
+expected  = 10
+
+[[asserts]]
+arguments = [[100, 99]]
+comment   = "Two large numbers"
+expected  = 199
+
+[[asserts]]
+arguments = [[-5, -10, -3]]
+comment   = "All negative numbers"
+expected  = -8
+
+[[asserts]]
+arguments = [[0, 0, 0, 1]]
+comment   = "Multiple zeros and one"
+expected  = 1
+
+[[asserts]]
+arguments = [[50, 50, 50]]
+comment   = "All same values"
+expected  = 100
+
+[[asserts]]
+arguments = [[1, 2]]
+comment   = "Minimal valid pair"
+expected  = 3
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50]]
+comment   = "Linear progression"
+expected  = 90
+
+[[asserts]]
+arguments = [[-1, -2, -3, -4, -5]]
+comment   = "Descending negative"
+expected  = -3
+
+[[asserts]]
+arguments = [[42]]
+comment   = "Single answer to everything"
+expected  = 42
+
+[[asserts]]
+arguments = [[7, 14, 21, 28]]
+comment   = "Multiples of seven"
+expected  = 49
+
+[[asserts]]
+arguments = [[0, 100]]
+comment   = "Zero and hundred"
+expected  = 100
+
+[[asserts]]
+arguments = [[99, 98, 97, 96, 95]]
+comment   = "Descending from 99"
+expected  = 197
+
+[[asserts]]
+arguments = [[-50, 50]]
+comment   = "Opposite extremes"
+expected  = 0
+
+[[asserts]]
+arguments = [[11, 22, 33, 44, 55, 66]]
+comment   = "Multiples of eleven"
+expected  = 121
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 2]]
+comment   = "Mostly ones with a two"
+expected  = 3
+
+[[asserts]]
+arguments = [[-100, -99]]
+comment   = "Very negative pair"
+expected  = -199
+
+[[asserts]]
+arguments = [[25, 75]]
+comment   = "Quarter and three quarters"
+expected  = 100
+
+[[asserts]]
+arguments = [[8, 16, 24, 32, 40]]
+comment   = "Multiples of eight"
+expected  = 72
+
+[[asserts]]
+arguments = [[3, 6, 9, 12, 15, 18]]
+comment   = "Multiples of three"
+expected  = 33
+
+[[asserts]]
+arguments = [[0, -1, -2]]
+comment   = "Zero with negatives"
+expected  = -1
+
+[[asserts]]
+arguments = [[60, 70, 80, 90]]
+comment   = "Tens from 60 to 90"
+expected  = 170
+
+[[asserts]]
+arguments = [[13, 26, 39]]
+comment   = "Multiples of thirteen"
+expected  = 65
+
+[[asserts]]
+arguments = [[-20, -10, 0, 10, 20]]
+comment   = "Symmetric around zero"
+expected  = 30
+
+[[asserts]]
+arguments = [[2, 4, 6, 8, 10]]
+comment   = "Even numbers sequence"
+expected  = 18
+
+[[asserts]]
+arguments = [[77, 88, 99]]
+comment   = "Double digit repeats"
+expected  = 187

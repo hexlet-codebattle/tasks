@@ -1,0 +1,139 @@
+level             = "elementary"
+name              = "on_off_switches"
+tags              = ["math"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that returns how many possible outcomes can come from a certain number of switches (on/off).
+
+For example, with 2 switches, there are 4 possible outcomes: both off, first on/second off, first off/second on, both on.
+"""
+
+description_ru = """
+Создайте функцию, которая возвращает возможное количество комбинаций для переданного количества переключателей.
+
+Например, для 2 переключателей существует 4 возможных комбинации: оба выключены, первый включен/второй выключен, первый выключен/второй включен, оба включены.
+"""
+
+limits = """
+- $1 \\leq \\text{switches} \\leq 20$
+"""
+
+solution = """
+def solution(switches: int) -> int:
+    return 2 ** switches
+"""
+
+examples = """
+solution(1) == 2
+solution(3) == 8
+solution(10) == 1024
+"""
+
+[[input_signature]]
+argument_name = "switches"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+comment   = "Single switch"
+expected  = 2
+
+[[asserts]]
+arguments = [3]
+comment   = "Three switches"
+expected  = 8
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten switches"
+expected  = 1024
+
+[[asserts]]
+arguments = [2]
+comment   = "Two switches"
+expected  = 4
+
+[[asserts]]
+arguments = [4]
+comment   = "Four switches"
+expected  = 16
+
+[[asserts]]
+arguments = [5]
+comment   = "Five switches"
+expected  = 32
+
+[[asserts]]
+arguments = [6]
+comment   = "Six switches"
+expected  = 64
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven switches"
+expected  = 128
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight switches"
+expected  = 256
+
+[[asserts]]
+arguments = [9]
+comment   = "Nine switches"
+expected  = 512
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleven switches"
+expected  = 2048
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelve switches"
+expected  = 4096
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteen switches"
+expected  = 32768
+
+[[asserts]]
+arguments = [20]
+comment   = "Twenty switches"
+expected  = 1048576
+
+[[asserts]]
+arguments = [13]
+comment   = "Thirteen switches"
+expected  = 8192
+
+[[asserts]]
+arguments = [14]
+comment   = "Fourteen switches"
+expected  = 16384
+
+[[asserts]]
+arguments = [16]
+comment   = "Sixteen switches"
+expected  = 65536
+
+[[asserts]]
+arguments = [17]
+comment   = "Seventeen switches"
+expected  = 131072
+
+[[asserts]]
+arguments = [18]
+comment   = "Eighteen switches"
+expected  = 262144
+
+[[asserts]]
+arguments = [19]
+comment   = "Nineteen switches"
+expected  = 524288

@@ -1,0 +1,198 @@
+level             = "easy"
+name              = "operation_suggestion"
+tags              = ["math"]
+time_to_solve_sec = 240
+
+description_en = """
+Write a function that takes three numbers (first operand, second operand and result) and returns a string indicating which operation should be used to get the result.
+
+Return one of: `"addition"`, `"subtraction"`, `"multiplication"`, or `"unrecognized operation!!"` if none match.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает три числа (первый операнд, второй операнд и результат) и возвращает строку, указывающую какая операция должна быть использована для получения результата.
+
+Верните одно из: `"addition"`, `"subtraction"`, `"multiplication"`, или `"unrecognized operation!!"` если ничего не подходит.
+"""
+
+limits = """
+- $-100 \\leq \\text{first} \\leq 100$
+- $-100 \\leq \\text{second} \\leq 100$
+- $-10000 \\leq \\text{result} \\leq 10000$
+"""
+
+solution = """
+def solution(first: int, second: int, result: int) -> str:
+    if first + second == result:
+        return "addition"
+    elif first - second == result:
+        return "subtraction"
+    elif first * second == result:
+        return "multiplication"
+    else:
+        return "unrecognized operation!!"
+"""
+
+examples = """
+solution(10, 12, 22) == "addition"
+solution(10, 5, 5) == "subtraction"
+solution(10, 2, 20) == "multiplication"
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "result"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [10, 12, 22]
+comment   = "Addition example"
+expected  = "addition"
+
+[[asserts]]
+arguments = [10, 5, 5]
+comment   = "Subtraction example"
+expected  = "subtraction"
+
+[[asserts]]
+arguments = [10, 2, 20]
+comment   = "Multiplication example"
+expected  = "multiplication"
+
+[[asserts]]
+arguments = [33, 33, 33]
+comment   = "Unrecognized operation"
+expected  = "unrecognized operation!!"
+
+[[asserts]]
+arguments = [5, 5, 10]
+comment   = "Simple addition"
+expected  = "addition"
+
+[[asserts]]
+arguments = [20, 10, 10]
+comment   = "Simple subtraction"
+expected  = "subtraction"
+
+[[asserts]]
+arguments = [3, 4, 12]
+comment   = "Simple multiplication"
+expected  = "multiplication"
+
+[[asserts]]
+arguments = [0, 5, 5]
+comment   = "Addition with zero"
+expected  = "addition"
+
+[[asserts]]
+arguments = [7, 0, 0]
+comment   = "Multiplication by zero"
+expected  = "multiplication"
+
+[[asserts]]
+arguments = [-5, 3, -2]
+comment   = "Negative addition"
+expected  = "addition"
+
+[[asserts]]
+arguments = [10, -5, 15]
+comment   = "Negative subtraction"
+expected  = "subtraction"
+
+[[asserts]]
+arguments = [-3, 4, -12]
+comment   = "Negative multiplication"
+expected  = "multiplication"
+
+[[asserts]]
+arguments = [100, 50, 150]
+comment   = "Large addition"
+expected  = "addition"
+
+[[asserts]]
+arguments = [100, 50, 50]
+comment   = "Large subtraction"
+expected  = "subtraction"
+
+[[asserts]]
+arguments = [25, 4, 100]
+comment   = "Large multiplication"
+expected  = "multiplication"
+
+[[asserts]]
+arguments = [1, 1, 2]
+comment   = "One plus one"
+expected  = "addition"
+
+[[asserts]]
+arguments = [1, 1, 0]
+comment   = "One minus one"
+expected  = "subtraction"
+
+[[asserts]]
+arguments = [1, 1, 1]
+comment   = "One times one"
+expected  = "multiplication"
+
+[[asserts]]
+arguments = [-10, -5, -15]
+comment   = "Both negative addition"
+expected  = "addition"
+
+[[asserts]]
+arguments = [-10, -5, -5]
+comment   = "Both negative subtraction"
+expected  = "subtraction"
+
+[[asserts]]
+arguments = [-5, -6, 30]
+comment   = "Both negative multiplication"
+expected  = "multiplication"
+
+[[asserts]]
+arguments = [15, 3, 5]
+comment   = "Not division"
+expected  = "unrecognized operation!!"
+
+[[asserts]]
+arguments = [50, 25, 100]
+comment   = "No operation matches"
+expected  = "unrecognized operation!!"
+
+[[asserts]]
+arguments = [8, 8, 16]
+comment   = "Double value"
+expected  = "addition"
+
+[[asserts]]
+arguments = [12, 6, 6]
+comment   = "Half value"
+expected  = "subtraction"
+
+[[asserts]]
+arguments = [7, 7, 49]
+comment   = "Square value"
+expected  = "multiplication"
+
+[[asserts]]
+arguments = [99, 1, 100]
+comment   = "Near hundred addition"
+expected  = "addition"
+
+[[asserts]]
+arguments = [99, 1, 98]
+comment   = "Near hundred subtraction"
+expected  = "subtraction"

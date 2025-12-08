@@ -1,0 +1,204 @@
+level             = "easy"
+name              = "orthogonal_vectors"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Create a function that takes two vectors and checks if they are orthogonal or not.
+
+Two vectors are orthogonal if their dot product is equal to zero. The dot product of two vectors $\\vec{a} = (a_1, a_2, \\ldots, a_n)$ and $\\vec{b} = (b_1, b_2, \\ldots, b_n)$ is computed as:
+
+$$\\vec{a} \\cdot \\vec{b} = a_1 \\cdot b_1 + a_2 \\cdot b_2 + \\cdots + a_n \\cdot b_n$$
+"""
+
+description_ru = """
+Напишите функцию, которая принимает два вектора и проверяет ортогональные ли они.
+
+Два вектора ортогональные, если их скалярное произведение равно нулю. Скалярное произведение двух векторов $\\vec{a} = (a_1, a_2, \\ldots, a_n)$ и $\\vec{b} = (b_1, b_2, \\ldots, b_n)$ вычисляется как:
+
+$$\\vec{a} \\cdot \\vec{b} = a_1 \\cdot b_1 + a_2 \\cdot b_2 + \\cdots + a_n \\cdot b_n$$
+"""
+
+limits = """
+- $2 \\leq |\\text{vec1}| = |\\text{vec2}| \\leq 10$
+- $-50 \\leq \\text{vec1}[i], \\text{vec2}[i] \\leq 50$
+"""
+
+solution = """
+def solution(vec1: list, vec2: list) -> bool:
+    dot_product = sum(a * b for a, b in zip(vec1, vec2))
+    return dot_product == 0
+"""
+
+examples = """
+solution([1, 2], [2, -1]) == True
+solution([3, -3], [3, 3]) == True
+solution([3, -1], [3, 0]) == False
+"""
+
+[[input_signature]]
+argument_name = "vec1"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "vec2"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[1, 2], [2, -1]]
+comment   = "Simple orthogonal 2D"
+expected  = true
+
+[[asserts]]
+arguments = [[3, -3], [3, 3]]
+comment   = "Symmetric orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[3, -1], [3, 0]]
+comment   = "Not orthogonal"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 0], [0, 1]]
+comment   = "Unit vectors orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1], [1, 1]]
+comment   = "Same vectors"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 0, 0], [0, 1, 0]]
+comment   = "3D unit vectors"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3], [3, -2, 1]]
+comment   = "3D orthogonal vectors"
+expected  = false
+
+[[asserts]]
+arguments = [[2, 3, -1], [1, -2, -4]]
+comment   = "3D orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[4, 5], [5, -4]]
+comment   = "Orthogonal with larger values"
+expected  = true
+
+[[asserts]]
+arguments = [[0, 1], [1, 0]]
+comment   = "Zero and one orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 0], [0, 5]]
+comment   = "Non-unit orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3, 4], [4, -3, 2, -1]]
+comment   = "4D orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1, 1, 1], [-1, -1, 2, 0]]
+comment   = "4D orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[-1, 2], [2, 1]]
+comment   = "Negative orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[10, 20], [2, -1]]
+comment   = "Scaled vectors orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[3, 4], [4, 3]]
+comment   = "Not orthogonal similar"
+expected  = false
+
+[[asserts]]
+arguments = [[0, 0], [5, 5]]
+comment   = "Zero vector"
+expected  = true
+
+[[asserts]]
+arguments = [[7, -7], [1, 1]]
+comment   = "Opposite slopes"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3], [0, 0, 0]]
+comment   = "With zero vector 3D"
+expected  = true
+
+[[asserts]]
+arguments = [[6, 8], [8, -6]]
+comment   = "Pythagorean orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1, 1], [1, 1, 1]]
+comment   = "Same 3D vectors"
+expected  = false
+
+[[asserts]]
+arguments = [[2, -3, 1], [3, 2, 0]]
+comment   = "3D orthogonal pair"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 12], [12, -5]]
+comment   = "Larger orthogonal 2D"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 0, 0, 0], [0, 1, 0, 0]]
+comment   = "4D unit orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[3, 4, 5], [0, 5, -4]]
+comment   = "3D orthogonal complex"
+expected  = true
+
+[[asserts]]
+arguments = [[10, 10], [10, 10]]
+comment   = "Same tens"
+expected  = false
+
+[[asserts]]
+arguments = [[-5, 5], [5, 5]]
+comment   = "Mixed signs orthogonal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], [5, -4, 3, -2, 1]]
+comment   = "5D not orthogonal"
+expected  = false
+
+[[asserts]]
+arguments = [[2, 2, 2], [-1, 2, -1]]
+comment   = "3D orthogonal pattern"
+expected  = true
+
+[[asserts]]
+arguments = [[9, 12], [12, -9]]
+comment   = "Multiple of 3 orthogonal"
+expected  = true

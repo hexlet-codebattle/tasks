@@ -1,0 +1,214 @@
+level             = "medium"
+name              = "next_lucky_number"
+tags              = ["math"]
+time_to_solve_sec = 360
+
+description_en = """
+Lucky numbers are defined as numbers consisting only of digits $3$ and $5$.
+
+Write a function which, given a number $N$, returns the smallest lucky number strictly greater than $N$.
+"""
+
+description_ru = """
+Счастливые числа определены как числа, состоящие только из цифр $3$ и $5$.
+
+Напишите функцию, принимающую число $N$ и возвращающую наименьшее счастливое число, строго большее чем $N$.
+"""
+
+limits = """
+- $0 \\leq N \\leq 10^6$
+"""
+
+solution = """
+def solution(number: int) -> int:
+    n = number + 1
+    overflow = 0
+    result = []
+
+    while n > 0 or overflow:
+        digit = (n % 10) + overflow
+        n //= 10
+
+        if 4 <= digit <= 5:
+            cur_digit = 5
+            cur_overflow = 0
+        elif digit <= 3:
+            cur_digit = 3
+            cur_overflow = 0
+        else:
+            cur_digit = 3
+            cur_overflow = 1
+
+        must_overwrite = (overflow != 0) or (cur_digit > digit - overflow)
+        if must_overwrite:
+            result = [3] * len(result)
+
+        result.append(cur_digit)
+        overflow = cur_overflow
+
+    return int(''.join(map(str, reversed(result))))
+"""
+
+examples = """
+solution(4) == 5
+solution(45) == 53
+solution(48) == 53
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [4]
+comment   = "Next is 5"
+expected  = 5
+
+[[asserts]]
+arguments = [45]
+comment   = "Skip to 53"
+expected  = 53
+
+[[asserts]]
+arguments = [48]
+comment   = "Also 53"
+expected  = 53
+
+[[asserts]]
+arguments = [130]
+comment   = "Jump to 333"
+expected  = 333
+
+[[asserts]]
+arguments = [98]
+comment   = "Next century"
+expected  = 333
+
+[[asserts]]
+arguments = [949]
+comment   = "Into thousands"
+expected  = 3333
+
+[[asserts]]
+arguments = [339]
+comment   = "Next is 353"
+expected  = 353
+
+[[asserts]]
+arguments = [2]
+comment   = "Very small"
+expected  = 3
+
+[[asserts]]
+arguments = [3]
+comment   = "Next after 3"
+expected  = 5
+
+[[asserts]]
+arguments = [5]
+comment   = "Next after 5"
+expected  = 33
+
+[[asserts]]
+arguments = [33]
+comment   = "Next after 33"
+expected  = 35
+
+[[asserts]]
+arguments = [35]
+comment   = "Next after 35"
+expected  = 53
+
+[[asserts]]
+arguments = [53]
+comment   = "Next after 53"
+expected  = 55
+
+[[asserts]]
+arguments = [55]
+comment   = "Next after 55"
+expected  = 333
+
+[[asserts]]
+arguments = [333]
+comment   = "Next after 333"
+expected  = 335
+
+[[asserts]]
+arguments = [335]
+comment   = "Next after 335"
+expected  = 353
+
+[[asserts]]
+arguments = [353]
+comment   = "Next after 353"
+expected  = 355
+
+[[asserts]]
+arguments = [355]
+comment   = "Next after 355"
+expected  = 533
+
+[[asserts]]
+arguments = [533]
+comment   = "Next after 533"
+expected  = 535
+
+[[asserts]]
+arguments = [535]
+comment   = "Next after 535"
+expected  = 553
+
+[[asserts]]
+arguments = [553]
+comment   = "Next after 553"
+expected  = 555
+
+[[asserts]]
+arguments = [555]
+comment   = "Next after 555"
+expected  = 3333
+
+[[asserts]]
+arguments = [1000]
+comment   = "After 1000"
+expected  = 3333
+
+[[asserts]]
+arguments = [3333]
+comment   = "Next after 3333"
+expected  = 3335
+
+[[asserts]]
+arguments = [5555]
+comment   = "Next after 5555"
+expected  = 33333
+
+[[asserts]]
+arguments = [10]
+comment   = "After 10"
+expected  = 33
+
+[[asserts]]
+arguments = [100]
+comment   = "After 100"
+expected  = 333
+
+[[asserts]]
+arguments = [500]
+comment   = "After 500"
+expected  = 533
+
+[[asserts]]
+arguments = [0]
+comment   = "First lucky number"
+expected  = 3
+
+[[asserts]]
+arguments = [7]
+comment   = "Between 5 and 33"
+expected  = 33

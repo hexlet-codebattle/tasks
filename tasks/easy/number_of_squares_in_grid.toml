@@ -1,0 +1,192 @@
+level             = "easy"
+name              = "number_of_squares_in_grid"
+tags              = ["math"]
+time_to_solve_sec = 300
+
+description_en = """
+Calculate the number of different squares in an $n \\times n$ square grid.
+
+For example, in a $2 \\times 2$ grid, there are $4$ squares of size $1 \\times 1$ and $1$ square of size $2 \\times 2$, for a total of $5$ squares.
+"""
+
+description_ru = """
+Подсчитайте число различных квадратов на квадратной сетке размера $n \\times n$.
+
+Например, в сетке $2 \\times 2$ есть $4$ квадрата размера $1 \\times 1$ и $1$ квадрат размера $2 \\times 2$, всего $5$ квадратов.
+"""
+
+limits = """
+- $1 \\leq n \\leq 50$
+"""
+
+solution = """
+def solution(number: int) -> int:
+    total = 0
+    for i in range(1, number + 1):
+        total += (number - i + 1) ** 2
+    return total
+"""
+
+examples = """
+solution(2) == 5
+solution(4) == 30
+solution(5) == 55
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [2]
+comment   = "2x2 grid"
+expected  = 5
+
+[[asserts]]
+arguments = [4]
+comment   = "4x4 grid"
+expected  = 30
+
+[[asserts]]
+arguments = [5]
+comment   = "5x5 grid"
+expected  = 55
+
+[[asserts]]
+arguments = [1]
+comment   = "1x1 grid"
+expected  = 1
+
+[[asserts]]
+arguments = [3]
+comment   = "3x3 grid"
+expected  = 14
+
+[[asserts]]
+arguments = [6]
+comment   = "6x6 grid"
+expected  = 91
+
+[[asserts]]
+arguments = [7]
+comment   = "7x7 grid"
+expected  = 140
+
+[[asserts]]
+arguments = [8]
+comment   = "8x8 grid"
+expected  = 204
+
+[[asserts]]
+arguments = [9]
+comment   = "9x9 grid"
+expected  = 285
+
+[[asserts]]
+arguments = [10]
+comment   = "10x10 grid"
+expected  = 385
+
+[[asserts]]
+arguments = [11]
+comment   = "11x11 grid"
+expected  = 506
+
+[[asserts]]
+arguments = [12]
+comment   = "12x12 grid"
+expected  = 650
+
+[[asserts]]
+arguments = [13]
+comment   = "13x13 grid"
+expected  = 819
+
+[[asserts]]
+arguments = [14]
+comment   = "14x14 grid"
+expected  = 1015
+
+[[asserts]]
+arguments = [15]
+comment   = "15x15 grid"
+expected  = 1240
+
+[[asserts]]
+arguments = [16]
+comment   = "16x16 grid"
+expected  = 1496
+
+[[asserts]]
+arguments = [17]
+comment   = "17x17 grid"
+expected  = 1785
+
+[[asserts]]
+arguments = [18]
+comment   = "18x18 grid"
+expected  = 2109
+
+[[asserts]]
+arguments = [19]
+comment   = "19x19 grid"
+expected  = 2470
+
+[[asserts]]
+arguments = [20]
+comment   = "20x20 grid"
+expected  = 2870
+
+[[asserts]]
+arguments = [21]
+comment   = "21x21 grid"
+expected  = 3311
+
+[[asserts]]
+arguments = [22]
+comment   = "22x22 grid"
+expected  = 3795
+
+[[asserts]]
+arguments = [23]
+comment   = "23x23 grid"
+expected  = 4324
+
+[[asserts]]
+arguments = [24]
+comment   = "24x24 grid"
+expected  = 4900
+
+[[asserts]]
+arguments = [25]
+comment   = "25x25 grid"
+expected  = 5525
+
+[[asserts]]
+arguments = [26]
+comment   = "26x26 grid"
+expected  = 6201
+
+[[asserts]]
+arguments = [27]
+comment   = "27x27 grid"
+expected  = 6930
+
+[[asserts]]
+arguments = [28]
+comment   = "28x28 grid"
+expected  = 7714
+
+[[asserts]]
+arguments = [29]
+comment   = "29x29 grid"
+expected  = 8555
+
+[[asserts]]
+arguments = [30]
+comment   = "30x30 grid"
+expected  = 9455

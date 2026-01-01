@@ -1,0 +1,204 @@
+level             = "easy"
+name              = "nrzi_encoding"
+tags              = ["strings"]
+time_to_solve_sec = 300
+
+description_en = """
+Non Return to Zero, Inverted (NRZI) is a method of mapping a binary signal to a physical signal. The two-level NRZI signal has a transition at a clock boundary if the bit being transmitted is a logical $1$, and does not have a transition if the bit being transmitted is a logical $0$.
+
+Given an NRZI encoded string using characters `"¯"` (high), `"_"` (low), and `"|"` (transition), decode it to a binary string.
+
+For example:
+```
+0 100 10000 100 1 1 1
+¯|___|¯¯¯¯¯|___|¯|_|¯
+```
+"""
+
+description_ru = """
+NRZI кодирование — метод сопоставления двоичного сигнала с физическим сигналом. Двухуровневый сигнал NRZI имеет переход на границе тактовой частоты, если передаваемый бит является логической $1$, и не имеет перехода, если передаваемый бит является логическим $0$.
+
+Дана строка закодированная NRZI с использованием символов `"¯"` (высокий), `"_"` (низкий) и `"|"` (переход), декодируйте её в двоичную строку.
+
+Например:
+```
+0 100 10000 100 1 1 1
+¯|___|¯¯¯¯¯|___|¯|_|¯
+```
+"""
+
+limits = """
+- $1 \\leq |\\text{seq}| \\leq 200$
+"""
+
+solution = """
+def solution(seq: str) -> str:
+    import re
+    seq = re.sub(r'\\|_|\\|¯', '1', seq)
+    seq = re.sub(r'[^\\d]', '0', seq)
+    return seq
+"""
+
+examples = """
+solution("¯|__|¯|___|¯¯") == "010110010"
+solution("_|¯¯¯|_|¯¯¯¯|_|¯¯") == "010011000110"
+solution("¯|___|¯¯¯¯¯|___|¯|_|¯") == "010010000100111"
+"""
+
+[[input_signature]]
+argument_name = "seq"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["¯|___|¯¯¯¯¯|___|¯|_|¯"]
+comment   = "Complex pattern with transitions"
+expected  = "010010000100111"
+
+[[asserts]]
+arguments = ["¯|__|¯|___|¯¯"]
+comment   = "Medium pattern"
+expected  = "010110010"
+
+[[asserts]]
+arguments = ["_|¯¯¯|_|¯¯¯¯|_|¯¯"]
+comment   = "Starting low"
+expected  = "010011000110"
+
+[[asserts]]
+arguments = ["¯"]
+comment   = "Single high"
+expected  = "0"
+
+[[asserts]]
+arguments = ["_"]
+comment   = "Single low"
+expected  = "0"
+
+[[asserts]]
+arguments = ["¯|_"]
+comment   = "One transition"
+expected  = "01"
+
+[[asserts]]
+arguments = ["_|¯"]
+comment   = "Transition up"
+expected  = "01"
+
+[[asserts]]
+arguments = ["¯¯¯"]
+comment   = "Three high no transitions"
+expected  = "000"
+
+[[asserts]]
+arguments = ["___"]
+comment   = "Three low no transitions"
+expected  = "000"
+
+[[asserts]]
+arguments = ["¯|_|¯"]
+comment   = "Two transitions"
+expected  = "011"
+
+[[asserts]]
+arguments = ["_|¯|_"]
+comment   = "Two transitions low start"
+expected  = "011"
+
+[[asserts]]
+arguments = ["¯¯|__"]
+comment   = "Transition in middle"
+expected  = "0010"
+
+[[asserts]]
+arguments = ["__|¯¯"]
+comment   = "Low to high"
+expected  = "0010"
+
+[[asserts]]
+arguments = ["¯|_|¯|_"]
+comment   = "Three transitions"
+expected  = "0111"
+
+[[asserts]]
+arguments = ["¯¯¯¯¯"]
+comment   = "Five high"
+expected  = "00000"
+
+[[asserts]]
+arguments = ["_____"]
+comment   = "Five low"
+expected  = "00000"
+
+[[asserts]]
+arguments = ["¯|___|¯"]
+comment   = "Long low section"
+expected  = "01001"
+
+[[asserts]]
+arguments = ["_|¯¯¯|_"]
+comment   = "Long high section"
+expected  = "01001"
+
+[[asserts]]
+arguments = ["¯|_|¯|_|¯"]
+comment   = "Alternating"
+expected  = "01111"
+
+[[asserts]]
+arguments = ["¯¯|_|¯¯"]
+comment   = "Middle transition"
+expected  = "00110"
+
+[[asserts]]
+arguments = ["__|¯|__"]
+comment   = "Middle transition up down"
+expected  = "00110"
+
+[[asserts]]
+arguments = ["¯|__|¯|__"]
+comment   = "Two groups"
+expected  = "010110"
+
+[[asserts]]
+arguments = ["_|¯¯|_|¯¯"]
+comment   = "Two groups from low"
+expected  = "010110"
+
+[[asserts]]
+arguments = ["¯¯¯|___"]
+comment   = "Half and half"
+expected  = "000100"
+
+[[asserts]]
+arguments = ["___|¯¯¯"]
+comment   = "Low then high"
+expected  = "000100"
+
+[[asserts]]
+arguments = ["¯|_|¯¯"]
+comment   = "Quick transition"
+expected  = "0110"
+
+[[asserts]]
+arguments = ["__|¯¯|_"]
+comment   = "Short sections"
+expected  = "00101"
+
+[[asserts]]
+arguments = ["¯¯¯¯|____"]
+comment   = "Long sections"
+expected  = "00001000"
+
+[[asserts]]
+arguments = ["____|¯¯¯¯"]
+comment   = "Reverse long sections"
+expected  = "00001000"
+
+[[asserts]]
+arguments = ["¯|_¯"]
+comment   = "Mixed no bar"
+expected  = "010"

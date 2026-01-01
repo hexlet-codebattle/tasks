@@ -1,6 +1,6 @@
 level             = "medium"
 name              = "frequent_errors_in_window"
-tags              = ["stdlib", "string", "map"]
+tags              = ["stdlib", "strings", "hash_maps"]
 time_to_solve_sec = 540
 
 description_en = """

@@ -1,0 +1,199 @@
+level             = "easy"
+name              = "simple_calculator"
+tags              = ["math"]
+time_to_solve_sec = 250
+
+description_en = """
+Given two integer numbers. Create a simple calculator that supports the following operations: `+` (add), `-` (subtract), `^` (power), `*` (multiply).
+"""
+
+description_ru = """
+Даны два целых числа. Создайте простой калькулятор, который поддерживает следующие операции: `+` (сложение), `-` (вычитание), `^` (возведение в степень), `*` (умножение).
+"""
+
+limits = """
+- $-100 \\leq \\text{first} \\leq 100$
+- $-100 \\leq \\text{second} \\leq 100$
+- $\\text{operation} \\in \\{+, -, *, \\wedge\\}$
+"""
+
+solution = """
+def solution(first: int, second: int, operation: str) -> int:
+    ops = {"+": lambda a, b: a + b, "-": lambda a, b: a - b, "*": lambda a, b: a * b, "^": lambda a, b: a ** b}
+    return ops[operation](first, second)
+"""
+
+examples = """
+solution(1, 10, "+") == 11
+solution(5, 10, "-") == -5
+solution(-1, 5, "*") == -5
+solution(10, 2, "^") == 100
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "operation"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 10, "+"]
+comment   = "Simple addition"
+expected  = 11
+
+[[asserts]]
+arguments = [2, 5, "-"]
+comment   = "Subtraction with negative result"
+expected  = -3
+
+[[asserts]]
+arguments = [-1, 5, "*"]
+comment   = "Multiplication with negative number"
+expected  = -5
+
+[[asserts]]
+arguments = [1, 5, "*"]
+comment   = "Simple multiplication"
+expected  = 5
+
+[[asserts]]
+arguments = [10, 2, "^"]
+comment   = "Power operation"
+expected  = 100
+
+[[asserts]]
+arguments = [-10, 2, "^"]
+comment   = "Power with negative base"
+expected  = 100
+
+[[asserts]]
+arguments = [0, 0, "+"]
+comment   = "Addition with zeros"
+expected  = 0
+
+[[asserts]]
+arguments = [0, 5, "*"]
+comment   = "Multiplication by zero"
+expected  = 0
+
+[[asserts]]
+arguments = [5, 0, "*"]
+comment   = "Multiplication by zero"
+expected  = 0
+
+[[asserts]]
+arguments = [7, 3, "+"]
+comment   = "Addition of positive numbers"
+expected  = 10
+
+[[asserts]]
+arguments = [15, 8, "-"]
+comment   = "Subtraction of positive numbers"
+expected  = 7
+
+[[asserts]]
+arguments = [6, 7, "*"]
+comment   = "Multiplication of positive numbers"
+expected  = 42
+
+[[asserts]]
+arguments = [2, 3, "^"]
+comment   = "Small power operation"
+expected  = 8
+
+[[asserts]]
+arguments = [3, 3, "^"]
+comment   = "Power operation"
+expected  = 27
+
+[[asserts]]
+arguments = [5, 2, "^"]
+comment   = "Power operation"
+expected  = 25
+
+[[asserts]]
+arguments = [-5, -3, "+"]
+comment   = "Addition of negative numbers"
+expected  = -8
+
+[[asserts]]
+arguments = [-10, -5, "-"]
+comment   = "Subtraction of negative numbers"
+expected  = -5
+
+[[asserts]]
+arguments = [-4, -3, "*"]
+comment   = "Multiplication of negative numbers"
+expected  = 12
+
+[[asserts]]
+arguments = [100, 0, "+"]
+comment   = "Addition with zero"
+expected  = 100
+
+[[asserts]]
+arguments = [50, 50, "-"]
+comment   = "Subtraction resulting in zero"
+expected  = 0
+
+[[asserts]]
+arguments = [1, 1, "*"]
+comment   = "Multiplication by one"
+expected  = 1
+
+[[asserts]]
+arguments = [1, 100, "^"]
+comment   = "One to large power"
+expected  = 1
+
+[[asserts]]
+arguments = [10, 0, "^"]
+comment   = "Power of zero"
+expected  = 1
+
+[[asserts]]
+arguments = [0, 1, "^"]
+comment   = "Zero to power"
+expected  = 0
+
+[[asserts]]
+arguments = [-2, 3, "^"]
+comment   = "Negative base to odd power"
+expected  = -8
+
+[[asserts]]
+arguments = [-3, 2, "^"]
+comment   = "Negative base to even power"
+expected  = 9
+
+[[asserts]]
+arguments = [20, 15, "-"]
+comment   = "Subtraction"
+expected  = 5
+
+[[asserts]]
+arguments = [12, 12, "*"]
+comment   = "Multiplication of same numbers"
+expected  = 144
+
+[[asserts]]
+arguments = [4, 4, "^"]
+comment   = "Power of same numbers"
+expected  = 256
+
+[[asserts]]
+arguments = [-1, -1, "+"]
+comment   = "Addition of negative ones"
+expected  = -2

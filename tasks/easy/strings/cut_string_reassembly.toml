@@ -1,0 +1,332 @@
+level             = "easy"
+name              = "cut_string_reassembly"
+tags              = ["strings", "hash_maps", "greedy"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a string $S$ and an array of equal-length strings, whose total length equals $|S|$, determine whether $S$ can be formed by using each array string **exactly once**, in some order.
+"""
+
+description_ru = """
+Дана строка $S$ и массив строк одинаковой длины, суммарная длина которых равна $|S|$. Определите, можно ли собрать $S$, используя каждую строку из массива **ровно один раз** в некотором порядке.
+"""
+
+limits = """
+- $|S| \\ge 0$
+- $\\forall t \\in \\text{ss}:\\ |t| = k$
+- $\\sum |t| = |S|$
+"""
+
+solution = """
+def solution(s: str, ss: list) -> bool:
+    if not ss:
+        return s == ""
+    k = len(ss[0])
+    if len(s) % k != 0:
+        return False
+    cnt = {}
+    for t in ss:
+        if len(t) != k:
+            return False
+        cnt[t] = cnt.get(t, 0) + 1
+    for i in range(0, len(s), k):
+        part = s[i:i+k]
+        if cnt.get(part, 0) == 0:
+            return False
+        cnt[part] -= 1
+    return True
+"""
+
+examples = """
+solution("abcdefgh", ["efgh", "abcd"]) == True
+solution("abcd", ["ab", "bc"]) == False
+solution("ababab", ["ab", "ab", "ab"]) == True
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "ss"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["abcdefgh", ["efgh", "abcd"]]
+expected  = true
+
+[[asserts]]
+arguments = ["abcd", ["ab", "bc"]]
+expected  = false
+
+[[asserts]]
+arguments = ["ababab", ["ab", "ab", "ab"]]
+expected  = true
+
+[[asserts]]
+arguments = ["bacecdbgabiigebi", ["bacecdbg", "abiigebi"]]
+expected  = true
+
+[[asserts]]
+arguments = ["ebefdghi", ["dghi", "cdda"]]
+expected  = false
+
+[[asserts]]
+arguments = [
+  "bhabheadgdbgafcgdcgdafgg",
+  [
+    "head",
+    "afgg",
+    "afcg",
+    "gdbg",
+    "cebb",
+    "dcgd",
+  ],
+]
+expected = false
+
+[[asserts]]
+arguments = ["eabbdadbbebfce", ["bf", "be", "bb", "da", "db", "ce", "ea"]]
+expected  = true
+
+[[asserts]]
+arguments = ["aaa", ["aaa"]]
+expected  = true
+
+[[asserts]]
+arguments = ["ghibehahef", ["eh", "gh", "ah", "ef", "gc"]]
+expected  = false
+
+[[asserts]]
+arguments = [
+  "abbbbabaaabbaaabbbbabbbabbb",
+  [
+    "abbaaabbb",
+    "abbbbabaa",
+    "babbbabbb",
+  ],
+]
+expected = true
+
+[[asserts]]
+arguments = ["cagaecccefhfacbdhf", ["aec", "acb", "dhf", "cce", "cfg", "fhf"]]
+expected  = false
+
+[[asserts]]
+arguments = ["fefdbbdecb", ["d", "f", "d", "b", "b", "e", "e", "c", "b", "f"]]
+expected  = true
+
+[[asserts]]
+arguments = ["eaadcccedeaeab", ["eaadccc", "edeaeab"]]
+expected  = true
+
+[[asserts]]
+arguments = [
+  "afdgchfhdfghccffbcdgfdedaccgbegdddaggdcefd",
+  [
+    "accgbe",
+    "dgfded",
+    "ccffbc",
+    "afdgch",
+    "gdcefd",
+    "gdddag",
+    "fhdfgh",
+  ],
+]
+expected = true
+
+[[asserts]]
+arguments = [
+  "bbbabaabbabbaababaaabbabaaabbbbbbbbabbbbabbbbabbab",
+  [
+    "abbab",
+    "bbaba",
+    "abbbb",
+    "bbbbb",
+    "abaaa",
+    "abbbb",
+    "bbbbb",
+    "bbaab",
+    "aabbb",
+    "bbbab",
+  ],
+]
+expected = false
+
+[[asserts]]
+arguments = [
+  "ejcgiijdfgahbhjdbfafcegahfdihjbgbjdibbhiabidj",
+  [
+    "cegah",
+    "dbfaf",
+    "ejcgi",
+    "ijdfg",
+    "fdihj",
+    "bgbjd",
+    "abidj",
+    "ahbhj",
+    "ibbhi",
+  ],
+]
+expected = true
+
+[[asserts]]
+arguments = [
+  "ecdhffeeiebbdididgecbebefebehdcahafhafefdd",
+  [
+    "ecdhff",
+    "dididg",
+    "afefdd",
+    "eeiebb",
+    "cahafh",
+    "ecbebe",
+    "aigeia",
+  ],
+]
+expected = false
+
+[[asserts]]
+arguments = [
+  "ceceaebeddeaeeca",
+  [
+    "bd",
+    "ca",
+    "ce",
+    "dd",
+    "ee",
+    "ae",
+    "ce",
+    "be",
+  ],
+]
+expected = false
+
+[[asserts]]
+arguments = [
+  "abfadcaededfdcddcfbfdeffadfadfbefadfcfdfac",
+  [
+    "abfadca",
+    "fcfdfac",
+    "daddfbc",
+    "dfbefad",
+    "effadfa",
+    "ddcfbfd",
+  ],
+]
+expected = false
+
+[[asserts]]
+arguments = [
+  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  [
+    "aaaaa",
+    "aaaaa",
+    "aaaaa",
+    "aaaaa",
+    "aaaaa",
+    "aaaaa",
+    "aaaaa",
+    "aaaaa",
+    "aaaaa",
+    "aaaaa",
+  ],
+]
+expected = true
+
+[[asserts]]
+arguments = ["aaaaaa", ["aaa", "aaa"]]
+expected  = true
+
+[[asserts]]
+arguments = ["fdghcegah", ["a", "c", "d", "h", "e", "f", "g", "g", "b"]]
+expected  = false
+
+[[asserts]]
+arguments = ["ccaacbc", ["cccaacb"]]
+expected  = false
+
+[[asserts]]
+arguments = [
+  "cadecedeceacaaeecbbecbedeebebddcaad",
+  [
+    "acaae",
+    "cbede",
+    "cadec",
+    "edece",
+    "dcaad",
+    "ebebd",
+    "ecbbe",
+  ],
+]
+expected = true
+
+[[asserts]]
+arguments = ["dbecceebabcd", ["cdbd", "abcd", "ceeb"]]
+expected  = false
+
+[[asserts]]
+arguments = ["bbbaaabccccc", ["cc", "ba", "aa", "cb", "cc", "bc"]]
+expected  = false
+
+[[asserts]]
+arguments = [
+  "addgfegfchhcgcahaggeffcd",
+  [
+    "addg",
+    "agge",
+    "gcah",
+    "fegf",
+    "chhc",
+    "ffcd",
+  ],
+]
+expected = true
+
+[[asserts]]
+arguments = [
+  "bbaaaaaaaababbabbbabbaaaa",
+  [
+    "baaaa",
+    "aabab",
+    "babba",
+    "aaaaa",
+    "bbaaa",
+  ],
+]
+expected = false
+
+[[asserts]]
+arguments = ["bab", ["acb"]]
+expected  = false
+
+[[asserts]]
+arguments = ["bbac", ["bbac"]]
+expected  = true
+
+[[asserts]]
+arguments = ["cacbbacef", ["c", "b", "c", "f", "a", "a", "d", "e", "b"]]
+expected  = false
+
+[[asserts]]
+arguments = [
+  "bedaaacbabafdebaffabffddbcdeacbeaebb",
+  [
+    "beda",
+    "abaf",
+    "ffdd",
+    "deba",
+    "bcde",
+    "affb",
+    "ffab",
+    "acbe",
+    "aebb",
+  ],
+]
+expected = false

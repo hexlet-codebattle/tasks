@@ -1,0 +1,192 @@
+level             = "medium"
+name              = "sastry_numbers"
+tags              = ["math"]
+time_to_solve_sec = 400
+
+description_en = """
+Check if a given integer `n` is a Sastry number.
+
+A number `n` is a Sastry number if concatenated with `n + 1` it gives a perfect square.
+
+For example, $183$ is a Sastry number because $183184 = 428^2$.
+"""
+
+description_ru = """
+Проверьте, является ли переданное число `n` числом Састри (Sastry number).
+
+Число `n` является числом Састри, если при конкатенации с `n + 1` получается квадрат какого-либо числа.
+
+Например, $183$ является числом Састри, потому что $183184 = 428^2$.
+"""
+
+solution = """
+def solution(number):
+    concatenated = int(str(number) + str(number + 1))
+    sqrt = int(concatenated ** 0.5)
+    return sqrt * sqrt == concatenated
+"""
+
+examples = """
+solution(183) == True
+solution(322) == False
+solution(328) == True
+solution(528) == True
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [183]
+comment   = "183184 = 428^2"
+expected  = true
+
+[[asserts]]
+arguments = [328]
+comment   = "328329 = 573^2"
+expected  = true
+
+[[asserts]]
+arguments = [528]
+comment   = "528529 = 727^2"
+expected  = true
+
+[[asserts]]
+arguments = [322]
+comment   = "Not a Sastry number"
+expected  = false
+
+[[asserts]]
+arguments = [1]
+comment   = "12 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [2]
+comment   = "23 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [3]
+comment   = "34 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [10]
+comment   = "1011 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [100]
+comment   = "100101 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [150]
+comment   = "150151 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [200]
+comment   = "200201 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [250]
+comment   = "250251 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [300]
+comment   = "300301 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [350]
+comment   = "350351 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [400]
+comment   = "400401 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [450]
+comment   = "450451 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [500]
+comment   = "500501 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [550]
+comment   = "550551 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [600]
+comment   = "600601 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [182]
+comment   = "182183 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [184]
+comment   = "184185 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [327]
+comment   = "327328 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [329]
+comment   = "329330 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [527]
+comment   = "527528 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [529]
+comment   = "529530 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [50]
+comment   = "5051 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [75]
+comment   = "7576 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [125]
+comment   = "125126 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [175]
+comment   = "175176 is not a perfect square"
+expected  = false
+
+[[asserts]]
+arguments = [225]
+comment   = "225226 is not a perfect square"
+expected  = false

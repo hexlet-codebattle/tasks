@@ -1,6 +1,6 @@
 level             = "medium"
 name              = "closest_event_to_date"
-tags              = ["stdlib", "date", "search"]
+tags              = ["stdlib", "date_time", "search"]
 time_to_solve_sec = 360
 
 description_en = """

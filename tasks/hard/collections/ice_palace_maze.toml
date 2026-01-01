@@ -1,0 +1,222 @@
+level             = "hard"
+name              = "ice_palace_maze"
+tags              = ["collections", "algo"]
+time_to_solve_sec = 900
+
+description_en = """
+Given a rectangular field represented by characters:
+- `S` — Santa's starting position
+- `T` — target
+- `#` — wall (cannot pass)
+- `.` — free cell
+
+Santa can move up, down, left, and right, but cannot pass through walls.
+
+Find the minimum number of steps from `S` to `T`. If no path exists, return `-1`.
+"""
+
+description_ru = """
+Дано прямоугольное поле, представленное символами:
+- `S` — стартовая позиция Санты
+- `T` — цель
+- `#` — стена (проход запрещён)
+- `.` — свободная клетка
+
+Санта может ходить вверх, вниз, влево и вправо, не проходя через стены.
+
+Найдите минимальное количество шагов от `S` до `T`. Если путь не существует — выведите `-1`.
+"""
+
+limits = """
+- $1 \\leq \\text{rows} \\leq 100$
+- $1 \\leq \\text{cols} \\leq 100$
+"""
+
+solution = """
+def solution(field: list[str]) -> int:
+    from collections import deque
+    rows, cols = len(field), len(field[0])
+    for i in range(rows):
+        for j in range(cols):
+            if field[i][j] == 'S':
+                s = (i, j)
+    q = deque([(s[0], s[1], 0)])
+    v = {s}
+    while q:
+        r, c, d = q.popleft()
+        if field[r][c] == 'T':
+            return d
+        for dr, dc in [(-1,0), (1,0), (0,-1), (0,1)]:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < rows and 0 <= nc < cols and (nr, nc) not in v and field[nr][nc] != '#':
+                v.add((nr, nc))
+                q.append((nr, nc, d + 1))
+    return -1
+"""
+
+examples = """
+solution(["S.T"]) == 2
+solution(["S#T"]) == -1
+solution(["S.", ".T"]) == 2
+solution(["S..", "...", "..T"]) == 4
+"""
+
+[[input_signature]]
+argument_name = "field"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["ST"]]
+comment   = "Adjacent"
+expected  = 1
+
+[[asserts]]
+arguments = [["S.T"]]
+comment   = "One step between"
+expected  = 2
+
+[[asserts]]
+arguments = [["S..T"]]
+comment   = "Two steps between"
+expected  = 3
+
+[[asserts]]
+arguments = [["S#T"]]
+comment   = "Wall blocks"
+expected  = -1
+
+[[asserts]]
+arguments = [["S", "T"]]
+comment   = "Vertical adjacent"
+expected  = 1
+
+[[asserts]]
+arguments = [["S", ".", "T"]]
+comment   = "Vertical with gap"
+expected  = 2
+
+[[asserts]]
+arguments = [["S", "#", "T"]]
+comment   = "Vertical wall blocks"
+expected  = -1
+
+[[asserts]]
+arguments = [["S.", ".T"]]
+comment   = "Diagonal path"
+expected  = 2
+
+[[asserts]]
+arguments = [["S#", "#T"]]
+comment   = "No path around"
+expected  = -1
+
+[[asserts]]
+arguments = [["S.", "##", ".T"]]
+comment   = "Wall separates"
+expected  = -1
+
+[[asserts]]
+arguments = [["S..", "...", "..T"]]
+comment   = "3x3 grid"
+expected  = 4
+
+[[asserts]]
+arguments = [["S.#", ".#.", "#.T"]]
+comment   = "No path - walls block all routes"
+expected  = -1
+
+[[asserts]]
+arguments = [["S...", "####", "...T"]]
+comment   = "Complete wall separation"
+expected  = -1
+
+[[asserts]]
+arguments = [["S..", "#.#", "..T"]]
+comment   = "Path around wall"
+expected  = 4
+
+[[asserts]]
+arguments = [["S...T"]]
+comment   = "Long horizontal"
+expected  = 4
+
+[[asserts]]
+arguments = [["S", ".", ".", ".", "T"]]
+comment   = "Long vertical"
+expected  = 4
+
+[[asserts]]
+arguments = [["S...", ".##.", ".##.", "...T"]]
+comment   = "Around block"
+expected  = 6
+
+[[asserts]]
+arguments = [["S#..", "#.#.", "..#T"]]
+comment   = "No path - walls block"
+expected  = -1
+
+[[asserts]]
+arguments = [["S..", ".#.", "..T"]]
+comment   = "Center obstacle"
+expected  = 4
+
+[[asserts]]
+arguments = [["S.#.T"]]
+comment   = "No path - single row with wall"
+expected  = -1
+
+[[asserts]]
+arguments = [["S.#.", "..#.", "..#T"]]
+comment   = "No path - wall blocks"
+expected  = -1
+
+[[asserts]]
+arguments = [["S...", "....", "....", "...T"]]
+comment   = "4x4 grid"
+expected  = 6
+
+[[asserts]]
+arguments = [["S####", "....#", "####.", "#...T"]]
+comment   = "No path - walls block all routes"
+expected  = -1
+
+[[asserts]]
+arguments = [["S.....T"]]
+comment   = "Seven cells horizontal"
+expected  = 6
+
+[[asserts]]
+arguments = [["S######", ".######", "......T"]]
+comment   = "U-shaped path"
+expected  = 8
+
+[[asserts]]
+arguments = [["S.", "#.", "#.", "#.", "#T"]]
+comment   = "Path via right column (5 steps)"
+expected  = 5
+
+[[asserts]]
+arguments = [["S..", "...", ".#.", "..T"]]
+comment   = "Avoid single wall"
+expected  = 5
+
+[[asserts]]
+arguments = [["S....", "####.", ".....", "####.", "....T"]]
+comment   = "Direct path via right edge (8 steps)"
+expected  = 8
+
+[[asserts]]
+arguments = [["S.........T"]]
+comment   = "Ten steps"
+expected  = 10
+
+[[asserts]]
+arguments = [["S.#.#.T"]]
+comment   = "No path - single row with walls"
+expected  = -1

@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "arrange_numbers_to_form_biggest_number"
-tags              = ["math", "array"]
+tags              = ["math", "collections"]
 time_to_solve_sec = 200
 
 description_en = """

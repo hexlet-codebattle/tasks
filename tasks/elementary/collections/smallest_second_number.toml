@@ -1,0 +1,189 @@
+level             = "elementary"
+name              = "smallest_second_number"
+tags              = ["collections", "sorting"]
+time_to_solve_sec = 150
+
+description_en = """
+Find the second smallest number in an array.
+"""
+
+description_ru = """
+Найдите второе наименьшее число в массиве.
+"""
+
+limits = """
+- $2 \\leq \\text{len}(\\text{numbers}) \\leq 100$
+- $-100 \\leq \\text{numbers}[i] \\leq 100$
+"""
+
+solution = """
+def solution(numbers: list[int]) -> int:
+    return sorted(numbers)[1]
+"""
+
+examples = """
+solution([1, 2, 3]) == 2
+solution([1, -2, 3]) == 1
+solution([0, 0, 10]) == 0
+solution([1, -2, 5, 3]) == 1
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "Simple ascending order"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, -2, 3]]
+comment   = "Mixed positive and negative"
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 0, 10]]
+comment   = "Duplicate smallest"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, -2, 5, 3]]
+comment   = "Unordered array"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, -2, -5, 3]]
+comment   = "Multiple negatives"
+expected  = -2
+
+[[asserts]]
+arguments = [[-1, -5, -3]]
+comment   = "All negative numbers"
+expected  = -3
+
+[[asserts]]
+arguments = [[5, 5, 5]]
+comment   = "All same numbers"
+expected  = 5
+
+[[asserts]]
+arguments = [[10, 1, 20, 30]]
+comment   = "Random order"
+expected  = 10
+
+[[asserts]]
+arguments = [[0, -10, 5]]
+comment   = "With zero"
+expected  = 0
+
+[[asserts]]
+arguments = [[100, 200, 300]]
+comment   = "Large numbers"
+expected  = 200
+
+[[asserts]]
+arguments = [[-100, -200, -50]]
+comment   = "Large negative numbers"
+expected  = -100
+
+[[asserts]]
+arguments = [[7, 3, 9, 1, 5]]
+comment   = "Five elements"
+expected  = 3
+
+[[asserts]]
+arguments = [[2, 2, 2, 1]]
+comment   = "Multiple duplicates"
+expected  = 2
+
+[[asserts]]
+arguments = [[50, 25, 75, 10]]
+comment   = "Multiples of 25"
+expected  = 25
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4]]
+comment   = "Sequential from zero"
+expected  = 1
+
+[[asserts]]
+arguments = [[-5, -4, -3, -2, -1]]
+comment   = "Sequential negatives"
+expected  = -4
+
+[[asserts]]
+arguments = [[15, 15, 10]]
+comment   = "Duplicates at end"
+expected  = 15
+
+[[asserts]]
+arguments = [[8, 6, 7, 5]]
+comment   = "Descending pattern"
+expected  = 6
+
+[[asserts]]
+arguments = [[99, 1, 50]]
+comment   = "Wide range"
+expected  = 50
+
+[[asserts]]
+arguments = [[42, 42, 41]]
+comment   = "Close values"
+expected  = 42
+
+[[asserts]]
+arguments = [[-1, 0, 1]]
+comment   = "Around zero"
+expected  = 0
+
+[[asserts]]
+arguments = [[11, 22, 33, 44]]
+comment   = "Multiples of 11"
+expected  = 22
+
+[[asserts]]
+arguments = [[3, 1, 4, 1, 5]]
+comment   = "Pi digits"
+expected  = 1
+
+[[asserts]]
+arguments = [[100, 99, 98]]
+comment   = "Descending from 100"
+expected  = 99
+
+[[asserts]]
+arguments = [[-10, -10, -9]]
+comment   = "Duplicate negatives"
+expected  = -10
+
+[[asserts]]
+arguments = [[5, 10, 15, 20]]
+comment   = "Multiples of 5"
+expected  = 10
+
+[[asserts]]
+arguments = [[1, 1, 2, 2]]
+comment   = "Two pairs"
+expected  = 1
+
+[[asserts]]
+arguments = [[77, 88, 99]]
+comment   = "Double digit multiples"
+expected  = 88
+
+[[asserts]]
+arguments = [[0, 0, 0, 1]]
+comment   = "Multiple zeros"
+expected  = 0
+
+[[asserts]]
+arguments = [[30, 20, 10]]
+comment   = "Descending by tens"
+expected  = 20

@@ -1,0 +1,185 @@
+level             = "easy"
+name              = "word_pattern"
+tags              = ["collections", "strings"]
+time_to_solve_sec = 350
+
+description_en = """
+Given a `pattern` and a `text`. A pattern is a string in which each letter represents a mask for the corresponding word in the text.
+If two different words in the text correspond to the same letter in the pattern, then these words must be identical.
+Check whether the text matches the pattern.
+"""
+
+description_ru = """
+Дан паттерн `pattern` и текст `text`. Паттерн — это строка, в которой каждая буква представляет собой маску для соответствующего слова в тексте. Если два разных слова в тексте соответствуют одной и той же букве в паттерне, то эти слова должны быть одинаковыми. Проверьте, соответствует ли текст паттерну.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{pattern}) \\leq 50$
+- $1 \\leq \\text{len}(\\text{text}) \\leq 500$
+"""
+
+solution = """
+def solution(pattern: str, text: str) -> bool:
+    words = text.split()
+    if len(pattern) != len(words):
+        return False
+    char_to_word = {}
+    word_to_char = {}
+    for char, word in zip(pattern, words):
+        if char in char_to_word:
+            if char_to_word[char] != word:
+                return False
+        else:
+            char_to_word[char] = word
+        if word in word_to_char:
+            if word_to_char[word] != char:
+                return False
+        else:
+            word_to_char[word] = char
+    return True
+"""
+
+examples = """
+solution("sos", "bond james bond") == True
+solution("abba", "dog cat cat dog") == True
+solution("abba", "dog dog dog dog") == False
+solution("abba", "dog cat cat fisth") == False
+"""
+
+[[input_signature]]
+argument_name = "pattern"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["zzbinqs", "dragonborn dragonborn by his honor in sworm"]
+comment   = "Complex pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["abba", "dog cat cat dog"]
+comment   = "Classic pattern match"
+expected  = true
+
+[[asserts]]
+arguments = ["abba", "dog cat cat fisth"]
+comment   = "Pattern broken at end"
+expected  = false
+
+[[asserts]]
+arguments = ["sos", "bond james bond"]
+comment   = "First and last same"
+expected  = true
+
+[[asserts]]
+arguments = ["abba", "dog dog dog dog"]
+comment   = "All same words but pattern different"
+expected  = false
+
+[[asserts]]
+arguments = ["abc", "dog cat bird"]
+comment   = "All different pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["aaa", "dog dog dog"]
+comment   = "All same"
+expected  = true
+
+[[asserts]]
+arguments = ["ab", "dog cat"]
+comment   = "Simple two element"
+expected  = true
+
+[[asserts]]
+arguments = ["aa", "dog cat"]
+comment   = "Pattern same but words different"
+expected  = false
+
+[[asserts]]
+arguments = ["ab", "dog dog"]
+comment   = "Pattern different but words same"
+expected  = false
+
+[[asserts]]
+arguments = ["aba", "dog cat dog"]
+comment   = "Three element palindrome"
+expected  = true
+
+[[asserts]]
+arguments = ["aba", "dog cat cat"]
+comment   = "Pattern doesn't match"
+expected  = false
+
+[[asserts]]
+arguments = ["abcd", "one two three four"]
+comment   = "All unique"
+expected  = true
+
+[[asserts]]
+arguments = ["abab", "red blue red blue"]
+comment   = "Alternating pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["abab", "red blue blue red"]
+comment   = "Wrong alternating"
+expected  = false
+
+[[asserts]]
+arguments = ["aaaa", "same same same same"]
+comment   = "All same word and pattern"
+expected  = true
+
+[[asserts]]
+arguments = ["abcabc", "x y z x y z"]
+comment   = "Repeating sequence"
+expected  = true
+
+[[asserts]]
+arguments = ["abcabc", "x y z x y x"]
+comment   = "Broken sequence"
+expected  = false
+
+[[asserts]]
+arguments = ["xyz", "hello world test"]
+comment   = "Three different"
+expected  = true
+
+[[asserts]]
+arguments = ["xyx", "hello world hello"]
+comment   = "First and last same"
+expected  = true
+
+[[asserts]]
+arguments = ["a", "single"]
+comment   = "Single element"
+expected  = true
+
+[[asserts]]
+arguments = ["aab", "test test check"]
+comment   = "Two same then different"
+expected  = true
+
+[[asserts]]
+arguments = ["abb", "test check check"]
+comment   = "Different then two same"
+expected  = true
+
+[[asserts]]
+arguments = ["abc", "dog"]
+comment   = "Length mismatch"
+expected  = false
+
+[[asserts]]
+arguments = ["a", "multiple words"]
+comment   = "Pattern too short"
+expected  = false

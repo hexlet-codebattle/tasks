@@ -1,0 +1,195 @@
+level             = "elementary"
+name              = "longest_strings"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 180
+
+description_en = """
+Given an array of strings `words`, return another array containing all of its longest strings.
+
+If there are multiple strings with the same maximum length, include all of them in the result.
+"""
+
+description_ru = """
+Дан массив строк `words`, создайте функцию, которая возвращает новый массив, содержащий все строки максимальной длины.
+
+Если есть несколько строк с одинаковой максимальной длиной, включите все из них в результат.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{words}) \\leq 100$
+- $0 \\leq \\text{len}(\\text{word}) \\leq 50$
+"""
+
+solution = """
+def solution(words: list) -> list:
+    max_len = max(len(w) for w in words)
+    return [w for w in words if len(w) == max_len]
+"""
+
+examples = """
+solution(["a", "b", "c", "d"]) == ["a", "b", "c", "d"]
+solution(["in", "frontend", "programms"]) == ["programms"]
+solution(["clojure", "makes", "your", "life", "greater"]) == ["clojure", "greater"]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["in", "Soviet", "Russia", "frontend", "programms", "you"]]
+comment   = "Single longest word"
+expected  = ["programms"]
+
+[[asserts]]
+arguments = [["using", "clojure", "makes", "your", "life", "greater"]]
+comment   = "Two words with same max length"
+expected  = ["clojure", "greater"]
+
+[[asserts]]
+arguments = [["a", "b", "c", "d"]]
+comment   = "All same length"
+expected  = ["a", "b", "c", "d"]
+
+[[asserts]]
+arguments = [["hello"]]
+comment   = "Single word"
+expected  = ["hello"]
+
+[[asserts]]
+arguments = [["cat", "dog", "elephant", "bee"]]
+comment   = "One clearly longest"
+expected  = ["elephant"]
+
+[[asserts]]
+arguments = [["short", "medium", "longest", "another"]]
+comment   = "One longest word"
+expected  = ["longest", "another"]
+
+[[asserts]]
+arguments = [["a", "bb", "ccc", "dd", "e"]]
+comment   = "Three character longest"
+expected  = ["ccc"]
+
+[[asserts]]
+arguments = [["same", "size", "here", "yeah"]]
+comment   = "All four chars"
+expected  = ["same", "size", "here", "yeah"]
+
+[[asserts]]
+arguments = [["python", "java", "javascript", "ruby"]]
+comment   = "JavaScript longest"
+expected  = ["javascript"]
+
+[[asserts]]
+arguments = [["red", "green", "blue", "yellow"]]
+comment   = "Yellow longest"
+expected  = ["yellow"]
+
+[[asserts]]
+arguments = [["x", "xx", "xxx", "xxxx"]]
+comment   = "Four x's longest"
+expected  = ["xxxx"]
+
+[[asserts]]
+arguments = [["one", "two", "three", "four", "five"]]
+comment   = "Three and five chars longest"
+expected  = ["three"]
+
+[[asserts]]
+arguments = [["apple", "banana", "cherry"]]
+comment   = "Banana longest"
+expected  = ["banana", "cherry"]
+
+[[asserts]]
+arguments = [["", "a", "ab", "abc"]]
+comment   = "ABC longest"
+expected  = ["abc"]
+
+[[asserts]]
+arguments = [["test", "word", "more", "code"]]
+comment   = "All same four chars"
+expected  = ["test", "word", "more", "code"]
+
+[[asserts]]
+arguments = [["programming", "is", "fun"]]
+comment   = "Programming clearly longest"
+expected  = ["programming"]
+
+[[asserts]]
+arguments = [["a"]]
+comment   = "Single char single word"
+expected  = ["a"]
+
+[[asserts]]
+arguments = [["ab", "cd", "ef", "gh"]]
+comment   = "All two chars"
+expected  = ["ab", "cd", "ef", "gh"]
+
+[[asserts]]
+arguments = [["longest", "string", "in", "array"]]
+comment   = "Longest word seven chars"
+expected  = ["longest"]
+
+[[asserts]]
+arguments = [["equal", "words", "length"]]
+comment   = "Length is longest"
+expected  = ["length"]
+
+[[asserts]]
+arguments = [["tiny", "small", "medium", "large"]]
+comment   = "Medium longest"
+expected  = ["medium"]
+
+[[asserts]]
+arguments = [["first", "second", "third"]]
+comment   = "Second longest"
+expected  = ["second"]
+
+[[asserts]]
+arguments = [["alpha", "beta", "gamma", "delta"]]
+comment   = "Alpha and gamma and delta"
+expected  = ["alpha", "gamma", "delta"]
+
+[[asserts]]
+arguments = [["quick", "brown", "fox"]]
+comment   = "Quick and brown longest"
+expected  = ["quick", "brown"]
+
+[[asserts]]
+arguments = [["abc", "abcd", "ab", "a"]]
+comment   = "ABCD longest"
+expected  = ["abcd"]
+
+[[asserts]]
+arguments = [["same", "word", "size"]]
+comment   = "All four letter words"
+expected  = ["same", "word", "size"]
+
+[[asserts]]
+arguments = [["longestword", "short"]]
+comment   = "Longestword clearly longest"
+expected  = ["longestword"]
+
+[[asserts]]
+arguments = [["x", "y", "z"]]
+comment   = "Three single chars"
+expected  = ["x", "y", "z"]
+
+[[asserts]]
+arguments = [["computer", "science", "program"]]
+comment   = "Computer longest"
+expected  = ["computer"]
+
+[[asserts]]
+arguments = [["data", "structure", "algorithm"]]
+comment   = "Structure and algorithm longest"
+expected  = ["structure", "algorithm"]

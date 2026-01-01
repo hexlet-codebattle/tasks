@@ -1,0 +1,167 @@
+level             = "elementary"
+name              = "true_calculation"
+tags              = ["collections", "training"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function which returns the number of true values there are in an array.
+"""
+
+description_ru = """
+Создайте функцию, которая подсчитывает количество истин в массиве.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{facts}) \\leq 100$
+"""
+
+solution = """
+def solution(facts: list) -> int:
+    return sum(facts)
+"""
+
+examples = """
+solution([false, false, false, true]) == 1
+solution([true, true, false, true, false, true]) == 4
+solution([false, true, false, true, true, true, true]) == 5
+"""
+
+[[input_signature]]
+argument_name = "facts"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "boolean"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[true, true, false, true, false, true]]
+comment   = "Four true values"
+expected  = 4
+
+[[asserts]]
+arguments = [[false, true, false, true, true, true, true]]
+comment   = "Five true values"
+expected  = 5
+
+[[asserts]]
+arguments = [[false, false, false, true]]
+comment   = "One true value"
+expected  = 1
+
+[[asserts]]
+arguments = [[true, true, true, true]]
+comment   = "All true"
+expected  = 4
+
+[[asserts]]
+arguments = [[false, false, false, false]]
+comment   = "All false"
+expected  = 0
+
+[[asserts]]
+arguments = [[true]]
+comment   = "Single true"
+expected  = 1
+
+[[asserts]]
+arguments = [[false]]
+comment   = "Single false"
+expected  = 0
+
+[[asserts]]
+arguments = [[true, false]]
+comment   = "One true one false"
+expected  = 1
+
+[[asserts]]
+arguments = [[false, true]]
+comment   = "One false one true"
+expected  = 1
+
+[[asserts]]
+arguments = [[true, true, true]]
+comment   = "Three true"
+expected  = 3
+
+[[asserts]]
+arguments = [[false, false, false]]
+comment   = "Three false"
+expected  = 0
+
+[[asserts]]
+arguments = [[true, false, true, false]]
+comment   = "Alternating - two true"
+expected  = 2
+
+[[asserts]]
+arguments = [[false, true, false, true]]
+comment   = "Alternating - two true"
+expected  = 2
+
+[[asserts]]
+arguments = [[true, true, false, false]]
+comment   = "Two and two"
+expected  = 2
+
+[[asserts]]
+arguments = [[false, false, true, true]]
+comment   = "Two and two"
+expected  = 2
+
+[[asserts]]
+arguments = [[true, true, true, true, true]]
+comment   = "Five true"
+expected  = 5
+
+[[asserts]]
+arguments = [[false, false, false, false, false]]
+comment   = "Five false"
+expected  = 0
+
+[[asserts]]
+arguments = [[true, false, true, false, true]]
+comment   = "Alternating - three true"
+expected  = 3
+
+[[asserts]]
+arguments = [[false, true, false, true, false]]
+comment   = "Alternating - two true"
+expected  = 2
+
+[[asserts]]
+arguments = [[true, true, true, false, false, false]]
+comment   = "Three true three false"
+expected  = 3
+
+[[asserts]]
+arguments = [[false, false, false, true, true, true]]
+comment   = "Three false three true"
+expected  = 3
+
+[[asserts]]
+arguments = [[true, false, false, false, false, false]]
+comment   = "Only one true"
+expected  = 1
+
+[[asserts]]
+arguments = [[false, false, false, false, false, true]]
+comment   = "True at end"
+expected  = 1
+
+[[asserts]]
+arguments = [[true, true, true, true, true, true]]
+comment   = "Six true"
+expected  = 6
+
+[[asserts]]
+arguments = [[false, true, true, false, true, false, true]]
+comment   = "Four true in seven"
+expected  = 4
+
+[[asserts]]
+arguments = [[true, true, true, true, true, true, true, true]]
+comment   = "Eight true"
+expected  = 8

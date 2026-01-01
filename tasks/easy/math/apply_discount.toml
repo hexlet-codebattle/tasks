@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "apply_discount"
-tags              = ["math", "array"]
+tags              = ["math", "collections"]
 time_to_solve_sec = 200
 
 description_en = """

@@ -1,0 +1,161 @@
+level             = "easy"
+name              = "max_tasks_in_workday"
+tags              = ["collections", "greedy", "sorting"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given the durations (in minutes) of tasks as an array `nums`.
+A working day lasts $480$ minutes. Return the **maximum** number of tasks you can finish within $480$ minutes.
+"""
+
+description_ru = """
+Дан массив `nums` с длительностями задач в минутах. Рабочий день длится $480$ минут.
+Верните **максимальное** количество задач, которое можно выполнить за $480$ минут.
+"""
+
+solution = """
+def solution(nums: list) -> int:
+    s = 0
+    for i, x in enumerate(sorted(nums)):
+        s += x
+        if s > 480:
+            return i
+    return len(nums)
+"""
+
+examples = """
+solution([1]) == 1
+solution([240, 120, 360]) == 2
+solution([240, 240, 240]) == 2
+solution([4000, 1000, 2000]) == 0
+"""
+
+[[input_signature]]
+argument_name = "nums"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[480]]
+expected  = 1
+
+[[asserts]]
+arguments = [[481]]
+expected  = 0
+
+[[asserts]]
+arguments = [[240, 240]]
+expected  = 2
+
+[[asserts]]
+arguments = [[240, 240, 240]]
+expected  = 2
+
+[[asserts]]
+arguments = [[160, 160, 160]]
+expected  = 3
+
+[[asserts]]
+arguments = [[120, 120, 120, 120]]
+expected  = 4
+
+[[asserts]]
+arguments = [[100, 100, 100, 100, 100]]
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 479]]
+expected  = 2
+
+[[asserts]]
+arguments = [[479, 1]]
+expected  = 2
+
+[[asserts]]
+arguments = [[240, 239, 1]]
+expected  = 3
+
+[[asserts]]
+arguments = [[160, 160, 159, 1]]
+expected  = 4
+
+[[asserts]]
+arguments = [[100, 100, 100, 90, 89]]
+expected  = 5
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 470]]
+expected  = 5
+
+[[asserts]]
+arguments = [[470, 4, 3, 2, 1]]
+expected  = 5
+
+[[asserts]]
+arguments = [[30, 30, 30, 30, 30, 30, 30, 30]]
+expected  = 8
+
+[[asserts]]
+arguments = [[60, 60, 60, 60, 60, 60, 60, 60]]
+expected  = 8
+
+[[asserts]]
+arguments = [[120, 120, 120, 120, 120]]
+expected  = 4
+
+[[asserts]]
+arguments = [[1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[479]]
+expected  = 1
+
+[[asserts]]
+arguments = [[240, 241]]
+expected  = 1
+
+[[asserts]]
+arguments = [[241, 240]]
+expected  = 1
+
+[[asserts]]
+arguments = [[160, 160, 161]]
+expected  = 2
+
+[[asserts]]
+arguments = [[50, 50, 50, 50, 50, 50, 50, 50, 50, 50]]
+expected  = 9
+
+[[asserts]]
+arguments = [[100, 100, 100, 100, 100]]
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 1, 478]]
+expected  = 3
+
+[[asserts]]
+arguments = [[478, 1, 1]]
+expected  = 3
+
+[[asserts]]
+arguments = [[239, 239, 2]]
+expected  = 3
+
+[[asserts]]
+arguments = [[1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[480, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[240, 240, 1]]
+expected  = 2

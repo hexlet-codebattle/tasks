@@ -1,0 +1,481 @@
+level             = "easy"
+name              = "passing_pennant"
+tags              = ["algo", "graphs", "simulation", "sets"]
+time_to_solve_sec = 300
+
+description_en = """
+There are $26$ brigades labeled $A\\ldots Z$. Initially, the passing pennant is held by brigade `first`. A sequence of competitions $(i,j)$ takes place **in order**. In each competition, if either participant had the pennant before the match, the pennant goes to the (unknown) winner among those two. Compute how many brigades **could possibly** possess the pennant by the end (over all choices of winners).
+"""
+
+description_ru = """
+Есть $26$ бригад с метками $A\\ldots Z$. Изначально переходящий знак у бригады `first`. Последовательно проходят соревнования $(i,j)$. Если кто-то из участников владел знаком до матча, знак переходит к (неизвестному) победителю из этой пары. Найдите, сколько бригад **могло** владеть знаком к концу (при всех возможных исходах матчей).
+"""
+
+limits = """
+- $0 \\leq m \\leq 10^5$
+- $i,j \\in \\{A,\\ldots,Z\\}$
+"""
+
+solution = """
+def solution(first: str, comp: list) -> int:
+    poss = set([first])
+    for a, b in comp:
+        if a in poss or b in poss:
+            poss.add(a); poss.add(b)
+    return len(poss)
+"""
+
+examples = """
+solution("X", [["A", "B"], ["A", "X"]]) == 2
+solution("B", [["A", "B"], ["A", "X"]]) == 3
+solution("C", [["A", "B"]]) == 1
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "comp"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["X", [["A", "B"], ["A", "X"]]]
+expected  = 2
+
+[[asserts]]
+arguments = ["B", [["A", "B"], ["A", "X"]]]
+expected  = 3
+
+[[asserts]]
+arguments = ["C", [["A", "B"]]]
+expected  = 1
+
+[[asserts]]
+arguments = ["E", [["D", "C"], ["C", "D"], ["C", "E"], ["A", "B"], ["E", "C"]]]
+expected  = 2
+
+[[asserts]]
+arguments = ["C", [["A", "C"], ["E", "B"], ["D", "A"], ["C", "D"], ["C", "E"]]]
+expected  = 4
+
+[[asserts]]
+arguments = ["C", [["B", "C"], ["B", "C"]]]
+expected  = 2
+
+[[asserts]]
+arguments = [
+  "D",
+  [
+    [
+      "E",
+      "D",
+    ],
+    [
+      "E",
+      "A",
+    ],
+    [
+      "A",
+      "D",
+    ],
+    [
+      "E",
+      "D",
+    ],
+    [
+      "C",
+      "A",
+    ],
+    [
+      "A",
+      "C",
+    ],
+    [
+      "E",
+      "B",
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = [
+  "C",
+  [
+    [
+      "B",
+      "A",
+    ],
+    [
+      "C",
+      "B",
+    ],
+    [
+      "C",
+      "E",
+    ],
+    [
+      "C",
+      "B",
+    ],
+    [
+      "D",
+      "C",
+    ],
+    [
+      "A",
+      "E",
+    ],
+    [
+      "B",
+      "E",
+    ],
+    [
+      "B",
+      "C",
+    ],
+    [
+      "B",
+      "E",
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = ["B", [["C", "E"], ["C", "E"], ["E", "B"], ["E", "C"], ["E", "D"]]]
+expected  = 4
+
+[[asserts]]
+arguments = ["E", [["E", "B"], ["A", "B"], ["E", "C"], ["D", "C"]]]
+expected  = 5
+
+[[asserts]]
+arguments = ["B", []]
+expected  = 1
+
+[[asserts]]
+arguments = ["A", [["B", "E"], ["A", "D"], ["C", "A"], ["B", "C"]]]
+expected  = 4
+
+[[asserts]]
+arguments = [
+  "A",
+  [
+    [
+      "A",
+      "B",
+    ],
+    [
+      "E",
+      "D",
+    ],
+    [
+      "E",
+      "A",
+    ],
+    [
+      "B",
+      "E",
+    ],
+    [
+      "B",
+      "A",
+    ],
+    [
+      "A",
+      "C",
+    ],
+    [
+      "A",
+      "E",
+    ],
+    [
+      "B",
+      "D",
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = [
+  "C",
+  [
+    [
+      "C",
+      "A",
+    ],
+    [
+      "D",
+      "E",
+    ],
+    [
+      "D",
+      "B",
+    ],
+    [
+      "C",
+      "E",
+    ],
+    [
+      "B",
+      "A",
+    ],
+    [
+      "A",
+      "B",
+    ],
+    [
+      "D",
+      "B",
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = ["D", [["D", "E"], ["A", "C"], ["E", "B"], ["C", "A"], ["E", "D"]]]
+expected  = 3
+
+[[asserts]]
+arguments = [
+  "D",
+  [
+    [
+      "D",
+      "A",
+    ],
+    [
+      "C",
+      "B",
+    ],
+    [
+      "E",
+      "D",
+    ],
+    [
+      "B",
+      "E",
+    ],
+    [
+      "A",
+      "D",
+    ],
+    [
+      "C",
+      "E",
+    ],
+    [
+      "C",
+      "B",
+    ],
+    [
+      "A",
+      "D",
+    ],
+    [
+      "C",
+      "E",
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = ["D", [["C", "A"], ["B", "D"], ["B", "E"], ["C", "A"], ["C", "D"]]]
+expected  = 4
+
+[[asserts]]
+arguments = ["E", [["C", "D"], ["A", "E"], ["B", "E"], ["D", "A"]]]
+expected  = 4
+
+[[asserts]]
+arguments = ["A", [["A", "E"]]]
+expected  = 2
+
+[[asserts]]
+arguments = ["B", [["A", "E"], ["C", "A"], ["E", "B"], ["B", "E"]]]
+expected  = 2
+
+[[asserts]]
+arguments = [
+  "E",
+  [
+    [
+      "E",
+      "D",
+    ],
+    [
+      "A",
+      "B",
+    ],
+    [
+      "B",
+      "A",
+    ],
+    [
+      "C",
+      "D",
+    ],
+    [
+      "B",
+      "E",
+    ],
+    [
+      "C",
+      "A",
+    ],
+    [
+      "B",
+      "D",
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = ["E", [["A", "D"], ["B", "A"]]]
+expected  = 1
+
+[[asserts]]
+arguments = ["C", [["C", "D"], ["C", "A"], ["A", "E"], ["D", "E"]]]
+expected  = 4
+
+[[asserts]]
+arguments = [
+  "B",
+  [
+    [
+      "C",
+      "B",
+    ],
+    [
+      "C",
+      "A",
+    ],
+    [
+      "E",
+      "B",
+    ],
+    [
+      "E",
+      "C",
+    ],
+    [
+      "B",
+      "A",
+    ],
+    [
+      "C",
+      "D",
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = [
+  "D",
+  [
+    [
+      "C",
+      "A",
+    ],
+    [
+      "C",
+      "B",
+    ],
+    [
+      "B",
+      "D",
+    ],
+    [
+      "C",
+      "D",
+    ],
+    [
+      "C",
+      "D",
+    ],
+    [
+      "B",
+      "E",
+    ],
+    [
+      "A",
+      "E",
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = [
+  "D",
+  [
+    [
+      "D",
+      "C",
+    ],
+    [
+      "B",
+      "E",
+    ],
+    [
+      "D",
+      "C",
+    ],
+    [
+      "D",
+      "E",
+    ],
+    [
+      "C",
+      "A",
+    ],
+    [
+      "C",
+      "E",
+    ],
+    [
+      "C",
+      "E",
+    ],
+  ],
+]
+expected = 4
+
+[[asserts]]
+arguments = ["D", [["C", "E"], ["A", "D"], ["C", "A"], ["C", "D"], ["B", "A"]]]
+expected  = 4
+
+[[asserts]]
+arguments = ["C", [["A", "D"], ["C", "E"], ["D", "A"], ["A", "E"]]]
+expected  = 3
+
+[[asserts]]
+arguments = ["E", [["D", "A"], ["D", "A"], ["E", "B"]]]
+expected  = 2
+
+[[asserts]]
+arguments = ["B", [["C", "A"], ["E", "A"], ["B", "A"], ["E", "A"]]]
+expected  = 3
+
+[[asserts]]
+arguments = ["C", [["E", "C"], ["E", "D"], ["D", "B"]]]
+expected  = 4
+
+[[asserts]]
+arguments = ["D", [["A", "B"]]]
+expected  = 1

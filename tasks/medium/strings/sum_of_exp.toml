@@ -1,0 +1,169 @@
+level             = "medium"
+name              = "sum_of_exp"
+tags              = ["strings"]
+time_to_solve_sec = 400
+
+description_en = """
+Given an integer $x$ (1-8), return the sum $x + xx + xxx + \\ldots$ ($x$ times) as a string. For example, for 2: $2 + 22 = 24$.
+"""
+
+description_ru = """
+Дана цифра $x$ (1-8), верните сумму $x + xx + xxx + \\ldots$ ($x$ раз) в виде строки. Например, для 2: $2 + 22 = 24$.
+"""
+
+limits = """
+- $1 \\leq x \\leq 8$
+"""
+
+solution = """
+def solution(num: int) -> str:
+    total = 0
+    for i in range(1, num + 1):
+        total += int(str(num) * i)
+    return str(total)
+"""
+
+examples = """
+solution(3) == "369"
+solution(5) == "61725"
+solution(6) == "740736"
+solution(8) == "98765424"
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [1]
+comment   = "Minimum value: 1"
+expected  = "1"
+
+[[asserts]]
+arguments = [2]
+comment   = "2 + 22 = 24"
+expected  = "24"
+
+[[asserts]]
+arguments = [3]
+comment   = "3 + 33 + 333 = 369"
+expected  = "369"
+
+[[asserts]]
+arguments = [4]
+comment   = "4 + 44 + 444 + 4444"
+expected  = "4936"
+
+[[asserts]]
+arguments = [5]
+comment   = "Sum of 5s"
+expected  = "61725"
+
+[[asserts]]
+arguments = [6]
+comment   = "Sum of 6s"
+expected  = "740736"
+
+[[asserts]]
+arguments = [7]
+comment   = "Sum of 7s"
+expected  = "8641969"
+
+[[asserts]]
+arguments = [8]
+comment   = "Sum of 8s - maximum"
+expected  = "98765424"
+
+[[asserts]]
+arguments = [1]
+comment   = "Edge case: single digit"
+expected  = "1"
+
+[[asserts]]
+arguments = [2]
+comment   = "Two terms"
+expected  = "24"
+
+[[asserts]]
+arguments = [3]
+comment   = "Three terms"
+expected  = "369"
+
+[[asserts]]
+arguments = [4]
+comment   = "Four terms"
+expected  = "4936"
+
+[[asserts]]
+arguments = [5]
+comment   = "Five terms"
+expected  = "61725"
+
+[[asserts]]
+arguments = [6]
+comment   = "Six terms"
+expected  = "740736"
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven terms"
+expected  = "8641969"
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight terms"
+expected  = "98765424"
+
+[[asserts]]
+arguments = [1]
+comment   = "Only 1"
+expected  = "1"
+
+[[asserts]]
+arguments = [2]
+comment   = "2 repeated twice"
+expected  = "24"
+
+[[asserts]]
+arguments = [3]
+comment   = "3 repeated three times"
+expected  = "369"
+
+[[asserts]]
+arguments = [4]
+comment   = "4 repeated four times"
+expected  = "4936"
+
+[[asserts]]
+arguments = [5]
+comment   = "5 repeated five times"
+expected  = "61725"
+
+[[asserts]]
+arguments = [6]
+comment   = "6 repeated six times"
+expected  = "740736"
+
+[[asserts]]
+arguments = [7]
+comment   = "7 repeated seven times"
+expected  = "8641969"
+
+[[asserts]]
+arguments = [8]
+comment   = "8 repeated eight times"
+expected  = "98765424"
+
+[[asserts]]
+arguments = [1]
+comment   = "Simplest case"
+expected  = "1"
+
+[[asserts]]
+arguments = [2]
+comment   = "Simple case"
+expected  = "24"

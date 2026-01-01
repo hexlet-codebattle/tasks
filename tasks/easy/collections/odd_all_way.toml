@@ -1,0 +1,199 @@
+level             = "easy"
+name              = "odd_all_way"
+tags              = ["collections"]
+time_to_solve_sec = 200
+
+description_en = """
+Given an array of numbers, return an array which contains all the odd numbers in the original array, which also have odd indexes.
+
+If there are no such numbers, return `[0]`.
+"""
+
+description_ru = """
+Дан массив чисел, создайте новый массив, содержащий нечетные числа с нечетными индексами.
+
+Если таких чисел нет, то верните `[0]`.
+"""
+
+limits = """
+- $1 \\leq |\\text{numbers}| \\leq 50$
+- $-20 \\leq \\text{numbers}[i] \\leq 20$
+"""
+
+solution = """
+def solution(numbers: list) -> list:
+    result = []
+    for index, number in enumerate(numbers):
+        if index % 2 == 1 and number % 2 == 1:
+            result.append(number)
+
+    return result if result else [0]
+"""
+
+examples = """
+solution([1, 2, 3]) == [0]
+solution([1, 3, 3, 5, 5]) == [3, 5]
+solution([1, 3, 1, 6, 9, 11, 13, 15]) == [3, 11, 15]
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "No odd at odd index"
+expected  = [0]
+
+[[asserts]]
+arguments = [[1, 3, 3, 5, 5]]
+comment   = "Two odds at odd indexes"
+expected  = [3, 5]
+
+[[asserts]]
+arguments = [[1, 3, 1, 6, 9, 11, 13, 15]]
+comment   = "Three odds at odd indexes"
+expected  = [3, 11, 15]
+
+[[asserts]]
+arguments = [[0, 1, 2, 2, 4]]
+comment   = "One odd at odd index"
+expected  = [1]
+
+[[asserts]]
+arguments = [[2, 4, 6, 8]]
+comment   = "No odd numbers"
+expected  = [0]
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1]]
+comment   = "All ones"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [[0, 5, 0, 7, 0, 9]]
+comment   = "Odds at all odd positions"
+expected  = [5, 7, 9]
+
+[[asserts]]
+arguments = [[5, 3, 7, 9, 11]]
+comment   = "All odd numbers"
+expected  = [3, 9]
+
+[[asserts]]
+arguments = [[2]]
+comment   = "Single even"
+expected  = [0]
+
+[[asserts]]
+arguments = [[3]]
+comment   = "Single odd at index 0"
+expected  = [0]
+
+[[asserts]]
+arguments = [[0, 3]]
+comment   = "Odd at index 1"
+expected  = [3]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7]]
+comment   = "Alternating odd/even"
+expected  = [0]
+
+[[asserts]]
+arguments = [[0, 1, 0, 3, 0, 5, 0, 7]]
+comment   = "Pattern with odds at odd"
+expected  = [1, 3, 5, 7]
+
+[[asserts]]
+arguments = [[10, 11, 12, 13, 14, 15]]
+comment   = "Consecutive numbers"
+expected  = [11, 13, 15]
+
+[[asserts]]
+arguments = [[2, 2, 2, 2]]
+comment   = "All twos"
+expected  = [0]
+
+[[asserts]]
+arguments = [[9, 8, 7, 6, 5, 4, 3, 2, 1]]
+comment   = "Descending sequence"
+expected  = [0]
+
+[[asserts]]
+arguments = [[1, 1, 3, 3, 5, 5, 7, 7]]
+comment   = "Pairs of odds"
+expected  = [1, 3, 5, 7]
+
+[[asserts]]
+arguments = [[-1, -3, -5, -7]]
+comment   = "Negative odd numbers"
+expected  = [-3, -7]
+
+[[asserts]]
+arguments = [[0, -1, 0, -3, 0, -5]]
+comment   = "Negative odds at odd indexes"
+expected  = [-1, -3, -5]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+comment   = "First ten numbers"
+expected  = [0]
+
+[[asserts]]
+arguments = [[11, 13, 15, 17, 19]]
+comment   = "All odd sequential"
+expected  = [13, 17]
+
+[[asserts]]
+arguments = [[0, 9, 0, 7, 0, 5, 0, 3, 0, 1]]
+comment   = "Descending odds at odd"
+expected  = [9, 7, 5, 3, 1]
+
+[[asserts]]
+arguments = [[4, 5, 6, 7, 8, 9]]
+comment   = "Range 4 to 9"
+expected  = [5, 7, 9]
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 1, 1, 1]]
+comment   = "Eight ones"
+expected  = [1, 1, 1, 1]
+
+[[asserts]]
+arguments = [[2, 3, 4, 5, 6, 7, 8, 9]]
+comment   = "Range 2 to 9"
+expected  = [3, 5, 7, 9]
+
+[[asserts]]
+arguments = [[100, 101, 102, 103]]
+comment   = "Large numbers"
+expected  = [101, 103]
+
+[[asserts]]
+arguments = [[0, 0, 0, 0]]
+comment   = "All zeros"
+expected  = [0]
+
+[[asserts]]
+arguments = [[15, 14, 13, 12, 11, 10, 9, 8]]
+comment   = "Descending from 15"
+expected  = [0]
+
+[[asserts]]
+arguments = [[7, 6, 5, 4, 3, 2, 1]]
+comment   = "Descending 7 to 1"
+expected  = [0]
+
+[[asserts]]
+arguments = [[1, 3, 5, 7, 9, 11, 13]]
+comment   = "Only odd numbers sequential"
+expected  = [3, 7, 11]

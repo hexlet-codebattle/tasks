@@ -1,0 +1,182 @@
+level             = "easy"
+name              = "the_big_divide"
+tags              = ["math"]
+time_to_solve_sec = 250
+
+description_en = """
+Calculate the sum of all natural numbers smaller than $n$ (first argument) which are divisible by $a$ or $b$ (second and third arguments) without remainder.
+"""
+
+description_ru = """
+Вычислите сумму всех натуральных чисел меньше чем $n$ (первый аргумент), которые делятся на $a$ или $b$ (второй и третий аргументы) без остатка.
+"""
+
+limits = """
+- $1 \\leq n \\leq 100000$
+- $1 \\leq a, b \\leq 1000$
+"""
+
+solution = """
+def solution(n: int, a: int, b: int) -> int:
+    def sum_divisible(n, d):
+        k = (n - 1) // d
+        return d * k * (k + 1) // 2
+
+    from math import gcd
+    lcm = a * b // gcd(a, b)
+    return sum_divisible(n, a) + sum_divisible(n, b) - sum_divisible(n, lcm)
+"""
+
+examples = """
+solution(3, 17, 11) == 0
+solution(10, 3, 5) == 23
+solution(1000, 3, 5) == 233168
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [10, 3, 5]
+comment   = "Classic example"
+expected  = 23
+
+[[asserts]]
+arguments = [3, 17, 11]
+comment   = "No multiples below n"
+expected  = 0
+
+[[asserts]]
+arguments = [1000, 3, 5]
+comment   = "Project Euler example"
+expected  = 233168
+
+[[asserts]]
+arguments = [20, 3, 5]
+comment   = "Small range"
+expected  = 78
+
+[[asserts]]
+arguments = [100, 2, 3]
+comment   = "Small divisors"
+expected  = 3317
+
+[[asserts]]
+arguments = [50, 7, 11]
+comment   = "Prime divisors"
+expected  = 306
+
+[[asserts]]
+arguments = [15, 3, 5]
+comment   = "Multiples up to 15"
+expected  = 45
+
+[[asserts]]
+arguments = [25, 4, 6]
+comment   = "Even divisors"
+expected  = 108
+
+[[asserts]]
+arguments = [30, 5, 10]
+comment   = "One divides the other"
+expected  = 75
+
+[[asserts]]
+arguments = [100, 10, 20]
+comment   = "Larger divisors"
+expected  = 450
+
+[[asserts]]
+arguments = [1, 5, 7]
+comment   = "n too small"
+expected  = 0
+
+[[asserts]]
+arguments = [5, 2, 3]
+comment   = "Very small n"
+expected  = 9
+
+[[asserts]]
+arguments = [10, 2, 2]
+comment   = "Same divisors"
+expected  = 20
+
+[[asserts]]
+arguments = [50, 5, 5]
+comment   = "Identical divisors"
+expected  = 225
+
+[[asserts]]
+arguments = [60, 4, 5]
+comment   = "Close divisors"
+expected  = 690
+
+[[asserts]]
+arguments = [100, 3, 7]
+comment   = "Coprime divisors"
+expected  = 2208
+
+[[asserts]]
+arguments = [200, 6, 8]
+comment   = "Non-coprime divisors"
+expected  = 4902
+
+[[asserts]]
+arguments = [500, 10, 15]
+comment   = "Multiple of 5"
+expected  = 16585
+
+[[asserts]]
+arguments = [1000, 7, 13]
+comment   = "Prime divisors"
+expected  = 104104
+
+[[asserts]]
+arguments = [2000, 5, 9]
+comment   = "Larger range"
+expected  = 577227
+
+[[asserts]]
+arguments = [100, 11, 13]
+comment   = "Large primes"
+expected  = 859
+
+[[asserts]]
+arguments = [150, 3, 4]
+comment   = "Small consecutive divisors"
+expected  = 5551
+
+[[asserts]]
+arguments = [300, 8, 12]
+comment   = "Non-coprime even divisors"
+expected  = 7352
+
+[[asserts]]
+arguments = [75, 5, 7]
+comment   = "Mid-range calculation"
+expected  = 805
+
+[[asserts]]
+arguments = [40, 6, 9]
+comment   = "Multiples of 6 or 9"
+expected  = 162
+
+[[asserts]]
+arguments = [80, 4, 8]
+comment   = "One divides the other"
+expected  = 760

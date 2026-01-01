@@ -1,0 +1,166 @@
+level             = "easy"
+name              = "word_match"
+tags              = ["strings"]
+time_to_solve_sec = 300
+
+description_en = """
+Write a function that takes two strings and checks whether it is possible to write the first string with characters from the second string, while respecting the order in which these characters appear in the second string.
+"""
+
+description_ru = """
+Напишите функцию, которая принимает две строки и проверяет, можно ли записать первую строку символами из второй строки, соблюдая при этом порядок, в котором эти символы появляются во второй строке.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{str1}) \\leq 100$
+- $0 \\leq \\text{len}(\\text{str2}) \\leq 100$
+"""
+
+solution = """
+def solution(str1: str, str2: str) -> bool:
+    it = iter(str2)
+    return all(c in it for c in str1)
+"""
+
+examples = """
+solution("abba", "ardbulblia") == True
+solution("cool", "lomnucoldsea") == False
+"""
+
+[[input_signature]]
+argument_name = "str1"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "str2"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["cool", "lomnucoldsea"]
+comment   = "Cannot form - wrong order"
+expected  = false
+
+[[asserts]]
+arguments = ["abba", "ardbulblia"]
+comment   = "Can form in order"
+expected  = true
+
+[[asserts]]
+arguments = ["abc", "aabbcc"]
+comment   = "Simple match"
+expected  = true
+
+[[asserts]]
+arguments = ["abc", "abcd"]
+comment   = "Exact substring"
+expected  = true
+
+[[asserts]]
+arguments = ["xyz", "xaybzc"]
+comment   = "Characters in order"
+expected  = true
+
+[[asserts]]
+arguments = ["abc", "cba"]
+comment   = "Reversed - cannot match"
+expected  = false
+
+[[asserts]]
+arguments = ["test", "tseettsstt"]
+comment   = "Can form"
+expected  = true
+
+[[asserts]]
+arguments = ["hello", "hheelllloo"]
+comment   = "Can form with extra chars"
+expected  = true
+
+[[asserts]]
+arguments = ["cat", "cart"]
+comment   = "Can form as subsequence"
+expected  = true
+
+[[asserts]]
+arguments = ["dog", "dddoooggg"]
+comment   = "Can form"
+expected  = true
+
+[[asserts]]
+arguments = ["ab", "aabb"]
+comment   = "Simple case"
+expected  = true
+
+[[asserts]]
+arguments = ["ab", "ba"]
+comment   = "Wrong order"
+expected  = false
+
+[[asserts]]
+arguments = ["", "anything"]
+comment   = "Empty first string"
+expected  = true
+
+[[asserts]]
+arguments = ["a", ""]
+comment   = "Empty second string"
+expected  = false
+
+[[asserts]]
+arguments = ["", ""]
+comment   = "Both empty"
+expected  = true
+
+[[asserts]]
+arguments = ["aaa", "aaa"]
+comment   = "Identical strings"
+expected  = true
+
+[[asserts]]
+arguments = ["ace", "abcde"]
+comment   = "Every other character"
+expected  = true
+
+[[asserts]]
+arguments = ["xyz", "abc"]
+comment   = "No match"
+expected  = false
+
+[[asserts]]
+arguments = ["python", "ppyytthhoonn"]
+comment   = "Can form"
+expected  = true
+
+[[asserts]]
+arguments = ["code", "ccooodddeee"]
+comment   = "Can form with extras"
+expected  = true
+
+[[asserts]]
+arguments = ["java", "jjaaavvaa"]
+comment   = "Can form"
+expected  = true
+
+[[asserts]]
+arguments = ["rust", "rruusstt"]
+comment   = "Can form"
+expected  = true
+
+[[asserts]]
+arguments = ["go", "ggoo"]
+comment   = "Simple double"
+expected  = true
+
+[[asserts]]
+arguments = ["ruby", "rruubbyy"]
+comment   = "Can form"
+expected  = true
+
+[[asserts]]
+arguments = ["swift", "sswwiifftt"]
+comment   = "Can form"
+expected  = true

@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "page_number_from_concatenation"
-tags              = ["math", "string", "parsing"]
+tags              = ["math", "strings", "parsing"]
 time_to_solve_sec = 300
 
 description_en = """

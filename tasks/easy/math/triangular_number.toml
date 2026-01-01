@@ -1,0 +1,203 @@
+level             = "easy"
+name              = "triangular_number"
+tags              = ["math"]
+time_to_solve_sec = 200
+
+description_en = """
+Triangular Number Sequence is generated from a pattern of dots that form a triangle. The first 5 numbers of the sequence are: $1, 3, 6, 10, 15$. This means that the first triangle has just one dot, the second one has three dots, the third one has 6 dots and so on. Write a function that gives the number of dots with its corresponding triangle number of the sequence.
+
+```
+1st triangle:
+*
+
+2nd triangle:
+*
+**
+
+3rd triangle:
+*
+**
+***
+
+4th triangle:
+*
+**
+***
+****
+```
+"""
+
+description_ru = """
+Последовательность треугольных чисел генерируется из шаблона точек, образующих треугольник.
+Первые 5 чисел последовательности: $1, 3, 6, 10, 15$.
+Это значит что первый треугольник имеет всего одну точку, второй — три точки, третий — 6 и так далее.
+Напишите функцию, которая принимает порядковый номер треугольного числа и возвращает соответствующее ему количество точек.
+
+```
+1-й треугольник:
+*
+
+2-й треугольник:
+*
+**
+
+3-й треугольник:
+*
+**
+***
+
+4-й треугольник:
+*
+**
+***
+****
+```
+"""
+
+limits = """
+- $1 \\leq n \\leq 1000$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    return n * (n + 1) // 2
+"""
+
+examples = """
+solution(1) == 1
+solution(6) == 21
+solution(215) == 23220
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+comment   = "First triangular number"
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+comment   = "Second triangular number"
+expected  = 3
+
+[[asserts]]
+arguments = [3]
+comment   = "Third triangular number"
+expected  = 6
+
+[[asserts]]
+arguments = [4]
+comment   = "Fourth triangular number"
+expected  = 10
+
+[[asserts]]
+arguments = [5]
+comment   = "Fifth triangular number"
+expected  = 15
+
+[[asserts]]
+arguments = [6]
+comment   = "Sixth triangular number"
+expected  = 21
+
+[[asserts]]
+arguments = [7]
+comment   = "Seventh triangular number"
+expected  = 28
+
+[[asserts]]
+arguments = [8]
+comment   = "Eighth triangular number"
+expected  = 36
+
+[[asserts]]
+arguments = [9]
+comment   = "Ninth triangular number"
+expected  = 45
+
+[[asserts]]
+arguments = [10]
+comment   = "Tenth triangular number"
+expected  = 55
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteenth triangular number"
+expected  = 120
+
+[[asserts]]
+arguments = [20]
+comment   = "Twentieth triangular number"
+expected  = 210
+
+[[asserts]]
+arguments = [25]
+comment   = "Twenty-fifth triangular number"
+expected  = 325
+
+[[asserts]]
+arguments = [30]
+comment   = "Thirtieth triangular number"
+expected  = 465
+
+[[asserts]]
+arguments = [50]
+comment   = "Fiftieth triangular number"
+expected  = 1275
+
+[[asserts]]
+arguments = [75]
+comment   = "Seventy-fifth triangular number"
+expected  = 2850
+
+[[asserts]]
+arguments = [100]
+comment   = "Hundredth triangular number"
+expected  = 5050
+
+[[asserts]]
+arguments = [150]
+comment   = "150th triangular number"
+expected  = 11325
+
+[[asserts]]
+arguments = [200]
+comment   = "200th triangular number"
+expected  = 20100
+
+[[asserts]]
+arguments = [215]
+comment   = "215th triangular number"
+expected  = 23220
+
+[[asserts]]
+arguments = [250]
+comment   = "250th triangular number"
+expected  = 31375
+
+[[asserts]]
+arguments = [300]
+comment   = "300th triangular number"
+expected  = 45150
+
+[[asserts]]
+arguments = [400]
+comment   = "400th triangular number"
+expected  = 80200
+
+[[asserts]]
+arguments = [500]
+comment   = "500th triangular number"
+expected  = 125250
+
+[[asserts]]
+arguments = [1000]
+comment   = "1000th triangular number"
+expected  = 500500

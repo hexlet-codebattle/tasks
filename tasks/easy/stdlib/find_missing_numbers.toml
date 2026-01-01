@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "find_missing_numbers"
-tags              = ["stdlib", "array", "set", "search"]
+tags              = ["stdlib", "collections", "sets", "search"]
 time_to_solve_sec = 180
 
 description_en = """

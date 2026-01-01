@@ -1,0 +1,226 @@
+level             = "elementary"
+name              = "split_names"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 150
+
+description_en = """
+Given an array of strings where each string is a combination of first name and last name
+(e.g. "Alan Turing", "Ada Lovelace"), create a function that splits each string into first
+and last name and adds them as [first, last] to the result array. Keep the order the same.
+"""
+
+description_ru = """
+Дан массив строк, где каждая строка — это комбинация имени и фамилии
+(например, "Alan Turing", "Ada Lovelace"). Создайте функцию, которая разделяет каждую
+строку на имя и фамилию и добавляет их в итоговый массив в виде [имя, фамилия].
+Сохраните порядок.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{names}) \\leq 100$
+- $3 \\leq \\text{len}(\\text{names}[i]) \\leq 50$
+"""
+
+solution = """
+def solution(names: list[str]) -> list[list[str]]:
+    result = []
+    for n in names:
+        first, last = n.split()
+        result.append([first, last])
+    return result
+"""
+
+examples = """
+solution(["Alan Turing"]) == [["Alan", "Turing"]]
+solution(["Ada Lovelace", "Donald Knuth"]) == [["Ada", "Lovelace"], ["Donald", "Knuth"]]
+"""
+
+[[input_signature]]
+argument_name = "names"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["Alan Turing"]]
+comment   = "Foundational computer scientist"
+expected  = [["Alan", "Turing"]]
+
+[[asserts]]
+arguments = [["Ada Lovelace", "Donald Knuth"]]
+comment   = "Early computing pioneers"
+expected  = [["Ada", "Lovelace"], ["Donald", "Knuth"]]
+
+[[asserts]]
+arguments = [["Edsger Dijkstra", "Claude Shannon", "Grace Hopper"]]
+comment   = "Algorithms, information theory, and compilers"
+expected  = [["Edsger", "Dijkstra"], ["Claude", "Shannon"], ["Grace", "Hopper"]]
+
+[[asserts]]
+arguments = [["Barbara Liskov"]]
+comment   = "Programming languages pioneer"
+expected  = [["Barbara", "Liskov"]]
+
+[[asserts]]
+arguments = [["John McCarthy", "Marvin Minsky"]]
+comment   = "Founders of AI"
+expected  = [["John", "McCarthy"], ["Marvin", "Minsky"]]
+
+[[asserts]]
+arguments = [["Tony Hoare", "Niklaus Wirth", "Leslie Lamport"]]
+comment   = "Programming languages and concurrency"
+expected  = [["Tony", "Hoare"], ["Niklaus", "Wirth"], ["Leslie", "Lamport"]]
+
+[[asserts]]
+arguments = [["Ken Thompson", "Dennis Ritchie"]]
+comment   = "Unix creators"
+expected  = [["Ken", "Thompson"], ["Dennis", "Ritchie"]]
+
+[[asserts]]
+arguments = [["Linus Torvalds", "Bjarne Stroustrup", "James Gosling"]]
+comment = "Systems and language designers"
+expected = [
+  [
+    "Linus",
+    "Torvalds",
+  ],
+  [
+    "Bjarne",
+    "Stroustrup",
+  ],
+  [
+    "James",
+    "Gosling",
+  ],
+]
+
+[[asserts]]
+arguments = [["Albert Einstein"]]
+comment   = "Theoretical physicist"
+expected  = [["Albert", "Einstein"]]
+
+[[asserts]]
+arguments = [["Isaac Newton", "Marie Curie"]]
+comment   = "Classical physics and chemistry"
+expected  = [["Isaac", "Newton"], ["Marie", "Curie"]]
+
+[[asserts]]
+arguments = [["Stephen Cook", "Robert Tarjan", "Andrew Yao"]]
+comment   = "Complexity theory and algorithms"
+expected  = [["Stephen", "Cook"], ["Robert", "Tarjan"], ["Andrew", "Yao"]]
+
+[[asserts]]
+arguments = [["Richard Feynman"]]
+comment   = "Quantum electrodynamics"
+expected  = [["Richard", "Feynman"]]
+
+[[asserts]]
+arguments = [["Harold Abelson", "Julie Sussman"]]
+comment   = "Influential CS educators"
+expected  = [["Harold", "Abelson"], ["Julie", "Sussman"]]
+
+[[asserts]]
+arguments = [["Geoffrey Hinton", "Yann LeCun", "Andrew Ng"]]
+comment   = "Deep learning pioneers"
+expected  = [["Geoffrey", "Hinton"], ["Yann", "LeCun"], ["Andrew", "Ng"]]
+
+[[asserts]]
+arguments = [["Judea Pearl"]]
+comment   = "Probabilistic reasoning and causality"
+expected  = [["Judea", "Pearl"]]
+
+[[asserts]]
+arguments = [["Peter Norvig", "Demis Hassabis"]]
+comment   = "Modern AI leaders"
+expected  = [["Peter", "Norvig"], ["Demis", "Hassabis"]]
+
+[[asserts]]
+arguments = [["Robin Milner", "Leslie Lamport", "Tony Hoare"]]
+comment   = "Programming languages and distributed systems"
+expected  = [["Robin", "Milner"], ["Leslie", "Lamport"], ["Tony", "Hoare"]]
+
+[[asserts]]
+arguments = [["Charles Darwin"]]
+comment   = "Evolutionary biology"
+expected  = [["Charles", "Darwin"]]
+
+[[asserts]]
+arguments = [["Niels Bohr", "Max Planck"]]
+comment   = "Quantum theory"
+expected  = [["Niels", "Bohr"], ["Max", "Planck"]]
+
+[[asserts]]
+arguments = [["Claude Shannon", "Alan Turing", "Donald Knuth"]]
+comment   = "Information theory and computation"
+expected  = [["Claude", "Shannon"], ["Alan", "Turing"], ["Donald", "Knuth"]]
+
+[[asserts]]
+arguments = [["Rosalind Franklin"]]
+comment   = "DNA structure research"
+expected  = [["Rosalind", "Franklin"]]
+
+[[asserts]]
+arguments = [["Vera Rubin", "Edwin Hubble"]]
+comment   = "Observational astronomy"
+expected  = [["Vera", "Rubin"], ["Edwin", "Hubble"]]
+
+[[asserts]]
+arguments = [["Shafi Goldwasser", "Silvio Micali", "Whitfield Diffie"]]
+comment = "Modern cryptography"
+expected = [
+  [
+    "Shafi",
+    "Goldwasser",
+  ],
+  [
+    "Silvio",
+    "Micali",
+  ],
+  [
+    "Whitfield",
+    "Diffie",
+  ],
+]
+
+[[asserts]]
+arguments = [["Linus Pauling"]]
+comment   = "Chemistry and molecular bonding"
+expected  = [["Linus", "Pauling"]]
+
+[[asserts]]
+arguments = [["Barbara Liskov", "Grace Hopper"]]
+comment   = "Women in computer science"
+expected  = [["Barbara", "Liskov"], ["Grace", "Hopper"]]
+
+[[asserts]]
+arguments = [["Ken Thompson", "Dennis Ritchie", "Brian Kernighan"]]
+comment   = "Creators of Unix tools and C"
+expected  = [["Ken", "Thompson"], ["Dennis", "Ritchie"], ["Brian", "Kernighan"]]
+
+[[asserts]]
+arguments = [["Dmitri Mendeleev"]]
+comment   = "Periodic table"
+expected  = [["Dmitri", "Mendeleev"]]
+
+[[asserts]]
+arguments = [["Ronald Fisher", "Karl Pearson"]]
+comment   = "Statistics and inference"
+expected  = [["Ronald", "Fisher"], ["Karl", "Pearson"]]
+
+[[asserts]]
+arguments = [["Leonhard Euler", "Carl Gauss", "David Hilbert"]]
+comment   = "Foundational mathematicians"
+expected  = [["Leonhard", "Euler"], ["Carl", "Gauss"], ["David", "Hilbert"]]
+
+[[asserts]]
+arguments = [["Emmy Noether"]]
+comment   = "Abstract algebra and physics"
+expected  = [["Emmy", "Noether"]]

@@ -1,0 +1,177 @@
+level             = "easy"
+name              = "word_wave"
+tags              = ["strings"]
+time_to_solve_sec = 250
+
+description_en = """
+Write a function that `'waves'` through the word, i.e., changes the case to upper case for each next letter and return the resulting word array.
+"""
+
+description_ru = """
+Напишите функцию, которая `'запускает волну'` по слову. Функция принимает одну строку в качестве аргумента и возвращает список строк, представляющих все возможные вариации данной строки, где каждая буква может быть в верхнем регистре, а все остальные буквы остаются в нижнем регистре.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{word}) \\leq 50$
+"""
+
+solution = """
+def solution(word: str) -> list:
+    return [word[:i] + word[i].upper() + word[i+1:] for i in range(len(word))]
+"""
+
+examples = """
+solution("js") == ["Js", "jS"]
+solution("ruby") == ["Ruby", "rUby", "ruBy", "rubY"]
+"""
+
+[[input_signature]]
+argument_name = "word"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = ["ruby"]
+comment   = "Four letter word"
+expected  = ["Ruby", "rUby", "ruBy", "rubY"]
+
+[[asserts]]
+arguments = ["clojure"]
+comment = "Seven letter word"
+expected = [
+  "Clojure",
+  "cLojure",
+  "clOjure",
+  "cloJure",
+  "clojUre",
+  "clojuRe",
+  "clojurE",
+]
+
+[[asserts]]
+arguments = ["hi"]
+comment   = "Two letter word"
+expected  = ["Hi", "hI"]
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single letter"
+expected  = ["A"]
+
+[[asserts]]
+arguments = ["xyz"]
+comment   = "Three letters"
+expected  = ["Xyz", "xYz", "xyZ"]
+
+[[asserts]]
+arguments = ["test"]
+comment   = "Four letters"
+expected  = ["Test", "tEst", "teSt", "tesT"]
+
+[[asserts]]
+arguments = ["wave"]
+comment   = "Four letters"
+expected  = ["Wave", "wAve", "waVe", "wavE"]
+
+[[asserts]]
+arguments = ["code"]
+comment   = "Four letters"
+expected  = ["Code", "cOde", "coDe", "codE"]
+
+[[asserts]]
+arguments = ["java"]
+comment   = "Four letters"
+expected  = ["Java", "jAva", "jaVa", "javA"]
+
+[[asserts]]
+arguments = ["python"]
+comment   = "Six letters"
+expected  = ["Python", "pYthon", "pyThon", "pytHon", "pythOn", "pythoN"]
+
+[[asserts]]
+arguments = ["go"]
+comment   = "Two letters"
+expected  = ["Go", "gO"]
+
+[[asserts]]
+arguments = ["rust"]
+comment   = "Four letters"
+expected  = ["Rust", "rUst", "ruSt", "rusT"]
+
+[[asserts]]
+arguments = ["swift"]
+comment   = "Five letters"
+expected  = ["Swift", "sWift", "swIft", "swiFt", "swifT"]
+
+[[asserts]]
+arguments = ["perl"]
+comment   = "Four letters"
+expected  = ["Perl", "pErl", "peRl", "perL"]
+
+[[asserts]]
+arguments = ["lua"]
+comment   = "Three letters"
+expected  = ["Lua", "lUa", "luA"]
+
+[[asserts]]
+arguments = ["scala"]
+comment   = "Five letters"
+expected  = ["Scala", "sCala", "scAla", "scaLa", "scalA"]
+
+[[asserts]]
+arguments = ["kotlin"]
+comment   = "Six letters"
+expected  = ["Kotlin", "kOtlin", "koTlin", "kotLin", "kotlIn", "kotliN"]
+
+[[asserts]]
+arguments = ["dart"]
+comment   = "Four letters"
+expected  = ["Dart", "dArt", "daRt", "darT"]
+
+[[asserts]]
+arguments = ["php"]
+comment   = "Three letters"
+expected  = ["Php", "pHp", "phP"]
+
+[[asserts]]
+arguments = ["elm"]
+comment   = "Three letters"
+expected  = ["Elm", "eLm", "elM"]
+
+[[asserts]]
+arguments = ["haskell"]
+comment = "Seven letters"
+expected = [
+  "Haskell",
+  "hAskell",
+  "haSkell",
+  "hasKell",
+  "haskEll",
+  "haskeLl",
+  "haskelL",
+]
+
+[[asserts]]
+arguments = ["erlang"]
+comment   = "Six letters"
+expected  = ["Erlang", "eRlang", "erLang", "erlAng", "erlaNg", "erlanG"]
+
+[[asserts]]
+arguments = ["elixir"]
+comment   = "Six letters"
+expected  = ["Elixir", "eLixir", "elIxir", "eliXir", "elixIr", "elixiR"]
+
+[[asserts]]
+arguments = ["c"]
+comment   = "Single letter"
+expected  = ["C"]
+
+[[asserts]]
+arguments = ["basic"]
+comment   = "Five letters"
+expected  = ["Basic", "bAsic", "baSic", "basIc", "basiC"]

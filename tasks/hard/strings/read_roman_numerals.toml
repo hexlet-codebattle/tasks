@@ -1,0 +1,197 @@
+level             = "hard"
+name              = "read_roman_numerals"
+tags              = ["strings"]
+time_to_solve_sec = 800
+
+description_en = """
+Parse a Roman-numeral string and return the number it represents.
+"""
+
+description_ru = """
+Разберите строку римских цифр и верните число представленное ими.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(num) \\leq 20$
+- $1 \\leq \\text{result} \\leq 3999$
+"""
+
+solution = """
+def solution(num: str) -> int:
+    roman_map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    total = 0
+    prev = 0
+    for c in reversed(num):
+        val = roman_map[c]
+        if val < prev:
+            total -= val
+        else:
+            total += val
+        prev = val
+    return total
+"""
+
+examples = """
+solution("XIV") == 14
+solution("XLVIII") == 48
+solution("DCCCXXVII") == 827
+solution("MMMCMXCIX") == 3999
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["XIV"]
+comment   = "Fourteen"
+expected  = 14
+
+[[asserts]]
+arguments = ["DCCCXXVII"]
+comment   = "Eight hundred twenty-seven"
+expected  = 827
+
+[[asserts]]
+arguments = ["MMMCMXCIX"]
+comment   = "Maximum 3999"
+expected  = 3999
+
+[[asserts]]
+arguments = ["XLVIII"]
+comment   = "Forty-eight"
+expected  = 48
+
+[[asserts]]
+arguments = ["I"]
+comment   = "One"
+expected  = 1
+
+[[asserts]]
+arguments = ["V"]
+comment   = "Five"
+expected  = 5
+
+[[asserts]]
+arguments = ["X"]
+comment   = "Ten"
+expected  = 10
+
+[[asserts]]
+arguments = ["L"]
+comment   = "Fifty"
+expected  = 50
+
+[[asserts]]
+arguments = ["C"]
+comment   = "One hundred"
+expected  = 100
+
+[[asserts]]
+arguments = ["D"]
+comment   = "Five hundred"
+expected  = 500
+
+[[asserts]]
+arguments = ["M"]
+comment   = "One thousand"
+expected  = 1000
+
+[[asserts]]
+arguments = ["II"]
+comment   = "Two"
+expected  = 2
+
+[[asserts]]
+arguments = ["III"]
+comment   = "Three"
+expected  = 3
+
+[[asserts]]
+arguments = ["IV"]
+comment   = "Four"
+expected  = 4
+
+[[asserts]]
+arguments = ["VI"]
+comment   = "Six"
+expected  = 6
+
+[[asserts]]
+arguments = ["IX"]
+comment   = "Nine"
+expected  = 9
+
+[[asserts]]
+arguments = ["XI"]
+comment   = "Eleven"
+expected  = 11
+
+[[asserts]]
+arguments = ["XX"]
+comment   = "Twenty"
+expected  = 20
+
+[[asserts]]
+arguments = ["XXX"]
+comment   = "Thirty"
+expected  = 30
+
+[[asserts]]
+arguments = ["XL"]
+comment   = "Forty"
+expected  = 40
+
+[[asserts]]
+arguments = ["LX"]
+comment   = "Sixty"
+expected  = 60
+
+[[asserts]]
+arguments = ["XC"]
+comment   = "Ninety"
+expected  = 90
+
+[[asserts]]
+arguments = ["CD"]
+comment   = "Four hundred"
+expected  = 400
+
+[[asserts]]
+arguments = ["CM"]
+comment   = "Nine hundred"
+expected  = 900
+
+[[asserts]]
+arguments = ["MCMXC"]
+comment   = "1990"
+expected  = 1990
+
+[[asserts]]
+arguments = ["MMXIV"]
+comment   = "2014"
+expected  = 2014
+
+[[asserts]]
+arguments = ["MCMXCIV"]
+comment   = "1994"
+expected  = 1994
+
+[[asserts]]
+arguments = ["MMXX"]
+comment   = "2020"
+expected  = 2020
+
+[[asserts]]
+arguments = ["MDCCLXXVI"]
+comment   = "1776"
+expected  = 1776
+
+[[asserts]]
+arguments = ["MCMLIV"]
+comment   = "1954"
+expected  = 1954

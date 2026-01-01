@@ -1,0 +1,194 @@
+level             = "medium"
+name              = "star_number"
+tags              = ["math"]
+time_to_solve_sec = 400
+
+description_en = """
+Create a function that takes a positive integer and returns the nth "star number". A star number is a centered figurate number, a centered hexagram (six-pointed star), such as the one that Chinese checkers is played on.
+
+The formula for the $n$-th star number is: $S_n = 6n(n-1) + 1$
+
+See: https://en.wikipedia.org/wiki/Star_number
+"""
+
+description_ru = """
+Напишите функцию, которая принимает положительное целое число и возвращает соответствующее "звездное число". Звездное число - это центральное фигурное число или центральная гексаграмма (шестиконечная звезда), такая как та, на которой играют в китайские шашки.
+
+Формула для $n$-го звездного числа: $S_n = 6n(n-1) + 1$
+
+Примечание: https://en.wikipedia.org/wiki/Star_number
+"""
+
+limits = """
+- $1 \\leq \\text{num} \\leq 1000$
+"""
+
+solution = """
+def solution(num: int) -> int:
+    return 6 * num * (num - 1) + 1
+"""
+
+examples = """
+solution(1) == 1
+solution(2) == 13
+solution(3) == 37
+solution(5) == 121
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [2]
+comment   = "Second star number"
+expected  = 13
+
+[[asserts]]
+arguments = [3]
+comment   = "Third star number"
+expected  = 37
+
+[[asserts]]
+arguments = [5]
+comment   = "Fifth star number"
+expected  = 121
+
+[[asserts]]
+arguments = [1]
+comment   = "First star number"
+expected  = 1
+
+[[asserts]]
+arguments = [4]
+comment   = "Fourth star number"
+expected  = 73
+
+[[asserts]]
+arguments = [6]
+comment   = "Sixth star number"
+expected  = 181
+
+[[asserts]]
+arguments = [7]
+comment   = "Seventh star number"
+expected  = 253
+
+[[asserts]]
+arguments = [8]
+comment   = "Eighth star number"
+expected  = 337
+
+[[asserts]]
+arguments = [9]
+comment   = "Ninth star number"
+expected  = 433
+
+[[asserts]]
+arguments = [10]
+comment   = "Tenth star number"
+expected  = 541
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleventh star number"
+expected  = 661
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelfth star number"
+expected  = 793
+
+[[asserts]]
+arguments = [13]
+comment   = "Thirteenth star number"
+expected  = 937
+
+[[asserts]]
+arguments = [14]
+comment   = "Fourteenth star number"
+expected  = 1093
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteenth star number"
+expected  = 1261
+
+[[asserts]]
+arguments = [20]
+comment   = "Twentieth star number"
+expected  = 2281
+
+[[asserts]]
+arguments = [25]
+comment   = "Twenty-fifth star number"
+expected  = 3601
+
+[[asserts]]
+arguments = [30]
+comment   = "Thirtieth star number"
+expected  = 5221
+
+[[asserts]]
+arguments = [50]
+comment   = "Fiftieth star number"
+expected  = 14701
+
+[[asserts]]
+arguments = [100]
+comment   = "Hundredth star number"
+expected  = 59401
+
+[[asserts]]
+arguments = [16]
+comment   = "Sixteenth star number"
+expected  = 1441
+
+[[asserts]]
+arguments = [17]
+comment   = "Seventeenth star number"
+expected  = 1633
+
+[[asserts]]
+arguments = [18]
+comment   = "Eighteenth star number"
+expected  = 1837
+
+[[asserts]]
+arguments = [19]
+comment   = "Nineteenth star number"
+expected  = 2053
+
+[[asserts]]
+arguments = [21]
+comment   = "Twenty-first star number"
+expected  = 2521
+
+[[asserts]]
+arguments = [22]
+comment   = "Twenty-second star number"
+expected  = 2773
+
+[[asserts]]
+arguments = [23]
+comment   = "Twenty-third star number"
+expected  = 3037
+
+[[asserts]]
+arguments = [24]
+comment   = "Twenty-fourth star number"
+expected  = 3313
+
+[[asserts]]
+arguments = [40]
+comment   = "Fortieth star number"
+expected  = 9361
+
+[[asserts]]
+arguments = [60]
+comment   = "Sixtieth star number"
+expected  = 21241

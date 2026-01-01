@@ -1,0 +1,209 @@
+level             = "medium"
+name              = "new_year_sale"
+tags              = ["collections", "algo"]
+time_to_solve_sec = 350
+
+description_en = """
+Given an array of gift prices and a number `k`, find the maximum sum of two different gifts that does not exceed `k`.
+
+If no such pair exists, return `0`.
+"""
+
+description_ru = """
+Дан массив цен подарков и число `k`. Найдите максимальную сумму двух разных подарков, не превышающую `k`.
+
+Если такой пары не существует, верните `0`.
+"""
+
+limits = """
+- $1 \\leq k \\leq 10^6$
+- $2 \\leq \\text{len}(\\text{prices}) \\leq 1000$
+- $1 \\leq \\text{prices}[i] \\leq 10^5$
+"""
+
+solution = """
+def solution(prices: list[int], k: int) -> int:
+    prices = sorted(prices)
+    m = 0
+    l, r = 0, len(prices) - 1
+    while l < r:
+        s = prices[l] + prices[r]
+        if s <= k:
+            m = max(m, s)
+            l += 1
+        else:
+            r -= 1
+    return m
+"""
+
+examples = """
+solution([5, 10], 20) == 15
+solution([10, 20, 30], 25) == 0
+solution([5, 10, 15, 20], 30) == 25
+solution([10, 20, 30, 40], 50) == 50
+"""
+
+[[input_signature]]
+argument_name = "prices"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[5, 10], 20]
+comment   = "Sum of both gifts"
+expected  = 15
+
+[[asserts]]
+arguments = [[5, 10], 14]
+comment   = "Sum exceeds budget"
+expected  = 0
+
+[[asserts]]
+arguments = [[5, 10], 15]
+comment   = "Exact match"
+expected  = 15
+
+[[asserts]]
+arguments = [[10, 20, 30], 25]
+comment   = "No valid pair"
+expected  = 0
+
+[[asserts]]
+arguments = [[10, 20, 30], 30]
+comment   = "First two gifts"
+expected  = 30
+
+[[asserts]]
+arguments = [[5, 10, 15, 20], 30]
+comment   = "Best pair is 10+20"
+expected  = 30
+
+[[asserts]]
+arguments = [[10, 20, 30, 40], 50]
+comment   = "Best pair is 10+40"
+expected  = 50
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 10]
+comment   = "Best pair is 4+5"
+expected  = 9
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 5]
+comment   = "Best pair is 1+4 or 2+3"
+expected  = 5
+
+[[asserts]]
+arguments = [[100, 200], 300]
+comment   = "Exact sum of both"
+expected  = 300
+
+[[asserts]]
+arguments = [[100, 200], 299]
+comment   = "Just below sum"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 1, 1, 1], 2]
+comment   = "Multiple pairs equal"
+expected  = 2
+
+[[asserts]]
+arguments = [[50, 50, 50], 100]
+comment   = "All equal, any pair works"
+expected  = 100
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50], 100]
+comment   = "Best is 40+50"
+expected  = 90
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50], 70]
+comment   = "Best is 20+50 or 30+40"
+expected  = 70
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 19]
+comment   = "Best is 9+10"
+expected  = 19
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11]
+comment   = "Best is 1+10 or others"
+expected  = 11
+
+[[asserts]]
+arguments = [[5, 15, 25, 35], 40]
+comment   = "Best is 5+35"
+expected  = 40
+
+[[asserts]]
+arguments = [[5, 15, 25, 35], 50]
+comment   = "Best is 15+35"
+expected  = 50
+
+[[asserts]]
+arguments = [[100, 200, 300], 1000]
+comment   = "Best is 200+300"
+expected  = 500
+
+[[asserts]]
+arguments = [[7, 13, 19, 23], 30]
+comment   = "Best is 7+23"
+expected  = 30
+
+[[asserts]]
+arguments = [[7, 13, 19, 23], 42]
+comment   = "Best is 19+23"
+expected  = 42
+
+[[asserts]]
+arguments = [[11, 22, 33, 44], 55]
+comment   = "Best is 11+44"
+expected  = 55
+
+[[asserts]]
+arguments = [[11, 22, 33, 44], 77]
+comment   = "Best is 33+44"
+expected  = 77
+
+[[asserts]]
+arguments = [[1, 99999], 100000]
+comment   = "Large values exact"
+expected  = 100000
+
+[[asserts]]
+arguments = [[1, 99999], 99999]
+comment   = "Large values just below"
+expected  = 0
+
+[[asserts]]
+arguments = [[50, 60, 70, 80], 130]
+comment   = "Best is 50+80"
+expected  = 130
+
+[[asserts]]
+arguments = [[25, 35, 45, 55], 100]
+comment   = "Best is 45+55"
+expected  = 100
+
+[[asserts]]
+arguments = [[12, 23, 34, 45, 56], 100]
+comment   = "Best is 34+56"
+expected  = 90
+
+[[asserts]]
+arguments = [[3, 6, 9, 12, 15], 21]
+comment   = "Best is 6+15 or 9+12"
+expected  = 21

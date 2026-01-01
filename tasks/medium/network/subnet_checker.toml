@@ -1,0 +1,188 @@
+level             = "medium"
+name              = "subnet_checker"
+tags              = ["network", "strings"]
+time_to_solve_sec = 450
+
+description_en = """
+Create a function that checks if `subnet` contains `address`. Subnet contains IPv4 address of network and subnet mask in CIDR notation (e.g., `"192.168.0.0/24"`).
+"""
+
+description_ru = """
+Создайте функцию, которая проверяет, что подсеть (`subnet`) содержит адрес (`address`). Подсеть содержит IPv4 адрес сети и маску подсети в нотации CIDR (например, `"192.168.0.0/24"`).
+"""
+
+limits = """
+- $\\text{address}$ — valid IPv4 address
+- $\\text{subnet}$ — valid IPv4 network/mask in CIDR notation
+- $12 \\leq \\text{mask} \\leq 32$
+"""
+
+solution = """
+def solution(address: str, subnet: str) -> bool:
+    def ip_to_int(ip):
+        parts = list(map(int, ip.split('.')))
+        return (parts[0] << 24) + (parts[1] << 16) + (parts[2] << 8) + parts[3]
+
+    net, mask = subnet.split('/')
+    mask_bits = int(mask)
+    mask_int = (0xFFFFFFFF << (32 - mask_bits)) & 0xFFFFFFFF
+
+    addr_int = ip_to_int(address)
+    net_int = ip_to_int(net)
+
+    return (addr_int & mask_int) == (net_int & mask_int)
+"""
+
+examples = """
+solution("192.168.100.5", "192.160.0.0/12") == True
+solution("192.11.100.255", "198.200.0.0/15") == False
+solution("201.224.121.15", "201.224.121.12/30") == True
+"""
+
+[[input_signature]]
+argument_name = "address"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "subnet"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["192.168.100.5", "192.160.0.0/12"]
+comment   = "Address within /12 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["192.11.100.255", "198.200.0.0/15"]
+comment   = "Address outside /15 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["201.224.121.15", "201.224.121.12/30"]
+comment   = "Address within /30 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["10.0.0.1", "10.0.0.0/24"]
+comment   = "Address in /24 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["10.0.1.1", "10.0.0.0/24"]
+comment   = "Address outside /24 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["172.16.0.0", "172.16.0.0/16"]
+comment   = "Network address itself"
+expected  = true
+
+[[asserts]]
+arguments = ["172.16.255.255", "172.16.0.0/16"]
+comment   = "Broadcast address of /16"
+expected  = true
+
+[[asserts]]
+arguments = ["172.17.0.1", "172.16.0.0/16"]
+comment   = "Outside /16 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1.1", "192.168.1.0/32"]
+comment   = "Single host /32 - outside"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1.0", "192.168.1.0/32"]
+comment   = "Single host /32 - exact match"
+expected  = true
+
+[[asserts]]
+arguments = ["8.8.8.8", "8.0.0.0/8"]
+comment   = "Large /8 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["9.0.0.1", "8.0.0.0/8"]
+comment   = "Outside /8 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.0.1", "192.168.0.0/30"]
+comment   = "Within small /30 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["192.168.0.5", "192.168.0.0/30"]
+comment   = "Outside small /30 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["10.1.2.3", "10.0.0.0/12"]
+comment   = "Within /12 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["10.16.0.1", "10.0.0.0/12"]
+comment   = "Outside /12 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["172.20.5.10", "172.20.0.0/20"]
+comment   = "Within /20 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["172.20.16.1", "172.20.0.0/20"]
+comment   = "Outside /20 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.128.1", "192.168.0.0/17"]
+comment   = "Outside /17 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.169.0.1", "192.168.0.0/17"]
+comment   = "Outside /17 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["10.10.10.10", "10.10.10.8/29"]
+comment   = "Within /29 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["10.10.10.20", "10.10.10.8/29"]
+comment   = "Outside /29 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["172.31.255.254", "172.16.0.0/12"]
+comment   = "Near end of /12 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["172.32.0.1", "172.16.0.0/12"]
+comment   = "Just outside /12 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1.128", "192.168.1.0/25"]
+comment   = "Outside /25 subnet"
+expected  = false
+
+[[asserts]]
+arguments = ["192.168.1.127", "192.168.1.0/25"]
+comment   = "Within /25 subnet"
+expected  = true
+
+[[asserts]]
+arguments = ["10.0.0.0", "10.0.0.0/8"]
+comment   = "Network address of /8"
+expected  = true

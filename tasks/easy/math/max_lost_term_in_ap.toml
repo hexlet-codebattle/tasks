@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "max_lost_term_in_ap"
-tags              = ["math", "arrays", "greedy", "sorting"]
+tags              = ["math", "collections", "greedy", "sorting"]
 time_to_solve_sec = 420
 
 description_en = """

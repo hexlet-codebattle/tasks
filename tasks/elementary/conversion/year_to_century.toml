@@ -1,0 +1,161 @@
+level             = "elementary"
+name              = "year_to_century"
+tags              = ["conversion", "date_time"]
+time_to_solve_sec = 150
+
+description_en = """
+Create a function that takes a year and returns its corresponding century.
+"""
+
+description_ru = """
+Создайте функцию, которая рассчитывает век от полученного года.
+"""
+
+limits = """
+- $1 \\leq \\text{year} \\leq 10000$
+"""
+
+solution = """
+def solution(year: int) -> int:
+    return (year + 99) // 100
+"""
+
+examples = """
+solution(1900) == 19
+solution(1950) == 20
+solution(2005) == 21
+solution(2055) == 21
+"""
+
+[[input_signature]]
+argument_name = "year"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [2005]
+comment   = "21st century"
+expected  = 21
+
+[[asserts]]
+arguments = [1950]
+comment   = "20th century"
+expected  = 20
+
+[[asserts]]
+arguments = [1900]
+comment   = "End of 19th century"
+expected  = 19
+
+[[asserts]]
+arguments = [2055]
+comment   = "21st century"
+expected  = 21
+
+[[asserts]]
+arguments = [1]
+comment   = "First year"
+expected  = 1
+
+[[asserts]]
+arguments = [100]
+comment   = "End of first century"
+expected  = 1
+
+[[asserts]]
+arguments = [101]
+comment   = "Start of second century"
+expected  = 2
+
+[[asserts]]
+arguments = [200]
+comment   = "End of second century"
+expected  = 2
+
+[[asserts]]
+arguments = [1000]
+comment   = "End of 10th century"
+expected  = 10
+
+[[asserts]]
+arguments = [1001]
+comment   = "Start of 11th century"
+expected  = 11
+
+[[asserts]]
+arguments = [2000]
+comment   = "End of 20th century"
+expected  = 20
+
+[[asserts]]
+arguments = [2001]
+comment   = "Start of 21st century"
+expected  = 21
+
+[[asserts]]
+arguments = [2100]
+comment   = "End of 21st century"
+expected  = 21
+
+[[asserts]]
+arguments = [2101]
+comment   = "Start of 22nd century"
+expected  = 22
+
+[[asserts]]
+arguments = [1776]
+comment   = "18th century"
+expected  = 18
+
+[[asserts]]
+arguments = [1492]
+comment   = "15th century"
+expected  = 15
+
+[[asserts]]
+arguments = [1066]
+comment   = "11th century"
+expected  = 11
+
+[[asserts]]
+arguments = [753]
+comment   = "8th century"
+expected  = 8
+
+[[asserts]]
+arguments = [500]
+comment   = "5th century"
+expected  = 5
+
+[[asserts]]
+arguments = [1815]
+comment   = "19th century"
+expected  = 19
+
+[[asserts]]
+arguments = [1945]
+comment   = "20th century"
+expected  = 20
+
+[[asserts]]
+arguments = [2023]
+comment   = "21st century"
+expected  = 21
+
+[[asserts]]
+arguments = [3000]
+comment   = "30th century"
+expected  = 30
+
+[[asserts]]
+arguments = [3001]
+comment   = "31st century"
+expected  = 31
+
+[[asserts]]
+arguments = [9999]
+comment   = "100th century"
+expected  = 100

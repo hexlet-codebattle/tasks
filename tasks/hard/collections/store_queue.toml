@@ -1,0 +1,205 @@
+level             = "hard"
+name              = "store_queue"
+tags              = ["collections", "algo"]
+time_to_solve_sec = 750
+
+description_en = """
+Given an array of service times for customers and `k` checkout registers, each customer chooses the register that will be free earliest.
+
+Determine the total time to service all customers (the time when the last register finishes).
+"""
+
+description_ru = """
+Дан массив времени обслуживания покупателей и `k` касс. Каждый покупатель выбирает кассу, которая освободится раньше всех.
+
+Определите общее время обслуживания всех покупателей (время, когда последняя касса закончит работу).
+"""
+
+limits = """
+- $1 \\leq k \\leq 100$
+- $1 \\leq \\text{len}(\\text{times}) \\leq 10^4$
+- $1 \\leq \\text{times}[i] \\leq 1000$
+"""
+
+solution = """
+def solution(times: list[int], k: int) -> int:
+    import heapq
+    h = [0] * k
+    for t in times:
+        m = heapq.heappop(h)
+        heapq.heappush(h, m + t)
+    return max(h)
+"""
+
+examples = """
+solution([5], 1) == 5
+solution([5, 10], 1) == 15
+solution([5, 10], 2) == 10
+solution([3, 3, 3], 2) == 6
+solution([10, 20, 30], 3) == 30
+"""
+
+[[input_signature]]
+argument_name = "times"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[5], 1]
+comment   = "Single customer, one register"
+expected  = 5
+
+[[asserts]]
+arguments = [[5, 10], 1]
+comment   = "Two customers, one register"
+expected  = 15
+
+[[asserts]]
+arguments = [[5, 10], 2]
+comment   = "Two customers, two registers"
+expected  = 10
+
+[[asserts]]
+arguments = [[10, 10], 1]
+comment   = "Two equal times, one register"
+expected  = 20
+
+[[asserts]]
+arguments = [[10, 10], 2]
+comment   = "Two equal times, two registers"
+expected  = 10
+
+[[asserts]]
+arguments = [[3, 3, 3], 2]
+comment   = "Three customers, two registers"
+expected  = 6
+
+[[asserts]]
+arguments = [[3, 3, 3], 3]
+comment   = "Three customers, three registers"
+expected  = 3
+
+[[asserts]]
+arguments = [[10, 20, 30], 1]
+comment   = "Sequential on one register"
+expected  = 60
+
+[[asserts]]
+arguments = [[10, 20, 30], 2]
+comment   = "Split between two"
+expected  = 40
+
+[[asserts]]
+arguments = [[10, 20, 30], 3]
+comment   = "Each gets own register"
+expected  = 30
+
+[[asserts]]
+arguments = [[5, 5, 5, 5], 2]
+comment   = "Four equal, two registers"
+expected  = 10
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 1]
+comment   = "Sum of all"
+expected  = 15
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 2]
+comment   = "Best split is 1+3+5=9 and 2+4=6"
+expected  = 9
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 3]
+comment   = "Three registers (greedy: R1:1+4=5, R2:2+5=7, R3:3)"
+expected  = 7
+
+[[asserts]]
+arguments = [[100], 1]
+comment   = "Single large time"
+expected  = 100
+
+[[asserts]]
+arguments = [[100], 10]
+comment   = "More registers than customers"
+expected  = 100
+
+[[asserts]]
+arguments = [[10, 10, 10, 10, 10], 5]
+comment   = "Each customer to own register"
+expected  = 10
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 2]
+comment   = "Ten customers, two registers"
+expected  = 5
+
+[[asserts]]
+arguments = [[7, 7, 7, 7, 7, 7], 3]
+comment   = "Six customers, three registers"
+expected  = 14
+
+[[asserts]]
+arguments = [[20, 30, 10], 2]
+comment   = "Register 1: 20+10=30, Register 2: 30"
+expected  = 30
+
+[[asserts]]
+arguments = [[50, 50, 50, 50], 2]
+comment   = "Four equal, two registers"
+expected  = 100
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3]
+comment   = "Distribute ten among three (greedy)"
+expected  = 22
+
+[[asserts]]
+arguments = [[15, 15, 15, 15, 15, 15], 2]
+comment   = "Six equal, two registers"
+expected  = 45
+
+[[asserts]]
+arguments = [[100, 200, 300], 1]
+comment   = "Three large sequential"
+expected  = 600
+
+[[asserts]]
+arguments = [[100, 200, 300], 2]
+comment   = "Split large values"
+expected  = 400
+
+[[asserts]]
+arguments = [[5, 10, 15, 20, 25], 5]
+comment   = "Each customer to own register"
+expected  = 25
+
+[[asserts]]
+arguments = [[2, 2, 2, 2, 2, 2, 2, 2], 4]
+comment   = "Eight customers, four registers"
+expected  = 4
+
+[[asserts]]
+arguments = [[11, 22, 33, 44, 55], 2]
+comment   = "Five customers, two registers"
+expected  = 99
+
+[[asserts]]
+arguments = [[8, 8, 8, 8, 8, 8, 8, 8, 8], 3]
+comment   = "Nine customers, three registers"
+expected  = 24
+
+[[asserts]]
+arguments = [[1000], 100]
+comment   = "One customer, many registers"
+expected  = 1000

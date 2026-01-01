@@ -1,0 +1,189 @@
+level             = "elementary"
+name              = "sort_by_length"
+tags              = ["strings", "collections", "sorting"]
+time_to_solve_sec = 150
+
+description_en = """
+Create a function that returns an array of strings sorted by length in descending order. Keep the original order of strings with the same length (stable sort).
+"""
+
+description_ru = """
+Создайте функцию, которая возвращает массив строк, отсортированных по длине в убывающем порядке. Сохраните порядок следования для слов с одинаковой длиной (стабильная сортировка).
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{words}) \\leq 100$
+- $1 \\leq \\text{len}(\\text{words}[i]) \\leq 50$
+"""
+
+solution = """
+def solution(words: list[str]) -> list[str]:
+    return sorted(words, key=len, reverse=True)
+"""
+
+examples = """
+solution(["apple", "pie"]) == ["apple", "pie"]
+solution(["a", "ccc", "bb"]) == ["ccc", "bb", "a"]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["a", "ccc", "dddd", "bb"]]
+comment   = "Different lengths"
+expected  = ["dddd", "ccc", "bb", "a"]
+
+[[asserts]]
+arguments = [["apple", "pie", "shortcake"]]
+comment   = "Word lengths"
+expected  = ["shortcake", "apple", "pie"]
+
+[[asserts]]
+arguments = [["may", "april", "september", "august"]]
+comment   = "Month names"
+expected  = ["september", "august", "april", "may"]
+
+[[asserts]]
+arguments = [["hi"]]
+comment   = "Single word"
+expected  = ["hi"]
+
+[[asserts]]
+arguments = [["a", "b", "c"]]
+comment   = "Same length"
+expected  = ["a", "b", "c"]
+
+[[asserts]]
+arguments = [["hello", "world"]]
+comment   = "Two equal words"
+expected  = ["hello", "world"]
+
+[[asserts]]
+arguments = [["cat", "elephant", "dog"]]
+comment   = "Animal names"
+expected  = ["elephant", "cat", "dog"]
+
+[[asserts]]
+arguments = [["red", "blue", "green", "yellow"]]
+comment   = "Color names"
+expected  = ["yellow", "green", "blue", "red"]
+
+[[asserts]]
+arguments = [["one", "two", "three", "four", "five"]]
+comment   = "Number words"
+expected  = ["three", "four", "five", "one", "two"]
+
+[[asserts]]
+arguments = [["x", "xx", "xxx", "xxxx"]]
+comment   = "Ascending length"
+expected  = ["xxxx", "xxx", "xx", "x"]
+
+[[asserts]]
+arguments = [["programming", "code", "algorithm"]]
+comment   = "Tech words"
+expected  = ["programming", "algorithm", "code"]
+
+[[asserts]]
+arguments = [["sun", "moon", "star", "planet"]]
+comment   = "Space objects"
+expected  = ["planet", "moon", "star", "sun"]
+
+[[asserts]]
+arguments = [["monday", "tuesday", "wednesday"]]
+comment   = "Weekdays"
+expected  = ["wednesday", "tuesday", "monday"]
+
+[[asserts]]
+arguments = [["python", "java", "javascript", "c"]]
+comment   = "Programming languages"
+expected  = ["javascript", "python", "java", "c"]
+
+[[asserts]]
+arguments = [["book", "pen", "notebook", "pencil"]]
+comment   = "School supplies"
+expected  = ["notebook", "pencil", "book", "pen"]
+
+[[asserts]]
+arguments = [["small", "medium", "large", "tiny"]]
+comment   = "Sizes"
+expected  = ["medium", "small", "large", "tiny"]
+
+[[asserts]]
+arguments = [["water", "fire", "earth", "air"]]
+comment   = "Elements"
+expected  = ["water", "earth", "fire", "air"]
+
+[[asserts]]
+arguments = [["happy", "sad", "angry", "excited"]]
+comment   = "Emotions"
+expected  = ["excited", "happy", "angry", "sad"]
+
+[[asserts]]
+arguments = [["car", "bicycle", "train", "plane"]]
+comment   = "Transportation"
+expected  = ["bicycle", "train", "plane", "car"]
+
+[[asserts]]
+arguments = [["spring", "summer", "autumn", "winter"]]
+comment   = "Seasons"
+expected  = ["spring", "summer", "autumn", "winter"]
+
+[[asserts]]
+arguments = [["desk", "chair", "table", "sofa"]]
+comment   = "Furniture"
+expected  = ["chair", "table", "desk", "sofa"]
+
+[[asserts]]
+arguments = [["morning", "afternoon", "evening", "night"]]
+comment   = "Times of day"
+expected  = ["afternoon", "morning", "evening", "night"]
+
+[[asserts]]
+arguments = [["guitar", "piano", "drums", "violin"]]
+comment   = "Musical instruments"
+expected  = ["guitar", "violin", "piano", "drums"]
+
+[[asserts]]
+arguments = [["circle", "square", "triangle", "rectangle"]]
+comment   = "Shapes"
+expected  = ["rectangle", "triangle", "circle", "square"]
+
+[[asserts]]
+arguments = [["coffee", "tea", "juice", "milk"]]
+comment   = "Beverages"
+expected  = ["coffee", "juice", "milk", "tea"]
+
+[[asserts]]
+arguments = [["north", "south", "east", "west"]]
+comment   = "Directions"
+expected  = ["north", "south", "east", "west"]
+
+[[asserts]]
+arguments = [["lion", "tiger", "elephant", "bear"]]
+comment   = "Wild animals"
+expected  = ["elephant", "tiger", "lion", "bear"]
+
+[[asserts]]
+arguments = [["fast", "slow", "quick", "rapid"]]
+comment   = "Speed words"
+expected  = ["quick", "rapid", "fast", "slow"]
+
+[[asserts]]
+arguments = [["alpha", "beta", "gamma", "delta"]]
+comment   = "Greek letters"
+expected  = ["alpha", "gamma", "delta", "beta"]
+
+[[asserts]]
+arguments = [["first", "second", "third", "fourth"]]
+comment   = "Ordinal numbers"
+expected  = ["second", "fourth", "first", "third"]

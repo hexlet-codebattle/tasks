@@ -1,0 +1,187 @@
+level             = "easy"
+name              = "ascii_sum"
+tags              = ["strings"]
+time_to_solve_sec = 200
+
+description_en = """
+Given a string, return the sum of the ASCII codes of all its characters.
+"""
+
+description_ru = """
+Дана строка. Верните сумму ASCII-кодов всех её символов.
+"""
+
+limits = """
+- $1 \\leq \\text{len(word)} \\leq 50$
+"""
+
+solution = """
+def solution(word):
+    return sum(ord(c) for c in word)
+"""
+
+examples = """
+solution("test") == 448
+solution("clojure") == 756
+solution("frontend") == 864
+"""
+
+[[input_signature]]
+argument_name = "word"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+# --- TEST CASES (30 total) ---
+
+[[asserts]]
+arguments = ["test"]
+comment   = "Example: t(116)+e(101)+s(115)+t(116)"
+expected  = 448
+
+[[asserts]]
+arguments = ["clojure"]
+comment   = "Example from original"
+expected  = 756
+
+[[asserts]]
+arguments = ["frontend"]
+comment   = "Example from original"
+expected  = 864
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single character"
+expected  = 97
+
+[[asserts]]
+arguments = ["z"]
+comment   = "Last lowercase letter"
+expected  = 122
+
+[[asserts]]
+arguments = ["abc"]
+comment   = "97+98+99"
+expected  = 294
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "h(104)+e(101)+l(108)+l(108)+o(111)"
+expected  = 532
+
+[[asserts]]
+arguments = ["world"]
+comment   = "w(119)+o(111)+r(114)+l(108)+d(100)"
+expected  = 552
+
+[[asserts]]
+arguments = ["aa"]
+comment   = "Two repeating letters"
+expected  = 194
+
+[[asserts]]
+arguments = ["zzz"]
+comment   = "Three 'z' letters"
+expected  = 366
+
+[[asserts]]
+arguments = ["abcxyz"]
+comment   = "Mix of low and high letters"
+expected  = 657
+
+[[asserts]]
+arguments = ["code"]
+comment   = "Simple coding word"
+expected  = 411
+
+[[asserts]]
+arguments = ["openai"]
+comment   = "Product/company name"
+expected  = 636
+
+[[asserts]]
+arguments = ["chatgpt"]
+comment   = "Contains varied characters"
+expected  = 747
+
+[[asserts]]
+arguments = ["python"]
+comment   = "Popular language"
+expected  = 674
+
+[[asserts]]
+arguments = ["java"]
+comment   = "Lowercase name"
+expected  = 418
+
+[[asserts]]
+arguments = ["scala"]
+comment   = "Another language"
+expected  = 516
+
+[[asserts]]
+arguments = ["ruby"]
+comment   = "Short language name"
+expected  = 450
+
+[[asserts]]
+arguments = ["go"]
+comment   = "Two-letter language"
+expected  = 214
+
+[[asserts]]
+arguments = ["rust"]
+comment   = "Systems language"
+expected  = 462
+
+[[asserts]]
+arguments = ["haskell"]
+comment   = "Longer word"
+expected  = 740
+
+[[asserts]]
+arguments = ["kotlin"]
+comment   = "K-based language"
+expected  = 657
+
+[[asserts]]
+arguments = ["swift"]
+comment   = "Apple language"
+expected  = 557
+
+[[asserts]]
+arguments = ["deno"]
+comment   = "Runtime name"
+expected  = 422
+
+[[asserts]]
+arguments = ["node"]
+comment   = "JavaScript runtime"
+expected  = 422
+
+[[asserts]]
+arguments = ["browser"]
+comment   = "Frontend related"
+expected  = 772
+
+[[asserts]]
+arguments = ["backend"]
+comment   = "Backend related"
+expected  = 712
+
+[[asserts]]
+arguments = ["server"]
+comment   = "Common backend term"
+expected  = 663
+
+[[asserts]]
+arguments = ["client"]
+comment   = "Opposite of server"
+expected  = 639
+
+[[asserts]]
+arguments = ["data"]
+comment   = "Simple word"
+expected  = 410

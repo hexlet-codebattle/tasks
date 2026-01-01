@@ -1,0 +1,186 @@
+level             = "elementary"
+name              = "shorten_string"
+tags              = ["strings"]
+time_to_solve_sec = 150
+
+description_en = """
+Given a word, provide it in the form of an acronym composed of the first letter, the number of letters in the word minus 2, and the last letter of the word.
+"""
+
+description_ru = """
+Представьте данное слово в виде аббревиатуры, состоящей из первой буквы, числа, представляющего количество букв в слове минус 2 и последней буквы слова.
+"""
+
+limits = """
+- $3 \\leq \\text{len}(s) \\leq 100$
+"""
+
+solution = """
+def solution(s: str) -> str:
+    return f"{s[0]}{len(s) - 2}{s[-1]}"
+"""
+
+examples = """
+solution("bee") == "b1e"
+solution("happy") == "h3y"
+solution("Localization") == "L10n"
+solution("Internationalization") == "I18n"
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Localization"]
+comment   = "Example from test data"
+expected  = "L10n"
+
+[[asserts]]
+arguments = ["Multilingualization"]
+comment   = "Long word"
+expected  = "M17n"
+
+[[asserts]]
+arguments = ["Internationalization"]
+comment   = "Standard i18n abbreviation"
+expected  = "I18n"
+
+[[asserts]]
+arguments = ["bee"]
+comment   = "Short word"
+expected  = "b1e"
+
+[[asserts]]
+arguments = ["cat"]
+comment   = "Three letter word"
+expected  = "c1t"
+
+[[asserts]]
+arguments = ["dog"]
+comment   = "Another three letter word"
+expected  = "d1g"
+
+[[asserts]]
+arguments = ["apple"]
+comment   = "Five letter word"
+expected  = "a3e"
+
+[[asserts]]
+arguments = ["banana"]
+comment   = "Six letter word"
+expected  = "b4a"
+
+[[asserts]]
+arguments = ["programming"]
+comment   = "Medium word"
+expected  = "p9g"
+
+[[asserts]]
+arguments = ["development"]
+comment   = "Another medium word"
+expected  = "d9t"
+
+[[asserts]]
+arguments = ["algorithm"]
+comment   = "Nine letter word"
+expected  = "a7m"
+
+[[asserts]]
+arguments = ["function"]
+comment   = "Eight letter word"
+expected  = "f6n"
+
+[[asserts]]
+arguments = ["variable"]
+comment   = "Eight letter word"
+expected  = "v6e"
+
+[[asserts]]
+arguments = ["computer"]
+comment   = "Eight letter word"
+expected  = "c6r"
+
+[[asserts]]
+arguments = ["keyboard"]
+comment   = "Eight letter word"
+expected  = "k6d"
+
+[[asserts]]
+arguments = ["monitor"]
+comment   = "Seven letter word"
+expected  = "m5r"
+
+[[asserts]]
+arguments = ["software"]
+comment   = "Eight letter word"
+expected  = "s6e"
+
+[[asserts]]
+arguments = ["hardware"]
+comment   = "Eight letter word"
+expected  = "h6e"
+
+[[asserts]]
+arguments = ["network"]
+comment   = "Seven letter word"
+expected  = "n5k"
+
+[[asserts]]
+arguments = ["database"]
+comment   = "Eight letter word"
+expected  = "d6e"
+
+[[asserts]]
+arguments = ["server"]
+comment   = "Six letter word"
+expected  = "s4r"
+
+[[asserts]]
+arguments = ["client"]
+comment   = "Six letter word"
+expected  = "c4t"
+
+[[asserts]]
+arguments = ["protocol"]
+comment   = "Eight letter word"
+expected  = "p6l"
+
+[[asserts]]
+arguments = ["interface"]
+comment   = "Nine letter word"
+expected  = "i7e"
+
+[[asserts]]
+arguments = ["implementation"]
+comment   = "Long word"
+expected  = "i12n"
+
+[[asserts]]
+arguments = ["specification"]
+comment   = "Long word"
+expected  = "s11n"
+
+[[asserts]]
+arguments = ["documentation"]
+comment   = "Long word"
+expected  = "d11n"
+
+[[asserts]]
+arguments = ["configuration"]
+comment   = "Long word"
+expected  = "c11n"
+
+[[asserts]]
+arguments = ["optimization"]
+comment   = "Long word"
+expected  = "o10n"
+
+[[asserts]]
+arguments = ["synchronization"]
+comment   = "Very long word"
+expected  = "s13n"

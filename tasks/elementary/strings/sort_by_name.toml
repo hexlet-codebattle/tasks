@@ -1,0 +1,195 @@
+level             = "elementary"
+name              = "sort_by_name"
+tags              = ["strings", "collections", "sorting"]
+time_to_solve_sec = 150
+
+description_en = """
+Implement a function which sorts people's names by their last name.
+"""
+
+description_ru = """
+Создайте функцию, которая сортирует комбинацию имени и фамилии людей по фамилии.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{names}) \\leq 100$
+- $3 \\leq \\text{len}(\\text{names}[i]) \\leq 50$
+"""
+
+solution = """
+def solution(names: list[str]) -> list[str]:
+    return sorted(names, key=lambda x: x.split()[-1])
+"""
+
+examples = """
+solution(["Barbara Liskov", "Bill Gates", "Linus Torvalds"]) == ["Bill Gates", "Barbara Liskov", "Linus Torvalds"]
+"""
+
+[[input_signature]]
+argument_name = "names"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [
+  [
+    "Jose Valim",
+    "Yukihiro Matsumoto",
+    "Rich Hickey",
+    "Harold Abelson",
+  ],
+]
+comment = "Famous programmers"
+expected = ["Harold Abelson", "Rich Hickey", "Yukihiro Matsumoto", "Jose Valim"]
+
+[[asserts]]
+arguments = [["Barbara Liskov", "Bill Gates", "Linus Torvalds"]]
+comment   = "Tech pioneers"
+expected  = ["Bill Gates", "Barbara Liskov", "Linus Torvalds"]
+
+[[asserts]]
+arguments = [["John Doe"]]
+comment   = "Single name"
+expected  = ["John Doe"]
+
+[[asserts]]
+arguments = [["Alice Smith", "Bob Smith"]]
+comment   = "Same last name"
+expected  = ["Alice Smith", "Bob Smith"]
+
+[[asserts]]
+arguments = [["Tom Baker", "Sarah Adams", "Mike Chen"]]
+comment   = "Different last names"
+expected  = ["Sarah Adams", "Tom Baker", "Mike Chen"]
+
+[[asserts]]
+arguments = [["David Wilson", "Emma Brown", "Frank Anderson"]]
+comment   = "Common surnames"
+expected  = ["Frank Anderson", "Emma Brown", "David Wilson"]
+
+[[asserts]]
+arguments = [["Grace Taylor", "Henry Martin", "Ivy Lee"]]
+comment   = "Short last names"
+expected  = ["Ivy Lee", "Henry Martin", "Grace Taylor"]
+
+[[asserts]]
+arguments = [["Jack Robinson", "Kate Johnson", "Liam Davis"]]
+comment   = "Popular surnames"
+expected  = ["Liam Davis", "Kate Johnson", "Jack Robinson"]
+
+[[asserts]]
+arguments = [["Mary White", "Nick Black", "Olivia Green"]]
+comment   = "Color surnames"
+expected  = ["Nick Black", "Olivia Green", "Mary White"]
+
+[[asserts]]
+arguments = [["Paul King", "Quinn Prince", "Rose Duke"]]
+comment   = "Royal names"
+expected  = ["Rose Duke", "Paul King", "Quinn Prince"]
+
+[[asserts]]
+arguments = [["Sam Cooper", "Tina Miller", "Uma Clark"]]
+comment   = "Occupational surnames"
+expected  = ["Uma Clark", "Sam Cooper", "Tina Miller"]
+
+[[asserts]]
+arguments = [["Victor Stone", "Wendy Wood", "Xander Hill"]]
+comment   = "Nature surnames"
+expected  = ["Xander Hill", "Victor Stone", "Wendy Wood"]
+
+[[asserts]]
+arguments = [["Yara Fox", "Zack Wolf", "Amy Bear"]]
+comment   = "Animal surnames"
+expected  = ["Amy Bear", "Yara Fox", "Zack Wolf"]
+
+[[asserts]]
+arguments = [["Ben Silver", "Cara Gold", "Dan Bronze"]]
+comment   = "Metal surnames"
+expected  = ["Dan Bronze", "Cara Gold", "Ben Silver"]
+
+[[asserts]]
+arguments = [["Eva North", "Fred South", "Gina West"]]
+comment   = "Direction surnames"
+expected  = ["Eva North", "Fred South", "Gina West"]
+
+[[asserts]]
+arguments = [["Harry Young", "Iris Elder", "Jake Senior"]]
+comment   = "Age surnames"
+expected  = ["Iris Elder", "Jake Senior", "Harry Young"]
+
+[[asserts]]
+arguments = [["Kelly Long", "Luke Short", "Mia Tall"]]
+comment   = "Height surnames"
+expected  = ["Kelly Long", "Luke Short", "Mia Tall"]
+
+[[asserts]]
+arguments = [["Nina Fast", "Oscar Slow", "Pam Quick"]]
+comment   = "Speed surnames"
+expected  = ["Nina Fast", "Pam Quick", "Oscar Slow"]
+
+[[asserts]]
+arguments = [["Quinn Strong", "Rita Weak", "Sam Brave"]]
+comment   = "Strength surnames"
+expected  = ["Sam Brave", "Quinn Strong", "Rita Weak"]
+
+[[asserts]]
+arguments = [["Tom Bright", "Uma Dark", "Val Light"]]
+comment   = "Brightness surnames"
+expected  = ["Tom Bright", "Uma Dark", "Val Light"]
+
+[[asserts]]
+arguments = [["Will Cook", "Xena Baker", "Yale Fisher"]]
+comment   = "Profession surnames"
+expected  = ["Xena Baker", "Will Cook", "Yale Fisher"]
+
+[[asserts]]
+arguments = [["Zoe Hunter", "Alan Farmer", "Beth Archer"]]
+comment   = "Traditional jobs"
+expected  = ["Beth Archer", "Alan Farmer", "Zoe Hunter"]
+
+[[asserts]]
+arguments = [["Carl Rivers", "Dana Lakes", "Eric Brooks"]]
+comment   = "Water surnames"
+expected  = ["Eric Brooks", "Dana Lakes", "Carl Rivers"]
+
+[[asserts]]
+arguments = [["Fay Moon", "Greg Star", "Hana Sun"]]
+comment   = "Celestial surnames"
+expected  = ["Fay Moon", "Greg Star", "Hana Sun"]
+
+[[asserts]]
+arguments = [["Ian Spring", "Jane Winter", "Kyle Summer"]]
+comment   = "Season surnames"
+expected  = ["Ian Spring", "Kyle Summer", "Jane Winter"]
+
+[[asserts]]
+arguments = [["Lisa Rose", "Mark Lily", "Nina Daisy"]]
+comment   = "Flower surnames"
+expected  = ["Nina Daisy", "Mark Lily", "Lisa Rose"]
+
+[[asserts]]
+arguments = [["Owen Pine", "Piper Oak", "Quinn Ash"]]
+comment   = "Tree surnames"
+expected  = ["Quinn Ash", "Piper Oak", "Owen Pine"]
+
+[[asserts]]
+arguments = [["Ray Storm", "Sara Rain", "Tim Snow"]]
+comment   = "Weather surnames"
+expected  = ["Sara Rain", "Tim Snow", "Ray Storm"]
+
+[[asserts]]
+arguments = [["Uma Knight", "Vince Lord", "Wade Earl"]]
+comment   = "Noble titles"
+expected  = ["Wade Earl", "Uma Knight", "Vince Lord"]
+
+[[asserts]]
+arguments = [["Yuri Phoenix", "Zara Dragon", "Adam Eagle"]]
+comment   = "Mythical creatures"
+expected  = ["Zara Dragon", "Adam Eagle", "Yuri Phoenix"]

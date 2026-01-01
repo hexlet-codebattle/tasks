@@ -1,0 +1,196 @@
+level             = "medium"
+name              = "gift_packing"
+tags              = ["collections", "algo"]
+time_to_solve_sec = 400
+
+description_en = """
+Given an array of gift sizes, you can remove one gift per operation.
+
+Find the minimum number of removals needed so that all remaining gifts are the same size.
+"""
+
+description_ru = """
+Дан массив размеров подарков. За одну операцию можно удалить один подарок.
+
+Найдите минимальное количество удалений, чтобы все оставшиеся подарки были одного размера.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{gifts}) \\leq 1000$
+- $1 \\leq \\text{gifts}[i] \\leq 10^5$
+"""
+
+solution = """
+def solution(gifts: list[int]) -> int:
+    from collections import Counter
+    c = Counter(gifts)
+    return len(gifts) - max(c.values())
+"""
+
+examples = """
+solution([1]) == 0
+solution([1, 1]) == 0
+solution([1, 2]) == 1
+solution([1, 2, 2, 3]) == 2
+solution([5, 5, 5, 10]) == 1
+"""
+
+[[input_signature]]
+argument_name = "gifts"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single gift"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 1]]
+comment   = "Already same"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2]]
+comment   = "Remove one"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 1, 2]]
+comment   = "Remove the 2"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 2]]
+comment   = "Remove the 1"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "Keep one, remove two"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+comment   = "All same"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2, 2, 3]]
+comment   = "Keep twos"
+expected  = 2
+
+[[asserts]]
+arguments = [[5, 5, 5, 10]]
+comment   = "Keep fives"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "All different"
+expected  = 4
+
+[[asserts]]
+arguments = [[10, 10, 10, 10]]
+comment   = "Four same"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 1, 2, 2, 3, 3]]
+comment   = "Three pairs, keep one pair"
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 1, 1, 2, 2, 3]]
+comment   = "Keep three ones"
+expected  = 3
+
+[[asserts]]
+arguments = [[7, 7, 7, 7, 7, 8, 8, 8]]
+comment   = "Five sevens vs three eights"
+expected  = 3
+
+[[asserts]]
+arguments = [[100, 100, 200]]
+comment   = "Large values"
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 10, 15, 20, 25]]
+comment   = "All unique"
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 2]]
+comment   = "Nine same, one different"
+expected  = 1
+
+[[asserts]]
+arguments = [[3, 3, 3, 4, 4, 4, 5, 5, 5]]
+comment   = "Three groups of three"
+expected  = 6
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]]
+comment   = "Ten unique gifts"
+expected  = 9
+
+[[asserts]]
+arguments = [[42, 42, 42, 42, 42]]
+comment   = "Five identical"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10]]
+comment   = "Many unique, three tens"
+expected  = 9
+
+[[asserts]]
+arguments = [[7, 7, 14, 14, 14]]
+comment   = "Two sevens, three fourteens"
+expected  = 2
+
+[[asserts]]
+arguments = [[99, 99, 99, 99, 100, 100, 100]]
+comment   = "Four vs three"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3]]
+comment   = "Five ones, four twos, three threes"
+expected  = 7
+
+[[asserts]]
+arguments = [[50, 50, 50, 50, 50, 50]]
+comment   = "Six same"
+expected  = 0
+
+[[asserts]]
+arguments = [[11, 22, 33, 44, 55]]
+comment   = "All multiples of 11, all unique"
+expected  = 4
+
+[[asserts]]
+arguments = [[8, 8, 8, 9, 9, 9, 9, 9]]
+comment   = "Three eights, five nines"
+expected  = 3
+
+[[asserts]]
+arguments = [[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]]
+comment   = "Ten large unique values"
+expected  = 9
+
+[[asserts]]
+arguments = [[15, 15, 15, 15, 15, 15, 15, 20]]
+comment   = "Seven same, one different"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 1, 2, 3, 1, 2, 3]]
+comment   = "Three of each, keep three"
+expected  = 6

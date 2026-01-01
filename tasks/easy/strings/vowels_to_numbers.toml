@@ -1,0 +1,175 @@
+level             = "easy"
+name              = "vowels_to_numbers"
+tags              = ["strings"]
+time_to_solve_sec = 300
+
+description_en = """
+In a given word array, replace the vowels in each word with their indexes. The indexes are numbered starting from zero. Vowels are: a, e, i, o, u, y.
+"""
+
+description_ru = """
+Дан массив со словами. Замените гласные буквы в каждом слове на их индексы. Нумерация индексов начинается с нуля. Гласные: a, e, i, o, u, y.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{words}) \\leq 50$
+- $1 \\leq \\text{len}(\\text{word}) \\leq 50$
+"""
+
+solution = """
+def solution(words: list) -> list:
+    vowels = set('aeiouy')
+    result = []
+    for word in words:
+        new_word = ''
+        for i, char in enumerate(word):
+            if char.lower() in vowels:
+                new_word += str(i)
+            else:
+                new_word += char
+        result.append(new_word)
+    return result
+"""
+
+examples = """
+solution(["clojure", "python"]) == ["cl2j4r6", "p1th4n"]
+solution(["whaaaaat", "abooouuut"]) == ["wh23456t", "0b234567t"]
+solution(["solongword", "wowsolongword"]) == ["s1l3ngw7rd", "w1ws4l6ngw10rd"]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["clojure", "python", "elixir", "javascript"]]
+comment   = "Programming languages"
+expected  = ["cl2j4r6", "p1th4n", "0l2x4r", "j1v3scr7pt"]
+
+[[asserts]]
+arguments = [["solongword", "wowsolongword", "wowsomuchlongword"]]
+comment   = "Long words"
+expected  = ["s1l3ngw7rd", "w1ws4l6ngw10rd", "w1ws4m6chl10ngw14rd"]
+
+[[asserts]]
+arguments = [["whaaaaat", "abooouuut", "thaaaat?"]]
+comment   = "Repeated vowels"
+expected  = ["wh23456t", "0b234567t", "th2345t?"]
+
+[[asserts]]
+arguments = [["hello"]]
+comment   = "Single word"
+expected  = ["h1ll4"]
+
+[[asserts]]
+arguments = [["world"]]
+comment   = "Single word with o"
+expected  = ["w1rld"]
+
+[[asserts]]
+arguments = [["test"]]
+comment   = "Single vowel"
+expected  = ["t1st"]
+
+[[asserts]]
+arguments = [["aeiou"]]
+comment   = "All vowels"
+expected  = ["01234"]
+
+[[asserts]]
+arguments = [["bcdfg"]]
+comment   = "No vowels"
+expected  = ["bcdfg"]
+
+[[asserts]]
+arguments = [["rhythm"]]
+comment   = "Word with y"
+expected  = ["rh2thm"]
+
+[[asserts]]
+arguments = [["yes", "you", "yell"]]
+comment   = "Words starting with y"
+expected  = ["01s", "012", "01ll"]
+
+[[asserts]]
+arguments = [["air", "ear", "ice"]]
+comment   = "Short words"
+expected  = ["01r", "01r", "0c2"]
+
+[[asserts]]
+arguments = [["quick", "brown", "fox"]]
+comment   = "The quick brown fox"
+expected  = ["q12ck", "br2wn", "f1x"]
+
+[[asserts]]
+arguments = [["apple", "banana", "orange"]]
+comment   = "Fruits"
+expected  = ["0ppl4", "b1n3n5", "0r2ng5"]
+
+[[asserts]]
+arguments = [["education"]]
+comment   = "Long word with many vowels"
+expected  = ["0d2c4t67n"]
+
+[[asserts]]
+arguments = [["beautiful"]]
+comment   = "Beautiful word"
+expected  = ["b123t5f7l"]
+
+[[asserts]]
+arguments = [["computer"]]
+comment   = "Computer"
+expected  = ["c1mp4t6r"]
+
+[[asserts]]
+arguments = [["programming"]]
+comment   = "Programming"
+expected  = ["pr2gr5mm8ng"]
+
+[[asserts]]
+arguments = [["algorithm"]]
+comment   = "Algorithm"
+expected  = ["0lg3r5thm"]
+
+[[asserts]]
+arguments = [["function"]]
+comment   = "Function"
+expected  = ["f1nct56n"]
+
+[[asserts]]
+arguments = [["variable"]]
+comment   = "Variable"
+expected  = ["v1r34bl7"]
+
+[[asserts]]
+arguments = [["array", "list", "hash"]]
+comment   = "Data structures"
+expected  = ["0rr34", "l1st", "h1sh"]
+
+[[asserts]]
+arguments = [["ruby", "rust", "perl"]]
+comment   = "More languages"
+expected  = ["r1b3", "r1st", "p1rl"]
+
+[[asserts]]
+arguments = [["morning", "evening", "night"]]
+comment   = "Times of day"
+expected  = ["m1rn4ng", "0v2n4ng", "n1ght"]
+
+[[asserts]]
+arguments = [["awesome", "great", "cool"]]
+comment   = "Positive words"
+expected  = ["0w2s4m6", "gr23t", "c12l"]
+
+[[asserts]]
+arguments = [["query"]]
+comment   = "Word with y at end"
+expected  = ["q12r4"]

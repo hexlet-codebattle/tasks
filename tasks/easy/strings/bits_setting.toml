@@ -1,0 +1,181 @@
+level             = "easy"
+name              = "bits_setting"
+tags              = ["strings", "bits"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given two binary strings `bitstring` and `bitmask` of equal length.
+
+Apply the logical operator `OR` to them **bit by bit**: each position in the result is `"1"` if at least one of the corresponding bits in `bitstring` or `bitmask` is `"1"`, and `"0"` only if both bits are `"0"`.
+
+Return the resulting binary string.
+"""
+
+description_ru = """
+Даны две двоичные строки `bitstring` и `bitmask` одинаковой длины.
+
+Примените к ним побитовый логический оператор `ИЛИ`: каждый символ результата равен `"1"`, если хотя бы один из соответствующих битов в `bitstring` или `bitmask` равен `"1"`, и `"0"`, только если оба бита равны `"0"`.
+
+Верните получившуюся двоичную строку.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{bitstring}) \\leq 60$
+- $\\text{len}(\\text{bitstring}) = \\text{len}(\\text{bitmask})$
+- $\\text{bitstring}, \\text{bitmask} \\in \\{0, 1\\}^*$
+"""
+
+solution = """
+def solution(bitstring: str, bitmask: str) -> str:
+    res = []
+    for a, b in zip(bitstring, bitmask):
+        res.append("1" if a == "1" or b == "1" else "0")
+    return "".join(res)
+"""
+
+examples = """
+solution("101", "110") == "111"
+solution("1011", "0117") == "1111"
+solution("0000", "1111") == "1111"
+solution("0101", "0011") == "0111"
+solution("0001", "0000") == "0001"
+solution("101101", "101101") == "101101"
+"""
+
+[[input_signature]]
+argument_name = "bitstring"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "bitmask"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["101101", "101101"]
+comment   = "OR with itself returns same string"
+expected  = "101101"
+
+[[asserts]]
+arguments = ["1011", "0111"]
+comment   = "Example from original task"
+expected  = "1111"
+
+[[asserts]]
+arguments = ["101", "110"]
+comment   = "All positions produce 1"
+expected  = "111"
+
+[[asserts]]
+arguments = ["0", "0"]
+comment   = "Single zero OR zero"
+expected  = "0"
+
+[[asserts]]
+arguments = ["1", "0"]
+comment   = "Single one OR zero"
+expected  = "1"
+
+[[asserts]]
+arguments = ["0", "1"]
+comment   = "Single zero OR one"
+expected  = "1"
+
+[[asserts]]
+arguments = ["1", "1"]
+comment   = "Single one OR one"
+expected  = "1"
+
+[[asserts]]
+arguments = ["1111", "0000"]
+comment   = "All ones OR all zeros"
+expected  = "1111"
+
+[[asserts]]
+arguments = ["0000", "1111"]
+comment   = "All zeros OR all ones"
+expected  = "1111"
+
+[[asserts]]
+arguments = ["1010", "0101"]
+comment   = "Complementary alternating patterns"
+expected  = "1111"
+
+[[asserts]]
+arguments = ["1100", "0011"]
+comment   = "Opposite halves of ones"
+expected  = "1111"
+
+[[asserts]]
+arguments = ["0101", "0011"]
+comment   = "Partial overlap in last three bits"
+expected  = "0111"
+
+[[asserts]]
+arguments = ["000111", "111000"]
+comment   = "Full OR of separated one-blocks"
+expected  = "111111"
+
+[[asserts]]
+arguments = ["101010", "111000"]
+comment   = "Mask sets first three bits"
+expected  = "111010"
+
+[[asserts]]
+arguments = ["111000", "101010"]
+comment   = "Same result with swapped inputs"
+expected  = "111010"
+
+[[asserts]]
+arguments = ["1000001", "0111110"]
+comment   = "Combined ones cover all positions"
+expected  = "1111111"
+
+[[asserts]]
+arguments = ["1100110", "1010101"]
+comment   = "Complex overlapping"
+expected  = "1110111"
+
+[[asserts]]
+arguments = ["0101010", "0101010"]
+comment   = "OR with itself"
+expected  = "0101010"
+
+[[asserts]]
+arguments = ["111000111", "101101011"]
+comment   = "Long strings with varied overlaps"
+expected  = "111101111"
+
+[[asserts]]
+arguments = ["101111000", "111000111"]
+comment   = "Combined ones fill all positions"
+expected  = "111111111"
+
+[[asserts]]
+arguments = ["000000000", "111111111"]
+comment   = "Zeros OR ones"
+expected  = "111111111"
+
+[[asserts]]
+arguments = ["111111111", "000000001"]
+comment   = "Mask only adds a single one"
+expected  = "111111111"
+
+[[asserts]]
+arguments = ["000000001", "111111111"]
+comment   = "Same but swapped"
+expected  = "111111111"
+
+[[asserts]]
+arguments = ["10100101", "00110011"]
+comment   = "Several isolated one overlaps"
+expected  = "10110111"
+
+[[asserts]]
+arguments = ["11011011", "11000011"]
+comment   = "Mask sets no new ones"
+expected  = "11011011"

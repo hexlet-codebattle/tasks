@@ -1,0 +1,215 @@
+level             = "easy"
+name              = "partiphify"
+tags              = ["collections"]
+time_to_solve_sec = 240
+
+description_en = """
+Create a function that will divide the list into a specified number of parts.
+
+The list should be split as evenly as possible, with earlier parts potentially having one more element than later parts if the division is not exact.
+"""
+
+description_ru = """
+Создайте функцию, которая разделит список на конкретное количество частей.
+
+Список должен быть разделен максимально равномерно, причем первые части могут иметь на один элемент больше, чем последние, если деление неточное.
+"""
+
+limits = """
+- $1 \\leq |\\text{numbers}| \\leq 100$
+- $1 \\leq \\text{parts} \\leq |\\text{numbers}|$
+- $-100 \\leq \\text{numbers}[i] \\leq 100$
+"""
+
+solution = """
+def solution(numbers: list, parts: int) -> list:
+    import math
+
+    if not numbers:
+        return []
+
+    part_size = math.ceil(len(numbers) / parts)
+    result = []
+
+    for i in range(0, len(numbers), part_size):
+        part = numbers[i:i + part_size]
+        if part:
+            result.append(part)
+
+    return result
+"""
+
+examples = """
+solution([1], 2) == [[1]]
+solution([1, 2, 3], 3) == [[1], [2], [3]]
+solution([1, 2, 3, 4, 5], 2) == [[1, 2, 3], [4, 5]]
+"""
+
+[[input_signature]]
+argument_name = "numbers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "parts"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[1], 2]
+comment   = "One element two parts"
+expected  = [[1]]
+
+[[asserts]]
+arguments = [[1, 2, 3], 3]
+comment   = "Three elements three parts"
+expected  = [[1], [2], [3]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 2]
+comment   = "Five elements two parts"
+expected  = [[1, 2, 3], [4, 5]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4], 2]
+comment   = "Even split"
+expected  = [[1, 2], [3, 4]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6], 3]
+comment   = "Six into three"
+expected  = [[1, 2], [3, 4], [5, 6]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7], 3]
+comment   = "Seven into three"
+expected  = [[1, 2, 3], [4, 5, 6], [7]]
+
+[[asserts]]
+arguments = [[1, 2], 1]
+comment   = "One part"
+expected  = [[1, 2]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 5]
+comment   = "Five into five"
+expected  = [[1], [2], [3], [4], [5]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8], 2]
+comment   = "Eight into two"
+expected  = [[1, 2, 3, 4], [5, 6, 7, 8]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9], 3]
+comment   = "Nine into three"
+expected  = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3]
+comment   = "Ten into three"
+expected  = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10]]
+
+[[asserts]]
+arguments = [[1], 1]
+comment   = "Single element one part"
+expected  = [[1]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6], 2]
+comment   = "Six into two"
+expected  = [[1, 2, 3], [4, 5, 6]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8], 4]
+comment   = "Eight into four"
+expected  = [[1, 2], [3, 4], [5, 6], [7, 8]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7], 2]
+comment   = "Seven into two"
+expected  = [[1, 2, 3, 4], [5, 6, 7]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 4]
+comment   = "Ten into four"
+expected  = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 3]
+comment   = "Twelve into three"
+expected  = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 4]
+comment   = "Eleven into four"
+expected  = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8], 3]
+comment   = "Eight into three"
+expected  = [[1, 2, 3], [4, 5, 6], [7, 8]]
+
+[[asserts]]
+arguments = [[1, 2, 3], 2]
+comment   = "Three into two"
+expected  = [[1, 2], [3]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 3]
+comment   = "Five into three"
+expected  = [[1, 2], [3, 4], [5]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9], 4]
+comment   = "Nine into four (ceil gives 3 parts)"
+expected  = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5]
+comment   = "Ten into five"
+expected  = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4], 3]
+comment   = "Four into three"
+expected  = [[1, 2], [3, 4]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6], 4]
+comment   = "Six into four"
+expected  = [[1, 2], [3, 4], [5, 6]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7], 4]
+comment   = "Seven into four"
+expected  = [[1, 2], [3, 4], [5, 6], [7]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 4]
+comment   = "Twelve into four"
+expected  = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 5]
+comment   = "Fifteen into five"
+expected  = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15]]
+
+[[asserts]]
+arguments = [[1, 2], 2]
+comment   = "Two into two"
+expected  = [[1], [2]]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2]
+comment   = "Ten into two"
+expected  = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]

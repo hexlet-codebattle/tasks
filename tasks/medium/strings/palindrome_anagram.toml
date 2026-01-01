@@ -1,0 +1,203 @@
+level             = "medium"
+name              = "palindrome_anagram"
+tags              = ["strings"]
+time_to_solve_sec = 300
+
+description_en = """
+Check if any anagram of a given string is a palindrome.
+
+An anagram is a word formed by rearranging the letters of another word. A palindrome is a word that reads the same forwards and backwards.
+
+For a string to have a palindromic anagram, at most one character can have an odd count.
+"""
+
+description_ru = """
+Проверьте, является ли какая-либо анаграмма данной строки палиндромом.
+
+Анаграмма слова - это слово, которое может быть получено путем перестановки его букв. Палиндром - это слово, которое одинаково читается в обоих направлениях.
+
+Чтобы строка могла иметь анаграмму-палиндром, не более одного символа может встречаться нечетное количество раз.
+"""
+
+limits = """
+- $0 \\leq |\\text{s}| \\leq 100$
+"""
+
+solution = """
+def solution(s: str) -> bool:
+    from collections import Counter
+
+    char_counts = Counter(s)
+    odd_count = sum(1 for count in char_counts.values() if count % 2 == 1)
+
+    return odd_count <= 1
+"""
+
+examples = """
+solution("abcabc") == True
+solution("") == True
+solution("ab") == False
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["abcabc"]
+comment   = "Can form abccba"
+expected  = true
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = true
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single character"
+expected  = true
+
+[[asserts]]
+arguments = ["aa"]
+comment   = "Two same characters"
+expected  = true
+
+[[asserts]]
+arguments = ["aab"]
+comment   = "Can form aba"
+expected  = true
+
+[[asserts]]
+arguments = ["aabb"]
+comment   = "Can form abba"
+expected  = true
+
+[[asserts]]
+arguments = ["aabbc"]
+comment   = "Can form abcba"
+expected  = true
+
+[[asserts]]
+arguments = ["ab"]
+comment   = "Two different characters"
+expected  = false
+
+[[asserts]]
+arguments = ["aabbcd"]
+comment   = "Two chars odd count"
+expected  = false
+
+[[asserts]]
+arguments = ["aaabbb"]
+comment   = "Three each odd"
+expected  = false
+
+[[asserts]]
+arguments = ["racecar"]
+comment   = "Already palindrome"
+expected  = true
+
+[[asserts]]
+arguments = ["carerac"]
+comment   = "Anagram of palindrome"
+expected  = true
+
+[[asserts]]
+arguments = ["aabbcc"]
+comment   = "All even counts"
+expected  = true
+
+[[asserts]]
+arguments = ["aabbccc"]
+comment   = "One odd count"
+expected  = true
+
+[[asserts]]
+arguments = ["abc"]
+comment   = "All different"
+expected  = false
+
+[[asserts]]
+arguments = ["aabbccdd"]
+comment   = "Four pairs"
+expected  = true
+
+[[asserts]]
+arguments = ["aabbccdde"]
+comment   = "Four pairs and one"
+expected  = true
+
+[[asserts]]
+arguments = ["abcdef"]
+comment   = "All different six"
+expected  = false
+
+[[asserts]]
+arguments = ["aaa"]
+comment   = "Three same"
+expected  = true
+
+[[asserts]]
+arguments = ["aaaa"]
+comment   = "Four same"
+expected  = true
+
+[[asserts]]
+arguments = ["aaaab"]
+comment   = "Four and one can form aabaa"
+expected  = true
+
+[[asserts]]
+arguments = ["aaabbb"]
+comment   = "Two triples"
+expected  = false
+
+[[asserts]]
+arguments = ["aaabbbc"]
+comment   = "Triples with one"
+expected  = false
+
+[[asserts]]
+arguments = ["aabbccddee"]
+comment   = "Five pairs"
+expected  = true
+
+[[asserts]]
+arguments = ["aabbccddeef"]
+comment   = "Five pairs and one"
+expected  = true
+
+[[asserts]]
+arguments = ["abcd"]
+comment   = "Four different"
+expected  = false
+
+[[asserts]]
+arguments = ["aabbccddeeff"]
+comment   = "Six pairs"
+expected  = true
+
+[[asserts]]
+arguments = ["xyz"]
+comment   = "Three different letters"
+expected  = false
+
+[[asserts]]
+arguments = ["xxyyzz"]
+comment   = "Three pairs xyz"
+expected  = true
+
+[[asserts]]
+arguments = ["xyzxyz"]
+comment   = "Two of each"
+expected  = true
+
+[[asserts]]
+arguments = ["noon"]
+comment   = "Word noon"
+expected  = true

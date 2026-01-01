@@ -1,0 +1,185 @@
+level             = "medium"
+name              = "tic_tac_toe"
+tags              = ["games"]
+time_to_solve_sec = 500
+
+description_en = """
+Write a function that checks each move of the game tic-tac-toe. The function takes the current state of the field as a two-dimensional array. If player `"X"` won, return `"X won"`. If player `"O"` won, return `"O won"`. If no one has won yet, return `"Next"`. If the field is full but no one has won, return `"Game over"`.
+"""
+
+description_ru = """
+Напишите функцию, которая проверяет каждый ход в игре крестики-нолики. Функция принимает текущее состояние поля в виде двумерного массива. Если игрок `"X"` выиграл — верните `"X won"`, если выиграл игрок `"O"` — верните `"O won"`. Если никто пока не выиграл — верните `"Next"`. Если поле полностью заполнено, но никто не выиграл — верните `"Game over"`.
+"""
+
+limits = """
+- Field is always $3 \\times 3$
+- Each cell contains `"X"`, `"O"`, or `"_"`
+"""
+
+solution = """
+def solution(field: list) -> str:
+    def check_winner(f):
+        for i in range(3):
+            if f[i][0] == f[i][1] == f[i][2] != "_":
+                return f[i][0]
+            if f[0][i] == f[1][i] == f[2][i] != "_":
+                return f[0][i]
+        if f[0][0] == f[1][1] == f[2][2] != "_":
+            return f[0][0]
+        if f[0][2] == f[1][1] == f[2][0] != "_":
+            return f[0][2]
+        return None
+
+    winner = check_winner(field)
+    if winner:
+        return f"{winner} won"
+
+    for row in field:
+        if "_" in row:
+            return "Next"
+    return "Game over"
+"""
+
+examples = """
+solution([["X", "O", "X"], ["O", "X", "O"], ["_", "_", "X"]]) == "X won"
+solution([["X", "X", "O"], ["_", "O", "_"], ["O", "X", "O"]]) == "O won"
+solution([["_", "O", "X"], ["X", "_", "_"], ["_", "_", "O"]]) == "Next"
+solution([["X", "O", "X"], ["O", "X", "X"], ["O", "X", "O"]]) == "Game over"
+"""
+
+[[input_signature]]
+argument_name = "field"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [[["X", "O", "X"], ["O", "X", "O"], ["_", "_", "X"]]]
+comment   = "X wins diagonal"
+expected  = "X won"
+
+[[asserts]]
+arguments = [[["X", "X", "O"], ["_", "O", "_"], ["O", "X", "O"]]]
+comment   = "O wins diagonal"
+expected  = "O won"
+
+[[asserts]]
+arguments = [[["_", "O", "X"], ["X", "_", "_"], ["_", "_", "O"]]]
+comment   = "Game continues"
+expected  = "Next"
+
+[[asserts]]
+arguments = [[["X", "O", "X"], ["O", "X", "X"], ["O", "X", "O"]]]
+comment   = "Draw - game over"
+expected  = "Game over"
+
+[[asserts]]
+arguments = [[["X", "X", "X"], ["O", "O", "_"], ["_", "_", "_"]]]
+comment   = "X wins top row"
+expected  = "X won"
+
+[[asserts]]
+arguments = [[["O", "O", "O"], ["X", "X", "_"], ["_", "_", "X"]]]
+comment   = "O wins top row"
+expected  = "O won"
+
+[[asserts]]
+arguments = [[["X", "O", "_"], ["X", "O", "_"], ["X", "_", "_"]]]
+comment   = "X wins left column"
+expected  = "X won"
+
+[[asserts]]
+arguments = [[["X", "O", "_"], ["X", "O", "_"], ["_", "O", "X"]]]
+comment   = "O wins middle column"
+expected  = "O won"
+
+[[asserts]]
+arguments = [[["_", "_", "X"], ["_", "_", "X"], ["O", "O", "X"]]]
+comment   = "X wins right column"
+expected  = "X won"
+
+[[asserts]]
+arguments = [[["O", "_", "_"], ["X", "O", "_"], ["X", "X", "O"]]]
+comment   = "O wins main diagonal"
+expected  = "O won"
+
+[[asserts]]
+arguments = [[["_", "_", "X"], ["_", "X", "O"], ["X", "O", "O"]]]
+comment   = "X wins anti-diagonal"
+expected  = "X won"
+
+[[asserts]]
+arguments = [[["X", "O", "_"], ["_", "_", "_"], ["_", "_", "_"]]]
+comment   = "Early game"
+expected  = "Next"
+
+[[asserts]]
+arguments = [[["_", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]]]
+comment   = "Empty board"
+expected  = "Next"
+
+[[asserts]]
+arguments = [[["X", "X", "O"], ["O", "O", "X"], ["X", "O", "X"]]]
+comment   = "Full board no winner"
+expected  = "Game over"
+
+[[asserts]]
+arguments = [[["O", "X", "X"], ["X", "O", "O"], ["O", "X", "X"]]]
+comment   = "Full board no winner"
+expected  = "Game over"
+
+[[asserts]]
+arguments = [[["_", "_", "_"], ["X", "X", "X"], ["O", "O", "_"]]]
+comment   = "X wins middle row"
+expected  = "X won"
+
+[[asserts]]
+arguments = [[["O", "X", "_"], ["O", "X", "_"], ["X", "O", "O"]]]
+comment   = "No winner yet"
+expected  = "Next"
+
+[[asserts]]
+arguments = [[["X", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]]]
+comment   = "Just started"
+expected  = "Next"
+
+[[asserts]]
+arguments = [[["O", "O", "X"], ["X", "X", "O"], ["O", "X", "X"]]]
+comment   = "Full board draw"
+expected  = "Game over"
+
+[[asserts]]
+arguments = [[["X", "O", "X"], ["X", "O", "O"], ["O", "X", "X"]]]
+comment   = "Full board draw"
+expected  = "Game over"
+
+[[asserts]]
+arguments = [[["_", "_", "_"], ["_", "_", "_"], ["O", "O", "O"]]]
+comment   = "O wins bottom row"
+expected  = "O won"
+
+[[asserts]]
+arguments = [[["X", "_", "O"], ["_", "X", "O"], ["_", "_", "X"]]]
+comment   = "X wins main diagonal"
+expected  = "X won"
+
+[[asserts]]
+arguments = [[["_", "_", "O"], ["_", "O", "X"], ["O", "X", "X"]]]
+comment   = "O wins anti-diagonal"
+expected  = "O won"
+
+[[asserts]]
+arguments = [[["X", "O", "X"], ["O", "_", "_"], ["_", "_", "_"]]]
+comment   = "Mid game"
+expected  = "Next"
+
+[[asserts]]
+arguments = [[["X", "X", "O"], ["O", "X", "X"], ["X", "O", "O"]]]
+comment   = "Game over - no winner"
+expected  = "Game over"

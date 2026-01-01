@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "weighted_drop_by_roll"
-tags              = ["stdlib", "map", "sorting", "simulation"]
+tags              = ["stdlib", "hash_maps", "sorting", "simulation"]
 time_to_solve_sec = 300
 
 description_en = """

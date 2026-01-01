@@ -1,0 +1,172 @@
+level             = "medium"
+name              = "well_tempered_ergodox"
+tags              = ["music", "strings"]
+time_to_solve_sec = 400
+
+description_en = """
+Write a function that gets a string number (1-6) and a fret (0-24) of a 6-string guitar in standard tuning and return the corresponding note. For this challenge we use a 24 fret model. The notes are: C, C#, D, D#, E, F, F#, G, G#, A, A#, B. Standard tuning from string 1 to 6 is: E, B, G, D, A, E.
+"""
+
+description_ru = """
+Напишите функцию, которая получает номер струны (1-6) и лад (0-24) 6-струнной гитары в стандартной настройке и возвращает соответствующую ноту. Для этой задачи мы используем модель с 24 ладами. Ноты следующие: C, C#, D, D#, E, F, F#, G, G#, A, A#, B. Стандартная настройка от струны 1 до 6: E, B, G, D, A, E.
+"""
+
+limits = """
+- $1 \\leq \\text{string\\_num} \\leq 6$
+- $0 \\leq \\text{fret} \\leq 24$
+"""
+
+solution = """
+def solution(string_num: int, fret: int) -> str:
+    notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+    tuning = ['E', 'B', 'G', 'D', 'A', 'E']
+    open_note = tuning[string_num - 1]
+    start_index = notes.index(open_note)
+    note_index = (start_index + fret) % 12
+    return notes[note_index]
+"""
+
+examples = """
+solution(3, 0) == "G"
+solution(3, 2) == "A"
+solution(1, 6) == "A#"
+solution(2, 19) == "F#"
+"""
+
+[[input_signature]]
+argument_name = "string_num"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "fret"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [3, 2]
+comment   = "Third string, second fret"
+expected  = "A"
+
+[[asserts]]
+arguments = [1, 6]
+comment   = "First string, sixth fret"
+expected  = "A#"
+
+[[asserts]]
+arguments = [3, 0]
+comment   = "Open third string"
+expected  = "G"
+
+[[asserts]]
+arguments = [2, 19]
+comment   = "Second string, 19th fret"
+expected  = "F#"
+
+[[asserts]]
+arguments = [1, 0]
+comment   = "Open first string - high E"
+expected  = "E"
+
+[[asserts]]
+arguments = [2, 0]
+comment   = "Open second string - B"
+expected  = "B"
+
+[[asserts]]
+arguments = [4, 0]
+comment   = "Open fourth string - D"
+expected  = "D"
+
+[[asserts]]
+arguments = [5, 0]
+comment   = "Open fifth string - A"
+expected  = "A"
+
+[[asserts]]
+arguments = [6, 0]
+comment   = "Open sixth string - low E"
+expected  = "E"
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "First string, first fret"
+expected  = "F"
+
+[[asserts]]
+arguments = [1, 12]
+comment   = "First string, octave"
+expected  = "E"
+
+[[asserts]]
+arguments = [1, 24]
+comment   = "First string, two octaves"
+expected  = "E"
+
+[[asserts]]
+arguments = [2, 5]
+comment   = "Second string, fifth fret"
+expected  = "E"
+
+[[asserts]]
+arguments = [3, 5]
+comment   = "Third string, fifth fret"
+expected  = "C"
+
+[[asserts]]
+arguments = [4, 5]
+comment   = "Fourth string, fifth fret"
+expected  = "G"
+
+[[asserts]]
+arguments = [5, 5]
+comment   = "Fifth string, fifth fret"
+expected  = "D"
+
+[[asserts]]
+arguments = [6, 5]
+comment   = "Sixth string, fifth fret"
+expected  = "A"
+
+[[asserts]]
+arguments = [1, 3]
+comment   = "First string, third fret"
+expected  = "G"
+
+[[asserts]]
+arguments = [1, 8]
+comment   = "First string, eighth fret"
+expected  = "C"
+
+[[asserts]]
+arguments = [2, 3]
+comment   = "Second string, third fret"
+expected  = "D"
+
+[[asserts]]
+arguments = [2, 8]
+comment   = "Second string, eighth fret"
+expected  = "G"
+
+[[asserts]]
+arguments = [3, 4]
+comment   = "Third string, fourth fret"
+expected  = "B"
+
+[[asserts]]
+arguments = [3, 9]
+comment   = "Third string, ninth fret"
+expected  = "E"
+
+[[asserts]]
+arguments = [4, 7]
+comment   = "Fourth string, seventh fret"
+expected  = "A"
+
+[[asserts]]
+arguments = [5, 12]
+comment   = "Fifth string, octave"
+expected  = "A"

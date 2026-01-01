@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "reverse_and_drop"
+tags              = ["strings"]
+time_to_solve_sec = 250
+
+description_en = """
+You are given a string of words. Drop each word with odd length and reverse each word with even length.
+"""
+
+description_ru = """
+Создайте функцию, которая удаляет слова с нечетной длиной в строке, а слова с четной длиной переворачивает.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(sentence) \\leq 200$
+"""
+
+solution = """
+def solution(sentence: str) -> str:
+    words = sentence.split()
+    result = [word[::-1] for word in words if len(word) % 2 == 0]
+    return ' '.join(result)
+"""
+
+examples = """
+solution("learn clojure be happy") == "eb"
+solution("some test words with odd length") == "emos tset htiw htgnel"
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["learn clojure be happy"]
+comment   = "Mixed lengths"
+expected  = "eb"
+
+[[asserts]]
+arguments = ["some test words with odd length"]
+comment   = "Multiple even words"
+expected  = "emos tset htiw htgnel"
+
+[[asserts]]
+arguments = ["hello world"]
+comment   = "Two odd length words"
+expected  = ""
+
+[[asserts]]
+arguments = ["test case"]
+comment   = "Two even length words"
+expected  = "tset esac"
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single odd character"
+expected  = ""
+
+[[asserts]]
+arguments = ["ab"]
+comment   = "Single even word"
+expected  = "ba"
+
+[[asserts]]
+arguments = ["one two three four"]
+comment   = "Mixed word lengths"
+expected  = "ruof"
+
+[[asserts]]
+arguments = ["python programming"]
+comment   = "Six and eleven"
+expected  = "nohtyp"
+
+[[asserts]]
+arguments = ["code review"]
+comment   = "Four and six letters"
+expected  = "edoc weiver"
+
+[[asserts]]
+arguments = ["quick brown fox jumps"]
+comment   = "All odd lengths"
+expected  = ""
+
+[[asserts]]
+arguments = ["data structure algorithm"]
+comment   = "Four and two odd"
+expected  = "atad"
+
+[[asserts]]
+arguments = ["test unit integration"]
+comment   = "Mixed lengths"
+expected  = "tset tinu"
+
+[[asserts]]
+arguments = ["web app"]
+comment   = "Three and three"
+expected  = ""
+
+[[asserts]]
+arguments = ["backend frontend"]
+comment   = "Seven and eight"
+expected  = "dnetnorf"
+
+[[asserts]]
+arguments = ["api rest soap"]
+comment   = "Mixed lengths"
+expected  = "tser paos"
+
+[[asserts]]
+arguments = ["database query"]
+comment   = "Eight and five"
+expected  = "esabatad"
+
+[[asserts]]
+arguments = ["java ruby python"]
+comment   = "Four, four, six"
+expected  = "avaj ybur nohtyp"
+
+[[asserts]]
+arguments = ["swift kotlin"]
+comment   = "Five and six"
+expected  = "niltok"
+
+[[asserts]]
+arguments = ["html css"]
+comment   = "Four and three"
+expected  = "lmth"
+
+[[asserts]]
+arguments = ["javascript typescript"]
+comment   = "Ten and ten"
+expected  = "tpircsavaj tpircsepyt"
+
+[[asserts]]
+arguments = ["mobile desktop"]
+comment   = "Six and seven"
+expected  = "elibom"
+
+[[asserts]]
+arguments = ["android ios"]
+comment   = "Seven and three"
+expected  = ""
+
+[[asserts]]
+arguments = ["client server"]
+comment   = "Six and six"
+expected  = "tneilc revres"
+
+[[asserts]]
+arguments = ["frontend backend"]
+comment   = "Eight and seven"
+expected  = "dnetnorf"
+
+[[asserts]]
+arguments = ["agile scrum"]
+comment   = "Five and five"
+expected  = ""
+
+[[asserts]]
+arguments = ["sprint kanban"]
+comment   = "Six and six"
+expected  = "tnirps nabnak"
+
+[[asserts]]
+arguments = ["testing debugging"]
+comment   = "Seven and nine"
+expected  = ""
+
+[[asserts]]
+arguments = ["build deploy"]
+comment   = "Five and six"
+expected  = "yolped"
+
+[[asserts]]
+arguments = ["git svn"]
+comment   = "Three and three"
+expected  = ""
+
+[[asserts]]
+arguments = ["branch merge"]
+comment   = "Six and five"
+expected  = "hcnarb"

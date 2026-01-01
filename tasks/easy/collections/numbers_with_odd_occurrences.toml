@@ -1,0 +1,194 @@
+level             = "easy"
+name              = "numbers_with_odd_occurrences"
+tags              = ["collections"]
+time_to_solve_sec = 280
+
+description_en = """
+Find numbers which have odd occurrences in array. Return them in the order of their first appearance.
+"""
+
+description_ru = """
+Найдите числа, которые встречаются нечетное количество раз в массиве. Верните их в порядке первого появления.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(arr) \\leq 100$
+- $-10000 \\leq arr[i] \\leq 10000$
+"""
+
+solution = """
+def solution(arr: list[int]) -> list[int]:
+    from collections import Counter
+    counts = Counter(arr)
+    seen = {}
+    result = []
+    for i, num in enumerate(arr):
+        if num not in seen and counts[num] % 2 == 1:
+            seen[num] = True
+            result.append(num)
+    return result
+"""
+
+examples = """
+solution([12, 23, 34, 12, 12, 23, 12, 45]) == [34, 45]
+solution([3, 3, 4, 6, 4, 5, 9, 9, 21, 9]) == [6, 5, 9, 21]
+solution([4, 8, 15, 16, 23, 42, 4, 15, 42, 42]) == [8, 16, 23, 42]
+solution([4, 4, 100, 5000, 4, 4, 4, 4, 4, 100, 100]) == [4, 100, 5000]
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[12, 23, 34, 12, 12, 23, 12, 45]]
+comment   = "Two odd occurrences"
+expected  = [34, 45]
+
+[[asserts]]
+arguments = [[4, 4, 100, 5000, 4, 4, 4, 4, 4, 100, 100]]
+comment   = "Multiple odd counts"
+expected  = [4, 100, 5000]
+
+[[asserts]]
+arguments = [[3, 3, 4, 6, 4, 5, 9, 9, 21, 9]]
+comment   = "Mixed occurrences"
+expected  = [6, 5, 9, 21]
+
+[[asserts]]
+arguments = [[4, 8, 15, 16, 23, 42, 4, 15, 42, 42]]
+comment   = "Various odd occurrences"
+expected  = [8, 16, 23, 42]
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single element"
+expected  = [1]
+
+[[asserts]]
+arguments = [[1, 1]]
+comment   = "Two same elements"
+expected  = []
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+comment   = "Three same elements"
+expected  = [1]
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "All unique"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [[1, 1, 2, 2, 3, 3]]
+comment   = "All even occurrences"
+expected  = []
+
+[[asserts]]
+arguments = [[5, 5, 5, 5, 5]]
+comment   = "Five same elements"
+expected  = [5]
+
+[[asserts]]
+arguments = [[1, 2, 1, 3, 2, 4]]
+comment   = "Two odd at end"
+expected  = [3, 4]
+
+[[asserts]]
+arguments = [[7, 7, 7, 8, 8, 8]]
+comment   = "All odd occurrences"
+expected  = [7, 8]
+
+[[asserts]]
+arguments = [[10, 20, 10, 30, 20, 40, 10]]
+comment   = "Mixed pattern"
+expected  = [10, 30, 40]
+
+[[asserts]]
+arguments = [[100, 200, 100, 200, 300]]
+comment   = "One odd occurrence"
+expected  = [300]
+
+[[asserts]]
+arguments = [[-1, -1, -2, -2, -3]]
+comment   = "Negative numbers"
+expected  = [-3]
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "Three zeros"
+expected  = [0]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "All different"
+expected  = [1, 2, 3, 4, 5]
+
+[[asserts]]
+arguments = [[9, 9, 9, 9]]
+comment   = "Four same elements"
+expected  = []
+
+[[asserts]]
+arguments = [[11, 22, 33, 11, 22, 33, 11]]
+comment   = "One with three occurrences"
+expected  = [11]
+
+[[asserts]]
+arguments = [[5, 5, 5, 6, 6, 6, 7, 7]]
+comment   = "Two odd counts at start"
+expected  = [5, 6]
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 1, 1]]
+comment   = "Seven occurrences"
+expected  = [1]
+
+[[asserts]]
+arguments = [[2, 4, 2, 4, 6]]
+comment   = "One odd at end"
+expected  = [6]
+
+[[asserts]]
+arguments = [[15, 15, 16, 16, 17, 17, 18]]
+comment   = "Last is odd"
+expected  = [18]
+
+[[asserts]]
+arguments = [[99, 88, 77, 99, 88, 77, 99]]
+comment   = "Three occurrences of 99"
+expected  = [99]
+
+[[asserts]]
+arguments = [[50, 50, 50, 60, 60, 70]]
+comment   = "Mixed counts"
+expected  = [50, 70]
+
+[[asserts]]
+arguments = [[123, 456, 123, 789]]
+comment   = "Two odd"
+expected  = [456, 789]
+
+[[asserts]]
+arguments = [[1, 2, 3, 1, 2, 3, 1, 2, 3]]
+comment   = "All three occurrences"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [[42, 42, 42, 42, 42, 42, 42, 42, 42]]
+comment   = "Nine occurrences"
+expected  = [42]
+
+[[asserts]]
+arguments = [[7, 14, 21, 7, 14, 28]]
+comment   = "Two odds"
+expected  = [21, 28]

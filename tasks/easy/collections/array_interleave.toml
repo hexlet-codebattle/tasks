@@ -1,0 +1,211 @@
+level             = "easy"
+name              = "array_interleave"
+tags              = ["collections"]
+time_to_solve_sec = 200
+
+description_en = """
+Construct a new array by interleaving two input arrays.
+
+Take the 1st element from the first array, then the 1st element from the second array, then the 2nd from the first, and so on.
+If one array runs out of elements, stop and return the result.
+"""
+
+description_ru = """
+Создайте новый массив, чередуя элементы двух входных массивов.
+
+Возьмите 1-й элемент из первого массива, затем 1-й элемент из второго, затем 2-й из первого и так далее.
+Если один массив заканчивается раньше другого, прекратите добавление и верните результат.
+"""
+
+limits = """
+- $2 \\leq \\text{len}(arr1) \\leq 5$
+- $2 \\leq \\text{len}(arr2) \\leq 5$
+- $1 \\leq arr1_i \\leq 10$
+- $1 \\leq arr2_i \\leq 10$
+"""
+
+solution = """
+def solution(arr1, arr2):
+    res = []
+    for a, b in zip(arr1, arr2):
+        res.append(a)
+        res.append(b)
+    return res
+"""
+
+examples = """
+solution([1, 3, 5], [2, 4]) == [1, 2, 3, 4]
+solution([5, 1, 3], [4, 9]) == [5, 4, 1, 9]
+solution([1, 3, 5], [2, 4, 6]) == [1, 2, 3, 4, 5, 6]
+"""
+
+[[input_signature]]
+argument_name = "arr1"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "arr2"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+# --- TEST CASES (30 total) ---
+
+[[asserts]]
+arguments = [[5, 1, 3], [4, 9]]
+comment   = "Example from original test-data"
+expected  = [5, 4, 1, 9]
+
+[[asserts]]
+arguments = [[1, 3, 5], [2, 4, 6]]
+comment   = "Equal-length arrays"
+expected  = [1, 2, 3, 4, 5, 6]
+
+[[asserts]]
+arguments = [[1, 3, 5], [2, 4]]
+comment   = "Second array shorter"
+expected  = [1, 2, 3, 4]
+
+[[asserts]]
+arguments = [[2, 4], [7, 8, 9]]
+comment   = "First array shorter"
+expected  = [2, 7, 4, 8]
+
+[[asserts]]
+arguments = [[9, 8, 7], [1, 2, 3]]
+comment   = "Reverse-ordered arrays"
+expected  = [9, 1, 8, 2, 7, 3]
+
+[[asserts]]
+arguments = [[10, 10], [5, 5]]
+comment   = "All values repeated"
+expected  = [10, 5, 10, 5]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4], [9, 8, 7, 6]]
+comment   = "Two arrays of length 4"
+expected  = [1, 9, 2, 8, 3, 7, 4, 6]
+
+[[asserts]]
+arguments = [[3, 3, 3], [1, 1, 1]]
+comment   = "Uniform arrays"
+expected  = [3, 1, 3, 1, 3, 1]
+
+[[asserts]]
+arguments = [[4, 5], [6, 7]]
+comment   = "Simple two-element arrays"
+expected  = [4, 6, 5, 7]
+
+[[asserts]]
+arguments = [[6, 1, 2], [3, 4, 5]]
+comment   = "Mixed ordering"
+expected  = [6, 3, 1, 4, 2, 5]
+
+[[asserts]]
+arguments = [[2, 2, 2], [9, 9]]
+comment   = "Second array shorter with repeated values"
+expected  = [2, 9, 2, 9]
+
+[[asserts]]
+arguments = [[8, 6, 4], [1, 3, 5]]
+comment   = "Both descending and ascending"
+expected  = [8, 1, 6, 3, 4, 5]
+
+[[asserts]]
+arguments = [[1, 10, 5], [9, 2, 3]]
+comment   = "Mix of large and small values"
+expected  = [1, 9, 10, 2, 5, 3]
+
+[[asserts]]
+arguments = [[7, 1], [2, 9, 8]]
+comment   = "First array much shorter"
+expected  = [7, 2, 1, 9]
+
+[[asserts]]
+arguments = [[2, 4, 6], [8, 10]]
+comment   = "Different lengths within limits"
+expected  = [2, 8, 4, 10]
+
+[[asserts]]
+arguments = [[3, 5, 7, 9], [2, 4, 6]]
+comment   = "Second array shorter but still interleaves"
+expected  = [3, 2, 5, 4, 7, 6]
+
+[[asserts]]
+arguments = [[9, 3], [4, 1]]
+comment   = "Small arrays"
+expected  = [9, 4, 3, 1]
+
+[[asserts]]
+arguments = [[1, 2, 3], [10, 9, 8]]
+comment   = "Interleave increasing with decreasing"
+expected  = [1, 10, 2, 9, 3, 8]
+
+[[asserts]]
+arguments = [[5, 6, 7], [1, 2, 3]]
+comment   = "Standard symmetric interleave"
+expected  = [5, 1, 6, 2, 7, 3]
+
+[[asserts]]
+arguments = [[8, 2], [3, 9, 1, 4]]
+comment   = "First array shorter, second array significantly longer"
+expected  = [8, 3, 2, 9]
+
+[[asserts]]
+arguments = [[1, 4, 7], [2, 5, 8]]
+comment   = "Perfect alternation"
+expected  = [1, 2, 4, 5, 7, 8]
+
+[[asserts]]
+arguments = [[9, 9, 9], [1, 2, 3]]
+comment   = "All nines with ascending second array"
+expected  = [9, 1, 9, 2, 9, 3]
+
+[[asserts]]
+arguments = [[3, 1, 4], [9, 2, 6]]
+comment   = "Classic digits interleave"
+expected  = [3, 9, 1, 2, 4, 6]
+
+[[asserts]]
+arguments = [[2, 9], [5, 7, 8]]
+comment   = "Check correct early stop"
+expected  = [2, 5, 9, 7]
+
+[[asserts]]
+arguments = [[6, 3, 1], [4, 8, 9]]
+comment   = "Descending first array"
+expected  = [6, 4, 3, 8, 1, 9]
+
+[[asserts]]
+arguments = [[5, 7, 9, 1], [2, 4, 6, 8]]
+comment   = "Two length-4 arrays, full interleave"
+expected  = [5, 2, 7, 4, 9, 6, 1, 8]
+
+[[asserts]]
+arguments = [[10, 3], [9, 1]]
+comment   = "Values at extremes"
+expected  = [10, 9, 3, 1]
+
+[[asserts]]
+arguments = [[7, 8, 9], [1, 2]]
+comment   = "Second array ends early"
+expected  = [7, 1, 8, 2]
+
+[[asserts]]
+arguments = [[2, 4, 6], [1, 3, 5, 7]]
+comment   = "First array shorter but aligns well"
+expected  = [2, 1, 4, 3, 6, 5]
+
+[[asserts]]
+arguments = [[3, 6], [9, 12]]
+comment   = "Edge case with upper-bound values"
+expected  = [3, 9, 6, 12]

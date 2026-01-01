@@ -1,6 +1,6 @@
 level             = "elementary"
 name              = "colour_invert"
-tags              = ["training"]
+tags              = ["stdlib", "training"]
 time_to_solve_sec = 120
 
 description_en = """

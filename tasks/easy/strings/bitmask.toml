@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "bitmask"
+tags              = ["strings", "bits"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given two binary strings `bitstring` and `bitmask` of the same length.
+
+Apply the logical operator `AND` to them **bit by bit**: each position in the result is `"1"` if both corresponding bits in `bitstring` and `bitmask` are `"1"`, and `"0"` otherwise.
+
+Return the resulting binary string.
+"""
+
+description_ru = """
+Даны две двоичные строки `bitstring` и `bitmask` одинаковой длины.
+
+Необходимо применить к ним побитовый логический оператор `И`: каждый символ результата равен `"1"`, если соответствующие биты в `bitstring` и `bitmask` равны `"1"`, и `"0"` в противном случае.
+
+Верните получившуюся двоичную строку.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{bitstring}) \\leq 60$
+- $\\text{len}(\\text{bitstring}) = \\text{len}(\\text{bitmask})$
+- $\\text{bitstring}, \\text{bitmask} \\in \\{0, 1\\}^*$
+"""
+
+solution = """
+def solution(bitstring: str, bitmask: str) -> str:
+    res = []
+    for a, b in zip(bitstring, bitmask):
+        res.append("1" if a == "1" and b == "1" else "0")
+    return "".join(res)
+"""
+
+examples = """
+solution("101", "110") == "100"
+solution("1011", "0111") == "0011"
+solution("1111", "0000") == "0000"
+solution("1010", "0101") == "0000"
+solution("101101", "101101") == "101101"
+solution("111111111", "000000001") == "000000001"
+"""
+
+[[input_signature]]
+argument_name = "bitstring"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "bitmask"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["101101", "101101"]
+comment   = "Bitwise AND with itself returns the same string"
+expected  = "101101"
+
+[[asserts]]
+arguments = ["1011", "0111"]
+comment   = "Example from original task, partial overlap"
+expected  = "0011"
+
+[[asserts]]
+arguments = ["101", "110"]
+comment   = "Example from original task, length 3"
+expected  = "100"
+
+[[asserts]]
+arguments = ["0", "0"]
+comment   = "Single zero AND zero"
+expected  = "0"
+
+[[asserts]]
+arguments = ["1", "1"]
+comment   = "Single one AND one"
+expected  = "1"
+
+[[asserts]]
+arguments = ["1", "0"]
+comment   = "Single one AND zero"
+expected  = "0"
+
+[[asserts]]
+arguments = ["0", "1"]
+comment   = "Single zero AND one"
+expected  = "0"
+
+[[asserts]]
+arguments = ["1111", "0000"]
+comment   = "All ones AND all zeros"
+expected  = "0000"
+
+[[asserts]]
+arguments = ["1111", "1111"]
+comment   = "All ones AND all ones"
+expected  = "1111"
+
+[[asserts]]
+arguments = ["1010", "0101"]
+comment   = "Alternating bits with complementary mask"
+expected  = "0000"
+
+[[asserts]]
+arguments = ["1010", "0110"]
+comment   = "Only one overlapping position"
+expected  = "0010"
+
+[[asserts]]
+arguments = ["0101", "0011"]
+comment   = "Overlap only at last bit"
+expected  = "0001"
+
+[[asserts]]
+arguments = ["000111", "111000"]
+comment   = "Disjoint groups of ones"
+expected  = "000000"
+
+[[asserts]]
+arguments = ["000111", "000111"]
+comment   = "Same non-trivial pattern on both"
+expected  = "000111"
+
+[[asserts]]
+arguments = ["101010", "111000"]
+comment   = "Mixed overlap in the first three bits"
+expected  = "101000"
+
+[[asserts]]
+arguments = ["111000", "101010"]
+comment   = "Same result with operands swapped"
+expected  = "101000"
+
+[[asserts]]
+arguments = ["1000001", "0111110"]
+comment   = "Ones are in non-overlapping positions"
+expected  = "0000000"
+
+[[asserts]]
+arguments = ["1100110", "1010101"]
+comment   = "Complex overlapping pattern"
+expected  = "1000100"
+
+[[asserts]]
+arguments = ["0101010", "0101010"]
+comment   = "Alternating pattern AND itself"
+expected  = "0101010"
+
+[[asserts]]
+arguments = ["111000111", "101101011"]
+comment   = "Longer strings with scattered ones"
+expected  = "101000011"
+
+[[asserts]]
+arguments = ["101111000", "111000111"]
+comment   = "Overlap concentrated at the beginning"
+expected  = "101000000"
+
+[[asserts]]
+arguments = ["000000000", "111111111"]
+comment   = "All zeros AND all ones"
+expected  = "000000000"
+
+[[asserts]]
+arguments = ["111111111", "000000001"]
+comment   = "Only the last bit overlaps"
+expected  = "000000001"
+
+[[asserts]]
+arguments = ["000000001", "111111111"]
+comment   = "Same as previous but swapped arguments"
+expected  = "000000001"
+
+[[asserts]]
+arguments = ["10100101", "00110011"]
+comment   = "Multiple isolated overlapping ones"
+expected  = "00100001"
+
+[[asserts]]
+arguments = ["11011011", "11000011"]
+comment   = "Mask clears the middle bits only"
+expected  = "11000011"

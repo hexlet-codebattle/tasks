@@ -1,0 +1,212 @@
+level             = "easy"
+name              = "snail_race"
+tags              = ["algo", "games"]
+time_to_solve_sec = 280
+
+description_en = """
+Steve and Maurice have racing snails. Each of them has exactly 3 snails.
+Every snail is represented by its speed as a positive integer.
+
+You are given:
+- maurice: a list of 3 integers
+- steve:   a list of 3 integers
+
+Each list contains the speeds of the snails for that player, in **random order**.
+The smallest number is the slow snail (s), the middle one is medium (m), and the largest is the fast one (f).
+
+Maurice always uses the following fixed strategy:
+
+- Round 1: [s, f]  — Maurice sacrifices his **slowest** snail against Steve's **fastest**.
+- Round 2: [m, s]  — Maurice uses his **middle** snail against Steve's **slowest**.
+- Round 3: [f, m]  — Maurice uses his **fastest** snail against Steve's **middle**.
+
+In each round, the snail with the **higher speed** wins.
+
+Write a function that returns True if Maurice wins **at least 2 out of 3** rounds with this strategy,
+and False otherwise.
+"""
+
+description_ru = """
+У Стива и Мориса есть гоночные улитки. У каждого ровно по 3 улитки.
+Каждая улитка задаётся своей скоростью — целым положительным числом.
+
+Вам даны:
+- maurice — список из 3 целых чисел
+- steve   — список из 3 целых чисел
+
+Каждый список содержит скорости улиток игрока в **случайном порядке**.
+Самое маленькое число — медленная улитка (м), среднее — средняя (с), самое большое — быстрая (б).
+
+Морис всегда использует следующую фиксированную стратегию:
+
+- Раунд 1: [м, б] — Морис жертвует своей **самой медленной** улиткой против **самой быстрой** улитки Стива.
+- Раунд 2: [с, м] — Морис выставляет свою **среднюю** улитку против **самой медленной** улитки Стива.
+- Раунд 3: [б, с] — Морис выставляет свою **самую быструю** улитку против **средней** улитки Стива.
+
+В каждом раунде побеждает улитка с **большей скоростью**.
+
+Напишите функцию которая возвращает True, если Морис выигрывает **как минимум 2 из 3** раундов с этой стратегией,
+и False в противном случае.
+"""
+
+limits = """
+- $\\text{len}(\\text{maurice}) = 3$
+- $\\text{len}(\\text{steve}) = 3$
+- $1 \\leq \\text{maurice}[i] \\leq 100$
+- $1 \\leq \\text{steve}[i] \\leq 100$
+"""
+
+solution = """
+def solution(maurice: list[int], steve: list[int]) -> bool:
+    ms = sorted(maurice)
+    ss = sorted(steve)
+    return ms[1] > ss[0] and ms[2] > ss[1]
+"""
+
+examples = """
+solution([3, 5, 10], [3, 4, 10]) == True
+solution([5, 6, 9], [4, 9, 10]) == False
+solution([1, 8, 9], [2, 4, 10]) == True
+"""
+
+[[input_signature]]
+argument_name = "maurice"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "steve"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[3, 5, 10], [3, 4, 10]]
+comment   = "Maurice wins 2 rounds"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 6, 9], [4, 9, 10]]
+comment   = "Steve too strong"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 8, 9], [2, 4, 10]]
+comment   = "Maurice's strategy works"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3], [4, 5, 6]]
+comment   = "Steve much stronger"
+expected  = false
+
+[[asserts]]
+arguments = [[10, 20, 30], [5, 15, 25]]
+comment   = "Maurice dominates"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 5, 5], [6, 6, 6]]
+comment   = "All same speeds per player"
+expected  = false
+
+[[asserts]]
+arguments = [[7, 8, 9], [6, 7, 10]]
+comment   = "Close competition"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1, 10], [2, 2, 9]]
+comment   = "Weak start strong finish"
+expected  = false
+
+[[asserts]]
+arguments = [[2, 5, 8], [1, 6, 9]]
+comment   = "Mixed speeds"
+expected  = true
+
+[[asserts]]
+arguments = [[20, 25, 30], [19, 24, 35]]
+comment   = "High baseline speeds"
+expected  = true
+
+[[asserts]]
+arguments = [[2, 3, 4], [1, 3, 5]]
+comment   = "Sequential speeds"
+expected  = true
+
+[[asserts]]
+arguments = [[10, 15, 20], [11, 16, 21]]
+comment   = "Steve slightly better"
+expected  = true
+
+[[asserts]]
+arguments = [[8, 12, 16], [7, 11, 17]]
+comment   = "Alternating advantage"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 7, 9], [6, 8, 10]]
+comment   = "Consecutive ranges"
+expected  = true
+
+[[asserts]]
+arguments = [[12, 14, 16], [11, 13, 17]]
+comment   = "Very tight race"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 50, 100], [2, 49, 99]]
+comment   = "Wide spread"
+expected  = true
+
+[[asserts]]
+arguments = [[3, 4, 5], [2, 5, 6]]
+comment   = "Low speed race"
+expected  = false
+
+[[asserts]]
+arguments = [[25, 30, 35], [20, 28, 40]]
+comment   = "Mid range speeds"
+expected  = true
+
+[[asserts]]
+arguments = [[6, 7, 8], [5, 8, 9]]
+comment   = "Single digit speeds"
+expected  = false
+
+[[asserts]]
+arguments = [[40, 50, 60], [35, 45, 65]]
+comment   = "Large numbers"
+expected  = true
+
+[[asserts]]
+arguments = [[11, 12, 13], [10, 13, 14]]
+comment   = "Teen numbers"
+expected  = false
+
+[[asserts]]
+arguments = [[30, 35, 40], [25, 33, 45]]
+comment   = "Thirties range"
+expected  = true
+
+[[asserts]]
+arguments = [[4, 8, 12], [5, 9, 13]]
+comment   = "Multiples of 4"
+expected  = true
+
+[[asserts]]
+arguments = [[50, 55, 60], [45, 53, 65]]
+comment   = "Fifties range"
+expected  = true
+
+[[asserts]]
+arguments = [[9, 10, 11], [8, 11, 12]]
+comment   = "Single step increments"
+expected  = false

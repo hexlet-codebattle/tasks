@@ -1,0 +1,207 @@
+level             = "easy"
+name              = "rock_scissors_paper"
+tags              = ["collections"]
+time_to_solve_sec = 300
+
+description_en = """
+Count your score in a game of rock-paper-scissors.
+You are given two arrays: your moves and your opponent's moves.
+You get `1` point for a win, `-1` for a loss, and `0` for a draw.
+Let me remind you that according to the rules:
+- rock beats scissors
+- scissors beat paper
+- paper beats rock
+"""
+
+description_ru = """
+Посчитайте свой счет в игре камень-ножницы-бумага.
+Вам даны два массива: ваши ходы и ходы противника.
+За победу вы получаете `1` очко, за поражение `-1` и `0` за ничью.
+Напомню, что по правилам:
+- камень бьет ножницы
+- ножницы бьют бумагу
+- бумага бьет камень
+"""
+
+limits = """
+- $1 \\leq \\text{len}(your) \\leq 100$
+- $\\text{len}(your) = \\text{len}(opponent)$
+- $your[i], opponent[i] \\in \\{r, s, p\\}$
+"""
+
+solution = """
+def solution(your: list[str], opponent: list[str]) -> int:
+    rules = {'r': {'s': 1, 'r': 0, 'p': -1},
+             's': {'s': 0, 'r': -1, 'p': 1},
+             'p': {'s': -1, 'r': 1, 'p': 0}}
+    return sum(rules[y][o] for y, o in zip(your, opponent))
+"""
+
+examples = """
+solution(["r", "s", "p"], ["r", "s", "p"]) == 0
+solution(["r", "s", "p"], ["s", "p", "r"]) == 3
+solution(["p", "p", "p"], ["s", "s", "s"]) == -3
+solution(["p", "r", "s", "r", "s"], ["s", "p", "s", "p", "s"]) == -3
+"""
+
+[[input_signature]]
+argument_name = "your"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "opponent"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["r", "s", "p"], ["s", "p", "r"]]
+comment   = "All wins"
+expected  = 3
+
+[[asserts]]
+arguments = [["p", "p", "p"], ["s", "s", "s"]]
+comment   = "All losses"
+expected  = -3
+
+[[asserts]]
+arguments = [["r", "s", "p"], ["r", "s", "p"]]
+comment   = "All draws"
+expected  = 0
+
+[[asserts]]
+arguments = [["p", "r", "s", "r", "s"], ["s", "p", "s", "p", "s"]]
+comment   = "Mixed results"
+expected  = -3
+
+[[asserts]]
+arguments = [["r"], ["s"]]
+comment   = "Single win"
+expected  = 1
+
+[[asserts]]
+arguments = [["r"], ["p"]]
+comment   = "Single loss"
+expected  = -1
+
+[[asserts]]
+arguments = [["r"], ["r"]]
+comment   = "Single draw"
+expected  = 0
+
+[[asserts]]
+arguments = [["s"], ["p"]]
+comment   = "Scissors beats paper"
+expected  = 1
+
+[[asserts]]
+arguments = [["s"], ["r"]]
+comment   = "Rock beats scissors"
+expected  = -1
+
+[[asserts]]
+arguments = [["p"], ["r"]]
+comment   = "Paper beats rock"
+expected  = 1
+
+[[asserts]]
+arguments = [["r", "r"], ["s", "s"]]
+comment   = "Two rock wins"
+expected  = 2
+
+[[asserts]]
+arguments = [["s", "s"], ["p", "p"]]
+comment   = "Two scissors wins"
+expected  = 2
+
+[[asserts]]
+arguments = [["p", "p"], ["r", "r"]]
+comment   = "Two paper wins"
+expected  = 2
+
+[[asserts]]
+arguments = [["r", "s"], ["p", "r"]]
+comment   = "Two losses"
+expected  = -2
+
+[[asserts]]
+arguments = [["r", "s", "p"], ["r", "r", "r"]]
+comment   = "Win draw loss"
+expected  = 0
+
+[[asserts]]
+arguments = [["r", "r", "r"], ["s", "s", "s"]]
+comment   = "Three rock wins"
+expected  = 3
+
+[[asserts]]
+arguments = [["s", "s", "s"], ["p", "p", "p"]]
+comment   = "Three scissors wins"
+expected  = 3
+
+[[asserts]]
+arguments = [["p", "p", "p"], ["r", "r", "r"]]
+comment   = "Three paper wins"
+expected  = 3
+
+[[asserts]]
+arguments = [["r", "r", "r"], ["p", "p", "p"]]
+comment   = "Three rock losses"
+expected  = -3
+
+[[asserts]]
+arguments = [["s", "s", "s"], ["r", "r", "r"]]
+comment   = "Three scissors losses"
+expected  = -3
+
+[[asserts]]
+arguments = [["r", "r", "r"], ["r", "r", "r"]]
+comment   = "Three draws"
+expected  = 0
+
+[[asserts]]
+arguments = [["r", "s", "p", "r"], ["s", "p", "r", "s"]]
+comment   = "Four rounds all wins"
+expected  = 4
+
+[[asserts]]
+arguments = [["r", "s", "p", "r", "s"], ["r", "s", "p", "r", "s"]]
+comment   = "Five draws"
+expected  = 0
+
+[[asserts]]
+arguments = [["r", "s", "p", "r", "s", "p"], ["p", "r", "s", "p", "r", "s"]]
+comment   = "Six rounds all losses"
+expected  = -6
+
+[[asserts]]
+arguments = [["r", "r", "s", "s", "p", "p"], ["s", "p", "p", "r", "r", "s"]]
+comment   = "Mixed six rounds"
+expected  = 0
+
+[[asserts]]
+arguments = [["r", "s", "p"], ["p", "p", "p"]]
+comment   = "Against all paper"
+expected  = 0
+
+[[asserts]]
+arguments = [["r", "s", "p"], ["s", "s", "s"]]
+comment   = "Against all scissors"
+expected  = 0
+
+[[asserts]]
+arguments = [["r", "s", "p"], ["r", "r", "r"]]
+comment   = "Against all rock"
+expected  = 0
+
+[[asserts]]
+arguments = [["p", "p", "p", "p"], ["r", "r", "r", "r"]]
+comment   = "Four paper wins"
+expected  = 4

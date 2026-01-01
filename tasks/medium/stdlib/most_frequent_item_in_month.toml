@@ -1,6 +1,6 @@
 level             = "medium"
 name              = "most_frequent_item_in_month"
-tags              = ["stdlib", "dict", "date", "array"]
+tags              = ["stdlib", "hash_maps", "date_time", "collections"]
 time_to_solve_sec = 360
 
 description_en = """

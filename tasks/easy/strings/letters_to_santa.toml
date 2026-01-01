@@ -1,0 +1,180 @@
+level             = "easy"
+name              = "letters_to_santa"
+tags              = ["strings", "regex"]
+time_to_solve_sec = 200
+
+description_en = """
+You are given a string — a letter written to Santa. Count how many times the words `"gift"`, `"tree"`, and `"snow"` appear in the letter. The search is case-insensitive.
+
+Return the total sum of all three word counts.
+"""
+
+description_ru = """
+Дана строка — письмо Санте. Посчитайте, сколько раз в письме встречаются слова `"gift"`, `"tree"` и `"snow"`. Поиск без учёта регистра.
+
+Верните сумму всех трёх счётчиков.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{letter}) \\leq 10^4$
+"""
+
+solution = """
+def solution(letter: str) -> int:
+    l = letter.lower()
+    return l.count('gift') + l.count('tree') + l.count('snow')
+"""
+
+examples = """
+solution("I want a gift") == 1
+solution("Tree and snow") == 2
+solution("GIFT gift GiFt") == 3
+solution("Dear Santa, I love Christmas tree and snow. Please bring me a gift!") == 3
+"""
+
+[[input_signature]]
+argument_name = "letter"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty letter"
+expected  = 0
+
+[[asserts]]
+arguments = ["Hello Santa"]
+comment   = "No keywords"
+expected  = 0
+
+[[asserts]]
+arguments = ["gift"]
+comment   = "Only gift"
+expected  = 1
+
+[[asserts]]
+arguments = ["tree"]
+comment   = "Only tree"
+expected  = 1
+
+[[asserts]]
+arguments = ["snow"]
+comment   = "Only snow"
+expected  = 1
+
+[[asserts]]
+arguments = ["GIFT"]
+comment   = "Uppercase gift"
+expected  = 1
+
+[[asserts]]
+arguments = ["GiFt"]
+comment   = "Mixed case gift"
+expected  = 1
+
+[[asserts]]
+arguments = ["gift gift"]
+comment   = "Two gifts"
+expected  = 2
+
+[[asserts]]
+arguments = ["gift tree snow"]
+comment   = "One of each"
+expected  = 3
+
+[[asserts]]
+arguments = ["GIFT TREE SNOW"]
+comment   = "One of each uppercase"
+expected  = 3
+
+[[asserts]]
+arguments = ["gift gift gift"]
+comment   = "Three gifts"
+expected  = 3
+
+[[asserts]]
+arguments = ["tree tree tree tree"]
+comment   = "Four trees"
+expected  = 4
+
+[[asserts]]
+arguments = ["snow snow snow snow snow"]
+comment   = "Five snows"
+expected  = 5
+
+[[asserts]]
+arguments = ["I want a gift and a tree"]
+comment   = "Gift and tree in sentence"
+expected  = 2
+
+[[asserts]]
+arguments = ["Snow is falling on the tree"]
+comment   = "Snow and tree in sentence"
+expected  = 2
+
+[[asserts]]
+arguments = [
+  "Dear Santa, I love Christmas tree and snow. Please bring me a gift!",
+]
+comment = "Full letter with all keywords"
+expected = 3
+
+[[asserts]]
+arguments = ["gift gift tree tree snow snow"]
+comment   = "Two of each"
+expected  = 6
+
+[[asserts]]
+arguments = ["GiFtTrEeSnOw"]
+comment   = "All words concatenated"
+expected  = 3
+
+[[asserts]]
+arguments = ["I wish for a gift, a Christmas tree, and snow for the holidays"]
+comment   = "Realistic letter"
+expected  = 3
+
+[[asserts]]
+arguments = ["tree tree gift snow tree"]
+comment   = "Multiple trees"
+expected  = 5
+
+[[asserts]]
+arguments = ["snowsnowsnow"]
+comment   = "Overlapping snows"
+expected  = 3
+
+[[asserts]]
+arguments = ["giftgiftgift"]
+comment   = "Overlapping gifts"
+expected  = 3
+
+[[asserts]]
+arguments = ["treetree"]
+comment   = "Overlapping trees"
+expected  = 2
+
+[[asserts]]
+arguments = ["The treehouse is covered in snow, what a gift!"]
+comment   = "Keywords in compound words"
+expected  = 3
+
+[[asserts]]
+arguments = [
+  "The gift of snow under the tree is the best gift by the tree in the snow",
+]
+comment = "Multiple occurrences in natural text"
+expected = 6
+
+[[asserts]]
+arguments = ["GIFTGIFT tree SNOW"]
+comment   = "Mixed case and concatenation"
+expected  = 4
+
+[[asserts]]
+arguments = ["What a wonderful snow day with a beautiful tree and perfect gift"]
+comment   = "Keywords spread across sentence"
+expected  = 3

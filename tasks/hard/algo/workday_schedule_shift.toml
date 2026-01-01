@@ -1,6 +1,6 @@
 level             = "hard"
 name              = "workday_schedule_shift"
-tags              = ["algo", "intervals", "greedy", "scheduling", "string", "time"]
+tags              = ["algo", "intervals", "greedy", "scheduling", "strings", "time"]
 time_to_solve_sec = 900
 
 description_en = """

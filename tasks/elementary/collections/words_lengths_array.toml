@@ -1,0 +1,165 @@
+level             = "elementary"
+name              = "words_lengths_array"
+tags              = ["collections", "strings"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that takes an array of words and transforms it into an array of each word's length.
+"""
+
+description_ru = """
+Создайте функцию, которая трансформирует массив слов в массив длин этих слов.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{words}) \\leq 100$
+- $1 \\leq \\text{len}(\\text{word}) \\leq 50$
+"""
+
+solution = """
+def solution(words: list) -> list:
+    return [len(word) for word in words]
+"""
+
+examples = """
+solution(["clojure"]) == [7]
+solution(["hello", "world"]) == [5, 5]
+solution(["some", "test", "data", "strings"]) == [4, 4, 4, 7]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [["hello", "world"]]
+comment   = "Two same length words"
+expected  = [5, 5]
+
+[[asserts]]
+arguments = [["some", "test", "data", "strings"]]
+comment   = "Four words"
+expected  = [4, 4, 4, 7]
+
+[[asserts]]
+arguments = [["clojure"]]
+comment   = "Single word"
+expected  = [7]
+
+[[asserts]]
+arguments = [["a"]]
+comment   = "Single character"
+expected  = [1]
+
+[[asserts]]
+arguments = [["programming"]]
+comment   = "Longer word"
+expected  = [11]
+
+[[asserts]]
+arguments = [["hi", "yo"]]
+comment   = "Two short words"
+expected  = [2, 2]
+
+[[asserts]]
+arguments = [["the", "quick", "brown", "fox"]]
+comment   = "Four words different lengths"
+expected  = [3, 5, 5, 3]
+
+[[asserts]]
+arguments = [["python", "java", "ruby", "go"]]
+comment   = "Programming languages"
+expected  = [6, 4, 4, 2]
+
+[[asserts]]
+arguments = [["one", "two", "three", "four", "five"]]
+comment   = "Numbers as words"
+expected  = [3, 3, 5, 4, 4]
+
+[[asserts]]
+arguments = [["short", "medium", "verylongword"]]
+comment   = "Varying lengths"
+expected  = [5, 6, 12]
+
+[[asserts]]
+arguments = [["a", "ab", "abc", "abcd"]]
+comment   = "Increasing lengths"
+expected  = [1, 2, 3, 4]
+
+[[asserts]]
+arguments = [["test"]]
+comment   = "Single four letter word"
+expected  = [4]
+
+[[asserts]]
+arguments = [["cat", "dog", "bird"]]
+comment   = "Three animals"
+expected  = [3, 3, 4]
+
+[[asserts]]
+arguments = [["red", "blue", "green", "yellow"]]
+comment   = "Colors"
+expected  = [3, 4, 5, 6]
+
+[[asserts]]
+arguments = [["I", "am", "learning", "programming"]]
+comment   = "Sentence words"
+expected  = [1, 2, 8, 11]
+
+[[asserts]]
+arguments = [["apple", "banana", "cherry"]]
+comment   = "Fruits"
+expected  = [5, 6, 6]
+
+[[asserts]]
+arguments = [["computer", "keyboard", "mouse"]]
+comment   = "Tech words"
+expected  = [8, 8, 5]
+
+[[asserts]]
+arguments = [["sun", "moon", "star"]]
+comment   = "Celestial objects"
+expected  = [3, 4, 4]
+
+[[asserts]]
+arguments = [["winter", "spring", "summer", "autumn"]]
+comment   = "Seasons"
+expected  = [6, 6, 6, 6]
+
+[[asserts]]
+arguments = [["monday", "tuesday", "wednesday"]]
+comment   = "Days of week"
+expected  = [6, 7, 9]
+
+[[asserts]]
+arguments = [["january", "february", "march"]]
+comment   = "Months"
+expected  = [7, 8, 5]
+
+[[asserts]]
+arguments = [["car", "bus", "train", "plane"]]
+comment   = "Transportation"
+expected  = [3, 3, 5, 5]
+
+[[asserts]]
+arguments = [["book", "pen", "paper", "desk"]]
+comment   = "School items"
+expected  = [4, 3, 5, 4]
+
+[[asserts]]
+arguments = [["coffee", "tea", "juice", "water"]]
+comment   = "Beverages"
+expected  = [6, 3, 5, 5]
+
+[[asserts]]
+arguments = [["happy", "sad", "angry", "calm"]]
+comment   = "Emotions"
+expected  = [5, 3, 5, 4]

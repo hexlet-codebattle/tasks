@@ -1,0 +1,166 @@
+level             = "medium"
+name              = "underscore"
+tags              = ["strings"]
+time_to_solve_sec = 450
+
+description_en = """
+Given a text with words separated in different ways (CamelCase, dash, double colon), return an underscored, lowercase form. For example: `"ActiveModel::Errors"` becomes `"active_model/errors"`, `"HelloHowAreYou"` becomes `"hello_how_are_you"`.
+"""
+
+description_ru = """
+Дан текст со словами, которые разделены разными способами (CamelCase, дефис, двойное двоеточие), верните текст, в котором слова разделены нижними подчеркиваниями и обращены в нижний регистр. Например: `"ActiveModel::Errors"` становится `"active_model/errors"`, `"HelloHowAreYou"` становится `"hello_how_are_you"`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{text}) \\leq 200$
+"""
+
+solution = """
+def solution(text: str) -> str:
+    import re
+    s = text.replace('-', '_')
+    s = re.sub(r'([a-z\\d])([A-Z])', r'\\1_\\2', s)
+    s = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\\1_\\2', s)
+    s = s.replace('::', '/')
+    return s.lower()
+"""
+
+examples = """
+solution("ActiveModel::Errors") == "active_model/errors"
+solution("HelloHowAreYou") == "hello_how_are_you"
+solution("MyNAMEIsBOND-JamesBond") == "my_name_is_bond_james_bond"
+solution("MAINCompany::BEST-MAINUser") == "main_company/best_main_user"
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["ActiveModel::Errors"]
+comment   = "Rails-style module path"
+expected  = "active_model/errors"
+
+[[asserts]]
+arguments = ["HelloHowAreYou"]
+comment   = "Simple CamelCase"
+expected  = "hello_how_are_you"
+
+[[asserts]]
+arguments = ["MyNAMEIsBOND-JamesBond"]
+comment   = "Mixed case with dash"
+expected  = "my_name_is_bond_james_bond"
+
+[[asserts]]
+arguments = ["MAINCompany::BEST-MAINUser"]
+comment   = "Complex with all separators"
+expected  = "main_company/best_main_user"
+
+[[asserts]]
+arguments = ["SimpleCase"]
+comment   = "Two words"
+expected  = "simple_case"
+
+[[asserts]]
+arguments = ["CamelCaseString"]
+comment   = "Three words"
+expected  = "camel_case_string"
+
+[[asserts]]
+arguments = ["HTTPResponse"]
+comment   = "Uppercase acronym"
+expected  = "http_response"
+
+[[asserts]]
+arguments = ["XMLParser"]
+comment   = "Acronym at start"
+expected  = "xml_parser"
+
+[[asserts]]
+arguments = ["parseHTML"]
+comment   = "Acronym at end"
+expected  = "parse_html"
+
+[[asserts]]
+arguments = ["IOError"]
+comment   = "Two letter acronym"
+expected  = "io_error"
+
+[[asserts]]
+arguments = ["URLPath"]
+comment   = "Acronym followed by word"
+expected  = "url_path"
+
+[[asserts]]
+arguments = ["HTTPSConnection"]
+comment   = "Long acronym"
+expected  = "https_connection"
+
+[[asserts]]
+arguments = ["getHTTPResponseCode"]
+comment   = "Mixed case with acronym"
+expected  = "get_http_response_code"
+
+[[asserts]]
+arguments = ["Model::User"]
+comment   = "Namespace separator"
+expected  = "model/user"
+
+[[asserts]]
+arguments = ["Admin::Panel::Settings"]
+comment   = "Multiple namespaces"
+expected  = "admin/panel/settings"
+
+[[asserts]]
+arguments = ["first-second"]
+comment   = "Dash separator"
+expected  = "first_second"
+
+[[asserts]]
+arguments = ["some-long-name"]
+comment   = "Multiple dashes"
+expected  = "some_long_name"
+
+[[asserts]]
+arguments = ["APIController"]
+comment   = "API at start"
+expected  = "api_controller"
+
+[[asserts]]
+arguments = ["DatabaseURL"]
+comment   = "Ends with acronym"
+expected  = "database_url"
+
+[[asserts]]
+arguments = ["RESTfulAPI"]
+comment   = "Multiple acronyms"
+expected  = "res_tful_api"
+
+[[asserts]]
+arguments = ["JSONParser"]
+comment   = "Four letter acronym"
+expected  = "json_parser"
+
+[[asserts]]
+arguments = ["HTMLDocument"]
+comment   = "HTML acronym"
+expected  = "html_document"
+
+[[asserts]]
+arguments = ["PDFFile"]
+comment   = "Three letter acronym"
+expected  = "pdf_file"
+
+[[asserts]]
+arguments = ["CSSStyle"]
+comment   = "CSS acronym"
+expected  = "css_style"
+
+[[asserts]]
+arguments = ["SQLQuery"]
+comment   = "SQL acronym"
+expected  = "sql_query"

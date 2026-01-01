@@ -1,0 +1,206 @@
+level             = "hard"
+name              = "number_to_english"
+tags              = ["strings"]
+time_to_solve_sec = 750
+
+description_en = """
+Write a function that accepts a positive integer between 0 and 2000 inclusive and returns a string representation of that integer written in English.
+"""
+
+description_ru = """
+Напишите функцию, которая принимает положительное целое число между 0 и 2000 включительно, и возвращает строковое представление этого числа на английском языке.
+"""
+
+limits = """
+- $0 \\leq num \\leq 2000$
+"""
+
+solution = """
+def solution(num: int) -> str:
+    if num == 0:
+        return "Zero"
+
+    ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+    tens = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
+
+    def helper(n):
+        if n < 10:
+            return ones[n]
+        elif n < 20:
+            return teens[n - 10]
+        elif n < 100:
+            return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+        elif n < 1000:
+            return ones[n // 100] + " hundred" + (" " + helper(n % 100) if n % 100 != 0 else "")
+        else:
+            return helper(n // 1000) + " thousand" + (", " + helper(n % 1000) if n % 1000 != 0 else "")
+
+    return helper(num)
+"""
+
+examples = """
+solution(0) == "Zero"
+solution(11) == "Eleven"
+solution(59) == "Fifty-nine"
+solution(129) == "One hundred twenty-nine"
+solution(1923) == "One thousand, nine hundred twenty-three"
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero"
+expected  = "Zero"
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleven"
+expected  = "Eleven"
+
+[[asserts]]
+arguments = [59]
+comment   = "Fifty-nine"
+expected  = "Fifty-nine"
+
+[[asserts]]
+arguments = [129]
+comment   = "One hundred twenty-nine"
+expected  = "One hundred twenty-nine"
+
+[[asserts]]
+arguments = [1923]
+comment   = "One thousand, nine hundred twenty-three"
+expected  = "One thousand, nine hundred twenty-three"
+
+[[asserts]]
+arguments = [1]
+comment   = "One"
+expected  = "One"
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten"
+expected  = "Ten"
+
+[[asserts]]
+arguments = [20]
+comment   = "Twenty"
+expected  = "Twenty"
+
+[[asserts]]
+arguments = [100]
+comment   = "One hundred"
+expected  = "One hundred"
+
+[[asserts]]
+arguments = [1000]
+comment   = "One thousand"
+expected  = "One thousand"
+
+[[asserts]]
+arguments = [2000]
+comment   = "Two thousand"
+expected  = "Two thousand"
+
+[[asserts]]
+arguments = [19]
+comment   = "Nineteen"
+expected  = "Nineteen"
+
+[[asserts]]
+arguments = [99]
+comment   = "Ninety-nine"
+expected  = "Ninety-nine"
+
+[[asserts]]
+arguments = [999]
+comment   = "Nine hundred ninety-nine"
+expected  = "Nine hundred ninety-nine"
+
+[[asserts]]
+arguments = [1999]
+comment   = "One thousand, nine hundred ninety-nine"
+expected  = "One thousand, nine hundred ninety-nine"
+
+[[asserts]]
+arguments = [500]
+comment   = "Five hundred"
+expected  = "Five hundred"
+
+[[asserts]]
+arguments = [505]
+comment   = "Five hundred five"
+expected  = "Five hundred five"
+
+[[asserts]]
+arguments = [550]
+comment   = "Five hundred fifty"
+expected  = "Five hundred fifty"
+
+[[asserts]]
+arguments = [555]
+comment   = "Five hundred fifty-five"
+expected  = "Five hundred fifty-five"
+
+[[asserts]]
+arguments = [1500]
+comment   = "One thousand, five hundred"
+expected  = "One thousand, five hundred"
+
+[[asserts]]
+arguments = [1505]
+comment   = "One thousand, five hundred five"
+expected  = "One thousand, five hundred five"
+
+[[asserts]]
+arguments = [1550]
+comment   = "One thousand, five hundred fifty"
+expected  = "One thousand, five hundred fifty"
+
+[[asserts]]
+arguments = [1555]
+comment   = "One thousand, five hundred fifty-five"
+expected  = "One thousand, five hundred fifty-five"
+
+[[asserts]]
+arguments = [42]
+comment   = "Forty-two"
+expected  = "Forty-two"
+
+[[asserts]]
+arguments = [314]
+comment   = "Three hundred fourteen"
+expected  = "Three hundred fourteen"
+
+[[asserts]]
+arguments = [777]
+comment   = "Seven hundred seventy-seven"
+expected  = "Seven hundred seventy-seven"
+
+[[asserts]]
+arguments = [888]
+comment   = "Eight hundred eighty-eight"
+expected  = "Eight hundred eighty-eight"
+
+[[asserts]]
+arguments = [1111]
+comment   = "One thousand, one hundred eleven"
+expected  = "One thousand, one hundred eleven"
+
+[[asserts]]
+arguments = [1234]
+comment   = "One thousand, two hundred thirty-four"
+expected  = "One thousand, two hundred thirty-four"
+
+[[asserts]]
+arguments = [1776]
+comment   = "One thousand, seven hundred seventy-six"
+expected  = "One thousand, seven hundred seventy-six"

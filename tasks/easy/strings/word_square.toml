@@ -1,0 +1,179 @@
+level             = "easy"
+name              = "word_square"
+tags              = ["strings", "matrices"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given a $4\\times4$ grid represented by an array of $4$ uppercase strings, each of length $4$.
+
+The grid is **good** if, for every $i \\in \\{0,1,2,3\\}$, the word in row $i$ equals the word in column $i$ (i.e., the grid is symmetric with respect to the main diagonal).
+
+Return `True` if the grid is good, otherwise return `False`.
+"""
+
+description_ru = """
+Дан массив из $4$ строк верхнего регистра, каждая длиной $4$, представляющий квадрат $4\\times4$.
+
+Квадрат **хороший**, если для каждого $i \\in \\{0,1,2,3\\}$ слово в строке $i$ совпадает со словом в столбце $i$ (т.е. квадрат симметричен относительно главной диагонали).
+
+Верните `True`, если квадрат хороший, иначе `False`.
+"""
+
+limits = """
+- $\\text{len}(\\text{tab}) = 4$
+- $\\forall s \\in \\text{tab}:\\ \\text{len}(s) = 4$
+- $\\forall s \\in \\text{tab}:\\ s \\in [A\\!:\\!Z]^4$
+"""
+
+solution = """
+def solution(arr: list) -> bool:
+    for i in range(4):
+        for j in range(4):
+            if arr[i][j] != arr[j][i]:
+                return False
+    return True
+"""
+
+examples = """
+solution(['CRAB', 'RARE', 'ARTS', 'BEST']) == True
+solution(['ABCD', 'EFGH', 'IJKL', 'MNOP']) == False
+solution(['FIND', 'IDEA', 'NEXT', 'DATE']) == True
+solution(['AAAA', 'AAAA', 'AAAA', 'AAAB']) == True
+"""
+
+[[input_signature]]
+argument_name = "tab"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+# --- Test cases (30 total) ---
+
+[[asserts]]
+arguments = [["LOVE", "OVER", "VERY", "EYES"]]
+expected  = false
+
+[[asserts]]
+arguments = [["WORD", "OPEN", "REAL", "DENY"]]
+expected  = false
+
+[[asserts]]
+arguments = [["TEAM", "ECHO", "ACID", "MODE"]]
+expected  = false
+
+[[asserts]]
+arguments = [["DARK", "AREA", "REAL", "KALE"]]
+comment   = "Perfect word square"
+expected  = true
+
+[[asserts]]
+arguments = [["FAST", "ALSO", "STOP", "TOPS"]]
+expected  = false
+
+[[asserts]]
+arguments = [["ROSE", "OVAL", "SALT", "ELSE"]]
+expected  = false
+
+[[asserts]]
+arguments = [["TIME", "IDEA", "MEAN", "EARN"]]
+expected  = false
+
+[[asserts]]
+arguments = [["SAME", "AREA", "MEAN", "EARN"]]
+expected  = false
+
+[[asserts]]
+arguments = [["CODE", "OPEN", "DEMO", "ENDS"]]
+expected  = false
+
+[[asserts]]
+arguments = [["GATE", "ATOM", "TIME", "EVEN"]]
+expected  = false
+
+[[asserts]]
+arguments = [["STAR", "TAKE", "AREA", "REAR"]]
+expected  = false
+
+[[asserts]]
+arguments = [["PLAY", "LANE", "ARMY", "YEAH"]]
+expected  = false
+
+[[asserts]]
+arguments = [["MIND", "IDEA", "NODE", "DEAD"]]
+expected  = false
+
+[[asserts]]
+arguments = [["HOPE", "OPEN", "PEAK", "ENDS"]]
+expected  = false
+
+[[asserts]]
+arguments = [["AAAA", "BBBB", "CCCC", "DDDD"]]
+expected  = false
+
+[[asserts]]
+arguments = [["HAND", "AREA", "NODE", "DEAN"]]
+expected  = false
+
+[[asserts]]
+arguments = [["FISH", "IRON", "SNOW", "HELP"]]
+expected  = false
+
+[[asserts]]
+arguments = [["CARE", "AREA", "REAL", "EASY"]]
+expected  = false
+
+[[asserts]]
+arguments = [["ZZZZ", "ZZZZ", "ZZZZ", "ZZZZ"]]
+comment   = "All rows equal; symmetric"
+expected  = true
+
+[[asserts]]
+arguments = [["ABCD", "BCDA", "CDAB", "DABC"]]
+comment   = "Cyclic shift forms a valid word square"
+expected  = true
+
+[[asserts]]
+arguments = [["DONE", "OPEN", "NODE", "ENDS"]]
+expected  = false
+
+[[asserts]]
+arguments = [["TREE", "READ", "EASY", "EDGE"]]
+expected  = false
+
+[[asserts]]
+arguments = [["DEAR", "EDGE", "AREA", "REAR"]]
+expected  = false
+
+[[asserts]]
+arguments = [["BLUE", "LUCK", "USER", "EASY"]]
+expected  = false
+
+[[asserts]]
+arguments = [["ROAD", "OVAL", "ALSO", "DOOR"]]
+expected  = false
+
+[[asserts]]
+arguments = [["COOL", "OPEN", "OKAY", "LAST"]]
+expected  = false
+
+[[asserts]]
+arguments = [["NEXT", "EXIT", "XRAY", "TEAM"]]
+expected  = false
+
+[[asserts]]
+arguments = [["GOOD", "OVER", "OPEN", "DONE"]]
+expected  = false
+
+# From examples:
+[[asserts]]
+arguments = [["CRAB", "RARE", "ARTS", "BEST"]]
+expected  = true
+
+[[asserts]]
+arguments = [["AAAA", "AAAA", "AAAA", "AAAB"]]
+comment   = "Last column matches last row"
+expected  = true

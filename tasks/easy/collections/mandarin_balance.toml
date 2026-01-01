@@ -1,0 +1,194 @@
+level             = "easy"
+name              = "mandarin_balance"
+tags              = ["collections", "math"]
+time_to_solve_sec = 200
+
+description_en = """
+Given an array representing the number of mandarins each child has, determine if they can be redistributed so that everyone has an equal amount.
+
+Return `true` if equal redistribution is possible, otherwise `false`.
+"""
+
+description_ru = """
+Дан массив — количество мандаринов у детей. Определите, можно ли перераспределить их так, чтобы у всех стало поровну.
+
+Верните `true`, если равномерное перераспределение возможно, иначе `false`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{mandarins}) \\leq 1000$
+- $0 \\leq \\text{mandarins}[i] \\leq 10^6$
+"""
+
+solution = """
+def solution(mandarins: list[int]) -> bool:
+    return sum(mandarins) % len(mandarins) == 0
+"""
+
+examples = """
+solution([1, 1]) == True
+solution([1, 2]) == False
+solution([3, 3, 3]) == True
+solution([1, 2, 3]) == True
+solution([10, 20, 30]) == True
+"""
+
+[[input_signature]]
+argument_name = "mandarins"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[0]]
+comment   = "Single child with zero"
+expected  = true
+
+[[asserts]]
+arguments = [[5]]
+comment   = "Single child"
+expected  = true
+
+[[asserts]]
+arguments = [[0, 0]]
+comment   = "Two children with zero each"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1]]
+comment   = "Already equal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2]]
+comment   = "Cannot divide 3 by 2 evenly"
+expected  = false
+
+[[asserts]]
+arguments = [[2, 2, 2]]
+comment   = "Three equal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "Sum 6 divisible by 3"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 4]]
+comment   = "Sum 7 not divisible by 3"
+expected  = false
+
+[[asserts]]
+arguments = [[10, 20, 30]]
+comment   = "Sum 60 divisible by 3"
+expected  = true
+
+[[asserts]]
+arguments = [[10, 20, 31]]
+comment   = "Sum 61 not divisible by 3"
+expected  = false
+
+[[asserts]]
+arguments = [[5, 5, 5, 5]]
+comment   = "Four equal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3, 4]]
+comment   = "Sum 10 not divisible by 4"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 2, 3, 5]]
+comment   = "Sum 11 not divisible by 4"
+expected  = false
+
+[[asserts]]
+arguments = [[0, 0, 0, 0, 0]]
+comment   = "All zeros"
+expected  = true
+
+[[asserts]]
+arguments = [[100, 200, 300, 400]]
+comment   = "Large numbers divisible"
+expected  = true
+
+[[asserts]]
+arguments = [[100, 200, 300, 401]]
+comment   = "Large numbers not divisible"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+comment   = "Ten equal"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+comment   = "Sum 55 not divisible by 10"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 11]]
+comment   = "Sum 56 not divisible by 10"
+expected  = false
+
+[[asserts]]
+arguments = [[50, 50]]
+comment   = "Two equal large"
+expected  = true
+
+[[asserts]]
+arguments = [[50, 51]]
+comment   = "Two unequal odd sum"
+expected  = false
+
+[[asserts]]
+arguments = [[10, 10, 10]]
+comment   = "Three equal tens"
+expected  = true
+
+[[asserts]]
+arguments = [[10, 10, 11]]
+comment   = "Three with odd sum"
+expected  = false
+
+[[asserts]]
+arguments = [[7, 7, 7, 7, 7, 7, 7]]
+comment   = "Seven equal"
+expected  = true
+
+[[asserts]]
+arguments = [[1000000, 1000000]]
+comment   = "Very large equal values"
+expected  = true
+
+[[asserts]]
+arguments = [[1000000, 1000001]]
+comment   = "Very large unequal values"
+expected  = false
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4, 5]]
+comment   = "Sum 15 not divisible by 6"
+expected  = false
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4, 6]]
+comment   = "Sum 16 not divisible by 6"
+expected  = false
+
+[[asserts]]
+arguments = [[12, 24, 36]]
+comment   = "Multiples of 12"
+expected  = true
+
+[[asserts]]
+arguments = [[13, 26, 39]]
+comment   = "Sum 78 divisible by 3"
+expected  = true

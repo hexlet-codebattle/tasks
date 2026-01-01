@@ -3,5 +3,4 @@
 release/
 release.tar.gz
 release-v*.tar.gz
-.clj-kondo
 .lsp

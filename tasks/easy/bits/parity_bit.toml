@@ -1,0 +1,201 @@
+level             = "easy"
+name              = "parity_bit"
+tags              = ["bits", "strings"]
+time_to_solve_sec = 240
+
+description_en = """
+Create a function that adds the correct parity bit to a binary string.
+
+Parity bits are used as a very simple checksum to ensure that binary data isn't corrupted during transit. Here's how they work:
+- If a binary string has an odd number of `1`'s, the parity bit is a `1`.
+- If a binary string has an even number of `1`'s, the parity bit is a `0`.
+- The parity bit is appended to the end of the binary string.
+"""
+
+description_ru = """
+Создайте функцию, которая добавляет бит паритета в бинарную строку.
+
+Бит паритета используется для проверки чек-суммы, чтобы убедиться, что бинарные данные не были испорчены во время передачи. Алгоритм вычисления паритета:
+- Если в бинарной строке нечетное количество единиц, то бит паритета равен единице.
+- Если в бинарной строке четное количество единиц, то бит паритета равен нулю.
+- Бит паритета добавляется в конец бинарной строки.
+"""
+
+limits = """
+- $1 \\leq |\\text{bitstring}| \\leq 20$
+- $x \\in \\{0,1\\}^*$
+"""
+
+solution = """
+def solution(bitstring: str) -> str:
+    ones_count = bitstring.count('1')
+
+    if ones_count % 2 == 1:
+        return bitstring + '1'
+    else:
+        return bitstring + '0'
+"""
+
+examples = """
+solution("101") == "1010"
+solution("101101") == "1011010"
+solution("1011011") == "10110111"
+"""
+
+[[input_signature]]
+argument_name = "bitstring"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["101101"]
+comment   = "Even ones add 0"
+expected  = "1011010"
+
+[[asserts]]
+arguments = ["1011011"]
+comment   = "Odd ones add 1"
+expected  = "10110111"
+
+[[asserts]]
+arguments = ["1111111"]
+comment   = "Seven ones"
+expected  = "11111111"
+
+[[asserts]]
+arguments = ["101"]
+comment   = "Two ones even"
+expected  = "1010"
+
+[[asserts]]
+arguments = ["0"]
+comment   = "Single zero"
+expected  = "00"
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Single one"
+expected  = "11"
+
+[[asserts]]
+arguments = ["00"]
+comment   = "Two zeros"
+expected  = "000"
+
+[[asserts]]
+arguments = ["11"]
+comment   = "Two ones"
+expected  = "110"
+
+[[asserts]]
+arguments = ["000"]
+comment   = "Three zeros"
+expected  = "0000"
+
+[[asserts]]
+arguments = ["111"]
+comment   = "Three ones"
+expected  = "1111"
+
+[[asserts]]
+arguments = ["0000"]
+comment   = "Four zeros"
+expected  = "00000"
+
+[[asserts]]
+arguments = ["1111"]
+comment   = "Four ones"
+expected  = "11110"
+
+[[asserts]]
+arguments = ["10101"]
+comment   = "Alternating odd ones"
+expected  = "101011"
+
+[[asserts]]
+arguments = ["01010"]
+comment   = "Alternating even ones"
+expected  = "010100"
+
+[[asserts]]
+arguments = ["100000"]
+comment   = "One one at start"
+expected  = "1000001"
+
+[[asserts]]
+arguments = ["000001"]
+comment   = "One one at end"
+expected  = "0000011"
+
+[[asserts]]
+arguments = ["110011"]
+comment   = "Four ones even"
+expected  = "1100110"
+
+[[asserts]]
+arguments = ["111000"]
+comment   = "Three ones odd"
+expected  = "1110001"
+
+[[asserts]]
+arguments = ["10100101"]
+comment   = "Four ones in eight"
+expected  = "101001010"
+
+[[asserts]]
+arguments = ["11100111"]
+comment   = "Six ones"
+expected  = "111001110"
+
+[[asserts]]
+arguments = ["00000000"]
+comment   = "Eight zeros"
+expected  = "000000000"
+
+[[asserts]]
+arguments = ["11111111"]
+comment   = "Eight ones"
+expected  = "111111110"
+
+[[asserts]]
+arguments = ["1010101"]
+comment   = "Seven alternating"
+expected  = "10101010"
+
+[[asserts]]
+arguments = ["0101010"]
+comment   = "Seven alternating start 0"
+expected  = "01010101"
+
+[[asserts]]
+arguments = ["100"]
+comment   = "One one in three"
+expected  = "1001"
+
+[[asserts]]
+arguments = ["011"]
+comment   = "Two ones in three"
+expected  = "0110"
+
+[[asserts]]
+arguments = ["1100"]
+comment   = "Two ones in four"
+expected  = "11000"
+
+[[asserts]]
+arguments = ["1110"]
+comment   = "Three ones in four"
+expected  = "11101"
+
+[[asserts]]
+arguments = ["10011"]
+comment   = "Three ones in five"
+expected  = "100111"
+
+[[asserts]]
+arguments = ["110110"]
+comment   = "Four ones in six"
+expected  = "1101100"

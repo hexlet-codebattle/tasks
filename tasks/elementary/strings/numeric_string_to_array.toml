@@ -1,0 +1,189 @@
+level             = "elementary"
+name              = "numeric_string_to_array"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 150
+
+description_en = """
+Convert a numeric string to array of numbers. It is guaranteed that numbers in array are non-negative. If the string is empty, return an empty array.
+"""
+
+description_ru = """
+Сконвертируйте числовую строку в массив чисел. Гарантируется, что строковое число не отрицательное. Если строка пустая, верните пустой массив.
+"""
+
+limits = """
+- $digits \\in \\{0{-}9\\}^*$
+- $0 \\leq \\text{len}(digits) \\leq 100$
+"""
+
+solution = """
+def solution(digits: str) -> list[int]:
+    return [int(d) for d in digits] if digits else []
+"""
+
+examples = """
+solution("") == []
+solution("123") == [1, 2, 3]
+solution("10100") == [1, 0, 1, 0, 0]
+solution("30902") == [3, 0, 9, 0, 2]
+"""
+
+[[input_signature]]
+argument_name = "digits"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = ["123"]
+comment   = "Simple digits"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = ["30902"]
+comment   = "With zeros"
+expected  = [3, 0, 9, 0, 2]
+
+[[asserts]]
+arguments = ["10100"]
+comment   = "Binary-like"
+expected  = [1, 0, 1, 0, 0]
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = []
+
+[[asserts]]
+arguments = ["0"]
+comment   = "Single zero"
+expected  = [0]
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Single one"
+expected  = [1]
+
+[[asserts]]
+arguments = ["9"]
+comment   = "Single nine"
+expected  = [9]
+
+[[asserts]]
+arguments = ["00"]
+comment   = "Two zeros"
+expected  = [0, 0]
+
+[[asserts]]
+arguments = ["99"]
+comment   = "Two nines"
+expected  = [9, 9]
+
+[[asserts]]
+arguments = ["12345"]
+comment   = "Sequential digits"
+expected  = [1, 2, 3, 4, 5]
+
+[[asserts]]
+arguments = ["54321"]
+comment   = "Reverse sequential"
+expected  = [5, 4, 3, 2, 1]
+
+[[asserts]]
+arguments = ["1234567890"]
+comment   = "All digits"
+expected  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+[[asserts]]
+arguments = ["0000"]
+comment   = "All zeros"
+expected  = [0, 0, 0, 0]
+
+[[asserts]]
+arguments = ["9999"]
+comment   = "All nines"
+expected  = [9, 9, 9, 9]
+
+[[asserts]]
+arguments = ["101010"]
+comment   = "Alternating pattern"
+expected  = [1, 0, 1, 0, 1, 0]
+
+[[asserts]]
+arguments = ["2468"]
+comment   = "Even digits"
+expected  = [2, 4, 6, 8]
+
+[[asserts]]
+arguments = ["13579"]
+comment   = "Odd digits"
+expected  = [1, 3, 5, 7, 9]
+
+[[asserts]]
+arguments = ["111"]
+comment   = "Three ones"
+expected  = [1, 1, 1]
+
+[[asserts]]
+arguments = ["222"]
+comment   = "Three twos"
+expected  = [2, 2, 2]
+
+[[asserts]]
+arguments = ["505"]
+comment   = "Palindrome"
+expected  = [5, 0, 5]
+
+[[asserts]]
+arguments = ["1221"]
+comment   = "Another palindrome"
+expected  = [1, 2, 2, 1]
+
+[[asserts]]
+arguments = ["98765"]
+comment   = "Descending"
+expected  = [9, 8, 7, 6, 5]
+
+[[asserts]]
+arguments = ["56789"]
+comment   = "Ascending from 5"
+expected  = [5, 6, 7, 8, 9]
+
+[[asserts]]
+arguments = ["42"]
+comment   = "Two digit number"
+expected  = [4, 2]
+
+[[asserts]]
+arguments = ["777"]
+comment   = "Lucky sevens"
+expected  = [7, 7, 7]
+
+[[asserts]]
+arguments = ["8008"]
+comment   = "Symmetric"
+expected  = [8, 0, 0, 8]
+
+[[asserts]]
+arguments = ["314159"]
+comment   = "Pi digits"
+expected  = [3, 1, 4, 1, 5, 9]
+
+[[asserts]]
+arguments = ["271828"]
+comment   = "Euler digits"
+expected  = [2, 7, 1, 8, 2, 8]
+
+[[asserts]]
+arguments = ["6"]
+comment   = "Single six"
+expected  = [6]
+
+[[asserts]]
+arguments = ["80085"]
+comment   = "Calculator word"
+expected  = [8, 0, 0, 8, 5]

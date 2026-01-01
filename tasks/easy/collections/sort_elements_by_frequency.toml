@@ -1,0 +1,195 @@
+level             = "easy"
+name              = "sort_elements_by_frequency"
+tags              = ["collections", "sorting", "algo"]
+time_to_solve_sec = 280
+
+description_en = """
+Given an array of integers, sort the array according to frequency of elements. Most frequent numbers come first. If several groups of the same size exist, they should appear in the order of corresponding numbers in the input array (maintain first occurrence order for ties).
+"""
+
+description_ru = """
+Дан массив целых чисел, отсортируйте его элементы по частоте присутствия в массиве. Самые часто встречающиеся элементы должны быть в начале. Если существует несколько групп элементов одинаковой частоты, они должны быть расположены в порядке первой встречи соответствующих элементов в исходном массиве.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{arr}) \\leq 1000$
+- $-100 \\leq \\text{arr}[i] \\leq 100$
+"""
+
+solution = """
+def solution(arr: list[int]) -> list[int]:
+    from collections import Counter
+    c = Counter(arr)
+    s = {}
+    for i, v in enumerate(arr):
+        if v not in s:
+            s[v] = i
+    return sorted(arr, key=lambda x: (-c[x], s[x]))
+"""
+
+examples = """
+solution([2, 2, 2, 3, 4]) == [2, 2, 2, 3, 4]
+solution([1, 2, 1, 2, 1, 4, 3, 3, 1]) == [1, 1, 1, 1, 2, 2, 3, 3, 4]
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[2, 3, 2, 4, 5, 12, 2, 3, 3, 3, 12]]
+comment   = "Complex frequency pattern"
+expected  = [3, 3, 3, 3, 2, 2, 2, 12, 12, 4, 5]
+
+[[asserts]]
+arguments = [[2, 2, 2, 3, 4]]
+comment   = "Clear most frequent"
+expected  = [2, 2, 2, 3, 4]
+
+[[asserts]]
+arguments = [[1, 2, 1, 2, 1, 4, 3, 3, 1]]
+comment   = "Multiple frequencies"
+expected  = [1, 1, 1, 1, 2, 2, 3, 3, 4]
+
+[[asserts]]
+arguments = [[8, 6, 8, 7, 2, 2, 7, 1, 9, 9, 1]]
+comment   = "Mixed duplicates"
+expected  = [8, 8, 7, 7, 2, 2, 1, 1, 9, 9, 6]
+
+[[asserts]]
+arguments = [[9, -11, 1, 12, -10, 3, -3, 6, 5, 2, -9, 4, 4]]
+comment   = "With negatives"
+expected  = [4, 4, 9, -11, 1, 12, -10, 3, -3, 6, 5, 2, -9]
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single element"
+expected  = [1]
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+comment   = "All same"
+expected  = [1, 1, 1]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "All unique"
+expected  = [1, 2, 3, 4, 5]
+
+[[asserts]]
+arguments = [[5, 5, 4, 4, 3, 3, 2, 2, 1]]
+comment   = "All same frequency"
+expected  = [5, 5, 4, 4, 3, 3, 2, 2, 1]
+
+[[asserts]]
+arguments = [[10, 10, 10, 5, 5, 3]]
+comment   = "Decreasing frequency"
+expected  = [10, 10, 10, 5, 5, 3]
+
+[[asserts]]
+arguments = [[1, 2, 2, 3, 3, 3]]
+comment   = "Increasing frequency"
+expected  = [3, 3, 3, 2, 2, 1]
+
+[[asserts]]
+arguments = [[7, 7, 8, 8, 9, 9]]
+comment   = "Three pairs"
+expected  = [7, 7, 8, 8, 9, 9]
+
+[[asserts]]
+arguments = [[0, 0, 0, 1, 1, 2]]
+comment   = "With zeros"
+expected  = [0, 0, 0, 1, 1, 2]
+
+[[asserts]]
+arguments = [[-1, -1, -1, 0, 0, 1]]
+comment   = "Negative to positive"
+expected  = [-1, -1, -1, 0, 0, 1]
+
+[[asserts]]
+arguments = [[100, 100, 50, 50, 25]]
+comment   = "Large numbers"
+expected  = [100, 100, 50, 50, 25]
+
+[[asserts]]
+arguments = [[3, 1, 4, 1, 5, 9, 2, 6, 5]]
+comment   = "Pi digits"
+expected  = [1, 1, 5, 5, 3, 4, 9, 2, 6]
+
+[[asserts]]
+arguments = [[5, 5, 5, 1, 1, 1, 3, 3, 3]]
+comment   = "Three groups same frequency"
+expected  = [5, 5, 5, 1, 1, 1, 3, 3, 3]
+
+[[asserts]]
+arguments = [[2, 2, 2, 2, 1, 1, 1, 3]]
+comment   = "One dominant"
+expected  = [2, 2, 2, 2, 1, 1, 1, 3]
+
+[[asserts]]
+arguments = [[7, 8, 7, 8, 7, 8]]
+comment   = "Alternating pattern"
+expected  = [7, 7, 7, 8, 8, 8]
+
+[[asserts]]
+arguments = [[10, 20, 30, 20, 10, 20]]
+comment   = "Middle most frequent"
+expected  = [20, 20, 20, 10, 10, 30]
+
+[[asserts]]
+arguments = [[1, 2, 3, 2, 1, 2]]
+comment   = "One element more frequent"
+expected  = [2, 2, 2, 1, 1, 3]
+
+[[asserts]]
+arguments = [[15, 15, 15, 15, 15]]
+comment   = "Five same elements"
+expected  = [15, 15, 15, 15, 15]
+
+[[asserts]]
+arguments = [[1, 1, 2, 2, 3, 3, 4, 4]]
+comment   = "Four pairs"
+expected  = [1, 1, 2, 2, 3, 3, 4, 4]
+
+[[asserts]]
+arguments = [[6, 6, 6, 7, 7, 8]]
+comment   = "Descending frequency"
+expected  = [6, 6, 6, 7, 7, 8]
+
+[[asserts]]
+arguments = [[9, 8, 7, 8, 9, 8]]
+comment   = "Middle dominant"
+expected  = [8, 8, 8, 9, 9, 7]
+
+[[asserts]]
+arguments = [[5, 4, 3, 4, 5, 4, 5, 4]]
+comment   = "Two main frequencies"
+expected  = [4, 4, 4, 4, 5, 5, 5, 3]
+
+[[asserts]]
+arguments = [[-5, -5, -5, 0, 0, 5]]
+comment   = "Symmetric around zero"
+expected  = [-5, -5, -5, 0, 0, 5]
+
+[[asserts]]
+arguments = [[11, 22, 11, 22, 11, 22, 11]]
+comment   = "Alternating with one extra"
+expected  = [11, 11, 11, 11, 22, 22, 22]
+
+[[asserts]]
+arguments = [[99, 99, 88, 88, 77]]
+comment   = "Descending pairs"
+expected  = [99, 99, 88, 88, 77]
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 2, 3, 4, 5]]
+comment   = "One very frequent"
+expected  = [1, 1, 1, 1, 1, 2, 3, 4, 5]

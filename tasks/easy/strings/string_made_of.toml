@@ -1,0 +1,179 @@
+level             = "easy"
+name              = "string_made_of"
+tags              = ["strings"]
+time_to_solve_sec = 250
+
+description_en = """
+Given a string which contains only decimal digits `(0-9)`, calculate the total number of dashes (segments) needed to display all digits on an LCD calculator display. Each digit is made of a certain number of dashes: `0=6, 1=2, 2=5, 3=5, 4=4, 5=5, 6=6, 7=3, 8=7, 9=6` dashes.
+"""
+
+description_ru = """
+Дана строка, которая содержит только десятичные цифры `(0-9)`. Каждая цифра состоит из определенного числа сегментов, как на LCD-экране калькулятора: `0=6, 1=2, 2=5, 3=5, 4=4, 5=5, 6=6, 7=3, 8=7, 9=6`.
+Верните общее число сегментов, содержащихся во входной строке.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{text}) \\leq 1000$
+- $\\text{text} \\in \\{0{-}9\\}^*$
+"""
+
+solution = """
+def solution(text: str) -> int:
+    m = {'0': 6, '1': 2, '2': 5, '3': 5, '4': 4, '5': 5, '6': 6, '7': 3, '8': 7, '9': 6}
+    return sum(m[c] for c in text)
+"""
+
+examples = """
+solution("452") == 14
+solution("76814") == 22
+solution("12134") == 18
+solution("9817567") == 32
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["0"]
+comment   = "Single digit 0"
+expected  = 6
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Single digit 1"
+expected  = 2
+
+[[asserts]]
+arguments = ["2"]
+comment   = "Single digit 2"
+expected  = 5
+
+[[asserts]]
+arguments = ["3"]
+comment   = "Single digit 3"
+expected  = 5
+
+[[asserts]]
+arguments = ["4"]
+comment   = "Single digit 4"
+expected  = 4
+
+[[asserts]]
+arguments = ["5"]
+comment   = "Single digit 5"
+expected  = 5
+
+[[asserts]]
+arguments = ["6"]
+comment   = "Single digit 6"
+expected  = 6
+
+[[asserts]]
+arguments = ["7"]
+comment   = "Single digit 7"
+expected  = 3
+
+[[asserts]]
+arguments = ["8"]
+comment   = "Single digit 8"
+expected  = 7
+
+[[asserts]]
+arguments = ["9"]
+comment   = "Single digit 9"
+expected  = 6
+
+[[asserts]]
+arguments = ["12134"]
+comment   = "Example from test data"
+expected  = 18
+
+[[asserts]]
+arguments = ["452"]
+comment   = "Example from test data"
+expected  = 14
+
+[[asserts]]
+arguments = ["9817567"]
+comment   = "Example from test data"
+expected  = 32
+
+[[asserts]]
+arguments = ["76814"]
+comment   = "Example from test data"
+expected  = 22
+
+[[asserts]]
+arguments = ["00"]
+comment   = "Two zeros"
+expected  = 12
+
+[[asserts]]
+arguments = ["11"]
+comment   = "Two ones"
+expected  = 4
+
+[[asserts]]
+arguments = ["88"]
+comment   = "Two eights"
+expected  = 14
+
+[[asserts]]
+arguments = ["123"]
+comment   = "Sequential digits"
+expected  = 12
+
+[[asserts]]
+arguments = ["456"]
+comment   = "Sequential digits"
+expected  = 15
+
+[[asserts]]
+arguments = ["789"]
+comment   = "Sequential digits"
+expected  = 16
+
+[[asserts]]
+arguments = ["0123456789"]
+comment   = "All digits"
+expected  = 49
+
+[[asserts]]
+arguments = ["1111"]
+comment   = "All ones"
+expected  = 8
+
+[[asserts]]
+arguments = ["8888"]
+comment   = "All eights"
+expected  = 28
+
+[[asserts]]
+arguments = ["7777"]
+comment   = "All sevens"
+expected  = 12
+
+[[asserts]]
+arguments = ["505"]
+comment   = "With zero in middle"
+expected  = 16
+
+[[asserts]]
+arguments = ["9999"]
+comment   = "All nines"
+expected  = 24
+
+[[asserts]]
+arguments = ["2468"]
+comment   = "Even digits"
+expected  = 22
+
+[[asserts]]
+arguments = ["13579"]
+comment   = "Odd digits"
+expected  = 21

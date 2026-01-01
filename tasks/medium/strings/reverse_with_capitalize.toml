@@ -1,0 +1,199 @@
+level             = "medium"
+name              = "reverse_with_capitalize"
+tags              = ["strings"]
+time_to_solve_sec = 450
+
+description_en = """
+Create a function that takes a string as input and reverses the order of the letters in each word, preserving case and punctuation.
+"""
+
+description_ru = """
+Напишите функцию, которая принимает на вход строку и меняет порядок букв в каждом слове на обратный с сохранением регистра и пунктуации.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(sentence) \\leq 200$
+"""
+
+solution = """
+def solution(sentence: str) -> str:
+    def reverse_word(word):
+        if not word:
+            return word
+        punct = ''
+        if word[-1] in '.!?':
+            punct = word[-1]
+            word = word[:-1]
+        if not word:
+            return punct
+        was_cap = word[0].isupper()
+        reversed_word = word[::-1]
+        if was_cap:
+            reversed_word = reversed_word[0].upper() + reversed_word[1:].lower()
+        return reversed_word + punct
+    return ' '.join(reverse_word(word) for word in sentence.split())
+"""
+
+examples = """
+solution("Hello! Are you.") == "Olleh! Era uoy."
+solution("11Helloworld!") == "Dlrowolleh11!"
+solution("Abstraction is often one floor above you.") == "Noitcartsba si netfo eno roolf evoba uoy."
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Hello! Are you."]
+comment   = "With punctuation"
+expected  = "Olleh! Era uoy."
+
+[[asserts]]
+arguments = ["11Helloworld!"]
+comment   = "With numbers and punctuation"
+expected  = "Dlrowolleh11!"
+
+[[asserts]]
+arguments = ["Abstraction is often one floor above you."]
+comment   = "Long sentence with period"
+expected  = "Noitcartsba si netfo eno roolf evoba uoy."
+
+[[asserts]]
+arguments = ["Hello"]
+comment   = "Single capitalized word"
+expected  = "Olleh"
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Single lowercase word"
+expected  = "olleh"
+
+[[asserts]]
+arguments = ["Hello world"]
+comment   = "Two words"
+expected  = "Olleh dlrow"
+
+[[asserts]]
+arguments = ["Hello World"]
+comment   = "Two capitalized words"
+expected  = "Olleh Dlrow"
+
+[[asserts]]
+arguments = ["Test!"]
+comment   = "Word with exclamation"
+expected  = "Tset!"
+
+[[asserts]]
+arguments = ["Test?"]
+comment   = "Word with question mark"
+expected  = "Tset?"
+
+[[asserts]]
+arguments = ["Test."]
+comment   = "Word with period"
+expected  = "Tset."
+
+[[asserts]]
+arguments = ["Quick brown fox"]
+comment   = "Three words"
+expected  = "Kciuq nworb xof"
+
+[[asserts]]
+arguments = ["Quick Brown Fox"]
+comment   = "Three capitalized words"
+expected  = "Kciuq Nworb Xof"
+
+[[asserts]]
+arguments = ["How are you?"]
+comment   = "Question"
+expected  = "Woh era uoy?"
+
+[[asserts]]
+arguments = ["I am fine!"]
+comment   = "Exclamation"
+expected  = "I ma enif!"
+
+[[asserts]]
+arguments = ["Python Programming"]
+comment   = "Two long words"
+expected  = "Nohtyp Gnimmargorp"
+
+[[asserts]]
+arguments = ["Code Review Time"]
+comment   = "Three capitalized"
+expected  = "Edoc Weiver Emit"
+
+[[asserts]]
+arguments = ["Testing is important."]
+comment   = "Statement with period"
+expected  = "Gnitset si tnatropmi."
+
+[[asserts]]
+arguments = ["Why not?"]
+comment   = "Question with capitalized start"
+expected  = "Yhw ton?"
+
+[[asserts]]
+arguments = ["Yes!"]
+comment   = "Short exclamation"
+expected  = "Sey!"
+
+[[asserts]]
+arguments = ["No."]
+comment   = "Short statement"
+expected  = "On."
+
+[[asserts]]
+arguments = ["Maybe later."]
+comment   = "Two word statement"
+expected  = "Ebyam retal."
+
+[[asserts]]
+arguments = ["Software Engineering"]
+comment   = "Professional term"
+expected  = "Erawtfos Gnireenigne"
+
+[[asserts]]
+arguments = ["Data Structures"]
+comment   = "Technical term"
+expected  = "Atad Serutcurts"
+
+[[asserts]]
+arguments = ["Algorithm Design"]
+comment   = "Two word technical term"
+expected  = "Mhtirogla Ngised"
+
+[[asserts]]
+arguments = ["Web Development"]
+comment   = "Web related"
+expected  = "Bew Tnempoleved"
+
+[[asserts]]
+arguments = ["Mobile Apps"]
+comment   = "Mobile related"
+expected  = "Elibom Sppa"
+
+[[asserts]]
+arguments = ["Cloud Computing"]
+comment   = "Cloud related"
+expected  = "Duolc Gnitupmoc"
+
+[[asserts]]
+arguments = ["Machine Learning"]
+comment   = "AI related"
+expected  = "Enihcam Gninrael"
+
+[[asserts]]
+arguments = ["Deep Learning"]
+comment   = "ML related"
+expected  = "Peed Gninrael"
+
+[[asserts]]
+arguments = ["Artificial Intelligence"]
+comment   = "AI full term"
+expected  = "Laicifitra Ecnegilletni"

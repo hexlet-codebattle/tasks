@@ -1,0 +1,187 @@
+level             = "easy"
+name              = "separate_with_comma"
+tags              = ["strings"]
+time_to_solve_sec = 250
+
+description_en = """
+Given a number as input, return a string with that number formatted with commas to separate each three digits from the right.
+"""
+
+description_ru = """
+На вход дано число, верните строку, где это число отформатировано таким образом, что начиная с правого края каждые 3 цифры отделяются запятой.
+"""
+
+solution = """
+def solution(num):
+    s = str(num)[::-1]
+    parts = [s[i:i+3] for i in range(0, len(s), 3)]
+    return ','.join(parts)[::-1]
+"""
+
+examples = """
+solution(1) == "1"
+solution(10) == "10"
+solution(150) == "150"
+solution(1234) == "1,234"
+solution(15075) == "15,075"
+solution(123456) == "123,456"
+solution(1238592) == "1,238,592"
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [1238592]
+comment   = "Seven digits with two commas"
+expected  = "1,238,592"
+
+[[asserts]]
+arguments = [1]
+comment   = "Single digit"
+expected  = "1"
+
+[[asserts]]
+arguments = [10]
+comment   = "Two digits"
+expected  = "10"
+
+[[asserts]]
+arguments = [150]
+comment   = "Three digits no comma"
+expected  = "150"
+
+[[asserts]]
+arguments = [1234]
+comment   = "Four digits with comma"
+expected  = "1,234"
+
+[[asserts]]
+arguments = [15075]
+comment   = "Five digits with comma"
+expected  = "15,075"
+
+[[asserts]]
+arguments = [123456]
+comment   = "Six digits with comma"
+expected  = "123,456"
+
+[[asserts]]
+arguments = [100]
+comment   = "Three digits ending in zeros"
+expected  = "100"
+
+[[asserts]]
+arguments = [1000]
+comment   = "Four digits with trailing zeros"
+expected  = "1,000"
+
+[[asserts]]
+arguments = [10000]
+comment   = "Five digits with trailing zeros"
+expected  = "10,000"
+
+[[asserts]]
+arguments = [100000]
+comment   = "Six digits with trailing zeros"
+expected  = "100,000"
+
+[[asserts]]
+arguments = [1000000]
+comment   = "One million"
+expected  = "1,000,000"
+
+[[asserts]]
+arguments = [999]
+comment   = "Three nines"
+expected  = "999"
+
+[[asserts]]
+arguments = [9999]
+comment   = "Four nines"
+expected  = "9,999"
+
+[[asserts]]
+arguments = [99999]
+comment   = "Five nines"
+expected  = "99,999"
+
+[[asserts]]
+arguments = [999999]
+comment   = "Six nines"
+expected  = "999,999"
+
+[[asserts]]
+arguments = [9999999]
+comment   = "Seven nines"
+expected  = "9,999,999"
+
+[[asserts]]
+arguments = [500]
+comment   = "Five hundred"
+expected  = "500"
+
+[[asserts]]
+arguments = [5000]
+comment   = "Five thousand"
+expected  = "5,000"
+
+[[asserts]]
+arguments = [50000]
+comment   = "Fifty thousand"
+expected  = "50,000"
+
+[[asserts]]
+arguments = [500000]
+comment   = "Half million"
+expected  = "500,000"
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelve"
+expected  = "12"
+
+[[asserts]]
+arguments = [123]
+comment   = "One hundred twenty three"
+expected  = "123"
+
+[[asserts]]
+arguments = [12345]
+comment   = "Five digits ascending"
+expected  = "12,345"
+
+[[asserts]]
+arguments = [1234567]
+comment   = "Seven digits ascending"
+expected  = "1,234,567"
+
+[[asserts]]
+arguments = [250]
+comment   = "Two hundred fifty"
+expected  = "250"
+
+[[asserts]]
+arguments = [2500]
+comment   = "Twenty five hundred"
+expected  = "2,500"
+
+[[asserts]]
+arguments = [25000]
+comment   = "Twenty five thousand"
+expected  = "25,000"
+
+[[asserts]]
+arguments = [250000]
+comment   = "Quarter million"
+expected  = "250,000"
+
+[[asserts]]
+arguments = [2500000]
+comment   = "Two and half million"
+expected  = "2,500,000"

@@ -1,0 +1,396 @@
+# Standard Tags for Task Files
+# This file contains all standardized tags used in task TOML files
+# Tags are organized by category with usage counts and descriptions
+
+[meta]
+last_updated = "2026-01-01"
+total_tasks  = 309
+version      = "2.0"
+
+# ============================================================================
+# PRIMARY CONTENT CATEGORIES
+# ============================================================================
+
+[[tags]]
+category    = "content"
+count       = 445
+description = "Tasks involving string manipulation, parsing, or text processing"
+name        = "strings"
+
+[[tags]]
+category    = "content"
+count       = 358
+description = "Tasks involving arrays, lists, or collection data structures"
+name        = "collections"
+
+[[tags]]
+category    = "content"
+count       = 332
+description = "Tasks requiring mathematical operations, formulas, or number theory"
+name        = "math"
+
+[[tags]]
+category    = "content"
+count       = 71
+description = "Tasks utilizing standard library features (hash maps, sets, dates, etc.)"
+name        = "stdlib"
+
+[[tags]]
+category    = "content"
+count       = 19
+description = "Tasks involving graph data structures and algorithms"
+name        = "graphs"
+
+[[tags]]
+category    = "content"
+count       = 19
+description = "Tasks involving 2D grids, matrices, or spatial arrangements"
+name        = "grid"
+
+[[tags]]
+category    = "content"
+count       = 21
+description = "Tasks involving bit manipulation, binary operations, or bitwise logic"
+name        = "bits"
+
+[[tags]]
+category    = "content"
+count       = 11
+description = "Tasks requiring regular expressions"
+name        = "regex"
+
+# ============================================================================
+# ALGORITHM & TECHNIQUE CATEGORIES
+# ============================================================================
+
+[[tags]]
+category    = "algorithm"
+count       = 110
+description = "General algorithmic challenges requiring specific techniques"
+name        = "algo"
+
+[[tags]]
+category    = "algorithm"
+count       = 76
+description = "Tasks solvable with greedy algorithms"
+name        = "greedy"
+
+[[tags]]
+category    = "algorithm"
+count       = 52
+description = "Tasks involving sorting or sort-based solutions"
+name        = "sorting"
+
+[[tags]]
+category    = "algorithm"
+count       = 34
+description = "Tasks requiring step-by-step simulation of a process"
+name        = "simulation"
+
+[[tags]]
+category    = "algorithm"
+count       = 4
+description = "Dynamic programming problems"
+name        = "dp"
+
+[[tags]]
+category    = "algorithm"
+count       = 7
+description = "Tasks solvable with recursive approaches"
+name        = "recursion"
+
+[[tags]]
+category    = "algorithm"
+count       = 8
+description = "Tasks using two-pointer technique"
+name        = "two_pointers"
+
+[[tags]]
+category    = "algorithm"
+count       = 12
+description = "Tasks solvable with linear scanning techniques"
+name        = "linear_scan"
+
+[[tags]]
+category    = "algorithm"
+count       = 4
+description = "Tasks using prefix sum or prefix scan techniques"
+name        = "prefix_scan"
+
+[[tags]]
+category    = "algorithm"
+count       = 4
+description = "Tasks using sliding window technique"
+name        = "sliding_window"
+
+[[tags]]
+category    = "algorithm"
+count       = 12
+description = "Tasks involving search algorithms"
+name        = "search"
+
+# ============================================================================
+# DATA STRUCTURES
+# ============================================================================
+
+[[tags]]
+category    = "data_structure"
+count       = 38
+description = "Tasks utilizing hash maps, dictionaries, or associative arrays"
+name        = "hash_maps"
+
+[[tags]]
+category    = "data_structure"
+count       = 18
+description = "Tasks utilizing set data structures"
+name        = "sets"
+
+[[tags]]
+category    = "data_structure"
+count       = 4
+description = "Tasks utilizing stack data structures"
+name        = "stack"
+
+# ============================================================================
+# MATHEMATICAL SUBCATEGORIES
+# ============================================================================
+
+[[tags]]
+category    = "math"
+count       = 22
+description = "Geometric calculations and spatial reasoning"
+name        = "geometry"
+
+[[tags]]
+category    = "math"
+count       = 5
+description = "Combinatorial mathematics and counting problems"
+name        = "combinatorics"
+
+[[tags]]
+category    = "math"
+count       = 4
+description = "Number theory problems (primes, divisors, GCD, etc.)"
+name        = "number_theory"
+
+[[tags]]
+category    = "math"
+count       = 4
+description = "Problems involving prime numbers"
+name        = "primes"
+
+[[tags]]
+category    = "math"
+count       = 4
+description = "Algebraic problems and equations"
+name        = "algebra"
+
+[[tags]]
+category    = "math"
+count       = 4
+description = "Problems involving permutations"
+name        = "permutation"
+
+# ============================================================================
+# DOMAIN-SPECIFIC CATEGORIES
+# ============================================================================
+
+[[tags]]
+category    = "domain"
+count       = 41
+description = "Game-related challenges and simulations"
+name        = "games"
+
+[[tags]]
+category    = "domain"
+count       = 11
+description = "Physics simulations and calculations"
+name        = "physics"
+
+[[tags]]
+category    = "domain"
+count       = 11
+description = "Network-related problems (IP addresses, DNS, etc.)"
+name        = "network"
+
+[[tags]]
+category    = "domain"
+count       = 17
+description = "Date and time calculations"
+name        = "date_time"
+
+[[tags]]
+category    = "domain"
+count       = 6
+description = "Graphics and visual representation problems"
+name        = "graphics"
+
+[[tags]]
+category    = "domain"
+count       = 3
+description = "Music theory and musical calculations"
+name        = "music"
+
+[[tags]]
+category    = "domain"
+count       = 3
+description = "Excel-related problems (column naming, etc.)"
+name        = "excel"
+
+[[tags]]
+category    = "domain"
+count       = 3
+description = "Operating system concepts"
+name        = "os"
+
+# ============================================================================
+# TECHNIQUE-SPECIFIC TAGS
+# ============================================================================
+
+[[tags]]
+category    = "technique"
+count       = 13
+description = "Problems involving hashing techniques or algorithms"
+name        = "hashing"
+
+[[tags]]
+category    = "technique"
+count       = 20
+description = "String or data parsing problems"
+name        = "parsing"
+
+[[tags]]
+category    = "technique"
+count       = 11
+description = "Type conversion or format transformation"
+name        = "conversion"
+
+[[tags]]
+category    = "technique"
+count       = 4
+description = "Input validation problems"
+name        = "validation"
+
+[[tags]]
+category    = "technique"
+count       = 4
+description = "Pattern or string matching problems"
+name        = "matching"
+
+[[tags]]
+category    = "technique"
+count       = 4
+description = "Character or value mapping transformations"
+name        = "mapping"
+
+[[tags]]
+category    = "technique"
+count       = 4
+description = "Rotation or cyclic shift operations"
+name        = "rotation"
+
+[[tags]]
+category    = "technique"
+count       = 4
+description = "Decryption or cipher problems"
+name        = "decryption"
+
+[[tags]]
+category    = "technique"
+count       = 4
+description = "Anagram detection or manipulation"
+name        = "anagrams"
+
+# ============================================================================
+# SPECIALIZED CONCEPTS
+# ============================================================================
+
+[[tags]]
+category    = "meta"
+count       = 85
+description = "Training or practice problems"
+name        = "training"
+
+[[tags]]
+category    = "meta"
+count       = 6
+description = "Problems from code battle competitions"
+name        = "codebattle"
+
+[[tags]]
+category    = "concept"
+count       = 9
+description = "Problems involving pairs of elements"
+name        = "pairs"
+
+[[tags]]
+category    = "concept"
+count       = 8
+description = "Interval-based problems"
+name        = "intervals"
+
+[[tags]]
+category    = "concept"
+count       = 8
+description = "Logic and boolean reasoning"
+name        = "logic"
+
+[[tags]]
+category    = "concept"
+count       = 8
+description = "Time-related calculations (not date-specific)"
+name        = "time"
+
+[[tags]]
+category    = "concept"
+count       = 5
+description = "Counting patterns in grids or structures"
+name        = "pattern_counting"
+
+[[tags]]
+category    = "concept"
+count       = 5
+description = "Manhattan distance calculations"
+name        = "manhattan"
+
+[[tags]]
+category    = "concept"
+count       = 4
+description = "State machine or state tracking problems"
+name        = "state"
+
+[[tags]]
+category    = "concept"
+count       = 4
+description = "Sign-related calculations or operations"
+name        = "sign"
+
+[[tags]]
+category    = "concept"
+count       = 4
+description = "Scheduling or task allocation problems"
+name        = "scheduling"
+
+[[tags]]
+category    = "concept"
+count       = 4
+description = "Sequence or pattern generation"
+name        = "generation"
+
+[[tags]]
+category    = "concept"
+count       = 4
+description = "Counting occurrences or frequencies"
+name        = "counting"
+
+[[tags]]
+category    = "concept"
+count       = 4
+description = "Circular or cyclic structures"
+name        = "circular"
+
+[[tags]]
+category    = "concept"
+count       = 4
+description = "Matrix operations and calculations"
+name        = "matrices"

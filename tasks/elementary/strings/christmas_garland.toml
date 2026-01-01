@@ -1,0 +1,141 @@
+level             = "elementary"
+name              = "christmas_garland"
+tags              = ["strings"]
+time_to_solve_sec = 120
+
+description_en = """
+Given a number `n`, return a string of length `n` with alternating characters `*o*o*o...`, starting with `*`.
+"""
+
+description_ru = """
+Дано число `n`. Выведите строку длины `n` с чередующимися символами `*o*o*o...`, начиная со `*`.
+"""
+
+limits = """
+- $1 \\leq n \\leq 1000$
+"""
+
+solution = """
+def solution(n: int) -> str:
+    return ('*o' * n)[:n]
+"""
+
+examples = """
+solution(1) == "*"
+solution(3) == "*o*"
+solution(5) == "*o*o*"
+solution(10) == "*o*o*o*o*o"
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [1]
+comment   = "Single character"
+expected  = "*"
+
+[[asserts]]
+arguments = [2]
+comment   = "Two characters"
+expected  = "*o"
+
+[[asserts]]
+arguments = [3]
+comment   = "Three characters"
+expected  = "*o*"
+
+[[asserts]]
+arguments = [4]
+comment   = "Four characters"
+expected  = "*o*o"
+
+[[asserts]]
+arguments = [5]
+comment   = "Five characters"
+expected  = "*o*o*"
+
+[[asserts]]
+arguments = [6]
+comment   = "Six characters"
+expected  = "*o*o*o"
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven characters"
+expected  = "*o*o*o*"
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight characters"
+expected  = "*o*o*o*o"
+
+[[asserts]]
+arguments = [9]
+comment   = "Nine characters"
+expected  = "*o*o*o*o*"
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten characters"
+expected  = "*o*o*o*o*o"
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleven characters"
+expected  = "*o*o*o*o*o*"
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteen characters"
+expected  = "*o*o*o*o*o*o*o*"
+
+[[asserts]]
+arguments = [20]
+comment   = "Twenty characters"
+expected  = "*o*o*o*o*o*o*o*o*o*o"
+
+[[asserts]]
+arguments = [25]
+comment   = "Twenty-five characters"
+expected  = "*o*o*o*o*o*o*o*o*o*o*o*o*"
+
+[[asserts]]
+arguments = [30]
+comment   = "Thirty characters"
+expected  = "*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o"
+
+[[asserts]]
+arguments = [50]
+comment   = "Fifty characters"
+expected  = "*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o"
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelve characters"
+expected  = "*o*o*o*o*o*o"
+
+[[asserts]]
+arguments = [13]
+comment   = "Thirteen characters"
+expected  = "*o*o*o*o*o*o*"
+
+[[asserts]]
+arguments = [17]
+comment   = "Seventeen characters"
+expected  = "*o*o*o*o*o*o*o*o*"
+
+[[asserts]]
+arguments = [33]
+comment   = "Thirty-three characters"
+expected  = "*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*"
+
+[[asserts]]
+arguments = [77]
+comment   = "Seventy-seven characters"
+expected  = "*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*"

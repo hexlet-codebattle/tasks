@@ -1,0 +1,184 @@
+level             = "elementary"
+name              = "replace_and_uppercase"
+tags              = ["strings"]
+time_to_solve_sec = 150
+
+description_en = """
+You are given a string of words. You need to replace `_` symbols with spaces and capitalize every word in a string.
+"""
+
+description_ru = """
+Создайте функцию, которая заменяет символ `_` пробелами и переводит первую букву каждого слова в верхний регистр.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(sentence) \\leq 100$
+"""
+
+solution = """
+def solution(sentence: str) -> str:
+    return ' '.join(word.capitalize() for word in sentence.split('_'))
+"""
+
+examples = """
+solution("learn_clojure_be_happy") == "Learn Clojure Be Happy"
+solution("learn_ruby_win_tournaments") == "Learn Ruby Win Tournaments"
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["learn_clojure_be_happy"]
+comment   = "Multiple words"
+expected  = "Learn Clojure Be Happy"
+
+[[asserts]]
+arguments = ["learn_ruby_win_tournaments"]
+comment   = "Four words"
+expected  = "Learn Ruby Win Tournaments"
+
+[[asserts]]
+arguments = ["hello_world"]
+comment   = "Two words"
+expected  = "Hello World"
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Single word"
+expected  = "Hello"
+
+[[asserts]]
+arguments = ["test_function_code"]
+comment   = "Three words"
+expected  = "Test Function Code"
+
+[[asserts]]
+arguments = ["python_is_awesome"]
+comment   = "Python related"
+expected  = "Python Is Awesome"
+
+[[asserts]]
+arguments = ["code_review_time"]
+comment   = "Code review"
+expected  = "Code Review Time"
+
+[[asserts]]
+arguments = ["one_two_three_four"]
+comment   = "Numbers as words"
+expected  = "One Two Three Four"
+
+[[asserts]]
+arguments = ["quick_brown_fox"]
+comment   = "Quick brown fox"
+expected  = "Quick Brown Fox"
+
+[[asserts]]
+arguments = ["programming_language"]
+comment   = "Two words compound"
+expected  = "Programming Language"
+
+[[asserts]]
+arguments = ["data_structure"]
+comment   = "Data structure"
+expected  = "Data Structure"
+
+[[asserts]]
+arguments = ["algorithm_design"]
+comment   = "Algorithm design"
+expected  = "Algorithm Design"
+
+[[asserts]]
+arguments = ["software_engineering"]
+comment   = "Software engineering"
+expected  = "Software Engineering"
+
+[[asserts]]
+arguments = ["web_development"]
+comment   = "Web development"
+expected  = "Web Development"
+
+[[asserts]]
+arguments = ["mobile_application"]
+comment   = "Mobile application"
+expected  = "Mobile Application"
+
+[[asserts]]
+arguments = ["database_management"]
+comment   = "Database management"
+expected  = "Database Management"
+
+[[asserts]]
+arguments = ["api_endpoint"]
+comment   = "API endpoint"
+expected  = "Api Endpoint"
+
+[[asserts]]
+arguments = ["user_interface"]
+comment   = "User interface"
+expected  = "User Interface"
+
+[[asserts]]
+arguments = ["backend_service"]
+comment   = "Backend service"
+expected  = "Backend Service"
+
+[[asserts]]
+arguments = ["frontend_framework"]
+comment   = "Frontend framework"
+expected  = "Frontend Framework"
+
+[[asserts]]
+arguments = ["unit_test"]
+comment   = "Unit test"
+expected  = "Unit Test"
+
+[[asserts]]
+arguments = ["integration_testing"]
+comment   = "Integration testing"
+expected  = "Integration Testing"
+
+[[asserts]]
+arguments = ["continuous_integration"]
+comment   = "Continuous integration"
+expected  = "Continuous Integration"
+
+[[asserts]]
+arguments = ["version_control"]
+comment   = "Version control"
+expected  = "Version Control"
+
+[[asserts]]
+arguments = ["code_quality"]
+comment   = "Code quality"
+expected  = "Code Quality"
+
+[[asserts]]
+arguments = ["technical_debt"]
+comment   = "Technical debt"
+expected  = "Technical Debt"
+
+[[asserts]]
+arguments = ["agile_methodology"]
+comment   = "Agile methodology"
+expected  = "Agile Methodology"
+
+[[asserts]]
+arguments = ["sprint_planning"]
+comment   = "Sprint planning"
+expected  = "Sprint Planning"
+
+[[asserts]]
+arguments = ["daily_standup"]
+comment   = "Daily standup"
+expected  = "Daily Standup"
+
+[[asserts]]
+arguments = ["code_refactoring"]
+comment   = "Code refactoring"
+expected  = "Code Refactoring"

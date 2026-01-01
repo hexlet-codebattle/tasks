@@ -1,0 +1,201 @@
+level             = "elementary"
+name              = "santas_shop"
+tags              = ["collections", "math"]
+time_to_solve_sec = 150
+
+description_en = """
+Given an amount of money `x` and a list of gift prices `prices`, determine the maximum number of gifts that can be purchased.
+"""
+
+description_ru = """
+Дано количество денег `x` и список цен подарков `prices`. Определите максимальное количество подарков, которые можно купить.
+"""
+
+limits = """
+- $0 \\leq x \\leq 10^6$
+- $0 \\leq \\text{len}(\\text{prices}) \\leq 1000$
+- $1 \\leq \\text{prices}[i] \\leq 10^5$
+"""
+
+solution = """
+def solution(x: int, prices: list[int]) -> int:
+    prices = sorted(prices)
+    c = 0
+    for p in prices:
+        if x >= p:
+            x -= p
+            c += 1
+    return c
+"""
+
+examples = """
+solution(10, [5]) == 1
+solution(10, [3, 4, 5]) == 2
+solution(100, [20, 30, 10, 50]) == 3
+solution(0, [10, 20, 30]) == 0
+"""
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "prices"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, [10, 20, 30]]
+comment   = "No money"
+expected  = 0
+
+[[asserts]]
+arguments = [5, [10, 20, 30]]
+comment   = "Not enough for any gift"
+expected  = 0
+
+[[asserts]]
+arguments = [10, [5]]
+comment   = "Exact amount for one gift"
+expected  = 1
+
+[[asserts]]
+arguments = [10, [3, 4, 5]]
+comment   = "Can buy two cheapest gifts"
+expected  = 2
+
+[[asserts]]
+arguments = [100, [20, 30, 10, 50]]
+comment   = "Can buy three gifts"
+expected  = 3
+
+[[asserts]]
+arguments = [50, [10, 10, 10, 10, 10]]
+comment   = "Can buy all gifts"
+expected  = 5
+
+[[asserts]]
+arguments = [49, [10, 10, 10, 10, 10]]
+comment   = "One short of all gifts"
+expected  = 4
+
+[[asserts]]
+arguments = [100, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+comment   = "Can buy many small gifts"
+expected  = 10
+
+[[asserts]]
+arguments = [15, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+comment   = "Can buy first five"
+expected  = 5
+
+[[asserts]]
+arguments = [1000, [100, 200, 300, 400, 500]]
+comment   = "Can buy four expensive gifts"
+expected  = 4
+
+[[asserts]]
+arguments = [1500, [100, 200, 300, 400, 500]]
+comment   = "Can buy all expensive gifts"
+expected  = 5
+
+[[asserts]]
+arguments = [500, [250, 250, 250]]
+comment   = "Can buy two equal gifts"
+expected  = 2
+
+[[asserts]]
+arguments = [1000, [1, 1, 1, 1, 1, 1, 1]]
+comment   = "Can buy all very cheap gifts"
+expected  = 7
+
+[[asserts]]
+arguments = [25, [5, 5, 5, 5, 5, 10]]
+comment   = "Buy five small, skip large"
+expected  = 5
+
+[[asserts]]
+arguments = [100, [25, 25, 25, 25]]
+comment   = "Exact amount for all"
+expected  = 4
+
+[[asserts]]
+arguments = [99, [25, 25, 25, 25]]
+comment   = "One short of all equal gifts"
+expected  = 3
+
+[[asserts]]
+arguments = [1000, [1, 999]]
+comment   = "One cheap, one expensive"
+expected  = 2
+
+[[asserts]]
+arguments = [1000, [1, 1000]]
+comment   = "Can only buy the cheap one"
+expected  = 1
+
+[[asserts]]
+arguments = [2000, [500, 600, 700, 800]]
+comment   = "Three medium gifts"
+expected  = 3
+
+[[asserts]]
+arguments = [10000, [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]]
+comment   = "Can buy all ten gifts"
+expected  = 10
+
+[[asserts]]
+arguments = [5000, [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]]
+comment   = "Can buy nine out of ten"
+expected  = 9
+
+[[asserts]]
+arguments = [50, [10, 20, 30]]
+comment   = "Can buy two gifts (10+20)"
+expected  = 2
+
+[[asserts]]
+arguments = [100, [15, 25, 35, 45]]
+comment   = "Three gifts sum to 75"
+expected  = 3
+
+[[asserts]]
+arguments = [1000000, [1, 2, 3, 4, 5]]
+comment   = "Very large amount with small gifts"
+expected  = 5
+
+[[asserts]]
+arguments = [7, [1, 2, 3, 4, 5]]
+comment   = "Limited budget for small gifts"
+expected  = 3
+
+[[asserts]]
+arguments = [200, [50, 50, 50, 50, 50]]
+comment   = "Four equal gifts"
+expected  = 4
+
+[[asserts]]
+arguments = [5, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+comment   = "Buy five out of ten identical"
+expected  = 5
+
+[[asserts]]
+arguments = [1000, [333, 333, 334]]
+comment   = "Three almost equal gifts"
+expected  = 3
+
+[[asserts]]
+arguments = [1000, [334, 334, 334]]
+comment   = "Two out of three equal"
+expected  = 2
+
+[[asserts]]
+arguments = [0, []]
+comment   = "Empty shop"
+expected  = 0

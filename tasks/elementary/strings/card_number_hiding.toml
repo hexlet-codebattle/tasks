@@ -1,0 +1,186 @@
+level             = "elementary"
+name              = "card_number_hiding"
+tags              = ["strings", "training"]
+time_to_solve_sec = 120
+
+description_en = """
+Write a function that takes a credit card number as a string and returns a new string where only the last four characters remain visible, and all preceding characters are replaced with `*`.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает номер кредитной карты в виде строки и возвращает новую строку, в которой видны только последние 4 символа, а все предыдущие символы заменены на `*`.
+"""
+
+limits = """
+- $4 \\leq \\text{len}(number) \\leq 19$
+- $number \\in \\{0,1,2,3,4,5,6,7,8,9\\}^{*}$
+"""
+
+solution = """
+def solution(card_number: str) -> str:
+    return "*" * max(0, len(card_number) - 4) + card_number[-4:]
+"""
+
+examples = """
+solution("2134") == "2134"
+solution("76814") == "*6814"
+solution("1234123456") == "******3456"
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["1234123456"]
+comment   = "Basic 10-digit card number"
+expected  = "******3456"
+
+[[asserts]]
+arguments = ["12341234561212121"]
+comment   = "Long 17-digit number with mixed pattern"
+expected  = "*************2121"
+
+[[asserts]]
+arguments = ["2134"]
+comment   = "Exactly 4 digits, no masking"
+expected  = "2134"
+
+[[asserts]]
+arguments = ["76814"]
+comment   = "5 digits, masking only the first one"
+expected  = "*6814"
+
+[[asserts]]
+arguments = ["12341234"]
+comment   = "8 digits, simple ascending pattern"
+expected  = "****1234"
+
+[[asserts]]
+arguments = ["99999999"]
+comment   = "All digits the same"
+expected  = "****9999"
+
+[[asserts]]
+arguments = ["123456789"]
+comment   = "9 digits, classic increasing sequence"
+expected  = "*****6789"
+
+[[asserts]]
+arguments = ["000000000000000"]
+comment   = "15 zeros, long edge with all zeros"
+expected  = "***********0000"
+
+[[asserts]]
+arguments = ["555566667777888"]
+comment   = "15 digits with grouped repeating digits"
+expected  = "***********7888"
+
+[[asserts]]
+arguments = ["123412345612345"]
+comment   = "15 digits, repeated block pattern"
+expected  = "***********2345"
+
+[[asserts]]
+arguments = ["13579135"]
+comment   = "8 digits, odd digits pattern"
+expected  = "****9135"
+
+[[asserts]]
+arguments = ["24682468"]
+comment   = "8 digits, even digits pattern"
+expected  = "****2468"
+
+[[asserts]]
+arguments = ["11112222"]
+comment   = "8 digits, two blocks of repeating digits"
+expected  = "****2222"
+
+[[asserts]]
+arguments = ["9876543210"]
+comment   = "10 digits, descending then last 4 kept"
+expected  = "******3210"
+
+[[asserts]]
+arguments = ["444433332221111"]
+comment   = "15 digits, multiple decreasing blocks"
+expected  = "***********1111"
+
+[[asserts]]
+arguments = ["123456781234567"]
+comment   = "15 digits, two joined increasing sequences"
+expected  = "***********4567"
+
+[[asserts]]
+arguments = ["10101010"]
+comment   = "8 digits, alternating zeros and ones"
+expected  = "****1010"
+
+[[asserts]]
+arguments = ["555555555"]
+comment   = "9 digits, all fives"
+expected  = "*****5555"
+
+[[asserts]]
+arguments = ["1212121212"]
+comment   = "10 digits, repeating 1-2 pattern"
+expected  = "******1212"
+
+[[asserts]]
+arguments = ["900000000000000"]
+comment   = "15 digits starting with 9 then zeros"
+expected  = "***********0000"
+
+[[asserts]]
+arguments = ["876543218765432"]
+comment   = "15 digits, mirrored descending pattern"
+expected  = "***********5432"
+
+[[asserts]]
+arguments = ["314159265358979"]
+comment   = "15 digits, digits of pi-like sequence"
+expected  = "***********8979"
+
+[[asserts]]
+arguments = ["202020202020202"]
+comment   = "15 digits, repeating 20 pattern"
+expected  = "***********0202"
+
+[[asserts]]
+arguments = ["80808080"]
+comment   = "8 digits, repeating 80 pattern"
+expected  = "****8080"
+
+[[asserts]]
+arguments = ["70000001"]
+comment   = "8 digits, leading 7 and trailing 1 with zeros inside"
+expected  = "****0001"
+
+[[asserts]]
+arguments = ["6000000006"]
+comment   = "10 digits, symmetric sixes with zeros in the middle"
+expected  = "******0006"
+
+[[asserts]]
+arguments = ["12340000"]
+comment   = "8 digits, trailing zeros"
+expected  = "****0000"
+
+[[asserts]]
+arguments = ["999900000000"]
+comment   = "12 digits, four nines followed by zeros"
+expected  = "********0000"
+
+[[asserts]]
+arguments = ["432143214321432"]
+comment   = "15 digits, repeating 4321 pattern"
+expected  = "***********1432"
+
+[[asserts]]
+arguments = ["55550000"]
+comment   = "8 digits, block of fives then zeros"
+expected  = "****0000"

@@ -1,0 +1,192 @@
+level             = "easy"
+name              = "counting_array_elements"
+tags              = ["hash_maps"]
+time_to_solve_sec = 300
+
+description_en = """
+Return a hash map that shows how many times each element occurs in the given array.
+"""
+
+description_ru = """
+Верните ассоциативный массив, который отражает, сколько раз элементы повторяются в полученном массиве.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
+- $1 \\leq \\text{len}(\\text{arr}[i]) \\leq 20$
+"""
+
+solution = """
+def solution(arr: list) -> dict:
+    result = {}
+    for item in arr:
+        result[item] = result.get(item, 0) + 1
+    return result
+"""
+
+examples = """
+solution(["cat", "dog", "fish", "fish"]) == {"cat": 1, "dog": 1, "fish": 2}
+solution(["Spam", "egg", "Spam", "Spam", "bacon", "Spam"]) == {"bacon": 1, "egg": 1, "Spam": 4}
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "hash"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [["cat", "dog", "fish", "fish"]]
+comment   = "Simple case with one duplicate"
+expected  = { "cat" = 1, "dog" = 1, "fish" = 2 }
+
+[[asserts]]
+arguments = [["Spam", "egg", "Spam", "Spam", "bacon", "Spam"]]
+comment   = "Multiple occurrences of Spam"
+expected  = { "bacon" = 1, "egg" = 1, "Spam" = 4 }
+
+[[asserts]]
+arguments = [["apple"]]
+comment   = "Single element"
+expected  = { "apple" = 1 }
+
+[[asserts]]
+arguments = [["red", "blue", "green"]]
+comment   = "Three unique elements"
+expected  = { "red" = 1, "blue" = 1, "green" = 1 }
+
+[[asserts]]
+arguments = [["a", "a", "a", "a"]]
+comment   = "All same elements"
+expected  = { "a" = 4 }
+
+[[asserts]]
+arguments = [["one", "two", "one", "three", "two", "one"]]
+comment   = "Multiple duplicates"
+expected  = { "one" = 3, "two" = 2, "three" = 1 }
+
+[[asserts]]
+arguments = [["hello", "world", "hello"]]
+comment   = "Two hellos and one world"
+expected  = { "hello" = 2, "world" = 1 }
+
+[[asserts]]
+arguments = [["x", "y", "z", "x", "y", "x"]]
+comment   = "Three different letters"
+expected  = { "x" = 3, "y" = 2, "z" = 1 }
+
+[[asserts]]
+arguments = [["test", "test", "test"]]
+comment   = "Three identical strings"
+expected  = { "test" = 3 }
+
+[[asserts]]
+arguments = [["alpha", "beta", "gamma", "delta"]]
+comment   = "Greek letters all unique"
+expected  = { "alpha" = 1, "beta" = 1, "gamma" = 1, "delta" = 1 }
+
+[[asserts]]
+arguments = [["foo", "bar", "foo", "baz", "bar", "foo"]]
+comment   = "Three foos two bars one baz"
+expected  = { "foo" = 3, "bar" = 2, "baz" = 1 }
+
+[[asserts]]
+arguments = [["same", "same"]]
+comment   = "Two identical elements"
+expected  = { "same" = 2 }
+
+[[asserts]]
+arguments = [["A", "B", "C", "A", "B", "A"]]
+comment   = "Capital letters pattern"
+expected  = { "A" = 3, "B" = 2, "C" = 1 }
+
+[[asserts]]
+arguments = [["first", "second", "third", "first"]]
+comment   = "Two firsts"
+expected  = { "first" = 2, "second" = 1, "third" = 1 }
+
+[[asserts]]
+arguments = [["dog", "cat", "mouse", "dog", "cat", "dog"]]
+comment   = "Three dogs two cats one mouse"
+expected  = { "dog" = 3, "cat" = 2, "mouse" = 1 }
+
+[[asserts]]
+arguments = [["red", "red", "red", "red", "red"]]
+comment   = "Five reds"
+expected  = { "red" = 5 }
+
+[[asserts]]
+arguments = [["word"]]
+comment   = "Single word"
+expected  = { "word" = 1 }
+
+[[asserts]]
+arguments = [["up", "down", "left", "right", "up", "down"]]
+comment   = "Directions with duplicates"
+expected  = { "up" = 2, "down" = 2, "left" = 1, "right" = 1 }
+
+[[asserts]]
+arguments = [["zero", "one", "two", "zero", "one", "zero"]]
+comment   = "Numbers as words"
+expected  = { "zero" = 3, "one" = 2, "two" = 1 }
+
+[[asserts]]
+arguments = [["apple", "banana", "cherry", "apple", "banana", "apple"]]
+comment   = "Fruits pattern"
+expected  = { "apple" = 3, "banana" = 2, "cherry" = 1 }
+
+[[asserts]]
+arguments = [["yes", "no", "yes", "yes", "no", "yes"]]
+comment   = "Yes and no"
+expected  = { "yes" = 4, "no" = 2 }
+
+[[asserts]]
+arguments = [["start", "middle", "end"]]
+comment   = "Three positions"
+expected  = { "start" = 1, "middle" = 1, "end" = 1 }
+
+[[asserts]]
+arguments = [["tick", "tock", "tick", "tock", "tick"]]
+comment   = "Clock sounds"
+expected  = { "tick" = 3, "tock" = 2 }
+
+[[asserts]]
+arguments = [["winter", "spring", "summer", "fall"]]
+comment   = "Four seasons"
+expected  = { "winter" = 1, "spring" = 1, "summer" = 1, "fall" = 1 }
+
+[[asserts]]
+arguments = [["north", "south", "east", "west", "north"]]
+comment   = "Cardinal directions"
+expected  = { "north" = 2, "south" = 1, "east" = 1, "west" = 1 }
+
+[[asserts]]
+arguments = [["true", "false", "true", "true"]]
+comment   = "Boolean strings"
+expected  = { "true" = 3, "false" = 1 }
+
+[[asserts]]
+arguments = [["sun", "moon", "star", "sun", "moon", "sun"]]
+comment   = "Celestial objects"
+expected  = { "sun" = 3, "moon" = 2, "star" = 1 }
+
+[[asserts]]
+arguments = [["head", "tail", "head", "head", "tail", "head"]]
+comment   = "Coin flips"
+expected  = { "head" = 4, "tail" = 2 }
+
+[[asserts]]
+arguments = [["pizza", "burger", "taco", "pizza", "burger", "pizza"]]
+comment   = "Food items"
+expected  = { "pizza" = 3, "burger" = 2, "taco" = 1 }
+
+[[asserts]]
+arguments = [["red", "green", "blue", "red", "green", "red"]]
+comment   = "RGB colors"
+expected  = { "red" = 3, "green" = 2, "blue" = 1 }

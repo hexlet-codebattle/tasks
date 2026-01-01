@@ -1,0 +1,165 @@
+level             = "easy"
+name              = "unpaired_socks"
+tags              = ["collections"]
+time_to_solve_sec = 250
+
+description_en = """
+Misha decided to simplify the task and make a machine that would count socks without pairs. The function accepts an array of $n$ integers $X$, where $X$ is the color of the sock from 0 to 1000. Return the count of socks that don't have a pair.
+"""
+
+description_ru = """
+Миша решил упростить задачу и сделать машинку, которая будет считать беспарные носки. Функция принимает массив из $n$ целых чисел $X$, где $X$ — это цвет носка от 0 до 1000. Верните количество носков, не имеющих пары.
+"""
+
+limits = """
+- $1 \\leq n \\leq 1000$
+- $0 \\leq X \\leq 1000$
+"""
+
+solution = """
+def solution(socks: list) -> int:
+    from collections import Counter
+    counts = Counter(socks)
+    return sum(1 for count in counts.values() if count % 2 == 1)
+"""
+
+examples = """
+solution([19, 19, 11, 11]) == 0
+solution([19, 16, 19, 11, 11]) == 1
+solution([19, 20, 11, 9, 20, 9]) == 2
+"""
+
+[[input_signature]]
+argument_name = "socks"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[19, 20, 11, 9, 20, 9]]
+comment   = "Two unpaired socks"
+expected  = 2
+
+[[asserts]]
+arguments = [[19, 19, 11, 11]]
+comment   = "All paired"
+expected  = 0
+
+[[asserts]]
+arguments = [[19, 16, 19, 11, 11]]
+comment   = "One unpaired"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "All unpaired"
+expected  = 5
+
+[[asserts]]
+arguments = [[1, 1, 2, 2, 3, 3]]
+comment   = "All paired"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+comment   = "Three of same color"
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 5, 5, 5, 5]]
+comment   = "Five of same color"
+expected  = 1
+
+[[asserts]]
+arguments = [[10, 10, 10, 10]]
+comment   = "Four of same color"
+expected  = 0
+
+[[asserts]]
+arguments = [[7, 7, 7, 8, 8, 8]]
+comment   = "Two colors with odd counts"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 1, 2]]
+comment   = "Two pairs"
+expected  = 0
+
+[[asserts]]
+arguments = [[15, 20, 25, 15, 20]]
+comment   = "One unpaired"
+expected  = 1
+
+[[asserts]]
+arguments = [[100, 200, 300]]
+comment   = "Three different unpaired"
+expected  = 3
+
+[[asserts]]
+arguments = [[50, 50]]
+comment   = "One pair"
+expected  = 0
+
+[[asserts]]
+arguments = [[42]]
+comment   = "Single sock"
+expected  = 1
+
+[[asserts]]
+arguments = [[11, 11, 22, 22, 33, 33, 44]]
+comment   = "One unpaired among pairs"
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 5, 5, 5, 10, 10]]
+comment   = "One color paired, one not"
+expected  = 0
+
+[[asserts]]
+arguments = [[3, 3, 3, 6, 6, 6]]
+comment   = "Two odd counts"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 1]]
+comment   = "Six of same"
+expected  = 0
+
+[[asserts]]
+arguments = [[99, 99, 99, 99, 99, 99, 99]]
+comment   = "Seven of same"
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 0, 1, 1, 2, 2, 3]]
+comment   = "One unpaired"
+expected  = 1
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50, 10, 20, 30, 40]]
+comment   = "One unpaired color"
+expected  = 1
+
+[[asserts]]
+arguments = [[7, 14, 21, 7, 14, 21]]
+comment   = "All paired"
+expected  = 0
+
+[[asserts]]
+arguments = [[8, 8, 8, 9, 9, 9]]
+comment   = "Two odd counts"
+expected  = 2
+
+[[asserts]]
+arguments = [[100, 200, 100, 200, 300]]
+comment   = "One unpaired"
+expected  = 1
+
+[[asserts]]
+arguments = [[25, 25, 25, 25, 25, 25, 25, 25]]
+comment   = "Eight of same"
+expected  = 0

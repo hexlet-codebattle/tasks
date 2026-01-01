@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "elemental_combo"
-tags              = ["stdlib", "simulation", "array", "state"]
+tags              = ["stdlib", "simulation", "collections", "state"]
 time_to_solve_sec = 300
 
 description_en = """

@@ -1,0 +1,185 @@
+level             = "easy"
+name              = "squish"
+tags              = ["strings"]
+time_to_solve_sec = 200
+
+description_en = """
+Given a text, remove all the whitespaces from both ends of the text. Then collapse groups of whitespaces inside the text into single whitespace each. Handles both ASCII and Unicode whitespaces.
+"""
+
+description_ru = """
+Дан текст. Удалите все пробельные символы с обоих концов текста. Сверните группы пробельных символов внутри строки в один пробел. Обработайте как ASCII так и Unicode пробелы.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{text}) \\leq 1000$
+"""
+
+solution = """
+import re
+def solution(text: str) -> str:
+    return re.sub(r'\\s+', ' ', text.strip())
+"""
+
+examples = """
+solution("  hello  world  ") == "hello world"
+solution("  Multi-line \\n       string    \\t   is   \\n   so cool   \\n") == "Multi-line string is so cool"
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["  Multi-line \n       string    \t   is   \n   so cool   \n"]
+comment   = "Multi-line with tabs and newlines"
+expected  = "Multi-line string is so cool"
+
+[[asserts]]
+arguments = ["  hello  world  "]
+comment   = "Simple case with leading and trailing spaces"
+expected  = "hello world"
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "No whitespace"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["  hello  "]
+comment   = "Only leading and trailing"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["hello  world"]
+comment   = "Multiple spaces between words"
+expected  = "hello world"
+
+[[asserts]]
+arguments = [" a  b  c "]
+comment   = "Single characters"
+expected  = "a b c"
+
+[[asserts]]
+arguments = ["   "]
+comment   = "Only spaces"
+expected  = ""
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single character"
+expected  = "a"
+
+[[asserts]]
+arguments = ["\n\n\nhello\n\n\n"]
+comment   = "Multiple newlines"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["\t\thello\t\t"]
+comment   = "Tabs"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["hello\n\nworld"]
+comment   = "Newlines between words"
+expected  = "hello world"
+
+[[asserts]]
+arguments = ["hello\t\tworld"]
+comment   = "Tabs between words"
+expected  = "hello world"
+
+[[asserts]]
+arguments = ["  one   two   three  "]
+comment   = "Multiple words with varied spacing"
+expected  = "one two three"
+
+[[asserts]]
+arguments = [" test \n test "]
+comment   = "Mixed whitespace"
+expected  = "test test"
+
+[[asserts]]
+arguments = ["    leading"]
+comment   = "Only leading spaces"
+expected  = "leading"
+
+[[asserts]]
+arguments = ["trailing    "]
+comment   = "Only trailing spaces"
+expected  = "trailing"
+
+[[asserts]]
+arguments = ["  a  b  c  d  e  "]
+comment   = "Multiple single chars"
+expected  = "a b c d e"
+
+[[asserts]]
+arguments = ["\n\t hello \t\n world \n\t"]
+comment   = "Complex mixed whitespace"
+expected  = "hello world"
+
+[[asserts]]
+arguments = ["no    extra    spaces"]
+comment   = "Multiple spaces"
+expected  = "no extra spaces"
+
+[[asserts]]
+arguments = ["  python   programming  "]
+comment   = "Programming related"
+expected  = "python programming"
+
+[[asserts]]
+arguments = ["\n\ncode\n\nis\n\nfun\n\n"]
+comment   = "Newlines everywhere"
+expected  = "code is fun"
+
+[[asserts]]
+arguments = ["\t\tindent\t\ttest\t\t"]
+comment   = "Tab indentation"
+expected  = "indent test"
+
+[[asserts]]
+arguments = ["  this   is    a     test  "]
+comment   = "Increasing spaces"
+expected  = "this is a test"
+
+[[asserts]]
+arguments = [" \n \t mixed \n \t whitespace \n \t "]
+comment   = "All types of whitespace"
+expected  = "mixed whitespace"
+
+[[asserts]]
+arguments = ["single"]
+comment   = "Single word no whitespace"
+expected  = "single"
+
+[[asserts]]
+arguments = ["  clean   this   up  "]
+comment   = "Needs cleaning"
+expected  = "clean this up"
+
+[[asserts]]
+arguments = ["\n\n\n\n"]
+comment   = "Only newlines"
+expected  = ""
+
+[[asserts]]
+arguments = ["\t\t\t\t"]
+comment   = "Only tabs"
+expected  = ""
+
+[[asserts]]
+arguments = ["   word1   word2   word3   "]
+comment   = "Three words"
+expected  = "word1 word2 word3"
+
+[[asserts]]
+arguments = [" \n the \n quick \n brown \n fox \n "]
+comment   = "Famous sentence"
+expected  = "the quick brown fox"

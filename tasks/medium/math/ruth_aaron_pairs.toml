@@ -1,0 +1,200 @@
+level             = "medium"
+name              = "ruth_aaron_pairs"
+tags              = ["math"]
+time_to_solve_sec = 500
+
+description_en = """
+Check if a given number is a Ruth-Aaron pair. A Ruth-Aaron pair consists of two consecutive integers (e.g. 714 and 715) for which the sums of the prime factors of each integer are equal. When calculating the sum, take into account the repeating factors. If a number cannot be decomposed into prime multipliers, consider the factorization of this number to be 0.
+"""
+
+description_ru = """
+Проверьте, является ли переданное число и следующее за ним, парой Рута — Аарона. Пара Рута — Аарона состоит из двух последовательных целых чисел (например 714 и 715) суммы простых множителей которых равны. При подсчете суммы учитывайте повторение множителей. Если число нельзя разложить на простые множители, то считайте факторизацию этого числа равной 0.
+"""
+
+limits = """
+- $2 \\leq num \\leq 100000$
+"""
+
+solution = """
+def solution(num: int) -> bool:
+    def prime_factors_sum(n):
+        if n < 2:
+            return 0
+        total = 0
+        d = 2
+        while d * d <= n:
+            while n % d == 0:
+                total += d
+                n //= d
+            d += 1
+        if n > 1:
+            total += n
+        return total
+    return prime_factors_sum(num) == prime_factors_sum(num + 1)
+"""
+
+examples = """
+solution(5) == True
+solution(8) == True
+solution(20) == False
+solution(77) == True
+solution(125) == True
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [8]
+comment   = "8 and 9"
+expected  = true
+
+[[asserts]]
+arguments = [5]
+comment   = "5 and 6"
+expected  = true
+
+[[asserts]]
+arguments = [77]
+comment   = "77 and 78"
+expected  = true
+
+[[asserts]]
+arguments = [125]
+comment   = "125 and 126"
+expected  = true
+
+[[asserts]]
+arguments = [20]
+comment   = "Not a Ruth-Aaron pair"
+expected  = false
+
+[[asserts]]
+arguments = [15]
+comment   = "15 and 16"
+expected  = true
+
+[[asserts]]
+arguments = [714]
+comment   = "Classic 714 and 715"
+expected  = true
+
+[[asserts]]
+arguments = [948]
+comment   = "948 and 949"
+expected  = true
+
+[[asserts]]
+arguments = [1330]
+comment   = "1330 and 1331"
+expected  = true
+
+[[asserts]]
+arguments = [1520]
+comment   = "1520 and 1521"
+expected  = true
+
+[[asserts]]
+arguments = [1862]
+comment   = "1862 and 1863"
+expected  = true
+
+[[asserts]]
+arguments = [2491]
+comment   = "2491 and 2492"
+expected  = true
+
+[[asserts]]
+arguments = [3248]
+comment   = "3248 and 3249"
+expected  = true
+
+[[asserts]]
+arguments = [4185]
+comment   = "4185 and 4186"
+expected  = true
+
+[[asserts]]
+arguments = [4191]
+comment   = "4191 and 4192"
+expected  = true
+
+[[asserts]]
+arguments = [5405]
+comment   = "5405 and 5406"
+expected  = true
+
+[[asserts]]
+arguments = [5560]
+comment   = "5560 and 5561"
+expected  = true
+
+[[asserts]]
+arguments = [5959]
+comment   = "5959 and 5960"
+expected  = true
+
+[[asserts]]
+arguments = [6867]
+comment   = "6867 and 6868"
+expected  = true
+
+[[asserts]]
+arguments = [8280]
+comment   = "8280 and 8281"
+expected  = true
+
+[[asserts]]
+arguments = [8463]
+comment   = "8463 and 8464"
+expected  = true
+
+[[asserts]]
+arguments = [10]
+comment   = "Not a pair"
+expected  = false
+
+[[asserts]]
+arguments = [100]
+comment   = "Not a pair"
+expected  = false
+
+[[asserts]]
+arguments = [200]
+comment   = "Not a pair"
+expected  = false
+
+[[asserts]]
+arguments = [1000]
+comment   = "Not a pair"
+expected  = false
+
+[[asserts]]
+arguments = [2]
+comment   = "Not a pair"
+expected  = false
+
+[[asserts]]
+arguments = [3]
+comment   = "Not a pair"
+expected  = false
+
+[[asserts]]
+arguments = [4]
+comment   = "Not a pair"
+expected  = false
+
+[[asserts]]
+arguments = [6]
+comment   = "Not a pair"
+expected  = false
+
+[[asserts]]
+arguments = [7]
+comment   = "Not a pair"
+expected  = false

@@ -1,0 +1,212 @@
+level             = "hard"
+name              = "santas_final_flight"
+tags              = ["collections", "algo"]
+time_to_solve_sec = 800
+
+description_en = """
+Given a list of deliveries, each with an execution time and a deadline. Only one delivery can be performed at any given moment.
+
+Determine the maximum number of deliveries Santa can complete before New Year (all deliveries must finish by their deadline).
+
+Each delivery is represented as `[duration, deadline]`.
+"""
+
+description_ru = """
+Дан список доставок, каждая с временем выполнения и дедлайном. За один момент времени можно выполнять только одну доставку.
+
+Определите максимальное количество доставок, которые Санта успеет выполнить до Нового года (все доставки должны завершиться в срок).
+
+Каждая доставка представлена как `[длительность, дедлайн]`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{deliveries}) \\leq 1000$
+- $1 \\leq \\text{duration} \\leq 1000$
+- $1 \\leq \\text{deadline} \\leq 10^6$
+"""
+
+solution = """
+def solution(deliveries: list[list[int]]) -> int:
+    import heapq
+    deliveries = sorted(deliveries, key=lambda x: x[1])
+    h = []
+    t = 0
+    for dur, ddl in deliveries:
+        if t + dur <= ddl:
+            heapq.heappush(h, -dur)
+            t += dur
+        elif h and -h[0] > dur:
+            t += dur - (-heapq.heappop(h))
+            heapq.heappush(h, -dur)
+    return len(h)
+"""
+
+examples = """
+solution([[1, 2]]) == 1
+solution([[2, 1]]) == 0
+solution([[1, 3], [2, 5]]) == 2
+solution([[3, 3], [2, 4]]) == 2
+solution([[5, 5], [4, 6], [3, 7]]) == 3
+"""
+
+[[input_signature]]
+argument_name = "deliveries"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[[1, 2]]]
+comment   = "Single delivery in time"
+expected  = 1
+
+[[asserts]]
+arguments = [[[2, 1]]]
+comment   = "Deadline too tight"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 1]]]
+comment   = "Exact deadline"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 3], [2, 5]]]
+comment   = "Both fit"
+expected  = 2
+
+[[asserts]]
+arguments = [[[3, 3], [2, 4]]]
+comment   = "Only one fits (greedy algorithm)"
+expected  = 1
+
+[[asserts]]
+arguments = [[[5, 5], [4, 6], [3, 7]]]
+comment   = "Two fit (greedy algorithm)"
+expected  = 2
+
+[[asserts]]
+arguments = [[[10, 5]]]
+comment   = "Duration exceeds deadline"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 10], [1, 10], [1, 10]]]
+comment   = "All same, all fit"
+expected  = 3
+
+[[asserts]]
+arguments = [[[5, 10], [5, 10]]]
+comment   = "Two equal deliveries"
+expected  = 2
+
+[[asserts]]
+arguments = [[[3, 5], [2, 6], [4, 7]]]
+comment   = "Two fit (greedy algorithm)"
+expected  = 2
+
+[[asserts]]
+arguments = [[[10, 15], [5, 10]]]
+comment   = "Both fit (5@10, then 10@20 but ddl=15, so both work)"
+expected  = 2
+
+[[asserts]]
+arguments = [[[2, 3], [3, 5], [4, 8]]]
+comment   = "Two fit (greedy algorithm)"
+expected  = 2
+
+[[asserts]]
+arguments = [[[4, 5], [3, 5], [2, 5]]]
+comment   = "Same deadline, two fit"
+expected  = 2
+
+[[asserts]]
+arguments = [[[1, 100], [1, 100], [1, 100], [1, 100]]]
+comment   = "Four small deliveries"
+expected  = 4
+
+[[asserts]]
+arguments = [[[10, 20], [10, 20], [10, 20]]]
+comment   = "Three deliveries, two fit"
+expected  = 2
+
+[[asserts]]
+arguments = [[[5, 10], [6, 11], [7, 12]]]
+comment   = "Increasing durations"
+expected  = 2
+
+[[asserts]]
+arguments = [[[1, 2], [1, 3], [1, 4], [1, 5]]]
+comment   = "All short, all fit"
+expected  = 4
+
+[[asserts]]
+arguments = [[[3, 6], [2, 5], [4, 10]]]
+comment   = "Order matters"
+expected  = 3
+
+[[asserts]]
+arguments = [[[8, 10], [5, 8]]]
+comment   = "Conflicting deadlines"
+expected  = 1
+
+[[asserts]]
+arguments = [[[2, 10], [2, 10], [2, 10], [2, 10], [2, 10]]]
+comment   = "Five equal, all fit"
+expected  = 5
+
+[[asserts]]
+arguments = [[[7, 7], [7, 14], [7, 21]]]
+comment   = "Multiples of duration"
+expected  = 3
+
+[[asserts]]
+arguments = [[[10, 10], [10, 20], [10, 30]]]
+comment   = "Sequential perfect fit"
+expected  = 3
+
+[[asserts]]
+arguments = [[[5, 6], [5, 7], [5, 8]]]
+comment   = "Only one fits (5→6 works, but 5→10 exceeds 7)"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 5], [2, 6], [3, 7], [4, 8]]]
+comment   = "Three fit (greedy algorithm)"
+expected  = 3
+
+[[asserts]]
+arguments = [[[15, 20], [10, 15]]]
+comment   = "Only second fits"
+expected  = 1
+
+[[asserts]]
+arguments = [[[3, 10], [3, 10], [3, 10]]]
+comment   = "Three threes in ten units"
+expected  = 3
+
+[[asserts]]
+arguments = [[[4, 5], [4, 6], [4, 7]]]
+comment   = "Only one fits (4→5 works, but then 4→8 exceeds 6)"
+expected  = 1
+
+[[asserts]]
+arguments = [[[100, 100], [1, 200]]]
+comment   = "One big, one small"
+expected  = 2
+
+[[asserts]]
+arguments = [[[50, 100], [40, 90], [30, 80]]]
+comment   = "Large durations"
+expected  = 2
+
+[[asserts]]
+arguments = [[[2, 4], [2, 5], [2, 6], [2, 7], [2, 8]]]
+comment   = "Five deliveries, four fit"
+expected  = 4

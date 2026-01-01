@@ -1,6 +1,6 @@
 level             = "hard"
 name              = "gmo"
-tags              = ["algo", "string", "dp", "greedy"]
+tags              = ["algo", "strings", "dp", "greedy"]
 time_to_solve_sec = 600
 
 description_en = """

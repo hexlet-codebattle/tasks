@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "restore_from_pairwise_sums"
-tags              = ["math", "array"]
+tags              = ["math", "collections"]
 time_to_solve_sec = 300
 
 description_en = """

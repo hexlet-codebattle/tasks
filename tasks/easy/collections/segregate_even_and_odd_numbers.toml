@@ -1,0 +1,187 @@
+level             = "easy"
+name              = "segregate_even_and_odd_numbers"
+tags              = ["collections"]
+time_to_solve_sec = 250
+
+description_en = """
+Given an array of numbers, return an array in which all the even numbers come first, and all the odd numbers come second.
+
+The relative order of even numbers and odd numbers should be preserved.
+"""
+
+description_ru = """
+Дан массив чисел, верните массив, который содержит сначала четные числа, а потом нечетные. В новом массиве числа должны быть в том же порядке.
+"""
+
+solution = """
+def solution(arr):
+    evens = [x for x in arr if x % 2 == 0]
+    odds = [x for x in arr if x % 2 == 1]
+    return evens + odds
+"""
+
+examples = """
+solution([1, 2, 3, 4, 5]) == [2, 4, 1, 3, 5]
+solution([2, 4, 5, 9, 3, 8, 6]) == [2, 4, 8, 6, 5, 9, 3]
+solution([12, 34, 45, 9, 8, 90, 3]) == [12, 34, 8, 90, 45, 9, 3]
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name   = "array"
+nested = { name = "integer" }
+
+[output_signature.type]
+name   = "array"
+nested = { name = "integer" }
+
+[[asserts]]
+arguments = [[12, 34, 45, 9, 8, 90, 3]]
+comment   = "Mixed even and odd numbers"
+expected  = [12, 34, 8, 90, 45, 9, 3]
+
+[[asserts]]
+arguments = [[1, 7, 44, 51, 54, 14, 23, 25, 48, 41]]
+comment   = "Longer array with mixed numbers"
+expected  = [44, 54, 14, 48, 1, 7, 51, 23, 25, 41]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "Alternating even and odd"
+expected  = [2, 4, 1, 3, 5]
+
+[[asserts]]
+arguments = [[2, 4, 5, 9, 3, 8, 6]]
+comment   = "Random order mixed numbers"
+expected  = [2, 4, 8, 6, 5, 9, 3]
+
+[[asserts]]
+arguments = [[2, 4, 6, 8]]
+comment   = "All even numbers"
+expected  = [2, 4, 6, 8]
+
+[[asserts]]
+arguments = [[1, 3, 5, 7]]
+comment   = "All odd numbers"
+expected  = [1, 3, 5, 7]
+
+[[asserts]]
+arguments = [[10]]
+comment   = "Single even number"
+expected  = [10]
+
+[[asserts]]
+arguments = [[5]]
+comment   = "Single odd number"
+expected  = [5]
+
+[[asserts]]
+arguments = [[1, 2]]
+comment   = "One odd, one even"
+expected  = [2, 1]
+
+[[asserts]]
+arguments = [[2, 1]]
+comment   = "One even, one odd"
+expected  = [2, 1]
+
+[[asserts]]
+arguments = [[10, 20, 30, 1, 3, 5]]
+comment   = "All evens first, then all odds"
+expected  = [10, 20, 30, 1, 3, 5]
+
+[[asserts]]
+arguments = [[1, 3, 5, 10, 20, 30]]
+comment   = "All odds first, then all evens"
+expected  = [10, 20, 30, 1, 3, 5]
+
+[[asserts]]
+arguments = [[7, 14, 21, 28]]
+comment   = "Multiples of 7, mixed parity"
+expected  = [14, 28, 7, 21]
+
+[[asserts]]
+arguments = [[100, 99, 98, 97]]
+comment   = "Descending numbers"
+expected  = [100, 98, 99, 97]
+
+[[asserts]]
+arguments = [[11, 22, 33, 44]]
+comment   = "Numbers ending in same digit pairs"
+expected  = [22, 44, 11, 33]
+
+[[asserts]]
+arguments = [[2, 2, 2, 3, 3, 3]]
+comment   = "Repeated even and odd numbers"
+expected  = [2, 2, 2, 3, 3, 3]
+
+[[asserts]]
+arguments = [[15, 30, 45, 60]]
+comment   = "Multiples of 15"
+expected  = [30, 60, 15, 45]
+
+[[asserts]]
+arguments = [[8, 7, 6, 5, 4, 3, 2, 1]]
+comment   = "Descending sequence"
+expected  = [8, 6, 4, 2, 7, 5, 3, 1]
+
+[[asserts]]
+arguments = [[1, 3, 5, 7, 9, 2, 4, 6, 8, 10]]
+comment   = "Odds first then evens"
+expected  = [2, 4, 6, 8, 10, 1, 3, 5, 7, 9]
+
+[[asserts]]
+arguments = [[50, 25, 75, 100]]
+comment   = "Multiples of 25"
+expected  = [50, 100, 25, 75]
+
+[[asserts]]
+arguments = [[13, 26, 39, 52]]
+comment   = "Multiples of 13"
+expected  = [26, 52, 13, 39]
+
+[[asserts]]
+arguments = [[3, 6, 9, 12, 15, 18]]
+comment   = "Multiples of 3"
+expected  = [6, 12, 18, 3, 9, 15]
+
+[[asserts]]
+arguments = [[17, 34, 51, 68]]
+comment   = "Multiples of 17"
+expected  = [34, 68, 17, 51]
+
+[[asserts]]
+arguments = [[4, 8, 12, 16, 20]]
+comment   = "All even multiples of 4"
+expected  = [4, 8, 12, 16, 20]
+
+[[asserts]]
+arguments = [[5, 10, 15, 20, 25]]
+comment   = "Multiples of 5 mixed parity"
+expected  = [10, 20, 5, 15, 25]
+
+[[asserts]]
+arguments = [[40, 35, 30, 25, 20]]
+comment   = "Descending multiples of 5"
+expected  = [40, 30, 20, 35, 25]
+
+[[asserts]]
+arguments = [[9, 18, 27, 36]]
+comment   = "Multiples of 9"
+expected  = [18, 36, 9, 27]
+
+[[asserts]]
+arguments = [[22, 23, 24, 25, 26]]
+comment   = "Consecutive numbers 22-26"
+expected  = [22, 24, 26, 23, 25]
+
+[[asserts]]
+arguments = [[101, 102, 103, 104, 105]]
+comment   = "Consecutive numbers starting at 101"
+expected  = [102, 104, 101, 103, 105]
+
+[[asserts]]
+arguments = [[64, 32, 16, 8, 4, 2]]
+comment   = "Powers of 2 descending"
+expected  = [64, 32, 16, 8, 4, 2]

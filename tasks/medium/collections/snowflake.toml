@@ -1,0 +1,428 @@
+level             = "medium"
+name              = "snowflake"
+tags              = ["collections", "algo"]
+time_to_solve_sec = 450
+
+description_en = """
+Given a square matrix of characters `*` and `.`, determine if it has at least three of the following symmetries:
+- Vertical
+- Horizontal
+- Along main diagonal
+- Along anti-diagonal
+
+Return `true` if at least three symmetries exist, otherwise `false`.
+"""
+
+description_ru = """
+Дана квадратная матрица из символов `*` и `.`. Определите, обладает ли она минимум тремя симметриями из:
+- вертикальной,
+- горизонтальной,
+- по главной диагонали,
+- по побочной диагонали.
+
+Верните `true`, если существует минимум три симметрии, иначе `false`.
+"""
+
+limits = """
+- $1 \\leq n \\leq 100$ (where $n$ is the size of the square matrix)
+"""
+
+solution = """
+def solution(matrix: list[list[str]]) -> int:
+    n = len(matrix)
+    v = all(matrix[i][j] == matrix[i][n-1-j] for i in range(n) for j in range(n//2))
+    h = all(matrix[i][j] == matrix[n-1-i][j] for i in range(n//2) for j in range(n))
+    d1 = all(matrix[i][j] == matrix[j][i] for i in range(n) for j in range(i))
+    d2 = all(matrix[i][j] == matrix[n-1-j][n-1-i] for i in range(n) for j in range(n))
+    return sum([v, h, d1, d2]) >= 3
+"""
+
+examples = """
+solution([["*"]]) == True
+solution([["*", "*"], ["*", "*"]]) == True
+solution([["*", "."], [".", "*"]]) == True
+solution([["*", "."], ["*", "."]]) == False
+"""
+
+[[input_signature]]
+argument_name = "matrix"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[["*"]]]
+comment   = "Single element has all symmetries"
+expected  = true
+
+[[asserts]]
+arguments = [[["*", "*"], ["*", "*"]]]
+comment   = "All same has all symmetries"
+expected  = true
+
+[[asserts]]
+arguments = [[[".", "."], [".", "."]]]
+comment   = "All dots has all symmetries"
+expected  = true
+
+[[asserts]]
+arguments = [[["*", "."], [".", "*"]]]
+expected  = false
+
+
+[[asserts]]
+arguments = [[[".", "*"], ["*", "."]]]
+expected  = false
+
+[[asserts]]
+arguments = [[["*", "."], ["*", "."]]]
+comment   = "Only vertical symmetry"
+expected  = false
+
+[[asserts]]
+arguments = [[["*", "*"], [".", "."]]]
+comment   = "Only horizontal symmetry"
+expected  = false
+
+[[asserts]]
+arguments = [[["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]]]
+comment   = "All stars 3x3"
+expected  = true
+
+[[asserts]]
+arguments = [[["*", ".", "*"], [".", "*", "."], ["*", ".", "*"]]]
+comment   = "Cross pattern has all symmetries"
+expected  = true
+
+[[asserts]]
+arguments = [[[".", "*", "."], ["*", ".", "*"], [".", "*", "."]]]
+comment   = "X pattern has all symmetries"
+expected  = true
+
+[[asserts]]
+arguments = [[["*", ".", "."], [".", "*", "."], [".", ".", "*"]]]
+comment   = "Main diagonal pattern (2 symmetries: d1, d2)"
+expected  = false
+
+[[asserts]]
+arguments = [[[".", ".", "*"], [".", "*", "."], ["*", ".", "."]]]
+comment   = "Anti-diagonal pattern (2 symmetries: d1, d2)"
+expected  = false
+
+[[asserts]]
+arguments = [[["*", ".", "*"], ["*", "*", "*"], ["*", ".", "*"]]]
+comment   = "T-shape (2 symmetries: vertical, horizontal)"
+expected  = false
+
+[[asserts]]
+arguments = [[["*", "*", "*"], [".", "*", "."], ["*", ".", "*"]]]
+comment   = "Irregular pattern"
+expected  = false
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "*",
+      ".",
+      ".",
+      ".",
+    ],
+    [
+      ".",
+      "*",
+      ".",
+      ".",
+    ],
+    [
+      ".",
+      ".",
+      "*",
+      ".",
+    ],
+    [
+      ".",
+      ".",
+      ".",
+      "*",
+    ],
+  ],
+]
+comment = "Main diagonal 4x4 (2 symmetries: d1, d2)"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    [
+      ".",
+      ".",
+      ".",
+      "*",
+    ],
+    [
+      ".",
+      ".",
+      "*",
+      ".",
+    ],
+    [
+      ".",
+      "*",
+      ".",
+      ".",
+    ],
+    [
+      "*",
+      ".",
+      ".",
+      ".",
+    ],
+  ],
+]
+comment = "Anti-diagonal 4x4 (2 symmetries: d1, d2)"
+expected = false
+
+[[asserts]]
+arguments = [[["*", "*"], [".", "."]]]
+comment   = "Only horizontal"
+expected  = false
+
+[[asserts]]
+arguments = [[["*", "."], ["*", "*"]]]
+comment   = "No three symmetries"
+expected  = false
+
+[[asserts]]
+arguments = [[[".", "*", "."], ["*", "*", "*"], [".", "*", "."]]]
+comment   = "Plus sign has all symmetries"
+expected  = true
+
+[[asserts]]
+arguments = [[["*", ".", "*"], [".", ".", "."], ["*", ".", "*"]]]
+comment   = "Four corners"
+expected  = true
+
+[[asserts]]
+arguments = [[["*", "*", "*"], ["*", ".", "*"], ["*", "*", "*"]]]
+comment   = "Border with center dot"
+expected  = true
+
+[[asserts]]
+arguments = [[[".", ".", "."], [".", "*", "."], [".", ".", "."]]]
+comment   = "Single center star"
+expected  = true
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "*",
+      ".",
+      ".",
+      "*",
+    ],
+    [
+      ".",
+      "*",
+      "*",
+      ".",
+    ],
+    [
+      ".",
+      "*",
+      "*",
+      ".",
+    ],
+    [
+      "*",
+      ".",
+      ".",
+      "*",
+    ],
+  ],
+]
+comment = "Complex symmetric 4x4"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "*",
+      ".",
+      "*",
+      ".",
+    ],
+    [
+      ".",
+      "*",
+      ".",
+      "*",
+    ],
+    [
+      "*",
+      ".",
+      "*",
+      ".",
+    ],
+    [
+      ".",
+      "*",
+      ".",
+      "*",
+    ],
+  ],
+]
+comment = "Checkerboard has two symmetries"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "*",
+      "*",
+      "*",
+      "*",
+      "*",
+    ],
+    [
+      "*",
+      ".",
+      ".",
+      ".",
+      "*",
+    ],
+    [
+      "*",
+      ".",
+      "*",
+      ".",
+      "*",
+    ],
+    [
+      "*",
+      ".",
+      ".",
+      ".",
+      "*",
+    ],
+    [
+      "*",
+      "*",
+      "*",
+      "*",
+      "*",
+    ],
+  ],
+]
+comment = "Frame with center"
+expected = true
+
+[[asserts]]
+arguments = [[["*", ".", "."], [".", ".", "*"], [".", "*", "."]]]
+comment   = "Random pattern"
+expected  = false
+
+[[asserts]]
+arguments = [[["*", "*", "*"], ["*", "*", "."], ["*", ".", "."]]]
+comment   = "Triangle pattern"
+expected  = false
+
+[[asserts]]
+arguments = [[[".", ".", "*"], [".", "*", "*"], ["*", "*", "*"]]]
+comment   = "Reverse triangle"
+expected  = false
+
+[[asserts]]
+arguments = [
+  [
+    [
+      "*",
+      ".",
+      "*",
+      ".",
+      "*",
+    ],
+    [
+      ".",
+      "*",
+      ".",
+      "*",
+      ".",
+    ],
+    [
+      "*",
+      ".",
+      "*",
+      ".",
+      "*",
+    ],
+    [
+      ".",
+      "*",
+      ".",
+      "*",
+      ".",
+    ],
+    [
+      "*",
+      ".",
+      "*",
+      ".",
+      "*",
+    ],
+  ],
+]
+comment = "Large checkerboard pattern"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    [
+      ".",
+      ".",
+      ".",
+      ".",
+      ".",
+    ],
+    [
+      ".",
+      ".",
+      ".",
+      ".",
+      ".",
+    ],
+    [
+      ".",
+      ".",
+      "*",
+      ".",
+      ".",
+    ],
+    [
+      ".",
+      ".",
+      ".",
+      ".",
+      ".",
+    ],
+    [
+      ".",
+      ".",
+      ".",
+      ".",
+      ".",
+    ],
+  ],
+]
+comment = "Single center in 5x5"
+expected = true

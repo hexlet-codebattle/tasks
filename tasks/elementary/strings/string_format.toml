@@ -1,0 +1,165 @@
+level             = "elementary"
+name              = "string_format"
+tags              = ["strings"]
+time_to_solve_sec = 150
+
+description_en = """
+Given a number as input, return a string `"Value is num"`, where `num` is the given number with zeros added to the beginning so that there are 5 digits in total.
+"""
+
+description_ru = """
+Верните строку `"Value is num"`, где `num` — число, переданное в функцию. Дополните число нулями слева, если в нем меньше 5 цифр.
+"""
+
+limits = """
+- $0 \\leq \\text{num} \\leq 99999$
+"""
+
+solution = """
+def solution(num: int) -> str:
+    return f"Value is {num:05d}"
+"""
+
+examples = """
+solution(5) == "Value is 00005"
+solution(123) == "Value is 00123"
+solution(12345) == "Value is 12345"
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [0]
+comment   = "Minimum value"
+expected  = "Value is 00000"
+
+[[asserts]]
+arguments = [1]
+comment   = "Single digit"
+expected  = "Value is 00001"
+
+[[asserts]]
+arguments = [5]
+comment   = "Single digit"
+expected  = "Value is 00005"
+
+[[asserts]]
+arguments = [9]
+comment   = "Largest single digit"
+expected  = "Value is 00009"
+
+[[asserts]]
+arguments = [10]
+comment   = "Two digits"
+expected  = "Value is 00010"
+
+[[asserts]]
+arguments = [42]
+comment   = "Two digits"
+expected  = "Value is 00042"
+
+[[asserts]]
+arguments = [99]
+comment   = "Largest two digits"
+expected  = "Value is 00099"
+
+[[asserts]]
+arguments = [100]
+comment   = "Three digits"
+expected  = "Value is 00100"
+
+[[asserts]]
+arguments = [123]
+comment   = "Three digits"
+expected  = "Value is 00123"
+
+[[asserts]]
+arguments = [500]
+comment   = "Three digits"
+expected  = "Value is 00500"
+
+[[asserts]]
+arguments = [999]
+comment   = "Largest three digits"
+expected  = "Value is 00999"
+
+[[asserts]]
+arguments = [1000]
+comment   = "Four digits"
+expected  = "Value is 01000"
+
+[[asserts]]
+arguments = [1234]
+comment   = "Four digits"
+expected  = "Value is 01234"
+
+[[asserts]]
+arguments = [5678]
+comment   = "Four digits"
+expected  = "Value is 05678"
+
+[[asserts]]
+arguments = [9999]
+comment   = "Largest four digits"
+expected  = "Value is 09999"
+
+[[asserts]]
+arguments = [10000]
+comment   = "Five digits - no padding"
+expected  = "Value is 10000"
+
+[[asserts]]
+arguments = [12345]
+comment   = "Five digits - no padding"
+expected  = "Value is 12345"
+
+[[asserts]]
+arguments = [50000]
+comment   = "Five digits - no padding"
+expected  = "Value is 50000"
+
+[[asserts]]
+arguments = [67890]
+comment   = "Five digits - no padding"
+expected  = "Value is 67890"
+
+[[asserts]]
+arguments = [99999]
+comment   = "Maximum value"
+expected  = "Value is 99999"
+
+[[asserts]]
+arguments = [2]
+comment   = "Small single digit"
+expected  = "Value is 00002"
+
+[[asserts]]
+arguments = [7]
+comment   = "Small single digit"
+expected  = "Value is 00007"
+
+[[asserts]]
+arguments = [25]
+comment   = "Two digits"
+expected  = "Value is 00025"
+
+[[asserts]]
+arguments = [333]
+comment   = "Three digits"
+expected  = "Value is 00333"
+
+[[asserts]]
+arguments = [4444]
+comment   = "Four digits"
+expected  = "Value is 04444"
+
+[[asserts]]
+arguments = [55555]
+comment   = "Five digits"
+expected  = "Value is 55555"

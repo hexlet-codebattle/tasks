@@ -1,0 +1,296 @@
+level             = "elementary"
+name              = "filter_messages"
+tags              = ["strings", "collections", "hash_maps"]
+time_to_solve_sec = 120
+
+description_en = """
+Implement a function that extracts users messages from Codebattle chat. If there is no such messages, return `['no messages!']`
+"""
+
+description_ru = """
+Создайте функцию, которая фильтрует сообщения в чате Codebattle по имени пользователя. Если таких сообщений нет, верните `['no messages!']`
+"""
+
+solution = """
+def solution(messages, user):
+    result = [msg["text"] for msg in messages if msg["user"] == user]
+    return result if result else ["no messages!"]
+"""
+
+examples = """
+solution(
+    [
+        {"user": "Some user", "text": "Some message"},
+        {"user": "User", "text": "Message"}
+    ],
+    "Some user"
+) == ["Some message"]
+
+solution(
+    [
+        {"user": "vtm", "text": "Ruby is cool!"}
+    ],
+    "NewUser"
+) == ["no messages!"]
+
+solution(
+    [
+        {"user": "vtm", "text": "Ruby is cool!"},
+        {"user": "vtm", "text": "Elixir is breath taking!"}
+    ],
+    "vtm"
+) == ["Ruby is cool!", "Elixir is breath taking!"]
+"""
+
+[[input_signature]]
+argument_name = "messages"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "hash"
+[input_signature.type.nested.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "user"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [
+  [
+    { user = "Some user", text = "Some message" },
+    { user = "User", text = "Message" },
+  ],
+  "Some user",
+]
+expected = ["Some message"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "vtm", text = "Ruby is cool!" },
+    { user = "solar05", text = "Clojure too!" },
+    { user = "ReDBrother", text = "JS are the same!" },
+  ],
+  "NewUser",
+]
+expected = ["no messages!"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "vtm", text = "Ruby is cool!" },
+    { user = "solar05", text = "Clojure too!" },
+    { user = "ReDBrother", text = "JS are the same!" },
+    { user = "vtm", text = "Elixir is breath taking!" },
+  ],
+  "vtm",
+]
+expected = ["Ruby is cool!", "Elixir is breath taking!"]
+
+[[asserts]]
+arguments = [[], "user"]
+expected  = ["no messages!"]
+
+[[asserts]]
+arguments = [[{ user = "alice", text = "Hello" }], "bob"]
+expected  = ["no messages!"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "alice", text = "Hello" },
+    { user = "alice", text = "World" },
+  ],
+  "alice",
+]
+expected = ["Hello", "World"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "bob", text = "Test" },
+    { user = "alice", text = "Message" },
+    { user = "bob", text = "Another" },
+  ],
+  "bob",
+]
+expected = ["Test", "Another"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "user1", text = "a" },
+    { user = "user2", text = "b" },
+    { user = "user3", text = "c" },
+  ],
+  "user2",
+]
+expected = ["b"]
+
+[[asserts]]
+arguments = [[{ user = "admin", text = "Welcome!" }], "admin"]
+expected  = ["Welcome!"]
+
+[[asserts]]
+arguments = [[{ user = "test", text = "" }], "test"]
+expected  = [""]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "a", text = "1" },
+    { user = "b", text = "2" },
+    { user = "a", text = "3" },
+    { user = "c", text = "4" },
+    { user = "a", text = "5" },
+  ],
+  "a",
+]
+expected = ["1", "3", "5"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "john", text = "First message" },
+    { user = "jane", text = "Second message" },
+    { user = "john", text = "Third message" },
+  ],
+  "john",
+]
+expected = ["First message", "Third message"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "user", text = "Message 1" },
+    { user = "user", text = "Message 2" },
+    { user = "user", text = "Message 3" },
+    { user = "user", text = "Message 4" },
+  ],
+  "user",
+]
+expected = ["Message 1", "Message 2", "Message 3", "Message 4"]
+
+[[asserts]]
+arguments = [[{ user = "x", text = "x" }], "y"]
+expected  = ["no messages!"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "Alice", text = "Hi" },
+    { user = "Bob", text = "Hello" },
+    { user = "Charlie", text = "Hey" },
+  ],
+  "David",
+]
+expected = ["no messages!"]
+
+[[asserts]]
+arguments = [[{ user = "guest", text = "Question?" }], "guest"]
+expected  = ["Question?"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "mod", text = "Warning" },
+    { user = "mod", text = "Ban" },
+  ],
+  "mod",
+]
+expected = ["Warning", "Ban"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "u1", text = "m1" },
+    { user = "u2", text = "m2" },
+    { user = "u3", text = "m3" },
+    { user = "u4", text = "m4" },
+    { user = "u5", text = "m5" },
+  ],
+  "u3",
+]
+expected = ["m3"]
+
+[[asserts]]
+arguments = [[{ user = "sender", text = "Hello world!" }], "receiver"]
+expected  = ["no messages!"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "player1", text = "gg" },
+    { user = "player2", text = "wp" },
+    { user = "player1", text = "thx" },
+  ],
+  "player1",
+]
+expected = ["gg", "thx"]
+
+[[asserts]]
+arguments = [[{ user = "dev", text = "bug fixed" }], "dev"]
+expected  = ["bug fixed"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "tester", text = "test1" },
+    { user = "tester", text = "test2" },
+    { user = "tester", text = "test3" },
+  ],
+  "tester",
+]
+expected = ["test1", "test2", "test3"]
+
+[[asserts]]
+arguments = [[{ user = "anonymous", text = "secret" }], "anonymous"]
+expected  = ["secret"]
+
+[[asserts]]
+arguments = [[{ user = "bot", text = "automated message" }], "human"]
+expected  = ["no messages!"]
+
+[[asserts]]
+arguments = [[{ user = "speaker", text = "word" }], "listener"]
+expected  = ["no messages!"]
+
+[[asserts]]
+arguments = [[{ user = "writer", text = "content" }], "writer"]
+expected  = ["content"]
+
+[[asserts]]
+arguments = [[{ user = "me", text = "note to self" }], "me"]
+expected  = ["note to self"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "system", text = "System message" },
+    { user = "user", text = "User message" },
+  ],
+  "system",
+]
+expected = ["System message"]
+
+[[asserts]]
+arguments = [
+  [
+    { user = "alpha", text = "first" },
+    { user = "beta", text = "second" },
+    { user = "gamma", text = "third" },
+  ],
+  "beta",
+]
+expected = ["second"]
+
+[[asserts]]
+arguments = [[{ user = "coach", text = "advice" }], "student"]
+expected  = ["no messages!"]

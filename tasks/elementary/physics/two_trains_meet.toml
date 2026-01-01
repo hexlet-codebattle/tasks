@@ -1,0 +1,171 @@
+level             = "elementary"
+name              = "two_trains_meet"
+tags              = ["physics", "training"]
+time_to_solve_sec = 180
+
+description_en = """
+Compute how long after their departure two trains will meet. Assume that the trains travel between two points along a single section of track, going in opposite directions. The function should consume the trains' speeds and the starting distance between the trains.
+"""
+
+description_ru = """
+Вычислите, через какое время после отправления два поезда встретятся. Предположим, что поезда движутся между двумя пунктами по одному участку пути, двигаясь в противоположных направлениях. Функция должна принимать скорости поездов и начальное расстояние между ними.
+"""
+
+limits = """
+- $1 \\leq v_1, v_2 \\leq 1000$
+- $1 \\leq \\text{distance} \\leq 100000$
+"""
+
+solution = """
+def solution(v1: int, v2: int, distance: int) -> float:
+    return distance / (v1 + v2)
+"""
+
+examples = """
+solution(50, 50, 100) == 1.0
+solution(30, 40, 140) == 2.0
+solution(70, 50, 360) == 3.0
+"""
+
+[[input_signature]]
+argument_name = "v1"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "v2"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "distance"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "float"
+
+[[asserts]]
+arguments = [50, 50, 100]
+comment   = "Equal speeds meet in middle"
+expected  = 1.0
+
+[[asserts]]
+arguments = [30, 40, 140]
+comment   = "Different speeds"
+expected  = 2.0
+
+[[asserts]]
+arguments = [70, 50, 360]
+comment   = "Larger values"
+expected  = 3.0
+
+[[asserts]]
+arguments = [60, 60, 120]
+comment   = "Equal speeds"
+expected  = 1.0
+
+[[asserts]]
+arguments = [100, 100, 200]
+comment   = "Fast trains"
+expected  = 1.0
+
+[[asserts]]
+arguments = [25, 75, 100]
+comment   = "Unequal speeds"
+expected  = 1.0
+
+[[asserts]]
+arguments = [40, 60, 200]
+comment   = "Meet after 2 hours"
+expected  = 2.0
+
+[[asserts]]
+arguments = [80, 70, 450]
+comment   = "Meet after 3 hours"
+expected  = 3.0
+
+[[asserts]]
+arguments = [90, 60, 300]
+comment   = "Meet after 2 hours"
+expected  = 2.0
+
+[[asserts]]
+arguments = [50, 100, 450]
+comment   = "One train twice as fast"
+expected  = 3.0
+
+[[asserts]]
+arguments = [10, 10, 100]
+comment   = "Slow trains"
+expected  = 5.0
+
+[[asserts]]
+arguments = [5, 5, 50]
+comment   = "Very slow trains"
+expected  = 5.0
+
+[[asserts]]
+arguments = [200, 300, 500]
+comment   = "Very fast trains"
+expected  = 1.0
+
+[[asserts]]
+arguments = [15, 35, 100]
+comment   = "Unequal speeds"
+expected  = 2.0
+
+[[asserts]]
+arguments = [45, 55, 200]
+comment   = "Close speeds"
+expected  = 2.0
+
+[[asserts]]
+arguments = [75, 25, 400]
+comment   = "Large speed difference"
+expected  = 4.0
+
+[[asserts]]
+arguments = [80, 80, 320]
+comment   = "Equal high speeds"
+expected  = 2.0
+
+[[asserts]]
+arguments = [120, 180, 600]
+comment   = "High speeds"
+expected  = 2.0
+
+[[asserts]]
+arguments = [20, 30, 250]
+comment   = "Meet after 5 hours"
+expected  = 5.0
+
+[[asserts]]
+arguments = [55, 45, 500]
+comment   = "Meet after 5 hours"
+expected  = 5.0
+
+[[asserts]]
+arguments = [65, 85, 450]
+comment   = "Meet after 3 hours"
+expected  = 3.0
+
+[[asserts]]
+arguments = [110, 90, 400]
+comment   = "Meet after 2 hours"
+expected  = 2.0
+
+[[asserts]]
+arguments = [150, 150, 600]
+comment   = "Equal fast speeds"
+expected  = 2.0
+
+[[asserts]]
+arguments = [35, 65, 300]
+comment   = "Different speeds"
+expected  = 3.0
+
+[[asserts]]
+arguments = [42, 58, 400]
+comment   = "Meet after 4 hours"
+expected  = 4.0

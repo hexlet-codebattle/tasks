@@ -1,0 +1,189 @@
+level             = "medium"
+name              = "all_symmetric_pairs"
+tags              = ["collections", "hashing", "pairs"]
+time_to_solve_sec = 300
+
+description_en = """
+Given an array of integer pairs $p = [[a_1,b_1], [a_2,b_2],\\dots]$, return all **unique symmetric pairs** $[x,y]$ such that both $[x,y]$ and $[y,x]$ appear in $p$.
+
+Return pairs in ascending order with $x < y$, sorted lexicographically.
+If no symmetric pairs exist, return $[[-1]]$.
+"""
+
+description_ru = """
+Дан массив целочисленных пар $p = [[a_1,b_1], [a_2,b_2],\\dots]$. Верните все **уникальные симметричные пары** $[x,y]$, для которых в $p$ присутствуют и $[x,y]$, и $[y,x]$.
+
+Возвращайте пары в виде $[x,y]$ с $x<y$, отсортированные лексикографически.
+Если симметричных пар нет, верните $[[-1]]$.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(p) \\leq 10^5$
+- $-10^6 \\leq a_i, b_i \\leq 10^6$
+- $\\text{len}([a_i,b_i]) = 2$
+"""
+
+solution = """
+def solution(pairs):
+    seen = set()
+    out = set()
+    for pair in pairs:
+        if len(pair) != 2:
+            continue
+        a, b = pair
+        if a != b and (b, a) in seen:
+            x, y = (a, b) if a < b else (b, a)
+            out.add((x, y))
+        seen.add((a, b))
+    if not out:
+        return [[-1]]
+    res = [[x, y] for x, y in sorted(out)]
+    return res
+"""
+
+examples = """
+solution([[11,20],[35,40],[5,10],[45,30]]) == [[-1]]
+solution([[11,20],[30,40],[5,10],[40,30]]) == [[5,10],[30,40]]
+solution([[11,20],[20,11],[5,10],[45,30]]) == [[11,20]]
+"""
+
+[[input_signature]]
+argument_name = "pairs"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[[11, 20], [30, 40], [5, 10], [40, 30], [10, 5]]]
+comment   = "Two symmetric pairs"
+expected  = [[5, 10], [30, 40]]
+
+[[asserts]]
+arguments = [[[11, 20], [35, 40], [5, 10], [45, 30], [10, 6]]]
+comment   = "No symmetric pairs -> [[-1]]"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[11, 20], [20, 11], [5, 10], [45, 30], [10, 6]]]
+comment   = "Single symmetric pair"
+expected  = [[11, 20]]
+
+[[asserts]]
+arguments = [[[1, 2], [2, 1], [2, 1]]]
+comment   = "Duplicates do not create extra results"
+expected  = [[1, 2]]
+
+[[asserts]]
+arguments = [[[1, 1]]]
+comment   = "Self-pair alone is not symmetric without both directions separately"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[1, 1], [1, 1]]]
+comment   = "Even duplicate self-pairs are not considered symmetric"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[0, 0], [0, 0], [0, 0], [0, 0]]]
+comment   = "All zeros but no opposite direction distinct pair"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[0, 1], [1, 0]]]
+comment   = "Zero involved"
+expected  = [[0, 1]]
+
+[[asserts]]
+arguments = [[[-5, 7], [7, -5]]]
+comment   = "Negative and positive"
+expected  = [[-5, 7]]
+
+[[asserts]]
+arguments = [[[10, 5], [5, 10], [10, 5], [5, 10]]]
+comment   = "Multiple duplicates still yield one"
+expected  = [[5, 10]]
+
+[[asserts]]
+arguments = [[[1, 2], [3, 4], [2, 1], [4, 3]]]
+comment   = "Two disjoint symmetric pairs; sorted lexicographically"
+expected  = [[1, 2], [3, 4]]
+
+[[asserts]]
+arguments = [[[3, 4], [4, 3], [1, 2], [2, 1]]]
+comment   = "Order in input does not affect sorted output"
+expected  = [[1, 2], [3, 4]]
+
+[[asserts]]
+arguments = [[[2, 3], [3, 2], [2, 4], [4, 2], [3, 4]]]
+comment   = "Two symmetric pairs; third missing reverse"
+expected  = [[2, 3], [2, 4]]
+
+[[asserts]]
+arguments = [[[-1000000, 1000000], [1000000, -1000000]]]
+comment   = "Hard bounds"
+expected  = [[-1000000, 1000000]]
+
+[[asserts]]
+arguments = [[[]]]
+comment   = "Empty inner list ignored by constraints but not provided here"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[]]]
+comment   = "Intentional boundary: no valid pairs present"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[-2, -3], [-3, -2]]]
+comment   = "All negatives"
+expected  = [[-3, -2]]
+
+[[asserts]]
+arguments = [[[1, 2], [2, 3], [3, 1]]]
+comment   = "No symmetric pairs despite a cycle"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[1, 2], [2, 1], [1, 2], [2, 1], [5, 6]]]
+comment   = "One symmetric pair plus a stray"
+expected  = [[1, 2]]
+
+[[asserts]]
+arguments = [[[]]]
+comment   = "Third empty check"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[]]]
+comment   = "Fourth empty check"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[]]]
+comment   = "Fifth empty check"
+expected  = [[-1]]
+
+[[asserts]]
+arguments = [[[0, 1], [2, 2], [1, 0], [2, 2]]]
+comment   = "Self-pair 2,2 not counted; 0-1 is symmetric"
+expected  = [[0, 1]]
+
+[[asserts]]
+arguments = [[[5, 5], [5, 5], [6, 7], [7, 6]]]
+comment   = "Only (6,7) qualifies"
+expected  = [[6, 7]]
+
+[[asserts]]
+arguments = [[]]
+comment   = "Truly empty input"
+expected  = [[-1]]

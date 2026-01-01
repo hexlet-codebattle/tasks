@@ -1,0 +1,189 @@
+level             = "easy"
+name              = "find_full_name_by_initials"
+tags              = ["strings", "search"]
+time_to_solve_sec = 300
+
+description_en = """
+A client sent a letter containing their surname and initials.
+You are given the client's short form (surname and initials) and a list of full names.
+Return the client's **full name** if a match is found.
+
+If there are multiple possible matches, return the **first one**.
+If no match exists, return the string `"ERROR"`.
+"""
+
+description_ru = """
+Клиент прислал письмо, указав фамилию и инициалы.
+Даны сокращённая форма (фамилия и инициалы) и список полных имён.
+Нужно вернуть **полное имя клиента**, если оно найдено.
+
+Если подходящих несколько — вернуть **первое**.
+Если нет совпадений — вернуть строку `"ERROR"`.
+"""
+
+solution = """
+def solution(initials: str, names: list) -> str:
+    for full_name in names:
+        parts = full_name.split()
+        if len(parts) == 3:
+            last, first, middle = parts
+            if f"{last} {first[0]}{middle[0]}" == initials:
+                return full_name
+    return "ERROR"
+"""
+
+examples = """
+solution("POTTER HJ", ["POTTER HARRY JAMES", "POTTER HENRY PAUL"]) == "POTTER HARRY JAMES"
+solution("GRANGER HJ", ["GRANGER HERMIONE JEAN", "GRANGER HENRIETTA GRACE"]) == "GRANGER HERMIONE JEAN"
+solution("STARK TS", ["STARK TONY STEVEN", "STARK THOMAS SAMUEL"]) == "STARK TONY STEVEN"
+solution("BAGGINS FB", ["FRODO BAGGINS BILBO"]) == "ERROR"
+"""
+
+[[input_signature]]
+argument_name = "initials"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "names"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["POTTER HJ", ["POTTER HARRY JAMES", "POTTER HENRY JAMES"]]
+expected  = "POTTER HARRY JAMES"
+
+[[asserts]]
+arguments = ["GRANGER HJ", ["GRANGER HERMIONE JEAN", "GRANGER HARRIET JUNE"]]
+expected  = "GRANGER HERMIONE JEAN"
+
+[[asserts]]
+arguments = [
+  "WEASLEY RB",
+  [
+    "WEASLEY RONALD BILIUS",
+    "WEASLEY REGINALD WILLIAM",
+  ],
+]
+expected = "WEASLEY RONALD BILIUS"
+
+[[asserts]]
+arguments = ["MALFOY DL", ["MALFOY DRACO LUCIUS", "MALFOY DANIEL MARCUS"]]
+expected  = "MALFOY DRACO LUCIUS"
+
+[[asserts]]
+arguments = [
+  "DUMBLEDORE AP",
+  [
+    "DUMBLEDORE ALBUS PERCIVAL",
+    "DUMBLEDORE ARTHUR DAVID",
+  ],
+]
+expected = "DUMBLEDORE ALBUS PERCIVAL"
+
+[[asserts]]
+arguments = ["SNAPE SS", ["SNAPE SEVERUS SAMUEL", "SNAPE SIMON SEAN"]]
+expected  = "SNAPE SEVERUS SAMUEL"
+
+[[asserts]]
+arguments = ["WAYNE BW", ["WAYNE BRUCE WILLIAM", "WAYNE BENJAMIN WALTER"]]
+expected  = "WAYNE BRUCE WILLIAM"
+
+[[asserts]]
+arguments = ["KENT CJ", ["KENT CLARK JOSEPH"]]
+expected  = "KENT CLARK JOSEPH"
+
+[[asserts]]
+arguments = ["PARKER PB", ["PARKER PETER BENJAMIN", "PARKER PHILIP PATRICK"]]
+expected  = "PARKER PETER BENJAMIN"
+
+[[asserts]]
+arguments = ["STARK TS", ["STARK TONY STANLEY"]]
+expected  = "STARK TONY STANLEY"
+
+[[asserts]]
+arguments = ["ROGERS SR", ["ROGERS STEVE RICHARD", "ROGERS SAMUEL ROBERT"]]
+expected  = "ROGERS STEVE RICHARD"
+
+[[asserts]]
+arguments = [
+  "ROMANOFF NR",
+  [
+    "ROMANOFF NATALIA RUSLANOVNA",
+    "ROMANOFF NINA ROSA",
+  ],
+]
+expected = "ROMANOFF NATALIA RUSLANOVNA"
+
+[[asserts]]
+arguments = ["BAGGINS FB", ["BAGGINS FRODO BILBO"]]
+expected  = "BAGGINS FRODO BILBO"
+
+[[asserts]]
+arguments = ["GANDALF GG", ["GANDALF GREY GILBERT"]]
+expected  = "GANDALF GREY GILBERT"
+
+[[asserts]]
+arguments = ["SKYWALKER LS", ["SKYWALKER LUKE SAMUEL", "SKYWALKER LEIA SARAH"]]
+expected  = "SKYWALKER LUKE SAMUEL"
+
+[[asserts]]
+arguments = ["KENOBI OB", ["KENOBI OBI BENJAMIN"]]
+expected  = "KENOBI OBI BENJAMIN"
+
+[[asserts]]
+arguments = ["ORGANA LO", ["ORGANA LEIA OLIVIA"]]
+expected  = "ORGANA LEIA OLIVIA"
+
+[[asserts]]
+arguments = ["STARK NS", ["STARK NED STANLEY", "STARK NICK SANDOR"]]
+expected  = "STARK NED STANLEY"
+
+[[asserts]]
+arguments = ["SNOW JS", ["SNOW JON SAMUEL", "SNOW JACK STEPHEN"]]
+expected  = "SNOW JON SAMUEL"
+
+[[asserts]]
+arguments = ["LANNISTER TL", ["LANNISTER TYRION LEO", "LANNISTER TYWIN LUKE"]]
+expected  = "LANNISTER TYRION LEO"
+
+[[asserts]]
+arguments = ["LOVEGOOD LL", ["LOVEGOOD LUNA LILY", "LOVEGOOD LUCY LORETTA"]]
+expected  = "LOVEGOOD LUNA LILY"
+
+[[asserts]]
+arguments = ["BLACK SB", ["BLACK SIRIUS BENJAMIN"]]
+expected  = "BLACK SIRIUS BENJAMIN"
+
+[[asserts]]
+arguments = ["HOLMES SH", ["HOLMES SHERLOCK HENRY", "HOLMES SAMUEL HOWARD"]]
+expected  = "HOLMES SHERLOCK HENRY"
+
+[[asserts]]
+arguments = ["WATSON JW", ["WATSON JOHN WILLIAM"]]
+expected  = "WATSON JOHN WILLIAM"
+
+[[asserts]]
+arguments = ["POTTER HJ", []]
+expected  = "ERROR"
+
+[[asserts]]
+arguments = ["PARKER PB", ["PARSON PETER BENJAMIN"]]
+expected  = "ERROR"
+
+[[asserts]]
+arguments = ["OBLOMOV II", ["OBLOMOV ILYA ILYICH"]]
+expected  = "OBLOMOV ILYA ILYICH"
+
+[[asserts]]
+arguments = ["MALFOY DM", ["MALFOY DRACO LUCIUS"]]
+expected  = "ERROR"
+
+[[asserts]]
+arguments = ["STARK TS", ["STARK TONY STEVEN", "STARK TREVOR SAMUEL"]]
+expected  = "STARK TONY STEVEN"

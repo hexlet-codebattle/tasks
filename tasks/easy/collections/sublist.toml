@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "sublist"
+tags              = ["collections"]
+time_to_solve_sec = 360
+
+description_en = """
+Given two lists, determine whether the first list is contained within the second list, whether the second list is contained within the first list, whether both lists are contained within each other, or whether none of these are true. Return one of: `"A is sublist of B"`, `"A is equal B"`, `"A is superlist of B"`, or `"A is unequal B"`.
+"""
+
+description_ru = """
+Даны два списка, определите содержится ли первый список во втором списке, содержится ли второй список в первом списке, содержатся ли оба списка друг в друге или ничего из вышеперечисленного. Верните одно из: `"A is sublist of B"`, `"A is equal B"`, `"A is superlist of B"` или `"A is unequal B"`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{arr1}) \\leq 100$
+- $0 \\leq \\text{len}(\\text{arr2}) \\leq 100$
+"""
+
+solution = """
+def solution(a: list, b: list) -> str:
+    if a == b:
+        return "A is equal B"
+    if len(a) <= len(b):
+        for i in range(len(b) - len(a) + 1):
+            if b[i:i+len(a)] == a:
+                return "A is sublist of B"
+    if len(b) <= len(a):
+        for i in range(len(a) - len(b) + 1):
+            if a[i:i+len(b)] == b:
+                return "A is superlist of B"
+    return "A is unequal B"
+"""
+
+examples = """
+solution([1, 2, 3], [1, 2, 3]) == "A is equal B"
+solution([3, 4], [1, 2, 3, 4, 5]) == "A is sublist of B"
+solution([1, 2, 3, 4, 5], [2, 3, 4]) == "A is superlist of B"
+solution([1, 2, 4, 5, 6], [1, 2, 3, 4, 5]) == "A is unequal B"
+"""
+
+[[input_signature]]
+argument_name = "arr1"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "arr2"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [[1, 2, 3], [1, 2, 3]]
+comment   = "Identical arrays"
+expected  = "A is equal B"
+
+[[asserts]]
+arguments = [[3, 4], [1, 2, 3, 4, 5]]
+comment   = "Sublist in middle"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[1, 2, 3], [1, 2, 3, 4, 5]]
+comment   = "Sublist at start"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[3, 4, 5], [1, 2, 3, 4, 5]]
+comment   = "Sublist at end"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], [2, 3, 4]]
+comment   = "Superlist"
+expected  = "A is superlist of B"
+
+[[asserts]]
+arguments = [[1, 2, 4], [1, 2, 3, 4, 5]]
+comment   = "Not continuous sublist"
+expected  = "A is unequal B"
+
+[[asserts]]
+arguments = [[1], [1, 2, 3]]
+comment   = "Single element sublist"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[1, 2, 3], [1]]
+comment   = "Single element in B"
+expected  = "A is superlist of B"
+
+[[asserts]]
+arguments = [[5], [5]]
+comment   = "Both single identical element"
+expected  = "A is equal B"
+
+[[asserts]]
+arguments = [[1, 2], [3, 4]]
+comment   = "Completely different arrays"
+expected  = "A is unequal B"
+
+[[asserts]]
+arguments = [[], []]
+comment   = "Both empty"
+expected  = "A is equal B"
+
+[[asserts]]
+arguments = [[], [1, 2, 3]]
+comment   = "Empty A"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[1, 2, 3], []]
+comment   = "Empty B"
+expected  = "A is superlist of B"
+
+[[asserts]]
+arguments = [[10, 20], [5, 10, 20, 30]]
+comment   = "Sublist with larger numbers"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[5, 10, 20, 30], [10, 20]]
+comment   = "Superlist with larger numbers"
+expected  = "A is superlist of B"
+
+[[asserts]]
+arguments = [[1, 2, 3, 4], [1, 2, 3, 4]]
+comment   = "Equal longer arrays"
+expected  = "A is equal B"
+
+[[asserts]]
+arguments = [[7, 8, 9], [1, 2, 3, 4, 5, 6, 7, 8, 9]]
+comment   = "Sublist at end of long array"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9], [4, 5, 6]]
+comment   = "Superlist of middle section"
+expected  = "A is superlist of B"
+
+[[asserts]]
+arguments = [[2, 4, 6], [1, 2, 3, 4, 5, 6]]
+comment   = "Elements present but not continuous"
+expected  = "A is unequal B"
+
+[[asserts]]
+arguments = [[100], [50, 100, 150]]
+comment   = "Single element in middle"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[5, 6, 7], [5, 6, 7, 8]]
+comment   = "Sublist missing last element"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[5, 6, 7, 8], [6, 7]]
+comment   = "Superlist with middle elements"
+expected  = "A is superlist of B"
+
+[[asserts]]
+arguments = [[1, 1, 1], [1, 1, 1, 1, 1]]
+comment   = "Repeated elements sublist"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[9, 8, 7], [7, 8, 9]]
+comment   = "Reversed order"
+expected  = "A is unequal B"
+
+[[asserts]]
+arguments = [[0, 0], [0, 0, 0, 0]]
+comment   = "Multiple zeros"
+expected  = "A is sublist of B"
+
+[[asserts]]
+arguments = [[-1, -2, -3], [-1, -2, -3]]
+comment   = "Negative numbers equal"
+expected  = "A is equal B"

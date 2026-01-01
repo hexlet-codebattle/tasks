@@ -1,0 +1,190 @@
+level             = "medium"
+name              = "santas_laugh"
+tags              = ["strings"]
+time_to_solve_sec = 350
+
+description_en = """
+Given a string `s`, ignore all characters except `'h'` and `'o'`. Check if the remaining characters form the pattern `"hohoho..."` with an odd number of `"ho"` substrings.
+
+Return `true` if the pattern matches, otherwise `false`.
+"""
+
+description_ru = """
+Дана строка `s`. Игнорируя все символы, кроме `'h'` и `'o'`, проверьте, образует ли строка вид `"hohoho..."` с нечётным количеством подстрок `"ho"`.
+
+Верните `true`, если паттерн совпадает, иначе `false`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(s) \\leq 10^4$
+"""
+
+solution = """
+def solution(s: str) -> bool:
+    t = ''.join(c for c in s if c in 'ho')
+    if not t or len(t) % 2 == 1 or t[0] != 'h':
+        return False
+    c = t.count('ho')
+    return c % 2 == 1 and t == 'ho' * c
+"""
+
+examples = """
+solution("ho") == True
+solution("hoho") == False
+solution("hohoho") == True
+solution("hxoxhxoxhxo") == True
+solution("oho") == False
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["ho"]
+comment   = "Single ho is odd (1)"
+expected  = true
+
+[[asserts]]
+arguments = ["hoho"]
+comment   = "Two hos is even"
+expected  = false
+
+[[asserts]]
+arguments = ["hohoho"]
+comment   = "Three hos is odd"
+expected  = true
+
+[[asserts]]
+arguments = ["hho"]
+comment   = "Extra h breaks pattern"
+expected  = false
+
+[[asserts]]
+arguments = ["hoo"]
+comment   = "Extra o breaks pattern"
+expected  = false
+
+[[asserts]]
+arguments = ["oh"]
+comment   = "Wrong order"
+expected  = false
+
+[[asserts]]
+arguments = ["oho"]
+comment   = "Starts with o"
+expected  = false
+
+[[asserts]]
+arguments = ["hxo"]
+comment   = "One ho with noise"
+expected  = true
+
+[[asserts]]
+arguments = ["hxoxhxo"]
+comment   = "Two hos with noise"
+expected  = false
+
+[[asserts]]
+arguments = ["hxoxhxoxhxo"]
+comment   = "Three hos with noise"
+expected  = true
+
+[[asserts]]
+arguments = ["h"]
+comment   = "Only h"
+expected  = false
+
+[[asserts]]
+arguments = ["o"]
+comment   = "Only o"
+expected  = false
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = false
+
+[[asserts]]
+arguments = ["abc"]
+comment   = "No h or o"
+expected  = false
+
+[[asserts]]
+arguments = ["hohohohoh"]
+comment   = "Incomplete fifth ho"
+expected  = false
+
+[[asserts]]
+arguments = ["hohohohohoh"]
+comment   = "Incomplete sixth ho"
+expected  = false
+
+[[asserts]]
+arguments = ["hohohohohohoh"]
+comment   = "Incomplete seventh ho"
+expected  = false
+
+[[asserts]]
+arguments = ["hohohohohohohoh"]
+comment   = "Incomplete eighth ho"
+expected  = false
+
+[[asserts]]
+arguments = ["hohohohohohohohoh"]
+comment   = "Incomplete ninth ho"
+expected  = false
+
+[[asserts]]
+arguments = ["hhoho"]
+comment   = "Extra h at start"
+expected  = false
+
+[[asserts]]
+arguments = ["hoohoh"]
+comment   = "Extra o in middle"
+expected  = false
+
+[[asserts]]
+arguments = ["hohoh"]
+comment   = "Ends with h only"
+expected  = false
+
+[[asserts]]
+arguments = ["hoxhxoxho"]
+comment   = "Three hos with x noise"
+expected  = true
+
+[[asserts]]
+arguments = ["h!!!o!!!h!!!o!!!h!!!o"]
+comment   = "Three hos with punctuation"
+expected  = true
+
+[[asserts]]
+arguments = ["HoHoHo"]
+comment   = "Wrong case"
+expected  = false
+
+[[asserts]]
+arguments = ["hohohohohohohohohohohohohohohohohohoh"]
+comment   = "Nineteen hos, odd but incomplete"
+expected  = false
+
+[[asserts]]
+arguments = ["hohohohoho"]
+comment   = "Five hos, odd"
+expected  = true
+
+[[asserts]]
+arguments = ["hohohohohohohoh"]
+comment   = "Incomplete pattern"
+expected  = false
+
+[[asserts]]
+arguments = ["hhhooohho"]
+comment   = "Multiple hs and os mixed"
+expected  = false

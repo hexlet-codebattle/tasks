@@ -1,0 +1,160 @@
+level             = "elementary"
+name              = "stickers_count"
+tags              = ["games"]
+time_to_solve_sec = 120
+
+description_en = """
+Given an $n \\times n \\times n$ Rubik's cube, find the number of stickers that are needed to cover the whole cube.
+"""
+
+description_ru = """
+Дан кубик Рубика размером $n \\times n \\times n$, найдите необходимое количество стикеров, чтобы покрыть весь кубик.
+"""
+
+limits = """
+- $1 \\leq n \\leq 100$
+"""
+
+solution = """
+def solution(num: int) -> int:
+    return 6 * num * num
+"""
+
+examples = """
+solution(1) == 6
+solution(2) == 24
+solution(3) == 54
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+comment   = "Minimum cube size"
+expected  = 6
+
+[[asserts]]
+arguments = [2]
+comment   = "2x2x2 cube"
+expected  = 24
+
+[[asserts]]
+arguments = [3]
+comment   = "Standard 3x3x3 Rubik's cube"
+expected  = 54
+
+[[asserts]]
+arguments = [4]
+comment   = "4x4x4 cube"
+expected  = 96
+
+[[asserts]]
+arguments = [5]
+comment   = "5x5x5 cube"
+expected  = 150
+
+[[asserts]]
+arguments = [6]
+comment   = "6x6x6 cube"
+expected  = 216
+
+[[asserts]]
+arguments = [7]
+comment   = "7x7x7 cube"
+expected  = 294
+
+[[asserts]]
+arguments = [8]
+comment   = "8x8x8 cube"
+expected  = 384
+
+[[asserts]]
+arguments = [9]
+comment   = "9x9x9 cube"
+expected  = 486
+
+[[asserts]]
+arguments = [10]
+comment   = "10x10x10 cube"
+expected  = 600
+
+[[asserts]]
+arguments = [11]
+comment   = "11x11x11 cube"
+expected  = 726
+
+[[asserts]]
+arguments = [12]
+comment   = "12x12x12 cube"
+expected  = 864
+
+[[asserts]]
+arguments = [13]
+comment   = "13x13x13 cube"
+expected  = 1014
+
+[[asserts]]
+arguments = [14]
+comment   = "14x14x14 cube"
+expected  = 1176
+
+[[asserts]]
+arguments = [15]
+comment   = "15x15x15 cube"
+expected  = 1350
+
+[[asserts]]
+arguments = [20]
+comment   = "Large 20x20x20 cube"
+expected  = 2400
+
+[[asserts]]
+arguments = [25]
+comment   = "25x25x25 cube"
+expected  = 3750
+
+[[asserts]]
+arguments = [30]
+comment   = "30x30x30 cube"
+expected  = 5400
+
+[[asserts]]
+arguments = [40]
+comment   = "40x40x40 cube"
+expected  = 9600
+
+[[asserts]]
+arguments = [50]
+comment   = "50x50x50 cube"
+expected  = 15000
+
+[[asserts]]
+arguments = [60]
+comment   = "60x60x60 cube"
+expected  = 21600
+
+[[asserts]]
+arguments = [70]
+comment   = "70x70x70 cube"
+expected  = 29400
+
+[[asserts]]
+arguments = [80]
+comment   = "80x80x80 cube"
+expected  = 38400
+
+[[asserts]]
+arguments = [90]
+comment   = "90x90x90 cube"
+expected  = 48600
+
+[[asserts]]
+arguments = [100]
+comment   = "Maximum 100x100x100 cube"
+expected  = 60000

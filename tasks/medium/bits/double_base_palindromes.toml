@@ -1,0 +1,199 @@
+level             = "medium"
+name              = "double_base_palindromes"
+tags              = ["bits"]
+time_to_solve_sec = 600
+
+description_en = """
+The decimal number $585$ is $1001001001$ in binary. It is palindromic in both bases.
+
+Find the $n$-th palindromic number in both decimal and binary bases.
+"""
+
+description_ru = """
+Десятичное число $585$ в двоичном виде $1001001001$. Оно палиндромично в обоих случаях.
+
+Найдите $n$-е десятичное число, которое будет палиндромом по обоим основаниям.
+"""
+
+limits = """
+- $1 \\leq n \\leq 20$
+"""
+
+solution = """
+def solution(num: int) -> int:
+    def is_palindrome(s):
+        return s == s[::-1]
+
+    count = 0
+    n = 0
+    while count < num:
+        n += 1
+        if is_palindrome(str(n)) and is_palindrome(bin(n)[2:]):
+            count += 1
+    return n
+"""
+
+examples = """
+solution(3) == 5
+solution(1) == 1
+solution(7) == 99
+solution(15) == 39993
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [3]
+comment   = "Third palindrome"
+expected  = 5
+
+[[asserts]]
+arguments = [1]
+comment   = "First palindrome"
+expected  = 1
+
+[[asserts]]
+arguments = [7]
+comment   = "Seventh palindrome"
+expected  = 99
+
+[[asserts]]
+arguments = [15]
+comment   = "Fifteenth palindrome"
+expected  = 39993
+
+[[asserts]]
+arguments = [2]
+comment   = "Second palindrome"
+expected  = 3
+
+[[asserts]]
+arguments = [4]
+comment   = "Fourth palindrome"
+expected  = 7
+
+[[asserts]]
+arguments = [5]
+comment   = "Fifth palindrome"
+expected  = 9
+
+[[asserts]]
+arguments = [6]
+comment   = "Sixth palindrome"
+expected  = 33
+
+[[asserts]]
+arguments = [8]
+comment   = "Eighth palindrome"
+expected  = 313
+
+[[asserts]]
+arguments = [9]
+comment   = "Ninth palindrome"
+expected  = 585
+
+[[asserts]]
+arguments = [10]
+comment   = "Tenth palindrome"
+expected  = 717
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleventh palindrome"
+expected  = 7447
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelfth palindrome"
+expected  = 9009
+
+[[asserts]]
+arguments = [13]
+comment   = "Thirteenth palindrome"
+expected  = 15351
+
+[[asserts]]
+arguments = [14]
+comment   = "Fourteenth palindrome"
+expected  = 32223
+
+[[asserts]]
+arguments = [16]
+comment   = "Sixteenth palindrome"
+expected  = 53235
+
+[[asserts]]
+arguments = [17]
+comment   = "Seventeenth palindrome"
+expected  = 53835
+
+[[asserts]]
+arguments = [18]
+comment   = "Eighteenth palindrome"
+expected  = 73737
+
+[[asserts]]
+arguments = [19]
+comment   = "Nineteenth palindrome"
+expected  = 585585
+
+[[asserts]]
+arguments = [1]
+comment   = "Verify first"
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+comment   = "Verify second"
+expected  = 3
+
+[[asserts]]
+arguments = [3]
+comment   = "Verify third"
+expected  = 5
+
+[[asserts]]
+arguments = [4]
+comment   = "Verify fourth"
+expected  = 7
+
+[[asserts]]
+arguments = [5]
+comment   = "Verify fifth"
+expected  = 9
+
+[[asserts]]
+arguments = [6]
+comment   = "Verify sixth"
+expected  = 33
+
+[[asserts]]
+arguments = [7]
+comment   = "Verify seventh"
+expected  = 99
+
+[[asserts]]
+arguments = [8]
+comment   = "Verify eighth"
+expected  = 313
+
+[[asserts]]
+arguments = [9]
+comment   = "Verify ninth"
+expected  = 585
+
+[[asserts]]
+arguments = [10]
+comment   = "Verify tenth"
+expected  = 717
+
+[[asserts]]
+arguments = [11]
+comment   = "Verify eleventh"
+expected  = 7447

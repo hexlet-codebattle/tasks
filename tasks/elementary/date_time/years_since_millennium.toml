@@ -1,0 +1,159 @@
+level             = "elementary"
+name              = "years_since_millennium"
+tags              = ["date_time"]
+time_to_solve_sec = 120
+
+description_en = """
+Count how many years have passed since latest millennium. For example, for 2015 the answer is 15.
+"""
+
+description_ru = """
+Рассчитайте, сколько лет прошло с последнего миллениума. Например, для 2015 года ответ 15.
+"""
+
+limits = """
+- $1 \\leq \\text{year} \\leq 100000$
+"""
+
+solution = """
+def solution(year: int) -> int:
+    return year % 1000
+"""
+
+examples = """
+solution(2015) == 15
+solution(10205) == 205
+"""
+
+[[input_signature]]
+argument_name = "year"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [2015]
+comment   = "15 years into 3rd millennium"
+expected  = 15
+
+[[asserts]]
+arguments = [10205]
+comment   = "205 years into 11th millennium"
+expected  = 205
+
+[[asserts]]
+arguments = [1000]
+comment   = "Millennium year"
+expected  = 0
+
+[[asserts]]
+arguments = [2000]
+comment   = "Turn of millennium"
+expected  = 0
+
+[[asserts]]
+arguments = [3000]
+comment   = "Future millennium"
+expected  = 0
+
+[[asserts]]
+arguments = [1]
+comment   = "Year 1"
+expected  = 1
+
+[[asserts]]
+arguments = [999]
+comment   = "Just before millennium"
+expected  = 999
+
+[[asserts]]
+arguments = [1001]
+comment   = "Just after first millennium"
+expected  = 1
+
+[[asserts]]
+arguments = [2001]
+comment   = "Start of 21st century"
+expected  = 1
+
+[[asserts]]
+arguments = [2023]
+comment   = "Current era"
+expected  = 23
+
+[[asserts]]
+arguments = [2100]
+comment   = "22nd century"
+expected  = 100
+
+[[asserts]]
+arguments = [2500]
+comment   = "Mid-millennium"
+expected  = 500
+
+[[asserts]]
+arguments = [2999]
+comment   = "End of millennium"
+expected  = 999
+
+[[asserts]]
+arguments = [3001]
+comment   = "New millennium"
+expected  = 1
+
+[[asserts]]
+arguments = [5000]
+comment   = "5th millennium"
+expected  = 0
+
+[[asserts]]
+arguments = [5555]
+comment   = "Repeating digits"
+expected  = 555
+
+[[asserts]]
+arguments = [10000]
+comment   = "10th millennium"
+expected  = 0
+
+[[asserts]]
+arguments = [10001]
+comment   = "Just after 10th millennium"
+expected  = 1
+
+[[asserts]]
+arguments = [15000]
+comment   = "15th millennium"
+expected  = 0
+
+[[asserts]]
+arguments = [12345]
+comment   = "Sequential digits"
+expected  = 345
+
+[[asserts]]
+arguments = [20000]
+comment   = "20th millennium"
+expected  = 0
+
+[[asserts]]
+arguments = [25000]
+comment   = "25th millennium"
+expected  = 0
+
+[[asserts]]
+arguments = [99999]
+comment   = "Large year"
+expected  = 999
+
+[[asserts]]
+arguments = [100000]
+comment   = "Maximum year"
+expected  = 0
+
+[[asserts]]
+arguments = [1234]
+comment   = "Medieval era"
+expected  = 234

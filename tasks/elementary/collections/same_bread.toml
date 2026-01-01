@@ -1,0 +1,467 @@
+level             = "elementary"
+name              = "same_bread"
+tags              = ["collections"]
+time_to_solve_sec = 150
+
+description_en = """
+Two arrays, which represent two sandwiches are given. Return whether both sandwiches use the same type of bread.
+
+The first and last elements of each array represent the bread slices.
+"""
+
+description_ru = """
+Даны два массива, представляющих собой бутерброды. Проверьте, что они сделаны из одинакового хлеба.
+
+Первый и последний элементы каждого массива представляют ломтики хлеба.
+"""
+
+solution = """
+def solution(first, second):
+    return [first[0], first[-1]] == [second[0], second[-1]]
+"""
+
+examples = """
+solution(["toast", "cheese", "toast"], ["toast", "ham", "toast"]) == True
+solution(["toast", "chicken", "brown bread"], ["brown bread", "chicken", "white bread"]) == False
+solution(["white bread", "tomato", "white bread"], ["white bread", "chicken", "white bread"]) == True
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name   = "array"
+nested = { name = "string" }
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "tomato",
+    "white bread",
+  ],
+  [
+    "white bread",
+    "chicken",
+    "white bread",
+  ],
+]
+comment = "Same white bread on both sandwiches"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "toast",
+    "chicken",
+    "brown bread",
+  ],
+  [
+    "brown bread",
+    "chicken",
+    "white bread",
+  ],
+]
+comment = "Different bread types"
+expected = false
+
+[[asserts]]
+arguments = [["toast", "cheese", "toast"], ["toast", "ham", "toast"]]
+comment   = "Same toast on both sandwiches"
+expected  = true
+
+[[asserts]]
+arguments = [
+  [
+    "brown bread",
+    "ham",
+    "brown bread",
+  ],
+  [
+    "brown bread",
+    "cheese",
+    "brown bread",
+  ],
+]
+comment = "Same brown bread on both sandwiches"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "chicken",
+    "white bread",
+  ],
+  [
+    "toast",
+    "chicken",
+    "toast",
+  ],
+]
+comment = "Different bread: white bread vs toast"
+expected = false
+
+[[asserts]]
+arguments = [["toast", "tomato", "toast"], ["toast", "tomato", "toast"]]
+comment   = "Identical sandwiches"
+expected  = true
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "cheese",
+    "toast",
+  ],
+  [
+    "white bread",
+    "ham",
+    "toast",
+  ],
+]
+comment = "Same mixed bread types"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "brown bread",
+    "chicken",
+    "white bread",
+  ],
+  [
+    "brown bread",
+    "beef",
+    "white bread",
+  ],
+]
+comment = "Same mixed bread: brown and white"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "toast",
+    "lettuce",
+    "white bread",
+  ],
+  [
+    "toast",
+    "bacon",
+    "brown bread",
+  ],
+]
+comment = "Same first, different last bread"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "brown bread",
+    "turkey",
+    "toast",
+  ],
+  [
+    "white bread",
+    "turkey",
+    "toast",
+  ],
+]
+comment = "Different first, same last bread"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "egg",
+    "white bread",
+  ],
+  [
+    "white bread",
+    "tomato",
+    "white bread",
+  ],
+]
+comment = "Both use white bread only"
+expected = true
+
+[[asserts]]
+arguments = [["toast", "avocado", "toast"], ["toast", "cheese", "toast"]]
+comment   = "Both use toast only"
+expected  = true
+
+[[asserts]]
+arguments = [["brown bread", "ham", "brown bread"], ["toast", "ham", "toast"]]
+comment   = "Different bread types: brown vs toast"
+expected  = false
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "bacon",
+    "brown bread",
+  ],
+  [
+    "white bread",
+    "lettuce",
+    "brown bread",
+  ],
+]
+comment = "Same mixed: white and brown"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "toast",
+    "chicken",
+    "toast",
+  ],
+  [
+    "brown bread",
+    "chicken",
+    "brown bread",
+  ],
+]
+comment = "Different bread: toast vs brown"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "tomato",
+    "toast",
+  ],
+  [
+    "white bread",
+    "cheese",
+    "white bread",
+  ],
+]
+comment = "Different last bread slice"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "brown bread",
+    "beef",
+    "white bread",
+  ],
+  [
+    "toast",
+    "beef",
+    "white bread",
+  ],
+]
+comment = "Different first bread slice"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "toast",
+    "ham",
+    "white bread",
+  ],
+  [
+    "toast",
+    "turkey",
+    "white bread",
+  ],
+]
+comment = "Same mixed: toast and white"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "cheese",
+    "white bread",
+  ],
+  [
+    "brown bread",
+    "cheese",
+    "brown bread",
+  ],
+]
+comment = "Different single bread type"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "toast",
+    "lettuce",
+    "brown bread",
+  ],
+  [
+    "toast",
+    "bacon",
+    "brown bread",
+  ],
+]
+comment = "Same mixed: toast and brown"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "brown bread",
+    "chicken",
+    "toast",
+  ],
+  [
+    "brown bread",
+    "ham",
+    "toast",
+  ],
+]
+comment = "Same mixed: brown and toast"
+expected = true
+
+[[asserts]]
+arguments = [["white bread", "egg", "toast"], ["brown bread", "egg", "toast"]]
+comment   = "Different first, same last"
+expected  = false
+
+[[asserts]]
+arguments = [
+  [
+    "toast",
+    "avocado",
+    "white bread",
+  ],
+  [
+    "toast",
+    "tomato",
+    "brown bread",
+  ],
+]
+comment = "Same first, different last"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "brown bread",
+    "turkey",
+    "brown bread",
+  ],
+  [
+    "brown bread",
+    "chicken",
+    "brown bread",
+  ],
+]
+comment = "Both use brown bread only"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "bacon",
+    "white bread",
+  ],
+  [
+    "toast",
+    "bacon",
+    "toast",
+  ],
+]
+comment = "Different uniform bread types"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "toast",
+    "cheese",
+    "white bread",
+  ],
+  [
+    "toast",
+    "ham",
+    "white bread",
+  ],
+]
+comment = "Same mixed: toast and white bread"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "brown bread",
+    "lettuce",
+    "white bread",
+  ],
+  [
+    "brown bread",
+    "tomato",
+    "white bread",
+  ],
+]
+comment = "Same mixed: brown and white bread"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "white bread",
+    "chicken",
+    "brown bread",
+  ],
+  [
+    "white bread",
+    "beef",
+    "brown bread",
+  ],
+]
+comment = "Same mixed: white and brown bread"
+expected = true
+
+[[asserts]]
+arguments = [
+  [
+    "toast",
+    "turkey",
+    "toast",
+  ],
+  [
+    "white bread",
+    "turkey",
+    "white bread",
+  ],
+]
+comment = "Different uniform bread"
+expected = false
+
+[[asserts]]
+arguments = [
+  [
+    "brown bread",
+    "avocado",
+    "toast",
+  ],
+  [
+    "white bread",
+    "avocado",
+    "toast",
+  ],
+]
+comment = "Different first, same last bread"
+expected = false

@@ -1,0 +1,192 @@
+level             = "elementary"
+name              = "squares_and_cubes"
+tags              = ["math"]
+time_to_solve_sec = 150
+
+description_en = """
+Create a function that takes two numbers and checks if the square root of the first number is equal to the cube root of the second number.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает 2 числа и проверяет равен ли квадратный корень первого числа кубическому корню второго числа.
+"""
+
+limits = """
+- $0 \\leq \\text{first} \\leq 10^6$
+- $0 \\leq \\text{second} \\leq 10^6$
+"""
+
+solution = """
+def solution(first: int, second: int) -> bool:
+    return abs(first ** 0.5 - second ** (1/3)) < 1e-9
+"""
+
+examples = """
+solution(4, 8) == True
+solution(9, 27) == True
+solution(4, 27) == False
+solution(16, 48) == False
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [4, 8]
+comment   = "2 squared and 2 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [16, 48]
+comment   = "Not equal roots"
+expected  = false
+
+[[asserts]]
+arguments = [9, 27]
+comment   = "3 squared and 3 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [4, 27]
+comment   = "Different bases"
+expected  = false
+
+[[asserts]]
+arguments = [0, 0]
+comment   = "Both zeros"
+expected  = true
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "Both ones"
+expected  = true
+
+[[asserts]]
+arguments = [25, 125]
+comment   = "5 squared and 5 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [36, 216]
+comment   = "6 squared and 6 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [49, 343]
+comment   = "7 squared and 7 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [64, 512]
+comment   = "8 squared and 8 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [81, 729]
+comment   = "9 squared and 9 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [100, 1000]
+comment   = "10 squared and 10 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [16, 64]
+comment   = "4 squared and 4 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [25, 100]
+comment   = "Not matching"
+expected  = false
+
+[[asserts]]
+arguments = [36, 125]
+comment   = "Different numbers"
+expected  = false
+
+[[asserts]]
+arguments = [49, 216]
+comment   = "7 and 6"
+expected  = false
+
+[[asserts]]
+arguments = [64, 343]
+comment   = "8 and 7"
+expected  = false
+
+[[asserts]]
+arguments = [81, 512]
+comment   = "9 and 8"
+expected  = false
+
+[[asserts]]
+arguments = [100, 729]
+comment   = "10 and 9"
+expected  = false
+
+[[asserts]]
+arguments = [121, 1331]
+comment   = "11 squared and 11 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [144, 1728]
+comment   = "12 squared and 12 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [169, 2197]
+comment   = "13 squared and 13 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [196, 2744]
+comment   = "14 squared and 14 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [225, 3375]
+comment   = "15 squared and 15 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [256, 4096]
+comment   = "16 squared and 16 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [289, 4913]
+comment   = "17 squared and 17 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [324, 5832]
+comment   = "18 squared and 18 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [361, 6859]
+comment   = "19 squared and 19 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [400, 8000]
+comment   = "20 squared and 20 cubed"
+expected  = true
+
+[[asserts]]
+arguments = [10, 20]
+comment   = "Not matching"
+expected  = false

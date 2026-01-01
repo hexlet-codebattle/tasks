@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "typed_string_equality"
-tags              = ["algo", "string", "two-pointers", "stack"]
+tags              = ["algo", "strings", "two_pointers", "stack"]
 time_to_solve_sec = 300
 
 description_en = """

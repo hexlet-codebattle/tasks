@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "combo_hits"
-tags              = ["stdlib", "array", "simulation"]
+tags              = ["stdlib", "collections", "simulation"]
 time_to_solve_sec = 200
 
 description_en = """

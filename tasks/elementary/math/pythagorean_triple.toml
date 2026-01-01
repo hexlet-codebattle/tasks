@@ -1,0 +1,190 @@
+level             = "elementary"
+name              = "pythagorean_triple"
+tags              = ["math"]
+time_to_solve_sec = 180
+
+description_en = """
+Check if 3 given integers form a Pythagorean Triplet. A Pythagorean Triplet is a triplet of numbers, such that $x^2 + y^2 = z^2$. Note that the order of the integers doesn't matter.
+"""
+
+description_ru = """
+Проверьте являются ли 3 переданных числа Пифагоровой тройкой. Пифагорова тройка - это 3 числа $x$, $y$, $z$, такие что $x^2 + y^2 = z^2$. Обратите внимание, что порядок чисел не имеет значения.
+"""
+
+limits = """
+- $\\text{len}(nums) = 3$
+- $1 \\leq nums[i] \\leq 1000$
+"""
+
+solution = """
+def solution(nums: list[int]) -> bool:
+    s = sorted(nums)
+    return s[0] ** 2 + s[1] ** 2 == s[2] ** 2
+"""
+
+examples = """
+solution([8, 9, 7]) == False
+solution([8, 3, 6]) == False
+solution([12, 5, 13]) == True
+solution([3, 5, 4]) == True
+"""
+
+[[input_signature]]
+argument_name = "nums"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[12, 5, 13]]
+comment   = "Classic 5-12-13"
+expected  = true
+
+[[asserts]]
+arguments = [[3, 5, 4]]
+comment   = "Classic 3-4-5 reordered"
+expected  = true
+
+[[asserts]]
+arguments = [[8, 9, 7]]
+comment   = "Not a triple"
+expected  = false
+
+[[asserts]]
+arguments = [[8, 3, 6]]
+comment   = "Not pythagorean"
+expected  = false
+
+[[asserts]]
+arguments = [[3, 4, 5]]
+comment   = "Classic 3-4-5"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 4, 3]]
+comment   = "Classic reversed"
+expected  = true
+
+[[asserts]]
+arguments = [[5, 12, 13]]
+comment   = "5-12-13"
+expected  = true
+
+[[asserts]]
+arguments = [[8, 15, 17]]
+comment   = "8-15-17"
+expected  = true
+
+[[asserts]]
+arguments = [[7, 24, 25]]
+comment   = "7-24-25"
+expected  = true
+
+[[asserts]]
+arguments = [[20, 21, 29]]
+comment   = "20-21-29"
+expected  = true
+
+[[asserts]]
+arguments = [[9, 40, 41]]
+comment   = "9-40-41"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+comment   = "All equal"
+expected  = false
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "Sequential"
+expected  = false
+
+[[asserts]]
+arguments = [[6, 8, 10]]
+comment   = "Multiple of 3-4-5"
+expected  = true
+
+[[asserts]]
+arguments = [[9, 12, 15]]
+comment   = "Triple of 3-4-5"
+expected  = true
+
+[[asserts]]
+arguments = [[15, 20, 25]]
+comment   = "Five times 3-4-5"
+expected  = true
+
+[[asserts]]
+arguments = [[11, 60, 61]]
+comment   = "11-60-61"
+expected  = true
+
+[[asserts]]
+arguments = [[13, 84, 85]]
+comment   = "13-84-85"
+expected  = true
+
+[[asserts]]
+arguments = [[36, 77, 85]]
+comment   = "36-77-85"
+expected  = true
+
+[[asserts]]
+arguments = [[65, 72, 97]]
+comment   = "65-72-97"
+expected  = true
+
+[[asserts]]
+arguments = [[1, 1, 2]]
+comment   = "Not a triple"
+expected  = false
+
+[[asserts]]
+arguments = [[10, 11, 12]]
+comment   = "Not pythagorean"
+expected  = false
+
+[[asserts]]
+arguments = [[5, 5, 5]]
+comment   = "All fives"
+expected  = false
+
+[[asserts]]
+arguments = [[16, 30, 34]]
+comment   = "16-30-34"
+expected  = true
+
+[[asserts]]
+arguments = [[21, 20, 29]]
+comment   = "Reordered 20-21-29"
+expected  = true
+
+[[asserts]]
+arguments = [[40, 9, 41]]
+comment   = "Reordered 9-40-41"
+expected  = true
+
+[[asserts]]
+arguments = [[33, 56, 65]]
+comment   = "33-56-65"
+expected  = true
+
+[[asserts]]
+arguments = [[39, 80, 89]]
+comment   = "39-80-89"
+expected  = true
+
+[[asserts]]
+arguments = [[48, 55, 73]]
+comment   = "48-55-73"
+expected  = true
+
+[[asserts]]
+arguments = [[60, 91, 109]]
+comment   = "60-91-109"
+expected  = true

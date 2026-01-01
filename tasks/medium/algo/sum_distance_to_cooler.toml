@@ -1,0 +1,179 @@
+level             = "medium"
+name              = "sum_distance_to_cooler"
+tags              = ["algo", "grid", "geometry", "manhattan"]
+time_to_solve_sec = 480
+
+description_en = """
+You are given a rectangular office map as an array of strings. Exactly one cell is a cooler `"W"`,
+some cells are employees `"E"`, and others are `"."`. In one second, an employee can move to a side-adjacent cell.
+Employees take shortest (Manhattan) paths, passing through any cells. Return the **total time**
+for all employees to reach the cooler (sum of distances).
+"""
+
+description_ru = """
+Дан прямоугольный план офиса в виде массива строк. Ровно одна ячейка — кулер `"W"`,
+некоторые ячейки — сотрудники `"E"`, остальные `"."`. За секунду сотрудник перемещается в соседнюю по стороне ячейку.
+Сотрудники идут по кратчайшим (манхэттенским) путям, через любые клетки. Верните **суммарное время**
+для всех сотрудников добраться до кулера (сумму расстояний).
+"""
+
+limits = """
+- $1 \\leq \\text{rows}, \\text{cols} \\leq 100$
+"""
+
+solution = """
+def solution(office: list) -> int:
+    n, m = len(office), len(office[0])
+    wi = wj = 0
+    for i in range(n):
+        for j in range(m):
+            if office[i][j] == 'W':
+                wi, wj = i, j
+                break
+    s = 0
+    for i in range(n):
+        for j in range(m):
+            if office[i][j] == 'E':
+                s += abs(i - wi) + abs(j - wj)
+    return s
+"""
+
+examples = """
+solution(["E.E", ".W.", "E.E"]) == 8
+solution(["WEE"]) == 3
+solution(["EWE", "..."]) == 2
+"""
+
+[[input_signature]]
+argument_name = "office"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["E.E", ".W.", "E.E"]]
+expected  = 8
+
+[[asserts]]
+arguments = [["WEE"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["EWE", "..."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["E...", "..W.", "E..E"]]
+expected  = 8
+
+[[asserts]]
+arguments = [[".W.E..", ".EE.EE", ".EE.E.", ".E..E.", "E..E.E", "EEE..."]]
+expected  = 69
+
+[[asserts]]
+arguments = [["..EEEE", ".EEEW.", "EEEE.E"]]
+expected  = 30
+
+[[asserts]]
+arguments = [["WE"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["...EW.", ".E..E.", "E.E.EE"]]
+expected  = 21
+
+[[asserts]]
+arguments = [["E", "W"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["..EEW", ".....", ".EEEE"]]
+expected  = 17
+
+[[asserts]]
+arguments = [["..EEE.", "EE..W."]]
+expected  = 13
+
+[[asserts]]
+arguments = [["EE.", "WE.", "E.E", "..."]]
+expected  = 8
+
+[[asserts]]
+arguments = [["..E..", ".W...", "EEEEE", ".E.EE", "...E.", "EE..."]]
+expected  = 39
+
+[[asserts]]
+arguments = [["EE", "EW", "E."]]
+expected  = 6
+
+[[asserts]]
+arguments = [["EE.", ".EE", "..W", ".E."]]
+expected  = 12
+
+[[asserts]]
+arguments = [[".EEWE", "E.E.E", ".E.EE"]]
+expected  = 21
+
+[[asserts]]
+arguments = [["EW", ".."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["W.", "EE"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["EE....", "EEEEE.", "E.E.W.", "E....E", ".EEEEE"]]
+expected  = 56
+
+[[asserts]]
+arguments = [["EEWEEE", "EEE...", "E.E...", ".E..E."]]
+expected  = 30
+
+[[asserts]]
+arguments = [[".EE.E", "E....", ".E.EW", "....E", ".....", "E..E."]]
+expected  = 32
+
+[[asserts]]
+arguments = [["WE.."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["E.W", ".EE"]]
+expected  = 5
+
+[[asserts]]
+arguments = [["E...", "..EE", "....", "..W."]]
+expected  = 10
+
+[[asserts]]
+arguments = [["E.EEE", ".....", ".WEE.", "E....", "E..EE"]]
+expected  = 32
+
+[[asserts]]
+arguments = [["E.W"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["EE.W.E"]]
+expected  = 7
+
+[[asserts]]
+arguments = [["E.E.E", "EE..E", "EEEE.", "WEEE."]]
+expected  = 42
+
+[[asserts]]
+arguments = [["EE.E.", "EE.EE", "EEEEW", "...E.", "EEEE."]]
+expected  = 56
+
+[[asserts]]
+arguments = [["EE.", "EE.", "..E", ".W."]]
+expected  = 14
+
+[[asserts]]
+arguments = [["..", "EE", "WE"]]
+expected  = 4

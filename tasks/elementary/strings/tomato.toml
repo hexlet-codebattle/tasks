@@ -1,0 +1,190 @@
+level             = "elementary"
+name              = "tomato"
+tags              = ["strings", "training"]
+time_to_solve_sec = 120
+
+description_en = """
+Count how many times the word `"tomato"` occurs in string.
+"""
+
+description_ru = """
+Подсчитайте, сколько раз слово `"tomato"` встречается в строке.
+"""
+
+limits = """
+- $6 \\leq \\text{len}(\\text{vegetables}) \\leq 1000$
+- String contains only concatenated `"tomato"` words
+"""
+
+solution = """
+def solution(vegetables: str) -> int:
+    return len(vegetables) // 6
+"""
+
+examples = """
+solution("tomato") == 1
+solution("tomatotomatotomato") == 3
+"""
+
+[[input_signature]]
+argument_name = "vegetables"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["tomato"]
+comment   = "Single tomato"
+expected  = 1
+
+[[asserts]]
+arguments = ["tomatotomato"]
+comment   = "Two tomatoes"
+expected  = 2
+
+[[asserts]]
+arguments = ["tomatotomatotomato"]
+comment   = "Three tomatoes"
+expected  = 3
+
+[[asserts]]
+arguments = ["tomatotomatotomatotomato"]
+comment   = "Four tomatoes"
+expected  = 4
+
+[[asserts]]
+arguments = ["tomatotomatotomatotomatotomato"]
+comment   = "Five tomatoes"
+expected  = 5
+
+[[asserts]]
+arguments = ["tomatotomatotomatotomatotomatotomato"]
+comment   = "Six tomatoes"
+expected  = 6
+
+[[asserts]]
+arguments = ["tomatotomatotomatotomatotomatotomatotomato"]
+comment   = "Seven tomatoes"
+expected  = 7
+
+[[asserts]]
+arguments = ["tomatotomatotomatotomatotomatotomatotomatotomato"]
+comment   = "Eight tomatoes"
+expected  = 8
+
+[[asserts]]
+arguments = ["tomatotomatotomatotomatotomatotomatotomatotomatotomato"]
+comment   = "Nine tomatoes"
+expected  = 9
+
+[[asserts]]
+arguments = ["tomatotomatotomatotomatotomatotomatotomatotomatotomatotomato"]
+comment   = "Ten tomatoes"
+expected  = 10
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Eleven tomatoes"
+expected = 11
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Twelve tomatoes"
+expected = 12
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Thirteen tomatoes"
+expected = 13
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Fourteen tomatoes"
+expected = 14
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Fifteen tomatoes"
+expected = 15
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Sixteen tomatoes"
+expected = 16
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Seventeen tomatoes"
+expected = 17
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Eighteen tomatoes"
+expected = 18
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Nineteen tomatoes"
+expected = 19
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Twenty tomatoes"
+expected = 20
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Twenty-one tomatoes"
+expected = 21
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Twenty-two tomatoes"
+expected = 22
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Twenty-three tomatoes"
+expected = 23
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Twenty-four tomatoes"
+expected = 24
+
+[[asserts]]
+arguments = [
+  "tomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomatotomato",
+]
+comment = "Twenty-five tomatoes"
+expected = 25

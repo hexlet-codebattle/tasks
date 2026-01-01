@@ -1,0 +1,197 @@
+level             = "easy"
+name              = "gift_filter"
+tags              = ["collections"]
+time_to_solve_sec = 180
+
+description_en = """
+Given a list of gift prices and a number `k`, remove all gifts that cost more than `k`, preserving the order of the remaining gifts.
+"""
+
+description_ru = """
+Дан список цен подарков и число `k`. Удалите все подарки дороже `k`, сохранив порядок остальных.
+"""
+
+limits = """
+- $0 \\leq k \\leq 10^6$
+- $0 \\leq \\text{len}(\\text{prices}) \\leq 1000$
+- $1 \\leq \\text{prices}[i] \\leq 10^6$
+"""
+
+solution = """
+def solution(prices: list[int], k: int) -> list[int]:
+    return [p for p in prices if p <= k]
+"""
+
+examples = """
+solution([10, 20, 30], 15) == [10]
+solution([5, 10, 15, 20], 12) == [5, 10]
+solution([100, 50, 25], 75) == [50, 25]
+solution([10, 20, 30], 100) == [10, 20, 30]
+"""
+
+[[input_signature]]
+argument_name = "prices"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[], 100]
+comment   = "Empty list"
+expected  = []
+
+[[asserts]]
+arguments = [[10, 20, 30], 0]
+comment   = "All gifts too expensive"
+expected  = []
+
+[[asserts]]
+arguments = [[10, 20, 30], 5]
+comment   = "All gifts above threshold"
+expected  = []
+
+[[asserts]]
+arguments = [[10, 20, 30], 15]
+comment   = "One gift within budget"
+expected  = [10]
+
+[[asserts]]
+arguments = [[10, 20, 30], 25]
+comment   = "Two gifts within budget"
+expected  = [10, 20]
+
+[[asserts]]
+arguments = [[10, 20, 30], 30]
+comment   = "All gifts at or below threshold"
+expected  = [10, 20, 30]
+
+[[asserts]]
+arguments = [[10, 20, 30], 100]
+comment   = "All gifts within large budget"
+expected  = [10, 20, 30]
+
+[[asserts]]
+arguments = [[5, 10, 15, 20], 12]
+comment   = "Keep first two"
+expected  = [5, 10]
+
+[[asserts]]
+arguments = [[100, 50, 25], 75]
+comment   = "Keep last two"
+expected  = [50, 25]
+
+[[asserts]]
+arguments = [[10, 100, 20, 200, 30], 50]
+comment   = "Keep alternating gifts"
+expected  = [10, 20, 30]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5], 3]
+comment   = "Keep first three"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [[50, 50, 50], 50]
+comment   = "All equal at threshold"
+expected  = [50, 50, 50]
+
+[[asserts]]
+arguments = [[50, 50, 50], 49]
+comment   = "All equal above threshold"
+expected  = []
+
+[[asserts]]
+arguments = [[1, 1000000, 2, 999999, 3], 10]
+comment   = "Extreme price variations"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [[100, 200, 300, 400, 500], 250]
+comment   = "Keep first two of five"
+expected  = [100, 200]
+
+[[asserts]]
+arguments = [[500, 400, 300, 200, 100], 250]
+comment   = "Keep last two of five descending"
+expected  = [200, 100]
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 55]
+comment   = "Keep first half"
+expected  = [10, 20, 30, 40, 50]
+
+[[asserts]]
+arguments = [[15, 25, 35, 45, 55], 30]
+comment   = "Keep two out of five"
+expected  = [15, 25]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10]
+comment   = "All within budget"
+expected  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5]
+comment   = "Half within budget"
+expected  = [1, 2, 3, 4, 5]
+
+[[asserts]]
+arguments = [[100], 100]
+comment   = "Single gift at threshold"
+expected  = [100]
+
+[[asserts]]
+arguments = [[100], 99]
+comment   = "Single gift above threshold"
+expected  = []
+
+[[asserts]]
+arguments = [[100], 101]
+comment   = "Single gift below threshold"
+expected  = [100]
+
+[[asserts]]
+arguments = [[5, 15, 5, 15, 5], 10]
+comment   = "Keep repeated values"
+expected  = [5, 5, 5]
+
+[[asserts]]
+arguments = [[1000, 1, 2000, 2, 3000, 3], 1500]
+comment   = "Mixed large and small"
+expected  = [1000, 1, 2, 3]
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50], 0]
+comment   = "Zero threshold"
+expected  = []
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50], 1000000]
+comment   = "Very large threshold"
+expected  = [10, 20, 30, 40, 50]
+
+[[asserts]]
+arguments = [[7, 3, 9, 2, 8, 4, 6, 1, 5], 5]
+comment   = "Unordered gifts"
+expected  = [3, 2, 4, 1, 5]
+
+[[asserts]]
+arguments = [[99, 98, 97, 96, 95], 97]
+comment   = "Keep last three descending"
+expected  = [97, 96, 95]
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1], 1]
+comment   = "All identical at threshold"
+expected  = [1, 1, 1, 1, 1]

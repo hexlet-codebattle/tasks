@@ -1,0 +1,172 @@
+level             = "elementary"
+name              = "string_index_of"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 150
+
+description_en = """
+Create a function which takes 2 parameters (`first` and `second`) and locates the first occurrence of the `second` in the `first` and returns its position. Return `-1` if not found.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает две строки и возвращает индекс первого вхождения строки `second` в строку `first`. В ином случае верните `-1`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{first}) \\leq 100$
+- $0 \\leq \\text{len}(\\text{second}) \\leq 100$
+"""
+
+solution = """
+def solution(first: str, second: str) -> int:
+    return first.find(second)
+"""
+
+examples = """
+solution("test", "t") == 0
+solution("some str", "st") == 5
+solution("some str", "ome") == 1
+solution("some str", "11") == -1
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["test", "t"]
+comment   = "Found at beginning"
+expected  = 0
+
+[[asserts]]
+arguments = ["some str", "ome"]
+comment   = "Found in middle"
+expected  = 1
+
+[[asserts]]
+arguments = ["some str", "st"]
+comment   = "Found near end"
+expected  = 5
+
+[[asserts]]
+arguments = ["some str", "11"]
+comment   = "Not found"
+expected  = -1
+
+[[asserts]]
+arguments = ["hello world", "world"]
+comment   = "Found at end"
+expected  = 6
+
+[[asserts]]
+arguments = ["hello world", "hello"]
+comment   = "Found at start"
+expected  = 0
+
+[[asserts]]
+arguments = ["hello world", "lo"]
+comment   = "Found in first word"
+expected  = 3
+
+[[asserts]]
+arguments = ["hello world", "or"]
+comment   = "Found in second word"
+expected  = 7
+
+[[asserts]]
+arguments = ["hello world", "xyz"]
+comment   = "Not found"
+expected  = -1
+
+[[asserts]]
+arguments = ["programming", "gram"]
+comment   = "Found in middle"
+expected  = 3
+
+[[asserts]]
+arguments = ["programming", "ing"]
+comment   = "Found at end"
+expected  = 8
+
+[[asserts]]
+arguments = ["programming", "prog"]
+comment   = "Found at start"
+expected  = 0
+
+[[asserts]]
+arguments = ["abcdefg", "cde"]
+comment   = "Consecutive substring"
+expected  = 2
+
+[[asserts]]
+arguments = ["abcdefg", "xyz"]
+comment   = "Not found"
+expected  = -1
+
+[[asserts]]
+arguments = ["test string", " "]
+comment   = "Single space character"
+expected  = 4
+
+[[asserts]]
+arguments = ["repeat repeat", "repeat"]
+comment   = "First occurrence of repeated word"
+expected  = 0
+
+[[asserts]]
+arguments = ["abcabc", "bc"]
+comment   = "First occurrence of repeated pattern"
+expected  = 1
+
+[[asserts]]
+arguments = ["", "test"]
+comment   = "Empty first string"
+expected  = -1
+
+[[asserts]]
+arguments = ["test", ""]
+comment   = "Empty second string"
+expected  = 0
+
+[[asserts]]
+arguments = ["same", "same"]
+comment   = "Identical strings"
+expected  = 0
+
+[[asserts]]
+arguments = ["python", "java"]
+comment   = "Not found"
+expected  = -1
+
+[[asserts]]
+arguments = ["clojure is functional", "functional"]
+comment   = "Found at end"
+expected  = 11
+
+[[asserts]]
+arguments = ["the quick brown fox", "quick"]
+comment   = "Found after space"
+expected  = 4
+
+[[asserts]]
+arguments = ["the quick brown fox", "fox"]
+comment   = "Found at end"
+expected  = 16
+
+[[asserts]]
+arguments = ["searching text", "text"]
+comment   = "Found at end"
+expected  = 10
+
+[[asserts]]
+arguments = ["no match here", "missing"]
+comment   = "Not found"
+expected  = -1

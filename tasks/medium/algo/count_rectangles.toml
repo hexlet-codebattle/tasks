@@ -1,0 +1,202 @@
+level             = "medium"
+name              = "count_rectangles"
+tags              = ["algo", "math", "grid", "geometry", "pattern_counting"]
+time_to_solve_sec = 480
+
+description_en = """
+You are given a grid of `.` (empty) and `*` (filled). Every filled region is a **rectangle**, and rectangles are pairwise disjoint and do **not** touch even diagonally. Count how many rectangles are present.
+"""
+
+description_ru = """
+Дано поле из символов `.` (пусто) и `*` (закрашено). Каждая закрашенная область — **прямоугольник**, причём прямоугольники не пересекаются и не касаются даже по диагонали. Посчитайте количество прямоугольников.
+"""
+
+limits = """
+- $1 \\leq H, W \\leq 50$
+"""
+
+solution = """
+def solution(field: list) -> int:
+    if not field: return 0
+    h, w = len(field), len(field[0])
+    pad = ['.' * (w + 2)]
+    g = pad + ['.' + row + '.' for row in field] + pad
+    ans = 0
+    for i in range(len(g) - 1):
+        for j in range(len(g[0]) - 1):
+            if g[i][j] == g[i+1][j] == g[i][j+1] == '.' and g[i+1][j+1] == '*':
+                ans += 1
+    return ans
+"""
+
+examples = """
+solution(["*.*", "...", "*.*"]) == 4
+solution(["....", ".**.", "...."]) == 1
+"""
+
+[[input_signature]]
+argument_name = "field"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["*.*", "...", "*.*"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["....", ".**.", "...."]]
+expected  = 1
+
+[[asserts]]
+arguments = [[".*.**..***"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["..", ".."]]
+expected  = 0
+
+[[asserts]]
+arguments = [
+  [
+    "......",
+    "....*.",
+    "***.*.",
+    "***.*.",
+    "......",
+    "**....",
+    "**....",
+  ],
+]
+expected = 3
+
+[[asserts]]
+arguments = [[".", "*", "*", "."]]
+expected  = 1
+
+[[asserts]]
+arguments = [[".....**.", ".....**.", "**...**.", "**......", "**......"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["*", ".", "*", ".", "*", "*"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["*", "*", ".", "*", "*", "*", "*"]]
+expected  = 2
+
+[[asserts]]
+arguments = [[".....*", ".**...", ".**...", ".**..."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["..**.", "..**.", ".....", ".***.", ".....", "....."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["..", "**", "**"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["*"]]
+expected  = 1
+
+[[asserts]]
+arguments = [[".....", "..**.", "..**.", "..**.", "..**.", ".....", ".*..."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["**..**"]]
+expected  = 2
+
+[[asserts]]
+arguments = [[".....**", ".**..**"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["..", "*."]]
+expected  = 1
+
+[[asserts]]
+arguments = [[".", "*", "*", "*", "*"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["..*.***", ".......", ".****..", ".****..", ".****..", ".****.."]]
+expected  = 3
+
+[[asserts]]
+arguments = [[".....", "..**.", "..**.", "*.**.", "*.**.", "*.**."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["*.*****", "*......", ".......", "**.***.", "**.***."]]
+expected  = 4
+
+[[asserts]]
+arguments = [["*", ".", "*"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["..", ".*", ".*"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["*"]]
+expected  = 1
+
+[[asserts]]
+arguments = [
+  [
+    ".*.....",
+    ".*.....",
+    ".*.***.",
+    "...***.",
+    "...***.",
+    "**.***.",
+    "...***.",
+  ],
+]
+expected = 3
+
+[[asserts]]
+arguments = [
+  [
+    "........",
+    "*****.**",
+    "*****...",
+    "*****...",
+    "*****...",
+    "*****...",
+  ],
+]
+expected = 2
+
+[[asserts]]
+arguments = [["*.**."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["***."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["...***..", "**.***.."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["*****.", "*****.", "*****.", "*****.", "*****.", "*****."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["...", "*.*", "*.*", "..*"]]
+expected  = 2
+
+[[asserts]]
+arguments = [[".**..*"]]
+expected  = 2

@@ -1,0 +1,171 @@
+level             = "elementary"
+name              = "string_repeatence"
+tags              = ["strings", "training"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that takes a string `sentence` and a number `n` and returns the repeated `sentence` an `n` number of times.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает строку `sentence` и число `n` и возвращает строку `sentence`, повторенную `n` раз.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{sentence}) \\leq 100$
+- $-100 \\leq n \\leq 100$
+"""
+
+solution = """
+def solution(sentence: str, n: int) -> str:
+    return sentence * max(0, n)
+"""
+
+examples = """
+solution("Elixir", 1) == "Elixir"
+solution("Some sentence", 0) == ""
+solution("Clojure and Ruby", 3) == "Clojure and RubyClojure and RubyClojure and Ruby"
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Some sentence", 0]
+comment   = "Zero repetitions"
+expected  = ""
+
+[[asserts]]
+arguments = ["Clojure and Ruby", 3]
+comment   = "Three repetitions"
+expected  = "Clojure and RubyClojure and RubyClojure and Ruby"
+
+[[asserts]]
+arguments = ["Elixir", 1]
+comment   = "Single repetition"
+expected  = "Elixir"
+
+[[asserts]]
+arguments = ["Completly new sentence", -23]
+comment   = "Negative repetitions"
+expected  = ""
+
+[[asserts]]
+arguments = ["Hello", 5]
+comment   = "Five repetitions"
+expected  = "HelloHelloHelloHelloHello"
+
+[[asserts]]
+arguments = ["test", 2]
+comment   = "Two repetitions"
+expected  = "testtest"
+
+[[asserts]]
+arguments = ["", 10]
+comment   = "Empty string repeated"
+expected  = ""
+
+[[asserts]]
+arguments = ["x", 10]
+comment   = "Single character repeated"
+expected  = "xxxxxxxxxx"
+
+[[asserts]]
+arguments = ["ab", 4]
+comment   = "Short string repeated"
+expected  = "abababab"
+
+[[asserts]]
+arguments = ["Python", 0]
+comment   = "Zero repetitions"
+expected  = ""
+
+[[asserts]]
+arguments = ["Ruby", -1]
+comment   = "Negative one repetition"
+expected  = ""
+
+[[asserts]]
+arguments = ["Java", -100]
+comment   = "Large negative repetitions"
+expected  = ""
+
+[[asserts]]
+arguments = ["Go", 1]
+comment   = "Single repetition"
+expected  = "Go"
+
+[[asserts]]
+arguments = ["Rust", 2]
+comment   = "Two repetitions"
+expected  = "RustRust"
+
+[[asserts]]
+arguments = ["C++", 3]
+comment   = "Three repetitions"
+expected  = "C++C++C++"
+
+[[asserts]]
+arguments = ["JavaScript", 4]
+comment   = "Four repetitions"
+expected  = "JavaScriptJavaScriptJavaScriptJavaScript"
+
+[[asserts]]
+arguments = ["TypeScript", 2]
+comment   = "Two repetitions"
+expected  = "TypeScriptTypeScript"
+
+[[asserts]]
+arguments = ["Kotlin", 3]
+comment   = "Three repetitions"
+expected  = "KotlinKotlinKotlin"
+
+[[asserts]]
+arguments = ["Swift", 5]
+comment   = "Five repetitions"
+expected  = "SwiftSwiftSwiftSwiftSwift"
+
+[[asserts]]
+arguments = ["Scala", 1]
+comment   = "Single repetition"
+expected  = "Scala"
+
+[[asserts]]
+arguments = ["Haskell", 2]
+comment   = "Two repetitions"
+expected  = "HaskellHaskell"
+
+[[asserts]]
+arguments = ["Erlang", 3]
+comment   = "Three repetitions"
+expected  = "ErlangErlangErlang"
+
+[[asserts]]
+arguments = ["Perl", 0]
+comment   = "Zero repetitions"
+expected  = ""
+
+[[asserts]]
+arguments = ["PHP", -5]
+comment   = "Negative repetitions"
+expected  = ""
+
+[[asserts]]
+arguments = ["Lua", 4]
+comment   = "Four repetitions"
+expected  = "LuaLuaLuaLua"
+
+[[asserts]]
+arguments = ["R", 6]
+comment   = "Six repetitions of single character"
+expected  = "RRRRRR"

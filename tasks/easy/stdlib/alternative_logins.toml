@@ -1,6 +1,6 @@
 level             = "easy"
 name              = "alternative_logins"
-tags              = ["stdlib", "string", "generation"]
+tags              = ["stdlib", "strings", "generation"]
 time_to_solve_sec = 300
 
 description_en = """

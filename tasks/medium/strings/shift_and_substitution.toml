@@ -1,0 +1,197 @@
+level             = "medium"
+name              = "shift_and_substitution"
+tags              = ["strings", "mapping", "rotation"]
+time_to_solve_sec = 400
+
+description_en = """
+A string $S$ is cyclically shifted left by $K$ positions, then a bijective substitution is applied over lowercase letters:
+equal letters map to equal letters, different letters map to different letters.
+
+Given $S$ and $T$, return the minimal shift $K \\ge 0$ for which $T$ can be obtained, or $-1$ if impossible.
+"""
+
+description_ru = """
+Строку $S$ циклически сдвигают влево на $K$ позиций, затем применяют биективную замену по строчным буквам:
+одинаковые буквы переходят в одинаковые, разные — в разные.
+
+По данным $S$ и $T$ верните минимальный сдвиг $K \\ge 0$, при котором можно получить $T$, или $-1$, если это невозможно.
+"""
+
+limits = """
+- $1 \\le |S| = |T| \\le 20$
+- $S, T \\in \\{a,\\ldots,z\\}^{|S|}$
+"""
+
+solution = """
+def solution(s: str, t: str) -> int:
+    if len(s) != len(t):
+        return -1
+
+    def ok(a, b):
+        mp, used = {}, set()
+        for x, y in zip(a, b):
+            if x in mp:
+                if mp[x] != y:
+                    return False
+            else:
+                if y in used:
+                    return False
+                mp[x] = y
+                used.add(y)
+        return True
+
+    n = len(s)
+    u = t
+    for k in range(n):
+        if ok(u, s):
+            return k
+        u = u[1:] + u[0]
+    return -1
+"""
+
+examples = """
+solution("abac", "mknk") == 1
+solution("abac", "kmkn") == 0
+solution("abac", "kkkn") == -1
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "t"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["mknk", "abac"]
+expected  = 1
+
+[[asserts]]
+arguments = ["kmkn", "abac"]
+expected  = 0
+
+[[asserts]]
+arguments = ["kkkn", "abac"]
+expected  = -1
+
+[[asserts]]
+arguments = ["hwynjbwijylowhnnnnii", "ehhcfbejdfhjbakfceee"]
+expected  = 3
+
+[[asserts]]
+arguments = ["csttsnvrftruucwucub", "ebbacbabdafggfhiekg"]
+expected  = 9
+
+[[asserts]]
+arguments = ["gmttfsgms", "aficficgg"]
+expected  = 5
+
+[[asserts]]
+arguments = ["dpnpy", "gkbgc"]
+expected  = 2
+
+[[asserts]]
+arguments = ["hpdvic", "abcabc"]
+expected  = -1
+
+[[asserts]]
+arguments = ["abcabc", "kfeabf"]
+expected  = -1
+
+[[asserts]]
+arguments = ["cmdcmdmarmycoop", "fkdfbhccahfihfi"]
+expected  = 9
+
+[[asserts]]
+arguments = ["isgglvoo", "cebddhkc"]
+expected  = 1
+
+[[asserts]]
+arguments = ["haphxpuuvath", "edbekkaicddi"]
+expected  = 10
+
+[[asserts]]
+arguments = ["kqko", "gfgk"]
+expected  = 0
+
+[[asserts]]
+arguments = ["ttjzzjuzz", "bgcbbiigb"]
+expected  = 5
+
+[[asserts]]
+arguments = ["waobkweeaztnkowazzke", "hjfgiibedafhgbeefigb"]
+expected  = 18
+
+[[asserts]]
+arguments = ["huuu", "cacc"]
+expected  = 1
+
+[[asserts]]
+arguments = ["uzrlyq", "fdcjga"]
+expected  = 0
+
+[[asserts]]
+arguments = ["tsojmpvtjbsmzxcjss", "dgjbfkhdacifhhbhef"]
+expected  = 14
+
+[[asserts]]
+arguments = ["yqsyxlssn", "gbbkafbad"]
+expected  = 4
+
+[[asserts]]
+arguments = ["cpprddjcqccjclgdolpr", "gebdjekfgkkfddhgcggh"]
+expected  = 8
+
+[[asserts]]
+arguments = ["llyfgdebcybb", "fdbijciieech"]
+expected  = 8
+
+[[asserts]]
+arguments = ["zhmewkhkpmbbzejzpeh", "cdekiijagjeacjckabd"]
+expected  = 13
+
+[[asserts]]
+arguments = ["rsjwjp", "gafegj"]
+expected  = 2
+
+[[asserts]]
+arguments = ["arxb", "beji"]
+expected  = 0
+
+[[asserts]]
+arguments = ["uuyjdjynun", "ehghefkfkk"]
+expected  = 8
+
+[[asserts]]
+arguments = ["oegvgivfieigun", "ijaehebhdbabek"]
+expected  = 1
+
+[[asserts]]
+arguments = ["wqgiqvwswwhiwfvihw", "khbafaaikaebkiaahg"]
+expected  = 15
+
+[[asserts]]
+arguments = ["zmpxe", "cfikd"]
+expected  = 0
+
+[[asserts]]
+arguments = ["svgxxaagjrjaee", "ifccaafgbgahhe"]
+expected  = 13
+
+[[asserts]]
+arguments = ["lyspsppgpvfaiypslavf", "jbbebkiagfbjhakihfjb"]
+expected  = 16
+
+[[asserts]]
+arguments = ["vvvhfogvfhkhmlvfvfg", "hiaaabhciahbfbjgaha"]
+expected  = 2
+
+[[asserts]]
+arguments = ["ij", "ij"]
+expected  = 0

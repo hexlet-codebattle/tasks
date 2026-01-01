@@ -1,0 +1,167 @@
+level             = "easy"
+name              = "travelling_salesman_problem"
+tags              = ["math", "recursion"]
+time_to_solve_sec = 200
+
+description_en = """
+A travelling salesman wants to visit several different cities.
+Given an integer `n`, representing the number of cities,
+calculate in how many different orders he can visit all `n` cities
+if each city must be visited exactly once.
+"""
+
+description_ru = """
+Путешествующий продавец хочет посетить несколько разных городов.
+Дано целое число `n`, обозначающее количество городов.
+Нужно вычислить, сколькими различными способами он может посетить все `n` городов,
+если каждый город посещается ровно один раз.
+"""
+
+limits = """
+- $0 \\leq \\text{paths} \\leq 12$
+"""
+
+solution = """
+def solution(paths: int) -> int:
+    import math
+    return math.factorial(paths)
+"""
+
+examples = """
+solution(1) == 1
+solution(4) == 24
+solution(8) == 40320
+"""
+
+[[input_signature]]
+argument_name = "paths"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero paths"
+expected  = 1
+
+[[asserts]]
+arguments = [1]
+comment   = "One path"
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+comment   = "Two paths"
+expected  = 2
+
+[[asserts]]
+arguments = [3]
+comment   = "Three paths"
+expected  = 6
+
+[[asserts]]
+arguments = [4]
+comment   = "Four paths"
+expected  = 24
+
+[[asserts]]
+arguments = [5]
+comment   = "Five paths"
+expected  = 120
+
+[[asserts]]
+arguments = [6]
+comment   = "Six paths"
+expected  = 720
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven paths"
+expected  = 5040
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight paths"
+expected  = 40320
+
+[[asserts]]
+arguments = [9]
+comment   = "Nine paths"
+expected  = 362880
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten paths"
+expected  = 3628800
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleven paths"
+expected  = 39916800
+
+[[asserts]]
+arguments = [12]
+comment   = "Twelve paths - maximum"
+expected  = 479001600
+
+[[asserts]]
+arguments = [0]
+comment   = "Empty case"
+expected  = 1
+
+[[asserts]]
+arguments = [1]
+comment   = "Single city"
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+comment   = "Two cities"
+expected  = 2
+
+[[asserts]]
+arguments = [3]
+comment   = "Three cities"
+expected  = 6
+
+[[asserts]]
+arguments = [4]
+comment   = "Four cities"
+expected  = 24
+
+[[asserts]]
+arguments = [5]
+comment   = "Five cities"
+expected  = 120
+
+[[asserts]]
+arguments = [6]
+comment   = "Six cities"
+expected  = 720
+
+[[asserts]]
+arguments = [7]
+comment   = "Seven cities"
+expected  = 5040
+
+[[asserts]]
+arguments = [8]
+comment   = "Eight cities"
+expected  = 40320
+
+[[asserts]]
+arguments = [9]
+comment   = "Nine cities"
+expected  = 362880
+
+[[asserts]]
+arguments = [10]
+comment   = "Ten cities"
+expected  = 3628800
+
+[[asserts]]
+arguments = [11]
+comment   = "Eleven cities"
+expected  = 39916800

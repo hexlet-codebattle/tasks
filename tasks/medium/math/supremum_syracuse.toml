@@ -1,0 +1,172 @@
+level             = "medium"
+name              = "supremum_syracuse"
+tags              = ["math"]
+time_to_solve_sec = 400
+
+description_en = """
+You are given the number $s[1]$, which is the first element of the Syracuse sequence (also known as the Collatz sequence). Find the largest element in the sequence. The sequence is defined by: $s[n]=1$ (terminal condition), $s[k+1]=s[k]/2$ if $s[k]$ is even, $s[k+1]=(3 \\cdot s[k]+1)/2$ if $s[k]$ is odd.
+"""
+
+description_ru = """
+Вам дано число $s[1]$, являющееся первым элементом последовательности Сиракузы (также известной как последовательность Коллатца). Найдите наибольший элемент в последовательности. Последовательность задается формулой: $s[n]=1$ (конечное условие), $s[k+1]=s[k]/2$ если $s[k]$ четно, $s[k+1]=(3 \\cdot s[k]+1)/2$ если $s[k]$ нечетно.
+"""
+
+limits = """
+- $1 \\leq \\text{num} \\leq 1000$
+"""
+
+solution = """
+def solution(num: int) -> int:
+    max_val = num
+    while num != 1:
+        if num % 2 == 0:
+            num = num // 2
+        else:
+            num = (3 * num + 1) // 2
+        max_val = max(max_val, num)
+    return max_val
+"""
+
+examples = """
+solution(6) == 8
+solution(11) == 26
+solution(27) == 4616
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+comment   = "Terminal case"
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+comment   = "Simple even"
+expected  = 2
+
+[[asserts]]
+arguments = [3]
+comment   = "Small odd"
+expected  = 8
+
+[[asserts]]
+arguments = [4]
+comment   = "Power of 2"
+expected  = 4
+
+[[asserts]]
+arguments = [5]
+comment   = "Odd number"
+expected  = 8
+
+[[asserts]]
+arguments = [6]
+comment   = "Example from test"
+expected  = 8
+
+[[asserts]]
+arguments = [7]
+comment   = "Small odd"
+expected  = 26
+
+[[asserts]]
+arguments = [8]
+comment   = "Power of 2"
+expected  = 8
+
+[[asserts]]
+arguments = [9]
+comment   = "Odd number"
+expected  = 26
+
+[[asserts]]
+arguments = [10]
+comment   = "Even number"
+expected  = 10
+
+[[asserts]]
+arguments = [11]
+comment   = "Example from test"
+expected  = 26
+
+[[asserts]]
+arguments = [12]
+comment   = "Even number"
+expected  = 12
+
+[[asserts]]
+arguments = [13]
+comment   = "Unlucky number"
+expected  = 20
+
+[[asserts]]
+arguments = [15]
+comment   = "Odd number"
+expected  = 80
+
+[[asserts]]
+arguments = [16]
+comment   = "Power of 2"
+expected  = 16
+
+[[asserts]]
+arguments = [20]
+comment   = "Even number"
+expected  = 20
+
+[[asserts]]
+arguments = [25]
+comment   = "Odd number"
+expected  = 44
+
+[[asserts]]
+arguments = [27]
+comment   = "Example from test"
+expected  = 4616
+
+[[asserts]]
+arguments = [30]
+comment   = "Even number"
+expected  = 80
+
+[[asserts]]
+arguments = [31]
+comment   = "Prime number"
+expected  = 4616
+
+[[asserts]]
+arguments = [50]
+comment   = "Medium even"
+expected  = 50
+
+[[asserts]]
+arguments = [63]
+comment   = "Odd number"
+expected  = 4616
+
+[[asserts]]
+arguments = [64]
+comment   = "Power of 2"
+expected  = 64
+
+[[asserts]]
+arguments = [100]
+comment   = "Round number"
+expected  = 100
+
+[[asserts]]
+arguments = [127]
+comment   = "Prime near power of 2"
+expected  = 2186
+
+[[asserts]]
+arguments = [200]
+comment   = "Larger even"
+expected  = 200

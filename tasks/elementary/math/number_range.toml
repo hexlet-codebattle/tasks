@@ -1,0 +1,199 @@
+level             = "elementary"
+name              = "number_range"
+tags              = ["math"]
+time_to_solve_sec = 120
+
+description_en = """
+Create a function that validates whether a number `n` is inclusively within the bounds of `lower` and `upper`.
+"""
+
+description_ru = """
+Создайте функцию, которая проверяет, находится ли число `n` в границах между `lower` и `upper` включительно.
+"""
+
+limits = """
+- $0 \\leq num \\leq 100$
+- $0 \\leq lower \\leq 100$
+- $0 \\leq upper \\leq 100$
+"""
+
+solution = """
+def solution(num: int, lower: int, upper: int) -> bool:
+    return lower <= num <= upper
+"""
+
+examples = """
+solution(3, 1, 9) == True
+solution(7, 1, 6) == False
+solution(3, 3, 10) == True
+solution(18, 7, 18) == True
+solution(4, 11, 15) == False
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "lower"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "upper"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [3, 1, 9]
+comment   = "Number within range"
+expected  = true
+
+[[asserts]]
+arguments = [7, 1, 6]
+comment   = "Number above range"
+expected  = false
+
+[[asserts]]
+arguments = [11, 1, 20]
+comment   = "Number within wide range"
+expected  = true
+
+[[asserts]]
+arguments = [3, 3, 10]
+comment   = "Number equals lower bound"
+expected  = true
+
+[[asserts]]
+arguments = [18, 7, 18]
+comment   = "Number equals upper bound"
+expected  = true
+
+[[asserts]]
+arguments = [4, 11, 15]
+comment   = "Number below range"
+expected  = false
+
+[[asserts]]
+arguments = [0, 0, 0]
+comment   = "All zeros"
+expected  = true
+
+[[asserts]]
+arguments = [5, 5, 5]
+comment   = "All equal values"
+expected  = true
+
+[[asserts]]
+arguments = [10, 1, 100]
+comment   = "Small number in large range"
+expected  = true
+
+[[asserts]]
+arguments = [50, 25, 75]
+comment   = "Middle of range"
+expected  = true
+
+[[asserts]]
+arguments = [100, 0, 100]
+comment   = "Maximum in full range"
+expected  = true
+
+[[asserts]]
+arguments = [0, 0, 100]
+comment   = "Minimum in full range"
+expected  = true
+
+[[asserts]]
+arguments = [15, 10, 20]
+comment   = "Middle value"
+expected  = true
+
+[[asserts]]
+arguments = [9, 10, 20]
+comment   = "Just below lower bound"
+expected  = false
+
+[[asserts]]
+arguments = [21, 10, 20]
+comment   = "Just above upper bound"
+expected  = false
+
+[[asserts]]
+arguments = [10, 10, 20]
+comment   = "At lower bound"
+expected  = true
+
+[[asserts]]
+arguments = [20, 10, 20]
+comment   = "At upper bound"
+expected  = true
+
+[[asserts]]
+arguments = [1, 0, 1]
+comment   = "Small range upper"
+expected  = true
+
+[[asserts]]
+arguments = [0, 0, 1]
+comment   = "Small range lower"
+expected  = true
+
+[[asserts]]
+arguments = [30, 25, 35]
+comment   = "Within range"
+expected  = true
+
+[[asserts]]
+arguments = [24, 25, 35]
+comment   = "Below by one"
+expected  = false
+
+[[asserts]]
+arguments = [36, 25, 35]
+comment   = "Above by one"
+expected  = false
+
+[[asserts]]
+arguments = [50, 50, 50]
+comment   = "Single value range"
+expected  = true
+
+[[asserts]]
+arguments = [49, 50, 50]
+comment   = "Below single value"
+expected  = false
+
+[[asserts]]
+arguments = [51, 50, 50]
+comment   = "Above single value"
+expected  = false
+
+[[asserts]]
+arguments = [75, 0, 100]
+comment   = "Three quarters through"
+expected  = true
+
+[[asserts]]
+arguments = [25, 0, 100]
+comment   = "Quarter through"
+expected  = true
+
+[[asserts]]
+arguments = [99, 0, 100]
+comment   = "Near maximum"
+expected  = true
+
+[[asserts]]
+arguments = [1, 0, 100]
+comment   = "Near minimum"
+expected  = true
+
+[[asserts]]
+arguments = [42, 42, 84]
+comment   = "At lower, wide range"
+expected  = true

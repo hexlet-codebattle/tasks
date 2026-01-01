@@ -1,0 +1,192 @@
+level             = "easy"
+name              = "single_number"
+tags              = ["collections", "algo"]
+time_to_solve_sec = 250
+
+description_en = """
+Given an array of integers, every element appears twice except for one. Find that single one.
+"""
+
+description_ru = """
+Дан массив целых чисел, в нем все элементы кроме одного присутствует по два раза. Найдите элемент одиночку.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
+- $-1000 \\leq \\text{arr}[i] \\leq 1000$
+"""
+
+solution = """
+def solution(arr: list[int]) -> int:
+    r = 0
+    for n in arr:
+        r ^= n
+    return r
+"""
+
+examples = """
+solution([2, 2, 3]) == 3
+solution([4, 2, 2]) == 4
+solution([1]) == 1
+solution([8, 6, 8, 7, 2, 2, 7, 1, 9, 9, 1]) == 6
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[8, 6, 8, 7, 2, 2, 7, 1, 9, 9, 1]]
+comment   = "Multiple duplicates"
+expected  = 6
+
+[[asserts]]
+arguments = [[2, 2, 3]]
+comment   = "Simple case"
+expected  = 3
+
+[[asserts]]
+arguments = [[4, 2, 2, 3, 6, 3, 8, 7, 8, 6, 7]]
+comment   = "Many duplicates"
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 3, 4, 3, 5, 6, 7, 1, 6, 7, 4]]
+comment   = "Single element in middle"
+expected  = 5
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single element array"
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 5, 7]]
+comment   = "Single at end"
+expected  = 7
+
+[[asserts]]
+arguments = [[9, 1, 1]]
+comment   = "Single at start"
+expected  = 9
+
+[[asserts]]
+arguments = [[10, 20, 10]]
+comment   = "Single in middle"
+expected  = 20
+
+[[asserts]]
+arguments = [[1, 2, 3, 2, 1]]
+comment   = "Single at end position"
+expected  = 3
+
+[[asserts]]
+arguments = [[100, 50, 100, 50, 25]]
+comment   = "Large numbers"
+expected  = 25
+
+[[asserts]]
+arguments = [[-5, -5, 0]]
+comment   = "Negative and zero"
+expected  = 0
+
+[[asserts]]
+arguments = [[-10, -20, -10]]
+comment   = "Negative numbers"
+expected  = -20
+
+[[asserts]]
+arguments = [[0, 1, 0]]
+comment   = "Zero and one"
+expected  = 1
+
+[[asserts]]
+arguments = [[15, 15, 15, 15, 7]]
+comment   = "Multiple pairs"
+expected  = 7
+
+[[asserts]]
+arguments = [[3, 1, 3, 1, 5, 5, 2]]
+comment   = "Complex case"
+expected  = 2
+
+[[asserts]]
+arguments = [[11, 22, 33, 22, 11]]
+comment   = "Multiple digits"
+expected  = 33
+
+[[asserts]]
+arguments = [[99, 88, 77, 88, 99]]
+comment   = "Two digit numbers"
+expected  = 77
+
+[[asserts]]
+arguments = [[1000, 2000, 1000]]
+comment   = "Large values"
+expected  = 2000
+
+[[asserts]]
+arguments = [[7, 7, 8, 8, 9, 9, 10]]
+comment   = "Sequential duplicates"
+expected  = 10
+
+[[asserts]]
+arguments = [[5, 4, 3, 4, 5]]
+comment   = "Descending pattern"
+expected  = 3
+
+[[asserts]]
+arguments = [[100, 200, 300, 200, 100]]
+comment   = "Hundreds"
+expected  = 300
+
+[[asserts]]
+arguments = [[1, 1, 2, 2, 3, 3, 4, 4, 5]]
+comment   = "Multiple pairs with single"
+expected  = 5
+
+[[asserts]]
+arguments = [[10, 10, 20, 20, 30, 30, 40]]
+comment   = "Tens pattern"
+expected  = 40
+
+[[asserts]]
+arguments = [[-1, -2, -3, -2, -1]]
+comment   = "All negative except one"
+expected  = -3
+
+[[asserts]]
+arguments = [[50, 60, 70, 60, 50]]
+comment   = "Mid-range values"
+expected  = 70
+
+[[asserts]]
+arguments = [[123, 456, 123]]
+comment   = "Three digit numbers"
+expected  = 456
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 4, 3, 2, 1]]
+comment   = "Palindrome pattern"
+expected  = 5
+
+[[asserts]]
+arguments = [[777, 888, 999, 888, 777]]
+comment   = "Repeating digits"
+expected  = 999
+
+[[asserts]]
+arguments = [[0, 0, 1, 1, 2]]
+comment   = "Starting with zeros"
+expected  = 2
+
+[[asserts]]
+arguments = [[42, 42, 84]]
+comment   = "Double relationship"
+expected  = 84

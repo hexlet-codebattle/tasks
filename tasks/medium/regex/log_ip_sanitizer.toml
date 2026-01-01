@@ -1,6 +1,6 @@
 level             = "medium"
 name              = "log_ip_sanitizer"
-tags              = ["regex", "string"]
+tags              = ["regex", "strings"]
 time_to_solve_sec = 300
 
 description_en = """

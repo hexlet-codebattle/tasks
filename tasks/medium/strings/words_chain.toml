@@ -1,0 +1,184 @@
+level             = "medium"
+name              = "words_chain"
+tags              = ["strings"]
+time_to_solve_sec = 500
+
+description_en = """
+Write a function which takes a sequence of words, and returns true if they can be arranged into one continuous word chain, and false if they cannot. A word chain means that each consecutive pair of words differs by exactly one character. Example: cat -> cot -> coat -> oat -> hat -> hot -> hog -> dog
+"""
+
+description_ru = """
+Напишите функцию, которая принимает последовательность слов и проверяет, могут ли слова быть организованы в одну непрерывную цепочку слов. Цепочка слов означает, что каждая пара последовательных слов отличается ровно на один символ. Пример: cat -> cot -> coat -> oat -> hat -> hot -> hog -> dog
+"""
+
+limits = """
+- $2 \\leq \\text{len}(\\text{words}) \\leq 20$
+- $1 \\leq \\text{len}(\\text{word}) \\leq 10$
+"""
+
+solution = """
+def solution(words: list) -> bool:
+    def levenshtein(s1, s2):
+        if len(s1) > len(s2):
+            s1, s2 = s2, s1
+        distances = range(len(s1) + 1)
+        for i2, c2 in enumerate(s2):
+            new_distances = [i2+1]
+            for i1, c1 in enumerate(s1):
+                if c1 == c2:
+                    new_distances.append(distances[i1])
+                else:
+                    new_distances.append(1 + min((distances[i1], distances[i1+1], new_distances[-1])))
+            distances = new_distances
+        return distances[-1]
+
+    counts = {}
+    for word in words:
+        count = sum(1 for w in words if levenshtein(word, w) == 1)
+        counts[word] = count
+
+    endpoints = sum(1 for c in counts.values() if c <= 1)
+    return endpoints <= 2
+"""
+
+examples = """
+solution(["hat", "coat", "dog", "cat", "oat", "cot", "hot", "hog"]) == True
+solution(["cot", "hot", "bat", "fat"]) == False
+solution(["to", "top", "stop", "tops", "toss"]) == False
+solution(["spout", "do", "pot", "pout", "spot", "dot"]) == True
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [["hat", "coat", "dog", "cat", "oat", "cot", "hot", "hog"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["cot", "hot", "bat", "fat"]]
+comment   = "Invalid chain"
+expected  = false
+
+[[asserts]]
+arguments = [["to", "top", "stop", "tops", "toss"]]
+comment   = "Invalid chain"
+expected  = false
+
+[[asserts]]
+arguments = [["spout", "do", "pot", "pout", "spot", "dot"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["share", "hares", "shares", "hare", "are"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["share", "hares", "hare", "are"]]
+comment   = "Invalid chain"
+expected  = false
+
+[[asserts]]
+arguments = [["a", "at", "cat"]]
+comment   = "Simple chain"
+expected  = true
+
+[[asserts]]
+arguments = [["dog", "fog", "log"]]
+comment   = "Simple substitution chain"
+expected  = true
+
+[[asserts]]
+arguments = [["cat", "bat", "rat"]]
+comment   = "Branch structure"
+expected  = true
+
+[[asserts]]
+arguments = [["it", "bit", "fit"]]
+comment   = "Branch structure"
+expected  = true
+
+[[asserts]]
+arguments = [["red", "bed", "bad", "sad"]]
+comment   = "Linear chain"
+expected  = true
+
+[[asserts]]
+arguments = [["go", "got", "hot", "hop"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["hi", "hit", "hat", "cat"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["be", "bee", "see", "sea"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["an", "can", "man"]]
+comment   = "Branch structure"
+expected  = true
+
+[[asserts]]
+arguments = [["at", "cat", "hat"]]
+comment   = "Branch structure"
+expected  = true
+
+[[asserts]]
+arguments = [["me", "met", "wet", "we"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["to", "too", "zoo", "oz"]]
+comment   = "Disconnected word"
+expected  = false
+
+[[asserts]]
+arguments = [["in", "pin", "pen", "hen"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["up", "cup", "cap", "map"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["or", "for", "far", "ear"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["so", "son", "sun", "nun"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["no", "not", "hot", "hat"]]
+comment   = "Valid chain"
+expected  = true
+
+[[asserts]]
+arguments = [["as", "ask", "ark", "ark"]]
+comment   = "Duplicate word"
+expected  = true
+
+[[asserts]]
+arguments = [["if", "ifs", "its", "it"]]
+comment   = "Valid chain"
+expected  = true

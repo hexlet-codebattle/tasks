@@ -1,0 +1,184 @@
+level             = "easy"
+name              = "triangle_area"
+tags              = ["math"]
+time_to_solve_sec = 250
+
+description_en = """
+Calculate area of triangle using Heron's Formula:
+$$p = \\frac{a + b + c}{2}$$
+$$s = \\sqrt{p \\cdot (p - a) \\cdot (p - b) \\cdot (p - c)}$$
+Use floor rounding for resulting area.
+"""
+
+description_ru = """
+Рассчитайте площадь треугольника, используя формулу Герона:
+$$p = \\frac{a + b + c}{2}$$
+$$s = \\sqrt{p \\cdot (p - a) \\cdot (p - b) \\cdot (p - c)}$$
+Округлите результат в меньшую сторону.
+"""
+
+limits = """
+- $-100 \\leq a, b, c \\leq 100$
+"""
+
+solution = """
+def solution(a: int, b: int, c: int) -> int:
+    a, b, c = abs(a), abs(b), abs(c)
+    p = (a + b + c) / 2
+    area = (p * (p - a) * (p - b) * (p - c)) ** 0.5
+    return int(area)
+"""
+
+examples = """
+solution(14, 10, 12) == 58
+solution(24, 30, 18) == 216
+solution(-14, -10, -12) == 58
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "c"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [24, 30, 18]
+comment   = "Large triangle"
+expected  = 216
+
+[[asserts]]
+arguments = [14, 10, 12]
+comment   = "Medium triangle"
+expected  = 58
+
+[[asserts]]
+arguments = [-14, -10, -12]
+comment   = "Negative sides (absolute values)"
+expected  = 58
+
+[[asserts]]
+arguments = [3, 4, 5]
+comment   = "Right triangle"
+expected  = 6
+
+[[asserts]]
+arguments = [5, 5, 5]
+comment   = "Equilateral triangle"
+expected  = 10
+
+[[asserts]]
+arguments = [6, 8, 10]
+comment   = "Right triangle 3-4-5 scaled"
+expected  = 24
+
+[[asserts]]
+arguments = [13, 14, 15]
+comment   = "Scalene triangle"
+expected  = 84
+
+[[asserts]]
+arguments = [10, 10, 10]
+comment   = "Equilateral"
+expected  = 43
+
+[[asserts]]
+arguments = [7, 24, 25]
+comment   = "Right triangle 7-24-25"
+expected  = 84
+
+[[asserts]]
+arguments = [8, 15, 17]
+comment   = "Right triangle 8-15-17"
+expected  = 60
+
+[[asserts]]
+arguments = [9, 12, 15]
+comment   = "Right triangle 3-4-5 scaled by 3"
+expected  = 54
+
+[[asserts]]
+arguments = [20, 21, 29]
+comment   = "Right triangle 20-21-29"
+expected  = 210
+
+[[asserts]]
+arguments = [5, 12, 13]
+comment   = "Right triangle 5-12-13"
+expected  = 30
+
+[[asserts]]
+arguments = [11, 13, 20]
+comment   = "Scalene triangle"
+expected  = 66
+
+[[asserts]]
+arguments = [6, 6, 6]
+comment   = "Small equilateral"
+expected  = 15
+
+[[asserts]]
+arguments = [8, 8, 8]
+comment   = "Equilateral triangle"
+expected  = 27
+
+[[asserts]]
+arguments = [15, 15, 15]
+comment   = "Larger equilateral"
+expected  = 97
+
+[[asserts]]
+arguments = [10, 17, 21]
+comment   = "Scalene triangle"
+expected  = 84
+
+[[asserts]]
+arguments = [12, 16, 20]
+comment   = "Right triangle 3-4-5 scaled by 4"
+expected  = 96
+
+[[asserts]]
+arguments = [7, 7, 10]
+comment   = "Isosceles triangle"
+expected  = 24
+
+[[asserts]]
+arguments = [9, 9, 12]
+comment   = "Isosceles triangle"
+expected  = 40
+
+[[asserts]]
+arguments = [11, 11, 14]
+comment   = "Isosceles triangle"
+expected  = 59
+
+[[asserts]]
+arguments = [13, 13, 10]
+comment   = "Isosceles triangle"
+expected  = 60
+
+[[asserts]]
+arguments = [20, 20, 24]
+comment   = "Isosceles triangle"
+expected  = 192
+
+[[asserts]]
+arguments = [25, 25, 30]
+comment   = "Isosceles triangle"
+expected  = 300
+
+[[asserts]]
+arguments = [17, 17, 16]
+comment   = "Isosceles triangle"
+expected  = 120

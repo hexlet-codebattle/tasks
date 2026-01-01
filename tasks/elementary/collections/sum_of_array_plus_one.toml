@@ -1,0 +1,167 @@
+level             = "elementary"
+name              = "sum_of_array_plus_one"
+tags              = ["collections", "training"]
+time_to_solve_sec = 150
+
+description_en = """
+Given an array of integers, return the sum of integers after adding 1 to each one.
+"""
+
+description_ru = """
+Дается массив с числами, рассчитайте сумму чисел после добавления единицы к каждому.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
+- $-100 \\leq \\text{arr}[i] \\leq 100$
+"""
+
+solution = """
+def solution(arr: list) -> int:
+    return sum(arr) + len(arr)
+"""
+
+examples = """
+solution([1, 2, 3, 4]) == 14
+solution([12, -3, 0, 3]) == 16
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[12, -3, 0, 3]]
+comment   = "Mix of positive, negative, and zero"
+expected  = 16
+
+[[asserts]]
+arguments = [[1, 2, 3, 4]]
+comment   = "Simple positive numbers"
+expected  = 14
+
+[[asserts]]
+arguments = [[0, 0, 0, 0]]
+comment   = "All zeros"
+expected  = 4
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single element"
+expected  = 2
+
+[[asserts]]
+arguments = [[10]]
+comment   = "Single positive number"
+expected  = 11
+
+[[asserts]]
+arguments = [[-5]]
+comment   = "Single negative number"
+expected  = -4
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "Three elements"
+expected  = 9
+
+[[asserts]]
+arguments = [[5, 5, 5]]
+comment   = "Same positive numbers"
+expected  = 18
+
+[[asserts]]
+arguments = [[-1, -2, -3]]
+comment   = "All negative"
+expected  = -3
+
+[[asserts]]
+arguments = [[-10, -20, -30]]
+comment   = "Larger negative numbers"
+expected  = -57
+
+[[asserts]]
+arguments = [[100]]
+comment   = "Large single number"
+expected  = 101
+
+[[asserts]]
+arguments = [[-100]]
+comment   = "Large negative single number"
+expected  = -99
+
+[[asserts]]
+arguments = [[1, -1]]
+comment   = "Positive and negative that cancel"
+expected  = 2
+
+[[asserts]]
+arguments = [[10, 20, 30]]
+comment   = "Multiples of ten"
+expected  = 63
+
+[[asserts]]
+arguments = [[7, 8, 9, 10]]
+comment   = "Sequential numbers"
+expected  = 38
+
+[[asserts]]
+arguments = [[2, 4, 6, 8]]
+comment   = "Even numbers"
+expected  = 24
+
+[[asserts]]
+arguments = [[1, 3, 5, 7]]
+comment   = "Odd numbers"
+expected  = 20
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4, 5]]
+comment   = "Starting from zero"
+expected  = 21
+
+[[asserts]]
+arguments = [[-5, -4, -3, -2, -1]]
+comment   = "Negative sequence"
+expected  = -10
+
+[[asserts]]
+arguments = [[15, 25, 35]]
+comment   = "Larger positive numbers"
+expected  = 78
+
+[[asserts]]
+arguments = [[11, 12, 13, 14, 15]]
+comment   = "Mid-range sequence"
+expected  = 70
+
+[[asserts]]
+arguments = [[-1, 0, 1]]
+comment   = "Negative, zero, positive"
+expected  = 3
+
+[[asserts]]
+arguments = [[50, 60, 70, 80]]
+comment   = "Large even multiples"
+expected  = 264
+
+[[asserts]]
+arguments = [[3, 6, 9, 12]]
+comment   = "Multiples of three"
+expected  = 34
+
+[[asserts]]
+arguments = [[5, 10, 15, 20, 25]]
+comment   = "Multiples of five"
+expected  = 80
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1]]
+comment   = "All ones"
+expected  = 10

@@ -1,0 +1,169 @@
+level             = "easy"
+name              = "word_positions"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a sentence and a word, find all the positions in which the word occurs in the sentence. Return an array of such positions.
+"""
+
+description_ru = """
+Даны предложение и слово, найдите все местоположения слова в предложении и соберите их в массив.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{word}) \\leq 50$
+- $1 \\leq \\text{len}(\\text{sentence}) \\leq 500$
+"""
+
+solution = """
+def solution(sentence: str, word: str) -> list:
+    import re
+    return [m.start() for m in re.finditer(r'\\b' + re.escape(word) + r'\\b', sentence)]
+"""
+
+examples = """
+solution("test", "test") == [0]
+solution("test test test", "test") == [0, 5, 10]
+solution("find a word in some sentence", "in") == [12]
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "word"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = ["find a word in some sentence", "in"]
+comment   = "Single occurrence"
+expected  = [12]
+
+[[asserts]]
+arguments = ["test", "test"]
+comment   = "Whole string is the word"
+expected  = [0]
+
+[[asserts]]
+arguments = ["test test test", "test"]
+comment   = "Three occurrences"
+expected  = [0, 5, 10]
+
+[[asserts]]
+arguments = ["hello world", "world"]
+comment   = "Word at end"
+expected  = [6]
+
+[[asserts]]
+arguments = ["hello world", "hello"]
+comment   = "Word at start"
+expected  = [0]
+
+[[asserts]]
+arguments = ["the cat in the hat", "the"]
+comment   = "Two occurrences"
+expected  = [0, 11]
+
+[[asserts]]
+arguments = ["one two three", "four"]
+comment   = "Word not found"
+expected  = []
+
+[[asserts]]
+arguments = ["programming is fun and programming is cool", "programming"]
+comment   = "Two occurrences"
+expected  = [0, 23]
+
+[[asserts]]
+arguments = ["is is is is", "is"]
+comment   = "Four occurrences"
+expected  = [0, 3, 6, 9]
+
+[[asserts]]
+arguments = ["a b c d e", "a"]
+comment   = "Single letter at start"
+expected  = [0]
+
+[[asserts]]
+arguments = ["testing tests test tester", "test"]
+comment   = "Only exact word match"
+expected  = [14]
+
+[[asserts]]
+arguments = ["apple pie and apple juice", "apple"]
+comment   = "Two occurrences of apple"
+expected  = [0, 14]
+
+[[asserts]]
+arguments = ["run running runner runs", "run"]
+comment   = "Only exact match"
+expected  = [0]
+
+[[asserts]]
+arguments = ["to be or not to be", "to"]
+comment   = "Two occurrences"
+expected  = [0, 13]
+
+[[asserts]]
+arguments = ["it is what it is", "it"]
+comment   = "Two occurrences"
+expected  = [0, 11]
+
+[[asserts]]
+arguments = ["code code code", "code"]
+comment   = "Three occurrences"
+expected  = [0, 5, 10]
+
+[[asserts]]
+arguments = ["python javascript python ruby python", "python"]
+comment   = "Three occurrences"
+expected  = [0, 18, 30]
+
+[[asserts]]
+arguments = ["find the word word in the sentence", "word"]
+comment   = "Two occurrences"
+expected  = [9, 14]
+
+[[asserts]]
+arguments = ["go go go go go", "go"]
+comment   = "Five occurrences"
+expected  = [0, 3, 6, 9, 12]
+
+[[asserts]]
+arguments = ["start middle end", "start"]
+comment   = "Word at beginning"
+expected  = [0]
+
+[[asserts]]
+arguments = ["start middle end", "end"]
+comment   = "Word at end"
+expected  = [13]
+
+[[asserts]]
+arguments = ["start middle end", "middle"]
+comment   = "Word in middle"
+expected  = [6]
+
+[[asserts]]
+arguments = ["no match here", "missing"]
+comment   = "Not found"
+expected  = []
+
+[[asserts]]
+arguments = ["a a a a a", "a"]
+comment   = "Five single letters"
+expected  = [0, 2, 4, 6, 8]
+
+[[asserts]]
+arguments = ["testing", "test"]
+comment   = "Partial match - should not count"
+expected  = []

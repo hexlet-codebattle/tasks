@@ -1,6 +1,6 @@
 level             = "medium"
 name              = "bike_to_charge"
-tags              = ["algo", "string", "greedy", "two-pointers", "prefix-scan"]
+tags              = ["algo", "strings", "greedy", "two_pointers", "prefix_scan"]
 time_to_solve_sec = 300
 
 description_en = """

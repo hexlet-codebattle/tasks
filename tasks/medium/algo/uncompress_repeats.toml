@@ -1,6 +1,6 @@
 level             = "medium"
 name              = "uncompress_repeats"
-tags              = ["algo", "string", "linear-scan"]
+tags              = ["algo", "strings", "linear_scan"]
 time_to_solve_sec = 300
 
 description_en = """

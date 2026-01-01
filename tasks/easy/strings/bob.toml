@@ -1,0 +1,201 @@
+level             = "easy"
+name              = "bob"
+tags              = ["strings"]
+time_to_solve_sec = 300
+
+description_en = """
+Bob is a conversational partner who responds to a single input string `sentence` according to these rules:
+
+- If you **yell** at him (the sentence has at least one letter, and all letters are uppercase), he answers `"Whoa, chill out!"`.
+- If you **ask a question** (the trimmed sentence ends with `"?"`) and you are **not** yelling, he answers `"Sure."`.
+- If you **say nothing** or only whitespace, he answers `"Fine. Be that way!"`.
+- In all other cases, he answers `"Whatever."`.
+
+Return Bob's answer as a string.
+"""
+
+description_ru = """
+Боб отвечает на одну входную строку `sentence` по следующим правилам:
+
+- Если вы **кричите** на него (в строке есть хотя бы одна буква, и все буквы — заглавные), он отвечает `"Whoa, chill out!"`.
+- Если вы **задаете вопрос** (обрезанная по краям строка заканчивается на `"?"`) и при этом вы **не кричите**, он отвечает `"Sure."`.
+- Если вы **ничего не говорите** или вводите только пробелы, он отвечает `"Fine. Be that way!"`.
+- Во всех остальных случаях он отвечает `"Whatever."`.
+
+Верните ответ Боба в виде строки.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{sentence}) \\leq 100$
+"""
+
+solution = """
+def solution(sentence: str) -> str:
+    s = sentence.strip()
+    if s == "":
+        return "Fine. Be that way!"
+    letters = [c for c in sentence if c.isalpha()]
+    yelling = bool(letters) and all(c.isupper() for c in letters)
+    question = s.endswith("?")
+    if yelling:
+        return "Whoa, chill out!"
+    if question:
+        return "Sure."
+    return "Whatever."
+"""
+
+examples = """
+solution("4?") == "Sure."
+solution("It is OK.") == "Whatever."
+solution("    ") == "Fine. Be that way!"
+solution("1, 2, 3 GO!") == "Whoa, chill out!"
+solution("WHAT THE HELL WERE YOU THINKING?") == "Whoa, chill out!"
+"""
+
+[[input_signature]]
+argument_name = "sentence"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["1, 2, 3 GO!"]
+comment   = "Shouting with digits and punctuation"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["ZOMBIES ARE COMING!!11!!1!"]
+comment   = "All letters uppercase, clear yelling"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["WHAT THE HELL WERE YOU THINKING?"]
+comment   = "Yelled question – still treated as yelling"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["It is OK."]
+comment   = "Mixed case, not a question"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["Ending with ? means a question."]
+comment   = "Question mark inside, not at the end"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string is silence"
+expected  = "Fine. Be that way!"
+
+[[asserts]]
+arguments = ["    "]
+comment   = "Only spaces is silence"
+expected  = "Fine. Be that way!"
+
+[[asserts]]
+arguments = ["\t\t"]
+comment   = "Only tabs is silence"
+expected  = "Fine. Be that way!"
+
+[[asserts]]
+arguments = ["4?"]
+comment   = "Numeric question"
+expected  = "Sure."
+
+[[asserts]]
+arguments = ["Does this work?"]
+comment   = "Normal question, not yelling"
+expected  = "Sure."
+
+[[asserts]]
+arguments = ["does this work?"]
+comment   = "Lowercase question"
+expected  = "Sure."
+
+[[asserts]]
+arguments = ["Ok?   "]
+comment   = "Mixed case question with trailing spaces"
+expected  = "Sure."
+
+[[asserts]]
+arguments = ["WHAT?   "]
+comment   = "Yelled question with trailing spaces"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["Ok!"]
+comment   = "Mixed case with exclamation, not yelling"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["Ok! Ok!"]
+comment   = "Mixed case repeated, not yelling"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["Hey there!"]
+comment   = "Mixed case exclamation"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["OK!!"]
+comment   = "All letters uppercase, shouting with exclamation"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["NO."]
+comment   = "Short shout, no question mark"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["no"]
+comment   = "Lowercase, calm statement"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["No."]
+comment   = "Capitalized first letter, not yelling"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["12345"]
+comment   = "Only digits, no letters, not yelling, not question"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["12345?"]
+comment   = "Digits only but ends with question mark"
+expected  = "Sure."
+
+[[asserts]]
+arguments = ["WATCH OUT"]
+comment   = "Uppercase letters without punctuation"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["Watch out"]
+comment   = "Normal sentence"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["HEY YOU"]
+comment   = "Yelling with space"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["  HEY YOU  "]
+comment   = "Yelling with surrounding spaces"
+expected  = "Whoa, chill out!"
+
+[[asserts]]
+arguments = ["Are you OK"]
+comment   = "No question mark at the end"
+expected  = "Whatever."
+
+[[asserts]]
+arguments = ["ARE YOU OK"]
+comment   = "Uppercase without question mark"
+expected  = "Whoa, chill out!"

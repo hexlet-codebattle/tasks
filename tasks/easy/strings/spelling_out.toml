@@ -1,0 +1,187 @@
+level             = "easy"
+name              = "spelling_out"
+tags              = ["strings", "collections"]
+time_to_solve_sec = 250
+
+description_en = """
+Create a function which takes in a word and spells it out, by consecutively adding letters until the full word is completed.
+"""
+
+description_ru = """
+Создайте функцию, которая принимает слово и произносит его по буквам, последовательно добавляя буквы, пока слово не будет произнесено полностью.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{word}) \\leq 50$
+"""
+
+solution = """
+def solution(word: str) -> list[str]:
+    return [word[:i+1] for i in range(len(word))]
+"""
+
+examples = """
+solution("bee") == ["b", "be", "bee"]
+solution("happy") == ["h", "ha", "hap", "happ", "happy"]
+solution("clojure") == ["c", "cl", "clo", "cloj", "cloju", "clojur", "clojure"]
+"""
+
+[[input_signature]]
+argument_name = "word"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = ["bee"]
+comment   = "Short word"
+expected  = ["b", "be", "bee"]
+
+[[asserts]]
+arguments = ["happy"]
+comment   = "Five letter word"
+expected  = ["h", "ha", "hap", "happ", "happy"]
+
+[[asserts]]
+arguments = ["clojure"]
+comment   = "Seven letter word"
+expected  = ["c", "cl", "clo", "cloj", "cloju", "clojur", "clojure"]
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single letter"
+expected  = ["a"]
+
+[[asserts]]
+arguments = ["hi"]
+comment   = "Two letters"
+expected  = ["h", "hi"]
+
+[[asserts]]
+arguments = ["cat"]
+comment   = "Three letter word"
+expected  = ["c", "ca", "cat"]
+
+[[asserts]]
+arguments = ["dog"]
+comment   = "Another three letter word"
+expected  = ["d", "do", "dog"]
+
+[[asserts]]
+arguments = ["code"]
+comment   = "Four letter word"
+expected  = ["c", "co", "cod", "code"]
+
+[[asserts]]
+arguments = ["python"]
+comment   = "Programming language"
+expected  = ["p", "py", "pyt", "pyth", "pytho", "python"]
+
+[[asserts]]
+arguments = ["java"]
+comment   = "Another language"
+expected  = ["j", "ja", "jav", "java"]
+
+[[asserts]]
+arguments = ["test"]
+comment   = "Four letter word"
+expected  = ["t", "te", "tes", "test"]
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Common greeting"
+expected  = ["h", "he", "hel", "hell", "hello"]
+
+[[asserts]]
+arguments = ["world"]
+comment   = "Common word"
+expected  = ["w", "wo", "wor", "worl", "world"]
+
+[[asserts]]
+arguments = ["apple"]
+comment   = "Fruit name"
+expected  = ["a", "ap", "app", "appl", "apple"]
+
+[[asserts]]
+arguments = ["banana"]
+comment   = "Another fruit"
+expected  = ["b", "ba", "ban", "bana", "banan", "banana"]
+
+[[asserts]]
+arguments = ["orange"]
+comment   = "Citrus fruit"
+expected  = ["o", "or", "ora", "oran", "orang", "orange"]
+
+[[asserts]]
+arguments = ["computer"]
+comment   = "Eight letter word"
+expected  = ["c", "co", "com", "comp", "compu", "comput", "compute", "computer"]
+
+[[asserts]]
+arguments = ["keyboard"]
+comment   = "Hardware device"
+expected  = ["k", "ke", "key", "keyb", "keybo", "keyboa", "keyboar", "keyboard"]
+
+[[asserts]]
+arguments = ["mouse"]
+comment   = "Input device"
+expected  = ["m", "mo", "mou", "mous", "mouse"]
+
+[[asserts]]
+arguments = ["screen"]
+comment   = "Display device"
+expected  = ["s", "sc", "scr", "scre", "scree", "screen"]
+
+[[asserts]]
+arguments = ["book"]
+comment   = "Reading material"
+expected  = ["b", "bo", "boo", "book"]
+
+[[asserts]]
+arguments = ["phone"]
+comment   = "Communication device"
+expected  = ["p", "ph", "pho", "phon", "phone"]
+
+[[asserts]]
+arguments = ["table"]
+comment   = "Furniture"
+expected  = ["t", "ta", "tab", "tabl", "table"]
+
+[[asserts]]
+arguments = ["chair"]
+comment   = "Seating furniture"
+expected  = ["c", "ch", "cha", "chai", "chair"]
+
+[[asserts]]
+arguments = ["window"]
+comment   = "Building feature"
+expected  = ["w", "wi", "win", "wind", "windo", "window"]
+
+[[asserts]]
+arguments = ["door"]
+comment   = "Entrance"
+expected  = ["d", "do", "doo", "door"]
+
+[[asserts]]
+arguments = ["water"]
+comment   = "Liquid"
+expected  = ["w", "wa", "wat", "wate", "water"]
+
+[[asserts]]
+arguments = ["coffee"]
+comment   = "Beverage"
+expected  = ["c", "co", "cof", "coff", "coffe", "coffee"]
+
+[[asserts]]
+arguments = ["music"]
+comment   = "Art form"
+expected  = ["m", "mu", "mus", "musi", "music"]
+
+[[asserts]]
+arguments = ["guitar"]
+comment   = "Musical instrument"
+expected  = ["g", "gu", "gui", "guit", "guita", "guitar"]

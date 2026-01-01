@@ -1,0 +1,233 @@
+level             = "medium"
+name              = "new_year_wishlist"
+tags              = ["collections", "strings"]
+time_to_solve_sec = 380
+
+description_en = """
+Given two lists of strings: children's wishes and Santa's gifts. Each gift can only be used once.
+
+Determine how many wishes can be fulfilled.
+"""
+
+description_ru = """
+Даны два списка строк: желания детей и подарки у Санты. Каждый подарок можно использовать только один раз.
+
+Определите, сколько желаний можно выполнить.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{wishes}) \\leq 1000$
+- $1 \\leq \\text{len}(\\text{gifts}) \\leq 1000$
+- $1 \\leq \\text{len}(\\text{wish}) \\leq 50$
+- $1 \\leq \\text{len}(\\text{gift}) \\leq 50$
+"""
+
+solution = """
+def solution(wishes: list[str], gifts: list[str]) -> int:
+    from collections import Counter
+    w = Counter(wishes)
+    g = Counter(gifts)
+    c = 0
+    for k in w:
+        c += min(w[k], g[k])
+    return c
+"""
+
+examples = """
+solution(["toy"], ["toy"]) == 1
+solution(["toy", "book"], ["toy"]) == 1
+solution(["toy", "toy"], ["toy"]) == 1
+solution(["toy", "book"], ["toy", "book"]) == 2
+solution(["toy", "toy"], ["toy", "toy"]) == 2
+"""
+
+[[input_signature]]
+argument_name = "wishes"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "gifts"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["toy"], ["toy"]]
+comment   = "One wish fulfilled"
+expected  = 1
+
+[[asserts]]
+arguments = [["toy"], ["book"]]
+comment   = "No matching gift"
+expected  = 0
+
+[[asserts]]
+arguments = [["toy", "book"], ["toy"]]
+comment   = "One of two wishes"
+expected  = 1
+
+[[asserts]]
+arguments = [["toy", "book"], ["toy", "book"]]
+comment   = "Both wishes fulfilled"
+expected  = 2
+
+[[asserts]]
+arguments = [["toy", "toy"], ["toy"]]
+comment   = "Two wishes, one gift"
+expected  = 1
+
+[[asserts]]
+arguments = [["toy", "toy"], ["toy", "toy"]]
+comment   = "Two wishes, two gifts"
+expected  = 2
+
+[[asserts]]
+arguments = [["toy", "toy", "toy"], ["toy", "toy"]]
+comment   = "Three wishes, two gifts"
+expected  = 2
+
+[[asserts]]
+arguments = [["toy"], ["toy", "toy"]]
+comment   = "One wish, two gifts"
+expected  = 1
+
+[[asserts]]
+arguments = [["toy", "book", "game"], ["toy", "book", "game"]]
+comment   = "All three fulfilled"
+expected  = 3
+
+[[asserts]]
+arguments = [["toy", "book", "game"], ["book", "game"]]
+comment   = "Two of three fulfilled"
+expected  = 2
+
+[[asserts]]
+arguments = [["toy", "book", "game"], []]
+comment   = "No gifts available"
+expected  = 0
+
+[[asserts]]
+arguments = [[], ["toy", "book"]]
+comment   = "No wishes"
+expected  = 0
+
+[[asserts]]
+arguments = [["toy", "toy", "book", "book"], ["toy", "book"]]
+comment   = "Four wishes, two gifts"
+expected  = 2
+
+[[asserts]]
+arguments = [["toy", "toy", "book", "book"], ["toy", "book", "toy", "book"]]
+comment   = "All wishes fulfilled"
+expected  = 4
+
+[[asserts]]
+arguments = [["a", "b", "c"], ["d", "e", "f"]]
+comment   = "No matching gifts"
+expected  = 0
+
+[[asserts]]
+arguments = [["a", "a", "a"], ["a", "a", "a", "a"]]
+comment   = "Three wishes, four gifts"
+expected  = 3
+
+[[asserts]]
+arguments = [["a", "b", "a", "b"], ["a", "b"]]
+comment   = "Four wishes, two unique gifts"
+expected  = 2
+
+[[asserts]]
+arguments = [["car", "car", "car"], ["car"]]
+comment   = "Three same wishes, one gift"
+expected  = 1
+
+[[asserts]]
+arguments = [["doll", "doll"], ["doll", "doll", "doll"]]
+comment   = "Two wishes, three gifts"
+expected  = 2
+
+[[asserts]]
+arguments = [
+  [
+    "bike",
+    "scooter",
+    "skateboard",
+  ],
+  [
+    "bike",
+    "scooter",
+    "skateboard",
+    "rollerblades",
+  ],
+]
+comment = "All three wishes with extra gift"
+expected = 3
+
+[[asserts]]
+arguments = [["puzzle", "puzzle", "lego", "lego"], ["puzzle", "lego"]]
+comment   = "Two pairs, one each available"
+expected  = 2
+
+[[asserts]]
+arguments = [["robot"], ["robot", "robot"]]
+comment   = "One wish, two same gifts"
+expected  = 1
+
+[[asserts]]
+arguments = [["train", "plane", "boat"], ["train", "plane"]]
+comment   = "Three wishes, two available"
+expected  = 2
+
+[[asserts]]
+arguments = [["ball", "ball", "ball", "ball", "ball"], ["ball", "ball", "ball"]]
+comment   = "Five wishes, three gifts"
+expected  = 3
+
+[[asserts]]
+arguments = [["bear", "bear"], ["bear", "bear", "bear", "bear"]]
+comment   = "Two wishes, four gifts"
+expected  = 2
+
+[[asserts]]
+arguments = [
+  [
+    "guitar",
+    "drums",
+    "piano",
+  ],
+  [
+    "guitar",
+    "drums",
+    "piano",
+    "violin",
+  ],
+]
+comment = "All instruments fulfilled"
+expected = 3
+
+[[asserts]]
+arguments = [["apple", "banana", "cherry"], ["apple", "banana"]]
+comment   = "Two of three fruits"
+expected  = 2
+
+[[asserts]]
+arguments = [["x", "y", "z", "x", "y", "z"], ["x", "y", "z"]]
+comment   = "Six wishes, three unique gifts"
+expected  = 3
+
+[[asserts]]
+arguments = [["a", "a", "b", "b", "c", "c"], ["a", "a", "b", "b", "c", "c"]]
+comment   = "All pairs match"
+expected  = 6
+
+[[asserts]]
+arguments = [["dog", "cat", "fish"], ["bird", "hamster", "rabbit"]]
+comment   = "No animal matches"
+expected  = 0

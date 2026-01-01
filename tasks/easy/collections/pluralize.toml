@@ -1,0 +1,199 @@
+level             = "easy"
+name              = "pluralize"
+tags              = ["collections", "strings"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a list of words in the singular form, return a list of those words where duplicates are converted to plural form by adding `"s"`. Keep the original word order (using only the first occurrence of each unique word).
+"""
+
+description_ru = """
+Дан список слов в единственном числе. Верните список этих слов, где дубликаты преобразованы во множественное число добавлением `"s"`. Сохраните исходный порядок слов (используя только первое вхождение каждого уникального слова).
+"""
+
+limits = """
+- $1 \\leq |\\text{words}| \\leq 100$
+- $1 \\leq |\\text{words}[i]| \\leq 20$
+"""
+
+solution = """
+def solution(words: list) -> list:
+    freq = {}
+    for w in words:
+        freq[w] = freq.get(w, 0) + 1
+    seen = set()
+    result = []
+    for w in words:
+        if w not in seen:
+            seen.add(w)
+            result.append(w + 's' if freq[w] > 1 else w)
+    return result
+"""
+
+examples = """
+solution(["chair"]) == ["chair"]
+solution(["cow", "pig", "cow"]) == ["cows", "pig"]
+solution(["cat", "dog", "cat", "dog"]) == ["cats", "dogs"]
+"""
+
+[[input_signature]]
+argument_name = "words"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["cow", "pig", "cow", "cow"]]
+comment   = "Multiple occurrences of cow"
+expected  = ["cows", "pig"]
+
+[[asserts]]
+arguments = [["chair", "chair", "chair"]]
+comment   = "All same word"
+expected  = ["chairs"]
+
+[[asserts]]
+arguments = [["chair", "pencil", "arm"]]
+comment   = "All unique words"
+expected  = ["chair", "pencil", "arm"]
+
+[[asserts]]
+arguments = [["clojure", "ruby", "rail", "rail", "elixir"]]
+comment   = "One duplicate in middle"
+expected  = ["clojure", "ruby", "rails", "elixir"]
+
+[[asserts]]
+arguments = [["apple"]]
+comment   = "Single word"
+expected  = ["apple"]
+
+[[asserts]]
+arguments = [["cat", "dog", "cat", "dog"]]
+comment   = "Two words alternating"
+expected  = ["cats", "dogs"]
+
+[[asserts]]
+arguments = [["book", "book"]]
+comment   = "Two identical words"
+expected  = ["books"]
+
+[[asserts]]
+arguments = [["pen", "paper", "pen"]]
+comment   = "First and last same"
+expected  = ["pens", "paper"]
+
+[[asserts]]
+arguments = [["car", "bike", "car", "truck", "bike"]]
+comment   = "Multiple duplicates"
+expected  = ["cars", "bikes", "truck"]
+
+[[asserts]]
+arguments = [["a", "b", "c", "d", "e"]]
+comment   = "All different single chars"
+expected  = ["a", "b", "c", "d", "e"]
+
+[[asserts]]
+arguments = [["apple", "banana", "apple", "cherry", "banana"]]
+comment   = "Two pairs of duplicates"
+expected  = ["apples", "bananas", "cherry"]
+
+[[asserts]]
+arguments = [["x", "x", "x", "x"]]
+comment   = "Four same single char"
+expected  = ["xs"]
+
+[[asserts]]
+arguments = [["dog", "cat", "bird", "dog", "cat", "bird"]]
+comment   = "Three duplicates"
+expected  = ["dogs", "cats", "birds"]
+
+[[asserts]]
+arguments = [["table", "chair", "table", "desk", "chair", "table"]]
+comment   = "Mixed frequencies"
+expected  = ["tables", "chairs", "desk"]
+
+[[asserts]]
+arguments = [["key"]]
+comment   = "Single unique key"
+expected  = ["key"]
+
+[[asserts]]
+arguments = [["word", "word", "word", "word", "word"]]
+comment   = "Five identical"
+expected  = ["words"]
+
+[[asserts]]
+arguments = [["lion", "tiger", "bear"]]
+comment   = "Three unique animals"
+expected  = ["lion", "tiger", "bear"]
+
+[[asserts]]
+arguments = [["mouse", "mouse", "rat"]]
+comment   = "Two mice and rat"
+expected  = ["mouses", "rat"]
+
+[[asserts]]
+arguments = [["phone", "laptop", "phone", "tablet", "laptop", "phone"]]
+comment   = "Multiple occurrences"
+expected  = ["phones", "laptops", "tablet"]
+
+[[asserts]]
+arguments = [["tree", "bush", "tree", "flower", "bush", "tree", "bush"]]
+comment   = "Three types repeating"
+expected  = ["trees", "bushs", "flower"]
+
+[[asserts]]
+arguments = [["red", "blue", "red"]]
+comment   = "Color twice"
+expected  = ["reds", "blue"]
+
+[[asserts]]
+arguments = [["fork", "spoon", "knife", "fork"]]
+comment   = "Fork appears twice"
+expected  = ["forks", "spoon", "knife"]
+
+[[asserts]]
+arguments = [["sun", "moon", "star", "sun", "moon"]]
+comment   = "Two pairs celestial"
+expected  = ["suns", "moons", "star"]
+
+[[asserts]]
+arguments = [["box", "bag", "box", "box"]]
+comment   = "Box three times"
+expected  = ["boxs", "bag"]
+
+[[asserts]]
+arguments = [["hat", "cap", "hat", "cap", "hat"]]
+comment   = "Alternating with extra"
+expected  = ["hats", "caps"]
+
+[[asserts]]
+arguments = [["window", "door", "wall", "window"]]
+comment   = "Window twice"
+expected  = ["windows", "door", "wall"]
+
+[[asserts]]
+arguments = [["pizza", "burger", "taco", "pizza", "burger", "pizza"]]
+comment   = "Food items repeating"
+expected  = ["pizzas", "burgers", "taco"]
+
+[[asserts]]
+arguments = [["north", "south", "east", "west"]]
+comment   = "Four unique directions"
+expected  = ["north", "south", "east", "west"]
+
+[[asserts]]
+arguments = [["clock", "watch", "clock", "timer", "watch", "clock"]]
+comment   = "Time devices"
+expected  = ["clocks", "watchs", "timer"]
+
+[[asserts]]
+arguments = [["guitar", "piano", "guitar", "drum", "piano", "guitar", "piano"]]
+comment   = "Musical instruments"
+expected  = ["guitars", "pianos", "drum"]

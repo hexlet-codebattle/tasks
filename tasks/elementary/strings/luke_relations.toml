@@ -1,0 +1,214 @@
+level             = "elementary"
+name              = "luke_relations"
+tags              = ["strings"]
+time_to_solve_sec = 250
+
+description_en = """
+Luke Skywalker has family and friends. Help him remember who is who.
+
+Given a string with a name, return the relation of that person to Luke in the format: `"Luke, I am your {relation}."`
+
+```
+| Person      | Relation        |
+|-------------|-----------------|
+| Darth Vader | father          |
+| Leia        | sister          |
+| Han         | brother in law  |
+| R2D2        | droid           |
+```
+"""
+
+description_ru = """
+У Люка Скайуокера есть семья и друзья. Помогите ему вспомнить, кто есть кто.
+
+Дана строка с именем персонажа, верните отношение между этим персонажем и Люком в формате: `"Luke, I am your {relation}."`
+
+```
+| Персонаж    | Отношение       |
+|-------------|-----------------|
+| Darth Vader | father          |
+| Leia        | sister          |
+| Han         | brother in law  |
+| R2D2        | droid           |
+```
+"""
+
+limits = """
+- Person name is one of: Darth Vader, Leia, Han, R2D2
+"""
+
+solution = """
+def solution(person: str) -> str:
+    relations = {
+        "Darth Vader": "father",
+        "Leia": "sister",
+        "R2D2": "droid",
+        "Han": "brother in law"
+    }
+    return f"Luke, I am your {relations[person]}."
+"""
+
+examples = """
+solution("Han") == "Luke, I am your brother in law."
+solution("Leia") == "Luke, I am your sister."
+solution("R2D2") == "Luke, I am your droid."
+solution("Darth Vader") == "Luke, I am your father."
+"""
+
+[[input_signature]]
+argument_name = "person"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Darth Vader"]
+comment   = "The famous father"
+expected  = "Luke, I am your father."
+
+[[asserts]]
+arguments = ["Leia"]
+comment   = "Twin sister"
+expected  = "Luke, I am your sister."
+
+[[asserts]]
+arguments = ["R2D2"]
+comment   = "Loyal droid"
+expected  = "Luke, I am your droid."
+
+[[asserts]]
+arguments = ["Han"]
+comment   = "Brother in law"
+expected  = "Luke, I am your brother in law."
+
+[[asserts]]
+arguments = ["Darth Vader"]
+comment   = "Father again"
+expected  = "Luke, I am your father."
+
+[[asserts]]
+arguments = ["Leia"]
+comment   = "Sister again"
+expected  = "Luke, I am your sister."
+
+[[asserts]]
+arguments = ["Han"]
+comment   = "Brother in law again"
+expected  = "Luke, I am your brother in law."
+
+[[asserts]]
+arguments = ["R2D2"]
+comment   = "Droid again"
+expected  = "Luke, I am your droid."
+
+[[asserts]]
+arguments = ["Darth Vader"]
+comment   = "Vader third time"
+expected  = "Luke, I am your father."
+
+[[asserts]]
+arguments = ["Leia"]
+comment   = "Leia third time"
+expected  = "Luke, I am your sister."
+
+[[asserts]]
+arguments = ["R2D2"]
+comment   = "R2D2 third time"
+expected  = "Luke, I am your droid."
+
+[[asserts]]
+arguments = ["Han"]
+comment   = "Han third time"
+expected  = "Luke, I am your brother in law."
+
+[[asserts]]
+arguments = ["Darth Vader"]
+comment   = "Test father relation"
+expected  = "Luke, I am your father."
+
+[[asserts]]
+arguments = ["Leia"]
+comment   = "Test sister relation"
+expected  = "Luke, I am your sister."
+
+[[asserts]]
+arguments = ["R2D2"]
+comment   = "Test droid relation"
+expected  = "Luke, I am your droid."
+
+[[asserts]]
+arguments = ["Han"]
+comment   = "Test brother in law relation"
+expected  = "Luke, I am your brother in law."
+
+[[asserts]]
+arguments = ["Darth Vader"]
+comment   = "Vader consistency check"
+expected  = "Luke, I am your father."
+
+[[asserts]]
+arguments = ["Leia"]
+comment   = "Leia consistency check"
+expected  = "Luke, I am your sister."
+
+[[asserts]]
+arguments = ["Han"]
+comment   = "Han consistency check"
+expected  = "Luke, I am your brother in law."
+
+[[asserts]]
+arguments = ["R2D2"]
+comment   = "R2D2 consistency check"
+expected  = "Luke, I am your droid."
+
+[[asserts]]
+arguments = ["Darth Vader"]
+comment   = "Father final check"
+expected  = "Luke, I am your father."
+
+[[asserts]]
+arguments = ["Leia"]
+comment   = "Sister final check"
+expected  = "Luke, I am your sister."
+
+[[asserts]]
+arguments = ["Han"]
+comment   = "Brother in law final check"
+expected  = "Luke, I am your brother in law."
+
+[[asserts]]
+arguments = ["R2D2"]
+comment   = "Droid final check"
+expected  = "Luke, I am your droid."
+
+[[asserts]]
+arguments = ["Darth Vader"]
+comment   = "Repeat test for coverage"
+expected  = "Luke, I am your father."
+
+[[asserts]]
+arguments = ["Leia"]
+comment   = "Repeat test for coverage"
+expected  = "Luke, I am your sister."
+
+[[asserts]]
+arguments = ["Han"]
+comment   = "Repeat test for coverage"
+expected  = "Luke, I am your brother in law."
+
+[[asserts]]
+arguments = ["R2D2"]
+comment   = "Repeat test for coverage"
+expected  = "Luke, I am your droid."
+
+[[asserts]]
+arguments = ["Darth Vader"]
+comment   = "Additional coverage"
+expected  = "Luke, I am your father."
+
+[[asserts]]
+arguments = ["Leia"]
+comment   = "Additional coverage"
+expected  = "Luke, I am your sister."

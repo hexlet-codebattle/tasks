@@ -1,0 +1,178 @@
+level             = "medium"
+name              = "sum_primes"
+tags              = ["math"]
+time_to_solve_sec = 450
+
+description_en = """
+Return the sum of all prime numbers from 2 up to a given number, not including this number.
+"""
+
+description_ru = """
+Верните сумму всех простых чисел от 2 до переданного числа, не включая само число.
+"""
+
+limits = """
+- $2 \\leq \\text{num} \\leq 10000$
+"""
+
+solution = """
+def solution(num: int) -> int:
+    if num <= 2:
+        return 0
+    sieve = [True] * num
+    sieve[0] = sieve[1] = False
+    for i in range(2, int(num**0.5) + 1):
+        if sieve[i]:
+            for j in range(i*i, num, i):
+                sieve[j] = False
+    return sum(i for i in range(num) if sieve[i])
+"""
+
+examples = """
+solution(3) == 2
+solution(200) == 4227
+solution(1000) == 76127
+"""
+
+[[input_signature]]
+argument_name = "num"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [2]
+comment   = "No primes below 2"
+expected  = 0
+
+[[asserts]]
+arguments = [3]
+comment   = "Only 2"
+expected  = 2
+
+[[asserts]]
+arguments = [4]
+comment   = "2 + 3"
+expected  = 5
+
+[[asserts]]
+arguments = [5]
+comment   = "2 + 3"
+expected  = 5
+
+[[asserts]]
+arguments = [6]
+comment   = "2 + 3 + 5"
+expected  = 10
+
+[[asserts]]
+arguments = [10]
+comment   = "Primes below 10"
+expected  = 17
+
+[[asserts]]
+arguments = [11]
+comment   = "Primes below 11"
+expected  = 17
+
+[[asserts]]
+arguments = [20]
+comment   = "Primes below 20"
+expected  = 77
+
+[[asserts]]
+arguments = [30]
+comment   = "Primes below 30"
+expected  = 129
+
+[[asserts]]
+arguments = [50]
+comment   = "Primes below 50"
+expected  = 328
+
+[[asserts]]
+arguments = [100]
+comment   = "Primes below 100"
+expected  = 1060
+
+[[asserts]]
+arguments = [200]
+comment   = "Primes below 200"
+expected  = 4227
+
+[[asserts]]
+arguments = [300]
+comment   = "Primes below 300"
+expected  = 8275
+
+[[asserts]]
+arguments = [500]
+comment   = "Primes below 500"
+expected  = 21536
+
+[[asserts]]
+arguments = [1000]
+comment   = "Primes below 1000"
+expected  = 76127
+
+[[asserts]]
+arguments = [1500]
+comment   = "Primes below 1500"
+expected  = 165040
+
+[[asserts]]
+arguments = [2000]
+comment   = "Primes below 2000"
+expected  = 277050
+
+[[asserts]]
+arguments = [2500]
+comment   = "Primes below 2500"
+expected  = 420812
+
+[[asserts]]
+arguments = [3000]
+comment   = "Primes below 3000"
+expected  = 593823
+
+[[asserts]]
+arguments = [3500]
+comment   = "Primes below 3500"
+expected  = 785762
+
+[[asserts]]
+arguments = [4000]
+comment   = "Primes below 4000"
+expected  = 1013507
+
+[[asserts]]
+arguments = [5000]
+comment   = "Primes below 5000"
+expected  = 1548136
+
+[[asserts]]
+arguments = [6000]
+comment   = "Primes below 6000"
+expected  = 2174734
+
+[[asserts]]
+arguments = [7000]
+comment   = "Primes below 7000"
+expected  = 2935471
+
+[[asserts]]
+arguments = [8000]
+comment   = "Primes below 8000"
+expected  = 3738566
+
+[[asserts]]
+arguments = [9000]
+comment   = "Primes below 9000"
+expected  = 4673790
+
+[[asserts]]
+arguments = [10000]
+comment   = "Primes below 10000"
+expected  = 5736396

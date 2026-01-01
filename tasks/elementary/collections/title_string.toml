@@ -1,0 +1,172 @@
+level             = "elementary"
+name              = "title_string"
+tags              = ["collections", "strings", "training"]
+time_to_solve_sec = 150
+
+description_en = """
+Check if a string `title` is a title string or not. A title string is one which has all the words in the string start with an upper case letter.
+"""
+
+description_ru = """
+Проверьте, начинаются ли все слова в строке с заглавной буквы.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{title}) \\leq 100$
+"""
+
+solution = """
+def solution(title: str) -> bool:
+    words = title.split()
+    return all(word[0].isupper() for word in words if word)
+"""
+
+examples = """
+solution("Simple Title.") == True
+solution("Learn Clojure Be Happy!") == True
+solution("There are three types of zeros in JS!") == False
+solution("Learn Ruby win tournaments?!") == False
+"""
+
+[[input_signature]]
+argument_name = "title"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["There are three types of zeros in JS!"]
+comment   = "Not all words capitalized"
+expected  = false
+
+[[asserts]]
+arguments = ["Learn Clojure Be Happy!"]
+comment   = "All words capitalized"
+expected  = true
+
+[[asserts]]
+arguments = ["Learn Ruby win tournaments?!"]
+comment   = "word 'win' not capitalized"
+expected  = false
+
+[[asserts]]
+arguments = ["Simple Title."]
+comment   = "Simple title case"
+expected  = true
+
+[[asserts]]
+arguments = ["Hello World"]
+comment   = "Classic example"
+expected  = true
+
+[[asserts]]
+arguments = ["hello world"]
+comment   = "All lowercase"
+expected  = false
+
+[[asserts]]
+arguments = ["HELLO WORLD"]
+comment   = "All uppercase"
+expected  = true
+
+[[asserts]]
+arguments = ["The Quick Brown Fox"]
+comment   = "Title case sentence"
+expected  = true
+
+[[asserts]]
+arguments = ["The quick Brown Fox"]
+comment   = "One lowercase word"
+expected  = false
+
+[[asserts]]
+arguments = ["A"]
+comment   = "Single capital letter"
+expected  = true
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single lowercase letter"
+expected  = false
+
+[[asserts]]
+arguments = ["Python Programming"]
+comment   = "Two capitalized words"
+expected  = true
+
+[[asserts]]
+arguments = ["Python programming"]
+comment   = "Second word lowercase"
+expected  = false
+
+[[asserts]]
+arguments = ["Java JavaScript TypeScript"]
+comment   = "Three capitalized words"
+expected  = true
+
+[[asserts]]
+arguments = ["Java javascript TypeScript"]
+comment   = "Middle word lowercase"
+expected  = false
+
+[[asserts]]
+arguments = ["Is This Title Case?"]
+comment   = "Question with title case"
+expected  = true
+
+[[asserts]]
+arguments = ["Is this Title Case?"]
+comment   = "Question with lowercase"
+expected  = false
+
+[[asserts]]
+arguments = ["WOW!"]
+comment   = "Single uppercase word"
+expected  = true
+
+[[asserts]]
+arguments = ["wow!"]
+comment   = "Single lowercase word"
+expected  = false
+
+[[asserts]]
+arguments = ["One Two Three Four"]
+comment   = "Four capitalized words"
+expected  = true
+
+[[asserts]]
+arguments = ["One two Three Four"]
+comment   = "One lowercase in middle"
+expected  = false
+
+[[asserts]]
+arguments = ["First Second Third"]
+comment   = "Ordinal words capitalized"
+expected  = true
+
+[[asserts]]
+arguments = ["First second Third"]
+comment   = "Ordinal with lowercase"
+expected  = false
+
+[[asserts]]
+arguments = ["Alpha Beta Gamma"]
+comment   = "Greek letters capitalized"
+expected  = true
+
+[[asserts]]
+arguments = ["Alpha beta Gamma"]
+comment   = "Greek letters mixed"
+expected  = false
+
+[[asserts]]
+arguments = ["New York City"]
+comment   = "Place name"
+expected  = true
+
+[[asserts]]
+arguments = ["New york City"]
+comment   = "Place name with lowercase"
+expected  = false

@@ -1,0 +1,195 @@
+level             = "medium"
+name              = "prime_number_count"
+tags              = ["math"]
+time_to_solve_sec = 400
+
+description_en = """
+Create a function that finds how many prime numbers are in a sequence from zero to a given integer, inclusive.
+"""
+
+description_ru = """
+Создайте функцию, которая подсчитывает сколько простых чисел содержится в последовательности от 0 до заданного числа включительно.
+"""
+
+limits = """
+- $0 \\leq number \\leq 1000$
+"""
+
+solution = """
+def solution(number: int) -> int:
+    if number < 2:
+        return 0
+    primes = [True] * (number + 1)
+    primes[0] = primes[1] = False
+    for i in range(2, int(number**0.5) + 1):
+        if primes[i]:
+            for j in range(i*i, number + 1, i):
+                primes[j] = False
+    return sum(primes)
+"""
+
+examples = """
+solution(0) == 0
+solution(10) == 4
+solution(17) == 7
+solution(25) == 9
+solution(100) == 25
+"""
+
+[[input_signature]]
+argument_name = "number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero has no primes"
+expected  = 0
+
+[[asserts]]
+arguments = [10]
+comment   = "Primes up to 10"
+expected  = 4
+
+[[asserts]]
+arguments = [25]
+comment   = "Primes up to 25"
+expected  = 9
+
+[[asserts]]
+arguments = [17]
+comment   = "Primes up to 17"
+expected  = 7
+
+[[asserts]]
+arguments = [100]
+comment   = "Primes up to 100"
+expected  = 25
+
+[[asserts]]
+arguments = [1]
+comment   = "One is not prime"
+expected  = 0
+
+[[asserts]]
+arguments = [2]
+comment   = "Two is prime"
+expected  = 1
+
+[[asserts]]
+arguments = [3]
+comment   = "Up to three"
+expected  = 2
+
+[[asserts]]
+arguments = [5]
+comment   = "Up to five"
+expected  = 3
+
+[[asserts]]
+arguments = [7]
+comment   = "Up to seven"
+expected  = 4
+
+[[asserts]]
+arguments = [11]
+comment   = "Up to eleven"
+expected  = 5
+
+[[asserts]]
+arguments = [13]
+comment   = "Up to thirteen"
+expected  = 6
+
+[[asserts]]
+arguments = [20]
+comment   = "Primes up to 20"
+expected  = 8
+
+[[asserts]]
+arguments = [30]
+comment   = "Primes up to 30"
+expected  = 10
+
+[[asserts]]
+arguments = [50]
+comment   = "Primes up to 50"
+expected  = 15
+
+[[asserts]]
+arguments = [75]
+comment   = "Primes up to 75"
+expected  = 21
+
+[[asserts]]
+arguments = [150]
+comment   = "Primes up to 150"
+expected  = 35
+
+[[asserts]]
+arguments = [200]
+comment   = "Primes up to 200"
+expected  = 46
+
+[[asserts]]
+arguments = [250]
+comment   = "Primes up to 250"
+expected  = 53
+
+[[asserts]]
+arguments = [300]
+comment   = "Primes up to 300"
+expected  = 62
+
+[[asserts]]
+arguments = [400]
+comment   = "Primes up to 400"
+expected  = 78
+
+[[asserts]]
+arguments = [500]
+comment   = "Primes up to 500"
+expected  = 95
+
+[[asserts]]
+arguments = [600]
+comment   = "Primes up to 600"
+expected  = 109
+
+[[asserts]]
+arguments = [700]
+comment   = "Primes up to 700"
+expected  = 125
+
+[[asserts]]
+arguments = [800]
+comment   = "Primes up to 800"
+expected  = 139
+
+[[asserts]]
+arguments = [900]
+comment   = "Primes up to 900"
+expected  = 154
+
+[[asserts]]
+arguments = [1000]
+comment   = "Primes up to 1000"
+expected  = 168
+
+[[asserts]]
+arguments = [19]
+comment   = "Up to 19"
+expected  = 8
+
+[[asserts]]
+arguments = [23]
+comment   = "Up to 23"
+expected  = 9
+
+[[asserts]]
+arguments = [29]
+comment   = "Up to 29"
+expected  = 10

@@ -4,3 +4,4 @@ release/
 release.tar.gz
 release-v*.tar.gz
 .lsp
+.env

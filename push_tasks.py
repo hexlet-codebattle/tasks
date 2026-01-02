@@ -199,16 +199,15 @@ def main():
 
     visibility = "public" if args.public else "hidden"
 
-    # Load .env file
-    env_vars = load_env_file()
+    # Get auth token from environment variable first, then fall back to .env file
+    auth_token = os.environ.get("CODEBATTLE_AUTH_TOKEN", "")
+    if not auth_token:
+        env_vars = load_env_file()
+        auth_token = env_vars.get("CODEBATTLE_AUTH_TOKEN", "")
 
-    # Get auth token from .env file or environment variable
-    auth_token = env_vars.get("CODEBATTLE_AUTH_TOKEN") or os.environ.get(
-        "CODEBATTLE_AUTH_TOKEN", ""
-    )
     if not auth_token:
         print(
-            "Warning: CODEBATTLE_AUTH_TOKEN not found in .env file or environment",
+            "Warning: CODEBATTLE_AUTH_TOKEN not found in environment or .env file",
             file=sys.stderr,
         )
 

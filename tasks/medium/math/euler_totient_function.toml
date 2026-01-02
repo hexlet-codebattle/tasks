@@ -1,5 +1,5 @@
 level             = "hard"
-name              = "medium"
+name              = "euler_totient_function"
 tags              = ["math"]
 time_to_solve_sec = 900
 

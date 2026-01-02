@@ -98,6 +98,41 @@ def publish_task_pack(
         return False
 
 
+def load_env_file(env_path: str = ".env") -> dict:
+    """
+    Load environment variables from a .env file.
+
+    Args:
+        env_path: Path to the .env file
+
+    Returns:
+        Dictionary of environment variables
+    """
+    env_vars = {}
+    env_file = Path(env_path)
+
+    if not env_file.exists():
+        return env_vars
+
+    try:
+        with open(env_file, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                # Skip empty lines and comments
+                if not line or line.startswith("#"):
+                    continue
+                # Parse KEY=VALUE format
+                if "=" in line:
+                    key, value = line.split("=", 1)
+                    # Remove quotes if present
+                    value = value.strip().strip("\"'")
+                    env_vars[key.strip()] = value
+    except Exception as e:
+        print(f"Warning: Error reading .env file: {e}", file=sys.stderr)
+
+    return env_vars
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Publish task pack JSON files to a remote URL"
@@ -131,11 +166,15 @@ def main():
 
     visibility = "public" if args.public else "hidden"
 
-    # Get auth token from environment
+    # Get auth token from environment variable first, then fall back to .env file
     auth_token = os.environ.get("CODEBATTLE_AUTH_TOKEN", "")
     if not auth_token:
+        env_vars = load_env_file()
+        auth_token = env_vars.get("CODEBATTLE_AUTH_TOKEN", "")
+
+    if not auth_token:
         print(
-            "Warning: CODEBATTLE_AUTH_TOKEN environment variable not set",
+            "Warning: CODEBATTLE_AUTH_TOKEN not found in environment or .env file",
             file=sys.stderr,
         )
 

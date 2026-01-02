@@ -2,6 +2,7 @@
 """
 Check uniqueness of task names across tasks/ and private/ directories.
 Task names are checked case-insensitively to prevent confusion.
+Also verifies that file names match the 'name' field in each TOML file.
 """
 
 import os
@@ -31,16 +32,22 @@ def find_toml_files(directory: str) -> List[str]:
     return toml_files
 
 
-def extract_task_names(toml_files: List[str], base_dir: str) -> Dict[str, List[str]]:
+def extract_task_names(
+    toml_files: List[str], base_dir: str
+) -> Tuple[Dict[str, List[str]], List[Tuple[str, str, str]]]:
     """
     Extract task names from TOML files.
-    Returns mapping of lowercase_name -> [file_paths]
+    Returns:
+        - mapping of lowercase_name -> [file_paths]
+        - list of mismatches: [(file_path, file_name, toml_name), ...]
     Raises ValueError if any file is missing 'name' field.
     """
     name_to_files = defaultdict(list)
+    mismatches = []
 
     for toml_path in toml_files:
         rel_path = os.path.relpath(toml_path, base_dir)
+        file_name = os.path.basename(toml_path).replace(".toml", "")
 
         # Parse TOML file
         try:
@@ -60,11 +67,15 @@ def extract_task_names(toml_files: List[str], base_dir: str) -> Dict[str, List[s
             )
             sys.exit(1)
 
+        # Check if file name matches the name field
+        if file_name != name:
+            mismatches.append((rel_path, file_name, name))
+
         # Store with lowercase key for case-insensitive comparison
         lowercase_name = name.lower()
         name_to_files[lowercase_name].append(toml_path)
 
-    return dict(name_to_files)
+    return dict(name_to_files), mismatches
 
 
 def check_uniqueness(
@@ -87,11 +98,11 @@ def check_uniqueness(
     }
 
     if not duplicates:
-        print(colored("✅ All task names are unique!", "green", attrs=["bold"]))
+        print(colored("All task names are unique!", "green"))
         return (True, total_files, 0)
 
     # Report duplicates
-    print(colored("❌ DUPLICATE TASK NAMES FOUND:", "red", attrs=["bold"]))
+    print(colored("DUPLICATE TASK NAMES FOUND:", "red", attrs=["bold"]))
     print()
 
     for name, files in sorted(duplicates.items()):
@@ -103,7 +114,7 @@ def check_uniqueness(
 
     # Print summary
     duplicate_file_count = sum(len(files) for files in duplicates.values())
-    print(colored("═" * 70, "blue"))
+    print(colored("=" * 70, "blue"))
     print(
         colored(
             f"Summary: Found {len(duplicates)} duplicate task name(s) across {duplicate_file_count} files",
@@ -113,6 +124,36 @@ def check_uniqueness(
     )
 
     return (False, total_files, len(duplicates))
+
+
+def check_filename_matches(mismatches: List[Tuple[str, str, str]]) -> bool:
+    """
+    Check for file name / TOML name mismatches and print report.
+    Returns True if all match, False otherwise.
+    """
+    if not mismatches:
+        print(colored("All file names match their TOML 'name' field!", "green"))
+        return True
+
+    print(colored("FILE NAME MISMATCHES FOUND:", "red", attrs=["bold"]))
+    print()
+
+    for rel_path, file_name, toml_name in sorted(mismatches):
+        print(colored(f"File: {rel_path}", "yellow"))
+        print(f"  file name: '{file_name}'")
+        print(f"  toml name: '{toml_name}'")
+        print()
+
+    print(colored("=" * 70, "blue"))
+    print(
+        colored(
+            f"Summary: Found {len(mismatches)} file name mismatch(es)",
+            "red",
+            attrs=["bold"],
+        )
+    )
+
+    return False
 
 
 def main():
@@ -133,9 +174,9 @@ def main():
         print(colored("WARNING: No TOML files found in tasks/ or private/", "yellow"))
         sys.exit(0)
 
-    # Extract task names (case-insensitive)
+    # Extract task names (case-insensitive) and check for file name mismatches
     try:
-        name_to_files = extract_task_names(toml_files, base_dir)
+        name_to_files, mismatches = extract_task_names(toml_files, base_dir)
     except Exception as e:
         print(colored(f"ERROR: {str(e)}", "red"))
         sys.exit(1)
@@ -143,8 +184,12 @@ def main():
     # Check for duplicates
     is_unique, total_files, duplicate_count = check_uniqueness(name_to_files, base_dir)
 
+    # Check for file name mismatches
+    print()
+    names_match = check_filename_matches(mismatches)
+
     # Exit with appropriate code
-    sys.exit(0 if is_unique else 1)
+    sys.exit(0 if (is_unique and names_match) else 1)
 
 
 if __name__ == "__main__":

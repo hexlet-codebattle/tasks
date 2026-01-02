@@ -4,13 +4,16 @@ preview:
 	@pnpm --dir preview install --silent
 	@cd preview && pnpm dev
 
-build-private:
+build-private: drop-release
 	@$(PYTHON) test_solutions.py private
+
+drop-release:
+	@rm -rf release
 
 check-names:
 	@$(PYTHON) check_task_names.py
 
-build: check-names
+build: check-names drop-release
 	@$(PYTHON) test_solutions.py tasks
 
 build-and-preview: build preview

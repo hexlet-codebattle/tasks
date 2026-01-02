@@ -34,7 +34,7 @@ jobs:
           if [ -z "$CODEBATTLE_AUTH_TOKEN" ]; then
             echo "Secret is empty!"
           else
-            echo "Secret is set (length: ${#CODEBATTLE_AUTH_TOKEN})"
+            echo "Secret is set"
           fi
 
       - name: Create .env file

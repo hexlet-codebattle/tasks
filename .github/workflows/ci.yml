@@ -28,6 +28,15 @@ jobs:
       - name: Build
         run: make build
 
+      - name: Check secret
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if [ -z "$CODEBATTLE_AUTH_TOKEN" ]; then
+            echo "Secret is empty!"
+          else
+            echo "Secret is set (length: ${#CODEBATTLE_AUTH_TOKEN})"
+          fi
+
       - name: Create .env file
         if: github.ref == 'refs/heads/main'
         run: echo "CODEBATTLE_AUTH_TOKEN=${{ secrets.CODEBATTLE_AUTH_TOKEN }}" > .env

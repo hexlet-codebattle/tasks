@@ -1,0 +1,135 @@
+level             = "easy"
+name              = "christmas_lights_groups"
+tags              = ["strings"]
+time_to_solve_sec = 250
+
+description_en = """
+Joyce uses Christmas lights to communicate. Given a string `pattern` of `"L"` (light on) and `"."` (off), return the number of groups of consecutive lights with length at least `2`.
+"""
+
+description_ru = """
+Джойс использует рождественские лампочки. Дана строка `pattern` из `"L"` (включено) и `"."` (выключено), верните число групп подряд идущих ламп длиной не меньше `2`.
+"""
+
+solution = """
+def solution(pattern: str) -> int:
+    count = run = 0
+    for ch in pattern + ".":
+        if ch == "L": run += 1
+        else: count, run = count + (run >= 2), 0
+    return count
+"""
+
+examples = """
+solution("") == 0
+solution("LL") == 1
+solution("L..LL.L") == 1
+"""
+
+[[input_signature]]
+argument_name = "pattern"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+expected  = 0
+
+[[asserts]]
+arguments = ["L"]
+expected  = 0
+
+[[asserts]]
+arguments = ["."]
+expected  = 0
+
+[[asserts]]
+arguments = ["LL"]
+expected  = 1
+
+[[asserts]]
+arguments = ["L."]
+expected  = 0
+
+[[asserts]]
+arguments = [".L"]
+expected  = 0
+
+[[asserts]]
+arguments = ["L.L"]
+expected  = 0
+
+[[asserts]]
+arguments = ["L..L"]
+expected  = 0
+
+[[asserts]]
+arguments = [".L."]
+expected  = 0
+
+[[asserts]]
+arguments = ["..L.."]
+expected  = 0
+
+[[asserts]]
+arguments = ["LLL"]
+expected  = 1
+
+[[asserts]]
+arguments = ["LL.L"]
+expected  = 1
+
+[[asserts]]
+arguments = ["L.LL"]
+expected  = 1
+
+[[asserts]]
+arguments = ["L..LL.L"]
+expected  = 1
+
+[[asserts]]
+arguments = ["...."]
+expected  = 0
+
+[[asserts]]
+arguments = ["L...L"]
+expected  = 0
+
+[[asserts]]
+arguments = ["L...L..."]
+expected  = 0
+
+[[asserts]]
+arguments = ["...L...L"]
+expected  = 0
+
+[[asserts]]
+arguments = ["LLLL....LLLL"]
+expected  = 2
+
+[[asserts]]
+arguments = [".L.L.L."]
+expected  = 0
+
+[[asserts]]
+arguments = ["L.L.L"]
+expected  = 0
+
+[[asserts]]
+arguments = ["L..L..L"]
+expected  = 0
+
+[[asserts]]
+arguments = ["..LL..LL.."]
+expected  = 2
+
+[[asserts]]
+arguments = ["L..LL..LL"]
+expected  = 2
+
+[[asserts]]
+arguments = [".LLL.LL..L"]
+expected  = 2

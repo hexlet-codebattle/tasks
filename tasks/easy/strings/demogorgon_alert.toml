@@ -1,0 +1,137 @@
+level             = "easy"
+name              = "demogorgon_alert"
+tags              = ["strings"]
+time_to_solve_sec = 240
+
+description_en = """
+Sightings are reported by name. Given a list of `sightings`, return `true` if any entry equals `"demogorgon"` ignoring case and non-letter characters.
+"""
+
+description_ru = """
+Наблюдения записывают по имени. Дан список `sightings`, верните `true`, если есть запись `"demogorgon"` без учета регистра и не-буквенных символов.
+"""
+
+solution = """
+def solution(sightings: list[str]) -> bool:
+    for s in sightings:
+        t = "".join(ch for ch in s.lower() if ch.isalpha())
+        if t == "demogorgon":
+            return True
+    return False
+"""
+
+examples = """
+solution([]) == False
+solution(["cat"]) == False
+solution(["Demo-gorgon"]) == True
+"""
+
+[[input_signature]]
+argument_name = "sightings"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[]]
+expected  = false
+
+[[asserts]]
+arguments = [["cat"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Demogorgon"]]
+expected  = true
+
+[[asserts]]
+arguments = [["demogorgon"]]
+expected  = true
+
+[[asserts]]
+arguments = [["DEMoGorgon"]]
+expected  = true
+
+[[asserts]]
+arguments = [["dog", "rat"]]
+expected  = false
+
+[[asserts]]
+arguments = [["demo", "gorgon"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Mind Flayer", "Demo-gorgon"]]
+expected  = true
+
+[[asserts]]
+arguments = [["vecna", "demogorgon", "bat"]]
+expected  = true
+
+[[asserts]]
+arguments = [["slime", "vines"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Demodog"]]
+expected  = false
+
+[[asserts]]
+arguments = [["Demogorgon", "Demodog"]]
+expected  = true
+
+[[asserts]]
+arguments = [["DemiGorgon"]]
+expected  = false
+
+[[asserts]]
+arguments = [["demogorgon "]]
+expected  = true
+
+[[asserts]]
+arguments = [[" demogorgon"]]
+expected  = true
+
+[[asserts]]
+arguments = [["DEMOGORGON"]]
+expected  = true
+
+[[asserts]]
+arguments = [["friend", "ally", "demogorgon"]]
+expected  = true
+
+[[asserts]]
+arguments = [["friend", "ally", "hero"]]
+expected  = false
+
+[[asserts]]
+arguments = [["gorgon", "demo"]]
+expected  = false
+
+[[asserts]]
+arguments = [["monster", "De mo gorgon", "lab"]]
+expected  = true
+
+[[asserts]]
+arguments = [["lab", "hall", "room"]]
+expected  = false
+
+[[asserts]]
+arguments = [["demogorgon", "demogorgon"]]
+expected  = true
+
+[[asserts]]
+arguments = [["DEMOGORGON", "dog"]]
+expected  = true
+
+[[asserts]]
+arguments = [["d e m o g o r g o n"]]
+expected  = true
+
+[[asserts]]
+arguments = [["demo_gorgon"]]
+expected  = true

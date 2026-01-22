@@ -1,0 +1,157 @@
+level             = "easy"
+name              = "walkie_talkie_range"
+tags              = ["math"]
+time_to_solve_sec = 240
+
+description_en = """
+The kids use walkie-talkies around town. Given two positions `(x1, y1)` and `(x2, y2)`, range `r`, and `battery`, return `true` if their Manhattan distance is at most `r` and the battery can cover that distance.
+"""
+
+description_ru = """
+Ребята используют рации в городе. Даны позиции `(x1, y1)` и `(x2, y2)`, радиус `r` и `battery`, верните `true`, если манхэттенское расстояние не больше `r` и батареи хватает на это расстояние.
+"""
+
+solution = """
+def solution(x1: int, y1: int, x2: int, y2: int, r: int, battery: int) -> bool:
+    d = abs(x1 - x2) + abs(y1 - y2)
+    return d <= r and d <= battery
+"""
+
+examples = """
+solution(0, 0, 0, 0, 0, 0) == True
+solution(1, 0, 3, 2, 4, 4) == True
+solution(0, 0, 1, 1, 2, 1) == False
+"""
+
+[[input_signature]]
+argument_name = "x1"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "y1"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "x2"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "y2"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "r"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "battery"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [0, 0, 0, 0, 0, 0]
+expected  = true
+
+[[asserts]]
+arguments = [0, 0, 1, 1, 2, 2]
+expected  = true
+
+[[asserts]]
+arguments = [0, 0, 1, 1, 2, 1]
+expected  = false
+
+[[asserts]]
+arguments = [1, 0, 3, 2, 2, 2]
+expected  = false
+
+[[asserts]]
+arguments = [0, 0, 2, 0, 2, 2]
+expected  = true
+
+[[asserts]]
+arguments = [0, 0, 2, 0, 2, 1]
+expected  = false
+
+[[asserts]]
+arguments = [5, 5, 8, 5, 3, 3]
+expected  = true
+
+[[asserts]]
+arguments = [5, 5, 9, 5, 3, 3]
+expected  = false
+
+[[asserts]]
+arguments = [-1, -1, 1, 1, 4, 4]
+expected  = true
+
+[[asserts]]
+arguments = [-1, -1, 1, 1, 4, 3]
+expected  = false
+
+[[asserts]]
+arguments = [2, 3, 2, 6, 3, 3]
+expected  = true
+
+[[asserts]]
+arguments = [2, 3, 2, 7, 3, 3]
+expected  = false
+
+[[asserts]]
+arguments = [10, 0, 7, 0, 4, 3]
+expected  = true
+
+[[asserts]]
+arguments = [10, 0, 7, 0, 4, 2]
+expected  = false
+
+[[asserts]]
+arguments = [4, 4, 4, 7, 3, 3]
+expected  = true
+
+[[asserts]]
+arguments = [4, 4, 4, 7, 3, 1]
+expected  = false
+
+[[asserts]]
+arguments = [1, 2, 3, 4, 4, 4]
+expected  = true
+
+[[asserts]]
+arguments = [1, 2, 3, 4, 5, 3]
+expected  = false
+
+[[asserts]]
+arguments = [0, 5, 5, 0, 10, 10]
+expected  = true
+
+[[asserts]]
+arguments = [0, 5, 5, 0, 10, 9]
+expected  = false
+
+[[asserts]]
+arguments = [7, 7, 7, 7, 0, 0]
+expected  = true
+
+[[asserts]]
+arguments = [7, 7, 7, 8, 1, 0]
+expected  = false
+
+[[asserts]]
+arguments = [-3, 2, -1, 6, 6, 6]
+expected  = true
+
+[[asserts]]
+arguments = [-3, 2, -1, 6, 6, 5]
+expected  = false
+
+[[asserts]]
+arguments = [8, -2, 3, -2, 5, 5]
+expected  = true

@@ -1,0 +1,136 @@
+level             = "elementary"
+name              = "hawkins_missing"
+tags              = ["math"]
+time_to_solve_sec = 140
+
+description_en = """
+In Hawkins, kids go missing. Given `total` missing kids and `found` kids, return how many are still missing, but never below `0`.
+"""
+
+description_ru = """
+В Хокинсе дети пропадают. Даны `total` пропавших и `found` найденных, верните сколько еще не найдено, но не меньше `0`.
+"""
+
+solution = """
+def solution(total: int, found: int) -> int:
+    return max(total - found, 0)
+"""
+
+examples = """
+solution(1, 2) == 0
+solution(3, 1) == 2
+solution(10, 4) == 6
+"""
+
+[[input_signature]]
+argument_name = "total"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "found"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 0]
+expected  = 1
+
+[[asserts]]
+arguments = [1, 1]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 2]
+expected  = 0
+
+[[asserts]]
+arguments = [5, 2]
+expected  = 3
+
+[[asserts]]
+arguments = [8, 3]
+expected  = 5
+
+[[asserts]]
+arguments = [10, 4]
+expected  = 6
+
+[[asserts]]
+arguments = [12, 0]
+expected  = 12
+
+[[asserts]]
+arguments = [12, 20]
+expected  = 0
+
+[[asserts]]
+arguments = [20, 5]
+expected  = 15
+
+[[asserts]]
+arguments = [7, 6]
+expected  = 1
+
+[[asserts]]
+arguments = [15, 7]
+expected  = 8
+
+[[asserts]]
+arguments = [2, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [30, 10]
+expected  = 20
+
+[[asserts]]
+arguments = [30, 31]
+expected  = 0
+
+[[asserts]]
+arguments = [9, 4]
+expected  = 5
+
+[[asserts]]
+arguments = [6, 2]
+expected  = 4
+
+[[asserts]]
+arguments = [4, 3]
+expected  = 1
+
+[[asserts]]
+arguments = [3, 2]
+expected  = 1
+
+[[asserts]]
+arguments = [25, 30]
+expected  = 0
+
+[[asserts]]
+arguments = [18, 9]
+expected  = 9
+
+[[asserts]]
+arguments = [14, 13]
+expected  = 1
+
+[[asserts]]
+arguments = [16, 1]
+expected  = 15
+
+[[asserts]]
+arguments = [11, 8]
+expected  = 3
+
+[[asserts]]
+arguments = [19, 0]
+expected  = 19

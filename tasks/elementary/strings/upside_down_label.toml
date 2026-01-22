@@ -1,0 +1,132 @@
+level             = "elementary"
+name              = "upside_down_label"
+tags              = ["strings"]
+time_to_solve_sec = 150
+
+description_en = """
+The Upside Down mirrors normal places. Given a place name `place`, trim whitespace and return the label `"<place> in the Upside Down"`. If the trimmed name is empty, use `"Unknown"`.
+"""
+
+description_ru = """
+Изнанка отражает обычные места. Дано имя места `place`, обрежьте пробелы и верните подпись `"<place> in the Upside Down"`. Если после обрезки имя пустое, используйте `"Unknown"`.
+"""
+
+solution = """
+def solution(place: str) -> str:
+    place = place.strip()
+    return f"{place or 'Unknown'} in the Upside Down"
+"""
+
+examples = """
+solution("Lab") == "Lab in the Upside Down"
+solution(" ") == "Unknown in the Upside Down"
+solution(" Starcourt Mall ") == "Starcourt Mall in the Upside Down"
+"""
+
+[[input_signature]]
+argument_name = "place"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Hawkins"]
+expected  = "Hawkins in the Upside Down"
+
+[[asserts]]
+arguments = [" Lab "]
+expected  = "Lab in the Upside Down"
+
+[[asserts]]
+arguments = [""]
+expected  = "Unknown in the Upside Down"
+
+[[asserts]]
+arguments = ["   "]
+expected  = "Unknown in the Upside Down"
+
+[[asserts]]
+arguments = ["Starcourt Mall"]
+expected  = "Starcourt Mall in the Upside Down"
+
+[[asserts]]
+arguments = [" Byers house"]
+expected  = "Byers house in the Upside Down"
+
+[[asserts]]
+arguments = ["forest "]
+expected  = "forest in the Upside Down"
+
+[[asserts]]
+arguments = [" school"]
+expected  = "school in the Upside Down"
+
+[[asserts]]
+arguments = ["radio tower"]
+expected  = "radio tower in the Upside Down"
+
+[[asserts]]
+arguments = ["arcade"]
+expected  = "arcade in the Upside Down"
+
+[[asserts]]
+arguments = ["junkyard"]
+expected  = "junkyard in the Upside Down"
+
+[[asserts]]
+arguments = ["cabin"]
+expected  = "cabin in the Upside Down"
+
+[[asserts]]
+arguments = ["station"]
+expected  = "station in the Upside Down"
+
+[[asserts]]
+arguments = ["library"]
+expected  = "library in the Upside Down"
+
+[[asserts]]
+arguments = ["church"]
+expected  = "church in the Upside Down"
+
+[[asserts]]
+arguments = ["park"]
+expected  = "park in the Upside Down"
+
+[[asserts]]
+arguments = ["gym"]
+expected  = "gym in the Upside Down"
+
+[[asserts]]
+arguments = ["house"]
+expected  = "house in the Upside Down"
+
+[[asserts]]
+arguments = ["mall"]
+expected  = "mall in the Upside Down"
+
+[[asserts]]
+arguments = ["hall"]
+expected  = "hall in the Upside Down"
+
+[[asserts]]
+arguments = ["shed"]
+expected  = "shed in the Upside Down"
+
+[[asserts]]
+arguments = ["field"]
+expected  = "field in the Upside Down"
+
+[[asserts]]
+arguments = ["lake"]
+expected  = "lake in the Upside Down"
+
+[[asserts]]
+arguments = ["street"]
+expected  = "street in the Upside Down"
+
+[[asserts]]
+arguments = ["basement"]
+expected  = "basement in the Upside Down"

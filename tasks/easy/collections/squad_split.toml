@@ -1,0 +1,145 @@
+level             = "easy"
+name              = "squad_split"
+tags              = ["collections"]
+time_to_solve_sec = 230
+
+description_en = """
+The kids split into teams. Given a list of `names` and an index `k`, return two lists: the first `k` names and the rest. If `k` is negative, count from the end. Clamp `k` to the range from `0` to the list length.
+"""
+
+description_ru = """
+Дети делятся на команды. Дан список `names` и индекс `k`, верните два списка: первые `k` имен и оставшиеся. Если `k` отрицателен, считайте от конца. Ограничьте `k` диапазоном от `0` до длины списка.
+"""
+
+solution = """
+def solution(names: list[str], k: int) -> list[list[str]]:
+    if k < 0:
+        k = len(names) + k
+    k = max(0, min(k, len(names)))
+    return [names[:k], names[k:]]
+"""
+
+examples = """
+solution([], 0) == [[], []]
+solution(["Mike"], -1) == [[], ["Mike"]]
+solution(["Mike", "Dustin"], 1) == [["Mike"], ["Dustin"]]
+"""
+
+[[input_signature]]
+argument_name = "names"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "string"
+
+[[asserts]]
+arguments = [[], 0]
+expected  = [[], []]
+
+[[asserts]]
+arguments = [["Mike"], 0]
+expected  = [[], ["Mike"]]
+
+[[asserts]]
+arguments = [["Mike"], 1]
+expected  = [["Mike"], []]
+
+[[asserts]]
+arguments = [["Mike"], 2]
+expected  = [["Mike"], []]
+
+[[asserts]]
+arguments = [["Mike"], -1]
+expected  = [[], ["Mike"]]
+
+[[asserts]]
+arguments = [["Mike", "Dustin"], 1]
+expected  = [["Mike"], ["Dustin"]]
+
+[[asserts]]
+arguments = [["Mike", "Dustin"], 2]
+expected  = [["Mike", "Dustin"], []]
+
+[[asserts]]
+arguments = [["Mike", "Dustin"], 3]
+expected  = [["Mike", "Dustin"], []]
+
+[[asserts]]
+arguments = [["Mike", "Dustin"], -1]
+expected  = [["Mike"], ["Dustin"]]
+
+[[asserts]]
+arguments = [["Mike", "Dustin"], -2]
+expected  = [[], ["Mike", "Dustin"]]
+
+[[asserts]]
+arguments = [["Lucas", "Max", "Eleven"], 1]
+expected  = [["Lucas"], ["Max", "Eleven"]]
+
+[[asserts]]
+arguments = [["Lucas", "Max", "Eleven"], 2]
+expected  = [["Lucas", "Max"], ["Eleven"]]
+
+[[asserts]]
+arguments = [["Lucas", "Max", "Eleven"], 3]
+expected  = [["Lucas", "Max", "Eleven"], []]
+
+[[asserts]]
+arguments = [["Lucas", "Max", "Eleven"], -1]
+expected  = [["Lucas", "Max"], ["Eleven"]]
+
+[[asserts]]
+arguments = [["Will", "Joyce", "Hopper"], 0]
+expected  = [[], ["Will", "Joyce", "Hopper"]]
+
+[[asserts]]
+arguments = [["Will", "Joyce", "Hopper"], 2]
+expected  = [["Will", "Joyce"], ["Hopper"]]
+
+[[asserts]]
+arguments = [["Will", "Joyce", "Hopper"], -2]
+expected  = [["Will"], ["Joyce", "Hopper"]]
+
+[[asserts]]
+arguments = [["Steve", "Robin", "Nancy"], 2]
+expected  = [["Steve", "Robin"], ["Nancy"]]
+
+[[asserts]]
+arguments = [["Steve", "Robin", "Nancy"], 5]
+expected  = [["Steve", "Robin", "Nancy"], []]
+
+[[asserts]]
+arguments = [["Erica"], -2]
+expected  = [[], ["Erica"]]
+
+[[asserts]]
+arguments = [["Eddie", "Chrissy"], 0]
+expected  = [[], ["Eddie", "Chrissy"]]
+
+[[asserts]]
+arguments = [["Eddie", "Chrissy"], -1]
+expected  = [["Eddie"], ["Chrissy"]]
+
+[[asserts]]
+arguments = [["Murray", "Alexei", "Yuri"], -3]
+expected  = [[], ["Murray", "Alexei", "Yuri"]]
+
+[[asserts]]
+arguments = [["Bob", "Karen", "Ted", "Holly"], 2]
+expected  = [["Bob", "Karen"], ["Ted", "Holly"]]
+
+[[asserts]]
+arguments = [["Argyle", "Eden", "Jonathan"], -1]
+expected  = [["Argyle", "Eden"], ["Jonathan"]]

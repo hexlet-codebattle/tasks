@@ -1,0 +1,143 @@
+level             = "easy"
+name              = "eggo_boxes_needed"
+tags              = ["math"]
+time_to_solve_sec = 240
+
+description_en = """
+Eleven loves Eggo waffles. Given `waffles`, `per_box`, and `max_boxes`, return the minimum number of boxes needed. If the need exceeds `max_boxes`, return `-1`.
+"""
+
+description_ru = """
+Одиннадцать любит вафли Eggo. Даны `waffles`, `per_box` и `max_boxes`, верните минимальное число коробок. Если нужно больше чем `max_boxes`, верните `-1`.
+"""
+
+solution = """
+def solution(waffles: int, per_box: int, max_boxes: int) -> int:
+    q, r = divmod(waffles, per_box)
+    need = q + (r > 0)
+    return need if need <= max_boxes else -1
+"""
+
+examples = """
+solution(0, 6, 0) == 0
+solution(6, 6, 1) == 1
+solution(13, 6, 2) == -1
+"""
+
+[[input_signature]]
+argument_name = "waffles"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "per_box"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "max_boxes"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 6, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [0, 6, 1]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 6, 0]
+expected  = -1
+
+[[asserts]]
+arguments = [1, 6, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [6, 6, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [7, 6, 1]
+expected  = -1
+
+[[asserts]]
+arguments = [7, 6, 2]
+expected  = 2
+
+[[asserts]]
+arguments = [12, 6, 2]
+expected  = 2
+
+[[asserts]]
+arguments = [12, 6, 1]
+expected  = -1
+
+[[asserts]]
+arguments = [13, 6, 2]
+expected  = -1
+
+[[asserts]]
+arguments = [13, 6, 3]
+expected  = 3
+
+[[asserts]]
+arguments = [18, 6, 3]
+expected  = 3
+
+[[asserts]]
+arguments = [19, 6, 3]
+expected  = -1
+
+[[asserts]]
+arguments = [19, 6, 4]
+expected  = 4
+
+[[asserts]]
+arguments = [6, 1, 5]
+expected  = -1
+
+[[asserts]]
+arguments = [6, 1, 6]
+expected  = 6
+
+[[asserts]]
+arguments = [10, 2, 5]
+expected  = 5
+
+[[asserts]]
+arguments = [11, 2, 5]
+expected  = -1
+
+[[asserts]]
+arguments = [11, 2, 6]
+expected  = 6
+
+[[asserts]]
+arguments = [4, 3, 1]
+expected  = -1
+
+[[asserts]]
+arguments = [4, 3, 2]
+expected  = 2
+
+[[asserts]]
+arguments = [25, 4, 6]
+expected  = -1
+
+[[asserts]]
+arguments = [25, 4, 7]
+expected  = 7
+
+[[asserts]]
+arguments = [47, 8, 6]
+expected  = 6
+
+[[asserts]]
+arguments = [48, 8, 6]
+expected  = 6

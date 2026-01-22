@@ -1,0 +1,142 @@
+level             = "easy"
+name              = "clue_intersection"
+tags              = ["collections"]
+time_to_solve_sec = 240
+
+description_en = """
+Different groups compare clues. Given two lists of clue strings, return a sorted list of unique clues that appear in both lists, comparing case-insensitively and returning lowercase strings.
+"""
+
+description_ru = """
+Разные группы сравнивают улики. Даны два списка строк с уликами, верните отсортированный список уникальных улик, которые есть в обоих списках. Сравнивайте без учета регистра и возвращайте строки в нижнем регистре.
+"""
+
+solution = """
+def solution(a: list[str], b: list[str]) -> list[str]:
+    return sorted({x.lower() for x in a} & {x.lower() for x in b})
+"""
+
+examples = """
+solution([], []) == []
+solution(["Map"], ["map"]) == ["map"]
+solution(["Gate", "Map"], ["map", "Radio"]) == ["map"]
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [[], []]
+expected  = []
+
+[[asserts]]
+arguments = [["map"], []]
+expected  = []
+
+[[asserts]]
+arguments = [[], ["map"]]
+expected  = []
+
+[[asserts]]
+arguments = [["Map"], ["map"]]
+expected  = ["map"]
+
+[[asserts]]
+arguments = [["Gate", "Map"], ["map", "Radio"]]
+expected  = ["map"]
+
+[[asserts]]
+arguments = [["Tunnel", "Tape"], ["tape", "Rope"]]
+expected  = ["tape"]
+
+[[asserts]]
+arguments = [["Key", "Code"], ["code", "key"]]
+expected  = ["code", "key"]
+
+[[asserts]]
+arguments = [["Clock", "Note", "Coin"], ["coin", "clock"]]
+expected  = ["clock", "coin"]
+
+[[asserts]]
+arguments = [["radio", "tower"], ["Tower", "signal", "RADIO"]]
+expected  = ["radio", "tower"]
+
+[[asserts]]
+arguments = [["Lab", "Badge", "Map"], ["map", "badge", "id"]]
+expected  = ["badge", "map"]
+
+[[asserts]]
+arguments = [["Flashlight"], ["flashLIGHT", "battery"]]
+expected  = ["flashlight"]
+
+[[asserts]]
+arguments = [["Bike", "Helmet"], ["bike", "helmet", "lock"]]
+expected  = ["bike", "helmet"]
+
+[[asserts]]
+arguments = [["Rope", "Hook"], ["hook", "rope", "rope"]]
+expected  = ["hook", "rope"]
+
+[[asserts]]
+arguments = [["map", "MAP", "Map"], ["Map"]]
+expected  = ["map"]
+
+[[asserts]]
+arguments = [["Walkie", "walkie"], ["WALKIE", "chat"]]
+expected  = ["walkie"]
+
+[[asserts]]
+arguments = [["Tape", "tape", "tape"], ["tape", "case"]]
+expected  = ["tape"]
+
+[[asserts]]
+arguments = [["Arcade", "Token"], ["token", "score"]]
+expected  = ["token"]
+
+[[asserts]]
+arguments = [["Tree", "Vine"], ["vine", "TREE"]]
+expected  = ["tree", "vine"]
+
+[[asserts]]
+arguments = [["Glass", "Shard"], ["shard", "glass", "syringe"]]
+expected  = ["glass", "shard"]
+
+[[asserts]]
+arguments = [["Gate"], ["GATE", "gate"]]
+expected  = ["gate"]
+
+[[asserts]]
+arguments = [["Signature", "Key"], ["key", "print"]]
+expected  = ["key"]
+
+[[asserts]]
+arguments = [["Map", "Radio"], ["lab", "car"]]
+expected  = []
+
+[[asserts]]
+arguments = [["Alpha", "beta"], ["Gamma", "BETA"]]
+expected  = ["beta"]
+
+[[asserts]]
+arguments = [["north", "south"], ["South", "east", "west"]]
+expected  = ["south"]
+
+[[asserts]]
+arguments = [["One", "Two"], ["three", "four"]]
+expected  = []

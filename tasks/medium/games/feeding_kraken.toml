@@ -1,14 +1,14 @@
-level             = "easy"
+level             = "medium"
 name              = "feeding_kraken"
 tags              = ["games", "game_theory", "algo"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
-You and the Kraken take turns taking gold coins from three piles. On each turn, you may take any number of coins from a single pile. The player who takes the last coin survives. Determine whether you can win if you play optimally and move first.
+You and the Kraken take turns taking gold coins from three piles containing `a`, `b`, and `c` coins. On each turn, a player may take any positive number of coins from exactly one pile. The player who takes the last coin survives. Determine whether you can win if both players play optimally and you move first.
 """
 
 description_ru = """
-Вы и Кракен по очереди берете золотые монеты из трех кучек. За один ход можно взять любое количество монет из одной кучки. Тот, кто заберет последнюю монету, выживает. Определите, сможете ли вы победить при оптимальной игре, если вы ходите первым.
+Вы и Кракен по очереди берете золотые монеты из трех кучек, в которых лежат `a`, `b` и `c` монет. За один ход можно взять любое положительное количество монет ровно из одной кучки. Тот, кто заберет последнюю монету, выживает. Определите, сможете ли вы победить, если оба игрока играют оптимально и вы ходите первым.
 """
 
 limits = """

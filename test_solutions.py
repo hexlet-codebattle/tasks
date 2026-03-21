@@ -99,6 +99,27 @@ class TestRunner:
         if signature not in self.ALLOWED_SIGNATURES:
             raise ValueError(f"Invalid {signature_type}: {signature} is not in the allowed signatures list")
 
+    def _is_downcased_name(self, name: str) -> bool:
+        return name == name.lower()
+
+    def validate_downcased_variable_names(self, data: Dict[str, Any], display_name: str) -> None:
+        bad_names: set[str] = set()
+
+        input_sig = data.get("input_signature")
+        if isinstance(input_sig, list):
+            for sig in input_sig:
+                arg_name = sig.get("argument_name")
+                if isinstance(arg_name, str) and not self._is_downcased_name(arg_name):
+                    bad_names.add(arg_name)
+        elif isinstance(input_sig, dict):
+            arg_name = input_sig.get("argument_name")
+            if isinstance(arg_name, str) and not self._is_downcased_name(arg_name):
+                bad_names.add(arg_name)
+
+        if bad_names:
+            joined_names = ", ".join(sorted(bad_names))
+            raise ValueError(f"[{display_name}] input_signature argument_name values must be downcased. Found: {joined_names}")
+
     def signature_to_str(self, sig: Dict[str, Any]) -> str:
         t = sig.get("type", sig)
         name = t.get("name")
@@ -196,6 +217,7 @@ class TestRunner:
         # Pre-validate assert arguments/expected against signatures for early, clear errors
         try:
             display_name = toml_path if self.is_file else os.path.relpath(toml_path, self.toml_path)
+            self.validate_downcased_variable_names(data, display_name)
             self.check_assert_types(data, display_name)
         except Exception:
             raise

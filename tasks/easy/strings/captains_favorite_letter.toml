@@ -1,0 +1,166 @@
+level             = "easy"
+name              = "captains_favorite_letter"
+tags              = ["strings", "hash_maps", "pirates"]
+time_to_solve_sec = 120
+
+description_en = """
+The captain studies a non-empty log word `log`.
+
+Return the letter that appears most often. If several letters have the same highest frequency, return the lexicographically smallest one.
+"""
+
+description_ru = """
+Капитан изучает непустое слово `log` из корабельного журнала.
+
+Верните букву, которая встречается чаще всего. Если несколько букв имеют одинаковую максимальную частоту, верните лексикографически наименьшую из них.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{log}) \\leq 100$
+- $\\text{log} \\in \\{a{-}z\\}^*$
+"""
+
+solution = """
+def solution(log: str) -> str:
+    return min(log, key=lambda c: (-log.count(c), c))
+"""
+
+examples = """
+solution("a") == "a"
+solution("ab") == "a"
+solution("cannon") == "n"
+solution("mississippi") == "i"
+"""
+
+[[input_signature]]
+argument_name = "log"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single letter"
+expected  = "a"
+
+[[asserts]]
+arguments = ["ab"]
+comment   = "Tie resolved lexicographically"
+expected  = "a"
+
+[[asserts]]
+arguments = ["aba"]
+comment   = "Clear winner"
+expected  = "a"
+
+[[asserts]]
+arguments = ["baba"]
+comment   = "Tie resolved lexicographically"
+expected  = "a"
+
+[[asserts]]
+arguments = ["ahoy"]
+comment   = "All distinct letters"
+expected  = "a"
+
+[[asserts]]
+arguments = ["sail"]
+comment   = "All distinct letters"
+expected  = "a"
+
+[[asserts]]
+arguments = ["rum"]
+comment   = "Tie with lexicographic choice"
+expected  = "m"
+
+[[asserts]]
+arguments = ["letter"]
+comment   = "Repeated e and t"
+expected  = "e"
+
+[[asserts]]
+arguments = ["treasure"]
+comment   = "Repeated e"
+expected  = "e"
+
+[[asserts]]
+arguments = ["cannon"]
+comment   = "Repeated n"
+expected  = "n"
+
+[[asserts]]
+arguments = ["brig"]
+comment   = "All distinct short word"
+expected  = "b"
+
+[[asserts]]
+arguments = ["galleon"]
+comment   = "Repeated l"
+expected  = "l"
+
+[[asserts]]
+arguments = ["lookout"]
+comment   = "Repeated o"
+expected  = "o"
+
+[[asserts]]
+arguments = ["captain"]
+comment   = "Repeated a"
+expected  = "a"
+
+[[asserts]]
+arguments = ["seashell"]
+comment   = "Repeated e and s"
+expected  = "e"
+
+[[asserts]]
+arguments = ["navigation"]
+comment   = "Repeated a"
+expected  = "a"
+
+[[asserts]]
+arguments = ["broadside"]
+comment   = "All letters unique"
+expected  = "d"
+
+[[asserts]]
+arguments = ["parrot"]
+comment   = "Repeated r"
+expected  = "r"
+
+[[asserts]]
+arguments = ["anchor"]
+comment   = "Tie resolved to a"
+expected  = "a"
+
+[[asserts]]
+arguments = ["mutiny"]
+comment   = "All distinct letters"
+expected  = "i"
+
+[[asserts]]
+arguments = ["starboard"]
+comment   = "Repeated a and r"
+expected  = "a"
+
+[[asserts]]
+arguments = ["portside"]
+comment   = "All letters unique"
+expected  = "d"
+
+[[asserts]]
+arguments = ["bookkeeper"]
+comment   = "Repeated e"
+expected  = "e"
+
+[[asserts]]
+arguments = ["mississippi"]
+comment   = "Classic repeated letter word"
+expected  = "i"
+
+[[asserts]]
+arguments = ["rumrunner"]
+comment   = "Repeated r"
+expected  = "r"

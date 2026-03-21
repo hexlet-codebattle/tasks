@@ -1,0 +1,176 @@
+level             = "easy"
+name              = "rum_barrel_streak"
+tags              = ["arrays", "pirates"]
+time_to_solve_sec = 150
+
+description_en = """
+The deck has a row of rum barrels. `barrels[i]` is the amount of rum in the `i`-th barrel.
+
+A barrel is considered full enough if its amount is strictly greater than `0`.
+
+Return the length of the longest consecutive streak of full-enough barrels.
+"""
+
+description_ru = """
+На палубе стоит ряд бочек с ромом. `barrels[i]` — количество рома в `i`-й бочке.
+
+Бочка считается достаточно полной, если количество рома в ней строго больше `0`.
+
+Верните длину самой длинной подряд идущей серии достаточно полных бочек.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{barrels}) \\leq 100$
+- $0 \\leq \\text{barrels}[i] \\leq 100$
+"""
+
+solution = """
+def solution(barrels: list[int]) -> int:
+    best = cur = 0
+    for x in barrels:
+        cur = cur + 1 if x > 0 else 0
+        best = max(best, cur)
+    return best
+"""
+
+examples = """
+solution([]) == 0
+solution([5]) == 1
+solution([1, 0, 1]) == 1
+solution([0, 9, 9, 9, 9, 9, 0]) == 5
+"""
+
+[[input_signature]]
+argument_name = "barrels"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty row"
+expected  = 0
+
+[[asserts]]
+arguments = [[0]]
+comment   = "Single empty barrel"
+expected  = 0
+
+[[asserts]]
+arguments = [[5]]
+comment   = "Single full barrel"
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 0]]
+comment   = "Two empty barrels"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "All positive barrels"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 0, 1]]
+comment   = "Separated single barrels"
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 4, 5, 6]]
+comment   = "Positive suffix"
+expected  = 3
+
+[[asserts]]
+arguments = [[2, 2, 0, 2, 2]]
+comment   = "Two equal streaks"
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 0, 7, 8, 9, 0]]
+comment   = "Middle streak"
+expected  = 3
+
+[[asserts]]
+arguments = [[3, 1, 4, 1, 5]]
+comment   = "Whole array positive"
+expected  = 5
+
+[[asserts]]
+arguments = [[9, 0, 0, 9, 9, 9]]
+comment   = "Longest suffix streak"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1]]
+comment   = "All ones"
+expected  = 5
+
+[[asserts]]
+arguments = [[5, 4, 0, 3, 2, 1]]
+comment   = "Suffix longer than prefix"
+expected  = 3
+
+[[asserts]]
+arguments = [[0, 2, 0, 2, 0, 2]]
+comment   = "Alternating values"
+expected  = 1
+
+[[asserts]]
+arguments = [[7, 8, 9, 10, 0, 1]]
+comment   = "Long prefix streak"
+expected  = 4
+
+[[asserts]]
+arguments = [[0, 6, 6, 6, 6, 0]]
+comment   = "Positive block surrounded by zeros"
+expected  = 4
+
+[[asserts]]
+arguments = [[4, 0, 5, 6, 7, 8, 0, 9]]
+comment   = "Longest middle streak"
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 2, 3, 0, 4, 5, 0, 6, 7, 8]]
+comment   = "Three separate streaks"
+expected  = 3
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4, 5]]
+comment   = "Positive suffix of length five"
+expected  = 5
+
+[[asserts]]
+arguments = [[8, 7, 6, 0, 0, 1, 2]]
+comment   = "Prefix longer than suffix"
+expected  = 3
+
+[[asserts]]
+arguments = [[2, 0, 3, 4, 5, 0, 6]]
+comment   = "Longest streak in middle"
+expected  = 3
+
+[[asserts]]
+arguments = [[0, 9, 9, 9, 9, 9, 0]]
+comment   = "Long positive block"
+expected  = 5
+
+[[asserts]]
+arguments = [[1, 0, 0, 0, 1]]
+comment   = "Two isolated positive barrels"
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 5, 5, 5, 5, 5]]
+comment   = "Six positive barrels"
+expected  = 6
+
+[[asserts]]
+arguments = [[3, 0, 3, 0, 3, 0, 3]]
+comment   = "Alternating positives and zeros"
+expected  = 1

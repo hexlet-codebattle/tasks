@@ -1,0 +1,170 @@
+level             = "easy"
+name              = "signal_flag_groups"
+tags              = ["strings", "pirates"]
+time_to_solve_sec = 150
+
+description_en = """
+A row of signal flags is written as a string `flags`. Equal adjacent letters represent a continuous group of the same flag.
+
+Return the length of the longest continuous group.
+"""
+
+description_ru = """
+Ряд сигнальных флагов записан строкой `flags`. Одинаковые соседние буквы образуют непрерывную группу одного и того же флага.
+
+Верните длину самой длинной непрерывной группы.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{flags}) \\leq 100$
+- $\\text{flags} \\in \\{A{-}Z\\}^*$
+"""
+
+solution = """
+def solution(flags: str) -> int:
+    best = cur = 0
+    for i, ch in enumerate(flags):
+        cur = cur + 1 if i and ch == flags[i - 1] else 1
+        best = max(best, cur)
+    return best if flags else 0
+"""
+
+examples = """
+solution("") == 0
+solution("A") == 1
+solution("AA") == 2
+solution("ABCDDDDD") == 5
+"""
+
+[[input_signature]]
+argument_name = "flags"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = 0
+
+[[asserts]]
+arguments = ["A"]
+comment   = "Single flag"
+expected  = 1
+
+[[asserts]]
+arguments = ["AB"]
+comment   = "Two different flags"
+expected  = 1
+
+[[asserts]]
+arguments = ["AA"]
+comment   = "Two equal flags"
+expected  = 2
+
+[[asserts]]
+arguments = ["ABA"]
+comment   = "Separated duplicates"
+expected  = 1
+
+[[asserts]]
+arguments = ["AABBB"]
+comment   = "Longest suffix group"
+expected  = 3
+
+[[asserts]]
+arguments = ["ABC"]
+comment   = "No repeats"
+expected  = 1
+
+[[asserts]]
+arguments = ["ZZZZ"]
+comment   = "One long group"
+expected  = 4
+
+[[asserts]]
+arguments = ["ABCCCCD"]
+comment   = "Long middle group"
+expected  = 4
+
+[[asserts]]
+arguments = ["AABBCCDD"]
+comment   = "All groups of length two"
+expected  = 2
+
+[[asserts]]
+arguments = ["QWEEEERR"]
+comment   = "Group of four in the middle"
+expected  = 4
+
+[[asserts]]
+arguments = ["MMMMMN"]
+comment   = "Long prefix group"
+expected  = 5
+
+[[asserts]]
+arguments = ["XYZZZZZY"]
+comment   = "Group of five"
+expected  = 5
+
+[[asserts]]
+arguments = ["PPQQQRR"]
+comment   = "Middle triple"
+expected  = 3
+
+[[asserts]]
+arguments = ["S"]
+comment   = "Single character again"
+expected  = 1
+
+[[asserts]]
+arguments = ["TTTUUUTT"]
+comment   = "Equal best groups"
+expected  = 3
+
+[[asserts]]
+arguments = ["ABBBBAAAAC"]
+comment   = "Two long groups"
+expected  = 4
+
+[[asserts]]
+arguments = ["CCCDDDE"]
+comment   = "Prefix triple"
+expected  = 3
+
+[[asserts]]
+arguments = ["HHHHHH"]
+comment   = "All same character"
+expected  = 6
+
+[[asserts]]
+arguments = ["KLMN"]
+comment   = "All unique"
+expected  = 1
+
+[[asserts]]
+arguments = ["OOOPPPQQQQQ"]
+comment   = "Longest suffix group"
+expected  = 5
+
+[[asserts]]
+arguments = ["RRRSS"]
+comment   = "Prefix triple"
+expected  = 3
+
+[[asserts]]
+arguments = ["ABCDDDDD"]
+comment   = "Five repeated Ds"
+expected  = 5
+
+[[asserts]]
+arguments = ["VVWWWWX"]
+comment   = "Middle group of four"
+expected  = 4
+
+[[asserts]]
+arguments = ["YYZ"]
+comment   = "Short prefix pair"
+expected  = 2

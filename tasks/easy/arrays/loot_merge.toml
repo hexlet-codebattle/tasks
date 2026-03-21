@@ -1,0 +1,221 @@
+level             = "easy"
+name              = "loot_merge"
+tags              = ["arrays", "sorting", "pirates"]
+time_to_solve_sec = 200
+
+description_en = """
+Two pirate crews bring sorted loot lists `port_loot` and `starboard_loot`, where each number is a crate weight in nondecreasing order.
+
+Merge both loot lists into one summary. Return a sorted array of pairs `[weight, count]`, where `count` is how many crates of that weight appear in total across both crews.
+"""
+
+description_ru = """
+Две пиратские команды приносят отсортированные списки добычи `port_loot` и `starboard_loot`, где каждое число — это вес ящика, а элементы идут в неубывающем порядке.
+
+Объедините оба списка добычи в одну сводку. Верните отсортированный массив пар `[weight, count]`, где `count` показывает, сколько ящиков такого веса всего есть у обеих команд.
+"""
+
+limits = """
+- $0 \\leq \\lvert \\text{port\\_loot} \\rvert,\\ \\lvert \\text{starboard\\_loot} \\rvert \\leq 100$
+- $0 \\leq \\text{port\\_loot}[i],\\ \\text{starboard\\_loot}[i] \\leq 100$
+- $\\text{port\\_loot}[i] \\leq \\text{port\\_loot}[i+1]$
+- $\\text{starboard\\_loot}[i] \\leq \\text{starboard\\_loot}[i+1]$
+"""
+
+solution = """
+def solution(port_loot: list[int], starboard_loot: list[int]) -> list[list[int]]:
+    c = {}
+    for x in port_loot + starboard_loot:
+        c[x] = c.get(x, 0) + 1
+    return [[x, c[x]] for x in sorted(c)]
+"""
+
+examples = """
+solution([], []) == []
+solution([1], []) == [[1, 1]]
+solution([2, 2], [2]) == [[2, 3]]
+solution([1, 1, 3], [1, 2, 2]) == [[1, 3], [2, 2], [3, 1]]
+"""
+
+[[input_signature]]
+argument_name = "port_loot"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "starboard_loot"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[], []]
+comment   = "Both loot lists empty"
+expected  = []
+
+[[asserts]]
+arguments = [[1], []]
+comment   = "Only port loot has items"
+expected  = [[1, 1]]
+
+[[asserts]]
+arguments = [[], [2]]
+comment   = "Only starboard loot has items"
+expected  = [[2, 1]]
+
+[[asserts]]
+arguments = [[1], [2]]
+comment   = "Two different weights"
+expected  = [[1, 1], [2, 1]]
+
+[[asserts]]
+arguments = [[2], [1]]
+comment   = "Need sorted summary"
+expected  = [[1, 1], [2, 1]]
+
+[[asserts]]
+arguments = [[1, 3], [2]]
+comment   = "Three distinct weights"
+expected  = [[1, 1], [2, 1], [3, 1]]
+
+[[asserts]]
+arguments = [[1, 2], [3, 4]]
+comment   = "All weights unique"
+expected  = [[1, 1], [2, 1], [3, 1], [4, 1]]
+
+[[asserts]]
+arguments = [[1, 4, 7], [2, 3, 8]]
+comment   = "Alternating weights"
+expected  = [[1, 1], [2, 1], [3, 1], [4, 1], [7, 1], [8, 1]]
+
+[[asserts]]
+arguments = [[0, 5], [1, 2, 9]]
+comment   = "Different lengths"
+expected  = [[0, 1], [1, 1], [2, 1], [5, 1], [9, 1]]
+
+[[asserts]]
+arguments = [[2, 2], [2]]
+comment   = "All equal elements"
+expected  = [[2, 3]]
+
+[[asserts]]
+arguments = [[1, 1, 3], [1, 2, 2]]
+comment   = "Duplicates across both arrays"
+expected  = [[1, 3], [2, 2], [3, 1]]
+
+[[asserts]]
+arguments = [[4, 6, 8], [1, 3, 5, 7]]
+comment   = "Second list starts smaller"
+expected  = [[1, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1], [8, 1]]
+
+[[asserts]]
+arguments = [[0, 0, 0], [0, 0]]
+comment   = "Many zeros"
+expected  = [[0, 5]]
+
+[[asserts]]
+arguments = [[1, 5, 9], [2, 6]]
+comment   = "Shorter second array"
+expected  = [[1, 1], [2, 1], [5, 1], [6, 1], [9, 1]]
+
+[[asserts]]
+arguments = [[3], [3, 3, 3]]
+comment   = "Equal values and long suffix"
+expected  = [[3, 4]]
+
+[[asserts]]
+arguments = [[2, 4, 6, 8], [1, 3, 5, 7, 9]]
+comment = "Fully interleaved values"
+expected = [
+  [
+    1,
+    1,
+  ],
+  [
+    2,
+    1,
+  ],
+  [
+    3,
+    1,
+  ],
+  [
+    4,
+    1,
+  ],
+  [
+    5,
+    1,
+  ],
+  [
+    6,
+    1,
+  ],
+  [
+    7,
+    1,
+  ],
+  [
+    8,
+    1,
+  ],
+  [
+    9,
+    1,
+  ],
+]
+
+[[asserts]]
+arguments = [[1, 2, 10], [3, 4, 5, 6]]
+comment   = "Large tail in first array"
+expected  = [[1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [10, 1]]
+
+[[asserts]]
+arguments = [[5, 6, 7], [1, 2, 3, 4]]
+comment   = "Second array entirely smaller"
+expected  = [[1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1]]
+
+[[asserts]]
+arguments = [[1, 1, 1], [2, 2, 2]]
+comment   = "Separated duplicate blocks"
+expected  = [[1, 3], [2, 3]]
+
+[[asserts]]
+arguments = [[2, 3, 3, 9], [3, 3, 10]]
+comment   = "Many equal middle elements"
+expected  = [[2, 1], [3, 4], [9, 1], [10, 1]]
+
+[[asserts]]
+arguments = [[0, 2, 4, 6], [1, 1, 1, 7]]
+comment   = "Repeated inserts from second array"
+expected  = [[0, 1], [1, 3], [2, 1], [4, 1], [6, 1], [7, 1]]
+
+[[asserts]]
+arguments = [[4, 4, 4], [4, 4]]
+comment   = "All same values"
+expected  = [[4, 5]]
+
+[[asserts]]
+arguments = [[1, 8], [2, 3, 4, 5, 6, 7]]
+comment   = "Long middle section"
+expected  = [[1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1], [8, 1]]
+
+[[asserts]]
+arguments = [[2, 5, 8, 11], [1, 4, 7, 10]]
+comment   = "Alternating four and four"
+expected  = [[1, 1], [2, 1], [4, 1], [5, 1], [7, 1], [8, 1], [10, 1], [11, 1]]
+
+[[asserts]]
+arguments = [[10, 20], [5, 15, 25]]
+comment   = "Mixed large numbers"
+expected  = [[5, 1], [10, 1], [15, 1], [20, 1], [25, 1]]

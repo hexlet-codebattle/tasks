@@ -1,10 +1,19 @@
 {
   "name": "grand_slam_s1_2026",
   "task_names": [
+    "cannonball_pairs",
+    "helm_direction",
+    "captains_favorite_letter",
+    "loot_merge",
+    "parrot_echo_cleanup",
+    "rum_barrel_streak",
     "rum_thirst",
+    "signal_flag_groups",
+    "treasure_map_route",
     "feeding_kraken",
     "black_mark",
-    "santa_sleighlone_whetstone_dilemma",
-    "broadside_salvo"
+    "broadside_salvo",
+    "lone_whetstone_dilemma",
+    "gold_rush"
   ]
 }

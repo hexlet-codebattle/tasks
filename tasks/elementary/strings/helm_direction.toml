@@ -1,0 +1,173 @@
+level             = "elementary"
+name              = "helm_direction"
+tags              = ["strings", "pirates"]
+time_to_solve_sec = 120
+
+description_en = """
+The helmsman receives a signed turn command `turn`.
+
+- If `turn < 0`, the ship turns to `"port"`.
+- If `turn > 0`, the ship turns to `"starboard"`.
+- If `turn = 0`, the ship goes `"ahead"`.
+
+Return the correct command word.
+"""
+
+description_ru = """
+Рулевой получает знаковую команду поворота `turn`.
+
+- Если `turn < 0`, корабль поворачивает в `"port"`.
+- Если `turn > 0`, корабль поворачивает в `"starboard"`.
+- Если `turn = 0`, корабль идет `"ahead"`.
+
+Верните правильное слово-команду.
+"""
+
+limits = """
+- $-10^9 \\leq \\text{turn} \\leq 10^9$
+"""
+
+solution = """
+def solution(turn: int) -> str:
+    return "port" if turn < 0 else "starboard" if turn > 0 else "ahead"
+"""
+
+examples = """
+solution(0) == "ahead"
+solution(-1) == "port"
+solution(2) == "starboard"
+solution(300) == "starboard"
+"""
+
+[[input_signature]]
+argument_name = "turn"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [-12]
+comment   = "Negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [-5]
+comment   = "Negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [-1]
+comment   = "Small negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [0]
+comment   = "No turn"
+expected  = "ahead"
+
+[[asserts]]
+arguments = [1]
+comment   = "Small positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [2]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [7]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [14]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [-30]
+comment   = "Larger negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [99]
+comment   = "Larger positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [-100]
+comment   = "Large negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [45]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [-3]
+comment   = "Negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [8]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [11]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [-9]
+comment   = "Negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [17]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [23]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [-44]
+comment   = "Negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [56]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [78]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [-67]
+comment   = "Negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [5]
+comment   = "Positive turn"
+expected  = "starboard"
+
+[[asserts]]
+arguments = [-2]
+comment   = "Negative turn"
+expected  = "port"
+
+[[asserts]]
+arguments = [300]
+comment   = "Large positive turn"
+expected  = "starboard"

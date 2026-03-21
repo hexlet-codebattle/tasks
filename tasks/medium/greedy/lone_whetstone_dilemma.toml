@@ -4,27 +4,65 @@ tags              = ["greedy", "sorting"]
 time_to_solve_sec = 450
 
 description_en = """
-You are the lone whetstone keeper on a pirate ship. Each pirate brings a sabre that needs sharpening. The i‑th sabre requires $T_i$ minutes of work and has a daily fury coefficient $D_i$ (how much the pirate's fury increases per minute of waiting). You can process the sabres in any order. Once you start a sabre, you must finish it without interruption. The total fury is defined as sum over sabres of (completion time) $\\times D_i$, where completion time is the total time spent on all sabres processed up to and including that sabre.
+You are the lone whetstone keeper on a pirate ship. Each pirate brings a sabre that needs sharpening.
+
+You are given two arrays of equal length $n$:
+
+- `times[i]` is the number of minutes needed to sharpen the $i$-th sabre
+- `furies[i]` is the fury coefficient of the $i$-th pirate
+
+You may process the sabres in any order. Once you start a sabre, you must finish it without interruption.
+
+If a sabre is completed at time $c$, it contributes $c \\cdot f$ to the total fury, where $f$ is that sabre's fury coefficient. So if the chosen order is $p_1, p_2, \\dots, p_n$, then
+
+$$
+c_k = \\text{times}[p_1] + \\text{times}[p_2] + \\dots + \\text{times}[p_k]
+$$
+
+and the total fury is
+
+$$
+\\sum_{k=1}^{n} c_k \\cdot \\text{furies}[p_k]
+$$
 
 Return the minimum possible total fury.
 """
 
 description_ru = """
-Вы — единственный точильщик на пиратском корабле. Каждый пират приносит саблю, которую нужно заточить. $i$‑я сабля требует $T_i$ минут работы и имеет коэффициент ярости $D_i$ (насколько увеличивается ярость пирата за каждую минуту ожидания). Вы можете обрабатывать сабли в любом порядке. Начав саблю, вы должны закончить её без перерывов. Общая ярость определяется как сумма по саблям (время завершения) $\\times D_i$, где время завершения — это общее время, затраченное на все сабли, обработанные до этой сабли включительно.
+Вы — единственный точильщик на пиратском корабле. Каждый пират приносит саблю, которую нужно заточить.
+
+Даны два массива одинаковой длины $n$:
+
+- `times[i]` — сколько минут нужно, чтобы заточить $i$-ю саблю
+- `furies[i]` — коэффициент ярости $i$-го пирата
+
+Вы можете обрабатывать сабли в любом порядке. Начав саблю, вы должны закончить её без перерывов.
+
+Если сабля завершена в момент времени $c$, то её вклад в общую ярость равен $c \\cdot f$, где $f$ — коэффициент ярости этой сабли. То есть если выбран порядок $p_1, p_2, \\dots, p_n$, то
+
+$$
+c_k = \\text{times}[p_1] + \\text{times}[p_2] + \\dots + \\text{times}[p_k]
+$$
+
+а общая ярость равна
+
+$$
+\\sum_{k=1}^{n} c_k \\cdot \\text{furies}[p_k]
+$$
 
 Верните минимально возможную общую ярость.
 """
 
 limits = """
-- $1 \\leq N \\leq 1000$
-- $1 \\leq T_i \\leq 10^4$
-- $1 \\leq D_i \\leq 10^4$
+- $1 \\leq n \\leq 100$
+- $1 \\leq T_i \\leq 100$
+- $1 \\leq D_i \\leq 100$
 """
 
 solution = """
-def solution(T: list[int], D: list[int]) -> int:
+def solution(times: list[int], furies: list[int]) -> int:
     # sort by T_i / D_i ascending
-    pairs = sorted(zip(T, D), key=lambda x: x[0] / x[1])
+    pairs = sorted(zip(times, furies), key=lambda x: x[0] / x[1])
     total = 0
     cur = 0
     for t, d in pairs:
@@ -41,14 +79,14 @@ solution([1, 2, 3], [1, 2, 3]) == 25
 """
 
 [[input_signature]]
-argument_name = "T"
+argument_name = "times"
 [input_signature.type]
 name = "array"
 [input_signature.type.nested]
 name = "integer"
 
 [[input_signature]]
-argument_name = "D"
+argument_name = "furies"
 [input_signature.type]
 name = "array"
 [input_signature.type.nested]
@@ -103,9 +141,36 @@ comment   = "Test 9"
 expected  = 230
 
 [[asserts]]
-arguments = [[9, 8, 4, 10, 9, 10, 6, 1, 7, 9, 7], [9, 10, 8, 9, 7, 6, 9, 1, 3, 2, 8]]
-comment   = "Test 10"
-expected  = 2383
+arguments = [
+  [
+    9,
+    8,
+    4,
+    10,
+    9,
+    10,
+    6,
+    1,
+    7,
+    9,
+    7,
+  ],
+  [
+    9,
+    10,
+    8,
+    9,
+    7,
+    6,
+    9,
+    1,
+    3,
+    2,
+    8,
+  ],
+]
+comment = "Test 10"
+expected = 2383
 
 [[asserts]]
 arguments = [[3, 6, 6, 9, 7, 2, 8, 7, 10], [6, 1, 4, 10, 2, 6, 1, 6, 4]]
@@ -113,9 +178,40 @@ comment   = "Test 11"
 expected  = 760
 
 [[asserts]]
-arguments = [[9, 9, 1, 5, 8, 4, 9, 8, 3, 3, 9, 8, 7], [8, 1, 1, 3, 8, 4, 1, 5, 6, 5, 7, 7, 1]]
-comment   = "Test 12"
-expected  = 1703
+arguments = [
+  [
+    9,
+    9,
+    1,
+    5,
+    8,
+    4,
+    9,
+    8,
+    3,
+    3,
+    9,
+    8,
+    7,
+  ],
+  [
+    8,
+    1,
+    1,
+    3,
+    8,
+    4,
+    1,
+    5,
+    6,
+    5,
+    7,
+    7,
+    1,
+  ],
+]
+comment = "Test 12"
+expected = 1703
 
 [[asserts]]
 arguments = [[10, 2, 9, 6], [2, 2, 7, 1]]
@@ -123,14 +219,98 @@ comment   = "Test 13"
 expected  = 150
 
 [[asserts]]
-arguments = [[7, 2, 9, 7, 1, 6, 5, 8, 1, 9, 6, 7, 6, 1, 3, 7, 2, 3], [6, 4, 2, 1, 9, 7, 9, 5, 3, 5, 7, 6, 3, 9, 6, 9, 2, 3]]
-comment   = "Test 14"
-expected  = 2669
+arguments = [
+  [
+    7,
+    2,
+    9,
+    7,
+    1,
+    6,
+    5,
+    8,
+    1,
+    9,
+    6,
+    7,
+    6,
+    1,
+    3,
+    7,
+    2,
+    3,
+  ],
+  [
+    6,
+    4,
+    2,
+    1,
+    9,
+    7,
+    9,
+    5,
+    3,
+    5,
+    7,
+    6,
+    3,
+    9,
+    6,
+    9,
+    2,
+    3,
+  ],
+]
+comment = "Test 14"
+expected = 2669
 
 [[asserts]]
-arguments = [[7, 7, 1, 3, 8, 1, 6, 8, 8, 5, 7, 1, 3, 9, 6, 9, 9, 9, 3], [6, 9, 2, 9, 6, 4, 10, 6, 2, 5, 9, 4, 4, 6, 5, 7, 1, 9, 2]]
-comment   = "Test 15"
-expected  = 4262
+arguments = [
+  [
+    7,
+    7,
+    1,
+    3,
+    8,
+    1,
+    6,
+    8,
+    8,
+    5,
+    7,
+    1,
+    3,
+    9,
+    6,
+    9,
+    9,
+    9,
+    3,
+  ],
+  [
+    6,
+    9,
+    2,
+    9,
+    6,
+    4,
+    10,
+    6,
+    2,
+    5,
+    9,
+    4,
+    4,
+    6,
+    5,
+    7,
+    1,
+    9,
+    2,
+  ],
+]
+comment = "Test 15"
+expected = 4262
 
 [[asserts]]
 arguments = [[9, 4, 1, 4, 5, 10, 4], [2, 10, 6, 2, 6, 9, 9]]
@@ -143,19 +323,116 @@ comment   = "Test 17"
 expected  = 468
 
 [[asserts]]
-arguments = [[4, 9, 3, 10, 1, 10, 10, 8, 6, 10, 2, 1, 6], [8, 6, 7, 6, 6, 4, 8, 6, 4, 3, 7, 1, 7]]
-comment   = "Test 18"
-expected  = 2048
+arguments = [
+  [
+    4,
+    9,
+    3,
+    10,
+    1,
+    10,
+    10,
+    8,
+    6,
+    10,
+    2,
+    1,
+    6,
+  ],
+  [
+    8,
+    6,
+    7,
+    6,
+    6,
+    4,
+    8,
+    6,
+    4,
+    3,
+    7,
+    1,
+    7,
+  ],
+]
+comment = "Test 18"
+expected = 2048
 
 [[asserts]]
-arguments = [[9, 5, 3, 9, 7, 6, 2, 5, 2, 5, 9, 10, 6], [1, 7, 1, 10, 7, 5, 2, 8, 10, 6, 4, 8, 5]]
-comment   = "Test 19"
-expected  = 2130
+arguments = [
+  [
+    9,
+    5,
+    3,
+    9,
+    7,
+    6,
+    2,
+    5,
+    2,
+    5,
+    9,
+    10,
+    6,
+  ],
+  [
+    1,
+    7,
+    1,
+    10,
+    7,
+    5,
+    2,
+    8,
+    10,
+    6,
+    4,
+    8,
+    5,
+  ],
+]
+comment = "Test 19"
+expected = 2130
 
 [[asserts]]
-arguments = [[10, 10, 6, 4, 8, 9, 10, 5, 6, 1, 3, 2, 1, 7, 8], [3, 8, 9, 1, 8, 9, 3, 6, 6, 4, 10, 1, 8, 9, 10]]
-comment   = "Test 20"
-expected  = 2995
+arguments = [
+  [
+    10,
+    10,
+    6,
+    4,
+    8,
+    9,
+    10,
+    5,
+    6,
+    1,
+    3,
+    2,
+    1,
+    7,
+    8,
+  ],
+  [
+    3,
+    8,
+    9,
+    1,
+    8,
+    9,
+    3,
+    6,
+    6,
+    4,
+    10,
+    1,
+    8,
+    9,
+    10,
+  ],
+]
+comment = "Test 20"
+expected = 2995
 
 [[asserts]]
 arguments = [[10, 1, 6, 7, 4, 2, 5, 5, 3, 7], [6, 7, 1, 10, 1, 8, 3, 4, 1, 5]]
@@ -163,9 +440,48 @@ comment   = "Test 21"
 expected  = 738
 
 [[asserts]]
-arguments = [[3, 9, 4, 5, 8, 8, 4, 5, 9, 2, 2, 8, 10, 9, 9, 5, 4], [9, 2, 7, 7, 8, 2, 1, 10, 7, 7, 9, 6, 3, 8, 3, 4, 4]]
-comment   = "Test 22"
-expected  = 3105
+arguments = [
+  [
+    3,
+    9,
+    4,
+    5,
+    8,
+    8,
+    4,
+    5,
+    9,
+    2,
+    2,
+    8,
+    10,
+    9,
+    9,
+    5,
+    4,
+  ],
+  [
+    9,
+    2,
+    7,
+    7,
+    8,
+    2,
+    1,
+    10,
+    7,
+    7,
+    9,
+    6,
+    3,
+    8,
+    3,
+    4,
+    4,
+  ],
+]
+comment = "Test 22"
+expected = 3105
 
 [[asserts]]
 arguments = [[1, 4, 4, 2, 7, 1, 1, 7], [6, 9, 1, 1, 4, 7, 5, 3]]
@@ -188,14 +504,78 @@ comment   = "Test 26"
 expected  = 504
 
 [[asserts]]
-arguments = [[4, 7, 1, 2, 9, 2, 10, 6, 2, 4, 7, 3], [7, 3, 8, 3, 1, 3, 2, 6, 1, 2, 3, 4]]
-comment   = "Test 27"
-expected  = 675
+arguments = [
+  [
+    4,
+    7,
+    1,
+    2,
+    9,
+    2,
+    10,
+    6,
+    2,
+    4,
+    7,
+    3,
+  ],
+  [
+    7,
+    3,
+    8,
+    3,
+    1,
+    3,
+    2,
+    6,
+    1,
+    2,
+    3,
+    4,
+  ],
+]
+comment = "Test 27"
+expected = 675
 
 [[asserts]]
-arguments = [[7, 4, 7, 1, 1, 3, 2, 8, 2, 3, 1, 6, 8, 4, 4], [4, 7, 6, 3, 2, 1, 5, 6, 7, 6, 4, 1, 1, 9, 2]]
-comment   = "Test 28"
-expected  = 1146
+arguments = [
+  [
+    7,
+    4,
+    7,
+    1,
+    1,
+    3,
+    2,
+    8,
+    2,
+    3,
+    1,
+    6,
+    8,
+    4,
+    4,
+  ],
+  [
+    4,
+    7,
+    6,
+    3,
+    2,
+    1,
+    5,
+    6,
+    7,
+    6,
+    4,
+    1,
+    1,
+    9,
+    2,
+  ],
+]
+comment = "Test 28"
+expected = 1146
 
 [[asserts]]
 arguments = [[4, 5, 4, 3], [9, 1, 10, 9]]
@@ -213,16 +593,137 @@ comment   = "Test 31"
 expected  = 512
 
 [[asserts]]
-arguments = [[8, 5, 9, 9, 3, 7, 1, 5, 1, 3, 4, 6, 3, 2], [3, 10, 2, 5, 2, 2, 6, 1, 5, 6, 3, 5, 7, 2]]
-comment   = "Test 32"
-expected  = 1107
+arguments = [
+  [
+    8,
+    5,
+    9,
+    9,
+    3,
+    7,
+    1,
+    5,
+    1,
+    3,
+    4,
+    6,
+    3,
+    2,
+  ],
+  [
+    3,
+    10,
+    2,
+    5,
+    2,
+    2,
+    6,
+    1,
+    5,
+    6,
+    3,
+    5,
+    7,
+    2,
+  ],
+]
+comment = "Test 32"
+expected = 1107
 
 [[asserts]]
-arguments = [[5, 9, 9, 2, 9, 2, 6, 5, 5, 8, 4, 1, 2, 2, 10, 2, 8, 7, 6, 3], [3, 7, 1, 7, 4, 4, 1, 7, 3, 2, 3, 9, 5, 7, 3, 7, 5, 2, 1, 2]]
-comment   = "Test 33"
-expected  = 2180
+arguments = [
+  [
+    5,
+    9,
+    9,
+    2,
+    9,
+    2,
+    6,
+    5,
+    5,
+    8,
+    4,
+    1,
+    2,
+    2,
+    10,
+    2,
+    8,
+    7,
+    6,
+    3,
+  ],
+  [
+    3,
+    7,
+    1,
+    7,
+    4,
+    4,
+    1,
+    7,
+    3,
+    2,
+    3,
+    9,
+    5,
+    7,
+    3,
+    7,
+    5,
+    2,
+    1,
+    2,
+  ],
+]
+comment = "Test 33"
+expected = 2180
 
 [[asserts]]
-arguments = [[7, 5, 10, 1, 9, 4, 5, 5, 10, 9, 6, 1, 3, 5, 5, 4, 7, 4, 8], [1, 7, 2, 3, 3, 1, 9, 4, 2, 8, 10, 4, 7, 10, 7, 9, 6, 2, 4]]
-comment   = "Test 34"
-expected  = 3220
+arguments = [
+  [
+    7,
+    5,
+    10,
+    1,
+    9,
+    4,
+    5,
+    5,
+    10,
+    9,
+    6,
+    1,
+    3,
+    5,
+    5,
+    4,
+    7,
+    4,
+    8,
+  ],
+  [
+    1,
+    7,
+    2,
+    3,
+    3,
+    1,
+    9,
+    4,
+    2,
+    8,
+    10,
+    4,
+    7,
+    10,
+    7,
+    9,
+    6,
+    2,
+    4,
+  ],
+]
+comment = "Test 34"
+expected = 3220

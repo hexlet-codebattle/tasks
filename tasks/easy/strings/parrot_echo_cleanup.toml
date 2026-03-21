@@ -1,0 +1,170 @@
+level             = "easy"
+name              = "parrot_echo_cleanup"
+tags              = ["strings", "pirates"]
+time_to_solve_sec = 120
+
+description_en = """
+A noisy parrot stretches sounds by repeating the same letter many times in a row.
+
+Given a pirate cry string `cry`, remove consecutive duplicate letters and return the cleaned string.
+"""
+
+description_ru = """
+Шумный попугай растягивает звуки, повторяя одну и ту же букву подряд много раз.
+
+Дана строка `cry` с пиратским криком. Удалите подряд идущие одинаковые буквы и верните очищенную строку.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{cry}) \\leq 100$
+- $\\text{cry} \\in \\{a{-}z\\}^*$
+"""
+
+solution = """
+def solution(cry: str) -> str:
+    out = ""
+    for c in cry:
+        if not out or out[-1] != c:
+            out += c
+    return out
+"""
+
+examples = """
+solution("a") == "a"
+solution("aa") == "a"
+solution("arrr") == "ar"
+solution("treaaasure") == "treasure"
+"""
+
+[[input_signature]]
+argument_name = "cry"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["a"]
+comment   = "Single letter"
+expected  = "a"
+
+[[asserts]]
+arguments = ["aa"]
+comment   = "Two equal letters"
+expected  = "a"
+
+[[asserts]]
+arguments = ["ab"]
+comment   = "Two different letters"
+expected  = "ab"
+
+[[asserts]]
+arguments = ["aab"]
+comment   = "Duplicate prefix"
+expected  = "ab"
+
+[[asserts]]
+arguments = ["arrr"]
+comment   = "Classic pirate cry"
+expected  = "ar"
+
+[[asserts]]
+arguments = ["ahoy"]
+comment   = "No duplicates"
+expected  = "ahoy"
+
+[[asserts]]
+arguments = ["boook"]
+comment   = "Two duplicate groups"
+expected  = "bok"
+
+[[asserts]]
+arguments = ["misssion"]
+comment   = "Middle duplicate group"
+expected  = "mision"
+
+[[asserts]]
+arguments = ["wooow"]
+comment   = "Repeated vowel block"
+expected  = "wow"
+
+[[asserts]]
+arguments = ["keeelhaul"]
+comment   = "Extended vowel block"
+expected  = "kelhaul"
+
+[[asserts]]
+arguments = ["ballooon"]
+comment   = "Separated duplicate groups"
+expected  = "balon"
+
+[[asserts]]
+arguments = ["committee"]
+comment   = "Several duplicate groups"
+expected  = "comite"
+
+[[asserts]]
+arguments = ["aarrgghh"]
+comment   = "Classic cry with many duplicates"
+expected  = "argh"
+
+[[asserts]]
+arguments = ["ssoouunndd"]
+comment   = "Every letter duplicated"
+expected  = "sound"
+
+[[asserts]]
+arguments = ["zzzz"]
+comment   = "All same letter"
+expected  = "z"
+
+[[asserts]]
+arguments = ["pirateee"]
+comment   = "Duplicate suffix"
+expected  = "pirate"
+
+[[asserts]]
+arguments = ["caaannon"]
+comment   = "Two duplicate blocks"
+expected  = "canon"
+
+[[asserts]]
+arguments = ["lookout"]
+comment   = "One duplicate pair"
+expected  = "lokout"
+
+[[asserts]]
+arguments = ["breeeze"]
+comment   = "Long repeated vowel"
+expected  = "breze"
+
+[[asserts]]
+arguments = ["tide"]
+comment   = "Already clean"
+expected  = "tide"
+
+[[asserts]]
+arguments = ["hellooo"]
+comment   = "Duplicate middle and suffix"
+expected  = "helo"
+
+[[asserts]]
+arguments = ["mmaaapp"]
+comment   = "Repeated start and end"
+expected  = "map"
+
+[[asserts]]
+arguments = ["treaaasure"]
+comment   = "Treasure shout"
+expected  = "treasure"
+
+[[asserts]]
+arguments = ["bookkeeper"]
+comment   = "Several repeated pairs"
+expected  = "bokeper"
+
+[[asserts]]
+arguments = ["qqqquuueee"]
+comment   = "Three repeated groups"
+expected  = "que"

@@ -1,0 +1,220 @@
+level             = "elementary"
+name              = "cannonball_pairs"
+tags              = ["math", "pirates"]
+time_to_solve_sec = 120
+
+description_en = """
+A pirate quartermaster counts loose cannonballs before battle. There are `cannonballs` total cannonballs, but `cracked` of them are damaged and cannot be used.
+
+Every firing set needs exactly `2` usable cannonballs.
+
+Return how many complete firing sets can be made.
+"""
+
+description_ru = """
+Пиратский квартирмейстер считает свободные пушечные ядра перед боем. Всего есть `cannonballs` ядер, но `cracked` из них повреждены и не могут быть использованы.
+
+Для каждого залпа нужна ровно пара из `2` исправных ядер.
+
+Верните, сколько полных пар для залпа можно собрать.
+"""
+
+limits = """
+- $0 \\leq \\text{cannonballs} \\leq 10^9$
+- $0 \\leq \\text{cracked} \\leq \\text{cannonballs}$
+"""
+
+solution = """
+def solution(cannonballs: int, cracked: int) -> int:
+    return (cannonballs - cracked) // 2
+"""
+
+examples = """
+solution(0, 0) == 0
+solution(3, 1) == 1
+solution(8, 2) == 3
+solution(999, 5) == 497
+"""
+
+[[input_signature]]
+argument_name = "cannonballs"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "cracked"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 0]
+comment   = "No cannonballs"
+expected  = 0
+
+[[asserts]]
+arguments = [1, 0]
+comment   = "Single usable cannonball"
+expected  = 0
+
+[[asserts]]
+arguments = [2, 0]
+comment   = "One full pair"
+expected  = 1
+
+[[asserts]]
+arguments = [2, 1]
+comment   = "One damaged ball leaves no pair"
+expected  = 0
+
+[[asserts]]
+arguments = [3, 0]
+comment   = "One pair and one leftover"
+expected  = 1
+
+[[asserts]]
+arguments = [3, 1]
+comment   = "One pair after removing a damaged ball"
+expected  = 1
+
+[[asserts]]
+arguments = [4, 0]
+comment   = "Two full pairs"
+expected  = 2
+
+[[asserts]]
+arguments = [4, 2]
+comment   = "Half the cannonballs are damaged"
+expected  = 1
+
+[[asserts]]
+arguments = [5, 1]
+comment   = "Even usable count"
+expected  = 2
+
+[[asserts]]
+arguments = [6, 0]
+comment   = "Three pairs"
+expected  = 3
+
+[[asserts]]
+arguments = [6, 5]
+comment   = "Almost all are damaged"
+expected  = 0
+
+[[asserts]]
+arguments = [7, 0]
+comment   = "Odd usable count"
+expected  = 3
+
+[[asserts]]
+arguments = [8, 2]
+comment   = "Two damaged balls removed"
+expected  = 3
+
+[[asserts]]
+arguments = [8, 0]
+comment   = "Even usable count"
+expected  = 4
+
+[[asserts]]
+arguments = [9, 1]
+comment   = "One damaged ball"
+expected  = 4
+
+[[asserts]]
+arguments = [10, 1]
+comment   = "Odd usable count after removing one"
+expected  = 4
+
+[[asserts]]
+arguments = [10, 2]
+comment   = "Round number with two damaged balls"
+expected  = 4
+
+[[asserts]]
+arguments = [12, 0]
+comment   = "Six pairs"
+expected  = 6
+
+[[asserts]]
+arguments = [12, 3]
+comment   = "Three damaged balls leave odd usable count"
+expected  = 4
+
+[[asserts]]
+arguments = [19, 0]
+comment   = "Larger odd total"
+expected  = 9
+
+[[asserts]]
+arguments = [20, 0]
+comment   = "Larger even total"
+expected  = 10
+
+[[asserts]]
+arguments = [21, 1]
+comment   = "One damaged ball keeps an even usable count"
+expected  = 10
+
+[[asserts]]
+arguments = [22, 4]
+comment   = "Several damaged balls"
+expected  = 9
+
+[[asserts]]
+arguments = [37, 1]
+comment   = "Random medium value"
+expected  = 18
+
+[[asserts]]
+arguments = [38, 4]
+comment   = "Random medium value"
+expected  = 17
+
+[[asserts]]
+arguments = [39, 5]
+comment   = "Random medium value"
+expected  = 17
+
+[[asserts]]
+arguments = [40, 6]
+comment   = "Random medium value"
+expected  = 17
+
+[[asserts]]
+arguments = [41, 1]
+comment   = "One damaged ball from odd total"
+expected  = 20
+
+[[asserts]]
+arguments = [99, 9]
+comment   = "Two-digit total with damaged balls"
+expected  = 45
+
+[[asserts]]
+arguments = [100, 10]
+comment   = "Even total and even damaged count"
+expected  = 45
+
+[[asserts]]
+arguments = [101, 1]
+comment   = "Three digits with one damaged ball"
+expected  = 50
+
+[[asserts]]
+arguments = [255, 5]
+comment   = "Large odd total"
+expected  = 125
+
+[[asserts]]
+arguments = [256, 16]
+comment   = "Large even total"
+expected  = 120
+
+[[asserts]]
+arguments = [999, 5]
+comment   = "Upper random value"
+expected  = 497

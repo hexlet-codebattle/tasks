@@ -1,0 +1,188 @@
+level             = "easy"
+name              = "treasure_map_route"
+tags              = ["arrays", "simulation", "pirates"]
+time_to_solve_sec = 180
+
+description_en = """
+A pirate follows a route written as an array `moves` containing only `"N"`, `"S"`, `"E"`, and `"W"`.
+
+Start at coordinates `[0, 0]`. Each move changes the position by one cell:
+
+- `"N"` increases `y`
+- `"S"` decreases `y`
+- `"E"` increases `x`
+- `"W"` decreases `x`
+
+Return the final coordinates as `[x, y]`.
+"""
+
+description_ru = """
+Пират следует маршруту, записанному как массив `moves`, содержащий только `"N"`, `"S"`, `"E"` и `"W"`.
+
+Начальная позиция равна `[0, 0]`. Каждый ход меняет координаты на одну клетку:
+
+- `"N"` увеличивает `y`
+- `"S"` уменьшает `y`
+- `"E"` увеличивает `x`
+- `"W"` уменьшает `x`
+
+Верните итоговые координаты в виде `[x, y]`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{moves}) \\leq 100$
+- $\\text{moves}[i] \\in \\{\\text{"N"}, \\text{"S"}, \\text{"E"}, \\text{"W"}\\}$
+"""
+
+solution = """
+def solution(moves: list[str]) -> list[int]:
+    x = y = 0
+    for m in moves:
+        x += (m == "E") - (m == "W")
+        y += (m == "N") - (m == "S")
+    return [x, y]
+"""
+
+examples = """
+solution([]) == [0, 0]
+solution(["N"]) == [0, 1]
+solution(["N", "E"]) == [1, 1]
+solution(["S", "S", "S", "W"]) == [-1, -3]
+"""
+
+[[input_signature]]
+argument_name = "moves"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty route"
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [["N"]]
+comment   = "Single north step"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [["S"]]
+comment   = "Single south step"
+expected  = [0, -1]
+
+[[asserts]]
+arguments = [["E"]]
+comment   = "Single east step"
+expected  = [1, 0]
+
+[[asserts]]
+arguments = [["W"]]
+comment   = "Single west step"
+expected  = [-1, 0]
+
+[[asserts]]
+arguments = [["N", "E"]]
+comment   = "Two-step route"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [["N", "N", "W"]]
+comment   = "Net northwest route"
+expected  = [-1, 2]
+
+[[asserts]]
+arguments = [["S", "S", "E", "E"]]
+comment   = "Net southeast route"
+expected  = [2, -2]
+
+[[asserts]]
+arguments = [["N", "S", "E", "W"]]
+comment   = "Full cancellation"
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [["E", "E", "E"]]
+comment   = "Straight east"
+expected  = [3, 0]
+
+[[asserts]]
+arguments = [["W", "N", "W", "S"]]
+comment   = "Horizontal drift"
+expected  = [-2, 0]
+
+[[asserts]]
+arguments = [["N", "E", "S", "E", "N"]]
+comment   = "Mixed route"
+expected  = [2, 1]
+
+[[asserts]]
+arguments = [["S", "W", "W", "N", "E"]]
+comment   = "Mixed route"
+expected  = [-1, 0]
+
+[[asserts]]
+arguments = [["N", "N", "N", "S", "S"]]
+comment   = "Vertical reduction"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [["E", "W", "E", "W", "E", "W"]]
+comment   = "Back and forth"
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [["N", "E", "E", "S", "W"]]
+comment   = "Small loop"
+expected  = [1, 0]
+
+[[asserts]]
+arguments = [["S", "S", "S", "W"]]
+comment   = "Mostly south"
+expected  = [-1, -3]
+
+[[asserts]]
+arguments = [["N", "W", "W", "W", "S"]]
+comment   = "Mostly west"
+expected  = [-3, 0]
+
+[[asserts]]
+arguments = [["E", "N", "E", "N", "W", "S"]]
+comment   = "Diagonal drift"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [["W", "W", "N", "N", "E", "S"]]
+comment   = "Negative x and positive y"
+expected  = [-1, 1]
+
+[[asserts]]
+arguments = [["N", "N", "E", "E", "S", "W", "S"]]
+comment   = "Route ending east"
+expected  = [1, 0]
+
+[[asserts]]
+arguments = [["S", "E", "N", "E", "S", "W", "N"]]
+comment   = "Route ending east"
+expected  = [1, 0]
+
+[[asserts]]
+arguments = [["E", "E", "N", "W", "S", "S", "W"]]
+comment   = "Route ending south"
+expected  = [0, -1]
+
+[[asserts]]
+arguments = [["N", "W", "N", "E", "S", "E", "E"]]
+comment   = "Route ending east and north"
+expected  = [2, 1]
+
+[[asserts]]
+arguments = [["S", "W", "N", "N", "E", "E", "S", "W"]]
+comment   = "Closed route"
+expected  = [0, 0]

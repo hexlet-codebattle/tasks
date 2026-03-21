@@ -1,0 +1,193 @@
+level             = "hard"
+name              = "gold_rush"
+tags              = ["graphs", "bipartite", "matching"]
+time_to_solve_sec = 700
+
+description_en = """
+There are $M$ pirates and $K$ vacant positions on different ships. Each pirate is willing to work only on certain ships. Find a way to assign the maximum number of pirates to jobs, with each pirate assigned to at most one ship and each ship assigned at most one pirate.
+"""
+
+description_ru = """
+Есть $M$ пиратов и $K$ вакантных мест на разных судах. Каждый пират готов работать только на определённых кораблях. Найдите способ пристроить максимальное количество людей на работу, при этом каждый пират может быть назначен не более чем на один корабль, а каждый корабль — не более чем на одного пирата.
+"""
+
+limits = """
+- $0 \\leq M \\leq 100$
+- $0 \\leq K \\leq 100$
+- $0 \\leq \\text{len}(\\text{preferences}[i]) \\leq K$
+- $0 \\leq \\text{preferences}[i][j] < K$
+"""
+
+solution = """
+def solution(M: int, K: int, preferences: list[list[int]]) -> int:
+    # adjacency list
+    adj = preferences
+    match_ship = [-1] * K
+    match_pirate = [-1] * M
+    
+    def dfs(pirate, seen):
+        for ship in adj[pirate]:
+            if seen[ship]:
+                continue
+            seen[ship] = True
+            if match_ship[ship] == -1 or dfs(match_ship[ship], seen):
+                match_ship[ship] = pirate
+                match_pirate[pirate] = ship
+                return True
+        return False
+    
+    result = 0
+    for p in range(M):
+        seen = [False] * K
+        if dfs(p, seen):
+            result += 1
+    return result
+"""
+
+examples = """
+solution(2, 2, [[0], [1]]) == 2
+solution(2, 2, [[0, 1], []]) == 1
+solution(3, 3, [[0], [0], [0]]) == 1
+"""
+
+[[input_signature]]
+argument_name = "M"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "K"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "preferences"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [2, 2, [[0], [1]]]
+comment   = "Perfect matching"
+expected  = 2
+
+[[asserts]]
+arguments = [2, 2, [[0, 1], []]]
+comment   = "Only one pirate can work"
+expected  = 1
+
+[[asserts]]
+arguments = [3, 3, [[0], [1], [2]]]
+comment   = "Three distinct ships"
+expected  = 3
+
+[[asserts]]
+arguments = [3, 3, [[0], [0], [0]]]
+comment   = "All pirates want same ship"
+expected  = 1
+
+[[asserts]]
+arguments = [3, 1, [[0], [0], [0]]]
+comment   = "Only one ship"
+expected  = 1
+
+[[asserts]]
+arguments = [1, 3, [[0, 1, 2]]]
+comment   = "One pirate, many ships"
+expected  = 1
+
+[[asserts]]
+arguments = [0, 5, []]
+comment   = "No pirates"
+expected  = 0
+
+[[asserts]]
+arguments = [5, 0, [[], [], [], [], []]]
+comment   = "No ships"
+expected  = 0
+
+[[asserts]]
+arguments = [2, 9, [[6], [1, 0, 3, 4]]]
+comment   = "Test 9"
+expected  = 2
+
+[[asserts]]
+arguments = [18, 11, [[0, 2, 9, 5, 4], [3, 2, 0, 6, 7], [9], [1, 0, 5, 7, 9, 6], [10], [2, 0], [6, 9, 7, 4], [0, 4, 5, 7, 1, 9, 8], [5, 0, 6, 8, 10, 4, 7, 3, 2], [6, 5, 8, 0, 10, 9, 1, 7, 4, 2], [5, 10], [6, 1, 7, 10, 4, 2, 0, 9], [1, 5, 0, 9, 10, 3, 4, 8, 2], [7, 3, 8, 10], [2, 8], [6, 7, 0, 8, 1, 3, 10], [], [5, 4, 6, 8]]]
+comment   = "Test 10"
+expected  = 11
+
+[[asserts]]
+arguments = [1, 4, [[0, 2, 1, 3]]]
+comment   = "Test 11"
+expected  = 1
+
+[[asserts]]
+arguments = [3, 14, [[0, 12, 8, 6, 1, 11, 10, 13, 2, 5, 3, 7, 9, 4], [0, 10, 12, 2, 6], [11]]]
+comment   = "Test 12"
+expected  = 3
+
+[[asserts]]
+arguments = [5, 12, [[3, 1, 0, 8, 6, 4, 2, 10, 5, 7], [2, 8, 5, 10, 1], [2, 9, 6, 10, 0, 5, 1, 3, 7, 8], [11, 10, 7, 4, 6, 9, 0], [8, 5]]]
+comment   = "Test 13"
+expected  = 5
+
+[[asserts]]
+arguments = [17, 17, [[4, 10, 8, 1, 14, 11, 5, 3, 15, 13, 2, 16, 7, 12, 9, 6, 0], [16], [6, 16], [], [8, 7, 1, 9, 5, 14], [4, 16, 12, 7, 13, 11, 6, 0, 15, 14], [12, 7, 13, 8, 2, 9, 10, 0, 15, 5], [1, 11, 13], [11, 13, 5, 14, 3, 7, 15, 12, 2, 6, 16, 0, 9, 4], [8, 5, 13, 16, 6, 15, 1, 4, 10, 9, 7, 12, 2, 0, 14, 3], [9, 3, 7, 16, 12, 11, 5, 15, 14, 4, 6, 13], [7, 14, 8, 9, 4, 5, 0, 2, 1, 10, 3], [4, 15, 8, 0, 7, 14, 2, 5, 9, 3, 16, 13, 12, 10, 6], [], [12, 7, 11, 1, 4, 16, 2, 6, 5, 9], [0], [5, 6, 0, 4, 8, 2, 12, 3, 13, 7, 15, 9, 1, 11, 16]]]
+comment   = "Test 14"
+expected  = 15
+
+[[asserts]]
+arguments = [3, 4, [[2, 0, 3], [3, 1, 0], []]]
+comment   = "Test 15"
+expected  = 2
+
+[[asserts]]
+arguments = [19, 14, [[10, 6, 8, 5, 2, 7, 9, 1, 12, 13, 0, 3], [3, 1, 6, 0, 10, 11, 5, 4, 9, 7, 12, 2, 13, 8], [2, 4, 1, 12, 5, 3, 0, 9, 13, 11, 8, 7, 10, 6], [10, 6, 12, 8, 3, 11, 1, 9], [0, 4, 2, 7, 1, 11, 9, 3, 8, 12, 13, 10, 5], [5, 3, 6, 0], [8], [12, 1, 9, 10, 5, 13, 3, 7, 8, 6, 11, 4, 0], [13, 0, 2, 1, 5, 12, 10, 7, 6, 3, 4, 8, 9], [], [], [1, 7], [1, 2, 10, 0, 5, 7, 3, 6, 13, 9, 8], [10, 2, 1, 13, 0], [5, 10, 6, 13], [3, 0, 12, 8, 1, 9, 13, 2, 10, 5, 11, 6], [12, 10, 8, 4, 6, 11, 5, 2, 7, 1, 3, 0, 13, 9], [11, 0, 5, 8, 12], [4, 1, 6, 2, 9, 5, 7, 11, 0, 13]]]
+comment   = "Test 16"
+expected  = 14
+
+[[asserts]]
+arguments = [18, 7, [[5, 6, 0, 1, 4, 3], [6, 3, 2, 1, 5, 0], [5, 0, 1, 4], [1, 0, 6, 5, 4], [0], [0, 2, 5, 1, 3], [0, 4, 2, 6, 5, 3], [2, 5, 6, 3, 0], [], [6], [4], [6], [6, 3, 2, 1, 0, 5, 4], [1, 6, 0, 3, 4, 2], [4, 2], [1, 3, 2, 0, 5, 4], [2, 4, 0, 1, 3, 6], [0, 5, 1, 2, 4]]]
+comment   = "Test 17"
+expected  = 7
+
+[[asserts]]
+arguments = [7, 14, [[7, 0, 6], [13], [12, 2, 13, 10, 0, 8, 3, 6, 9, 7, 1, 4], [11, 6, 13, 8, 5, 1, 3, 0, 7], [], [4, 11, 0, 3, 12, 2, 1, 5], []]]
+comment   = "Test 18"
+expected  = 5
+
+[[asserts]]
+arguments = [14, 16, [[10, 15, 2, 14, 12, 6, 11, 1, 8, 0, 7, 5], [9, 5, 8, 6], [9, 6, 13, 2, 8, 11, 10, 1], [], [3, 7, 10, 15], [0, 5, 4, 12, 7, 14, 13, 8, 10, 1, 6, 15, 2, 9, 3], [11, 12, 6, 10, 2, 1, 9, 14, 3, 4, 7, 8, 0, 13, 5], [15, 5, 14, 9, 10, 6, 4, 13, 7, 1, 11, 0, 12, 2, 3, 8], [4], [5, 10, 14, 6], [7, 8, 10, 2, 15], [0, 7, 2, 4, 5, 10, 8, 14, 3, 15, 9, 11, 12, 1, 6, 13], [2, 5, 7, 13, 0, 1, 11, 14, 8, 15, 10, 4, 3], [7, 0, 2, 13, 10, 15, 3, 11, 6, 5]]]
+comment   = "Test 19"
+expected  = 13
+
+[[asserts]]
+arguments = [1, 12, [[2, 4, 5, 8, 10, 9, 0, 11, 1, 6]]]
+comment   = "Test 20"
+expected  = 1
+
+[[asserts]]
+arguments = [4, 18, [[16, 0, 15, 8], [12, 15, 2, 17, 3, 16, 5, 13, 11, 6, 7, 0, 10], [11, 16], [3, 6, 8, 1, 11, 14, 5, 2, 17, 12, 15, 9]]]
+comment   = "Test 21"
+expected  = 4
+
+[[asserts]]
+arguments = [15, 14, [[11, 0, 6, 12, 1, 4, 13], [13, 11, 5, 12, 10, 1], [9, 2, 1, 0, 7], [8, 5, 0, 3, 4, 12], [4, 2, 5, 9, 7, 11, 3, 13, 0, 6, 10], [2, 3, 5, 12, 7, 8, 10, 6, 13, 1, 4, 9, 11], [5, 7, 10, 12, 11, 4, 6, 13, 2, 0, 3, 1], [13], [13, 5, 6, 9, 10, 8, 2, 1, 0], [11, 6], [8, 7, 10, 9, 4, 3, 11, 1, 12, 6, 13, 2], [9], [8, 1, 5, 7, 2, 9], [11, 9, 2, 13, 4], [2, 13, 7, 4, 9, 3]]]
+comment   = "Test 22"
+expected  = 14
+
+[[asserts]]
+arguments = [20, 7, [[1, 4, 5, 0], [6, 1, 4, 3], [], [1, 2], [2, 0], [1], [], [1, 0, 6, 3, 4], [0, 4], [], [5, 0, 3], [1, 5], [1, 3, 6, 2], [0, 4, 3, 2, 1, 5], [4, 1], [1, 2, 3], [5, 4], [1, 4, 6], [3, 5, 0], [2]]]
+comment   = "Test 23"
+expected  = 7
+
+[[asserts]]
+arguments = [6, 1, [[0], [], [], [0], [0], [0]]]
+comment   = "Test 24"
+expected  = 1

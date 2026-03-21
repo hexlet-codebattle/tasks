@@ -1,0 +1,240 @@
+level             = "medium"
+name              = "broadside_salvo"
+tags              = ["stack", "arrays"]
+time_to_solve_sec = 450
+
+description_en = """
+The view of an enemy fort from the sea is represented as a histogram (an array of wall heights). Your cannons fire only horizontally. Find the rectangular area of the wall of maximum size that can be destroyed with a single precise broadside salvo.
+"""
+
+description_ru = """
+Вид вражеского форта с моря представлен как гистограмма (массив высот стен). Ваши пушки стреляют только горизонтально. Найдите прямоугольную область стены максимальной площади, которую можно разнести одним точным массированным залпом.
+"""
+
+limits = """
+- $0 \\leq N \\leq 10^5$
+- $0 \\leq h_i \\leq 10^4$
+"""
+
+solution = """
+def solution(heights: list[int]) -> int:
+    stack = []
+    max_area = 0
+    n = len(heights)
+    for i in range(n + 1):
+        cur = heights[i] if i < n else 0
+        while stack and cur < heights[stack[-1]]:
+            h = heights[stack.pop()]
+            left = stack[-1] if stack else -1
+            width = i - left - 1
+            max_area = max(max_area, h * width)
+        stack.append(i)
+    return max_area
+"""
+
+examples = """
+solution([2,1,5,6,2,3]) == 10
+solution([2,4]) == 4
+solution([1]) == 1
+solution([]) == 0
+"""
+
+[[input_signature]]
+argument_name = "heights"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[2, 1, 5, 6, 2, 3]]
+comment   = "Classic example"
+expected  = 10
+
+[[asserts]]
+arguments = [[2, 4]]
+comment   = "Two columns"
+expected  = 4
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single column"
+expected  = 1
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty histogram"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "Increasing heights"
+expected  = 9
+
+[[asserts]]
+arguments = [[5, 4, 3, 2, 1]]
+comment   = "Decreasing heights"
+expected  = 9
+
+[[asserts]]
+arguments = [[2, 1, 2]]
+comment   = "Valley"
+expected  = 3
+
+[[asserts]]
+arguments = [[6, 2, 5, 4, 5, 1, 6]]
+comment   = "Complex histogram"
+expected  = 12
+
+[[asserts]]
+arguments = [[0, 4, 3, 3]]
+comment   = "Test 9"
+expected  = 9
+
+[[asserts]]
+arguments = [[1, 10, 8, 1, 9]]
+comment   = "Test 10"
+expected  = 16
+
+[[asserts]]
+arguments = [[0, 0, 1, 3, 3, 8, 9, 0, 8, 3, 10, 8, 6, 3]]
+comment   = "Test 11"
+expected  = 18
+
+[[asserts]]
+arguments = [[9, 4, 0, 2, 6, 5, 4, 2, 3, 5, 1, 1, 6, 1, 5]]
+comment   = "Test 12"
+expected  = 14
+
+[[asserts]]
+arguments = [[9, 4, 0, 7, 8, 1, 6, 1, 8, 4, 10, 9]]
+comment   = "Test 13"
+expected  = 18
+
+[[asserts]]
+arguments = [[9, 3, 1, 0, 10, 3, 4, 1, 3, 1, 6, 4]]
+comment   = "Test 14"
+expected  = 10
+
+[[asserts]]
+arguments = [[10, 5, 2, 5, 5, 3, 10, 4, 10, 10, 1, 9, 10, 2, 8]]
+comment   = "Test 15"
+expected  = 21
+
+[[asserts]]
+arguments = [[2, 7, 6, 4, 10, 8, 3, 10]]
+comment   = "Test 16"
+expected  = 21
+
+[[asserts]]
+arguments = [[0, 3, 0, 5, 6, 4, 1, 3, 9, 5, 3]]
+comment   = "Test 17"
+expected  = 12
+
+[[asserts]]
+arguments = [[6, 10, 7, 2, 4, 2, 3, 8, 8, 4, 9, 6, 9, 6, 5, 3]]
+comment   = "Test 18"
+expected  = 32
+
+[[asserts]]
+arguments = [[8, 7, 1, 0, 1]]
+comment   = "Test 19"
+expected  = 14
+
+[[asserts]]
+arguments = [[10, 2, 10, 6, 9]]
+comment   = "Test 20"
+expected  = 18
+
+[[asserts]]
+arguments = [[6, 6, 9]]
+comment   = "Test 21"
+expected  = 18
+
+[[asserts]]
+arguments = [[8, 4, 8, 0, 10, 1, 10, 8, 4, 10, 5, 1, 4, 6, 2]]
+comment   = "Test 22"
+expected  = 20
+
+[[asserts]]
+arguments = [[0, 4, 8, 2, 8, 1, 10, 4, 10, 8, 9, 3, 2, 5, 2]]
+comment   = "Test 23"
+expected  = 24
+
+[[asserts]]
+arguments = [[8, 0, 9, 5, 7, 0, 1, 5, 4, 3, 0, 3, 9, 1, 1, 7, 1, 8]]
+comment   = "Test 24"
+expected  = 15
+
+[[asserts]]
+arguments = [[2, 10, 7, 8, 2]]
+comment   = "Test 25"
+expected  = 21
+
+[[asserts]]
+arguments = [[8, 9, 6, 3, 8, 3, 4, 6, 10]]
+comment   = "Test 26"
+expected  = 27
+
+[[asserts]]
+arguments = [[7, 8, 7, 1, 3, 3, 1, 5, 0, 9, 8, 3]]
+comment   = "Test 27"
+expected  = 21
+
+[[asserts]]
+arguments = [[3, 0, 1, 10, 0, 3, 1, 0, 5, 1, 8, 3, 4, 10, 7, 3, 8, 2, 9]]
+comment   = "Test 28"
+expected  = 21
+
+[[asserts]]
+arguments = [[7, 3, 7, 6, 3, 1, 1, 10, 6, 5, 6, 6, 7, 0, 10, 10, 10, 1, 0]]
+comment   = "Test 29"
+expected  = 30
+
+[[asserts]]
+arguments = [[5, 1, 3, 3, 3, 8, 7, 2, 6, 2, 4, 7, 3]]
+comment   = "Test 30"
+expected  = 22
+
+[[asserts]]
+arguments = [[7, 8, 1]]
+comment   = "Test 31"
+expected  = 14
+
+[[asserts]]
+arguments = [[10, 8]]
+comment   = "Test 32"
+expected  = 16
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Test 33"
+expected  = 1
+
+[[asserts]]
+arguments = [[2, 6, 7, 7, 3, 6, 0, 2]]
+comment   = "Test 34"
+expected  = 18
+
+[[asserts]]
+arguments = [[0, 6, 4, 7, 4, 6, 8, 10, 7, 2, 3, 4, 3]]
+comment   = "Test 35"
+expected  = 32
+
+[[asserts]]
+arguments = [[9, 8]]
+comment   = "Test 36"
+expected  = 16
+
+[[asserts]]
+arguments = [[5, 0]]
+comment   = "Test 37"
+expected  = 5
+
+[[asserts]]
+arguments = [[9, 7]]
+comment   = "Test 38"
+expected  = 14

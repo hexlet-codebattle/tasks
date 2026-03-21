@@ -1,0 +1,115 @@
+level = "medium"
+name = "black_mark"
+tags = [ "dp", "algo", "scheduling",]
+time_to_solve_sec = 400
+description_en = "You have a list of $N$ pirates ($N \\leq 20$) and $N$ dangerous tasks. Each pirate has a fear level for each task, given as an $N \\times N$ matrix `fear` where `fear[i][j]` is the fear of pirate $i$ for task $j$. You need to assign each pirate exactly one distinct task so that the total sum of fear levels is minimized. Return the minimal possible total.\n"
+description_ru = "У вас есть список из $N$ пиратов ($N \\leq 20$) и $N$ опасных заданий. Каждый пират имеет свой уровень страха перед каждым заданием, заданный матрицей `fear` размером $N \\times N$, где `fear[i][j]` — уровень страха пирата $i$ перед заданием $j$. Необходимо назначить каждому пирату ровно одно уникальное задание так, чтобы суммарный уровень страха был минимальным. Верните минимально возможную сумму.\n"
+limits = "-  \\leq N \\leq 20$\n-  \\leq \text{fear}[i][j] \\leq 1000$\n"
+solution = "def solution(fear: list[list[int]]) -> int:\n    n = len(fear)\n    INF = 10**9\n    dp = [INF] * (1 << n)\n    dp[0] = 0\n    for mask in range(1 << n):\n        i = bin(mask).count('1')\n        for j in range(n):\n            if not (mask >> j) & 1:\n                new_mask = mask | (1 << j)\n                dp[new_mask] = min(dp[new_mask], dp[mask] + fear[i][j])\n    return dp[(1 << n) - 1]\n"
+examples = "solution([[5]]) == 5\nsolution([[1,2],[3,4]]) == 5\nsolution([[10,1],[1,10]]) == 2\n"
+[[input_signature]]
+argument_name = "fear"
+
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+[[asserts]]
+arguments = [ [ [ 5,],],]
+comment = "Test 1"
+expected = 5
+
+[[asserts]]
+arguments = [ [ [ 1, 2,], [ 3, 4,],],]
+comment = "Test 2"
+expected = 5
+
+[[asserts]]
+arguments = [ [ [ 10, 1,], [ 1, 10,],],]
+comment = "Test 3"
+expected = 2
+
+[[asserts]]
+arguments = [ [ [ 1, 2, 3,], [ 4, 5, 6,], [ 7, 8, 9,],],]
+comment = "Test 4"
+expected = 15
+
+[[asserts]]
+arguments = [ [ [ 138, 583,], [ 868, 822,],],]
+comment = "Test 5"
+expected = 960
+
+[[asserts]]
+arguments = [ [ [ 979,],],]
+comment = "Test 6"
+expected = 979
+
+[[asserts]]
+arguments = [ [ [ 244,],],]
+comment = "Test 7"
+expected = 244
+
+[[asserts]]
+arguments = [ [ [ 242, 311, 106, 739, 406,], [ 491, 159, 93, 69, 21,], [ 412, 563, 940, 297, 820,], [ 784, 61, 228, 533, 550,], [ 369, 284, 799, 177, 847,],],]
+comment = "Test 8"
+expected = 777
+
+[[asserts]]
+arguments = [ [ [ 638,],],]
+comment = "Test 9"
+expected = 638
+
+[[asserts]]
+arguments = [ [ [ 813, 588, 842,], [ 83, 497, 781,], [ 268, 38, 1,],],]
+comment = "Test 10"
+expected = 672
+
+[[asserts]]
+arguments = [ [ [ 332, 971,], [ 155, 405,],],]
+comment = "Test 11"
+expected = 737
+
+[[asserts]]
+arguments = [ [ [ 233,],],]
+comment = "Test 12"
+expected = 233
+
+[[asserts]]
+arguments = [ [ [ 475, 628, 383,], [ 274, 142, 191,], [ 888, 693, 7,],],]
+comment = "Test 13"
+expected = 624
+
+[[asserts]]
+arguments = [ [ [ 586, 34, 440,], [ 495, 592, 16,], [ 212, 474, 833,],],]
+comment = "Test 14"
+expected = 262
+
+[[asserts]]
+arguments = [ [ [ 464, 887, 574, 878,], [ 947, 800, 477, 463,], [ 521, 876, 602, 195,], [ 190, 824, 525, 488,],],]
+comment = "Test 15"
+expected = 1749
+
+[[asserts]]
+arguments = [ [ [ 486, 276, 674, 542, 683,], [ 359, 147, 391, 12, 384,], [ 495, 281, 659, 830, 472,], [ 708, 886, 616, 234, 572,], [ 2, 678, 640, 149, 451,],],]
+comment = "Test 16"
+expected = 1375
+
+[[asserts]]
+arguments = [ [ [ 266, 298, 702,], [ 932, 701, 822,], [ 870, 912, 191,],],]
+comment = "Test 17"
+expected = 1158
+
+[[asserts]]
+arguments = [ [ [ 110, 631,], [ 720, 774,],],]
+comment = "Test 18"
+expected = 884
+
+[[asserts]]
+arguments = [ [ [ 989, 214, 12, 534, 754,], [ 38, 162, 935, 245, 18,], [ 57, 901, 825, 698, 151,], [ 878, 712, 377, 246, 120,], [ 347, 478, 726, 365, 288,],],]
+comment = "Test 19"
+expected = 716
+
+[output_signature.type]
+name = "integer"

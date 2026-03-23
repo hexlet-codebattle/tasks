@@ -84,8 +84,8 @@ comment   = "Five words with the"
 expected  = ["quick", "brown", "jumps"]
 
 [[asserts]]
-arguments = ["aa bb cc dd ee"]
-comment   = "All equal length"
+arguments = ["aa bb cc DD EE"]
+comment   = "Five two-letter words"
 expected  = ["there is no result!"]
 
 [[asserts]]
@@ -147,11 +147,6 @@ expected  = ["review", "session"]
 arguments = ["functional programming paradigm"]
 comment   = "Three long words"
 expected  = ["functional", "programming"]
-
-[[asserts]]
-arguments = ["ab cd ef gh ij"]
-comment   = "Five two letter words"
-expected  = ["there is no result!"]
 
 [[asserts]]
 arguments = ["machine learning artificial intelligence"]

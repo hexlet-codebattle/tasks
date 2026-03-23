@@ -4,15 +4,15 @@ tags              = ["strings"]
 time_to_solve_sec = 350
 
 description_en = """
-Given a sentence (as string), return an array of words which are longer than the average length of all the words.
+The sentence is given (as a string). Return a list of words that are longer than the average length of all words. If there are no such words, return `["there is no result!"]`.
 
-Words are separated by a whitespace. If there is a trailing period (dot), it should be omitted. If there is no result, return `["there is no result!"]`.
+Words are separated by a whitespace. If there are any punctuation marks, they should be omitted.
 """
 
 description_ru = """
-Дано предложение (строкой), верните массив слов, длина которых превышает среднюю длину всех слов.
+Дано предложение (строкой). Верните список слов, длина которых превышает среднюю длину всех слов. Если таких нет, верните `["there is no result!"]`.
 
-Слова разделены пробелом. Если присутствует точка, её следует пропустить. Если результата нет, верните `["there is no result!"]`.
+Слова разделены пробелом. Если присутствуют знаки препинания, их не следует учитывать.
 """
 
 limits = """
@@ -34,7 +34,7 @@ def solution(sentence: str) -> list:
 
 examples = """
 solution("test") == ["there is no result!"]
-solution("This is a sample string") == ["This", "sample", "string"]
+solution("This is a sample string.") == ["This", "sample", "string"]
 solution("Some another sample") == ["another", "sample"]
 """
 
@@ -54,8 +54,8 @@ comment   = "Single word"
 expected  = ["there is no result!"]
 
 [[asserts]]
-arguments = ["This is a sample string"]
-comment   = "Multiple words, some longer"
+arguments = ["This is a sample string."]
+comment   = "Multiple words, some longer, the period at the end"
 expected  = ["This", "sample", "string"]
 
 [[asserts]]
@@ -84,8 +84,8 @@ comment   = "Single word short"
 expected  = ["there is no result!"]
 
 [[asserts]]
-arguments = ["one two three four five"]
-comment   = "Five words"
+arguments = ["one, two, three, four, five"]
+comment   = "Five comma-separated words"
 expected  = ["three", "four", "five"]
 
 [[asserts]]
@@ -104,9 +104,9 @@ comment   = "Four words"
 expected  = ["python"]
 
 [[asserts]]
-arguments = ["test case for this task"]
-comment   = "Five words equal length"
-expected  = ["test", "case", "this", "task"]
+arguments = ["Some test case for this task..."]
+comment   = "Six words of approximately equal length, the ellipsis at the end"
+expected  = ["Some", "test", "case", "this", "task"]
 
 [[asserts]]
 arguments = ["a ab abc abcd"]
@@ -129,8 +129,8 @@ comment   = "Three words"
 expected  = ["testing", "quality"]
 
 [[asserts]]
-arguments = ["The cat sat on mat"]
-comment   = "Five words"
+arguments = ["The cat sat on mat!"]
+comment   = "Five words, the exclamation mark at the end"
 expected  = ["The", "cat", "sat", "mat"]
 
 [[asserts]]
@@ -139,8 +139,8 @@ comment   = "Three words technical"
 expected  = ["algorithm", "patterns"]
 
 [[asserts]]
-arguments = ["a b c d e f g"]
-comment   = "Seven single letters"
+arguments = ["a, b, c, d, e, f, g"]
+comment   = "Seven comma-separated single letters"
 expected  = ["there is no result!"]
 
 [[asserts]]
@@ -155,7 +155,7 @@ expected  = ["longerword"]
 
 [[asserts]]
 arguments = ["same same same same"]
-comment   = "All same word"
+comment   = "All 'same' word"
 expected  = ["there is no result!"]
 
 [[asserts]]

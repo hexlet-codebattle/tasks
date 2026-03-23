@@ -6,13 +6,13 @@ time_to_solve_sec = 350
 description_en = """
 The sentence is given (as a string). Return a list of words that are longer than the average length of all words. If there are no such words, return `["there is no result!"]`.
 
-Words are separated by a whitespace. If there are any punctuation marks, they should be omitted.
+Words are separated by a whitespace. If there are any punctuation marks, they should be omitted (except hyphens).
 """
 
 description_ru = """
 Дано предложение (строкой). Верните список слов, длина которых превышает среднюю длину всех слов. Если таких нет, верните `["there is no result!"]`.
 
-Слова разделены пробелом. Если присутствуют знаки препинания, их не следует учитывать.
+Слова разделены пробелом. Если присутствуют знаки препинания, их не следует учитывать (кроме дефисов).
 """
 
 limits = """
@@ -22,7 +22,7 @@ limits = """
 solution = """
 def solution(sentence: str) -> list:
     import re
-    words = re.findall(r'\w+', sentence)
+    words = re.findall(r'[\w-]+', sentence)
     if not words:
         return ["there is no result!"]
 
@@ -167,3 +167,13 @@ expected  = ["development", "environment"]
 arguments = ["equal equal equal"]
 comment   = "Three equal words"
 expected  = ["there is no result!"]
+
+[[asserts]]
+arguments = ["This is a well-known fact"]
+comment   = "A hyphen inside one of the words"
+expected  = ["well-known"]
+
+[[asserts]]
+arguments = ["red-painted T-shirt"]
+comment   = "A hyphen inside both words"
+expected  = ["red-painted"]

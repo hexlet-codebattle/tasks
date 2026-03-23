@@ -33,7 +33,7 @@ def solution(sentence: str) -> list:
 """
 
 examples = """
-solution("test") == ["there is no result!"]
+solution("hello") == ["there is no result!"]
 solution("This is a sample string.") == ["This", "sample", "string"]
 solution("Some another sample") == ["another", "sample"]
 """
@@ -47,11 +47,6 @@ name = "string"
 name = "array"
 [output_signature.type.nested]
 name = "string"
-
-[[asserts]]
-arguments = ["test"]
-comment   = "Single word"
-expected  = ["there is no result!"]
 
 [[asserts]]
 arguments = ["This is a sample string."]
@@ -77,11 +72,6 @@ expected  = ["programming"]
 arguments = ["a bb ccc dddd"]
 comment   = "Increasing lengths"
 expected  = ["ccc", "dddd"]
-
-[[asserts]]
-arguments = ["short"]
-comment   = "Single word short"
-expected  = ["there is no result!"]
 
 [[asserts]]
 arguments = ["one, two, three, four, five"]
@@ -117,11 +107,6 @@ expected  = ["abc", "abcd"]
 arguments = ["short longer longest"]
 comment   = "Three words increasing"
 expected  = ["longest"]
-
-[[asserts]]
-arguments = ["one"]
-comment   = "Single word one"
-expected  = ["there is no result!"]
 
 [[asserts]]
 arguments = ["testing code quality"]

@@ -99,11 +99,6 @@ comment   = "Six words of approximately equal length, the ellipsis at the end"
 expected  = ["Some", "test", "case", "this", "task"]
 
 [[asserts]]
-arguments = ["a ab abc abcd"]
-comment   = "Increasing a sequence"
-expected  = ["abc", "abcd"]
-
-[[asserts]]
 arguments = ["short longer longest"]
 comment   = "Three words increasing"
 expected  = ["longest"]

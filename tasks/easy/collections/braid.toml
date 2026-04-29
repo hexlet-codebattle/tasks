@@ -4,23 +4,21 @@ tags              = ["collections", "simulation"]
 time_to_solve_sec = 300
 
 description_en = """
-You are given three arrays `a1`, `a2`, `a3` of equal length $n$.
+You are given three arrays $A_1$, $A_2$, $A_3$ of equal length $n$.
 
-Form a **braid** as follows. For each index $i$ from $0$ to $n-1$:
-output the triplet $[A_0[i], A_1[i], A_2[i]]$, then
-- if $i$ is even, swap the first two ribbons: $(A_0, A_1, A_2) \\leftarrow (A_1, A_0, A_2)$;
-- otherwise, swap the last two ribbons: $(A_0, A_1, A_2) \\leftarrow (A_0, A_2, A_1)$.
+Form a **braid** as follows. For each index $i$ from $0$ to $n-1$: add the triplet $[A_1[i], A_2[i], A_3[i]]$, and then
+- if $i$ is even, swap the first two ribbons: $(A_1, A_2, A_3) \\rightarrow (A_2, A_1, A_3)$;
+- otherwise, swap the last two ribbons: $(A_1, A_2, A_3) \\rightarrow (A_1, A_3, A_2)$.
 
 Return the resulting array of triplets.
 """
 
 description_ru = """
-Даны три массива одинаковой длины `a1`, `a2`, `a3` (длина $n$).
+Даны три массива $A_1$, $A_2$, $A_3$ одинаковой длины $n$.
 
-Плетём **косичку** так. Для каждого индекса $i$ от $0$ до $n-1$:
-выведите тройку $[A_0[i], A_1[i], A_2[i]]$, затем
-- если $i$ чётный, поменяйте местами первые две ленты: $(A_0, A_1, A_2) \\leftarrow (A_1, A_0, A_2)$;
-- иначе поменяйте местами последние две ленты: $(A_0, A_1, A_2) \\leftarrow (A_0, A_2, A_1)$.
+Плетём **косичку** так. Для каждого индекса $i$ от $0$ до $n-1$: добавьте тройку $[A_1[i], A_2[i], A_3[i]]$, и затем
+- если $i$ чётный, поменяйте местами первые две ленты: $(A_1, A_2, A_3) \\rightarrow (A_2, A_1, A_3)$;
+- иначе поменяйте местами последние две ленты: $(A_1, A_2, A_3) \\rightarrow (A_1, A_3, A_2)$.
 
 Верните получившийся массив троек.
 """

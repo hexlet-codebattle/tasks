@@ -203,3 +203,18 @@ expected  = "Peed Gninrael"
 arguments = ["Artificial Intelligence"]
 comment   = "AI full term"
 expected  = "Laicifitra Ecnegilletni"
+
+[[asserts]]
+arguments = ["WOW That's Amazing!"]
+comment   = "An apostrophe inside a word"
+expected  = "WOW S'taht Gnizama!"
+
+[[asserts]]
+arguments = ["Do you like my T-shirt?"]
+comment   = "A hyphen inside a word"
+expected  = "Od uoy ekil ym Trihs-t?"
+
+[[asserts]]
+arguments = ["My BFF lives in Arden-Arcade and works at the AT'n'T shop."]
+comment   = "Very complicated sentence"
+expected  = "Ym FFB sevil ni EdacrA-nedra dna skrow ta eht T'N'tA pohs."

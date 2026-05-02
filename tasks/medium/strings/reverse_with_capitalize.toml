@@ -17,26 +17,32 @@ limits = """
 
 solution = """
 def solution(sentence: str) -> str:
-    def reverse_word(word):
-        if not word:
-            return word
-        punct = ''
-        if word[-1] in '.!?':
-            punct = word[-1]
-            word = word[:-1]
-        if not word:
-            return punct
-        had_upper = any(char.isupper() for char in word)
-        reversed_word = word[::-1].lower()
-        if had_upper:
-            reversed_word = reversed_word[0].upper() + reversed_word[1:].lower()
-        return reversed_word + punct
-    return ' '.join(reverse_word(word) for word in sentence.split())
+    sentence += "$"
+    res = ""
+    word, upper = [], []
+    for ch in sentence:
+        if ch.isalpha():
+            word.append(ch.lower())
+            upper.append(ch.isupper())
+        elif ch in "'-":
+            word.append(ch)
+        else:
+            word.reverse()
+            k = 0
+            for c in word:
+                if c.isalpha():
+                    if upper[k]:
+                        c = c.upper()
+                    k += 1
+                res += c
+            word, upper = [], []
+            res += ch
+    return res[:-1]
 """
 
 examples = """
 solution("Hello! Are you.") == "Olleh! Era uoy."
-solution("11Helloworld!") == "Dlrowolleh11!"
+solution("11Helloworld!") == "11Dlrowolleh!"
 solution("Abstraction is often one floor above you.") == "Noitcartsba si netfo eno roolf evoba uoy."
 """
 
@@ -56,7 +62,7 @@ expected  = "Olleh! Era uoy."
 [[asserts]]
 arguments = ["11Helloworld!"]
 comment   = "With numbers and punctuation"
-expected  = "Dlrowolleh11!"
+expected  = "11Dlrowolleh!"
 
 [[asserts]]
 arguments = ["Abstraction is often one floor above you."]
@@ -197,3 +203,18 @@ expected  = "Peed Gninrael"
 arguments = ["Artificial Intelligence"]
 comment   = "AI full term"
 expected  = "Laicifitra Ecnegilletni"
+
+[[asserts]]
+arguments = ["WOW That's Amazing!"]
+comment   = "An apostrophe inside a word"
+expected  = "WOW S'taht Gnizama!"
+
+[[asserts]]
+arguments = ["Do you like my T-shirt?"]
+comment   = "A hyphen inside a word"
+expected  = "Od uoy ekil ym Trihs-t?"
+
+[[asserts]]
+arguments = ["My BFF lives in Arden-Arcade and works at the AT'n'T shop."]
+comment   = "Very complicated sentence"
+expected  = "Ym FFB sevil ni EdacrA-nedra dna skrow ta eht T'N'tA pohs."

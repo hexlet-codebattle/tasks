@@ -13,7 +13,7 @@ description_ru = """
 
 limits = """
 - $-100 \\leq arr[i] \\leq 100$
-- $2 \\leq \\text{len}(arr) \\leq 20$
+- $1 \\leq \\text{len}(arr) \\leq 20$
 """
 
 solution = """
@@ -188,3 +188,13 @@ expected  = -45
 arguments = [[8, 16, -24, 32]]
 comment   = "Multiples of 8"
 expected  = 32
+
+[[asserts]]
+arguments = [[67]]
+comment   = "Single positive number"
+expected  = 67
+
+[[asserts]]
+arguments = [[-20]]
+comment   = "Single negative number"
+expected  = -20

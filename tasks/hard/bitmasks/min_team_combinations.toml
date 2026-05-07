@@ -1,0 +1,200 @@
+level             = "hard"
+name              = "min_team_combinations"
+tags              = ["bitmask", "brute_force", "algo"]
+time_to_solve_sec = 500
+
+description_en = """
+You are given an array of integers `people`, where each integer represents the skill set of a person as a bitmask (the $i$-th bit is $1$ if they have the $i$-th skill, and $0$ otherwise). You are also given an integer `target_skills` representing all the skills required for a project as a bitmask.
+
+Find the minimum number of people needed to form a team that covers all required skills. If it is impossible to cover all required skills, return `-1`.
+
+*Note:* The number of people is small enough that you can iterate through all possible combinations (subsets) of people, but iterating through all permutations will be too slow.
+"""
+
+description_ru = """
+Дан массив целых чисел `people`, где каждое число представляет набор навыков человека в виде битовой маски ($i$-й бит равен $1$, если у человека есть $i$-й навык, и $0$ в противном случае). Также дано целое число `target_skills`, представляющее все необходимые для проекта навыки в виде битовой маски.
+
+Найдите минимальное количество людей, необходимое для формирования команды, которая закроет все требуемые навыки. Если это сделать невозможно, верните `-1`.
+
+*Примечание:* Количество людей достаточно мало, чтобы перебрать все возможные комбинации (подмножества) людей, однако перебор всех перестановок будет слишком медленным.
+"""
+
+limits = """
+- $1 \leq \text{len}(\text{people}) \leq 15$
+- $0 \leq \text{people}[i] \leq 65535$
+- $1 \leq \text{target\_skills} \leq 65535$
+"""
+
+solution = """
+def solution(people: list[int], target_skills: int) -> int:
+    n = len(people)
+    ans = float('inf')
+    for i in range(1 << n):
+        mask = 0
+        cnt = 0
+        for j in range(n):
+            if (i >> j) & 1:
+                mask |= people[j]
+                cnt += 1
+        if (mask & target_skills) == target_skills:
+            if cnt < ans:
+                ans = cnt
+    return ans if ans != float('inf') else -1
+"""
+
+examples = """
+solution([1], 3) == -1
+solution([3], 3) == 1
+solution([1, 2], 3) == 2
+solution([1, 2, 4, 8], 15) == 4
+"""
+
+[[input_signature]]
+argument_name = "people"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "target_skills"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[3], 3]
+comment   = "Single person has all skills"
+expected  = 1
+
+[[asserts]]
+arguments = [[1], 3]
+comment   = "Impossible to form team"
+expected  = -1
+
+[[asserts]]
+arguments = [[1, 2], 3]
+comment   = "Two people needed"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3], 3]
+comment   = "Optimal person available"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 4, 8], 15]
+comment   = "Four distinct skills"
+expected  = 4
+
+[[asserts]]
+arguments = [[15, 1, 2, 4, 8], 15]
+comment   = "Best combination is one person"
+expected  = 1
+
+[[asserts]]
+arguments = [[3, 6, 12, 9], 15]
+comment   = "Pairs of overlapping skills"
+expected  = 2
+
+[[asserts]]
+arguments = [[10, 5], 15]
+comment   = "Perfect complementary skills"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 4, 8, 16, 32], 63]
+comment   = "Sequential bits needed"
+expected  = 6
+
+[[asserts]]
+arguments = [[63], 63]
+comment   = "Exact match for 6 bits"
+expected  = 1
+
+[[asserts]]
+arguments = [[31, 31, 31], 63]
+comment   = "Multiple people missing the same skill"
+expected  = -1
+
+[[asserts]]
+arguments = [[1, 2, 4], 7]
+comment   = "Simple powers of 2"
+expected  = 3
+
+[[asserts]]
+arguments = [[3, 5, 6], 7]
+comment   = "Overlapping minimal pairs"
+expected  = 2
+
+[[asserts]]
+arguments = [[7, 7, 7], 7]
+comment   = "Redundant complete sets"
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 0, 0, 7], 7]
+comment   = "Ignore zeros"
+expected  = 1
+
+[[asserts]]
+arguments = [[15, 16], 7]
+comment   = "Person has more skills than required"
+expected  = 1
+
+[[asserts]]
+arguments = [[8, 16, 32, 64], 120]
+comment   = "Higher bits exactly matched"
+expected  = 4
+
+[[asserts]]
+arguments = [[24, 48, 96], 120]
+comment   = "Two sets cover 4 bits"
+expected  = 2
+
+[[asserts]]
+arguments = [[17, 34, 68], 119]
+comment   = "Disjoint odd positions"
+expected  = 3
+
+[[asserts]]
+arguments = [[255], 255]
+comment   = "All 8 bits by 1"
+expected  = 1
+
+[[asserts]]
+arguments = [[15, 240], 255]
+comment   = "Halves of 8 bits"
+expected  = 2
+
+[[asserts]]
+arguments = [[3, 12, 48, 192], 255]
+comment   = "Quarter splits of 8 bits"
+expected  = 4
+
+[[asserts]]
+arguments = [[2, 4, 8, 16], 31]
+comment   = "Missing the lowest bit"
+expected  = -1
+
+[[asserts]]
+arguments = [[1, 4, 16, 64, 256], 341]
+comment   = "Alternating bits pattern"
+expected  = 5
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7], 7]
+comment   = "Many options, best is 1"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384], 32767]
+comment   = "Worst case full spread up to 15 bits"
+expected  = 15
+
+[[asserts]]
+arguments = [[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384], 65535]
+comment   = "Max elements but impossible to cover target"
+expected  = -1

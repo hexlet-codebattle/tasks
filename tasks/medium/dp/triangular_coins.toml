@@ -1,0 +1,195 @@
+level             = "medium"
+name              = "triangular_coins"
+tags              = ["math", "dp", "algorithms"]
+time_to_solve_sec = 400
+
+description_en = """
+You have $5$ different types of coins, each with a value equal to one of the first $5$ triangular numbers: $1$, $3$, $6$, $10$, and $15$. All coin types are available in unlimited quantities. 
+
+Your task is to determine the minimum number of coins sufficient to make a sum of exactly $n$.
+"""
+
+description_ru = """
+У вас есть $5$ различных типов монет, каждый из которых имеет значение, равное одному из первых $5$ треугольных чисел: $1$, $3$, $6$, $10$ и $15$. Все типы монет имеются в неограниченном количестве. 
+
+Ваша задача — определить, какого минимального количества монет достаточно, чтобы набрать сумму ровно $n$.
+"""
+
+limits = """
+- $0 \\leq n \\leq 10^4$
+"""
+
+solution = """
+def solution(n: int) -> int:
+    dp = [0] + [n] * n
+    for i in range(1, n + 1):
+        for c in [1, 3, 6, 10, 15]:
+            if i >= c:
+                dp[i] = min(dp[i], dp[i - c] + 1)
+    return dp[n]
+"""
+
+examples = """
+solution(0) == 0
+solution(2) == 2
+solution(12) == 2
+solution(100) == 7
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero sum needs zero coins"
+expected  = 0
+
+[[asserts]]
+arguments = [1]
+comment   = "Exact match for coin 1"
+expected  = 1
+
+[[asserts]]
+arguments = [2]
+comment   = "Two coins of 1"
+expected  = 2
+
+[[asserts]]
+arguments = [3]
+comment   = "Exact match for coin 3"
+expected  = 1
+
+[[asserts]]
+arguments = [4]
+comment   = "Coin 3 and coin 1"
+expected  = 2
+
+[[asserts]]
+arguments = [5]
+comment   = "One 3 and two 1s"
+expected  = 3
+
+[[asserts]]
+arguments = [6]
+comment   = "Exact match for coin 6"
+expected  = 1
+
+[[asserts]]
+arguments = [10]
+comment   = "Exact match for coin 10"
+expected  = 1
+
+[[asserts]]
+arguments = [12]
+comment   = "Greedy fails here (uses two 6s instead of 10+1+1)"
+expected  = 2
+
+[[asserts]]
+arguments = [15]
+comment   = "Exact match for coin 15"
+expected  = 1
+
+[[asserts]]
+arguments = [18]
+comment   = "One 15 and one 3"
+expected  = 2
+
+[[asserts]]
+arguments = [20]
+comment   = "Two 10s (greedy would incorrectly pick 15+3+1+1)"
+expected  = 2
+
+[[asserts]]
+arguments = [23]
+comment   = "Two 10s and one 3"
+expected  = 3
+
+[[asserts]]
+arguments = [24]
+comment   = "Coins 15, 6, and 3"
+expected  = 3
+
+[[asserts]]
+arguments = [28]
+comment   = "Coins 15, 10, and 3"
+expected  = 3
+
+[[asserts]]
+arguments = [29]
+comment   = "Requires 4 coins"
+expected  = 4
+
+[[asserts]]
+arguments = [30]
+comment   = "Two 15s"
+expected  = 2
+
+[[asserts]]
+arguments = [35]
+comment   = "One 15 and two 10s"
+expected  = 3
+
+[[asserts]]
+arguments = [40]
+comment   = "Two 15s and one 10"
+expected  = 3
+
+[[asserts]]
+arguments = [42]
+comment   = "Two 15s and two 6s"
+expected  = 4
+
+[[asserts]]
+arguments = [50]
+comment   = "Two 15s and two 10s"
+expected  = 4
+
+[[asserts]]
+arguments = [60]
+comment   = "Four 15s"
+expected  = 4
+
+[[asserts]]
+arguments = [99]
+comment   = "Six 15s and one 6 and one 3"
+expected  = 8
+
+[[asserts]]
+arguments = [100]
+comment   = "Six 15s and one 10"
+expected  = 7
+
+[[asserts]]
+arguments = [150]
+comment   = "Ten 15s"
+expected  = 10
+
+[[asserts]]
+arguments = [999]
+comment   = "Large number with remainder 9"
+expected  = 68
+
+[[asserts]]
+arguments = [1000]
+comment   = "Large number with remainder 10"
+expected  = 67
+
+[[asserts]]
+arguments = [4995]
+comment   = "Multiple of 15"
+expected  = 333
+
+[[asserts]]
+arguments = [9999]
+comment   = "Maximum bound close value"
+expected  = 668
+
+[[asserts]]
+arguments = [10000]
+comment   = "Maximum constraint limit"
+expected  = 667

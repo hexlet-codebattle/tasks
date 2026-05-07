@@ -1,0 +1,212 @@
+level             = "easy"
+name              = "add_two_fractions"
+tags              = ["math", "algorithms"]
+time_to_solve_sec = 200
+
+description_en = """
+Given two rational fractions $a/b$ and $c/d$, calculate their sum.
+
+Return the result as an irreducible fraction $m/n$, represented as an array of two integers `[m, n]`.
+"""
+
+description_ru = """
+Даны две рациональные дроби $a/b$ и $c/d$. Вычислите их сумму.
+
+Верните результат в виде несократимой дроби $m/n$, представленной как массив из двух целых чисел `[m, n]`.
+"""
+
+limits = """
+- $-1000 \leq a, c \leq 1000$
+- $1 \leq b, d \leq 1000$
+"""
+
+solution = """
+import math
+
+def solution(a: int, b: int, c: int, d: int) -> list:
+    num = a * d + c * b
+    den = b * d
+    g = math.gcd(num, den)
+    return [num // g, den // g]
+"""
+
+examples = """
+solution(1, 2, 1, 2) == [1, 1]
+solution(1, 3, 1, 6) == [1, 2]
+solution(2, 5, 1, 5) == [3, 5]
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "c"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "d"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 2, 1, 2]
+comment   = "Half plus half"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [1, 3, 1, 6]
+comment   = "Different denominators"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [2, 5, 1, 5]
+comment   = "Same denominator"
+expected  = [3, 5]
+
+[[asserts]]
+arguments = [0, 1, 0, 1]
+comment   = "Zeros"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [-1, 2, 1, 2]
+comment   = "Negative and positive cancellation"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [3, 4, 5, 6]
+comment   = "Reduction needed"
+expected  = [19, 12]
+
+[[asserts]]
+arguments = [1, 10, 1, 10]
+comment   = "Small fractions"
+expected  = [1, 5]
+
+[[asserts]]
+arguments = [-5, 8, 7, 12]
+comment   = "Negative and positive with different denominators"
+expected  = [-1, 24]
+
+[[asserts]]
+arguments = [1000, 1, 1000, 1]
+comment   = "Max values"
+expected  = [2000, 1]
+
+[[asserts]]
+arguments = [-1000, 1, 1000, 1]
+comment   = "Max absolute values cancelling"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [1, 1000, 1, 1000]
+comment   = "Max denominators"
+expected  = [1, 500]
+
+[[asserts]]
+arguments = [7, 3, 11, 5]
+comment   = "Prime denominators"
+expected  = [68, 15]
+
+[[asserts]]
+arguments = [0, 999, 0, 999]
+comment   = "Zeros with large denominators"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [2, 4, 2, 4]
+comment   = "Reducible inputs"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [5, 10, 15, 30]
+comment   = "Highly reducible inputs"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [-1, 3, -1, 6]
+comment   = "Two negatives"
+expected  = [-1, 2]
+
+[[asserts]]
+arguments = [100, 200, 300, 600]
+comment   = "Large reducible numbers"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [1, 7, 2, 7]
+comment   = "Prime denominator same"
+expected  = [3, 7]
+
+[[asserts]]
+arguments = [4, 5, -1, 5]
+comment   = "Negative numerator same denominator"
+expected  = [3, 5]
+
+[[asserts]]
+arguments = [-3, 7, -2, 7]
+comment   = "Both negative same denominator"
+expected  = [-5, 7]
+
+[[asserts]]
+arguments = [1, 2, -1, 4]
+comment   = "Mixed sign different denominator"
+expected  = [1, 4]
+
+[[asserts]]
+arguments = [10, 3, 10, 3]
+comment   = "Improper fractions"
+expected  = [20, 3]
+
+[[asserts]]
+arguments = [-5, 2, -7, 2]
+comment   = "Negative improper fractions"
+expected  = [-6, 1]
+
+[[asserts]]
+arguments = [8, 9, 7, 9]
+comment   = "Result needs reduction"
+expected  = [5, 3]
+
+[[asserts]]
+arguments = [11, 12, 5, 12]
+comment   = "Result needs reduction by 4"
+expected  = [4, 3]
+
+[[asserts]]
+arguments = [1, 99, 1, 99]
+comment   = "No reduction possible"
+expected  = [2, 99]
+
+[[asserts]]
+arguments = [99, 100, 1, 100]
+comment   = "Sums to 1"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [1, 8, 3, 8]
+comment   = "Simple reduction by 4"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [-1, 8, -3, 8]
+comment   = "Negative simple reduction"
+expected  = [-1, 2]
+
+[[asserts]]
+arguments = [0, 5, 1, 5]
+comment   = "Zero plus fraction"
+expected  = [1, 5]

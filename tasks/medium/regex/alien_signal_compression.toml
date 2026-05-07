@@ -1,0 +1,204 @@
+level             = "medium"
+name              = "alien_signal_compression"
+tags              = ["strings", "regex"]
+time_to_solve_sec = 400
+
+description_en = """
+You intercept an alien transmission and need to compress it to save storage space.
+
+The transmission is a string containing words (only English letters), numbers (valid 32-bit integers without leading zeros), spaces, tabs, and newlines. Compress the message using the following three steps:
+
+1. Replace all newlines (`\n`) with semicolons (`;`), then remove all spaces and tabs.
+2. Reduce every word (a contiguous sequence of letters) to just its first letter, preserving the original case.
+3. Compress numbers ending in consecutive zeros using standard scientific notation (e.g., `1750000` becomes `175e4`). Only do this if the resulting string is **strictly shorter** than the original number.
+
+Return the fully compressed transmission.
+"""
+
+description_ru = """
+Вы перехватили инопланетную передачу, и ее необходимо сжать для экономии места.
+
+Передача представляет собой строку, содержащую слова (только английские буквы), числа (корректные 32-битные целые числа без ведущих нулей), пробелы, табуляции и символы перевода строки. Сожмите сообщение, выполнив следующие три шага:
+
+1. Замените все переводы строк (`\n`) на точки с запятой (`;`), затем удалите все пробелы и табуляции.
+2. Сократите каждое слово (непрерывную последовательность букв) до первой буквы, сохранив её регистр.
+3. Сожмите числа, оканчивающиеся на идущие подряд нули, используя стандартную нотацию (например, `1750000` становится `175e4`). Делайте это **только если** полученная строка строго короче исходного числа.
+
+Верните полностью сжатую передачу.
+"""
+
+limits = """
+- $1 \leq \text{len}(\text{text}) \leq 10^4$
+- $\text{text}$ contains only English letters, digits, spaces, tabs, and newline characters.
+- All numbers are valid 32-bit integers without leading zeros (except for $0$ itself).
+"""
+
+solution = """
+import re
+
+def solution(text: str) -> str:
+    text = re.sub(r'[a-zA-Z]+', lambda m: m.group()[0], text)
+    
+    def comp_num(m):
+        v = m.group()
+        s = v.rstrip('0')
+        return min(v, f"{s}e{len(v)-len(s)}" if s else v, key=len)
+        
+    text = re.sub(r'\\d+', comp_num, text)
+    return text.replace(' ', '').replace('\\t', '').replace('\\n', ';')
+"""
+
+examples = """
+solution("Alpha 1000") == "A1e3"
+solution("Hello\\nWorld") == "H;W"
+solution("100 1000") == "1001e3"
+solution("A 0 B 0") == "A0B0"
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Alpha 1000"]
+comment   = "Compress number and word"
+expected  = "A1e3"
+
+[[asserts]]
+arguments = ["Hello\nWorld"]
+comment   = "Newline to semicolon"
+expected  = "H;W"
+
+[[asserts]]
+arguments = ["100 1000"]
+comment   = "Strictly shorter requirement for numbers"
+expected  = "1001e3"
+
+[[asserts]]
+arguments = ["A 0 B 0"]
+comment   = "Zero handling"
+expected  = "A0B0"
+
+[[asserts]]
+arguments = ["Space     Tabs\t\t\tHere"]
+comment   = "Multiple whitespace removal"
+expected  = "STH"
+
+[[asserts]]
+arguments = ["Number 5000000 is Big"]
+comment   = "Large number compression"
+expected  = "N5e6iB"
+
+[[asserts]]
+arguments = ["Very\nLong\nTransmission\n1000000000"]
+comment   = "Multiple newlines and large number"
+expected  = "V;L;T;1e9"
+
+[[asserts]]
+arguments = ["NoZerosHere 12345"]
+comment   = "Number without zeros"
+expected  = "NH12345"
+
+[[asserts]]
+arguments = ["ZerosAtStart 1002000"]
+comment   = "Zeros inside and at end"
+expected  = "ZAS1002e3"
+
+[[asserts]]
+arguments = ["Mix 100 and 1000"]
+comment   = "Mix of compressible and uncompressible numbers"
+expected  = "M100a1e3"
+
+[[asserts]]
+arguments = ["   \t\n   "]
+comment   = "Only whitespace"
+expected  = ";"
+
+[[asserts]]
+arguments = ["ABC DEF GHI"]
+comment   = "All caps words"
+expected  = "ADG"
+
+[[asserts]]
+arguments = ["a1b2c3d4"]
+comment   = "Alternating words and numbers without spaces"
+expected  = "a1b2c3d4"
+
+[[asserts]]
+arguments = ["1200 34000 560000"]
+comment   = "Multiple compressible and uncompressible numbers"
+expected  = "120034e356e4"
+
+[[asserts]]
+arguments = ["End of transmission 0"]
+comment   = "Words with zero"
+expected  = "Eot0"
+
+[[asserts]]
+arguments = ["A B C\n1 2 3\nD E F\n4000 50000"]
+comment   = "Complex mixed string"
+expected  = "ABC;123;DEF;4e35e4"
+
+[[asserts]]
+arguments = ["Trailing zeros in word 1000"]
+comment   = "Sentence with compressible number"
+expected  = "Tziw1e3"
+
+[[asserts]]
+arguments = ["One 1 Two 20 Three 300 Four 4000"]
+comment   = "Scaling zeros"
+expected  = "O1T20T300F4e3"
+
+[[asserts]]
+arguments = ["X Y Z 1000000000 2000000000"]
+comment   = "Maximum 32-bit limits"
+expected  = "XYZ1e92e9"
+
+[[asserts]]
+arguments = ["lower CASE upper CASE"]
+comment   = "Mixed casing preservation"
+expected  = "lCuC"
+
+[[asserts]]
+arguments = ["Multi\nLine\n\n\nTest"]
+comment   = "Consecutive newlines"
+expected  = "M;L;;;T"
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Single digit"
+expected  = "1"
+
+[[asserts]]
+arguments = ["Z"]
+comment   = "Single letter"
+expected  = "Z"
+
+[[asserts]]
+arguments = ["10"]
+comment   = "Ten is not strictly shorter as 1e1"
+expected  = "10"
+
+[[asserts]]
+arguments = ["200"]
+comment   = "Two hundred is not strictly shorter as 2e2"
+expected  = "200"
+
+[[asserts]]
+arguments = ["50000000 000"]
+comment   = "Space separated zeros"
+expected  = "5e7000"
+
+[[asserts]]
+arguments = ["a\n\n\nb\t\t\tc 10000"]
+comment   = "Dense separators"
+expected  = "a;;;bc1e4"
+
+[[asserts]]
+arguments = ["word1000word"]
+comment   = "Number sandwiched between words"
+expected  = "w1e3w"

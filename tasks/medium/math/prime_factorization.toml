@@ -1,0 +1,199 @@
+level             = "medium"
+name              = "prime_factorization"
+tags              = ["math", "algorithms"]
+time_to_solve_sec = 400
+
+description_en = """
+Given an integer $n$, decompose it into prime factors and return the result as a string.
+
+The prime factors must be ordered in ascending order. Represent the decomposition in the format `"p1^k1*p2^k2*..."`. If a prime factor has a power of $1$, omit the exponent.
+"""
+
+description_ru = """
+Дано целое число $n$. Разложите его на простые множители и верните результат в виде строки.
+
+Простые множители должны быть расположены в порядке возрастания. Представьте разложение в формате `"p1^k1*p2^k2*..."`. Если степень множителя равна $1$, опустите показатель степени.
+"""
+
+limits = """
+- $2 \leq n \leq 10^9$
+"""
+
+solution = """
+def solution(n: int) -> str:
+    res, d = [], 2
+    while d * d <= n:
+        c = 0
+        while n % d == 0:
+            c, n = c + 1, n // d
+        if c:
+            res.append(f"{d}^{c}" if c > 1 else str(d))
+        d += 1
+    if n > 1:
+        res.append(str(n))
+    return "*".join(res)
+"""
+
+examples = """
+solution(2) == "2"
+solution(12) == "2^2*3"
+solution(1008) == "2^4*3^2*7"
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [2]
+comment   = "Smallest prime"
+expected  = "2"
+
+[[asserts]]
+arguments = [3]
+comment   = "Small prime"
+expected  = "3"
+
+[[asserts]]
+arguments = [4]
+comment   = "Smallest composite"
+expected  = "2^2"
+
+[[asserts]]
+arguments = [12]
+comment   = "Mixed small factors"
+expected  = "2^2*3"
+
+[[asserts]]
+arguments = [13]
+comment   = "Prime number"
+expected  = "13"
+
+[[asserts]]
+arguments = [25]
+comment   = "Square of prime"
+expected  = "5^2"
+
+[[asserts]]
+arguments = [27]
+comment   = "Cube of prime"
+expected  = "3^3"
+
+[[asserts]]
+arguments = [30]
+comment   = "Product of distinct small primes"
+expected  = "2*3*5"
+
+[[asserts]]
+arguments = [97]
+comment   = "Prime near 100"
+expected  = "97"
+
+[[asserts]]
+arguments = [100]
+comment   = "Powers of 2 and 5"
+expected  = "2^2*5^2"
+
+[[asserts]]
+arguments = [121]
+comment   = "Square of 11"
+expected  = "11^2"
+
+[[asserts]]
+arguments = [144]
+comment   = "Square of 12"
+expected  = "2^4*3^2"
+
+[[asserts]]
+arguments = [210]
+comment   = "Product of first four primes"
+expected  = "2*3*5*7"
+
+[[asserts]]
+arguments = [360]
+comment   = "Multiple factors"
+expected  = "2^3*3^2*5"
+
+[[asserts]]
+arguments = [1008]
+comment   = "From description"
+expected  = "2^4*3^2*7"
+
+[[asserts]]
+arguments = [1024]
+comment   = "Power of 2"
+expected  = "2^10"
+
+[[asserts]]
+arguments = [86400]
+comment   = "Seconds in a day"
+expected  = "2^7*3^3*5^2"
+
+[[asserts]]
+arguments = [123456]
+comment   = "Contains larger prime factor"
+expected  = "2^6*3*643"
+
+[[asserts]]
+arguments = [131072]
+comment   = "Power of 2"
+expected  = "2^17"
+
+[[asserts]]
+arguments = [65537]
+comment   = "Fermat prime"
+expected  = "65537"
+
+[[asserts]]
+arguments = [510510]
+comment   = "Product of first 7 primes"
+expected  = "2*3*5*7*11*13*17"
+
+[[asserts]]
+arguments = [1000003]
+comment   = "Prime just over a million"
+expected  = "1000003"
+
+[[asserts]]
+arguments = [1048575]
+comment   = "Composite near power of 2"
+expected  = "3*5^2*11*31*41"
+
+[[asserts]]
+arguments = [1048576]
+comment   = "2^20"
+expected  = "2^20"
+
+[[asserts]]
+arguments = [1999966]
+comment   = "2 times large prime"
+expected  = "2*999983"
+
+[[asserts]]
+arguments = [9699690]
+comment   = "Product of first 8 primes"
+expected  = "2*3*5*7*11*13*17*19"
+
+[[asserts]]
+arguments = [223092870]
+comment   = "Product of first 9 primes"
+expected  = "2*3*5*7*11*13*17*19*23"
+
+[[asserts]]
+arguments = [536870912]
+comment   = "Large power of 2"
+expected  = "2^29"
+
+[[asserts]]
+arguments = [999983]
+comment   = "Large prime"
+expected  = "999983"
+
+[[asserts]]
+arguments = [1000000000]
+comment   = "Max limit boundary"
+expected  = "2^9*5^9"

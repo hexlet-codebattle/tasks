@@ -1,0 +1,220 @@
+level             = "medium"
+name              = "lucky_base"
+tags              = ["math", "number_theory", "brute_force"]
+time_to_solve_sec = 400
+
+description_en = """
+Schoolboy Vasya likes numbers that end with his lucky digit `k`. Every time he sees a natural number `n`, he tries to find a base `d` ($d > 2$) such that the representation of `n` in base `d` ends with the maximum possible number of digits `k`.
+
+Write a function that, given `n` and `k`, finds such `d`.
+- A valid base must be strictly greater than $2$ and strictly greater than $k$ (since $k$ is a digit in base $d$).
+- If there are multiple bases providing the same maximum number of trailing `k`s, return the smallest one.
+- If no base can produce even a single `k` at the end, return the smallest valid base evaluated (which is $\\max(3, k + 1)$).
+"""
+
+description_ru = """
+Школьнику Васе нравятся числа, которые заканчиваются счастливыми для него цифрами `k`. Поэтому каждый раз, когда он видит какое-нибудь натуральное число `n`, он сразу пытается подобрать такое основание системы счисления `d` ($d > 2$), чтобы число `n` в этой системе заканчивалось как можно большим количеством цифр `k`.
+
+Напишите функцию, которая по заданным `n` и `k` найдет такое `d`.
+- Допустимое основание должно быть строго больше $2$ и строго больше $k$ (так как $k$ — это цифра в системе с основанием $d$).
+- Если таких оснований несколько, верните наименьшее из них.
+- Если ни одно основание не дает ни одной цифры `k` на конце, верните наименьшее проверяемое основание (то есть $\\max(3, k + 1)$).
+"""
+
+limits = """
+- $1 \\leq n \\leq 10^4$
+- $0 \\leq k \\leq 10^4$
+"""
+
+solution = """
+def solution(n: int, k: int) -> int:
+    best_d, max_len = max(3, k + 1), -1
+    for d in range(max(3, k + 1), n + 2):
+        t, c = n, 0
+        while t > 0 and t % d == k:
+            c += 1
+            t //= d
+        if c > max_len:
+            max_len, best_d = c, d
+    return best_d
+"""
+
+examples = """
+solution(4, 2) == 3
+solution(10, 0) == 5
+solution(21, 1) == 4
+solution(20, 2) == 9
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [21, 1]
+comment   = "Normal case with base 4 giving three 1s"
+expected  = 4
+
+[[asserts]]
+arguments = [10, 0]
+comment   = "Ends in 0"
+expected  = 5
+
+[[asserts]]
+arguments = [4, 2]
+comment   = "No valid base, returns min allowed"
+expected  = 3
+
+[[asserts]]
+arguments = [16, 0]
+comment   = "Power of 2"
+expected  = 4
+
+[[asserts]]
+arguments = [100, 4]
+comment   = "Two 4s in base 6"
+expected  = 6
+
+[[asserts]]
+arguments = [1000, 5]
+comment   = "Large base for one 5"
+expected  = 199
+
+[[asserts]]
+arguments = [20, 2]
+comment   = "Two 2s in base 9"
+expected  = 9
+
+[[asserts]]
+arguments = [12, 0]
+comment   = "One 0 in multiple bases, picks smallest"
+expected  = 3
+
+[[asserts]]
+arguments = [7, 1]
+comment   = "Two 1s in base 6"
+expected  = 6
+
+[[asserts]]
+arguments = [2000, 0]
+comment   = "Three zeros in base 5"
+expected  = 5
+
+[[asserts]]
+arguments = [27, 0]
+comment   = "Three zeros in base 3"
+expected  = 3
+
+[[asserts]]
+arguments = [81, 0]
+comment   = "Four zeros in base 3"
+expected  = 3
+
+[[asserts]]
+arguments = [25, 0]
+comment   = "Two zeros in base 5"
+expected  = 5
+
+[[asserts]]
+arguments = [10000, 0]
+comment   = "Four zeros in base 5"
+expected  = 5
+
+[[asserts]]
+arguments = [10000, 9]
+comment   = "Large base prime factorization"
+expected  = 97
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "n equals k"
+expected  = 3
+
+[[asserts]]
+arguments = [1, 0]
+comment   = "n less than base logic"
+expected  = 3
+
+[[asserts]]
+arguments = [8, 2]
+comment   = "Two 2s in base 3"
+expected  = 3
+
+[[asserts]]
+arguments = [15, 3]
+comment   = "Two 3s in base 4"
+expected  = 4
+
+[[asserts]]
+arguments = [31, 3]
+comment   = "Two 3s in base 4 as well"
+expected  = 4
+
+[[asserts]]
+arguments = [120, 0]
+comment   = "One 0, picks smallest base"
+expected  = 3
+
+[[asserts]]
+arguments = [24, 0]
+comment   = "One 0, picks smallest base"
+expected  = 3
+
+[[asserts]]
+arguments = [36, 0]
+comment   = "Two zeros in base 3 and 6, picks 3"
+expected  = 3
+
+[[asserts]]
+arguments = [48, 0]
+comment   = "Two zeros in base 4"
+expected  = 4
+
+[[asserts]]
+arguments = [111, 1]
+comment   = "Three 1s in base 10"
+expected  = 10
+
+[[asserts]]
+arguments = [1000, 0]
+comment   = "Three zeros in base 5 (beats base 10)"
+expected  = 5
+
+[[asserts]]
+arguments = [255, 3]
+comment   = "Four 3s in base 4"
+expected  = 4
+
+[[asserts]]
+arguments = [15, 1]
+comment   = "One 1 in base 7"
+expected  = 7
+
+[[asserts]]
+arguments = [3, 2]
+comment   = "No valid base, n > k and no match"
+expected  = 3
+
+[[asserts]]
+arguments = [6, 5]
+comment   = "No valid base, returns minimum possible base 6"
+expected  = 6
+
+[[asserts]]
+arguments = [80, 8]
+comment   = "Two 8s in base 9"
+expected  = 9
+
+[[asserts]]
+arguments = [1000, 1]
+comment   = "One 1 in base 3"
+expected  = 3

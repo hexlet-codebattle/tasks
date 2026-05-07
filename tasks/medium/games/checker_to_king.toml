@@ -1,0 +1,181 @@
+level             = "medium"
+name              = "checker_to_king"
+tags              = ["math", "dynamic_programming", "games"]
+time_to_solve_sec = 400
+
+description_en = """
+On an $8 \\times 8$ chessboard, there is a single white checker. It can move diagonally forward (one step up-left or up-right).
+
+Given its starting column `x` (from $1$ to $8$, counting from the left) and row `y` (from $1$ to $8$, counting from the bottom), return the number of ways it can reach the last row ($y = 8$) to become a king. The checker cannot move outside the board limits.
+"""
+
+description_ru = """
+На шахматной доске $8 \\times 8$ стоит одна белая шашка. Она может двигаться по диагонали вперед (на одну клетку влево-вверх или вправо-вверх).
+
+По заданному начальному столбцу `x` (от $1$ до $8$, считая слева) и строке `y` (от $1$ до $8$, считая снизу), верните количество способов, которыми она может дойти до последней строки ($y = 8$) и стать дамкой. Шашка не может выходить за пределы доски.
+"""
+
+limits = """
+- $1 \\leq x \\leq 8$
+- $1 \\leq y \\leq 8$
+"""
+
+solution = """
+def solution(x: int, y: int) -> int:
+    dp = [[0] * 10 for _ in range(9)]
+    dp[y][x] = 1
+    for r in range(y + 1, 9):
+        for c in range(1, 9):
+            dp[r][c] = dp[r-1][c-1] + dp[r-1][c+1]
+    return sum(dp[8])
+"""
+
+examples = """
+solution(1, 8) == 1
+solution(1, 7) == 1
+solution(2, 7) == 2
+solution(4, 1) == 103
+"""
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "y"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 8]
+comment   = "Already a king on the left edge"
+expected  = 1
+
+[[asserts]]
+arguments = [4, 8]
+comment   = "Already a king in the middle"
+expected  = 1
+
+[[asserts]]
+arguments = [8, 8]
+comment   = "Already a king on the right edge"
+expected  = 1
+
+[[asserts]]
+arguments = [1, 7]
+comment   = "One step away on the left edge"
+expected  = 1
+
+[[asserts]]
+arguments = [2, 7]
+comment   = "One step away, can go left or right"
+expected  = 2
+
+[[asserts]]
+arguments = [5, 7]
+comment   = "One step away in the middle"
+expected  = 2
+
+[[asserts]]
+arguments = [8, 7]
+comment   = "One step away on the right edge"
+expected  = 1
+
+[[asserts]]
+arguments = [1, 6]
+comment   = "Two steps from the left edge"
+expected  = 2
+
+[[asserts]]
+arguments = [2, 6]
+comment   = "Two steps away"
+expected  = 3
+
+[[asserts]]
+arguments = [4, 6]
+comment   = "Two steps away in the middle"
+expected  = 4
+
+[[asserts]]
+arguments = [7, 6]
+comment   = "Two steps away near right edge"
+expected  = 3
+
+[[asserts]]
+arguments = [2, 5]
+comment   = "Three steps away"
+expected  = 6
+
+[[asserts]]
+arguments = [5, 5]
+comment   = "Three steps away in the middle"
+expected  = 8
+
+[[asserts]]
+arguments = [8, 5]
+comment   = "Three steps away on right edge"
+expected  = 3
+
+[[asserts]]
+arguments = [3, 4]
+comment   = "Four steps away"
+expected  = 14
+
+[[asserts]]
+arguments = [4, 4]
+comment   = "Four steps away in the middle"
+expected  = 15
+
+[[asserts]]
+arguments = [7, 4]
+comment   = "Four steps away near right edge"
+expected  = 10
+
+[[asserts]]
+arguments = [2, 3]
+comment   = "Five steps away"
+expected  = 20
+
+[[asserts]]
+arguments = [5, 3]
+comment   = "Five steps away in the middle"
+expected  = 29
+
+[[asserts]]
+arguments = [3, 2]
+comment   = "Six steps away"
+expected  = 49
+
+[[asserts]]
+arguments = [6, 2]
+comment   = "Six steps away, mirrored"
+expected  = 49
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "Full board distance, left edge"
+expected  = 35
+
+[[asserts]]
+arguments = [2, 1]
+comment   = "Full board distance"
+expected  = 69
+
+[[asserts]]
+arguments = [4, 1]
+comment   = "Full board distance, inner column"
+expected  = 103
+
+[[asserts]]
+arguments = [5, 1]
+comment   = "Full board distance, inner column mirrored"
+expected  = 103
+
+[[asserts]]
+arguments = [8, 1]
+comment   = "Full board distance, right edge"
+expected  = 35

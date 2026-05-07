@@ -1,0 +1,187 @@
+level             = "easy"
+name              = "lecture_hall_schedule"
+tags              = ["greedy", "sorting", "intervals", "arrays"]
+time_to_solve_sec = 250
+
+description_en = """
+You are given a lecture hall where several professors want to give their lectures. To make a schedule, professors submitted requests represented as an array of two integers `[start, end]`, denoting the start time and end time of the lecture.
+
+Lectures are half-open intervals `[start, end)`, meaning a new lecture can start at the exact moment another one finishes without a break.
+
+Determine the **maximum** number of requests that can be fulfilled without any overlaps.
+"""
+
+description_ru = """
+Дана лекционная аудитория, в которой несколько профессоров хотят прочесть свои лекции. Для составления расписания профессора подали заявки, каждая из которых представлена массивом из двух целых чисел `[start, end]`, обозначающих время начала и конца лекции.
+
+Лекция считается открытым полуинтервалом `[start, end)`, то есть какая-то лекция может начаться ровно в момент окончания другой, без перерыва.
+
+Составьте расписание занятий так, чтобы выполнить **максимальное** количество заявок.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{requests}) \\leq 10^5$
+- $0 \\leq \\text{start} < \\text{end} \\leq 10^9$
+"""
+
+solution = """
+def solution(requests: list) -> int:
+    count = end_time = 0
+    for s, e in sorted(requests, key=lambda x: x[1]):
+        if s >= end_time:
+            count, end_time = count + 1, e
+    return count
+"""
+
+examples = """
+solution([[1, 3], [2, 4], [3, 5]]) == 2
+solution([[1, 2], [2, 3], [3, 4]]) == 3
+solution([[0, 10], [1, 3], [3, 5], [5, 7], [7, 9]]) == 4
+"""
+
+[[input_signature]]
+argument_name = "requests"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty schedule"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 2]]]
+comment   = "Single lecture"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 2], [2, 3]]]
+comment   = "Two non-overlapping lectures"
+expected  = 2
+
+[[asserts]]
+arguments = [[[1, 3], [2, 4]]]
+comment   = "Two overlapping lectures"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 10], [5, 6]]]
+comment   = "Nested lectures"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 2], [2, 3], [3, 4]]]
+comment   = "Three consecutive lectures"
+expected  = 3
+
+[[asserts]]
+arguments = [[[1, 10], [2, 3], [4, 5], [6, 7]]]
+comment   = "One long, multiple short inside"
+expected  = 3
+
+[[asserts]]
+arguments = [[[2, 5], [2, 5], [2, 5]]]
+comment   = "Identical lecture requests"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 3], [2, 4], [3, 5], [4, 6], [5, 7]]]
+comment   = "Interleaved lectures"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 10], [1, 9], [2, 8], [3, 7]]]
+comment   = "Complete nested overlap"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 2], [2, 3], [10, 11], [11, 12]]]
+comment   = "Two isolated clusters"
+expected  = 4
+
+[[asserts]]
+arguments = [[[1, 2], [1000000, 1000001]]]
+comment   = "Large gap between lectures"
+expected  = 2
+
+[[asserts]]
+arguments = [[[3, 4], [1, 2], [5, 6], [2, 3]]]
+comment   = "Unsorted continuous sequence"
+expected  = 4
+
+[[asserts]]
+arguments = [[[1, 5], [5, 10], [10, 15]]]
+comment   = "Touching edges"
+expected  = 3
+
+[[asserts]]
+arguments = [[[1, 2], [1, 3], [1, 4]]]
+comment   = "Same start time, different end times"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 5], [2, 5], [3, 5]]]
+comment   = "Different start times, same end time"
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 4], [3, 6], [5, 8], [7, 10]]]
+comment   = "Overlapping sequence"
+expected  = 2
+
+[[asserts]]
+arguments = [[[5, 9], [1, 4], [3, 8], [0, 6], [5, 7], [6, 10], [8, 11]]]
+comment   = "Complex unsorted overlaps"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 100], [10, 20], [20, 30], [30, 40], [40, 50], [50, 60]]]
+comment   = "Long span covering sequence"
+expected  = 5
+
+[[asserts]]
+arguments = [[[0, 1]]]
+comment   = "Single short element"
+expected  = 1
+
+[[asserts]]
+arguments = [[[2, 5], [1, 3], [3, 4], [4, 6]]]
+comment   = "Overlaps with early finish option"
+expected  = 3
+
+[[asserts]]
+arguments = [[[10, 15], [12, 17], [15, 20], [18, 22], [20, 25]]]
+comment   = "Chain of events with alternative overlaps"
+expected  = 3
+
+[[asserts]]
+arguments = [[[1, 5], [1, 5], [1, 5], [1, 5]]]
+comment   = "Same intervals repeated"
+expected  = 1
+
+[[asserts]]
+arguments = [[[5, 10], [6, 11], [7, 12], [8, 13], [9, 14], [10, 15]]]
+comment   = "Constantly shifting intervals"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 1], [0, 2], [0, 3], [0, 4]]]
+comment   = "Multiple starts at zero"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 100], [1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]]
+comment   = "Multiple small inside one extremely large"
+expected  = 5
+
+[[asserts]]
+arguments = [[[0, 10], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]]
+comment   = "One long, rest touching but mutually exclusive"
+expected  = 5

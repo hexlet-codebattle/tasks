@@ -1,0 +1,186 @@
+level             = "medium"
+name              = "minimal_time_partition"
+tags              = ["math", "algorithms", "optimization"]
+time_to_solve_sec = 450
+
+description_en = """
+On a distant planet, a day lasts exactly $n$ seconds. 
+
+Represent the number $n$ as a product of three natural numbers $a, b, c$ ($a \cdot b \cdot c = n$) such that the difference between the maximum and minimum of these three numbers is **minimal**.
+
+Return the three numbers as a list sorted in ascending order.
+"""
+
+description_ru = """
+На некоторой планете сутки длятся ровно $n$ секунд.
+
+Представьте число $n$ в виде произведения трёх натуральных чисел $a, b, c$ ($a \cdot b \cdot c = n$) так, чтобы разность между максимальным и минимальным из этих чисел была **минимальной**.
+
+Верните эти три числа в виде списка, отсортированного по возрастанию.
+"""
+
+limits = """
+- $1 \leq n \leq 10^9$
+"""
+
+solution = """
+def solution(n: int) -> list:
+    res, min_diff = [], n
+    for a in range(1, int(n**(1/3)) + 2):
+        if n % a == 0:
+            k = n // a
+            for b in range(int(k**0.5), a - 1, -1):
+                if k % b == 0:
+                    c = k // b
+                    if c - a < min_diff:
+                        min_diff, res = c - a, [a, b, c]
+                    break
+    return sorted(res)
+"""
+
+examples = """
+solution(1) == [1, 1, 1]
+solution(24) == [2, 3, 4]
+solution(60) == [3, 4, 5]
+solution(1000) == [10, 10, 10]
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+comment   = "Smallest possible input"
+expected  = [1, 1, 1]
+
+[[asserts]]
+arguments = [2]
+comment   = "Small prime"
+expected  = [1, 1, 2]
+
+[[asserts]]
+arguments = [3]
+comment   = "Small prime"
+expected  = [1, 1, 3]
+
+[[asserts]]
+arguments = [4]
+comment   = "Perfect square"
+expected  = [1, 2, 2]
+
+[[asserts]]
+arguments = [6]
+comment   = "Small composite"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [8]
+comment   = "Perfect cube"
+expected  = [2, 2, 2]
+
+[[asserts]]
+arguments = [12]
+comment   = "Multiple factors"
+expected  = [2, 2, 3]
+
+[[asserts]]
+arguments = [24]
+comment   = "Standard Earth hour/day logic"
+expected  = [2, 3, 4]
+
+[[asserts]]
+arguments = [27]
+comment   = "Odd perfect cube"
+expected  = [3, 3, 3]
+
+[[asserts]]
+arguments = [30]
+comment   = "Product of three primes"
+expected  = [2, 3, 5]
+
+[[asserts]]
+arguments = [48]
+comment   = "Minimal difference search"
+expected  = [3, 4, 4]
+
+[[asserts]]
+arguments = [60]
+comment   = "Standard Earth minute/hour logic"
+expected  = [3, 4, 5]
+
+[[asserts]]
+arguments = [64]
+comment   = "Power of 2"
+expected  = [4, 4, 4]
+
+[[asserts]]
+arguments = [72]
+comment   = "Highly composite"
+expected  = [3, 4, 6]
+
+[[asserts]]
+arguments = [100]
+comment   = "Perfect square 10x10"
+expected  = [4, 5, 5]
+
+[[asserts]]
+arguments = [120]
+comment   = "Composite near cube root"
+expected  = [4, 5, 6]
+
+[[asserts]]
+arguments = [125]
+comment   = "Perfect cube of 5"
+expected  = [5, 5, 5]
+
+[[asserts]]
+arguments = [216]
+comment   = "Perfect cube of 6"
+expected  = [6, 6, 6]
+
+[[asserts]]
+arguments = [999]
+comment   = "Large composite"
+expected  = [3, 9, 37]
+
+[[asserts]]
+arguments = [1000]
+comment   = "Large perfect cube"
+expected  = [10, 10, 10]
+
+[[asserts]]
+arguments = [1001]
+comment   = "Product of 7, 11, 13"
+expected  = [7, 11, 13]
+
+[[asserts]]
+arguments = [3600]
+comment   = "Seconds in an hour"
+expected  = [15, 15, 16]
+
+[[asserts]]
+arguments = [86400]
+comment   = "Seconds in a standard day"
+expected  = [40, 45, 48]
+
+[[asserts]]
+arguments = [999999937]
+comment   = "Large prime number"
+expected  = [1, 1, 999999937]
+
+[[asserts]]
+arguments = [1000000]
+comment   = "One million"
+expected  = [100, 100, 100]
+
+[[asserts]]
+arguments = [1000000000]
+comment   = "Maximum input - one billion"
+expected  = [1000, 1000, 1000]

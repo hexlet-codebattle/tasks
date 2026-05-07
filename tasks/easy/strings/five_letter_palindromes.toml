@@ -1,0 +1,175 @@
+level             = "easy"
+name              = "five_letter_palindromes"
+tags              = ["strings", "filtering"]
+time_to_solve_sec = 240
+
+description_en = """
+Given a string `text`, find all palindrome words of exactly $5$ characters.
+
+A word consists only of English letters. Ignore all punctuation marks, digits, and character cases.
+Return a list of unique found palindromes in lowercase, sorted alphabetically.
+"""
+
+description_ru = """
+В заданной строке `text` найдите все слова-палиндромы длиной ровно $5$ символов.
+
+Слово состоит только из английских букв. Игнорируйте любые знаки препинания, цифры и регистр символов.
+Верните список найденных уникальных палиндромов в нижнем регистре, отсортированный по алфавиту.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{text}) \\leq 10^5$
+"""
+
+solution = """
+def solution(text: str) -> list:
+    words = "".join(c if c.isalpha() else " " for c in text).lower().split()
+    return sorted(list({w for w in words if len(w) == 5 and w == w[::-1]}))
+"""
+
+examples = """
+solution("No palindromes here!") == []
+solution("Civic duty is good.") == ["civic"]
+solution("Madam, see a kayak and radar.") == ["kayak", "madam", "radar"]
+solution("Level? Stats! Rotor. Tenet.") == ["level", "rotor", "stats", "tenet"]
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = []
+
+[[asserts]]
+arguments = ["     "]
+comment   = "Only whitespaces"
+expected  = []
+
+[[asserts]]
+arguments = ["hello world"]
+comment   = "No palindromes at all"
+expected  = []
+
+[[asserts]]
+arguments = ["apple banana cherry"]
+comment   = "Five-letter words, but not palindromes"
+expected  = []
+
+[[asserts]]
+arguments = ["madam"]
+comment   = "One exact lowercase palindrome"
+expected  = ["madam"]
+
+[[asserts]]
+arguments = ["KAYAK"]
+comment   = "One exact uppercase palindrome"
+expected  = ["kayak"]
+
+[[asserts]]
+arguments = ["mAdAm"]
+comment   = "Mixed case palindrome"
+expected  = ["madam"]
+
+[[asserts]]
+arguments = ["wow mom dad"]
+comment   = "Palindromes, but shorter than 5 characters"
+expected  = []
+
+[[asserts]]
+arguments = ["racecar repaper"]
+comment   = "Palindromes, but longer than 5 characters"
+expected  = []
+
+[[asserts]]
+arguments = ["civic duty is a good thing"]
+comment   = "Sentence with one valid palindrome"
+expected  = ["civic"]
+
+[[asserts]]
+arguments = ["Level rotor stats tenet"]
+comment   = "Multiple valid palindromes without punctuation"
+expected  = ["level", "rotor", "stats", "tenet"]
+
+[[asserts]]
+arguments = ["Madam, I see a kayak and a radar."]
+comment   = "Multiple valid palindromes with punctuation"
+expected  = ["kayak", "madam", "radar"]
+
+[[asserts]]
+arguments = ["stats stats STATS stats!"]
+comment   = "Duplicate valid palindromes"
+expected  = ["stats"]
+
+[[asserts]]
+arguments = ["12345 54345 12321"]
+comment   = "Numbers should be ignored"
+expected  = []
+
+[[asserts]]
+arguments = ["abcde1edcba"]
+comment   = "Numbers acting as word separators"
+expected  = ["abcde", "edcba"]
+
+[[asserts]]
+arguments = ["-radar- *civic* 'kayak'"]
+comment   = "Words wrapped in punctuation"
+expected  = ["civic", "kayak", "radar"]
+
+[[asserts]]
+arguments = ["\t\nlevel\r\n"]
+comment   = "Whitespace and escape characters"
+expected  = ["level"]
+
+[[asserts]]
+arguments = ["A man, a plan, a canal, Panama!"]
+comment   = "Complex sentence with no 5-letter palindromes"
+expected  = []
+
+[[asserts]]
+arguments = ["Alula is a bird, right?"]
+comment   = "Valid palindrome at the beginning"
+expected  = ["alula"]
+
+[[asserts]]
+arguments = ["Did you see the minim?"]
+comment   = "Valid palindrome at the end"
+expected  = ["minim"]
+
+[[asserts]]
+arguments = ["solos kayak solos radar"]
+comment   = "Repeated multiple palindromes"
+expected  = ["kayak", "radar", "solos"]
+
+[[asserts]]
+arguments = ["tenet rotor stats level madam civic kayak solos alula minim"]
+comment   = "Many 5-letter palindromes to sort"
+expected  = ["alula", "civic", "kayak", "level", "madam", "minim", "rotor", "solos", "stats", "tenet"]
+
+[[asserts]]
+arguments = ["refer to the manual"]
+comment   = "Valid palindrome in text"
+expected  = ["refer"]
+
+[[asserts]]
+arguments = ["abcdcba abcba a"]
+comment   = "Mixed length palindromes"
+expected  = ["abcba"]
+
+[[asserts]]
+arguments = ["noon deed peep"]
+comment   = "Even length palindromes only"
+expected  = []
+
+[[asserts]]
+arguments = ["This is a test string containing exactly zero matching words."]
+comment   = "Long string with no matches"
+expected  = []

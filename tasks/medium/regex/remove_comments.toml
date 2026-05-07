@@ -1,0 +1,176 @@
+level             = "medium"
+name              = "remove_comments"
+tags              = ["strings", "regex", "parsing"]
+time_to_solve_sec = 400
+
+description_en = """
+Given a string `code`, remove all single-line comments starting with `//`.
+
+A comment starts with `//` and continues until the end of the line (the `\\n` character). However, if `//` is located inside a string literal (enclosed in double `"` or single `'` quotes), it should **not** be removed.
+
+Assume that quotes are always properly closed and there are no escaped quotes (like `\\"`) inside the strings. Return the modified code.
+"""
+
+description_ru = """
+Дана строка `code`. Удалите из нее все однострочные комментарии, начинающиеся с `//`.
+
+Комментарий начинается с `//` и продолжается до конца строки (символа переноса строки `\\n`). Однако, если `//` находится внутри строкового литерала (заключенного в двойные `"` или одинарные `'` кавычки), он **не** должен удаляться.
+
+Гарантируется, что кавычки всегда закрыты и внутри строк нет экранированных кавычек (например, `\\"`). Верните измененный код.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{code}) \\leq 10^4$
+- The string only contains valid ASCII characters.
+"""
+
+solution = """
+import re
+
+def solution(code: str) -> str:
+    return re.sub(r'(".*?"|\\'.*?\\')|//.*', lambda m: m.group(1) or "", code)
+"""
+
+examples = """
+solution("//") == ""
+solution("a = 1 // c") == "a = 1 "
+solution("s = '//' // no") == "s = '//' "
+"""
+
+[[input_signature]]
+argument_name = "code"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = ""
+
+[[asserts]]
+arguments = ["//"]
+comment   = "Only comment"
+expected  = ""
+
+[[asserts]]
+arguments = ["a = 1;"]
+comment   = "No comment"
+expected  = "a = 1;"
+
+[[asserts]]
+arguments = ["a = 1; // variable"]
+comment   = "Simple comment"
+expected  = "a = 1; "
+
+[[asserts]]
+arguments = ["\"//\""]
+comment   = "Comment inside double quotes"
+expected  = "\"//\""
+
+[[asserts]]
+arguments = ["'//'"]
+comment   = "Comment inside single quotes"
+expected  = "'//'"
+
+[[asserts]]
+arguments = ["a = \"//\"; // comment"]
+comment   = "String and comment"
+expected  = "a = \"//\"; "
+
+[[asserts]]
+arguments = ["a = '//'; // comment"]
+comment   = "Single quoted string and comment"
+expected  = "a = '//'; "
+
+[[asserts]]
+arguments = ["a = 1\n// b\nc = 2"]
+comment   = "Newline and whole line comment"
+expected  = "a = 1\n\nc = 2"
+
+[[asserts]]
+arguments = ["//1\n//2\n//3"]
+comment   = "Multiple comment lines"
+expected  = "\n\n"
+
+[[asserts]]
+arguments = ["a // 1\nb // 2"]
+comment   = "Code and comments on multiple lines"
+expected  = "a \nb "
+
+[[asserts]]
+arguments = ["///"]
+comment   = "Three slashes"
+expected  = ""
+
+[[asserts]]
+arguments = ["////"]
+comment   = "Four slashes"
+expected  = ""
+
+[[asserts]]
+arguments = ["/"]
+comment   = "Single slash"
+expected  = "/"
+
+[[asserts]]
+arguments = ["a / b"]
+comment   = "Division operator"
+expected  = "a / b"
+
+[[asserts]]
+arguments = ["a // b // c"]
+comment   = "Comment character inside comment"
+expected  = "a "
+
+[[asserts]]
+arguments = ["\"//\" // \"//\""]
+comment   = "Quotes inside comment"
+expected  = "\"//\" "
+
+[[asserts]]
+arguments = ["'\"//\"' // comment"]
+comment   = "Nested quotes 1"
+expected  = "'\"//\"' "
+
+[[asserts]]
+arguments = ["\"'//'\" // comment"]
+comment   = "Nested quotes 2"
+expected  = "\"'//'\" "
+
+[[asserts]]
+arguments = ["print(\"hello // world\"); // print"]
+comment   = "Real life print statement"
+expected  = "print(\"hello // world\"); "
+
+[[asserts]]
+arguments = ["// a\n b // c\n d"]
+comment   = "Staggered code and comments"
+expected  = "\n b \n d"
+
+[[asserts]]
+arguments = ["return \"//\";\n// end"]
+comment   = "Return statement and comment"
+expected  = "return \"//\";\n"
+
+[[asserts]]
+arguments = ["string s = \"//\";"]
+comment   = "Just string definition"
+expected  = "string s = \"//\";"
+
+[[asserts]]
+arguments = ["char c = '/'; // slash"]
+comment   = "Char literal and comment"
+expected  = "char c = '/'; "
+
+[[asserts]]
+arguments = [" // "]
+comment   = "Comment with leading space"
+expected  = " "
+
+[[asserts]]
+arguments = ["  //"]
+comment   = "Comment with multiple leading spaces"
+expected  = "  "

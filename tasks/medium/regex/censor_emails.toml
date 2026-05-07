@@ -1,0 +1,196 @@
+level             = "medium"
+name              = "censor_emails"
+tags              = ["strings", "formatting"]
+time_to_solve_sec = 400
+
+description_en = """
+Given a string `text` containing words separated by single spaces. Some of these words are email addresses.
+
+In this task, an email address is defined as any word that contains exactly one `@` symbol and has at least one character before the `@`. 
+
+Your task is to censor these email addresses by keeping the first character of the local part (the part before `@`), replacing the rest of the local part with exactly three asterisks `***`, and keeping the `@` and the domain part intact.
+
+Return the censored text.
+"""
+
+description_ru = """
+Дана строка `text`, содержащая слова, разделенные одиночными пробелами. Некоторые из этих слов являются email-адресами.
+
+В этой задаче email-адрес определяется как любое слово, содержащее ровно один символ `@` и имеющее хотя бы один символ перед `@`. 
+
+Ваша задача — зацензурить эти email-адреса: оставьте первый символ локальной части (до `@`), замените остальную локальную часть ровно на три звездочки `***`, а символ `@` и доменную часть оставьте без изменений.
+
+Верните зацензуренный текст.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{text}) \\leq 10^4$
+"""
+
+solution = """
+def solution(text: str) -> str:
+    if not text:
+        return ""
+    res = []
+    for word in text.split(" "):
+        if word.count("@") == 1 and word.index("@") > 0:
+            u, d = word.split("@")
+            word = f"{u[0]}***@{d}"
+        res.append(word)
+    return " ".join(res)
+"""
+
+examples = """
+solution("") == ""
+solution("a@b.com") == "a***@b.com"
+solution("Contact a@a.com") == "Contact a***@a.com"
+solution("Hello john@example.com") == "Hello j***@example.com"
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["john@example.com"]
+comment   = "Single valid email"
+expected  = "j***@example.com"
+
+[[asserts]]
+arguments = ["My email is john@example.com today"]
+comment   = "Email in sentence"
+expected  = "My email is j***@example.com today"
+
+[[asserts]]
+arguments = ["Hello world"]
+comment   = "No emails"
+expected  = "Hello world"
+
+[[asserts]]
+arguments = ["Contact a@a.com or b@b.com"]
+comment   = "Multiple emails"
+expected  = "Contact a***@a.com or b***@b.com"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = ""
+
+[[asserts]]
+arguments = ["q@q.com"]
+comment   = "Single char username"
+expected  = "q***@q.com"
+
+[[asserts]]
+arguments = ["a@@b.com"]
+comment   = "Multiple @, not an email"
+expected  = "a@@b.com"
+
+[[asserts]]
+arguments = ["@twitter"]
+comment   = "Starts with @, not an email"
+expected  = "@twitter"
+
+[[asserts]]
+arguments = ["@"]
+comment   = "Just @"
+expected  = "@"
+
+[[asserts]]
+arguments = ["admin@mail.ru is my email"]
+comment   = "Email at start"
+expected  = "a***@mail.ru is my email"
+
+[[asserts]]
+arguments = ["Send to support@github.com"]
+comment   = "Email at end"
+expected  = "Send to s***@github.com"
+
+[[asserts]]
+arguments = ["Email: john@mail.com."]
+comment   = "Email with punctuation attached"
+expected  = "Email: j***@mail.com."
+
+[[asserts]]
+arguments = ["john.doe@example.com"]
+comment   = "Dots in username"
+expected  = "j***@example.com"
+
+[[asserts]]
+arguments = ["a@b.com c@d.com"]
+comment   = "Consecutive emails"
+expected  = "a***@b.com c***@d.com"
+
+[[asserts]]
+arguments = ["abc@superlongdomain.org"]
+comment   = "Long domain"
+expected  = "a***@superlongdomain.org"
+
+[[asserts]]
+arguments = ["ADMIN@SYS.COM"]
+comment   = "All caps"
+expected  = "A***@SYS.COM"
+
+[[asserts]]
+arguments = ["user123@123.com"]
+comment   = "Numbers in email"
+expected  = "u***@123.com"
+
+[[asserts]]
+arguments = ["hello"]
+comment   = "Single word no email"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["a@b.com and @handle or a@@b.com and valid@email.com"]
+comment   = "Mixed valid and invalid"
+expected  = "a***@b.com and @handle or a@@b.com and v***@email.com"
+
+[[asserts]]
+arguments = ["supercalifragilisticexpialidocious@mail.com"]
+comment   = "Very long username"
+expected  = "s***@mail.com"
+
+[[asserts]]
+arguments = ["user@a.b.c.d.com"]
+comment   = "Multiple dots in domain"
+expected  = "u***@a.b.c.d.com"
+
+[[asserts]]
+arguments = ["admin@"]
+comment   = "Missing domain"
+expected  = "a***@"
+
+[[asserts]]
+arguments = ["1admin@sys.net"]
+comment   = "Username starts with number"
+expected  = "1***@sys.net"
+
+[[asserts]]
+arguments = ["_admin@sys.net"]
+comment   = "Username starts with underscore"
+expected  = "_***@sys.net"
+
+[[asserts]]
+arguments = ["ab@c.com"]
+comment   = "Username length 2"
+expected  = "a***@c.com"
+
+[[asserts]]
+arguments = ["This is text without any emails at all"]
+comment   = "Long text without emails"
+expected  = "This is text without any emails at all"
+
+[[asserts]]
+arguments = ["Multiple formats user@domain.com admin@corp.net test@test.org"]
+comment   = "Many emails"
+expected  = "Multiple formats u***@domain.com a***@corp.net t***@test.org"
+
+[[asserts]]
+arguments = ["Nospaceshere:email@domain.com"]
+comment   = "Punctuation before"
+expected  = "N***@domain.com"

@@ -1,0 +1,185 @@
+level             = "easy"
+name              = "matrix_sums_equality"
+tags              = ["math", "arrays", "matrix"]
+time_to_solve_sec = 250
+
+description_en = """
+Given a $3 \times 3$ matrix of integers, determine if the sum of elements in every row and every column is the same. Return `true` if all sums are equal, otherwise return `false`.
+"""
+
+description_ru = """
+Дана матрица $3 \times 3$, состоящая из целых чисел. Проверьте, равны ли суммы чисел во всех строках и всех столбцах. Верните `true`, если все суммы равны, иначе — `false`.
+"""
+
+limits = """
+- $\text{len}(m) = 3$
+- $\text{len}(m[i]) = 3$
+- $-10^6 \leq m_{i,j} \leq 10^6$
+"""
+
+solution = """
+def solution(m: list) -> bool:
+    s = {sum(r) for r in m} | {sum(c) for c in zip(*m)}
+    return len(s) == 1
+"""
+
+examples = """
+solution([[1, 1, 1], [1, 1, 1], [1, 1, 1]]) == True
+solution([[8, 1, 6], [3, 5, 7], [4, 9, 2]]) == True
+solution([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) == False
+"""
+
+[[input_signature]]
+argument_name = "m"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[[1, 1, 1], [1, 1, 1], [1, 1, 1]]]
+comment   = "All identical elements"
+expected  = true
+
+[[asserts]]
+arguments = [[[8, 1, 6], [3, 5, 7], [4, 9, 2]]]
+comment   = "Classic 3x3 magic square (sum 15)"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]]]
+comment   = "Arithmetic progression (sums differ)"
+expected  = false
+
+[[asserts]]
+arguments = [[[0, 0, 0], [0, 0, 0], [0, 0, 0]]]
+comment   = "All zeros"
+expected  = true
+
+[[asserts]]
+arguments = [[[2, 7, 6], [9, 5, 1], [4, 3, 8]]]
+comment   = "Another magic square orientation"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 1], [2, 1, 1], [1, 1, 2]]]
+comment   = "Rows sum to 4, columns sum to 4"
+expected  = true
+
+[[asserts]]
+arguments = [[[-1, 1, 0], [1, -1, 0], [0, 0, 0]]]
+comment   = "Negative numbers summing to zero"
+expected  = true
+
+[[asserts]]
+arguments = [[[10, 20, 30], [30, 10, 20], [20, 30, 10]]]
+comment   = "Permutations of same numbers"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3], [1, 2, 3], [1, 2, 3]]]
+comment   = "Row sums equal, but column sums differ"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 1, 1], [2, 2, 2], [3, 3, 3]]]
+comment   = "Column sums equal, but row sums differ"
+expected  = false
+
+[[asserts]]
+arguments = [[[4, 9, 2], [3, 5, 7], [8, 1, 6]]]
+comment   = "Reflected magic square"
+expected  = true
+
+[[asserts]]
+arguments = [[[100, 0, 0], [0, 100, 0], [0, 0, 100]]]
+comment   = "Identity-like matrix (sums differ)"
+expected  = false
+
+[[asserts]]
+arguments = [[[5, 5, 5], [5, 5, 5], [5, 5, 4]]]
+comment   = "One element difference"
+expected  = false
+
+[[asserts]]
+arguments = [[[7, 0, 0], [0, 7, 0], [0, 0, 7]]]
+comment   = "Diagonal matrix with same values"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 1, 4], [4, 1, 1], [1, 4, 1]]]
+comment   = "Sums are all 6"
+expected  = true
+
+[[asserts]]
+arguments = [[[0, 5, -5], [-5, 0, 5], [5, -5, 0]]]
+comment   = "Zero sums with negative values"
+expected  = true
+
+[[asserts]]
+arguments = [[[10, 10, 10], [10, 10, 10], [10, 10, 11]]]
+comment   = "Almost equal"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 2, 3], [3, 2, 1], [2, 2, 2]]]
+comment   = "Rows sum to 6, columns sum to 6"
+expected  = true
+
+[[asserts]]
+arguments = [[[1000000, 0, 0], [0, 1000000, 0], [0, 0, 1000000]]]
+comment   = "Large values, unequal sums"
+expected  = false
+
+[[asserts]]
+arguments = [[[50, 50, 50], [50, 50, 50], [50, 50, 50]]]
+comment   = "Large identical values"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 0, 0], [0, 1, 0], [0, 0, 1]]]
+comment   = "Standard identity matrix"
+expected  = false
+
+[[asserts]]
+arguments = [[[2, 2, 2], [2, 2, 2], [2, 2, 2]]]
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 1], [1, 2, 1], [1, 2, 1]]]
+expected  = false
+
+[[asserts]]
+arguments = [[[3, 3, 3], [3, 3, 3], [3, 3, 2]]]
+expected  = false
+
+[[asserts]]
+arguments = [[[9, 9, 9], [9, 9, 9], [9, 9, 9]]]
+expected  = true
+
+[[asserts]]
+arguments = [[[6, 1, 8], [7, 5, 3], [2, 9, 4]]]
+comment   = "Valid magic square"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 1, 1], [1, 1, 1], [1, 1, 0]]]
+expected  = false
+
+[[asserts]]
+arguments = [[[-5, -5, -5], [-5, -5, -5], [-5, -5, -5]]]
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 4, 7], [2, 5, 8], [3, 6, 9]]]
+expected  = false
+
+[[asserts]]
+arguments = [[[3, 1, 5], [1, 5, 3], [5, 3, 1]]]
+comment   = "Row and column sums equal 9"
+expected  = true

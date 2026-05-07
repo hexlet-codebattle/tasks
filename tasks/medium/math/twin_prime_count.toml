@@ -1,0 +1,203 @@
+level             = "medium"
+name              = "twin_prime_count"
+tags              = ["math", "algorithms"]
+time_to_solve_sec = 400
+
+description_en = """
+A prime number $p$ is considered to have a "pair" if there exists another prime number $x$ such that $|p - x| = 2$.
+
+Given a segment $[a, b]$, find the total number of prime numbers within this segment that have a pair.
+
+Note that the pair $x$ does not necessarily have to belong to the segment $[a, b]$.
+"""
+
+description_ru = """
+Назовём парой простого числа $p$ такое простое число $x$, что $|p - x| = 2$.
+
+На отрезке $[a, b]$ найдите количество простых чисел, имеющих пару.
+
+Обратите внимание, что парное число $x$ не обязательно должно принадлежать отрезку $[a, b]$.
+"""
+
+limits = """
+- $0 \\leq a \\leq b \\leq 10^5$
+"""
+
+solution = """
+def solution(a: int, b: int) -> int:
+    def is_prime(n: int) -> bool:
+        if n < 2: return False
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0: return False
+        return True
+    return sum(1 for p in range(a, b + 1) if is_prime(p) and (is_prime(p - 2) or is_prime(p + 2)))
+"""
+
+examples = """
+solution(3, 3) == 1
+solution(1, 5) == 2
+solution(10, 20) == 4
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 5]
+comment   = "Small interval with pairs"
+expected  = 2
+
+[[asserts]]
+arguments = [10, 20]
+comment   = "Interval with multiple twin primes"
+expected  = 4
+
+[[asserts]]
+arguments = [3, 3]
+comment   = "Single prime with a pair"
+expected  = 1
+
+[[asserts]]
+arguments = [1, 10]
+comment   = "First ten numbers"
+expected  = 3
+
+[[asserts]]
+arguments = [20, 30]
+comment   = "Interval with one paired prime"
+expected  = 1
+
+[[asserts]]
+arguments = [30, 40]
+comment   = "Interval with one paired prime"
+expected  = 1
+
+[[asserts]]
+arguments = [40, 50]
+comment   = "Interval with two paired primes"
+expected  = 2
+
+[[asserts]]
+arguments = [50, 60]
+comment   = "Interval with one paired prime"
+expected  = 1
+
+[[asserts]]
+arguments = [60, 70]
+comment   = "Interval with one paired prime"
+expected  = 1
+
+[[asserts]]
+arguments = [70, 80]
+comment   = "Interval with two paired primes"
+expected  = 2
+
+[[asserts]]
+arguments = [80, 90]
+comment   = "Interval with no paired primes"
+expected  = 0
+
+[[asserts]]
+arguments = [90, 100]
+comment   = "Interval with no paired primes"
+expected  = 0
+
+[[asserts]]
+arguments = [1, 100]
+comment   = "Large interval up to 100"
+expected  = 15
+
+[[asserts]]
+arguments = [2, 2]
+comment   = "Single prime without a pair"
+expected  = 0
+
+[[asserts]]
+arguments = [5, 5]
+comment   = "Single prime with pairs on both sides"
+expected  = 1
+
+[[asserts]]
+arguments = [7, 7]
+comment   = "Single prime with one pair"
+expected  = 1
+
+[[asserts]]
+arguments = [8, 8]
+comment   = "Single non-prime"
+expected  = 0
+
+[[asserts]]
+arguments = [13, 13]
+comment   = "Single prime with a pair"
+expected  = 1
+
+[[asserts]]
+arguments = [14, 16]
+comment   = "Interval without primes"
+expected  = 0
+
+[[asserts]]
+arguments = [100, 110]
+comment   = "Interval over 100 with multiple pairs"
+expected  = 4
+
+[[asserts]]
+arguments = [110, 120]
+comment   = "Prime in interval without a pair"
+expected  = 0
+
+[[asserts]]
+arguments = [227, 229]
+comment   = "Exact interval matching twin primes"
+expected  = 2
+
+[[asserts]]
+arguments = [200, 220]
+comment   = "Prime in interval without a pair"
+expected  = 0
+
+[[asserts]]
+arguments = [1, 2]
+comment   = "Interval with prime 2 only"
+expected  = 0
+
+[[asserts]]
+arguments = [140, 150]
+comment   = "Prime with a pair outside the right boundary"
+expected  = 1
+
+[[asserts]]
+arguments = [150, 160]
+comment   = "Prime with a pair outside the left boundary"
+expected  = 1
+
+[[asserts]]
+arguments = [149, 151]
+comment   = "Exact bounds matching twin primes"
+expected  = 2
+
+[[asserts]]
+arguments = [137, 139]
+comment   = "Exact bounds matching twin primes"
+expected  = 2
+
+[[asserts]]
+arguments = [1, 20]
+comment   = "First twenty numbers"
+expected  = 7
+
+[[asserts]]
+arguments = [0, 1]
+comment   = "Zeros and ones"
+expected  = 0

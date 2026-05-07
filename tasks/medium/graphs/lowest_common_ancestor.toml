@@ -1,0 +1,227 @@
+level             = "medium"
+name              = "lowest_common_ancestor"
+tags              = ["trees", "graphs", "algorithms"]
+time_to_solve_sec = 400
+
+description_en = """
+You are given a tree of $n$ nodes represented by a `parent` array, where `parent[i]` is the parent of node $i$. The root of the tree has `parent[root] = -1`.
+
+Given two nodes $u$ and $v$, return their Lowest Common Ancestor (LCA). The LCA is the deepest node that is an ancestor of both $u$ and $v$.
+"""
+
+description_ru = """
+Вам дано дерево из $n$ узлов, представленное массивом `parent`, где `parent[i]` — родитель узла $i$. Корень дерева имеет `parent[root] = -1`.
+
+Учитывая два узла $u$ и $v$, верните их наименьшего общего предка (LCA). LCA — это самый глубокий узел, который является предком как для $u$, так и для $v$.
+"""
+
+limits = """
+- $1 \leq \text{len}(\text{parent}) \leq 1000$
+- $-1 \leq \text{parent}[i] < \text{len}(\text{parent})$
+- $0 \leq u < \text{len}(\text{parent})$
+- $0 \leq v < \text{len}(\text{parent})$
+"""
+
+solution = """
+def solution(parent: list, u: int, v: int) -> int:
+    ancestors = set()
+    while u != -1:
+        ancestors.add(u)
+        u = parent[u]
+    while v != -1:
+        if v in ancestors:
+            return v
+        v = parent[v]
+    return -1
+"""
+
+examples = """
+solution([-1, 0, 0], 1, 2) == 0
+solution([-1, 0, 1, 2], 3, 1) == 1
+solution([-1, 0, 0, 1, 1, 2], 3, 4) == 1
+"""
+
+[[input_signature]]
+argument_name = "parent"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "u"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "v"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[-1], 0, 0]
+comment   = "Single node tree"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0], 1, 1]
+comment   = "Same node, two nodes tree"
+expected  = 1
+
+[[asserts]]
+arguments = [[-1, 0], 0, 1]
+comment   = "Root and child"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0], 1, 2]
+comment   = "Siblings, root is parent"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0], 1, 0]
+comment   = "Node and its parent"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0, 1, 1, 2, 2], 3, 4]
+comment   = "Deep siblings"
+expected  = 1
+
+[[asserts]]
+arguments = [[-1, 0, 0, 1, 1, 2, 2], 5, 6]
+comment   = "Deep siblings on the right"
+expected  = 2
+
+[[asserts]]
+arguments = [[-1, 0, 0, 1, 1, 2, 2], 3, 5]
+comment   = "Nodes on different branches"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0, 1, 1, 2, 2], 4, 6]
+comment   = "Different branches, level 2"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0, 1, 1, 2, 2], 1, 3]
+comment   = "Ancestor and descendant"
+expected  = 1
+
+[[asserts]]
+arguments = [[-1, 0, 0, 1, 1, 2, 2], 2, 6]
+comment   = "Ancestor and descendant right side"
+expected  = 2
+
+[[asserts]]
+arguments = [[-1, 0, 0, 1, 1, 2, 2], 0, 5]
+comment   = "Root and leaf"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0, 1, 1, 2, 2], 4, 2]
+comment   = "Leaf and uncle"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 1, 2, 3, 4], 3, 4]
+comment   = "Line graph, parent and child"
+expected  = 3
+
+[[asserts]]
+arguments = [[-1, 0, 1, 2, 3, 4], 0, 4]
+comment   = "Line graph, root and leaf"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 1, 2, 3, 4], 1, 4]
+comment   = "Line graph, intermediate node and leaf"
+expected  = 1
+
+[[asserts]]
+arguments = [[-1, 0, 1, 2, 3, 4], 2, 2]
+comment   = "Line graph, same node"
+expected  = 2
+
+[[asserts]]
+arguments = [[-1, 0, 1, 2, 3, 4], 4, 1]
+comment   = "Line graph, reverse order parameters"
+expected  = 1
+
+[[asserts]]
+arguments = [[-1, 0, 0, 0, 0, 0, 0], 1, 2]
+comment   = "Star graph, leaf siblings"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0, 0, 0, 0, 0], 3, 6]
+comment   = "Star graph, distant siblings"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0, 0, 0, 0, 0], 4, 5]
+comment   = "Star graph, adjacent siblings"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 0, 0, 0, 0, 0], 0, 3]
+comment   = "Star graph, root and leaf"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2, 3, -1, 3, 4], 0, 5]
+comment   = "Root is not at index 0"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 2, 3, -1, 3, 4], 1, 2]
+comment   = "Root not at 0, path components"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3, -1, 3, 4], 5, 3]
+comment   = "Root not at 0, leaf and root"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 2, 3, -1, 3, 4], 0, 4]
+comment   = "Root not at 0, across branches"
+expected  = 3
+
+[[asserts]]
+arguments = [[-1, 0, 1, 1, 0, 4, 4, 6], 2, 3]
+comment   = "Complex tree, simple LCA"
+expected  = 1
+
+[[asserts]]
+arguments = [[-1, 0, 1, 1, 0, 4, 4, 6], 5, 6]
+comment   = "Complex tree, mid-level LCA"
+expected  = 4
+
+[[asserts]]
+arguments = [[-1, 0, 1, 1, 0, 4, 4, 6], 5, 7]
+comment   = "Complex tree, different depths"
+expected  = 4
+
+[[asserts]]
+arguments = [[-1, 0, 1, 1, 0, 4, 4, 6], 2, 7]
+comment   = "Complex tree, cross branches to root"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 1, 1, 0, 4, 4, 6], 3, 5]
+comment   = "Complex tree, opposite sides"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1, 0, 1, 1, 0, 4, 4, 6], 6, 7]
+comment   = "Complex tree, direct line"
+expected  = 6
+
+[[asserts]]
+arguments = [[-1, 0, 1, 1, 0, 4, 4, 6], 1, 4]
+comment   = "Complex tree, high level nodes"
+expected  = 0

@@ -8,12 +8,12 @@ You are given two 4-digit integers: `secret` and `guess`.
 
 For each position:
 
-- If the digit in `guess` is the **same** as in `secret` and in the **same position**, it counts as a **bull**.
-- If the digit appears in `secret` but in a **different position**, it counts as a **cow**.
+- If a digit from `guess` matches the digit in `secret` at the **same position**, then it counts as a **bull**.
+- If a digit from `guess` appears in `secret`, but at the **another position**, then it counts as a **cow**. Note that no more than one digit from `guess` can be considered a **cow** in relation to the same digit in `secret`.
 
 Return an array `[bulls, cows]` with the number of bulls and cows for this pair.
 
-Although in the classic game all digits are different, your function must correctly handle **any** 4-digit numbers, including ones with repeated digits.
+Although all the digits in `secret` should be different in the classic game, your function must correctly handle **any** 4-digit numbers, including numbers with repeating digits (this is why the description of **cows** was specified).
 """
 
 description_ru = """
@@ -21,12 +21,12 @@ description_ru = """
 
 Для каждой позиции:
 
-- Если цифра в `guess` совпадает с цифрой в `secret` и стоит на **том же месте**, это **бык**.
-- Если цифра присутствует в `secret`, но стоит на **другом месте**, это **корова**.
+- Если цифра из `guess` совпадает с цифрой в `secret` на **том же месте**, то это **бык**.
+- Если цифра из `guess` присутствует в `secret`, но стоит на **другом месте**, то это **корова**. При этом по отношению к одной и той же цифре в `secret` **коровой** может считаться не более одной цифры из `guess`.
 
 Верните массив `[bulls, cows]` с количеством быков и коров для этой пары.
 
-Хотя в классической игре все цифры различны, ваша функция должна корректно обрабатывать **любые** четырёхзначные числа, включая числа с повторяющимися цифрами.
+Хотя в классической игре все цифры в `secret` должны быть различны, ваша функция должна корректно обрабатывать **любые** четырёхзначные числа, включая числа с повторяющимися цифрами (именно для этого было дано уточнение в описании **коров**).
 """
 
 limits = """

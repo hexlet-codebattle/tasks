@@ -39,9 +39,8 @@ from collections import Counter
 from typing import List
 
 def solution(secret: int, guess: int) -> List[int]:
-    s = str(secret)
-    g = str(guess)
-    bulls = sum(1 for i in range(4) if s[i] == g[i])
+    s, g = str(secret), str(guess)
+    bulls = sum(s[i] == g[i] for i in range(4))
     cs, cg = Counter(s), Counter(g)
     cows = sum(min(cs[d], cg[d]) for d in cs) - bulls
     return [bulls, cows]

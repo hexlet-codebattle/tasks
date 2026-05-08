@@ -198,3 +198,23 @@ expected  = [0, 4]
 arguments = [1023, 9876]
 comment   = "No common digits between secret and guess"
 expected  = [0, 0]
+
+[[asserts]]
+arguments = [7792, 8997]
+comment   = "One bull, one cow"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [4020, 5447]
+comment   = "One 4 in secret, two 4's in guess"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [2026, 7217]
+comment   = "Two 2's in secret, one 2 in guess"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [9429, 1999]
+comment   = "One 9 is bull, one 9 is cow, one 9 is nothing"
+expected  = [1, 1]

@@ -1,0 +1,231 @@
+level             = "hard"
+name              = "minimum_tree_cover"
+tags              = ["graphs", "trees", "dp"]
+time_to_solve_sec = 900
+
+description_en = """
+Given an undirected tree with `n` vertices labeled from $0$ to $n - 1$ and an array of `edges`, find the minimum number of vertices needed to cover all edges.
+
+A vertex is considered to cover all of its directly connected (incident) edges.
+"""
+
+description_ru = """
+Дано неориентированное дерево с `n` вершинами, пронумерованными от $0$ до $n - 1$, и массив `edges`. Найдите минимальное количество вершин, необходимое для покрытия всех ребер.
+
+Вершина считается покрывающей все свои непосредственно подключенные (инцидентные) ребра.
+"""
+
+limits = """
+- $1 \leq n \leq 10^5$
+- $\text{len}(\text{edges}) = n - 1$
+- $0 \leq \text{edges}[i][0], \text{edges}[i][1] < n$
+"""
+
+solution = """
+def solution(n: int, edges: list) -> int:
+    if n <= 1:
+        return 0
+        
+    adj = [[] for _ in range(n)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+        
+    order = []
+    parent = [-1] * n
+    q = [0]
+    
+    while q:
+        u = q.pop(0)
+        order.append(u)
+        for v in adj[u]:
+            if v != parent[u]:
+                parent[v] = u
+                q.append(v)
+                
+    inc = [1] * n
+    exc = [0] * n
+    
+    for u in reversed(order):
+        for v in adj[u]:
+            if v != parent[u]:
+                inc[u] += min(inc[v], exc[v])
+                exc[u] += inc[v]
+                
+    return min(inc[0], exc[0])
+"""
+
+examples = """
+solution(1, []) == 0
+solution(2, [[0, 1]]) == 1
+solution(3, [[0, 1], [0, 2]]) == 1
+solution(4, [[0, 1], [1, 2], [2, 3]]) == 2
+solution(5, [[0, 1], [1, 2], [2, 3], [3, 4]]) == 2
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "edges"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, []]
+comment   = "Single vertex, no edges"
+expected  = 0
+
+[[asserts]]
+arguments = [2, [[0, 1]]]
+comment   = "Two vertices, one edge"
+expected  = 1
+
+[[asserts]]
+arguments = [3, [[0, 1], [1, 2]]]
+comment   = "Three vertices path"
+expected  = 1
+
+[[asserts]]
+arguments = [4, [[0, 1], [0, 2], [0, 3]]]
+comment   = "Star graph with 4 vertices"
+expected  = 1
+
+[[asserts]]
+arguments = [4, [[0, 1], [1, 2], [2, 3]]]
+comment   = "Four vertices path"
+expected  = 2
+
+[[asserts]]
+arguments = [5, [[0, 1], [0, 2], [0, 3], [0, 4]]]
+comment   = "Star graph with 5 vertices"
+expected  = 1
+
+[[asserts]]
+arguments = [5, [[0, 1], [1, 2], [2, 3], [3, 4]]]
+comment   = "Five vertices path"
+expected  = 2
+
+[[asserts]]
+arguments = [7, [[0, 1], [0, 2], [1, 3], [1, 4], [2, 5], [2, 6]]]
+comment   = "Complete binary tree depth 2"
+expected  = 2
+
+[[asserts]]
+arguments = [6, [[0, 1], [0, 2], [0, 3], [3, 4], [4, 5]]]
+comment   = "Y-shaped tree"
+expected  = 2
+
+[[asserts]]
+arguments = [7, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]]
+comment   = "Seven vertices path"
+expected  = 3
+
+[[asserts]]
+arguments = [8, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]]]
+comment   = "Eight vertices path"
+expected  = 4
+
+[[asserts]]
+arguments = [9, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8]]]
+comment   = "Nine vertices path"
+expected  = 4
+
+[[asserts]]
+arguments = [10, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9]]]
+comment   = "Ten vertices path"
+expected  = 5
+
+[[asserts]]
+arguments = [11, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10]]]
+comment   = "Eleven vertices path"
+expected  = 5
+
+[[asserts]]
+arguments = [12, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11]]]
+comment   = "Twelve vertices path"
+expected  = 6
+
+[[asserts]]
+arguments = [13, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12]]]
+comment   = "Thirteen vertices path"
+expected  = 6
+
+[[asserts]]
+arguments = [14, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12], [12, 13]]]
+comment   = "Fourteen vertices path"
+expected  = 7
+
+[[asserts]]
+arguments = [8, [[0, 1], [0, 2], [0, 3], [0, 4], [1, 5], [1, 6], [1, 7]]]
+comment   = "Two connected stars"
+expected  = 2
+
+[[asserts]]
+arguments = [9, [[0, 2], [2, 1], [0, 3], [0, 4], [1, 5], [1, 6], [1, 7], [1, 8]]]
+comment   = "Two stars connected by a middle vertex"
+expected  = 2
+
+[[asserts]]
+arguments = [7, [[0, 1], [0, 2], [0, 3], [1, 4], [2, 5], [3, 6]]]
+comment   = "Subdivided star graph"
+expected  = 3
+
+[[asserts]]
+arguments = [9, [[0, 1], [0, 2], [0, 3], [0, 4], [1, 5], [2, 6], [3, 7], [4, 8]]]
+comment   = "Larger subdivided star graph"
+expected  = 4
+
+[[asserts]]
+arguments = [6, [[0, 1], [0, 2], [0, 3], [1, 4], [2, 5]]]
+comment   = "Asymmetrical subdivided star"
+expected  = 3
+
+[[asserts]]
+arguments = [10, [[0, 1], [1, 2], [2, 3], [3, 4], [0, 5], [1, 6], [2, 7], [3, 8], [4, 9]]]
+comment   = "Caterpillar graph"
+expected  = 5
+
+[[asserts]]
+arguments = [15, [[0, 1], [0, 2], [1, 3], [1, 4], [2, 5], [2, 6], [3, 7], [3, 8], [4, 9], [4, 10], [5, 11], [5, 12], [6, 13], [6, 14]]]
+comment   = "Complete binary tree depth 3"
+expected  = 5
+
+[[asserts]]
+arguments = [6, [[0, 1], [1, 2], [2, 3], [0, 4], [2, 5]]]
+comment   = "Comb graph"
+expected  = 2
+
+[[asserts]]
+arguments = [11, [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [1, 6], [2, 7], [3, 8], [4, 9], [5, 10]]]
+comment   = "Star where every leaf has exactly one leaf"
+expected  = 5
+
+[[asserts]]
+arguments = [15, [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9], [0, 10], [0, 11], [0, 12], [0, 13], [0, 14]]]
+comment   = "Large star graph"
+expected  = 1
+
+[[asserts]]
+arguments = [10, [[0, 1], [1, 2], [1, 3], [3, 4], [3, 5], [0, 6], [6, 7], [7, 8], [8, 9]]]
+comment   = "Random irregular tree"
+expected  = 4
+
+[[asserts]]
+arguments = [8, [[0, 1], [0, 2], [1, 3], [1, 4], [2, 5], [2, 6], [6, 7]]]
+comment   = "Another random irregular tree"
+expected  = 3
+
+[[asserts]]
+arguments = [3, [[1, 0], [2, 0]]]
+comment   = "Star graph with zero at center, unordered"
+expected  = 1

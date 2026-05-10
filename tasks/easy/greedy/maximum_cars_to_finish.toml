@@ -1,0 +1,208 @@
+level             = "easy"
+name              = "maximum_cars_to_finish"
+tags              = ["greedy", "math", "arrays"]
+time_to_solve_sec = 250
+
+description_en = """
+Sergey is organizing a road trip with his friends. There are $n$ cars, and each car needs exactly $x$ liters of fuel to reach the destination. The $i$-th car currently has $a_i$ liters of fuel.
+
+To maximize the number of cars that reach the destination, Sergey can choose any subset of cars, drain all their fuel, and redistribute it equally among them. He can repeat this process any number of times.
+
+Given the required fuel $x$ and the array $a$ containing the initial fuel of each car, return the maximum number of cars that can successfully reach the destination.
+"""
+
+description_ru = """
+Сергей решил организовать автопробег с друзьями. Всего участвует $n$ автомобилей, и чтобы доехать до финиша, каждой машине требуется ровно $x$ литров топлива. Изначально в $i$-й машине находится $a_i$ литров бензина.
+
+Чтобы до финиша доехало как можно больше участников, Сергей может выбрать любое подмножество автомобилей, слить с них всё топливо и затем поровну распределить его между этими же машинами. Эту операцию он может применять любое количество раз.
+
+Учитывая необходимое количество топлива $x$ и массив $a$, описывающий начальное количество бензина в каждой машине, верните максимальное число автомобилей, которые смогут добраться до финиша.
+"""
+
+limits = """
+- $1 \leq x \leq 10^4$
+- $1 \leq \text{len}(a) \leq 10^5$
+- $0 \leq a_i \leq 10^4$
+"""
+
+solution = """
+def solution(x: int, a: list) -> int:
+    a.sort(reverse=True)
+    total = 0
+    for i in range(len(a)):
+        total += a[i]
+        if total < x * (i + 1):
+            return i
+    return len(a)
+"""
+
+examples = """
+solution(10, [1, 2, 3]) == 0
+solution(4, [3, 2, 6, 2]) == 2
+solution(5, [10, 10, 10]) == 3
+"""
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [4, [3, 2, 6, 2]]
+comment   = "Example from the description"
+expected  = 2
+
+[[asserts]]
+arguments = [5, [10, 10, 10]]
+comment   = "All cars have more than enough fuel"
+expected  = 3
+
+[[asserts]]
+arguments = [10, [1, 2, 3]]
+comment   = "No car can be fully fueled"
+expected  = 0
+
+[[asserts]]
+arguments = [10, [15, 1, 1]]
+comment   = "One rich car can only sustain itself"
+expected  = 1
+
+[[asserts]]
+arguments = [10, [15, 5, 1]]
+comment   = "Top two cars can perfectly share to get 10 each"
+expected  = 2
+
+[[asserts]]
+arguments = [1, [0, 0, 0, 0]]
+comment   = "Zero fuel everywhere"
+expected  = 0
+
+[[asserts]]
+arguments = [1, [1, 1, 1, 1]]
+comment   = "Exact required fuel for everyone"
+expected  = 4
+
+[[asserts]]
+arguments = [2, [1, 1, 1, 1]]
+comment   = "Total is enough for 2 cars, but impossible to combine without draining others"
+expected  = 0
+
+[[asserts]]
+arguments = [2, [4, 0, 0, 0]]
+comment   = "One car sustains itself and one more"
+expected  = 2
+
+[[asserts]]
+arguments = [10, [100]]
+comment   = "Single car with abundant fuel"
+expected  = 1
+
+[[asserts]]
+arguments = [10, [9]]
+comment   = "Single car without enough fuel"
+expected  = 0
+
+[[asserts]]
+arguments = [10, [10]]
+comment   = "Single car with exact fuel"
+expected  = 1
+
+[[asserts]]
+arguments = [3, [2, 2, 2, 6]]
+comment   = "All cars can be sustained"
+expected  = 4
+
+[[asserts]]
+arguments = [3, [2, 2, 2, 5]]
+comment   = "Three cars can be sustained"
+expected  = 3
+
+[[asserts]]
+arguments = [5, [0, 0, 0, 20]]
+comment   = "One car fuels everyone"
+expected  = 4
+
+[[asserts]]
+arguments = [5, [0, 0, 0, 19]]
+comment   = "One car falls just short of fueling everyone"
+expected  = 3
+
+[[asserts]]
+arguments = [5, [6, 4, 6, 4]]
+comment   = "Pairs can perfectly compensate each other"
+expected  = 4
+
+[[asserts]]
+arguments = [100, [100, 100, 100, 100]]
+comment   = "All cars exact high requirement"
+expected  = 4
+
+[[asserts]]
+arguments = [100, [100, 100, 100, 99]]
+comment   = "One car ruins the perfect group"
+expected  = 3
+
+[[asserts]]
+arguments = [7, [8, 8, 8, 2, 2]]
+comment   = "Top three compensate, bottom two are too poor"
+expected  = 3
+
+[[asserts]]
+arguments = [3, [5, 5, 5, 5, 5]]
+comment   = "Abundant fuel uniform distribution"
+expected  = 5
+
+[[asserts]]
+arguments = [5, [8, 1, 1, 1, 1, 1, 1, 1]]
+comment   = "Many poor cars drag down the single rich one"
+expected  = 1
+
+[[asserts]]
+arguments = [2, [3, 3, 3, 3, 3, 0]]
+comment   = "Five rich cars can carry one empty car"
+expected  = 6
+
+[[asserts]]
+arguments = [10, [30, 0, 0, 0]]
+comment   = "One car provides enough for three exactly"
+expected  = 3
+
+[[asserts]]
+arguments = [10, [29, 0, 0, 0]]
+comment   = "One car falls short for three, sustains two"
+expected  = 2
+
+[[asserts]]
+arguments = [4, [7, 7, 1, 1]]
+comment   = "Two rich cars compensate exactly for two poor cars"
+expected  = 4
+
+[[asserts]]
+arguments = [5, [7, 7, 1, 1]]
+comment   = "Requirement increased, cannot sustain all"
+expected  = 3
+
+[[asserts]]
+arguments = [1, [2, 0]]
+comment   = "Two cars, simple test"
+expected  = 2
+
+[[asserts]]
+arguments = [15, [45, 2, 3, 4, 5]]
+comment   = "Large surplus from one car sustains some but not all"
+expected  = 3
+
+[[asserts]]
+arguments = [10, [15, 14, 1, 1, 1]]
+comment   = "Multiple rich cars cooperating"
+expected  = 3

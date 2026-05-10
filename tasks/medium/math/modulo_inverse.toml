@@ -1,0 +1,238 @@
+level             = "medium"
+name              = "modular_inverse"
+tags              = ["math", "number_theory", "modular_arithmetic"]
+time_to_solve_sec = 450
+
+description_en = """
+Given an integer $a$ and a prime number $m$, find the modular multiplicative inverse of $a$ modulo $m$. 
+
+The modular inverse of $a$ modulo $m$ is an integer $x$ such that $(a \\times x) \\pmod m = 1$. 
+
+If the inverse does not exist (for example, if $a$ is a multiple of $m$), return $-1$.
+"""
+
+description_ru = """
+Даны целое число $a$ и простое число $m$. Найдите модульное мультипликативное обратное для $a$ по модулю $m$. 
+
+Модульное обратное для $a$ по модулю $m$ — это такое целое число $x$, что $(a \\times x) \\pmod m = 1$. 
+
+Если обратного не существует (например, если $a$ кратно $m$), верните $-1$.
+"""
+
+limits = """
+- $-10^9 \\leq a \\leq 10^9$
+- $2 \\leq m \\leq 10^9+7$
+- $m$ is always a prime number
+"""
+
+solution = """
+def solution(a: int, m: int) -> int:
+    a = a % m
+    if a == 0:
+        return -1
+    return pow(a, m - 2, m)
+"""
+
+examples = """
+solution(0, 5) == -1
+solution(3, 11) == 4
+solution(10, 17) == 12
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "m"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [3, 11]
+comment   = "Simple prime modulo"
+expected  = 4
+
+[[asserts]]
+arguments = [10, 17]
+comment   = "Another prime modulo"
+expected  = 12
+
+[[asserts]]
+arguments = [2, 5]
+comment   = "Smallest odd prime"
+expected  = 3
+
+[[asserts]]
+arguments = [0, 7]
+comment   = "Zero input, no inverse"
+expected  = -1
+
+[[asserts]]
+arguments = [7, 7]
+comment   = "Multiple of modulo, no inverse"
+expected  = -1
+
+[[asserts]]
+arguments = [-3, 11]
+comment   = "Negative input"
+expected  = 7
+
+[[asserts]]
+arguments = [1, 13]
+comment   = "One modulo any prime is 1"
+expected  = 1
+
+[[asserts]]
+arguments = [-1, 13]
+comment   = "Minus one modulo prime"
+expected  = 12
+
+[[asserts]]
+arguments = [100, 3]
+comment   = "Large number small prime"
+expected  = 1
+
+[[asserts]]
+arguments = [2, 3]
+comment   = "Self-inverse modulo 3"
+expected  = 2
+
+[[asserts]]
+arguments = [3, 5]
+comment   = "Prime modulo 5"
+expected  = 2
+
+[[asserts]]
+arguments = [4, 5]
+comment   = "Modulo 5 minus one"
+expected  = 4
+
+[[asserts]]
+arguments = [5, 7]
+comment   = "Prime modulo 7"
+expected  = 3
+
+[[asserts]]
+arguments = [6, 7]
+comment   = "Self inverse modulo 7"
+expected  = 6
+
+[[asserts]]
+arguments = [2, 7]
+comment   = "Small number modulo 7"
+expected  = 4
+
+[[asserts]]
+arguments = [4, 7]
+comment   = "Symmetric case modulo 7"
+expected  = 2
+
+[[asserts]]
+arguments = [2, 11]
+comment   = "Modulo 11"
+expected  = 6
+
+[[asserts]]
+arguments = [5, 11]
+comment   = "Middle number modulo 11"
+expected  = 9
+
+[[asserts]]
+arguments = [8, 11]
+comment   = "Larger number modulo 11"
+expected  = 7
+
+[[asserts]]
+arguments = [9, 11]
+comment   = "Modulo 11 symmetric"
+expected  = 5
+
+[[asserts]]
+arguments = [14, 11]
+comment   = "Greater than modulo"
+expected  = 4
+
+[[asserts]]
+arguments = [-2, 11]
+comment   = "Negative input modulo 11"
+expected  = 5
+
+[[asserts]]
+arguments = [-4, 5]
+comment   = "Negative equivalent to 1"
+expected  = 1
+
+[[asserts]]
+arguments = [-5, 5]
+comment   = "Negative multiple of modulo"
+expected  = -1
+
+[[asserts]]
+arguments = [1, 2]
+comment   = "Smallest prime"
+expected  = 1
+
+[[asserts]]
+arguments = [2, 2]
+comment   = "Even number modulo 2"
+expected  = -1
+
+[[asserts]]
+arguments = [-1, 2]
+comment   = "Negative odd number modulo 2"
+expected  = 1
+
+[[asserts]]
+arguments = [15, 17]
+comment   = "Modulo 17"
+expected  = 8
+
+[[asserts]]
+arguments = [9, 19]
+comment   = "Modulo 19"
+expected  = 17
+
+[[asserts]]
+arguments = [-20, 19]
+comment   = "Negative exceeding modulo"
+expected  = 18
+
+[[asserts]]
+arguments = [2, 1000000007]
+comment   = "Large prime modulo, simple number"
+expected  = 500000004
+
+[[asserts]]
+arguments = [1000000006, 1000000007]
+comment   = "Large prime modulo, minus one equivalent"
+expected  = 1000000006
+
+[[asserts]]
+arguments = [1000000007, 1000000007]
+comment   = "Exact large prime multiple"
+expected  = -1
+
+[[asserts]]
+arguments = [-1000000000, 1000000007]
+comment   = "Large negative input near modulo"
+expected  = 142857144
+
+[[asserts]]
+arguments = [-2, 1000000007]
+comment   = "Negative small number with large prime"
+expected  = 500000003
+
+[[asserts]]
+arguments = [2, 998244353]
+comment   = "Alternative famous large prime"
+expected  = 499122177
+
+[[asserts]]
+arguments = [3, 998244353]
+comment   = "Alternative large prime inverse of 3"
+expected  = 332748118

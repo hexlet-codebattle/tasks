@@ -1,0 +1,226 @@
+level             = "easy"
+name              = "autobattler_squad"
+tags              = ["math", "greedy", "logic"]
+time_to_solve_sec = 240
+
+description_en = """
+In the game Autobattler, players form a squad by purchasing warriors from a shop.
+
+The upgrade system works as follows:
+- $3$ **normal** warriors automatically convert into $1$ **upgraded** warrior.
+- $3$ **upgraded** warriors automatically convert into $1$ **best** warrior.
+
+Each unit type has a specific strength value:
+- **Normal**: $1$
+- **Upgraded**: $4$
+- **Best**: $16$
+
+You have purchased $n$ normal warriors. However, you can only field a squad of at most $k$ warriors of any quality.
+
+Determine the maximum possible total strength of your squad.
+"""
+
+description_ru = """
+В игре Autobattler каждый игрок формирует свой отряд, покупая воинов из магазина.
+
+Система улучшений работает следующим образом:
+- $3$ **обычных** воина преобразуются в $1$ **усиленного** воина.
+- $3$ **усиленных** воина преобразуются в $1$ **лучшего** воина.
+
+Каждый тип юнита имеет определенную силу:
+- **Обычный**: $1$
+- **Усиленный**: $4$
+- **Лучший**: $16$
+
+Вы купили $n$ обычных воинов. Однако в отряд можно выставить не более $k$ воинов любого качества.
+
+Определите максимальную суммарную силу отряда, который вы сможете сформировать.
+"""
+
+limits = """
+- $0 \\leq n \\leq 10^9$
+- $0 \\leq k \\leq 10^9$
+"""
+
+solution = """
+def solution(n: int, k: int) -> int:
+    u, r_n = divmod(n, 3)
+    b, r_u = divmod(u, 3)
+    score = 0
+    for count, power in [(b, 16), (r_u, 4), (r_n, 1)]:
+        take = min(count, k)
+        score += take * power
+        k -= take
+    return score
+"""
+
+examples = """
+solution(1, 1) == 1
+solution(3, 1) == 4
+solution(9, 1) == 16
+solution(10, 2) == 17
+solution(25, 10) == 41
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 5]
+comment   = "No warriors bought"
+expected  = 0
+
+[[asserts]]
+arguments = [5, 0]
+comment   = "No space in squad"
+expected  = 0
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "One normal warrior"
+expected  = 1
+
+[[asserts]]
+arguments = [2, 1]
+comment   = "Two normal, squad limit one"
+expected  = 1
+
+[[asserts]]
+arguments = [3, 1]
+comment   = "Three normal become one upgraded"
+expected  = 4
+
+[[asserts]]
+arguments = [3, 3]
+comment   = "Space for three, but they merged into one"
+expected  = 4
+
+[[asserts]]
+arguments = [4, 1]
+comment   = "One upgraded and one normal, pick upgraded"
+expected  = 4
+
+[[asserts]]
+arguments = [4, 2]
+comment   = "One upgraded and one normal, take both"
+expected  = 5
+
+[[asserts]]
+arguments = [8, 2]
+comment   = "Two upgraded and two normal, squad limit two"
+expected  = 8
+
+[[asserts]]
+arguments = [9, 1]
+comment   = "Nine normal become three upgraded, then one best"
+expected  = 16
+
+[[asserts]]
+arguments = [10, 1]
+comment   = "One best and one normal, pick best"
+expected  = 16
+
+[[asserts]]
+arguments = [10, 2]
+comment   = "One best and one normal, take both"
+expected  = 17
+
+[[asserts]]
+arguments = [25, 1]
+comment   = "Pick one best from the collection"
+expected  = 16
+
+[[asserts]]
+arguments = [25, 10]
+comment   = "Large squad limit, take everything available"
+expected  = 41
+
+[[asserts]]
+arguments = [26, 2]
+comment   = "Two best available, squad limit two"
+expected  = 32
+
+[[asserts]]
+arguments = [27, 1]
+comment   = "Exactly enough for one best warrior"
+expected  = 16
+
+[[asserts]]
+arguments = [27, 3]
+comment   = "Still only one best warrior available"
+expected  = 16
+
+[[asserts]]
+arguments = [30, 2]
+comment   = "One best and one upgraded"
+expected  = 20
+
+[[asserts]]
+arguments = [50, 5]
+comment   = "Mix of tiers: 1 best, 5 upgraded, 2 normal"
+expected  = 32
+
+[[asserts]]
+arguments = [80, 2]
+comment   = "Two best warriors"
+expected  = 32
+
+[[asserts]]
+arguments = [81, 3]
+comment   = "Exactly three best warriors"
+expected  = 48
+
+[[asserts]]
+arguments = [100, 5]
+comment   = "High n, limited k"
+expected  = 80
+
+[[asserts]]
+arguments = [1000, 10]
+comment   = "Large n, take 10 best"
+expected  = 160
+
+[[asserts]]
+arguments = [123, 456]
+comment   = "k is larger than total units available"
+expected  = 83
+
+[[asserts]]
+arguments = [1000000, 100]
+comment   = "Extreme values: n = 10^6"
+expected  = 1600
+
+[[asserts]]
+arguments = [1000000000, 1]
+comment   = "Extreme values: n = 10^9, k = 1"
+expected  = 16
+
+[[asserts]]
+arguments = [9, 0]
+comment   = "No squad space"
+expected  = 0
+
+[[asserts]]
+arguments = [2, 10]
+comment   = "Two normal warriors, plenty of space"
+expected  = 2
+
+[[asserts]]
+arguments = [13, 2]
+comment   = "1 best, 1 upgraded, 1 normal. Limit 2"
+expected  = 20
+
+[[asserts]]
+arguments = [40, 40]
+comment   = "Take all: 1 best, 4 upgraded, 1 normal"
+expected  = 33

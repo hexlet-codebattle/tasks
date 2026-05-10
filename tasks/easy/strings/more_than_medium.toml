@@ -22,7 +22,7 @@ limits = """
 solution = """
 def solution(sentence: str) -> list:
     import re
-    words = re.findall(r'[\w-]+', sentence)
+    words = re.findall(r'[\\w-]+', sentence)
     if not words:
         return ["there is no result!"]
 

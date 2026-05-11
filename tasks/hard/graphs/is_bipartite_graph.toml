@@ -73,136 +73,136 @@ comment   = "Two disconnected nodes"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1], [0]]]]
+arguments = [[[1], [0]]]
 comment   = "Two connected nodes"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 2], [0, 2], [0, 1]]]]
+arguments = [[[1, 2], [0, 2], [0, 1]]]
 comment   = "Triangle (Not bipartite)"
 expected  = false
 
 [[asserts]]
-arguments = [[[[1, 3], [0, 2], [1, 3], [0, 2]]]]
+arguments = [[[1, 3], [0, 2], [1, 3], [0, 2]]]
 comment   = "Cycle of 4"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]]]
+arguments = [[[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]]
 comment   = "Cycle of 4 with a chord (contains triangle)"
 expected  = false
 
 [[asserts]]
-arguments = [[[[1], [0, 2], [1]]]]
+arguments = [[[1], [0, 2], [1]]]
 comment   = "Path of 3"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1], [0, 2], [1, 3], [2]]]]
+arguments = [[[1], [0, 2], [1, 3], [2]]]
 comment   = "Path of 4"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 3], [0, 2], [1, 3], [0, 2], []]]]
+arguments = [[[1, 3], [0, 2], [1, 3], [0, 2], []]]
 comment   = "Cycle of 4 + isolated node"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 4], [0, 2], [1, 3], [2, 4], [0, 3]]]]
+arguments = [[[1, 4], [0, 2], [1, 3], [2, 4], [0, 3]]]
 comment   = "Cycle of 5 (Not bipartite)"
 expected  = false
 
 [[asserts]]
-arguments = [[[[1, 5], [0, 2], [1, 3], [2, 4], [3, 5], [0, 4]]]]
+arguments = [[[1, 5], [0, 2], [1, 3], [2, 4], [3, 5], [0, 4]]]
 comment   = "Cycle of 6"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 2, 3], [0], [0], [0]]]]
+arguments = [[[1, 2, 3], [0], [0], [0]]]
 comment   = "Star graph with 4 nodes"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 2, 3, 4], [0], [0], [0], [0]]]]
+arguments = [[[1, 2, 3, 4], [0], [0], [0], [0]]]
 comment   = "Star graph with 5 nodes"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 2], [0, 3], [0, 3], [1, 2]]]]
+arguments = [[[1, 2], [0, 3], [0, 3], [1, 2]]]
 comment   = "Bipartite graph with overlapping edges"
 expected  = true
 
 [[asserts]]
-arguments = [[[[3, 4, 5], [3, 4, 5], [3, 4, 5], [0, 1, 2], [0, 1, 2], [0, 1, 2]]]]
+arguments = [[[3, 4, 5], [3, 4, 5], [3, 4, 5], [0, 1, 2], [0, 1, 2], [0, 1, 2]]]
 comment   = "Complete bipartite graph K_3,3"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 2, 3, 4], [0, 2, 3, 4], [0, 1, 3, 4], [0, 1, 2, 4], [0, 1, 2, 3]]]]
+arguments = [[[1, 2, 3, 4], [0, 2, 3, 4], [0, 1, 3, 4], [0, 1, 2, 4], [0, 1, 2, 3]]]
 comment   = "Complete graph K_5"
 expected  = false
 
 [[asserts]]
-arguments = [[[[1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [6]]]]
+arguments = [[[1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [6]]]
 comment   = "Path of 8"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [6, 0]]]]
+arguments = [[[1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [6, 0]]]
 comment   = "Cycle of 8"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 2], [0, 2], [0, 1, 3, 4], [2, 4], [2, 3]]]]
+arguments = [[[1, 2], [0, 2], [0, 1, 3, 4], [2, 4], [2, 3]]]
 comment   = "Two triangles joined at an edge"
 expected  = false
 
 [[asserts]]
-arguments = [[[[ ], [ ], [ ], [ ]]]]
+arguments = [[[ ], [ ], [ ], [ ]]]
 comment   = "Four isolated nodes"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1], [0], [3], [2]]]]
+arguments = [[[1], [0], [3], [2]]]
 comment   = "Two disjoint edges"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1], [0, 2], [1], [4, 5], [3, 5], [3, 4]]]]
+arguments = [[[1], [0, 2], [1], [4, 5], [3, 5], [3, 4]]]
 comment   = "Path of 3 + disconnected triangle"
 expected  = false
 
 [[asserts]]
-arguments = [[[[1, 2, 3], [0, 2], [0, 1], [0]]]]
+arguments = [[[1, 2, 3], [0, 2], [0, 1], [0]]]
 comment   = "Triangle with an attached node"
 expected  = false
 
 [[asserts]]
-arguments = [[[[3], [2], [1], [0]]]]
+arguments = [[[3], [2], [1], [0]]]
 comment   = "Two disjoint edges crossing over indices"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1, 2], [0], [0]]]]
+arguments = [[[1, 2], [0], [0]]]
 comment   = "V shape"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1], [0], [3], [2], [5], [4]]]]
+arguments = [[[1], [0], [3], [2], [5], [4]]]
 comment   = "Three disjoint edges"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 0]]]]
+arguments = [[[1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 0]]]
 comment   = "Cycle of 7"
 expected  = false
 
 [[asserts]]
-arguments = [[[[2, 3], [3, 4], [0], [0, 1], [1]]]]
+arguments = [[[2, 3], [3, 4], [0], [0, 1], [1]]]
 comment   = "Path of length 5"
 expected  = true
 
 [[asserts]]
-arguments = [[[[1], [0], [3, 5], [2, 4], [3, 5], [2, 4]]]]
+arguments = [[[1], [0], [3, 5], [2, 4], [3, 5], [2, 4]]]
 comment   = "Two separate bipartite components"
 expected  = true

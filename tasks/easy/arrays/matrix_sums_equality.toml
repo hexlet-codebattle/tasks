@@ -14,7 +14,7 @@ description_ru = """
 limits = """
 - $\text{len}(m) = 3$
 - $\text{len}(m[i]) = 3$
-- $-10^6 \leq m_{i,j} \leq 10^6$
+- $-10^6 \\leq m_{i,j} \\leq 10^6$
 """
 
 solution = """
@@ -98,8 +98,8 @@ expected  = true
 
 [[asserts]]
 arguments = [[[100, 0, 0], [0, 100, 0], [0, 0, 100]]]
-comment   = "Identity-like matrix (sums differ)"
-expected  = false
+comment   = "Identity-like matrix (all sums equal 100)"
+expected  = true
 
 [[asserts]]
 arguments = [[[5, 5, 5], [5, 5, 5], [5, 5, 4]]]
@@ -108,8 +108,8 @@ expected  = false
 
 [[asserts]]
 arguments = [[[7, 0, 0], [0, 7, 0], [0, 0, 7]]]
-comment   = "Diagonal matrix with same values"
-expected  = false
+comment   = "Diagonal matrix with same values (all sums 7)"
+expected  = true
 
 [[asserts]]
 arguments = [[[1, 1, 4], [4, 1, 1], [1, 4, 1]]]
@@ -133,8 +133,8 @@ expected  = true
 
 [[asserts]]
 arguments = [[[1000000, 0, 0], [0, 1000000, 0], [0, 0, 1000000]]]
-comment   = "Large values, unequal sums"
-expected  = false
+comment   = "Large values, all sums equal"
+expected  = true
 
 [[asserts]]
 arguments = [[[50, 50, 50], [50, 50, 50], [50, 50, 50]]]
@@ -143,8 +143,8 @@ expected  = true
 
 [[asserts]]
 arguments = [[[1, 0, 0], [0, 1, 0], [0, 0, 1]]]
-comment   = "Standard identity matrix"
-expected  = false
+comment   = "Standard identity matrix (all sums 1)"
+expected  = true
 
 [[asserts]]
 arguments = [[[2, 2, 2], [2, 2, 2], [2, 2, 2]]]

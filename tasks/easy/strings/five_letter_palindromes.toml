@@ -116,8 +116,8 @@ expected  = []
 
 [[asserts]]
 arguments = ["abcde1edcba"]
-comment   = "Numbers acting as word separators"
-expected  = ["abcde", "edcba"]
+comment   = "Numbers act as separators, neither part is a palindrome"
+expected  = []
 
 [[asserts]]
 arguments = ["-radar- *civic* 'kayak'"]
@@ -151,8 +151,19 @@ expected  = ["kayak", "radar", "solos"]
 
 [[asserts]]
 arguments = ["tenet rotor stats level madam civic kayak solos alula minim"]
-comment   = "Many 5-letter palindromes to sort"
-expected  = ["alula", "civic", "kayak", "level", "madam", "minim", "rotor", "solos", "stats", "tenet"]
+comment = "Many 5-letter palindromes to sort"
+expected = [
+  "alula",
+  "civic",
+  "kayak",
+  "level",
+  "madam",
+  "minim",
+  "rotor",
+  "solos",
+  "stats",
+  "tenet",
+]
 
 [[asserts]]
 arguments = ["refer to the manual"]

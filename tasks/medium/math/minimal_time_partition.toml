@@ -4,9 +4,9 @@ tags              = ["math", "algorithms", "optimization"]
 time_to_solve_sec = 450
 
 description_en = """
-On a distant planet, a day lasts exactly $n$ seconds. 
+On a distant planet, a day lasts exactly $n$ seconds.
 
-Represent the number $n$ as a product of three natural numbers $a, b, c$ ($a \cdot b \cdot c = n$) such that the difference between the maximum and minimum of these three numbers is **minimal**.
+Represent the number $n$ as a product of three natural numbers $a, b, c$ ($a \\cdot b \\cdot c = n$) such that the difference between the maximum and minimum of these three numbers is **minimal**.
 
 Return the three numbers as a list sorted in ascending order.
 """
@@ -14,13 +14,13 @@ Return the three numbers as a list sorted in ascending order.
 description_ru = """
 На некоторой планете сутки длятся ровно $n$ секунд.
 
-Представьте число $n$ в виде произведения трёх натуральных чисел $a, b, c$ ($a \cdot b \cdot c = n$) так, чтобы разность между максимальным и минимальным из этих чисел была **минимальной**.
+Представьте число $n$ в виде произведения трёх натуральных чисел $a, b, c$ ($a \\cdot b \\cdot c = n$) так, чтобы разность между максимальным и минимальным из этих чисел была **минимальной**.
 
 Верните эти три числа в виде списка, отсортированного по возрастанию.
 """
 
 limits = """
-- $1 \leq n \leq 10^9$
+- $1 \\leq n \\leq 10^9$
 """
 
 solution = """

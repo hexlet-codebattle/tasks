@@ -16,10 +16,10 @@ description_ru = """
 """
 
 limits = """
-- $1 \leq \text{len}(\text{parent}) \leq 1000$
-- $-1 \leq \text{parent}[i] < \text{len}(\text{parent})$
-- $0 \leq u < \text{len}(\text{parent})$
-- $0 \leq v < \text{len}(\text{parent})$
+- $1 \\leq \text{len}(\text{parent}) \\leq 1000$
+- $-1 \\leq \text{parent}[i] < \text{len}(\text{parent})$
+- $0 \\leq u < \text{len}(\text{parent})$
+- $0 \\leq v < \text{len}(\text{parent})$
 """
 
 solution = """

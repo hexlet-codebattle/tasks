@@ -16,8 +16,8 @@ description_ru = """
 """
 
 limits = """
-- $-1000 \leq a, c \leq 1000$
-- $1 \leq b, d \leq 1000$
+- $-1000 \\leq a, c \\leq 1000$
+- $1 \\leq b, d \\leq 1000$
 """
 
 solution = """

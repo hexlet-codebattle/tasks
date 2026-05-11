@@ -20,9 +20,9 @@ description_ru = """
 """
 
 limits = """
-- $1 \leq \text{len}(\text{people}) \leq 15$
-- $0 \leq \text{people}[i] \leq 65535$
-- $1 \leq \text{target\_skills} \leq 65535$
+- $1 \\leq \text{len}(\text{people}) \\leq 15$
+- $0 \\leq \text{people}[i] \\leq 65535$
+- $1 \\leq \text{target\\_skills} \\leq 65535$
 """
 
 solution = """
@@ -190,11 +190,49 @@ comment   = "Many options, best is 1"
 expected  = 1
 
 [[asserts]]
-arguments = [[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384], 32767]
-comment   = "Worst case full spread up to 15 bits"
-expected  = 15
+arguments = [
+  [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048,
+    4096,
+    8192,
+    16384,
+  ],
+  32767,
+]
+comment = "Worst case full spread up to 15 bits"
+expected = 15
 
 [[asserts]]
-arguments = [[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384], 65535]
-comment   = "Max elements but impossible to cover target"
-expected  = -1
+arguments = [
+  [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048,
+    4096,
+    8192,
+    16384,
+  ],
+  65535,
+]
+comment = "Max elements but impossible to cover target"
+expected = -1

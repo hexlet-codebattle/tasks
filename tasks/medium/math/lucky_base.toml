@@ -196,8 +196,8 @@ expected  = 4
 
 [[asserts]]
 arguments = [15, 1]
-comment   = "One 1 in base 7"
-expected  = 7
+comment   = "Two 1s in base 14"
+expected  = 14
 
 [[asserts]]
 arguments = [3, 2]
@@ -216,5 +216,5 @@ expected  = 9
 
 [[asserts]]
 arguments = [1000, 1]
-comment   = "One 1 in base 3"
-expected  = 3
+comment   = "Two 1s in base 999"
+expected  = 999

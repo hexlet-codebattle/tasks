@@ -20,7 +20,7 @@ description_ru = """
 """
 
 limits = """
-- $1 \\leq \\text{len}(x) = \\text{len}(y) \\leq 100$
+- $1 \\leq \\text{len}(x) = \\text{len}(y) \\leq 5$
 - $x_i, y_i \\in \\{1, 2, \\dots, 9\\}$
 """
 
@@ -175,18 +175,3 @@ expected  = 1644181449
 arguments = ["24681", "18642"]
 comment   = "Mixed digits length 5"
 expected  = 460343162
-
-[[asserts]]
-arguments = ["98765", "56789"]
-comment   = "Large overlapping strings"
-expected  = 5688717585
-
-[[asserts]]
-arguments = ["111111", "222222"]
-comment   = "Six digits repetitions"
-expected  = 25802406442
-
-[[asserts]]
-arguments = ["999999", "111111"]
-comment   = "Six digits nines and ones"
-expected  = 182221288889

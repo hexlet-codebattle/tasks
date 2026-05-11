@@ -157,18 +157,18 @@ expected  = 16
 
 [[asserts]]
 arguments = [27, 3]
-comment   = "Still only one best warrior available"
-expected  = 16
+comment   = "Three best warriors"
+expected  = 48
 
 [[asserts]]
 arguments = [30, 2]
-comment   = "One best and one upgraded"
-expected  = 20
+comment   = "Two best warriors"
+expected  = 32
 
 [[asserts]]
 arguments = [50, 5]
-comment   = "Mix of tiers: 1 best, 5 upgraded, 2 normal"
-expected  = 32
+comment   = "Five best warriors"
+expected  = 80
 
 [[asserts]]
 arguments = [80, 2]
@@ -192,8 +192,8 @@ expected  = 160
 
 [[asserts]]
 arguments = [123, 456]
-comment   = "k is larger than total units available"
-expected  = 83
+comment   = "k larger than total: 13 best + 2 upgraded"
+expected  = 216
 
 [[asserts]]
 arguments = [1000000, 100]
@@ -222,5 +222,5 @@ expected  = 20
 
 [[asserts]]
 arguments = [40, 40]
-comment   = "Take all: 1 best, 4 upgraded, 1 normal"
-expected  = 33
+comment   = "Take all: 4 best, 1 upgraded, 1 normal"
+expected  = 69

@@ -1,20 +1,20 @@
 level             = "medium"
-name              = "modular_inverse"
+name              = "modulo_inverse"
 tags              = ["math", "number_theory", "modular_arithmetic"]
 time_to_solve_sec = 450
 
 description_en = """
-Given an integer $a$ and a prime number $m$, find the modular multiplicative inverse of $a$ modulo $m$. 
+Given an integer $a$ and a prime number $m$, find the modular multiplicative inverse of $a$ modulo $m$.
 
-The modular inverse of $a$ modulo $m$ is an integer $x$ such that $(a \\times x) \\pmod m = 1$. 
+The modular inverse of $a$ modulo $m$ is an integer $x$ such that $(a \\times x) \\pmod m = 1$.
 
 If the inverse does not exist (for example, if $a$ is a multiple of $m$), return $-1$.
 """
 
 description_ru = """
-Даны целое число $a$ и простое число $m$. Найдите модульное мультипликативное обратное для $a$ по модулю $m$. 
+Даны целое число $a$ и простое число $m$. Найдите модульное мультипликативное обратное для $a$ по модулю $m$.
 
-Модульное обратное для $a$ по модулю $m$ — это такое целое число $x$, что $(a \\times x) \\pmod m = 1$. 
+Модульное обратное для $a$ по модулю $m$ — это такое целое число $x$, что $(a \\times x) \\pmod m = 1$.
 
 Если обратного не существует (например, если $a$ кратно $m$), верните $-1$.
 """

@@ -28,8 +28,8 @@ description_ru = """
 """
 
 limits = """
-- $1 \leq \text{len}(\text{text}) \leq 10^4$
-- $\text{text}$ contains only English letters, digits, spaces, tabs, and newline characters.
+- $1 \\leq \\text{len}(\\text{text}) \\leq 10^4$
+- $\\text{text}$ contains only English letters, digits, spaces, tabs, and newline characters.
 - All numbers are valid 32-bit integers without leading zeros (except for $0$ itself).
 """
 
@@ -38,12 +38,12 @@ import re
 
 def solution(text: str) -> str:
     text = re.sub(r'[a-zA-Z]+', lambda m: m.group()[0], text)
-    
+
     def comp_num(m):
         v = m.group()
         s = v.rstrip('0')
         return min(v, f"{s}e{len(v)-len(s)}" if s else v, key=len)
-        
+
     text = re.sub(r'\\d+', comp_num, text)
     return text.replace(' ', '').replace('\\t', '').replace('\\n', ';')
 """
@@ -101,12 +101,12 @@ expected  = "V;L;T;1e9"
 [[asserts]]
 arguments = ["NoZerosHere 12345"]
 comment   = "Number without zeros"
-expected  = "NH12345"
+expected  = "N12345"
 
 [[asserts]]
 arguments = ["ZerosAtStart 1002000"]
 comment   = "Zeros inside and at end"
-expected  = "ZAS1002e3"
+expected  = "Z1002e3"
 
 [[asserts]]
 arguments = ["Mix 100 and 1000"]

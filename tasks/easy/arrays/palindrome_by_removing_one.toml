@@ -170,8 +170,8 @@ expected  = true
 
 [[asserts]]
 arguments = [[1, 2, 1, 2, 1, 2]]
-comment   = "Alternating"
-expected  = false
+comment   = "Alternating: drop first 1 to get [2,1,2,1,2]"
+expected  = true
 
 [[asserts]]
 arguments = [[4, 3, 2, 1, 2, 3, 4]]

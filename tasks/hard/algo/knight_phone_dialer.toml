@@ -180,8 +180,8 @@ expected  = 4
 
 [[asserts]]
 arguments = ["0618349270"]
-comment   = "Circular path around the keypad"
-expected  = 9
+comment   = "Circular path: 8 single moves plus 7-6-0 (2 moves)"
+expected  = 10
 
 [[asserts]]
 arguments = ["55555"]
@@ -225,8 +225,8 @@ expected  = 2
 
 [[asserts]]
 arguments = ["004466"]
-comment   = "Moves mixed with repeats"
-expected  = 2
+comment   = "0-4 is 1 move, 4-6 is 2 moves (via 0), repeats are free"
+expected  = 3
 
 [[asserts]]
 arguments = ["73"]

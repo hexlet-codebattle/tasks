@@ -184,7 +184,7 @@ expected  = "5688717585"
 [[asserts]]
 arguments = ["111111", "222222"]
 comment   = "Six digits repetitions"
-expected  = "25802406442"
+expected  = "25802408642"
 
 [[asserts]]
 arguments = ["999999", "111111"]
@@ -194,7 +194,7 @@ expected  = "182221288889"
 [[asserts]]
 arguments = ["1234567", "7654321"]
 comment   = "Seven digits symmetric"
-expected  = "11969569608207"
+expected  = "11969668794007"
 
 [[asserts]]
 arguments = ["91919191", "19191919"]
@@ -204,7 +204,7 @@ expected  = "1822222128888889"
 [[asserts]]
 arguments = ["84729153", "39561827"]
 comment   = "Eight digits random"
-expected  = "3361392652758411"
+expected  = "3361392975189411"
 
 [[asserts]]
 arguments = ["999999999", "111111111"]
@@ -214,9 +214,9 @@ expected  = "182222221288888889"
 [[asserts]]
 arguments = ["123456789", "987654321"]
 comment   = "Nine digits progression"
-expected  = "173292437813296269"
+expected  = "173292472667035269"
 
 [[asserts]]
 arguments = ["582914736", "279386154"]
 comment   = "Nine digits random"
-expected  = "165963499427040704"
+expected  = "165963519131609304"

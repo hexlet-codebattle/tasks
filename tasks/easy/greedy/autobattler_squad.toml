@@ -162,13 +162,13 @@ expected  = 16
 
 [[asserts]]
 arguments = [30, 2]
-comment   = "One best and one upgraded"
-expected  = 20
+comment   = "3 best and 1 upgraded available, squad limit two, take 2 best"
+expected  = 32
 
 [[asserts]]
 arguments = [50, 5]
-comment   = "Mix of tiers: 1 best, 5 upgraded, 2 normal"
-expected  = 32
+comment   = "Mix of tiers: 5 best, 1 upgraded, 2 normal. Take 5 best"
+expected  = 80
 
 [[asserts]]
 arguments = [80, 2]
@@ -193,7 +193,7 @@ expected  = 160
 [[asserts]]
 arguments = [123, 456]
 comment   = "k is larger than total units available"
-expected  = 83
+expected  = 216
 
 [[asserts]]
 arguments = [1000000, 100]
@@ -222,5 +222,5 @@ expected  = 20
 
 [[asserts]]
 arguments = [40, 40]
-comment   = "Take all: 1 best, 4 upgraded, 1 normal"
-expected  = 33
+comment   = "Take all: 4 best, 1 upgraded, 1 normal"
+expected  = 69

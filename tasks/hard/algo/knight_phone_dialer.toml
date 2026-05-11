@@ -181,7 +181,7 @@ expected  = 4
 [[asserts]]
 arguments = ["0618349270"]
 comment   = "Circular path around the keypad"
-expected  = 9
+expected  = 10
 
 [[asserts]]
 arguments = ["55555"]
@@ -226,7 +226,7 @@ expected  = 2
 [[asserts]]
 arguments = ["004466"]
 comment   = "Moves mixed with repeats"
-expected  = 2
+expected  = 3
 
 [[asserts]]
 arguments = ["73"]

@@ -115,9 +115,9 @@ comment   = "Numbers should be ignored"
 expected  = []
 
 [[asserts]]
-arguments = ["abcde1edcba"]
+arguments = ["radar1civic"]
 comment   = "Numbers acting as word separators"
-expected  = ["abcde", "edcba"]
+expected  = ["civic", "radar"]
 
 [[asserts]]
 arguments = ["-radar- *civic* 'kayak'"]

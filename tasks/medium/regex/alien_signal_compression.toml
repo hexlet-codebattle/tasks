@@ -6,10 +6,10 @@ time_to_solve_sec = 400
 description_en = """
 You intercept an alien transmission and need to compress it to save storage space.
 
-The transmission is a string containing words (only English letters), numbers (valid 32-bit integers without leading zeros), spaces, tabs, and newlines. Compress the message using the following three steps:
+The transmission is a string containing words (only English letters), numbers (valid 32-bit integers without leading zeros), spaces, tabs, and newlines. Two numbers cannot be separated only by whitespace. Compress the message using the following three steps:
 
-1. Replace all newlines (`\\n`) with semicolons (`;`), then remove all spaces and tabs.
-2. Reduce every word (a contiguous sequence of letters) to just its first letter, preserving the original case.
+1. Reduce every word (a contiguous sequence of letters) to just its first letter, preserving the original case.
+2. Replace all newlines (`\\n`) with semicolons (`;`), then remove all spaces and tabs.
 3. Compress numbers ending in consecutive zeros using standard scientific notation (e.g., `1750000` becomes `175e4`). Only do this if the resulting string is **strictly shorter** than the original number.
 
 Return the fully compressed transmission.
@@ -18,10 +18,10 @@ Return the fully compressed transmission.
 description_ru = """
 Вы перехватили инопланетную передачу, и ее необходимо сжать для экономии места.
 
-Передача представляет собой строку, содержащую слова (только английские буквы), числа (корректные 32-битные целые числа без ведущих нулей), пробелы, табуляции и символы перевода строки. Сожмите сообщение, выполнив следующие три шага:
+Передача представляет собой строку, содержащую слова (только английские буквы), числа (корректные 32-битные целые числа без ведущих нулей), пробелы, табуляции и символы перевода строки. Два числа не могут быть разделены только пробельными символами. Сожмите сообщение, выполнив следующие три шага:
 
-1. Замените все переводы строк (`\\n`) на точки с запятой (`;`), затем удалите все пробелы и табуляции.
-2. Сократите каждое слово (непрерывную последовательность букв) до первой буквы, сохранив её регистр.
+1. Сократите каждое слово (непрерывную последовательность букв) до первой буквы, сохранив её регистр.
+2. Замените все переводы строк (`\\n`) на точки с запятой (`;`), затем удалите все пробелы и табуляции.
 3. Сожмите числа, оканчивающиеся на идущие подряд нули, используя стандартную нотацию (например, `1750000` становится `175e4`). Делайте это **только если** полученная строка строго короче исходного числа.
 
 Верните полностью сжатую передачу.
@@ -31,6 +31,7 @@ limits = """
 - $1 \\leq \\text{len}(\\text{text}) \\leq 10^4$
 - $\\text{text}$ contains only English letters, digits, spaces, tabs, and newline characters.
 - All numbers are valid 32-bit integers without leading zeros (except for $0$ itself).
+- Two numbers cannot be separated only by whitespace.
 """
 
 solution = """
@@ -51,7 +52,7 @@ def solution(text: str) -> str:
 examples = """
 solution("Alpha 1000") == "A1e3"
 solution("Hello\\nWorld") == "H;W"
-solution("100 1000") == "1001e3"
+solution("100 A 1000") == "100A1e3"
 solution("A 0 B 0") == "A0B0"
 """
 
@@ -74,9 +75,9 @@ comment   = "Newline to semicolon"
 expected  = "H;W"
 
 [[asserts]]
-arguments = ["100 1000"]
+arguments = ["100 A 1000"]
 comment   = "Strictly shorter requirement for numbers"
-expected  = "1001e3"
+expected  = "100A1e3"
 
 [[asserts]]
 arguments = ["A 0 B 0"]
@@ -84,7 +85,7 @@ comment   = "Zero handling"
 expected  = "A0B0"
 
 [[asserts]]
-arguments = ["Space     Tabs\t\t\tHere"]
+arguments = ["Space    Tabs\t\t\tHere"]
 comment   = "Multiple whitespace removal"
 expected  = "STH"
 
@@ -100,13 +101,13 @@ expected  = "V;L;T;1e9"
 
 [[asserts]]
 arguments = ["NoZerosHere 12345"]
-comment   = "Number without zeros"
-expected  = "NH12345"
+comment   = "Word correctly processed as a single continuous sequence"
+expected  = "N12345"
 
 [[asserts]]
 arguments = ["ZerosAtStart 1002000"]
 comment   = "Zeros inside and at end"
-expected  = "ZAS1002e3"
+expected  = "Z1002e3"
 
 [[asserts]]
 arguments = ["Mix 100 and 1000"]
@@ -129,9 +130,9 @@ comment   = "Alternating words and numbers without spaces"
 expected  = "a1b2c3d4"
 
 [[asserts]]
-arguments = ["1200 34000 560000"]
-comment   = "Multiple compressible and uncompressible numbers"
-expected  = "120034e356e4"
+arguments = ["1200a34000b560000"]
+comment   = "Multiple compressible and uncompressible numbers separated by words"
+expected  = "1200a34e3b56e4"
 
 [[asserts]]
 arguments = ["End of transmission 0"]
@@ -139,9 +140,9 @@ comment   = "Words with zero"
 expected  = "Eot0"
 
 [[asserts]]
-arguments = ["A B C\n1 2 3\nD E F\n4000 50000"]
+arguments = ["A B C\n1 X 2 Y 3\nD E F\n4000 Z 50000"]
 comment   = "Complex mixed string"
-expected  = "ABC;123;DEF;4e35e4"
+expected  = "ABC;1X2Y3;DEF;4e3Z5e4"
 
 [[asserts]]
 arguments = ["Trailing zeros in word 1000"]
@@ -154,9 +155,9 @@ comment   = "Scaling zeros"
 expected  = "O1T20T300F4e3"
 
 [[asserts]]
-arguments = ["X Y Z 1000000000 2000000000"]
+arguments = ["X 1000000000 Y 2000000000 Z"]
 comment   = "Maximum 32-bit limits"
-expected  = "XYZ1e92e9"
+expected  = "X1e9Y2e9Z"
 
 [[asserts]]
 arguments = ["lower CASE upper CASE"]
@@ -189,9 +190,9 @@ comment   = "Two hundred is not strictly shorter as 2e2"
 expected  = "200"
 
 [[asserts]]
-arguments = ["50000000 000"]
-comment   = "Space separated zeros"
-expected  = "5e7000"
+arguments = ["A 50000000 B 0 C"]
+comment   = "Word separated zeros"
+expected  = "A5e7B0C"
 
 [[asserts]]
 arguments = ["a\n\n\nb\t\t\tc 10000"]

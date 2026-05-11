@@ -171,7 +171,7 @@ expected  = true
 [[asserts]]
 arguments = [[1, 2, 1, 2, 1, 2]]
 comment   = "Alternating"
-expected  = false
+expected  = true
 
 [[asserts]]
 arguments = [[4, 3, 2, 1, 2, 3, 4]]

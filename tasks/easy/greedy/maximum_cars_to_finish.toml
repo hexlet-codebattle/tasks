@@ -20,9 +20,9 @@ description_ru = """
 """
 
 limits = """
-- $1 \leq x \leq 10^4$
-- $1 \leq \text{len}(a) \leq 10^5$
-- $0 \leq a_i \leq 10^4$
+- $1 \\leq x \\leq 10^4$
+- $1 \\leq \\text{len}(a) \\leq 10^5$
+- $0 \\leq a_i \\leq 10^4$
 """
 
 solution = """

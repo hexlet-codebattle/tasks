@@ -20,9 +20,9 @@ description_ru = """
 """
 
 limits = """
-- $1 \leq \text{len}(\text{graph}) \leq 100$
-- $0 \leq \text{graph}[i][j] < \text{len}(\text{graph})$
-- $i \neq \text{graph}[i][j]$
+- $1 \\leq \\text{len}(\\text{graph}) \\leq 100$
+- $0 \\leq \\text{graph}[i][j] < \\text{len}(\\text{graph})$
+- $i \\neq \\text{graph}[i][j]$
 """
 
 solution = """

@@ -8,7 +8,7 @@ You intercept an alien transmission and need to compress it to save storage spac
 
 The transmission is a string containing words (only English letters), numbers (valid 32-bit integers without leading zeros), spaces, tabs, and newlines. Compress the message using the following three steps:
 
-1. Replace all newlines (`\n`) with semicolons (`;`), then remove all spaces and tabs.
+1. Replace all newlines (`\\n`) with semicolons (`;`), then remove all spaces and tabs.
 2. Reduce every word (a contiguous sequence of letters) to just its first letter, preserving the original case.
 3. Compress numbers ending in consecutive zeros using standard scientific notation (e.g., `1750000` becomes `175e4`). Only do this if the resulting string is **strictly shorter** than the original number.
 
@@ -20,7 +20,7 @@ description_ru = """
 
 Передача представляет собой строку, содержащую слова (только английские буквы), числа (корректные 32-битные целые числа без ведущих нулей), пробелы, табуляции и символы перевода строки. Сожмите сообщение, выполнив следующие три шага:
 
-1. Замените все переводы строк (`\n`) на точки с запятой (`;`), затем удалите все пробелы и табуляции.
+1. Замените все переводы строк (`\\n`) на точки с запятой (`;`), затем удалите все пробелы и табуляции.
 2. Сократите каждое слово (непрерывную последовательность букв) до первой буквы, сохранив её регистр.
 3. Сожмите числа, оканчивающиеся на идущие подряд нули, используя стандартную нотацию (например, `1750000` становится `175e4`). Делайте это **только если** полученная строка строго короче исходного числа.
 
@@ -28,8 +28,8 @@ description_ru = """
 """
 
 limits = """
-- $1 \leq \text{len}(\text{text}) \leq 10^4$
-- $\text{text}$ contains only English letters, digits, spaces, tabs, and newline characters.
+- $1 \\leq \\text{len}(\\text{text}) \\leq 10^4$
+- $\\text{text}$ contains only English letters, digits, spaces, tabs, and newline characters.
 - All numbers are valid 32-bit integers without leading zeros (except for $0$ itself).
 """
 

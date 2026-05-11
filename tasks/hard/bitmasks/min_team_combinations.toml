@@ -20,9 +20,9 @@ description_ru = """
 """
 
 limits = """
-- $1 \leq \text{len}(\text{people}) \leq 15$
-- $0 \leq \text{people}[i] \leq 65535$
-- $1 \leq \text{target\_skills} \leq 65535$
+- $1 \\leq \\text{len}(\\text{people}) \\leq 15$
+- $0 \\leq \\text{people}[i] \\leq 65535$
+- $1 \\leq \\text{target\\_skills} \\leq 65535$
 """
 
 solution = """

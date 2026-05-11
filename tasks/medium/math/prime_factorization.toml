@@ -16,7 +16,7 @@ description_ru = """
 """
 
 limits = """
-- $2 \leq n \leq 10^9$
+- $2 \\leq n \\leq 10^9$
 """
 
 solution = """

@@ -4,17 +4,17 @@ tags              = ["math", "arrays", "matrix"]
 time_to_solve_sec = 250
 
 description_en = """
-Given a $3 \times 3$ matrix of integers, determine if the sum of elements in every row and every column is the same. Return `true` if all sums are equal, otherwise return `false`.
+Given a $3 \\times 3$ matrix of integers, determine if the sum of elements in every row and every column is the same. Return `true` if all sums are equal, otherwise return `false`.
 """
 
 description_ru = """
-Дана матрица $3 \times 3$, состоящая из целых чисел. Проверьте, равны ли суммы чисел во всех строках и всех столбцах. Верните `true`, если все суммы равны, иначе — `false`.
+Дана матрица $3 \\times 3$, состоящая из целых чисел. Проверьте, равны ли суммы чисел во всех строках и всех столбцах. Верните `true`, если все суммы равны, иначе — `false`.
 """
 
 limits = """
-- $\text{len}(m) = 3$
-- $\text{len}(m[i]) = 3$
-- $-10^6 \leq m_{i,j} \leq 10^6$
+- $\\text{len}(m) = 3$
+- $\\text{len}(m[i]) = 3$
+- $-10^6 \\leq m_{i,j} \\leq 10^6$
 """
 
 solution = """

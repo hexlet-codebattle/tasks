@@ -157,8 +157,8 @@ expected  = 16
 
 [[asserts]]
 arguments = [27, 3]
-comment   = "Still only one best warrior available"
-expected  = 16
+comment   = "Exactly enough for 3 best warriors"
+expected  = 48
 
 [[asserts]]
 arguments = [30, 2]

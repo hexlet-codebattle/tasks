@@ -8,7 +8,7 @@ You are given two strings `x` and `y` of the same length, consisting of digits f
 
 You can perform the following operation any number of times: swap the $i$-th digit of `x` with the $i$-th digit of `y`.
 
-Return the maximum possible product of the integers represented by `x` and `y` after performing any number of swaps.
+Return the maximum possible product of the integers represented by `x` and `y` after performing any number of swaps as a string.
 """
 
 description_ru = """
@@ -16,7 +16,7 @@ description_ru = """
 
 Вы можете выполнять следующую операцию любое количество раз: менять местами $i$-ю цифру в `x` и $i$-ю цифру в `y`.
 
-Верните максимально возможное произведение чисел `x` и `y`, которого можно достичь с помощью этих операций.
+Верните максимально возможное произведение чисел `x` и `y`, которого можно достичь с помощью этих операций, в виде строки.
 """
 
 limits = """
@@ -25,7 +25,7 @@ limits = """
 """
 
 solution = """
-def solution(x: str, y: str) -> int:
+def solution(x: str, y: str) -> str:
     rx, ry, diff = "", "", False
     for a, b in zip(x, y):
         if a == b:
@@ -34,13 +34,13 @@ def solution(x: str, y: str) -> int:
             rx += max(a, b); ry += min(a, b); diff = True
         else:
             rx += min(a, b); ry += max(a, b)
-    return int(rx) * int(ry)
+    return str(int(rx) * int(ry))
 """
 
 examples = """
-solution("1", "9") == 9
-solution("73", "31") == 2343
-solution("123", "321") == 39483
+solution("1", "9") == "9"
+solution("73", "31") == "2343"
+solution("123", "321") == "39483"
 """
 
 [[input_signature]]
@@ -54,139 +54,169 @@ argument_name = "y"
 name = "string"
 
 [output_signature.type]
-name = "integer"
+name = "string"
 
 [[asserts]]
 arguments = ["1", "2"]
 comment   = "Single digit"
-expected  = 2
+expected  = "2"
 
 [[asserts]]
 arguments = ["9", "9"]
 comment   = "Single identical digits"
-expected  = 81
+expected  = "81"
 
 [[asserts]]
 arguments = ["73", "31"]
 comment   = "Two digits with swap"
-expected  = 2343
+expected  = "2343"
 
 [[asserts]]
 arguments = ["12", "21"]
 comment   = "Simple palindrome pair"
-expected  = 252
+expected  = "252"
 
 [[asserts]]
 arguments = ["11", "99"]
 comment   = "Max and min combinations"
-expected  = 1729
+expected  = "1729"
 
 [[asserts]]
 arguments = ["99", "11"]
 comment   = "Reversed max and min"
-expected  = 1729
+expected  = "1729"
 
 [[asserts]]
 arguments = ["123", "123"]
 comment   = "Identical three digits"
-expected  = 15129
+expected  = "15129"
 
 [[asserts]]
 arguments = ["321", "123"]
 comment   = "Three digits swap logic"
-expected  = 39483
+expected  = "39483"
 
 [[asserts]]
 arguments = ["456", "654"]
 comment   = "Consecutive numbers"
-expected  = 298224
+expected  = "298224"
 
 [[asserts]]
 arguments = ["111", "999"]
 comment   = "Ones and Nines"
-expected  = 181289
+expected  = "181289"
 
 [[asserts]]
 arguments = ["1234", "4321"]
 comment   = "Four digits progression"
-expected  = 5630814
+expected  = "5630814"
 
 [[asserts]]
 arguments = ["9876", "6789"]
 comment   = "Four digits large progression"
-expected  = 67346864
+expected  = "67346864"
 
 [[asserts]]
 arguments = ["1111", "2222"]
 comment   = "Repeated digits four"
-expected  = 2579642
+expected  = "2579642"
 
 [[asserts]]
 arguments = ["5555", "5555"]
 comment   = "Identical repetitive sequence"
-expected  = 30858025
+expected  = "30858025"
 
 [[asserts]]
 arguments = ["1919", "9191"]
 comment   = "Alternating digits"
-expected  = 18212889
+expected  = "18212889"
 
 [[asserts]]
 arguments = ["2468", "8642"]
 comment   = "Even digits progression"
-expected  = 22523256
+expected  = "22523256"
 
 [[asserts]]
 arguments = ["1357", "7531"]
 comment   = "Odd digits progression"
-expected  = 11414367
+expected  = "11414367"
 
 [[asserts]]
 arguments = ["2323", "3232"]
 comment   = "Alternating small digits"
-expected  = 7516926
+expected  = "7516926"
 
 [[asserts]]
 arguments = ["1212", "2121"]
 comment   = "Alternating 1 and 2"
-expected  = 2579642
+expected  = "2579642"
 
 [[asserts]]
 arguments = ["9999", "1111"]
 comment   = "Four nines and ones"
-expected  = 18212889
+expected  = "18212889"
 
 [[asserts]]
 arguments = ["11111", "99999"]
 comment   = "Five digits extremes"
-expected  = 1822128889
+expected  = "1822128889"
 
 [[asserts]]
 arguments = ["54321", "12345"]
 comment   = "Five digits countdown vs countup"
-expected  = 750544745
+expected  = "750544745"
 
 [[asserts]]
 arguments = ["13579", "97531"]
 comment   = "Five odd digits"
-expected  = 1644181449
+expected  = "1644181449"
 
 [[asserts]]
 arguments = ["24681", "18642"]
 comment   = "Mixed digits length 5"
-expected  = 460343162
+expected  = "460343162"
 
 [[asserts]]
 arguments = ["98765", "56789"]
 comment   = "Large overlapping strings"
-expected  = 5688717585
+expected  = "5688717585"
 
 [[asserts]]
 arguments = ["111111", "222222"]
 comment   = "Six digits repetitions"
-expected  = 25802406442
+expected  = "25802406442"
 
 [[asserts]]
 arguments = ["999999", "111111"]
 comment   = "Six digits nines and ones"
-expected  = 182221288889
+expected  = "182221288889"
+
+[[asserts]]
+arguments = ["1234567", "7654321"]
+comment   = "Seven digits symmetric"
+expected  = "11969569608207"
+
+[[asserts]]
+arguments = ["91919191", "19191919"]
+comment   = "Eight digits alternating extremes"
+expected  = "1822222128888889"
+
+[[asserts]]
+arguments = ["84729153", "39561827"]
+comment   = "Eight digits random"
+expected  = "3361392652758411"
+
+[[asserts]]
+arguments = ["999999999", "111111111"]
+comment   = "Nine digits all nines and ones"
+expected  = "182222221288888889"
+
+[[asserts]]
+arguments = ["123456789", "987654321"]
+comment   = "Nine digits progression"
+expected  = "173292437813296269"
+
+[[asserts]]
+arguments = ["582914736", "279386154"]
+comment   = "Nine digits random"
+expected  = "165963499427040704"

@@ -9,11 +9,11 @@ You are given two 4-digit integers: `secret` and `guess`.
 For each position:
 
 - If a digit from `guess` matches the digit in `secret` at the **same position**, it counts as a **bull**.
-- Otherwise, if this digit appears in `secret` at **any different position**, it counts as a **cow**.
+- If a digit from `guess` appears in `secret` at a **different position**, it may count as a **cow**.
 
 Return an array `[bulls, cows]` with the number of bulls and cows for this pair.
 
-Each digit from `guess` is checked independently.
+Each position in `secret` can be matched with at most one position in `guess`.
 """
 
 description_ru = """
@@ -22,11 +22,11 @@ description_ru = """
 Для каждой позиции:
 
 - Если цифра из `guess` совпадает с цифрой в `secret` на **том же месте**, это **бык**.
-- Иначе, если эта цифра присутствует в `secret` на **любом другом месте**, это **корова**.
+- Если цифра из `guess` присутствует в `secret` на **другом месте**, она может считаться **коровой**.
 
 Верните массив `[bulls, cows]` с количеством быков и коров для этой пары.
 
-Каждая цифра из `guess` проверяется независимо.
+Каждая позиция в `secret` может быть сопоставлена не более чем с одной позицией в `guess`.
 """
 
 limits = """
@@ -35,12 +35,14 @@ limits = """
 """
 
 solution = """
+from collections import Counter
 from typing import List
 
 def solution(secret: int, guess: int) -> List[int]:
     s, g = str(secret), str(guess)
     bulls = sum(s[i] == g[i] for i in range(4))
-    cows = sum(s[i] != g[i] and g[i] in s[:i] + s[i + 1:] for i in range(4))
+    cs, cg = Counter(s), Counter(g)
+    cows = sum(min(cs[d], cg[d]) for d in cs) - bulls
     return [bulls, cows]
 """
 
@@ -48,9 +50,9 @@ examples = """
 solution(1234, 5678) == [0, 0]
 solution(4271, 4271) == [4, 0]
 solution(9876, 6789) == [0, 4]
-solution(4020, 5447) == [0, 2]
-solution(3451, 1112) == [0, 3]
-solution(9429, 1999) == [1, 2]
+solution(4020, 5447) == [0, 1]
+solution(3451, 1112) == [0, 1]
+solution(9429, 1999) == [1, 1]
 """
 
 [[input_signature]]
@@ -200,7 +202,7 @@ expected  = [0, 0]
 [[asserts]]
 arguments = [4020, 5447]
 comment   = "One 4 in secret, two 4's in guess"
-expected  = [0, 2]
+expected  = [0, 1]
 
 [[asserts]]
 arguments = [2026, 7217]
@@ -210,12 +212,12 @@ expected  = [0, 1]
 [[asserts]]
 arguments = [7792, 8997]
 comment   = "One bull, one cow"
-expected  = [1, 2]
+expected  = [1, 1]
 
 [[asserts]]
 arguments = [9429, 1999]
-comment   = "One 9 is bull and two other 9's are cows"
-expected  = [1, 2]
+comment   = "One 9 is bull, one 9 is cow, one 9 is unused"
+expected  = [1, 1]
 
 [[asserts]]
 arguments = [1112, 3451]
@@ -224,15 +226,30 @@ expected  = [0, 1]
 
 [[asserts]]
 arguments = [3451, 1112]
-comment   = "Three guessed 1's become cows"
-expected  = [0, 3]
+comment   = "Only one guessed 1 can match the secret 1"
+expected  = [0, 1]
 
 [[asserts]]
 arguments = [1212, 3331]
-comment   = "One guessed 1 matches a different position"
+comment   = "One guessed 1 matches one secret 1"
 expected  = [0, 1]
 
 [[asserts]]
 arguments = [1212, 3333]
 comment   = "Repeated absent digit"
 expected  = [0, 0]
+
+[[asserts]]
+arguments = [4444, 4144]
+comment   = "Secret all 4's, guess has three 4's and one 1"
+expected  = [3, 0]
+
+[[asserts]]
+arguments = [1111, 1119]
+comment   = "Secret has more 1's than guess; the extra guess digit is absent"
+expected  = [3, 0]
+
+[[asserts]]
+arguments = [1199, 9119]
+comment   = "Repeated digits with both bulls and cows"
+expected  = [2, 2]

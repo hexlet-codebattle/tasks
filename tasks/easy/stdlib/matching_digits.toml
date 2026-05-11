@@ -1,0 +1,156 @@
+level             = "easy"
+name              = "matching_digits"
+tags              = ["stdlib"]
+time_to_solve_sec = 180
+
+description_en = """
+You are given two 4-digit integers: `a` and `b`.
+
+Return the number of positions where the digits of `a` and `b` are equal.
+"""
+
+description_ru = """
+Даны два четырёхзначных числа: `a` и `b`.
+
+Верните количество позиций, в которых цифры чисел `a` и `b` совпадают.
+"""
+
+limits = """
+- $1000 \\leq a \\leq 9999$
+- $1000 \\leq b \\leq 9999$
+"""
+
+solution = """
+def solution(a: int, b: int) -> int:
+    return sum(x == y for x, y in zip(str(a), str(b)))
+"""
+
+examples = """
+solution(1234, 5678) == 0
+solution(4271, 4271) == 4
+solution(1234, 1294) == 3
+solution(5678, 5768) == 2
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1234, 5678]
+comment   = "No matching positions"
+expected  = 0
+
+[[asserts]]
+arguments = [4271, 4271]
+comment   = "All four digits match"
+expected  = 4
+
+[[asserts]]
+arguments = [1111, 1111]
+comment   = "All identical digits"
+expected  = 4
+
+[[asserts]]
+arguments = [1234, 4321]
+comment   = "All digits present but in wrong positions"
+expected  = 0
+
+[[asserts]]
+arguments = [1234, 1278]
+comment   = "First two digits match"
+expected  = 2
+
+[[asserts]]
+arguments = [1234, 1294]
+comment   = "Three matching positions"
+expected  = 3
+
+[[asserts]]
+arguments = [9876, 6789]
+comment   = "Reversed order"
+expected  = 0
+
+[[asserts]]
+arguments = [9090, 9009]
+comment   = "Two matching positions with repeats"
+expected  = 2
+
+[[asserts]]
+arguments = [1023, 1302]
+comment   = "Only the first digit matches"
+expected  = 1
+
+[[asserts]]
+arguments = [4182, 4273]
+comment   = "Only the first digit matches"
+expected  = 1
+
+[[asserts]]
+arguments = [4271, 5682]
+comment   = "No matching positions despite a shared digit"
+expected  = 0
+
+[[asserts]]
+arguments = [1234, 1203]
+comment   = "First two digits match"
+expected  = 2
+
+[[asserts]]
+arguments = [1234, 9834]
+comment   = "Last two digits match"
+expected  = 2
+
+[[asserts]]
+arguments = [5678, 5768]
+comment   = "First and last digits match"
+expected  = 2
+
+[[asserts]]
+arguments = [5678, 5670]
+comment   = "First three digits match"
+expected  = 3
+
+[[asserts]]
+arguments = [5678, 8567]
+comment   = "Shifted by one position"
+expected  = 0
+
+[[asserts]]
+arguments = [1357, 7531]
+comment   = "Same digits, rotated positions"
+expected  = 0
+
+[[asserts]]
+arguments = [2468, 8642]
+comment   = "Reversed even digits"
+expected  = 0
+
+[[asserts]]
+arguments = [1122, 2211]
+comment   = "Swapped pairs of digits"
+expected  = 0
+
+[[asserts]]
+arguments = [4271, 1234]
+comment   = "Only one matching digit at position 1"
+expected  = 1
+
+[[asserts]]
+arguments = [1234, 9939]
+comment   = "Only the third digit matches"
+expected  = 1
+
+[[asserts]]
+arguments = [1234, 9994]
+comment   = "Only the last digit matches"
+expected  = 1

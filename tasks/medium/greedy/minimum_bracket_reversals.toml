@@ -1,0 +1,216 @@
+level             = "medium"
+name              = "minimum_bracket_reversals"
+tags              = ["greedy", "strings"]
+time_to_solve_sec = 400
+
+description_en = """
+Given a string `s` consisting only of curly brackets `{` and `}`, determine the minimum number of bracket reversals required to make the string balanced.
+
+A reversal changes `{` to `}` or `}` to `{`.
+If it is impossible to balance the string, return `-1`.
+"""
+
+description_ru = """
+Дана строка `s`, состоящая только из фигурных скобок `{` и `}`, определите минимальное количество переворотов скобок, необходимое для того, чтобы сделать строку сбалансированной.
+
+Переворот меняет `{` на `}` или `}` на `{`.
+Если сбалансировать строку невозможно, верните `-1`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 10^5$
+"""
+
+solution = """
+def solution(s: str) -> int:
+    if len(s) % 2 != 0:
+        return -1
+    
+    open_brackets = 0
+    close_brackets = 0
+    
+    for char in s:
+        if char == '{':
+            open_brackets += 1
+        else:
+            if open_brackets > 0:
+                open_brackets -= 1
+            else:
+                close_brackets += 1
+                
+    return (open_brackets + 1) // 2 + (close_brackets + 1) // 2
+"""
+
+examples = """
+solution("}{") == 2
+solution("{{{") == -1
+solution("{{{}") == 1
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = 0
+
+[[asserts]]
+arguments = ["{}"]
+comment   = "Already balanced"
+expected  = 0
+
+[[asserts]]
+arguments = ["}{"]
+comment   = "Two reversals needed"
+expected  = 2
+
+[[asserts]]
+arguments = ["{"]
+comment   = "Odd length string"
+expected  = -1
+
+[[asserts]]
+arguments = ["}"]
+comment   = "Odd length string"
+expected  = -1
+
+[[asserts]]
+arguments = ["{{{"]
+comment   = "Odd length string with all opens"
+expected  = -1
+
+[[asserts]]
+arguments = ["{{}}"]
+comment   = "Balanced nested brackets"
+expected  = 0
+
+[[asserts]]
+arguments = ["{}{}"]
+comment   = "Balanced consecutive brackets"
+expected  = 0
+
+[[asserts]]
+arguments = ["{{{{"]
+comment   = "All open brackets"
+expected  = 2
+
+[[asserts]]
+arguments = ["}}}}"]
+comment   = "All close brackets"
+expected  = 2
+
+[[asserts]]
+arguments = ["{{{{}}"]
+comment   = "More open than close"
+expected  = 1
+
+[[asserts]]
+arguments = ["}}}{{{"]
+comment   = "Fully inverted"
+expected  = 4
+
+[[asserts]]
+arguments = ["}}}{{"]
+comment   = "Odd length mixed"
+expected  = -1
+
+[[asserts]]
+arguments = ["}{{}}{{{"]
+comment   = "Complex mixed string"
+expected  = 3
+
+[[asserts]]
+arguments = ["{}{}{}{}{}{}{}{}{}{}{}{}"]
+comment   = "Long balanced string"
+expected  = 0
+
+[[asserts]]
+arguments = ["}}}}}}}}}}}}}}}}}}}}}}}}"]
+comment   = "Long all closing"
+expected  = 12
+
+[[asserts]]
+arguments = ["{{{{{{{{{{{{{{{{{{{{{{{{"]
+comment   = "Long all opening"
+expected  = 12
+
+[[asserts]]
+arguments = ["{}}}{{}}{{}}{{}}"]
+comment   = "Almost balanced"
+expected  = 1
+
+[[asserts]]
+arguments = ["}}{{}}{{}}{{}}{{"]
+comment   = "Repeated inverted pairs"
+expected  = 2
+
+[[asserts]]
+arguments = ["{{{{{{{{{{}}}}}}}}}}"]
+comment   = "Deep nesting"
+expected  = 0
+
+[[asserts]]
+arguments = ["}}}}{{{{"]
+comment   = "Symmetric inverted"
+expected  = 4
+
+[[asserts]]
+arguments = ["}{{}}}"]
+comment   = "Needs one open flip"
+expected  = 1
+
+[[asserts]]
+arguments = ["}}}}}}"]
+comment   = "Six closing"
+expected  = 3
+
+[[asserts]]
+arguments = ["{{"]
+comment   = "Two opening"
+expected  = 1
+
+[[asserts]]
+arguments = ["}}"]
+comment   = "Two closing"
+expected  = 1
+
+[[asserts]]
+arguments = ["}}}{"]
+comment   = "Three close one open"
+expected  = 3
+
+[[asserts]]
+arguments = ["}{{{"]
+comment   = "One close three open"
+expected  = 3
+
+[[asserts]]
+arguments = ["{}}}"]
+comment   = "One open three close"
+expected  = 1
+
+[[asserts]]
+arguments = ["{{}{"]
+comment   = "Three open one close"
+expected  = 1
+
+[[asserts]]
+arguments = ["}{}{"]
+comment   = "Alternating inverted"
+expected  = 2
+
+[[asserts]]
+arguments = ["{}{}{}{}{}{}{}{}{}{}{}{{"]
+comment   = "Balanced with two opens at end"
+expected  = 1
+
+[[asserts]]
+arguments = ["}}{}{}{}{}{}{}{}{}{}{}{}"]
+comment   = "Balanced with two closes at start"
+expected  = 1

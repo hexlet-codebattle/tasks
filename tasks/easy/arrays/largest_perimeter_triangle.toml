@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "largest_perimeter_triangle"
+tags              = ["arrays", "math", "geometry", "sorting"]
+time_to_solve_sec = 200
+
+description_en = """
+Given an integer array `nums` representing the lengths of line segments, return the largest perimeter of a triangle with a non-zero area, formed from three of these lengths.
+
+If it is impossible to form any triangle, return `0`.
+
+A triangle can be formed by three segments of lengths $a$, $b$, and $c$ if and only if the sum of the lengths of any two segments is strictly greater than the length of the third segment (i.e., $a + b > c$).
+"""
+
+description_ru = """
+Дан массив целых чисел `nums`, представляющий длины отрезков. Верните наибольший периметр треугольника с ненулевой площадью, который можно составить из трех таких отрезков.
+
+Если составить треугольник невозможно, верните `0`.
+
+Треугольник можно составить из трех отрезков с длинами $a$, $b$ и $c$, если и только если сумма длин любых двух отрезков строго больше длины третьего отрезка (то есть $a + b > c$).
+"""
+
+limits = """
+- $3 \\leq \\text{len}(nums) \\leq 10^4$
+- $1 \\leq nums[i] \\leq 10^6$
+"""
+
+solution = """
+def solution(nums: list) -> int:
+    nums.sort(reverse=True)
+    for i in range(len(nums) - 2):
+        if nums[i] < nums[i+1] + nums[i+2]:
+            return nums[i] + nums[i+1] + nums[i+2]
+    return 0
+"""
+
+examples = """
+solution([1, 2, 1]) == 0
+solution([2, 1, 2]) == 5
+solution([3, 6, 2, 3]) == 8
+solution([3, 2, 3, 4]) == 10
+"""
+
+[[input_signature]]
+argument_name = "nums"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[2, 1, 2]]
+comment   = "Simple valid triangle"
+expected  = 5
+
+[[asserts]]
+arguments = [[1, 2, 1]]
+comment   = "Degenerate triangle (impossible)"
+expected  = 0
+
+[[asserts]]
+arguments = [[3, 2, 3, 4]]
+comment   = "Multiple elements, forms 3, 3, 4"
+expected  = 10
+
+[[asserts]]
+arguments = [[3, 6, 2, 3]]
+comment   = "Elements form 3, 3, 2"
+expected  = 8
+
+[[asserts]]
+arguments = [[3, 4, 5]]
+comment   = "Exact 3 elements, right triangle"
+expected  = 12
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+comment   = "Equilateral triangle"
+expected  = 3
+
+[[asserts]]
+arguments = [[2, 2, 2, 2]]
+comment   = "Four equal elements"
+expected  = 6
+
+[[asserts]]
+arguments = [[10, 9, 8, 2, 1]]
+comment   = "Descending sequence"
+expected  = 27
+
+[[asserts]]
+arguments = [[100, 1, 1, 1]]
+comment   = "One huge element, rest forms small triangle"
+expected  = 3
+
+[[asserts]]
+arguments = [[10, 5, 4, 3]]
+comment   = "Largest element skipped"
+expected  = 12
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6]]
+comment   = "Consecutive numbers"
+expected  = 15
+
+[[asserts]]
+arguments = [[1, 1, 2, 3, 5, 8, 13]]
+comment   = "Fibonacci sequence (no triangle possible)"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 1, 2, 3, 5, 8, 13, 20]]
+comment   = "Slightly modified Fibonacci (valid)"
+expected  = 41
+
+[[asserts]]
+arguments = [[5, 5, 10, 10, 20]]
+comment   = "Repeated elements, skips 20"
+expected  = 25
+
+[[asserts]]
+arguments = [[7, 8, 9, 100, 101, 102]]
+comment   = "Two distinct groups, largest group works"
+expected  = 303
+
+[[asserts]]
+arguments = [[10, 10, 10, 100, 100, 100]]
+comment   = "Two distinct groups of equal elements"
+expected  = 300
+
+[[asserts]]
+arguments = [[10, 10, 100, 100]]
+comment   = "Isosceles triangle from large elements"
+expected  = 210
+
+[[asserts]]
+arguments = [[1, 2, 1, 10]]
+comment   = "Impossible even with more elements"
+expected  = 0
+
+[[asserts]]
+arguments = [[9, 8, 7, 6, 5]]
+comment   = "Descending sequence starting at 9"
+expected  = 24
+
+[[asserts]]
+arguments = [[1000, 1000, 1000]]
+comment   = "Large values"
+expected  = 3000
+
+[[asserts]]
+arguments = [[5, 12, 13]]
+comment   = "Pythagorean triple"
+expected  = 30
+
+[[asserts]]
+arguments = [[3, 4, 5, 6, 8, 10]]
+comment   = "Multiple triples"
+expected  = 24
+
+[[asserts]]
+arguments = [[2, 3, 4, 5, 10]]
+comment   = "Largest element cannot be used"
+expected  = 12
+
+[[asserts]]
+arguments = [[1, 1, 1, 1000]]
+comment   = "One huge outlier"
+expected  = 3
+
+[[asserts]]
+arguments = [[100, 10, 10, 10]]
+comment   = "One huge, three identical smaller"
+expected  = 30
+
+[[asserts]]
+arguments = [[2, 2, 3]]
+comment   = "Valid isosceles"
+expected  = 7
+
+[[asserts]]
+arguments = [[1, 10, 100, 1000, 10000]]
+comment   = "Powers of 10 (no triangle possible)"
+expected  = 0

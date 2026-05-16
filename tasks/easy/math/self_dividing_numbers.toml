@@ -1,0 +1,182 @@
+level             = "easy"
+name              = "self_dividing_numbers"
+tags              = ["math", "loops"]
+time_to_solve_sec = 240
+
+description_en = """
+A self-dividing number is a number that is divisible by every digit it contains. 
+For example, `128` is a self-dividing number because $128 \\pmod 1 = 0$, $128 \\pmod 2 = 0$, and $128 \\pmod 8 = 0$.
+
+A self-dividing number is not allowed to contain the digit `0`.
+
+Given two integers `left` and `right`, return an array of all the self-dividing numbers in the range `[left, right]` (inclusive).
+"""
+
+description_ru = """
+Самоделящееся число — это число, которое без остатка делится на каждую из своих цифр. 
+Например, `128` является самоделящимся числом, так как $128 \\pmod 1 = 0$, $128 \\pmod 2 = 0$ и $128 \\pmod 8 = 0$.
+
+Самоделящееся число не должно содержать цифру `0`.
+
+Даны два целых числа `left` и `right`. Верните массив всех самоделящихся чисел в диапазоне `[left, right]` (включительно).
+"""
+
+limits = """
+- $1 \\leq \\text{left} \\leq \\text{right} \\leq 10^4$
+"""
+
+solution = """
+def solution(left: int, right: int) -> list[int]:
+    return [n for n in range(left, right + 1) if all(int(d) != 0 and n % int(d) == 0 for d in str(n))]
+"""
+
+examples = """
+solution(47, 49) == [48]
+solution(10, 15) == [11, 12, 15]
+solution(1, 10) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+"""
+
+[[input_signature]]
+argument_name = "left"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "right"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 10]
+comment   = "Single digits"
+expected  = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+[[asserts]]
+arguments = [10, 15]
+comment   = "Small range with zero"
+expected  = [11, 12, 15]
+
+[[asserts]]
+arguments = [47, 49]
+comment   = "Short range with one match"
+expected  = [48]
+
+[[asserts]]
+arguments = [1, 22]
+comment   = "Range across two tens"
+expected  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+
+[[asserts]]
+arguments = [13, 14]
+comment   = "Range with no self-dividing numbers"
+expected  = []
+
+[[asserts]]
+arguments = [47, 85]
+comment   = "Mid-size range"
+expected  = [48, 55, 66, 77]
+
+[[asserts]]
+arguments = [128, 128]
+comment   = "Three-digit match"
+expected  = [128]
+
+[[asserts]]
+arguments = [100, 110]
+comment   = "Range full of zeros"
+expected  = []
+
+[[asserts]]
+arguments = [111, 115]
+comment   = "Range with small identical digits"
+expected  = [111, 112, 115]
+
+[[asserts]]
+arguments = [15, 21]
+comment   = "Cross-tens range with one match"
+expected  = [15]
+
+[[asserts]]
+arguments = [33, 33]
+comment   = "Identical digits self-dividing"
+expected  = [33]
+
+[[asserts]]
+arguments = [23, 23]
+comment   = "Single number, non self-dividing"
+expected  = []
+
+[[asserts]]
+arguments = [312, 312]
+comment   = "Three-digit match check"
+expected  = [312]
+
+[[asserts]]
+arguments = [41, 45]
+comment   = "Check divisibility logic"
+expected  = [44]
+
+[[asserts]]
+arguments = [80, 90]
+comment   = "High two-digits range"
+expected  = [88]
+
+[[asserts]]
+arguments = [300, 311]
+comment   = "Zeros and non-dividing"
+expected  = []
+
+[[asserts]]
+arguments = [200, 212]
+comment   = "Zeros jumping to valid"
+expected  = [212]
+
+[[asserts]]
+arguments = [72, 73]
+comment   = "Exact bounds"
+expected  = []
+
+[[asserts]]
+arguments = [1000, 1010]
+comment   = "Thousands with zeros"
+expected  = []
+
+[[asserts]]
+arguments = [120, 130]
+comment   = "Hundreds range"
+expected  = [122, 124, 126, 128]
+
+[[asserts]]
+arguments = [999, 999]
+comment   = "Maximum triple digits"
+expected  = [999]
+
+[[asserts]]
+arguments = [24, 25]
+comment   = "Adjacent values"
+expected  = [24]
+
+[[asserts]]
+arguments = [104, 104]
+comment   = "Contains zero, despite other checks"
+expected  = []
+
+[[asserts]]
+arguments = [61, 65]
+comment   = "Range with no matches"
+expected  = []
+
+[[asserts]]
+arguments = [25, 30]
+comment   = "Range leading to zero"
+expected  = []
+
+[[asserts]]
+arguments = [300, 315]
+comment   = "Wider range in hundreds"
+expected  = [312, 315]

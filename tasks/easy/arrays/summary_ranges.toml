@@ -1,0 +1,195 @@
+level             = "easy"
+name              = "summary_ranges"
+tags              = ["arrays", "strings"]
+time_to_solve_sec = 300
+
+description_en = """
+You are given a sorted array of unique integers `nums`.
+
+Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of `nums` is covered by exactly one of the ranges, and there is no integer `x` such that `x` is in one of the ranges but not in `nums`.
+
+Each range `[a, b]` in the list should be formatted as:
+- `"a->b"` if $a \\neq b$
+- `"a"` if $a = b$
+"""
+
+description_ru = """
+Вам дан отсортированный массив уникальных целых чисел `nums`.
+
+Верните минимальный отсортированный список диапазонов, которые в точности покрывают все числа в массиве. Это означает, что каждый элемент `nums` покрыт ровно одним диапазоном, и не существует такого целого числа `x`, которое находится в одном из диапазонов, но отсутствует в `nums`.
+
+Каждый диапазон `[a, b]` в списке должен быть отформатирован как:
+- `"a->b"`, если $a \\neq b$
+- `"a"`, если $a = b$
+"""
+
+limits = """
+- $0 \\leq \\text{len}(nums) \\leq 10^4$
+- $-10^9 \\leq nums[i] \\leq 10^9$
+- $nums$ is strictly increasing
+"""
+
+solution = """
+def solution(nums: list[int]) -> list[str]:
+    res = []
+    for n in nums:
+        if res and res[-1][1] == n - 1:
+            res[-1][1] = n
+        else:
+            res.append([n, n])
+    return [f"{s}->{e}" if s != e else str(s) for s, e in res]
+"""
+
+examples = """
+solution([]) == []
+solution([-1]) == ["-1"]
+solution([0, 1, 2, 4, 5, 7]) == ["0->2", "4->5", "7"]
+solution([0, 2, 3, 4, 6, 8, 9]) == ["0", "2->4", "6", "8->9"]
+"""
+
+[[input_signature]]
+argument_name = "nums"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty array"
+expected  = []
+
+[[asserts]]
+arguments = [[0]]
+comment   = "Single element zero"
+expected  = ["0"]
+
+[[asserts]]
+arguments = [[-1]]
+comment   = "Single negative element"
+expected  = ["-1"]
+
+[[asserts]]
+arguments = [[1, 2]]
+comment   = "Single pair"
+expected  = ["1->2"]
+
+[[asserts]]
+arguments = [[1, 3]]
+comment   = "Two disconnected elements"
+expected  = ["1", "3"]
+
+[[asserts]]
+arguments = [[0, 1, 2, 4, 5, 7]]
+comment   = "Mix of intervals and single elements"
+expected  = ["0->2", "4->5", "7"]
+
+[[asserts]]
+arguments = [[0, 2, 3, 4, 6, 8, 9]]
+comment   = "Another mix from examples"
+expected  = ["0", "2->4", "6", "8->9"]
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "One single interval"
+expected  = ["1->5"]
+
+[[asserts]]
+arguments = [[2, 4, 6, 8]]
+comment   = "All isolated elements"
+expected  = ["2", "4", "6", "8"]
+
+[[asserts]]
+arguments = [[-5, -4, -3, -1, 0, 1]]
+comment   = "Negative to positive transition"
+expected  = ["-5->-3", "-1->1"]
+
+[[asserts]]
+arguments = [[-2, -1, 1, 2]]
+comment   = "Symmetric around zero"
+expected  = ["-2->-1", "1->2"]
+
+[[asserts]]
+arguments = [[10, 11, 12, 13, 14, 15]]
+comment   = "Larger strictly consecutive range"
+expected  = ["10->15"]
+
+[[asserts]]
+arguments = [[-10, -9, -8, 0, 1, 2, 8, 9, 10]]
+comment   = "Multiple separate continuous intervals"
+expected  = ["-10->-8", "0->2", "8->10"]
+
+[[asserts]]
+arguments = [[-1000000000, 1000000000]]
+comment   = "Extreme values without overflow issues"
+expected  = ["-1000000000", "1000000000"]
+
+[[asserts]]
+arguments = [[100, 101, 102, 103, 105, 106, 107]]
+comment   = "Two large consecutive ranges"
+expected  = ["100->103", "105->107"]
+
+[[asserts]]
+arguments = [[1, 2, 3, 5, 6, 7, 9, 10, 11]]
+comment   = "Triplets"
+expected  = ["1->3", "5->7", "9->11"]
+
+[[asserts]]
+arguments = [[-50, -49, -48]]
+comment   = "Negative sequence"
+expected  = ["-50->-48"]
+
+[[asserts]]
+arguments = [[0, 1]]
+comment   = "Smallest consecutive positive"
+expected  = ["0->1"]
+
+[[asserts]]
+arguments = [[-1, 0]]
+comment   = "Zero included"
+expected  = ["-1->0"]
+
+[[asserts]]
+arguments = [[-3, -2, -1]]
+comment   = "Small negative sequence"
+expected  = ["-3->-1"]
+
+[[asserts]]
+arguments = [[10, 20, 30, 40]]
+comment   = "Tens apart"
+expected  = ["10", "20", "30", "40"]
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
+comment   = "Long zero to nine sequence"
+expected  = ["0->9"]
+
+[[asserts]]
+arguments = [[-100, -99, -98, -96, -95, -94]]
+comment   = "Two negative chunks"
+expected  = ["-100->-98", "-96->-94"]
+
+[[asserts]]
+arguments = [[7, 8, 9, 10, 12, 13]]
+comment   = "Two differently sized chunks"
+expected  = ["7->10", "12->13"]
+
+[[asserts]]
+arguments = [[4, 6, 8, 10, 12]]
+comment   = "Even numbers"
+expected  = ["4", "6", "8", "10", "12"]
+
+[[asserts]]
+arguments = [[1, 3, 5, 7, 9]]
+comment   = "Odd numbers"
+expected  = ["1", "3", "5", "7", "9"]
+
+[[asserts]]
+arguments = [[-10, -5, 0, 5, 10]]
+comment   = "Step of 5"
+expected  = ["-10", "-5", "0", "5", "10"]

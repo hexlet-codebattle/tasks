@@ -1,0 +1,199 @@
+level             = "easy"
+name              = "toeplitz_matrix"
+tags              = ["arrays", "matrices"]
+time_to_solve_sec = 200
+
+description_en = """
+Given an $m \\times n$ `matrix`, return `True` if the matrix is Toeplitz. Otherwise, return `False`.
+
+A matrix is **Toeplitz** if every diagonal from top-left to bottom-right has the same elements.
+"""
+
+description_ru = """
+Дана матрица `matrix` размером $m \\times n$. Верните `True`, если матрица является Тёплицевой. В противном случае верните `False`.
+
+Матрица называется **Тёплицевой**, если каждая диагональ от верхнего левого угла до нижнего правого состоит из одинаковых элементов.
+"""
+
+limits = """
+- $1 \\leq m, n \\leq 20$
+- $0 \\leq \\text{matrix}[i][j] \\leq 100$
+"""
+
+solution = """
+def solution(matrix: list[list[int]]) -> bool:
+    for i in range(1, len(matrix)):
+        for j in range(1, len(matrix[0])):
+            if matrix[i][j] != matrix[i-1][j-1]:
+                return False
+    return True
+"""
+
+examples = """
+solution([[1]]) == True
+solution([[1, 2], [3, 1]]) == True
+solution([[1, 2], [2, 2]]) == False
+solution([[1, 2, 3], [4, 1, 2], [5, 4, 1]]) == True
+"""
+
+[[input_signature]]
+argument_name = "matrix"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [[[1]]]
+comment   = "1x1 matrix is always Toeplitz"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3, 4]]]
+comment   = "1xN matrix is always Toeplitz"
+expected  = true
+
+[[asserts]]
+arguments = [[[1], [2], [3], [4]]]
+comment   = "Mx1 matrix is always Toeplitz"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2], [3, 1]]]
+comment   = "2x2 Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2], [2, 2]]]
+comment   = "2x2 non-Toeplitz matrix"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]]]
+comment   = "3x4 Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3, 4], [5, 1, 9, 3], [9, 5, 1, 2]]]
+comment   = "3x4 non-Toeplitz matrix with one incorrect element"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 2], [1, 2]]]
+comment   = "Columns are identical, but diagonals are not"
+expected  = false
+
+[[asserts]]
+arguments = [[[0, 0], [0, 0]]]
+comment   = "Matrix with all zeros"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]]]
+comment   = "Sequential matrix is not Toeplitz"
+expected  = false
+
+[[asserts]]
+arguments = [[[3, 3, 3], [3, 3, 3], [3, 3, 3]]]
+comment   = "Matrix with all identical elements"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3], [2, 1, 2], [3, 2, 1]]]
+comment   = "Symmetric Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3], [2, 1, 4], [3, 2, 1]]]
+comment   = "Almost symmetric but non-Toeplitz"
+expected  = false
+
+[[asserts]]
+arguments = [[[9, 8, 7, 6], [5, 9, 8, 7], [4, 5, 9, 8], [3, 4, 5, 9]]]
+comment   = "4x4 Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[9, 8, 7, 6], [5, 9, 8, 7], [4, 5, 9, 8], [3, 4, 5, 1]]]
+comment   = "4x4 non-Toeplitz matrix, last element wrong"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 2, 3, 4, 5], [6, 1, 2, 3, 4], [7, 6, 1, 2, 3]]]
+comment   = "3x5 Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3, 4, 5], [6, 1, 2, 3, 4], [7, 6, 1, 2, 9]]]
+comment   = "3x5 non-Toeplitz matrix"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 1], [2, 1], [3, 2], [4, 3]]]
+comment   = "4x2 Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 1], [2, 1], [3, 2], [4, 4]]]
+comment   = "4x2 non-Toeplitz matrix"
+expected  = false
+
+[[asserts]]
+arguments = [[[5, 4, 3], [6, 5, 4], [7, 6, 5], [8, 7, 6]]]
+comment   = "4x3 Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[5, 4, 3], [6, 5, 4], [7, 6, 5], [8, 7, 5]]]
+comment   = "4x3 non-Toeplitz matrix"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]]
+comment   = "Identity matrix is Toeplitz"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]]
+comment   = "Slightly modified identity matrix"
+expected  = false
+
+[[asserts]]
+arguments = [[[8, 8, 8, 8], [8, 8, 8, 8], [8, 8, 8, 8], [8, 8, 8, 8]]]
+comment   = "4x4 matrix of 8s"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2], [3, 1], [4, 3], [5, 4], [6, 5]]]
+comment   = "5x2 Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2, 3, 4, 5, 6]]]
+comment   = "1x6 matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 2], [2, 1], [1, 2]]]
+comment   = "Alternating elements form a valid Toeplitz pattern"
+expected  = true
+
+[[asserts]]
+arguments = [[[1, 1, 1, 1], [2, 2, 2, 2]]]
+comment   = "Rows are internally identical but diagonals are not"
+expected  = false
+
+[[asserts]]
+arguments = [[[1, 1, 1, 1], [2, 1, 1, 1]]]
+comment   = "Shifted identical rows form a Toeplitz matrix"
+expected  = true
+
+[[asserts]]
+arguments = [[[3, 4, 5, 6], [2, 3, 4, 5], [1, 2, 3, 4]]]
+comment   = "Another valid 3x4 Toeplitz matrix"
+expected  = true

@@ -1,0 +1,207 @@
+level             = "easy"
+name              = "digit_snake_formatter"
+tags              = ["strings", "formatting"]
+time_to_solve_sec = 250
+
+description_en = """
+Transform a digit string `n` into a "snake" format based on an integer `c`:
+
+1. Extract the first `c` digits from string `n`. If `c` exceeds the length of `n`, use all available digits.
+2. Split the resulting substring into chunks of $8$ characters.
+3. Pad the final chunk with the character `X` on the right until it reaches a length of $8$.
+4. Reverse chunks located at odd indices ($1, 3, 5, \\dots$). Keep chunks at even indices ($0, 2, 4, \\dots$) as they are.
+5. Return the chunks joined by newline characters (`\\n`).
+"""
+
+description_ru = """
+Преобразуйте строку цифр `n` в формат «змейки» на основе целого числа `c`:
+
+1. Возьмите первые `c` цифр из строки `n`. Если `c` больше длины `n`, используйте все имеющиеся цифры.
+2. Разделите полученную подстроку на блоки по $8$ символов.
+3. Дополните последний блок символом `X` справа, пока его длина не станет равной $8$.
+4. Разверните блоки, находящиеся на нечетных индексах ($1, 3, 5, \\dots$). Блоки на четных индексах ($0, 2, 4, \\dots$) оставьте без изменений.
+5. Верните блоки, объединенные символом переноса строки (`\\n`).
+"""
+
+limits = """
+- $0 \\leq \\text{len}(n) \\leq 1000$
+- $0 \\leq c \\leq 1000$
+- $n$ contains only digits $0-9$
+"""
+
+solution = """
+def solution(n: str, c: int) -> str:
+    s = n[:c]
+    chunks = [s[i:i+8].ljust(8, 'X') for i in range(0, len(s), 8)]
+    return "\\n".join(x[::-1] if i % 2 else x for i, x in enumerate(chunks))
+"""
+
+examples = """
+solution("", 5) == ""
+solution("123", 0) == ""
+solution("123", 2) == "12XXXXXX"
+solution("1234567890", 10) == "12345678\\nXXXXXX09"
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "c"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["", 10]
+comment   = "Empty string input"
+expected  = ""
+
+[[asserts]]
+arguments = ["12345", 0]
+comment   = "Zero characters requested"
+expected  = ""
+
+[[asserts]]
+arguments = ["1", 1]
+comment   = "Single character padding"
+expected  = "1XXXXXXX"
+
+[[asserts]]
+arguments = ["12345678", 8]
+comment   = "Exactly one full chunk"
+expected  = "12345678"
+
+[[asserts]]
+arguments = ["123456789", 9]
+comment   = "Two chunks, second needs padding and reversal"
+expected  = "12345678\nXXXXXXX9"
+
+[[asserts]]
+arguments = ["1234567890123456", 16]
+comment   = "Two full chunks, second reversed"
+expected  = "12345678\n65432109"
+
+[[asserts]]
+arguments = ["111111112222222233333333", 24]
+comment   = "Three full chunks"
+expected  = "11111111\n22222222\n33333333"
+
+[[asserts]]
+arguments = ["123", 5]
+comment   = "c is greater than string length"
+expected  = "123XXXXX"
+
+[[asserts]]
+arguments = ["0000000000000000", 16]
+comment   = "Identical digits"
+expected  = "00000000\n00000000"
+
+[[asserts]]
+arguments = ["12345678123456781234567812345678", 32]
+comment   = "Four full chunks"
+expected  = "12345678\n87654321\n12345678\n87654321"
+
+[[asserts]]
+arguments = ["987654321", 5]
+comment   = "c is smaller than first chunk size"
+expected  = "98765XXX"
+
+[[asserts]]
+arguments = ["1234567890", 11]
+comment   = "c is larger than length, but logic handles it"
+expected  = "12345678\nXXXXXX09"
+
+[[asserts]]
+arguments = ["123456781", 9]
+comment   = "Last chunk is single digit"
+expected  = "12345678\nXXXXXXX1"
+
+[[asserts]]
+arguments = ["123456781234567", 15]
+comment   = "Last chunk is almost full"
+expected  = "12345678\nX7654321"
+
+[[asserts]]
+arguments = ["1234567887654321", 16]
+comment   = "Reversing a reversed sequence"
+expected  = "12345678\n12345678"
+
+[[asserts]]
+arguments = ["01234567890123456789", 20]
+comment   = "Three chunks, middle one full reversed"
+expected  = "01234567\n54321098\n6789XXXX"
+
+[[asserts]]
+arguments = ["12121212", 8]
+comment   = "Repeating pattern"
+expected  = "12121212"
+
+[[asserts]]
+arguments = ["1234123412341234", 16]
+comment   = "Repeating chunks"
+expected  = "12341234\n43214321"
+
+[[asserts]]
+arguments = ["1111111100000000", 16]
+comment   = "Switching values between chunks"
+expected  = "11111111\n00000000"
+
+[[asserts]]
+arguments = ["5555", 2]
+comment   = "c limits string to less than original"
+expected  = "55XXXXXX"
+
+[[asserts]]
+arguments = ["123456789012345678901234567890", 25]
+comment   = "Multiple chunks with padding at the very end"
+expected  = "12345678\n65432109\n78901234\nXXXXXXX5"
+
+[[asserts]]
+arguments = ["888888887777777766666666", 20]
+comment   = "Non-full third chunk"
+expected  = "88888888\n77777777\n6666XXXX"
+
+[[asserts]]
+arguments = ["0000000100000002", 16]
+comment   = "Check specific digit placement"
+expected  = "00000001\n20000000"
+
+[[asserts]]
+arguments = ["123456789999999912345678", 24]
+comment   = "Middle chunk all 9s"
+expected  = "12345678\n99999999\n12345678"
+
+[[asserts]]
+arguments = ["1000000020000000", 16]
+comment   = "Zeros and specific digits"
+expected  = "10000000\n00000002"
+
+[[asserts]]
+arguments = ["1234567812345678123456781234567812345678", 40]
+comment   = "Five chunks check"
+expected  = "12345678\n87654321\n12345678\n87654321\n12345678"
+
+[[asserts]]
+arguments = ["111122223333444455556666", 24]
+comment   = "Alternating even/odd reversal"
+expected  = "11112222\n44443333\n55556666"
+
+[[asserts]]
+arguments = ["12345678", 9]
+comment   = "c slightly larger than len(n)"
+expected  = "12345678"
+
+[[asserts]]
+arguments = ["9", 1]
+comment   = "Min non-zero case"
+expected  = "9XXXXXXX"
+
+[[asserts]]
+arguments = ["12345678901234567890", 17]
+comment   = "Last chunk is single char, index 2 (even)"
+expected  = "12345678\n65432109\n7XXXXXXX"

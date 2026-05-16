@@ -1,0 +1,185 @@
+level             = "easy"
+name              = "permutation_period"
+tags              = ["arrays", "math", "simulation"]
+time_to_solve_sec = 250
+
+description_en = """
+You are given an array `p` of length $n$ containing integers from $0$ to $n - 1$.
+
+Imagine we have an initial array $\\text{arr} = [0, 1, 2, \\dots, n - 1]$.
+In one step, we permute the elements of $\\text{arr}$ such that the new array is $\\text{new\\_arr}$, where $\\text{new\\_arr}[i] = \\text{arr}[p[i]]$.
+
+Return the minimum number of steps required to return $\\text{arr}$ to its initial state $[0, 1, 2, \\dots, n - 1]$. 
+If it is impossible to ever return to the initial state, return $-1$.
+"""
+
+description_ru = """
+Вам дан массив `p` длины $n$, содержащий целые числа от $0$ до $n - 1$.
+
+Представьте, что у нас есть исходный массив $\\text{arr} = [0, 1, 2, \\dots, n - 1]$.
+За один шаг мы переставляем элементы $\\text{arr}$ так, что получается новый массив $\\text{new\\_arr}$, где $\\text{new\\_arr}[i] = \\text{arr}[p[i]]$.
+
+Верните минимальное количество шагов, за которое массив $\\text{arr}$ вернется в свое исходное состояние $[0, 1, 2, \\dots, n - 1]$. 
+Если вернуться в исходное состояние невозможно, верните $-1$.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(p) \\leq 30$
+- $0 \\leq p[i] < \\text{len}(p)$
+"""
+
+solution = """
+def solution(p: list[int]) -> int:
+    if len(set(p)) != len(p): return -1
+    curr, target, steps = list(p), list(range(len(p))), 1
+    while curr != target: curr, steps = [curr[i] for i in p], steps + 1
+    return steps
+"""
+
+examples = """
+solution([0]) == 1
+solution([1, 0]) == 2
+solution([1, 2, 0]) == 3
+solution([0, 1, 1]) == -1
+solution([1, 2, 0, 4, 3]) == 6
+"""
+
+[[input_signature]]
+argument_name = "p"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[0]]
+comment   = "Length 1, identical"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 0]]
+comment   = "Length 2, swap"
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 1]]
+comment   = "Length 2, identical"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 0]]
+comment   = "Cycle of 3"
+expected  = 3
+
+[[asserts]]
+arguments = [[0, 1, 2]]
+comment   = "Length 3, identical"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 0, 2]]
+comment   = "Cycle of 2 and 1"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3, 0]]
+comment   = "Cycle of 4"
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 0, 3, 2]]
+comment   = "Two cycles of 2"
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 0, 4, 3]]
+comment   = "Cycles of 3 and 2 (LCM = 6)"
+expected  = 6
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 0]]
+comment   = "Cycle of 5"
+expected  = 5
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "Invalid permutation"
+expected  = -1
+
+[[asserts]]
+arguments = [[1, 1]]
+comment   = "Invalid permutation"
+expected  = -1
+
+[[asserts]]
+arguments = [[2, 0, 1, 4, 3, 5]]
+comment   = "Cycles of 3, 2, 1"
+expected  = 6
+
+[[asserts]]
+arguments = [[1, 2, 3, 0, 5, 6, 4]]
+comment   = "Cycles of 4 and 3 (LCM = 12)"
+expected  = 12
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 0, 6, 7, 8, 5]]
+comment   = "Cycles of 5 and 4 (LCM = 20)"
+expected  = 20
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 0, 7, 8, 9, 6]]
+comment   = "Cycles of 6 and 4 (LCM = 12)"
+expected  = 12
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 0, 8, 9, 7]]
+comment   = "Cycles of 7 and 3 (LCM = 21)"
+expected  = 21
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 0, 9, 8]]
+comment   = "Cycles of 8 and 2"
+expected  = 8
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 0, 9]]
+comment   = "Cycles of 9 and 1"
+expected  = 9
+
+[[asserts]]
+arguments = [[1, 2, 0, 4, 5, 6, 7, 3, 9, 10, 11, 12, 13, 8, 15, 14]]
+comment   = "Cycles of 3, 5, 6, 2 (LCM = 30)"
+expected  = 30
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 0, 6, 7, 8, 9, 10, 11, 5, 13, 14, 12]]
+comment   = "Cycles of 5, 7, 3 (LCM = 105)"
+expected  = 105
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 8]]
+comment   = "Not a permutation"
+expected  = -1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0]]
+comment   = "Not a permutation with 0 duplicates"
+expected  = -1
+
+[[asserts]]
+arguments = [[2, 2, 2, 2, 2]]
+comment   = "All same elements"
+expected  = -1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 15]]
+comment   = "Two cycles of 15"
+expected  = 15
+
+[[asserts]]
+arguments = [[1, 0, 3, 4, 2, 6, 7, 8, 5, 10, 11, 12, 13, 9]]
+comment   = "Cycles of 2, 3, 4, 5 (LCM = 60)"
+expected  = 60

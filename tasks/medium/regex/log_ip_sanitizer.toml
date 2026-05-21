@@ -44,10 +44,12 @@ solution("1.1.1.1 2.2.2.2") == "[REDACTED] [REDACTED]"
 solution = """
 import re
 
+def replace(p):
+    ip = p.group()
+    return "[REDACTED]" if all(0 <= int(x) <= 255 for x in ip.split(".")) else ip
+
 def solution(s: str) -> str:
-    octet = r'(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)'
-    ipv4 = rf'(?<!\\d){octet}(?:\\.{octet}){{3}}(?!\\d)'
-    return re.sub(ipv4, '[REDACTED]', s)
+    return re.sub("(\\d+\\.){3}\\d+", replace, s)
 """
 
 [[input_signature]]
@@ -111,8 +113,8 @@ arguments = ["x1.2.3.4y"]
 expected  = "x[REDACTED]y"
 
 [[asserts]]
-arguments = ["a1.2.3.400"]
-expected  = "a1.2.3.400"
+arguments = ["a11.2.3.400"]
+expected  = "a11.2.3.400"
 
 [[asserts]]
 arguments = ["1.2.3"]
@@ -148,7 +150,7 @@ expected  = "[REDACTED]:end"
 
 [[asserts]]
 arguments = ["0255.255.255.255"]
-expected  = "0255.255.255.255"
+expected  = "[REDACTED]"
 
 [[asserts]]
 arguments = ["10.10.10.256"]

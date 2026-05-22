@@ -16,13 +16,12 @@ limits = """
 """
 
 solution = """
+import re
+
 def solution(text: str) -> str:
-    import re
-    s = text.replace('-', '_')
-    s = re.sub(r'([a-z\\d])([A-Z])', r'\\1_\\2', s)
-    s = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\\1_\\2', s)
-    s = s.replace('::', '/')
-    return s.lower()
+    for pattern in ['([a-z])([A-Z])', '([A-Z]+)([A-Z][a-z])']:
+        text = re.sub(pattern, r'\\1_\\2', text)
+    return text.replace('-', '_').replace('::', '/').lower()
 """
 
 examples = """

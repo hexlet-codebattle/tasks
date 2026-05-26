@@ -13,15 +13,15 @@ description_ru = """
 
 limits = """
 - $0 \\leq a, b, c \\leq 1000$
+- $a + b + c \\geq 1$
 """
 
 solution = """
 def solution(a: int, b: int, c: int) -> bool:
-    return (a ^ b ^ c) != 0
+    return a ^ b ^ c != 0
 """
 
 examples = """
-solution(0, 0, 0) == False
 solution(1, 0, 0) == True
 solution(1, 1, 0) == False
 solution(1, 2, 3) == False

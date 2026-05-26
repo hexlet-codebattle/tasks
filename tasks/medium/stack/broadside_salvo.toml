@@ -33,10 +33,10 @@ def solution(heights: list[int]) -> int:
 """
 
 examples = """
-solution([2,1,5,6,2,3]) == 10
-solution([2,4]) == 4
-solution([1]) == 1
 solution([]) == 0
+solution([1]) == 1
+solution([2, 4]) == 4
+solution([2, 1, 5, 6, 2, 3]) == 10
 """
 
 [[input_signature]]

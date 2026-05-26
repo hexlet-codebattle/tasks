@@ -1,9 +1,21 @@
-description_en = "A pirate walks along a deck lined with barrels of rum. Each barrel contains a certain number of liters (given as an array of non‑negative integers). The pirate cannot take rum from two adjacent barrels (that would make noise). What is the maximum total amount of rum he can drink unnoticed?\n"
-description_ru = "Пират идет по палубе, заставленной бочками с ромом. В каждой бочке разное количество литров (задано массивом неотрицательных целых чисел). Он не может брать ром из двух соседних бочек (поднимется шум). Какое максимальное количество рома он может выпить незаметно?\n"
-examples = "solution([]) == 0\nsolution([5]) == 5\nsolution([5, 3]) == 5\nsolution([5, 3, 7]) == 12\nsolution([2, 7, 9, 3, 1]) == 12\n"
-level = "easy"
-limits = "- $0 \\leq \\text{len}(\\text{barrels}) \\leq 1000$\n- $0 \\leq \\text{barrels}[i] \\leq 1000$\n"
-name = "rum_thirst"
+level             = "easy"
+name              = "rum_thirst"
+tags              = ["dp", "algo", "collections"]
+time_to_solve_sec = 180
+
+description_en = """
+A pirate walks along a deck lined with barrels of rum. Each barrel contains a certain number of liters (given as an array of non‑negative integers). The pirate cannot take rum from two adjacent barrels (that would make noise). What is the maximum total amount of rum he can drink unnoticed?
+"""
+
+description_ru = """
+Пират идет по палубе вдоль ряда бочек с ромом. В каждой бочке есть некоторое количество литров (задано массивом неотрицательных целых чисел). Он не может брать ром из двух соседних бочек (поднимется шум). Какое максимальное количество рома он может выпить незаметно?
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{barrels}) \\leq 1000$
+- $0 \\leq \\text{barrels}[i] \\leq 1000$
+"""
+
 solution = """
 def solution(barrels: list[int]) -> int:
     prev2 = prev1 = 0
@@ -11,15 +23,25 @@ def solution(barrels: list[int]) -> int:
         prev2, prev1 = prev1, max(prev1, prev2 + x)
     return prev1
 """
-tags = ["dp", "algo", "collections"]
-time_to_solve_sec = 180
+
+examples = """
+solution([]) == 0
+solution([5]) == 5
+solution([5, 3]) == 5
+solution([5, 3, 7]) == 12
+solution([2, 7, 9, 3, 1]) == 12
+"""
+
 [[input_signature]]
 argument_name = "barrels"
-
 [input_signature.type]
 name = "array"
 [input_signature.type.nested]
 name = "integer"
+
+[output_signature.type]
+name = "integer"
+
 [[asserts]]
 arguments = [[]]
 comment   = "Test 1"
@@ -76,52 +98,12 @@ comment   = "Test 11"
 expected  = 243
 
 [[asserts]]
-arguments = [
-  [
-    241,
-    310,
-    105,
-    738,
-    405,
-    490,
-    158,
-    92,
-    68,
-    20,
-    411,
-    562,
-    939,
-    296,
-    819,
-    783,
-    60,
-    227,
-  ],
-]
+arguments = [[241, 310, 105, 738, 405, 490, 158, 92, 68, 20, 411, 562, 939, 296, 819, 783, 60, 227]]
 comment = "Test 12"
 expected = 4026
 
 [[asserts]]
-arguments = [
-  [
-    637,
-    261,
-    759,
-    367,
-    814,
-    707,
-    965,
-    861,
-    757,
-    667,
-    944,
-    542,
-    29,
-    860,
-    476,
-    794,
-  ],
-]
+arguments = [[637, 261, 759, 367, 814, 707, 965, 861, 757, 667, 944, 542, 29, 860, 476, 794]]
 comment = "Test 13"
 expected = 6530
 
@@ -151,28 +133,7 @@ comment   = "Test 18"
 expected  = 1079
 
 [[asserts]]
-arguments = [
-  [
-    463,
-    886,
-    573,
-    877,
-    946,
-    799,
-    476,
-    462,
-    520,
-    875,
-    601,
-    194,
-    189,
-    823,
-    524,
-    487,
-    644,
-    628,
-  ],
-]
+arguments = [[463, 886, 573, 877, 946, 799, 476, 462, 520, 875, 601, 194, 189, 823, 524, 487, 644, 628]]
 comment = "Test 19"
 expected = 6031
 
@@ -192,30 +153,7 @@ comment   = "Test 22"
 expected  = 1403
 
 [[asserts]]
-arguments = [
-  [
-    988,
-    213,
-    11,
-    533,
-    753,
-    37,
-    161,
-    934,
-    244,
-    17,
-    56,
-    900,
-    824,
-    697,
-    150,
-    877,
-    711,
-    376,
-    245,
-    119,
-  ],
-]
+arguments = [[988, 213, 11, 533, 753, 37, 161, 934, 244, 17, 56, 900, 824, 697, 150, 877, 711, 376, 245, 119]]
 comment = "Test 23"
 expected = 5672
 
@@ -230,27 +168,7 @@ comment   = "Test 25"
 expected  = 2639
 
 [[asserts]]
-arguments = [
-  [
-    185,
-    125,
-    677,
-    459,
-    342,
-    245,
-    202,
-    974,
-    501,
-    643,
-    505,
-    187,
-    491,
-    302,
-    469,
-    908,
-    270,
-  ],
-]
+arguments = [[185, 125, 677, 459, 342, 245, 202, 974, 501, 643, 505, 187, 491, 302, 469, 908, 270]]
 comment = "Test 26"
 expected = 4220
 
@@ -260,59 +178,11 @@ comment   = "Test 27"
 expected  = 2028
 
 [[asserts]]
-arguments = [
-  [
-    927,
-    740,
-    702,
-    805,
-    784,
-    901,
-    926,
-    154,
-    266,
-    690,
-    650,
-    869,
-    926,
-    103,
-    893,
-    335,
-  ],
-]
+arguments = [[927, 740, 702, 805, 784, 901, 926, 154, 266, 690, 650, 869, 926, 103, 893, 335]]
 comment = "Test 28"
 expected = 6074
 
 [[asserts]]
-arguments = [
-  [
-    168,
-    428,
-    706,
-    428,
-    650,
-    288,
-    490,
-    863,
-    221,
-    811,
-    486,
-    827,
-    986,
-    524,
-    187,
-    517,
-    540,
-    241,
-  ],
-]
+arguments = [[168, 428, 706, 428, 650, 288, 490, 863, 221, 811, 486, 827, 986, 524, 187, 517, 540, 241]]
 comment = "Test 29"
 expected = 5307
-
-[[asserts]]
-arguments = [[]]
-comment   = "Test 30"
-expected  = 0
-
-[output_signature.type]
-name = "integer"

@@ -4,19 +4,11 @@ tags              = ["strings"]
 time_to_solve_sec = 300
 
 description_en = """
-Check if any anagram of a given string is a palindrome.
-
-An anagram is a word formed by rearranging the letters of another word. A palindrome is a word that reads the same forwards and backwards.
-
-For a string to have a palindromic anagram, at most one character can have an odd count.
+Find out if it is possible to rearrange the letters of the string given so that it reads the same from left to right and from right to left.
 """
 
 description_ru = """
-Проверьте, является ли какая-либо анаграмма данной строки палиндромом.
-
-Анаграмма слова - это слово, которое может быть получено путем перестановки его букв. Палиндром - это слово, которое одинаково читается в обоих направлениях.
-
-Чтобы строка могла иметь анаграмму-палиндром, не более одного символа может встречаться нечетное количество раз.
+Выясните, можно ли переставить буквы данной строки таким образом, чтобы она читалась одинаково слева направо и справа налево.
 """
 
 limits = """

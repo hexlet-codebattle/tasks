@@ -24,12 +24,11 @@ limits = """
 """
 
 solution = """
+from collections import Counter
+
 def solution(s: str) -> bool:
-    from collections import Counter
-
     char_counts = Counter(s)
-    odd_count = sum(1 for count in char_counts.values() if count % 2 == 1)
-
+    odd_count = sum(count % 2 == 1 for count in char_counts.values())
     return odd_count <= 1
 """
 

@@ -28,20 +28,18 @@ limits = """
 solution = """
 def solution(words):
     from collections import defaultdict
-    groups = defaultdict(list)
+
+    groups = defaultdict(set)
     for w in words:
         key = ''.join(sorted(w))
-        groups[key].append(w)
-    # keep only groups with >=2
+        groups[key].add(w)
     kept = []
-    for key, arr in groups.items():
+    for arr in groups.values():
         if len(arr) >= 2:
-            arr.sort()
-            kept.append(arr)
+            kept.append(sorted(arr))
     if not kept:
         return [["anagrams not found!"]]
-    kept.sort(key=lambda g: (g[0], len(g)))
-    return kept
+    return sorted(kept)
 """
 
 examples = """
@@ -72,7 +70,7 @@ expected  = [["ever", "veer"], ["item", "mite"], ["kale", "lake"]]
 [[asserts]]
 arguments = [["meat", "mat", "team", "mate", "eat", "mate"]]
 comment   = "Only the meat/mate/team group qualifies; words sorted"
-expected  = [["mate", "mate", "meat", "team"]]
+expected  = [["mate", "meat", "team"]]
 
 [[asserts]]
 arguments = [["there", "is", "no", "anagrams", "foo", "bar"]]
@@ -102,7 +100,6 @@ expected = [
   [
     "cough",
     "guohc",
-    "guohc",
   ],
   [
     "distribution",
@@ -116,25 +113,17 @@ expected = [
     "nitwer",
     "trnwie",
   ],
-  [
-    "osls",
-    "osls",
-  ],
-  [
-    "water",
-    "water",
-  ],
 ]
 
 [[asserts]]
 arguments = [["ab", "ba", "ab", "bca", "cab", "abc", "zzz"]]
 comment   = "Two groups; sorted groups and words"
-expected  = [["ab", "ab", "ba"], ["abc", "bca", "cab"]]
+expected  = [["ab", "ba"], ["abc", "bca", "cab"]]
 
 [[asserts]]
 arguments = [["a", "a"]]
 comment   = "Single-letter duplicates"
-expected  = [["a", "a"]]
+expected  = [["anagrams not found!"]]
 
 [[asserts]]
 arguments = [["a", "b", "c"]]
@@ -191,7 +180,7 @@ expected  = [["anagrams not found!"]]
 [[asserts]]
 arguments = [["aaaa", "aaaa", "aaaa"]]
 comment   = "All identical"
-expected  = [["aaaa", "aaaa", "aaaa"]]
+expected  = [["anagrams not found!"]]
 
 [[asserts]]
 arguments = [["loop", "polo", "pool", "loco", "cool"]]
@@ -210,7 +199,7 @@ expected  = [["xyz", "xzy", "yxz", "yzx", "zxy", "zyx"]]
 
 [[asserts]]
 arguments = [["abc", "bca", "cab", "abcd", "bcad", "dacb", "dbca", "zz", "zz"]]
-comment = "One 3-group, one 4-group, one 2-group; sorted by first word"
+comment = "One 3-group, one 4-group; sorted by first word"
 expected = [
   [
     "abc",
@@ -223,16 +212,12 @@ expected = [
     "dacb",
     "dbca",
   ],
-  [
-    "zz",
-    "zz",
-  ],
 ]
 
 [[asserts]]
 arguments = [["abc", "bac", "ccc", "ccc", "bcc", "cbc"]]
-comment   = "Two groups with duplicates"
-expected  = [["abc", "bac"], ["bcc", "cbc"], ["ccc", "ccc"]]
+comment   = "Two groups and two duplicates"
+expected  = [["abc", "bac"], ["bcc", "cbc"]]
 
 [[asserts]]
 arguments = [["note", "tone", "stone", "tones", "onset", "seton"]]
@@ -246,10 +231,10 @@ expected  = [["lair", "liar", "rail"]]
 
 [[asserts]]
 arguments = [["abc", "cba", "bca", "abcd", "abdc", "abcd", "dcab", "cadb"]]
-comment   = "Group sizes 3 and 5 (abcd group has duplicate)"
-expected  = [["abc", "bca", "cba"], ["abcd", "abcd", "abdc", "cadb", "dcab"]]
+comment   = "Group sizes 3 and 4 (abcd group has duplicate)"
+expected  = [["abc", "bca", "cba"], ["abcd", "abdc", "cadb", "dcab"]]
 
 [[asserts]]
 arguments = [["zzz", "zzz", "zzz", "zzzz", "zzzz"]]
 comment   = "Two groups of repeated letters"
-expected  = [["zzz", "zzz", "zzz"], ["zzzz", "zzzz"]]
+expected  = [["anagrams not found!"]]

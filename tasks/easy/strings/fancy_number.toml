@@ -4,19 +4,25 @@ tags              = ["strings", "games"]
 time_to_solve_sec = 300
 
 description_en = """
-Given a number, find whether it is fancy or not.
+Given a number, find whether it is **fancy** or not.
 
-A fancy number is one which when rotated $180$ degrees is the same.
+A number is called **fancy** if it does not change when rotated $180$ degrees.
 
-When rotated: $6$ becomes $9$, $9$ becomes $6$, and $8$, $1$, $0$ remain themselves (do not change).
+With this rotation:
+- $6$ becomes $9$;
+- $9$ becomes $6$;
+- $0$, $1$, $8$ remain themselves;
+- other digits break.
 """
 
 description_ru = """
-Дано число, определите причудливое оно или нет.
+Дано число. Определите, **причудливое** оно или нет.
 
-Число является причудливым, если при развороте на $180$ градусов остается самим собой.
-
-При повороте: $6$ становится $9$, $9$ становится $6$, а $8$, $1$ и $0$ остаются сами собой (не меняются).
+Число называется **причудливым**, если при перевороте на $180$ градусов остается самим собой. При таком перевороте:
+- $6$ становится $9$;
+- $9$ становится $6$;
+- $0$, $1$ и $8$ остаются сами собой;
+- остальные цифры перестают быть цифрами.
 """
 
 limits = """

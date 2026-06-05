@@ -4,18 +4,18 @@ tags              = ["strings", "hashing", "sorting"]
 time_to_solve_sec = 360
 
 description_en = """
-Given an array of lowercase words $w$, group words that are anagrams.
-Return an array of groups (each a string array) where each group has size $\\ge 2$.
-Inside each group, words are sorted lexicographically (duplicates allowed).
-Groups are sorted by their first element, then by group size.
+Given an array $w$ of lowercase words, group words that are anagrams.
+
+Return an array of groups (each is a string array) where each group has size $\\ge 2$.
+Inside each group, words should be ordered alphabetically, duplicates are not allowed. Groups should be ordered alphabetically by their first word.
 If there are no anagrams, return `[["anagrams not found!"]]`.
 """
 
 description_ru = """
-Дан массив слов в нижнем регистре $w$. Сгруппируйте слова-анаграммы.
-Верните массив групп (каждая — массив строк) только с группами размера $\\ge 2$.
-Внутри группы слова отсортированы лексикографически (дубликаты допускаются).
-Группы отсортированы по первому слову, затем по размеру группы.
+Дан массив $w$ слов в нижнем регистре. Сгруппируйте слова-анаграммы.
+
+Верните массив групп (каждая — массив строк) с группами размера $\\ge 2$.
+Внутри групп слова должны быть упорядочены по алфавиту, дубликаты не допускаются. Группы должны быть упорядочены по алфавиту по первому слову.
 Если анаграмм нет, верните `[["anagrams not found!"]]`.
 """
 

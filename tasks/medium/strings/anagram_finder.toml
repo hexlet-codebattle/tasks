@@ -31,7 +31,7 @@ def solution(words):
 
     groups = defaultdict(set)
     for w in words:
-        key = ''.join(sorted(w))
+        key = "".join(sorted(w))
         groups[key].add(w)
     kept = []
     for arr in groups.values():

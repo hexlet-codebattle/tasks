@@ -43,9 +43,9 @@ def solution(words):
 """
 
 examples = """
-solution(["a","b","c"]) == [["anagrams not found!"]]
-solution(["ab","ba","cd","dc"]) == [["ab","ba"],["cd","dc"]]
-solution(["eat","tea","tan","ate","nat","bat"]) == [["ate","eat","tea"],["nat","tan"]]
+solution(["a", "b", "c"]) == [["anagrams not found!"]]
+solution(["ab", "ba", "cd", "dc"]) == [["ab", "ba"], ["cd", "dc"]]
+solution(["eat", "tea", "tan", "ate", "nat", "bat"]) == [["ate", "eat", "tea"], ["nat", "tan"]]
 """
 
 [[input_signature]]
@@ -92,27 +92,15 @@ arguments = [
     "gelugaan",
     "nuaegalg",
     "osls",
-    "osls",
-  ],
+    "osls"
+  ]
 ]
 comment = "Multiple groups with duplicates"
 expected = [
-  [
-    "cough",
-    "guohc",
-  ],
-  [
-    "distribution",
-    "oriintdusbti",
-  ],
-  [
-    "gelugaan",
-    "nuaegalg",
-  ],
-  [
-    "nitwer",
-    "trnwie",
-  ],
+  ["cough", "guohc"],
+  ["distribution", "oriintdusbti"],
+  ["gelugaan", "nuaegalg"],
+  ["nitwer", "trnwie"]
 ]
 
 [[asserts]]
@@ -136,31 +124,9 @@ comment   = "All are one large group"
 expected  = [["abc", "acb", "bac", "bca", "cab", "cba"]]
 
 [[asserts]]
-arguments = [
-  [
-    "listen",
-    "silent",
-    "enlist",
-    "inlets",
-    "google",
-    "gogole",
-    "elints",
-  ],
-]
+arguments = [["listen", "silent", "enlist", "inlets", "google", "gogole", "elints"]]
 comment = "Classic anagram set"
-expected = [
-  [
-    "elints",
-    "enlist",
-    "inlets",
-    "listen",
-    "silent",
-  ],
-  [
-    "gogole",
-    "google",
-  ],
-]
+expected = [["elints", "enlist", "inlets", "listen", "silent"], ["gogole", "google"]]
 
 [[asserts]]
 arguments = [["dusty", "stud", "study", "rust", "tsur", "udsty"]]
@@ -200,19 +166,7 @@ expected  = [["xyz", "xzy", "yxz", "yzx", "zxy", "zyx"]]
 [[asserts]]
 arguments = [["abc", "bca", "cab", "abcd", "bcad", "dacb", "dbca", "zz", "zz"]]
 comment = "One 3-group, one 4-group; sorted by first word"
-expected = [
-  [
-    "abc",
-    "bca",
-    "cab",
-  ],
-  [
-    "abcd",
-    "bcad",
-    "dacb",
-    "dbca",
-  ],
-]
+expected = [["abc", "bca", "cab"], ["abcd", "bcad", "dacb", "dbca"]]
 
 [[asserts]]
 arguments = [["abc", "bac", "ccc", "ccc", "bcc", "cbc"]]
@@ -221,7 +175,7 @@ expected  = [["abc", "bac"], ["bcc", "cbc"]]
 
 [[asserts]]
 arguments = [["note", "tone", "stone", "tones", "onset", "seton"]]
-comment   = "One group of note/tone and one large group of onset/seton/stone/tones"
+comment   = "One small group and one big group"
 expected  = [["note", "tone"], ["onset", "seton", "stone", "tones"]]
 
 [[asserts]]

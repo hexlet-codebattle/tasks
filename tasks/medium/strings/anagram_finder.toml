@@ -4,7 +4,7 @@ tags              = ["strings", "hashing", "sorting"]
 time_to_solve_sec = 360
 
 description_en = """
-Given an array $w$ of lowercase words, group words that are anagrams.
+Given an array `words` of lowercase words, group words that are anagrams.
 
 Return an array of groups (each is a string array) where each group has size $\\ge 2$.
 Inside each group, words should be ordered alphabetically, duplicates are not allowed. Groups should be ordered alphabetically by their first word.
@@ -12,7 +12,7 @@ If there are no anagrams, return `[["anagrams not found!"]]`.
 """
 
 description_ru = """
-Дан массив $w$ слов в нижнем регистре. Сгруппируйте слова-анаграммы.
+Дан массив `words` слов в нижнем регистре. Сгруппируйте слова-анаграммы.
 
 Верните массив групп (каждая — массив строк) с группами размера $\\ge 2$.
 Внутри групп слова должны быть упорядочены по алфавиту, дубликаты не допускаются. Группы должны быть упорядочены по алфавиту по первому слову.
@@ -20,18 +20,18 @@ description_ru = """
 """
 
 limits = """
-- $0 \\leq \\text{len}(w) \\leq 5\\cdot 42$
-- $1 \\leq \\text{len}(w_i) \\leq 30$
-- $w_i \\in [a\\!\\dots\\!z]^*$
+- $0 \\leq \\text{len}(words) \\leq 5\\cdot 42$
+- $1 \\leq \\text{len}(words_i) \\leq 30$
+- $words_i \\in [a\\!\\dots\\!z]^*$
 """
 
 solution = """
-def solution(w):
+def solution(words):
     from collections import defaultdict
     groups = defaultdict(list)
-    for s in w:
-        key = ''.join(sorted(s))
-        groups[key].append(s)
+    for w in words:
+        key = ''.join(sorted(w))
+        groups[key].append(w)
     # keep only groups with >=2
     kept = []
     for key, arr in groups.items():
@@ -51,7 +51,7 @@ solution(["eat","tea","tan","ate","nat","bat"]) == [["ate","eat","tea"],["nat","
 """
 
 [[input_signature]]
-argument_name = "w"
+argument_name = "words"
 [input_signature.type]
 name = "array"
 [input_signature.type.nested]

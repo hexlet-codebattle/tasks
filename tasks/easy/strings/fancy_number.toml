@@ -50,7 +50,7 @@ solution(9081806) == True
 [[input_signature]]
 argument_name = "number"
 [input_signature.type]
-name = "int"
+name = "integer"
 
 [output_signature.type]
 name = "boolean"

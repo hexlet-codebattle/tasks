@@ -1,7 +1,7 @@
 level             = "easy"
 name              = "sum_of_two_equals_third"
 tags              = ["math", "collections"]
-time_to_solve_sec = 300
+time_to_solve_sec = 60
 
 description_en = """
 Given three integers, determine whether the sum of two of them equals the third one.

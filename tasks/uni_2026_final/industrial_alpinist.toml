@@ -1,0 +1,149 @@
+base_score        = 100
+level             = "easy"
+name              = "industrial_alpinist"
+tags              = ["uni_2026_final", "math"]
+time_to_solve_sec = 210
+
+description_en = """
+Industrial climber uses three carabiners for safety. For each carabiner the weight it can hold is known. The safety is considered reliable if at least two carabiners can hold the climber's weight. Determine the maximum weight for which the safety is reliable.
+"""
+
+description_ru = """
+Промышленный альпинист использует для страховки три карабина. Для каждого карабина известен вес, который он выдерживает. Страховка считается надежной, если хотя бы два карабина выдерживают вес альпиниста. Определите максимальный вес при котором страховка будет надежной.
+"""
+
+solution = """
+def solution(a, b, c):
+    # Return the second largest of the three capacities,
+    # which is the maximal weight supported by at least two carabiners.
+    return sorted([a, b, c])[1]
+"""
+
+examples = """
+solution(28, 15, 10) == 15
+solution(8, 68, 14) == 14
+"""
+
+examples_list = [
+  "solution(28, 15, 10) == 15",
+  "solution(8, 68, 14) == 14",
+  "solution(1, 2, 3) == 2",
+]
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "c"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 0, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 2, 3]
+expected  = 2
+
+[[asserts]]
+arguments = [3, 2, 1]
+expected  = 2
+
+[[asserts]]
+arguments = [5, 5, 5]
+expected  = 5
+
+[[asserts]]
+arguments = [5, 10, 5]
+expected  = 5
+
+[[asserts]]
+arguments = [100, 1, 100]
+expected  = 100
+
+[[asserts]]
+arguments = [7, 9, 8]
+expected  = 8
+
+[[asserts]]
+arguments = [12, 12, 3]
+expected  = 12
+
+[[asserts]]
+arguments = [4, 20, 20]
+expected  = 20
+
+[[asserts]]
+arguments = [99, 100, 98]
+expected  = 99
+
+[[asserts]]
+arguments = [1000, 1, 2]
+expected  = 2
+
+[[asserts]]
+arguments = [1000, 1000, 999]
+expected  = 1000
+
+[[asserts]]
+arguments = [15, 30, 15]
+expected  = 15
+
+[[asserts]]
+arguments = [42, 17, 42]
+expected  = 42
+
+[[asserts]]
+arguments = [6, 7, 6]
+expected  = 6
+
+[[asserts]]
+arguments = [11, 22, 33]
+expected  = 22
+
+[[asserts]]
+arguments = [33, 11, 22]
+expected  = 22
+
+[[asserts]]
+arguments = [2, 100, 3]
+expected  = 3
+
+[[asserts]]
+arguments = [3, 100, 2]
+expected  = 3
+
+[[asserts]]
+arguments = [100, 2, 3]
+expected  = 3
+
+[[asserts]]
+arguments = [8, 8, 9]
+expected  = 8
+
+[[asserts]]
+arguments = [9, 8, 8]
+expected  = 8
+
+[[asserts]]
+arguments = [8, 9, 8]
+expected  = 8
+
+[[asserts]]
+arguments = [123, 456, 789]
+expected  = 456
+
+[[asserts]]
+arguments = [789, 456, 123]
+expected  = 456

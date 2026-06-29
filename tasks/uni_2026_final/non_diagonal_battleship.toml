@@ -1,0 +1,173 @@
+base_score        = 120
+level             = "easy"
+name              = "non_diagonal_battleship"
+tags              = ["grid", "counting", "simulation", "non_diagonal"]
+time_to_solve_sec = 210
+
+description_en = """
+Some squares of the $n \\times m$ board for the Unusual Naval Battle game are occupied (marked with the * symbol).
+Determine the number of ways to place a single-deck ship (it occupies one square) so that none of the adjacent squares (above, below, left, or right) are occupied.
+"""
+
+description_ru = """
+Некоторые клетки поля размером $n \\times m$ для игры в необычный морской бой заняты (отмечены символом `"*"`).
+Определите количество способов разместить однопалубный корабль (он занимает одну клетку), так чтобы
+ни одна из соседних по стороне клеток (сверху, снизу, слева, справа) не была занята.
+"""
+
+solution = """
+def solution(N, M, field):
+    cnt = 0
+    for i in range(N):
+        row = field[i]
+        for j in range(M):
+            if row[j] != '.':
+                continue
+            ok = True
+            # up
+            if i > 0 and field[i-1][j] == '*':
+                ok = False
+            # down
+            if i + 1 < N and field[i+1][j] == '*':
+                ok = False
+            # left
+            if j > 0 and field[i][j-1] == '*':
+                ok = False
+            # right
+            if j + 1 < M and field[i][j+1] == '*':
+                ok = False
+            if ok:
+                cnt += 1
+    return cnt
+"""
+
+examples = """
+solution(4, 4, ["****", "**..", "*...", "*..."]) == 4
+solution(4, 3, ["***", "...", "...", "***"]) == 0
+"""
+
+examples_list = [
+  'solution(4, 4, ["****", "**..", "*...", "*..."]) == 4',
+  'solution(4, 3, ["***", "...", "...", "***"]) == 0',
+  'solution(3, 3, ["...", "...", "..."]) == 9',
+]
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "m"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "field"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 1, ["."]]
+expected  = 1
+
+[[asserts]]
+arguments = [1, 1, ["*"]]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 2, [".."]]
+expected  = 2
+
+[[asserts]]
+arguments = [1, 2, [".*"]]
+expected  = 0
+
+[[asserts]]
+arguments = [3, 3, ["...", "...", "..."]]
+expected  = 9
+
+[[asserts]]
+arguments = [3, 3, ["***", "...", "***"]]
+expected  = 0
+
+[[asserts]]
+arguments = [4, 4, ["****", "**..", "*...", "*..."]]
+expected  = 4
+
+[[asserts]]
+arguments = [4, 3, ["***", "...", "...", "***"]]
+expected  = 0
+
+[[asserts]]
+arguments = [3, 3, [".*.", "...", ".*."]]
+expected  = 2
+
+[[asserts]]
+arguments = [3, 3, ["*.*", "...", "*.*"]]
+expected  = 1
+
+[[asserts]]
+arguments = [4, 4, ["....", ".**.", ".**.", "...."]]
+expected  = 4
+
+[[asserts]]
+arguments = [3, 5, [".....", "..*..", "....."]]
+expected  = 10
+
+[[asserts]]
+arguments = [2, 6, ["******", "******"]]
+expected  = 0
+
+[[asserts]]
+arguments = [2, 6, ["......", "......"]]
+expected  = 12
+
+[[asserts]]
+arguments = [5, 6, ["*....*", "......", "..**..", "......", "*....*"]]
+expected  = 10
+
+[[asserts]]
+arguments = [3, 5, [".*.*.", "*...*", ".*.*."]]
+expected  = 1
+
+[[asserts]]
+arguments = [5, 5, ["....*", "...*.", "..*..", ".*...", "*...."]]
+expected  = 12
+
+[[asserts]]
+arguments = [4, 4, ["*..*", "....", "....", "*..*"]]
+expected  = 4
+
+[[asserts]]
+arguments = [3, 4, [".**.", "....", ".**."]]
+expected  = 2
+
+[[asserts]]
+arguments = [1, 5, ["..*.."]]
+expected  = 2
+
+[[asserts]]
+arguments = [5, 1, [".", ".", "*", ".", "."]]
+expected  = 2
+
+[[asserts]]
+arguments = [4, 4, ["**..", "..**", "**..", "..**"]]
+expected  = 0
+
+[[asserts]]
+arguments = [4, 6, ["......", ".****.", ".****.", "......"]]
+expected  = 4
+
+[[asserts]]
+arguments = [3, 5, ["*.*.*", ".....", "*.*.*"]]
+expected  = 2
+
+[[asserts]]
+arguments = [4, 8, ["........", "..****..", "..****..", "........"]]
+expected  = 12

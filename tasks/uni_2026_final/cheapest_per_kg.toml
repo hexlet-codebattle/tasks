@@ -1,0 +1,542 @@
+base_score        = 100
+level             = "easy"
+name              = "cheapest_per_kg"
+tags              = ["uni_2026_final", "math", "greedy"]
+time_to_solve_sec = 150
+
+description_en = """
+Products are sold in packages with varying prices and weights. Determine the product number with the lowest price per kilogram, starting with $0. If there are multiple such products, select the one with the lowest number. Products are described by a pair (price, weight)."""
+
+description_ru = """
+Товары продаются в упаковках с различной ценой и весом. Определите номер товара при нумерации с $0$ с самой низкой ценой за килограмм. Если таких товаров несколько, выберите товар с наименьшим номером. Товар описывается парой (цена, вес).
+"""
+
+solution = """
+def solution(items):
+    # items is a list of [price, weight] pairs
+    best = 0
+    for i in range(1, len(items)):
+        p_i, w_i = items[i]
+        p_best, w_best = items[best]
+        # compare p_i / w_i with p_best / w_best using cross‑multiplication
+        if p_i * w_best < p_best * w_i:
+            best = i
+    return best
+"""
+
+examples = """
+solution([[5, 100], [4, 100], [3, 100], [7, 100]]) == 2
+solution([[100, 5], [99, 8], [65, 14], [78, 10]]) == 2
+"""
+
+examples_list = [
+  "solution([[5, 100], [4, 100], [3, 100], [7, 100]]) == 2",
+  "solution([[100, 5], [99, 8], [65, 14], [78, 10]]) == 2",
+  "solution([[7, 11], [14, 22]]) == 0",
+]
+
+[[input_signature]]
+argument_name = "items"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[[5, 100]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[5, 100], [4, 100], [3, 100]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[10, 5], [20, 10], [9, 5]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[7, 3], [14, 6], [5, 4]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[100, 5], [99, 8], [65, 14], [78, 10]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[2, 1], [3, 2], [4, 3], [5, 4]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[7, 11], [14, 22]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[10, 16], [17, 27], [24, 38]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[13, 21], [20, 32], [27, 43], [34, 54]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[16, 26], [23, 37], [30, 48], [37, 59], [44, 70]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[19, 31], [26, 42], [33, 53], [40, 64], [47, 75], [54, 86]]]
+expected  = 0
+
+[[asserts]]
+arguments = [
+  [
+    [
+      22,
+      36,
+    ],
+    [
+      29,
+      47,
+    ],
+    [
+      36,
+      58,
+    ],
+    [
+      43,
+      69,
+    ],
+    [
+      50,
+      80,
+    ],
+    [
+      57,
+      91,
+    ],
+    [
+      64,
+      102,
+    ],
+  ],
+]
+expected = 0
+
+[[asserts]]
+arguments = [
+  [
+    [
+      25,
+      41,
+    ],
+    [
+      32,
+      52,
+    ],
+    [
+      39,
+      63,
+    ],
+    [
+      46,
+      74,
+    ],
+    [
+      53,
+      85,
+    ],
+    [
+      60,
+      96,
+    ],
+    [
+      67,
+      4,
+    ],
+    [
+      74,
+      15,
+    ],
+  ],
+]
+expected = 0
+
+[[asserts]]
+arguments = [
+  [
+    [
+      28,
+      46,
+    ],
+    [
+      35,
+      57,
+    ],
+    [
+      42,
+      68,
+    ],
+    [
+      49,
+      79,
+    ],
+    [
+      56,
+      90,
+    ],
+    [
+      63,
+      101,
+    ],
+    [
+      70,
+      9,
+    ],
+    [
+      77,
+      20,
+    ],
+    [
+      84,
+      31,
+    ],
+  ],
+]
+expected = 0
+
+[[asserts]]
+arguments = [
+  [
+    [
+      31,
+      51,
+    ],
+    [
+      38,
+      62,
+    ],
+    [
+      45,
+      73,
+    ],
+    [
+      52,
+      84,
+    ],
+    [
+      59,
+      95,
+    ],
+    [
+      66,
+      3,
+    ],
+    [
+      73,
+      14,
+    ],
+    [
+      80,
+      25,
+    ],
+    [
+      87,
+      36,
+    ],
+    [
+      94,
+      47,
+    ],
+  ],
+]
+expected = 0
+
+[[asserts]]
+arguments = [
+  [
+    [
+      34,
+      56,
+    ],
+    [
+      41,
+      67,
+    ],
+    [
+      48,
+      78,
+    ],
+    [
+      55,
+      89,
+    ],
+    [
+      62,
+      100,
+    ],
+    [
+      69,
+      8,
+    ],
+    [
+      76,
+      19,
+    ],
+    [
+      83,
+      30,
+    ],
+    [
+      90,
+      41,
+    ],
+    [
+      97,
+      52,
+    ],
+    [
+      7,
+      63,
+    ],
+  ],
+]
+expected = 10
+
+[[asserts]]
+arguments = [
+  [
+    [
+      37,
+      61,
+    ],
+    [
+      44,
+      72,
+    ],
+    [
+      51,
+      83,
+    ],
+    [
+      58,
+      94,
+    ],
+    [
+      65,
+      2,
+    ],
+    [
+      72,
+      13,
+    ],
+    [
+      79,
+      24,
+    ],
+    [
+      86,
+      35,
+    ],
+    [
+      93,
+      46,
+    ],
+    [
+      3,
+      57,
+    ],
+    [
+      10,
+      68,
+    ],
+    [
+      17,
+      79,
+    ],
+  ],
+]
+expected = 9
+
+[[asserts]]
+arguments = [[[10, 10], [1, 12], [12, 14]]]
+expected  = 1
+
+[[asserts]]
+arguments = [[[10, 10], [1, 12], [12, 14], [13, 16]]]
+expected  = 1
+
+[[asserts]]
+arguments = [[[10, 10], [1, 12], [12, 14], [13, 16], [14, 18]]]
+expected  = 1
+
+[[asserts]]
+arguments = [[[10, 10], [1, 12], [12, 14], [13, 16], [14, 18], [15, 20]]]
+expected  = 1
+
+[[asserts]]
+arguments = [
+  [
+    [
+      10,
+      10,
+    ],
+    [
+      1,
+      12,
+    ],
+    [
+      12,
+      14,
+    ],
+    [
+      13,
+      16,
+    ],
+    [
+      14,
+      18,
+    ],
+    [
+      15,
+      20,
+    ],
+    [
+      16,
+      22,
+    ],
+  ],
+]
+expected = 1
+
+[[asserts]]
+arguments = [
+  [
+    [
+      10,
+      10,
+    ],
+    [
+      1,
+      12,
+    ],
+    [
+      12,
+      14,
+    ],
+    [
+      13,
+      16,
+    ],
+    [
+      14,
+      18,
+    ],
+    [
+      15,
+      20,
+    ],
+    [
+      16,
+      22,
+    ],
+    [
+      17,
+      24,
+    ],
+  ],
+]
+expected = 1
+
+[[asserts]]
+arguments = [
+  [
+    [
+      10,
+      10,
+    ],
+    [
+      1,
+      12,
+    ],
+    [
+      12,
+      14,
+    ],
+    [
+      13,
+      16,
+    ],
+    [
+      14,
+      18,
+    ],
+    [
+      15,
+      20,
+    ],
+    [
+      16,
+      22,
+    ],
+    [
+      17,
+      24,
+    ],
+    [
+      18,
+      26,
+    ],
+  ],
+]
+expected = 1
+
+[[asserts]]
+arguments = [
+  [
+    [
+      10,
+      10,
+    ],
+    [
+      1,
+      12,
+    ],
+    [
+      12,
+      14,
+    ],
+    [
+      13,
+      16,
+    ],
+    [
+      14,
+      18,
+    ],
+    [
+      15,
+      20,
+    ],
+    [
+      16,
+      22,
+    ],
+    [
+      17,
+      24,
+    ],
+    [
+      18,
+      26,
+    ],
+    [
+      19,
+      28,
+    ],
+  ],
+]
+expected = 1

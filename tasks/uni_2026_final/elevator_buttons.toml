@@ -1,0 +1,173 @@
+base_score        = 140
+level             = "medium"
+name              = "elevator_buttons"
+tags              = ["elevator", "math", "greedy"]
+time_to_solve_sec = 300
+
+description_en = """
+The elevator buttons in a building with $2n$ floors are arranged in two columns with $n$ buttons each.
+The first column contains buttons from $1$ to $n$ from bottom to top, and the second column contains buttons from $n + 1$ to $2n$ from bottom to top.
+Vasya is on the first floor and needs to get to the $k$th floor.
+He can only reach the bottom $s$ buttons in each column.
+Given $n$, $k$, and $s$, determine the smallest number of flights of stairs between floors, up or down, that Vasya must walk."""
+
+description_ru = """
+Кнопки лифта в доме с $2n$ этажами расположены в два столбца по $n$ кнопок в каждом.
+В первом столбце расположены кнопки от $1$ до $n$ снизу вверх, а во втором - от $n + 1$ до $2n$ снизу вверх.
+Вася находится на первом этаже, ему нужно попасть на $k$-й этаж.
+Он может дотянуться только до $s$ нижних кнопок в каждом столбце.
+По известным числам $n$, $k$ и $s$ определите наименьшее количество лестничных пролетов между этажами, вверх или вниз, которые Васе нужно будет пройти пешком.
+"""
+
+solution = """
+def solution(n, k, s):
+    # If Vasya cannot reach any button, he must walk all the way.
+    if s == 0:
+        return abs(k - 1)
+
+    # Intervals of floors reachable by pressing a button.
+    first_low, first_high = 1, s
+    second_low, second_high = n + 1, n + s
+
+    # If the target floor is directly reachable.
+    if first_low <= k <= first_high or second_low <= k <= second_high:
+        return 0
+
+    # Target floor lies between the two reachable intervals.
+    if k < second_low:
+        # k is between first_high+1 and n (inclusive).
+        # The nearest reachable floor is either first_high or second_low.
+        return min(k - first_high, second_low - k)
+    else:
+        # k is above the second reachable interval.
+        return k - second_high
+"""
+
+examples = """
+solution(6, 6, 2) == 1
+solution(7, 5, 0) == 4
+"""
+
+examples_list = [
+  "solution(6, 6, 2) == 1",
+  "solution(7, 5, 0) == 4",
+  "solution(1, 2, 1) == 0",
+]
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 1, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 2, 0]
+expected  = 1
+
+[[asserts]]
+arguments = [1, 2, 1]
+expected  = 0
+
+[[asserts]]
+arguments = [2, 2, 2]
+expected  = 0
+
+[[asserts]]
+arguments = [3, 3, 0]
+expected  = 2
+
+[[asserts]]
+arguments = [3, 3, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [5, 4, 3]
+expected  = 1
+
+[[asserts]]
+arguments = [6, 6, 2]
+expected  = 1
+
+[[asserts]]
+arguments = [7, 5, 0]
+expected  = 4
+
+[[asserts]]
+arguments = [8, 6, 0]
+expected  = 5
+
+[[asserts]]
+arguments = [9, 18, 5]
+expected  = 4
+
+[[asserts]]
+arguments = [10, 16, 8]
+expected  = 0
+
+[[asserts]]
+arguments = [10, 14, 0]
+expected  = 13
+
+[[asserts]]
+arguments = [12, 19, 2]
+expected  = 5
+
+[[asserts]]
+arguments = [12, 24, 12]
+expected  = 0
+
+[[asserts]]
+arguments = [20, 7, 4]
+expected  = 3
+
+[[asserts]]
+arguments = [20, 27, 4]
+expected  = 3
+
+[[asserts]]
+arguments = [50, 75, 10]
+expected  = 15
+
+[[asserts]]
+arguments = [50, 25, 49]
+expected  = 0
+
+[[asserts]]
+arguments = [100, 150, 0]
+expected  = 149
+
+[[asserts]]
+arguments = [100, 150, 30]
+expected  = 20
+
+[[asserts]]
+arguments = [512, 488, 413]
+expected  = 25
+
+[[asserts]]
+arguments = [735, 1180, 27]
+expected  = 418
+
+[[asserts]]
+arguments = [1000, 1999, 1]
+expected  = 998
+
+[[asserts]]
+arguments = [1000, 1001, 0]
+expected  = 1000

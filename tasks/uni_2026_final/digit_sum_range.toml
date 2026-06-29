@@ -1,0 +1,164 @@
+base_score        = 120
+level             = "easy"
+name              = "digit_sum_range"
+tags              = ["math", "digit_sum", "range"]
+time_to_solve_sec = 210
+
+description_en = """
+Given integers $l$, $r$, and $x$, where $0 \\le l \\le r \\le 10000$, find the smallest and the largest integer
+between $l$ and $r$ inclusive whose sum of digits equals $x$. Return the result as
+`[minimum, maximum]`. If there is no such number, return `[-1, -1]`.
+"""
+
+description_ru = """
+По заданным целым числам $l$, $r$ и $x$, где $0 \\le l \\le r \\le 10000$, найдите минимальное и максимальное
+число в диапазоне $[l, r]$ включительно, у которого сумма цифр равна $x$. Верните
+результат в виде пары `[минимум, максимум]`. Если таких чисел нет, верните
+`[-1, -1]`.
+"""
+
+solution = """
+def solution(l, r, x):
+    min_val = None
+    max_val = None
+    for i in range(l, r + 1):
+        if sum(map(int, str(i))) == x:
+            if min_val is None:
+                min_val = i
+            max_val = i
+    if min_val is None:
+        return [-1, -1]
+    return [min_val, max_val]
+"""
+
+examples = """
+solution(1, 100, 4) == [4, 40]
+solution(100, 500, 12) == [129, 480]
+solution(1, 10, 20) == [-1, -1]
+"""
+
+examples_list = [
+  "solution(1, 100, 4) == [4, 40]",
+  "solution(100, 500, 12) == [129, 480]",
+  "solution(1, 10, 20) == [-1, -1]",
+]
+
+[[input_signature]]
+argument_name = "l"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "r"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 9, 1]
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [1, 9, 10]
+expected  = [-1, -1]
+
+[[asserts]]
+arguments = [10, 20, 1]
+expected  = [10, 10]
+
+[[asserts]]
+arguments = [10, 20, 2]
+expected  = [11, 20]
+
+[[asserts]]
+arguments = [10, 99, 18]
+expected  = [99, 99]
+
+[[asserts]]
+arguments = [100, 130, 2]
+expected  = [101, 110]
+
+[[asserts]]
+arguments = [100, 130, 10]
+expected  = [109, 127]
+
+[[asserts]]
+arguments = [90, 110, 1]
+expected  = [100, 100]
+
+[[asserts]]
+arguments = [500, 550, 10]
+expected  = [505, 550]
+
+[[asserts]]
+arguments = [990, 1005, 1]
+expected  = [1000, 1000]
+
+[[asserts]]
+arguments = [0, 0, 0]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [0, 20, 0]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [0, 20, 2]
+expected  = [2, 20]
+
+[[asserts]]
+arguments = [123, 321, 6]
+expected  = [123, 321]
+
+[[asserts]]
+arguments = [700, 800, 7]
+expected  = [700, 700]
+
+[[asserts]]
+arguments = [777, 777, 21]
+expected  = [777, 777]
+
+[[asserts]]
+arguments = [777, 777, 20]
+expected  = [-1, -1]
+
+[[asserts]]
+arguments = [9990, 10000, 1]
+expected  = [10000, 10000]
+
+[[asserts]]
+arguments = [9990, 10000, 36]
+expected  = [9999, 9999]
+
+[[asserts]]
+arguments = [345, 678, 15]
+expected  = [348, 672]
+
+[[asserts]]
+arguments = [4000, 4050, 9]
+expected  = [4005, 4050]
+
+[[asserts]]
+arguments = [8080, 8090, 16]
+expected  = [8080, 8080]
+
+[[asserts]]
+arguments = [1111, 2222, 8]
+expected  = [1115, 2222]
+
+[[asserts]]
+arguments = [9876, 9876, 30]
+expected  = [9876, 9876]
+
+[[asserts]]
+arguments = [9876, 9876, 31]
+expected  = [-1, -1]

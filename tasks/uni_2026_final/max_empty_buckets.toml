@@ -1,0 +1,420 @@
+base_score        = 140
+level             = "medium"
+name              = "max_empty_buckets"
+tags              = ["greedy", "math", "buckets", "simulation"]
+time_to_solve_sec = 300
+
+description_en = """
+For each bucket, the amount of water in it, $w_i$, and its capacity, $c_i$, are known.
+You are allowed to pour any amount of water from any bucket to any other. Pouring water outside the buckets is prohibited.
+Find the maximum number of buckets that can be empty after any pouring.
+Buckets in the buckets array are represented as (amount of water in the bucket, its capacity).
+"""
+
+description_ru = """
+Для каждого из ведер известно количество воды в нем $w_i$ и его вместимость $c_i$.
+Разрешается переливать любое количество воды из любого ведра в любое другое. Выливать воду за пределы ведер нельзя.
+Найдите максимальное количество ведер, которые можно сделать пустыми после любых переливаний.
+Ведра в массиве buckets представлены как (количество воды в ведре, его вместимость).
+"""
+
+solution = """
+def solution(buckets):
+    total_water = sum(w for w, _ in buckets)
+    if total_water == 0:
+        return len(buckets)
+    capacities = sorted((c for _, c in buckets), reverse=True)
+    used = 0
+    accumulated = 0
+    for cap in capacities:
+        accumulated += cap
+        used += 1
+        if accumulated >= total_water:
+            break
+    return len(buckets) - used
+"""
+
+examples = """
+solution([[2,6],[1,6],[0,6],[6,6],[5,6]]) == 2
+solution([[4,5],[2,7],[5,5],[0,10],[7,9]]) == 3
+"""
+
+examples_list = [
+  "solution([[2,6],[1,6],[0,6],[6,6],[5,6]]) == 2",
+  "solution([[4,5],[2,7],[5,5],[0,10],[7,9]]) == 3",
+  "solution([[0, 5], [0, 3]]) == 2",
+]
+
+[[input_signature]]
+argument_name = "buckets"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[[0, 1]]]
+expected  = 1
+
+[[asserts]]
+arguments = [[[1, 1]]]
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 5], [0, 3]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[2, 6], [1, 6], [0, 6], [6, 6], [5, 6]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[4, 5], [2, 7], [5, 5], [0, 10], [7, 9]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[2, 6], [3, 4], [1, 1], [9, 10]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[2, 3], [0, 6]]]
+expected  = 1
+
+[[asserts]]
+arguments = [[[3, 4], [0, 7], [2, 10]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[4, 5], [0, 8], [0, 1], [4, 4]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[5, 6], [0, 9], [0, 2], [2, 5], [7, 8]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[6, 7], [0, 10], [0, 3], [0, 6], [6, 9], [1, 2]]]
+expected  = 4
+
+[[asserts]]
+arguments = [[[7, 8], [0, 1], [2, 4], [6, 7], [5, 10], [0, 3], [2, 6]]]
+expected  = 4
+
+[[asserts]]
+arguments = [[[8, 9], [1, 2], [0, 5], [5, 8], [0, 1], [3, 4], [6, 7], [10, 10]]]
+expected  = 4
+
+[[asserts]]
+arguments = [
+  [
+    [
+      9,
+      10,
+    ],
+    [
+      2,
+      3,
+    ],
+    [
+      5,
+      6,
+    ],
+    [
+      4,
+      9,
+    ],
+    [
+      2,
+      2,
+    ],
+    [
+      4,
+      5,
+    ],
+    [
+      3,
+      8,
+    ],
+    [
+      0,
+      1,
+    ],
+    [
+      4,
+      4,
+    ],
+  ],
+]
+expected = 5
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      1,
+    ],
+    [
+      0,
+      4,
+    ],
+    [
+      4,
+      7,
+    ],
+    [
+      3,
+      10,
+    ],
+    [
+      2,
+      3,
+    ],
+    [
+      0,
+      6,
+    ],
+    [
+      0,
+      9,
+    ],
+    [
+      0,
+      2,
+    ],
+    [
+      2,
+      5,
+    ],
+    [
+      1,
+      8,
+    ],
+  ],
+]
+expected = 8
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      2,
+    ],
+    [
+      4,
+      5,
+    ],
+    [
+      3,
+      8,
+    ],
+    [
+      0,
+      1,
+    ],
+    [
+      1,
+      4,
+    ],
+    [
+      4,
+      7,
+    ],
+    [
+      8,
+      10,
+    ],
+    [
+      2,
+      3,
+    ],
+    [
+      2,
+      6,
+    ],
+    [
+      6,
+      9,
+    ],
+    [
+      1,
+      2,
+    ],
+  ],
+]
+expected = 7
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      3,
+    ],
+    [
+      3,
+      6,
+    ],
+    [
+      2,
+      9,
+    ],
+    [
+      0,
+      2,
+    ],
+    [
+      2,
+      5,
+    ],
+    [
+      1,
+      8,
+    ],
+    [
+      0,
+      1,
+    ],
+    [
+      2,
+      4,
+    ],
+    [
+      4,
+      7,
+    ],
+    [
+      2,
+      10,
+    ],
+    [
+      2,
+      3,
+    ],
+    [
+      4,
+      6,
+    ],
+  ],
+]
+expected = 9
+
+[[asserts]]
+arguments = [[[0, 10], [1, 5], [2, 6]]]
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 10], [1, 5], [2, 6], [3, 7]]]
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 10], [1, 5], [2, 6], [3, 7], [0, 4]]]
+expected  = 4
+
+[[asserts]]
+arguments = [[[0, 10], [1, 5], [2, 6], [3, 7], [0, 4], [1, 5]]]
+expected  = 5
+
+[[asserts]]
+arguments = [[[0, 10], [1, 5], [2, 6], [3, 7], [0, 4], [1, 5], [2, 6]]]
+expected  = 6
+
+[[asserts]]
+arguments = [[[0, 10], [1, 5], [2, 6], [3, 7], [0, 4], [1, 5], [2, 6], [3, 7]]]
+expected  = 6
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      10,
+    ],
+    [
+      1,
+      5,
+    ],
+    [
+      2,
+      6,
+    ],
+    [
+      3,
+      7,
+    ],
+    [
+      0,
+      4,
+    ],
+    [
+      1,
+      5,
+    ],
+    [
+      2,
+      6,
+    ],
+    [
+      3,
+      7,
+    ],
+    [
+      0,
+      4,
+    ],
+  ],
+]
+expected = 7
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      10,
+    ],
+    [
+      1,
+      5,
+    ],
+    [
+      2,
+      6,
+    ],
+    [
+      3,
+      7,
+    ],
+    [
+      0,
+      4,
+    ],
+    [
+      1,
+      5,
+    ],
+    [
+      2,
+      6,
+    ],
+    [
+      3,
+      7,
+    ],
+    [
+      0,
+      4,
+    ],
+    [
+      1,
+      5,
+    ],
+  ],
+]
+expected = 8

@@ -1,0 +1,137 @@
+base_score        = 100
+level             = "easy"
+name              = "hole_letters"
+tags              = ["strings", "counting", "implementation"]
+time_to_solve_sec = 210
+
+description_en = """
+To combat trypophobia (fear of holes), it was decided to remove all lowercase (small) letters containing "holes" (such as "g", "q", "a", "b", etc.) from the English alphabet, while leaving letters without "holes" (such as "w", "k", etc.). Determine how many letters will be removed from the string."""
+
+description_ru = """
+Для борьбы с трипофобией (боязнью отверстий) из английского алфавита было решено удалить все строчные (маленькие) буквы, содержащие "полости" (такие как "g", "q", "a", "b" и т.д.), а буквы без "полостей" решено оставить (такие как "w", "k" и т.д.). Определите, сколько букв будет удалено из строки.
+"""
+
+solution = """
+def solution(s):
+    holes = set('abdegopq')
+    return sum(1 for ch in s if ch in holes)
+"""
+
+examples = """
+solution("code battle") == 6
+solution("abcdefghijklmnopqrstuvwxyz") == 8
+"""
+
+examples_list = [
+  'solution("code battle") == 6',
+  'solution("abcdefghijklmnopqrstuvwxyz") == 8',
+  'solution("xyz") == 0',
+]
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+expected  = 0
+
+[[asserts]]
+arguments = ["abc"]
+expected  = 2
+
+[[asserts]]
+arguments = ["xyz"]
+expected  = 0
+
+[[asserts]]
+arguments = ["code battle"]
+expected  = 6
+
+[[asserts]]
+arguments = ["hello"]
+expected  = 2
+
+[[asserts]]
+arguments = ["queue"]
+expected  = 3
+
+[[asserts]]
+arguments = ["book"]
+expected  = 3
+
+[[asserts]]
+arguments = ["sky"]
+expected  = 0
+
+[[asserts]]
+arguments = ["alpha beta"]
+expected  = 6
+
+[[asserts]]
+arguments = ["debug"]
+expected  = 4
+
+[[asserts]]
+arguments = ["good game"]
+expected  = 7
+
+[[asserts]]
+arguments = ["open door"]
+expected  = 6
+
+[[asserts]]
+arguments = ["bad dog"]
+expected  = 6
+
+[[asserts]]
+arguments = ["paper bag"]
+expected  = 7
+
+[[asserts]]
+arguments = ["quiet mode"]
+expected  = 5
+
+[[asserts]]
+arguments = ["yellow"]
+expected  = 2
+
+[[asserts]]
+arguments = ["bop bop"]
+expected  = 6
+
+[[asserts]]
+arguments = ["maze"]
+expected  = 2
+
+[[asserts]]
+arguments = ["robot"]
+expected  = 3
+
+[[asserts]]
+arguments = ["data"]
+expected  = 3
+
+[[asserts]]
+arguments = ["loop"]
+expected  = 3
+
+[[asserts]]
+arguments = ["garden"]
+expected  = 4
+
+[[asserts]]
+arguments = ["edge"]
+expected  = 4
+
+[[asserts]]
+arguments = ["plain text"]
+expected  = 3
+
+[[asserts]]
+arguments = ["go go go"]
+expected  = 6

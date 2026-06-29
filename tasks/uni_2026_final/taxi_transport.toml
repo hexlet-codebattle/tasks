@@ -1,0 +1,150 @@
+base_score        = 120
+level             = "easy"
+name              = "taxi_transport"
+tags              = ["math", "greedy", "integer", "optimization"]
+time_to_solve_sec = 210
+
+description_en = """
+In an economy class taxi there are $3$ seats, and in a comfort class taxi there are $4$ seats.
+Given an integer $m$, where $0 \\le m \\le 2 \\cdot 10^9$, determine how many economy and comfort taxis to order
+to transport exactly $m$ people. No taxi should have empty seats.
+If it is impossible, return `[0, 0]`. The total number of ordered taxis must be minimal.
+"""
+
+description_ru = """
+В такси эконом-класса $3$ места, а в такси комфорт-класса - $4$ места.
+Для заданного целого $m$, где $0 \\le m \\le 2 \\cdot 10^9$, определите, сколько такси эконом- и комфорт-класса
+нужно заказать, чтобы перевезти ровно $m$ человек. В такси не должно оставаться свободных мест.
+Если это невозможно, верните `[0, 0]`. Суммарное количество заказанных машин должно быть минимальным.
+"""
+
+solution = """
+def solution(m):
+    # smallest non‑negative x such that 3*x ≡ m (mod 4)
+    x = (-m) % 4
+    if 3 * x > m:
+        return [0, 0]
+    y = (m - 3 * x) // 4
+    return [x, y]
+"""
+
+examples = """
+solution(10) == [2, 1]
+solution(1) == [0, 0]
+"""
+
+examples_list = [
+  "solution(10) == [2, 1]",
+  "solution(1) == [0, 0]",
+  "solution(7) == [1, 1]",
+]
+
+[[input_signature]]
+argument_name = "m"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [1]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [2]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [3]
+expected  = [1, 0]
+
+[[asserts]]
+arguments = [4]
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [5]
+expected  = [0, 0]
+
+[[asserts]]
+arguments = [6]
+expected  = [2, 0]
+
+[[asserts]]
+arguments = [7]
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [8]
+expected  = [0, 2]
+
+[[asserts]]
+arguments = [9]
+expected  = [3, 0]
+
+[[asserts]]
+arguments = [10]
+expected  = [2, 1]
+
+[[asserts]]
+arguments = [11]
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [12]
+expected  = [0, 3]
+
+[[asserts]]
+arguments = [13]
+expected  = [3, 1]
+
+[[asserts]]
+arguments = [14]
+expected  = [2, 2]
+
+[[asserts]]
+arguments = [15]
+expected  = [1, 3]
+
+[[asserts]]
+arguments = [16]
+expected  = [0, 4]
+
+[[asserts]]
+arguments = [17]
+expected  = [3, 2]
+
+[[asserts]]
+arguments = [37]
+expected  = [3, 7]
+
+[[asserts]]
+arguments = [98]
+expected  = [2, 23]
+
+[[asserts]]
+arguments = [101]
+expected  = [3, 23]
+
+[[asserts]]
+arguments = [1020406512]
+expected  = [0, 255101628]
+
+[[asserts]]
+arguments = [1375207882]
+expected  = [2, 343801969]
+
+[[asserts]]
+arguments = [1553871659]
+expected  = [1, 388467914]
+
+[[asserts]]
+arguments = [2000000000]
+expected  = [0, 500000000]

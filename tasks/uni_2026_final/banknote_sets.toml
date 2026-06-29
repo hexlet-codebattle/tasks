@@ -1,0 +1,142 @@
+base_score        = 140
+level             = "easy"
+name              = "banknote_sets"
+tags              = ["math", "combinatorics"]
+time_to_solve_sec = 300
+
+description_en = """
+Vasya has an unlimited number of banknotes of denominations $50$, $100$, and $200$ rubles. Determine the number of different sets of banknotes that sum up to $n$ rubles, where $0 \\le n \\le 1\\,000\\,000$. Sets are considered different if they differ in the number of any type of banknote.
+"""
+
+description_ru = """
+У Васи есть неограниченное количество купюр номиналом $50$, $100$ и $200$ рублей. Определите количество различных наборов купюр, с помощью которых можно набрать сумму $n$ рублей, где $0 \\le n \\le 1\\,000\\,000$. Наборы считаются различными, если в них различается количество какого-либо типа купюр.
+"""
+
+solution = """
+def solution(n):
+    # If n is not a multiple of 50, there is no way to compose it
+    if n % 50 != 0:
+        return 0
+    m = n // 50          # reduce denominations to 1, 2, 4
+    p = m & 1            # parity of m (0 for even, 1 for odd)
+    c_max = m // 4       # maximum number of 200‑ruble notes (value 4 in reduced units)
+    # total = (c_max + 1) * ((m - p) // 2 + 1 - c_max)
+    total = (c_max + 1) * ((m - p) // 2 + 1 - c_max)
+    return total
+"""
+
+examples = """
+solution(50) == 1
+solution(36) == 0
+solution(200) == 4
+"""
+
+examples_list = ["solution(50) == 1", "solution(36) == 0", "solution(200) == 4"]
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+expected  = 1
+
+[[asserts]]
+arguments = [1]
+expected  = 0
+
+[[asserts]]
+arguments = [36]
+expected  = 0
+
+[[asserts]]
+arguments = [49]
+expected  = 0
+
+[[asserts]]
+arguments = [50]
+expected  = 1
+
+[[asserts]]
+arguments = [100]
+expected  = 2
+
+[[asserts]]
+arguments = [150]
+expected  = 2
+
+[[asserts]]
+arguments = [200]
+expected  = 4
+
+[[asserts]]
+arguments = [250]
+expected  = 4
+
+[[asserts]]
+arguments = [300]
+expected  = 6
+
+[[asserts]]
+arguments = [350]
+expected  = 6
+
+[[asserts]]
+arguments = [400]
+expected  = 9
+
+[[asserts]]
+arguments = [450]
+expected  = 9
+
+[[asserts]]
+arguments = [500]
+expected  = 12
+
+[[asserts]]
+arguments = [550]
+expected  = 12
+
+[[asserts]]
+arguments = [600]
+expected  = 16
+
+[[asserts]]
+arguments = [750]
+expected  = 20
+
+[[asserts]]
+arguments = [1000]
+expected  = 36
+
+[[asserts]]
+arguments = [1250]
+expected  = 49
+
+[[asserts]]
+arguments = [5000]
+expected  = 676
+
+[[asserts]]
+arguments = [9999]
+expected  = 0
+
+[[asserts]]
+arguments = [10000]
+expected  = 2601
+
+[[asserts]]
+arguments = [50000]
+expected  = 63001
+
+[[asserts]]
+arguments = [999950]
+expected  = 25005000
+
+[[asserts]]
+arguments = [1000000]
+expected  = 25010001

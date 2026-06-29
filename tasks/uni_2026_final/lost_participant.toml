@@ -1,0 +1,491 @@
+base_score        = 100
+level             = "easy"
+name              = "lost_participant"
+tags              = ["uni_2026_final", "strings"]
+time_to_solve_sec = 210
+
+description_en = """
+According to the new rules for the University Battle finals, participants must simultaneously program and run a marathon through the forest.
+One participant did not make it to the finish line.
+Using the lists of starters and finishers, identify the name of the participant lost in the forest (the names of the participants may be the same).
+"""
+
+description_ru = """
+По новым правилам финала баттла вузов участники должны одновременно программировать и бежать марафон по лесу.
+Один из участников не добежал до финиша.
+По спискам стартовавших и финишировавших участников определите имя потерявшегося в лесу участника (имена участников могут совпадать).
+"""
+
+solution = """
+def solution(participants, finishers):
+    from collections import Counter
+    cnt = Counter(participants)
+    cnt.subtract(finishers)
+    for name, diff in cnt.items():
+        if diff:
+            return name
+"""
+
+examples = """
+solution(["Vasya","Masha","Petya"], ["Petya","Masha"]) == "Vasya"
+solution(["Vasya","Vasya","Vasya"], ["Vasya","Vasya"]) == "Vasya"
+"""
+
+examples_list = [
+  'solution(["Vasya","Masha","Petya"], ["Petya","Masha"]) == "Vasya"',
+  'solution(["Vasya","Vasya","Vasya"], ["Vasya","Vasya"]) == "Vasya"',
+  'solution(["ann", "bob"], ["ann"]) == "bob"',
+]
+
+[[input_signature]]
+argument_name = "participants"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "finishers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [["ann"], []]
+expected  = "ann"
+
+[[asserts]]
+arguments = [["ann", "bob"], ["ann"]]
+expected  = "bob"
+
+[[asserts]]
+arguments = [["ann", "bob"], ["bob"]]
+expected  = "ann"
+
+[[asserts]]
+arguments = [["ann", "ann"], ["ann"]]
+expected  = "ann"
+
+[[asserts]]
+arguments = [["ann", "bob", "ann"], ["ann", "bob"]]
+expected  = "ann"
+
+[[asserts]]
+arguments = [["ann", "carl", "ed"], ["ann", "ed"]]
+expected  = "carl"
+
+[[asserts]]
+arguments = [["bob", "dina", "fay", "hank"], ["hank", "fay", "dina"]]
+expected  = "bob"
+
+[[asserts]]
+arguments = [
+  [
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+  ],
+  [
+    "carl",
+    "ed",
+    "ivan",
+    "kim",
+  ],
+]
+expected = "gina"
+
+[[asserts]]
+arguments = [
+  [
+    "dina",
+    "fay",
+    "hank",
+    "jill",
+    "li",
+    "bob",
+  ],
+  [
+    "bob",
+    "jill",
+    "hank",
+    "fay",
+    "dina",
+  ],
+]
+expected = "li"
+
+[[asserts]]
+arguments = [
+  [
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+  ],
+  [
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+  ],
+]
+expected = "ed"
+
+[[asserts]]
+arguments = [
+  [
+    "fay",
+    "hank",
+    "jill",
+    "li",
+    "bob",
+    "dina",
+    "fay",
+    "hank",
+  ],
+  [
+    "hank",
+    "fay",
+    "dina",
+    "bob",
+    "li",
+    "jill",
+    "hank",
+  ],
+]
+expected = "fay"
+
+[[asserts]]
+arguments = [
+  [
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+  ],
+  [
+    "gina",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+  ],
+]
+expected = "ivan"
+
+[[asserts]]
+arguments = [
+  [
+    "hank",
+    "jill",
+    "li",
+    "bob",
+    "dina",
+    "fay",
+    "hank",
+    "jill",
+    "li",
+    "bob",
+  ],
+  [
+    "bob",
+    "li",
+    "jill",
+    "hank",
+    "fay",
+    "dina",
+    "bob",
+    "jill",
+    "hank",
+  ],
+]
+expected = "li"
+
+[[asserts]]
+arguments = [
+  [
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+  ],
+  [
+    "ivan",
+    "kim",
+    "ann",
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+  ],
+]
+expected = "carl"
+
+[[asserts]]
+arguments = [
+  [
+    "jill",
+    "li",
+    "bob",
+    "dina",
+    "fay",
+    "hank",
+    "jill",
+    "li",
+    "bob",
+    "dina",
+    "fay",
+    "hank",
+  ],
+  [
+    "hank",
+    "fay",
+    "dina",
+    "bob",
+    "li",
+    "jill",
+    "hank",
+    "dina",
+    "bob",
+    "li",
+    "jill",
+  ],
+]
+expected = "fay"
+
+[[asserts]]
+arguments = [["kim", "ann", "carl"], ["kim", "carl"]]
+expected  = "ann"
+
+[[asserts]]
+arguments = [["li", "bob", "dina", "fay"], ["fay", "bob", "li"]]
+expected  = "dina"
+
+[[asserts]]
+arguments = [
+  [
+    "ann",
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+  ],
+  [
+    "ann",
+    "carl",
+    "gina",
+    "ivan",
+  ],
+]
+expected = "ed"
+
+[[asserts]]
+arguments = [
+  [
+    "bob",
+    "dina",
+    "fay",
+    "hank",
+    "jill",
+    "li",
+  ],
+  [
+    "li",
+    "hank",
+    "fay",
+    "dina",
+    "bob",
+  ],
+]
+expected = "jill"
+
+[[asserts]]
+arguments = [
+  [
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+  ],
+  [
+    "carl",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+  ],
+]
+expected = "ed"
+
+[[asserts]]
+arguments = [
+  [
+    "dina",
+    "fay",
+    "hank",
+    "jill",
+    "li",
+    "bob",
+    "dina",
+    "fay",
+  ],
+  [
+    "fay",
+    "bob",
+    "li",
+    "jill",
+    "hank",
+    "fay",
+    "dina",
+  ],
+]
+expected = "dina"
+
+[[asserts]]
+arguments = [
+  [
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+  ],
+  [
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+  ],
+]
+expected = "ann"
+
+[[asserts]]
+arguments = [
+  [
+    "fay",
+    "hank",
+    "jill",
+    "li",
+    "bob",
+    "dina",
+    "fay",
+    "hank",
+    "jill",
+    "li",
+  ],
+  [
+    "li",
+    "jill",
+    "hank",
+    "fay",
+    "dina",
+    "bob",
+    "li",
+    "hank",
+    "fay",
+  ],
+]
+expected = "jill"
+
+[[asserts]]
+arguments = [
+  [
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+  ],
+  [
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+    "ed",
+    "gina",
+    "ivan",
+    "kim",
+    "ann",
+    "carl",
+  ],
+]
+expected = "gina"
+
+[[asserts]]
+arguments = [
+  [
+    "hank",
+    "jill",
+    "li",
+    "bob",
+    "dina",
+    "fay",
+    "hank",
+    "jill",
+    "li",
+    "bob",
+    "dina",
+    "fay",
+  ],
+  [
+    "fay",
+    "bob",
+    "li",
+    "jill",
+    "hank",
+    "fay",
+    "dina",
+    "bob",
+    "li",
+    "jill",
+    "hank",
+  ],
+]
+expected = "dina"

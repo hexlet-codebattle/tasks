@@ -1,0 +1,189 @@
+base_score        = 160
+level             = "medium"
+name              = "frame_tiling"
+tags              = ["tiling", "grid", "math", "combinatorics"]
+time_to_solve_sec = 300
+
+description_en = """
+A frame of size $x \\times y$ is a rectangle of size $x \\times y$ from whose centre a rectangle of size $(x - 2) \\times (y - 2)$ has been cut out.
+Example of frame $4 \\times 3$:
+```text
+####
+#..#
+####
+```
+The frame has a thickness of one cell. For each of $n$ tile lengths $a_i$ determine whether the frame can be tiled
+with tiles of size $1 \\times a_i$. Numbers $x$ and $y$ are up to $10^6$, and $n$ is up to $300$.
+"""
+
+description_ru = """
+Рамка размером $x \\times y$ - это прямоугольник $x \\times y$, из центра которого вырезан прямоугольник $(x - 2) \\times (y - 2)$.
+Пример рамки $4 \\times 3$:
+```text
+####
+#..#
+####
+```
+Рамка имеет толщину в одну клетку. Для каждого из $n$ вариантов длины плитки $a_i$ определите, можно ли замостить
+рамку плитками $1 \\times a_i$. Числа $x$ и $y$ до $10^6$, $n$ до $300$.
+"""
+
+solution = """
+def solution(x, y, a):
+    # Return a list of booleans: for each tile length a_i indicate if the frame can be tiled.
+    res = []
+    for L in a:
+        # Length 1 always works (each cell can be covered separately).
+        if L == 1:
+            res.append(True)
+            continue
+        ok = False
+        # There are 2^4 possible assignments of the four corners.
+        # Bit 0 – top‑left corner (0 → horizontal (top), 1 → vertical (left))
+        # Bit 1 – top‑right corner (0 → horizontal (top), 1 → vertical (right))
+        # Bit 2 – bottom‑left corner (0 → horizontal (bottom), 1 → vertical (left))
+        # Bit 3 – bottom‑right corner (0 → horizontal (bottom), 1 → vertical (right))
+        for mask in range(16):
+            top    = x - ((mask >> 0) & 1) - ((mask >> 1) & 1)
+            bottom = x - ((mask >> 2) & 1) - ((mask >> 3) & 1)
+            left   = y - 2 + ((mask >> 0) & 1) + ((mask >> 2) & 1)
+            right  = y - 2 + ((mask >> 1) & 1) + ((mask >> 3) & 1)
+            if top % L == 0 and bottom % L == 0 and left % L == 0 and right % L == 0:
+                ok = True
+                break
+        res.append(ok)
+    return res
+"""
+
+examples = """
+solution(5, 6, [3, 4]) == [True, False]
+solution(5, 4, [1, 2, 3, 4]) == [True, True, False, False]
+"""
+
+examples_list = [
+  "solution(5, 6, [3, 4]) == [True, False]",
+  "solution(5, 4, [1, 2, 3, 4]) == [True, True, False, False]",
+  "solution(3, 3, [1, 2, 3]) == [True, True, False]",
+]
+
+[[input_signature]]
+argument_name = "x"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "y"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "boolean"
+
+[[asserts]]
+arguments = [3, 3, [1, 2, 3]]
+expected  = [true, true, false]
+
+[[asserts]]
+arguments = [3, 4, [1, 2, 3, 4]]
+expected  = [true, true, false, false]
+
+[[asserts]]
+arguments = [4, 4, [1, 2, 3, 4]]
+expected  = [true, true, true, false]
+
+[[asserts]]
+arguments = [5, 4, [1, 2, 3, 4]]
+expected  = [true, true, false, false]
+
+[[asserts]]
+arguments = [5, 6, [1, 2, 3, 4, 5, 6]]
+expected  = [true, true, true, false, false, false]
+
+[[asserts]]
+arguments = [6, 6, [1, 2, 4, 5, 8, 10]]
+expected  = [true, true, false, true, false, false]
+
+[[asserts]]
+arguments = [7, 8, [1, 2, 3, 5, 6, 10, 12]]
+expected  = [true, true, false, false, false, false, false]
+
+[[asserts]]
+arguments = [8, 9, [1, 2, 4, 6, 7, 10, 14]]
+expected  = [true, true, false, false, false, false, false]
+
+[[asserts]]
+arguments = [10, 10, [1, 2, 3, 4, 5, 8, 9, 16]]
+expected  = [true, true, true, false, false, false, true, false]
+
+[[asserts]]
+arguments = [12, 15, [1, 2, 3, 5, 6, 10, 13, 20]]
+expected  = [true, true, false, true, false, false, false, false]
+
+[[asserts]]
+arguments = [20, 30, [1, 2, 4, 5, 7, 10, 14, 20, 28]]
+expected  = [true, true, true, false, false, false, false, false, false]
+
+[[asserts]]
+arguments = [100, 1000, [1, 2, 3, 4, 5, 6, 7, 8, 9]]
+expected  = [true, true, true, false, false, false, false, false, true]
+
+[[asserts]]
+arguments = [3, 100000, [1, 2, 3, 4, 99999, 100000]]
+expected  = [true, true, false, false, false, false]
+
+[[asserts]]
+arguments = [999999, 1000000, [1, 2, 3, 4, 5, 999998, 999999, 1000000]]
+expected  = [true, true, false, false, false, false, false, false]
+
+[[asserts]]
+arguments = [1000000, 1000000, [1, 2, 3, 99, 100, 999999]]
+expected  = [true, true, true, true, false, true]
+
+[[asserts]]
+arguments = [9, 11, [1, 2, 3, 4, 6, 8, 9, 11]]
+expected  = [true, true, true, false, false, false, true, false]
+
+[[asserts]]
+arguments = [11, 13, [1, 2, 3, 4, 5, 6, 9, 12]]
+expected  = [true, true, false, false, false, false, false, false]
+
+[[asserts]]
+arguments = [14, 16, [1, 2, 4, 7, 8, 12, 14]]
+expected  = [true, true, true, true, false, false, true]
+
+[[asserts]]
+arguments = [15, 21, [1, 2, 3, 5, 7, 9, 14, 18]]
+expected  = [true, true, false, false, false, false, false, false]
+
+[[asserts]]
+arguments = [25, 40, [1, 2, 4, 5, 8, 10, 16, 20]]
+expected  = [true, true, false, false, false, false, false, false]
+
+[[asserts]]
+arguments = [31, 37, [1, 2, 3, 6, 12, 18, 24]]
+expected  = [true, true, true, true, false, false, false]
+
+[[asserts]]
+arguments = [50, 51, [1, 2, 5, 10, 25, 49, 50]]
+expected  = [true, true, false, false, false, false, false]
+
+[[asserts]]
+arguments = [60, 90, [1, 2, 3, 4, 6, 12, 15, 30]]
+expected  = [true, true, false, true, false, false, false, false]
+
+[[asserts]]
+arguments = [101, 103, [1, 2, 4, 8, 16, 32, 64]]
+expected  = [true, true, false, false, false, false, false]
+
+[[asserts]]
+arguments = [777, 999, [1, 3, 7, 9, 21, 27, 63, 111]]
+expected  = [true, false, false, false, false, false, false, false]

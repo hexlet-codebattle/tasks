@@ -1,0 +1,21 @@
+{
+  "name": "uni_2026_final",
+  "task_names": [
+    "industrial_alpinist",
+    "non_diagonal_battleship",
+    "max_speed",
+    "digit_sum_range",
+    "max_abs_sum_subset",
+    "race_winner",
+    "hole_letters",
+    "performance",
+    "lost_participant",
+    "taxi_transport",
+    "max_empty_buckets",
+    "christmas_tree",
+    "banknote_sets",
+    "battle_stream_switches",
+    "elevator_buttons",
+    "frame_tiling"
+  ]
+}

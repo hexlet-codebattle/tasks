@@ -1,0 +1,959 @@
+base_score        = 150
+level             = "hard"
+name              = "team_selection_battle"
+tags              = ["uni_2026_final", "combinatorial", "search", "flow", "team_selection"]
+time_to_solve_sec = 250
+
+description_en = """
+In a university battle competition a team consists of exactly $10$ players.
+Each player can play as a Defender (`D`), Midfielder (`M`), or Forward (`S`).
+The coach prepared several possible formations, each described by three numbers
+$(D, M, S)$ - the required number of defenders, midfielders, and forwards.
+There are at most $22$ candidates, and for each candidate we know the set of roles
+he or she can occupy, for example `"D"`, `"DM"`, or `"DMS"`.
+For every formation determine whether it is possible to select $10$ distinct candidates
+and assign each of them to one of his/her allowed roles so that the numbers of
+defenders, midfielders and forwards exactly match the formation.
+"""
+
+description_ru = """
+В командном баттле вузов команда состоит ровно из $10$ игроков.
+Каждый игрок может выступать в роли защитника (`D`), полузащитника (`M`) или нападающего (`S`).
+Тренер подготовил несколько возможных схем, каждая из которых задаётся тремя числами
+$(D, M, S)$ - требуемым количеством защитников, полузащитников и нападающих.
+Всего имеется не более $22$ кандидатов, и для каждого известно, в каких ролях он может играть,
+например `"D"`, `"DM"` или `"DMS"`.
+Для каждой схемы определите, можно ли собрать команду из $10$ различных кандидатов
+и назначить каждому из них одну из допустимых ролей так, чтобы получились точно
+заданные количества защитников, полузащитников и нападающих.
+"""
+
+solution = """
+def solution(schemes, candidates):
+    '''Return a list of booleans indicating for each scheme whether a valid team exists.
+
+    Args:
+        schemes (list[list[int]]): List of formations, each a triple [D, M, S].
+        candidates (list[str]): List of role strings for each candidate,
+                                each string contains some of the letters D, M, S.
+
+    Returns:
+        list[bool]: For each scheme True if a team can be formed, otherwise False.
+    '''
+    # map role letters to bit positions
+    role_to_idx = {'D': 0, 'M': 1, 'S': 2}
+    # pre‑compute role masks for every candidate
+    cand_masks = []
+    for s in candidates:
+        mask = 0
+        for ch in s:
+            mask |= 1 << role_to_idx[ch]
+        cand_masks.append(mask)
+
+    n_players = len(candidates)
+    results = []
+
+    for d_need, m_need, s_need in schemes:
+        # the formation must contain exactly 10 players
+        if d_need + m_need + s_need != 10:
+            results.append(False)
+            continue
+
+        # build a flow network:
+        # source (0) -> player nodes (1..n_players)
+        # player -> role nodes (D, M, S)
+        # role nodes -> sink
+        source = 0
+        D_node = n_players + 1
+        M_node = n_players + 2
+        S_node = n_players + 3
+        sink = n_players + 4
+        N = n_players + 5
+
+        g = [[] for _ in range(N)]
+
+        class Edge:
+            __slots__ = ('to', 'cap', 'rev')
+            def __init__(self, to, cap, rev):
+                self.to = to
+                self.cap = cap
+                self.rev = rev
+
+        def add_edge(fr, to, cap):
+            fwd = Edge(to, cap, None)
+            rev = Edge(fr, 0, fwd)
+            fwd.rev = rev
+            g[fr].append(fwd)
+            g[to].append(rev)
+
+        # source -> players, and player -> allowed roles
+        for i, mask in enumerate(cand_masks):
+            player_node = 1 + i
+            add_edge(source, player_node, 1)
+            if mask & 1:   # D
+                add_edge(player_node, D_node, 1)
+            if mask & 2:   # M
+                add_edge(player_node, M_node, 1)
+            if mask & 4:   # S
+                add_edge(player_node, S_node, 1)
+
+        # role nodes -> sink with required capacities
+        add_edge(D_node, sink, d_need)
+        add_edge(M_node, sink, m_need)
+        add_edge(S_node, sink, s_need)
+
+        # Dinic's algorithm
+        level = [-1] * N
+        it = [0] * N
+
+        from collections import deque
+
+        def bfs():
+            for i in range(N):
+                level[i] = -1
+            q = deque()
+            level[source] = 0
+            q.append(source)
+            while q:
+                v = q.popleft()
+                for e in g[v]:
+                    if e.cap > 0 and level[e.to] < 0:
+                        level[e.to] = level[v] + 1
+                        q.append(e.to)
+            return level[sink] >= 0
+
+        def dfs(v, f):
+            if v == sink:
+                return f
+            for i in range(it[v], len(g[v])):
+                e = g[v][i]
+                if e.cap > 0 and level[v] < level[e.to]:
+                    d = dfs(e.to, min(f, e.cap))
+                    if d:
+                        e.cap -= d
+                        e.rev.cap += d
+                        return d
+                it[v] += 1
+            return 0
+
+        flow = 0
+        INF = 10 ** 9
+        while bfs():
+            it = [0] * N
+            while True:
+                pushed = dfs(source, INF)
+                if not pushed:
+                    break
+                flow += pushed
+
+        results.append(flow == 10)
+
+    return results
+"""
+
+examples = """
+solution([[4, 4, 2], [6, 2, 2]],
+         ["D", "D", "D", "D", "M", "M", "M", "M", "S", "S"]) == [True, False]
+solution([[3, 3, 4]],
+         ["DM", "DM", "M", "M", "S", "S", "S", "S", "D", "D"]) == [True]
+"""
+
+examples_list = [
+  'solution([[4,4,2],[6,2,2]], ["D","D","D","D","M","M","M","M","S","S"]) == [True, False]',
+  'solution([[3,3,4]], ["DM","DM","M","M","S","S","S","S","D","D"]) == [True]',
+]
+
+[[input_signature]]
+argument_name = "schemes"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "candidates"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "boolean"
+
+[[asserts]]
+arguments = [[[4, 4, 2]], ["D", "D", "D", "D", "M", "M", "M", "M", "S", "S"]]
+expected  = [true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      10,
+      0,
+      0,
+    ],
+    [
+      0,
+      10,
+      0,
+    ],
+    [
+      0,
+      0,
+      10,
+    ],
+  ],
+  [
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+  ],
+]
+expected = [true, false, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      4,
+      4,
+      2,
+    ],
+    [
+      3,
+      5,
+      2,
+    ],
+  ],
+  [
+    "DM",
+    "DM",
+    "DMS",
+    "DM",
+    "DM",
+    "M",
+    "M",
+    "S",
+    "D",
+    "D",
+  ],
+]
+expected = [true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      5,
+      3,
+      2,
+    ],
+    [
+      4,
+      2,
+      4,
+    ],
+  ],
+  [
+    "DS",
+    "D",
+    "DS",
+    "DS",
+    "SM",
+    "DS",
+    "DS",
+    "S",
+    "DMS",
+    "M",
+  ],
+]
+expected = [true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      2,
+      6,
+    ],
+    [
+      5,
+      0,
+      5,
+    ],
+  ],
+  [
+    "DM",
+    "SM",
+    "DS",
+    "DM",
+    "SM",
+    "M",
+    "DS",
+    "DS",
+    "S",
+    "DM",
+  ],
+]
+expected = [true, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      0,
+      10,
+    ],
+  ],
+  [
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+  ],
+]
+expected = [false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      1,
+      9,
+    ],
+    [
+      3,
+      4,
+      3,
+    ],
+  ],
+  [
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+  ],
+]
+expected = [false, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      1,
+      7,
+      2,
+    ],
+    [
+      4,
+      4,
+      2,
+    ],
+    [
+      7,
+      3,
+      0,
+    ],
+  ],
+  [
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+  ],
+]
+expected = [true, true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      2,
+      6,
+    ],
+    [
+      5,
+      3,
+      2,
+    ],
+    [
+      8,
+      1,
+      1,
+    ],
+    [
+      0,
+      0,
+      10,
+    ],
+  ],
+  [
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+  ],
+]
+expected = [false, true, false, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      3,
+      4,
+      3,
+    ],
+  ],
+  [
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+  ],
+]
+expected = [true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      4,
+      4,
+      2,
+    ],
+    [
+      7,
+      3,
+      0,
+    ],
+  ],
+  [
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+  ],
+]
+expected = [true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      5,
+      3,
+      2,
+    ],
+    [
+      8,
+      1,
+      1,
+    ],
+    [
+      0,
+      0,
+      10,
+    ],
+  ],
+  [
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+  ],
+]
+expected = [true, false, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      6,
+      2,
+      2,
+    ],
+    [
+      9,
+      1,
+      0,
+    ],
+    [
+      0,
+      1,
+      9,
+    ],
+    [
+      3,
+      4,
+      3,
+    ],
+  ],
+  [
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+  ],
+]
+expected = [true, false, false, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      7,
+      3,
+      0,
+    ],
+  ],
+  [
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+  ],
+]
+expected = [false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      8,
+      1,
+      1,
+    ],
+    [
+      0,
+      0,
+      10,
+    ],
+  ],
+  [
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+  ],
+]
+expected = [false, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      9,
+      1,
+      0,
+    ],
+    [
+      0,
+      1,
+      9,
+    ],
+    [
+      3,
+      4,
+      3,
+    ],
+  ],
+  [
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+  ],
+]
+expected = [false, false, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      10,
+      0,
+      0,
+    ],
+    [
+      1,
+      7,
+      2,
+    ],
+    [
+      4,
+      4,
+      2,
+    ],
+    [
+      7,
+      3,
+      0,
+    ],
+  ],
+  [
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+  ],
+]
+expected = [false, true, true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      0,
+      10,
+    ],
+  ],
+  [
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+  ],
+]
+expected = [false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      1,
+      9,
+    ],
+    [
+      3,
+      4,
+      3,
+    ],
+  ],
+  [
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+  ],
+]
+expected = [false, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      1,
+      7,
+      2,
+    ],
+    [
+      4,
+      4,
+      2,
+    ],
+    [
+      7,
+      3,
+      0,
+    ],
+  ],
+  [
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+  ],
+]
+expected = [false, true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      2,
+      6,
+    ],
+    [
+      5,
+      3,
+      2,
+    ],
+    [
+      8,
+      1,
+      1,
+    ],
+    [
+      0,
+      0,
+      10,
+    ],
+  ],
+  [
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+  ],
+]
+expected = [false, true, false, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      3,
+      4,
+      3,
+    ],
+  ],
+  [
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+  ],
+]
+expected = [true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      4,
+      4,
+      2,
+    ],
+    [
+      7,
+      3,
+      0,
+    ],
+  ],
+  [
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+  ],
+]
+expected = [true, true]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      5,
+      3,
+      2,
+    ],
+    [
+      8,
+      1,
+      1,
+    ],
+    [
+      0,
+      0,
+      10,
+    ],
+  ],
+  [
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+  ],
+]
+expected = [true, false, false]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      6,
+      2,
+      2,
+    ],
+    [
+      9,
+      1,
+      0,
+    ],
+    [
+      0,
+      1,
+      9,
+    ],
+    [
+      3,
+      4,
+      3,
+    ],
+  ],
+  [
+    "MS",
+    "D",
+    "S",
+    "DS",
+    "DMS",
+    "M",
+    "DM",
+    "MS",
+    "D",
+    "S",
+    "DS",
+  ],
+]
+expected = [true, false, false, true]

@@ -1,0 +1,166 @@
+base_score        = 100
+level             = "easy"
+name              = "max_speed"
+tags              = ["uni_2026_final", "physics", "kinematics", "math"]
+time_to_solve_sec = 210
+
+description_en = """
+A car moves with initial speed $v_0$. Then it accelerates with acceleration $a_1$ for $t_1$ seconds,
+and afterwards it accelerates with acceleration $a_2$ for $t_2$ seconds. Determine the maximum
+speed the car reaches during the whole motion.
+"""
+
+description_ru = """
+Автомобиль двигался со скоростью $v_0$, затем в течение $t_1$ секунд он двигался с ускорением $a_1$,
+а затем в течение $t_2$ секунд он двигался с ускорением $a_2$. Определите максимальную скорость,
+которую достигал автомобиль.
+"""
+
+solution = """
+def solution(v0, t1, a1, t2, a2):
+    # speed after the first acceleration interval
+    v1 = v0 + a1 * t1
+    # speed after the second acceleration interval
+    v2 = v1 + a2 * t2
+    # the maximum of the three possible speeds
+    return max(v0, v1, v2)
+"""
+
+examples = """
+solution(1, 2, 3, 4, 5)   == 27
+solution(1, 2, 3, 4, -1)  == 7
+"""
+
+examples_list = [
+  "solution(1, 2, 3, 4, 5) == 27",
+  "solution(1, 2, 3, 4, -1) == 7",
+  "solution(10, 5, -1, 5, -1) == 10",
+]
+
+[[input_signature]]
+argument_name = "v0"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "t1"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "a1"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "t2"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "a2"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 0, 0, 0, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [10, 1, 1, 1, 1]
+expected  = 12
+
+[[asserts]]
+arguments = [10, 5, -1, 5, -1]
+expected  = 10
+
+[[asserts]]
+arguments = [10, 5, 2, 5, -3]
+expected  = 20
+
+[[asserts]]
+arguments = [10, 5, -2, 5, 3]
+expected  = 15
+
+[[asserts]]
+arguments = [100, 10, 0, 10, 0]
+expected  = 100
+
+[[asserts]]
+arguments = [50, 3, 4, 2, 5]
+expected  = 72
+
+[[asserts]]
+arguments = [50, 3, 4, 2, -5]
+expected  = 62
+
+[[asserts]]
+arguments = [50, 3, -4, 2, 5]
+expected  = 50
+
+[[asserts]]
+arguments = [1, 100, 1, 100, -1]
+expected  = 101
+
+[[asserts]]
+arguments = [1, 100, -1, 100, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [200, 4, -10, 4, -10]
+expected  = 200
+
+[[asserts]]
+arguments = [200, 4, 10, 4, -20]
+expected  = 240
+
+[[asserts]]
+arguments = [200, 4, -20, 4, 10]
+expected  = 200
+
+[[asserts]]
+arguments = [5, 2, 7, 3, 1]
+expected  = 22
+
+[[asserts]]
+arguments = [5, 2, 7, 3, -1]
+expected  = 19
+
+[[asserts]]
+arguments = [5, 2, -7, 3, 10]
+expected  = 21
+
+[[asserts]]
+arguments = [999, 1, 1, 1, 1]
+expected  = 1001
+
+[[asserts]]
+arguments = [999, 10, -5, 10, -6]
+expected  = 999
+
+[[asserts]]
+arguments = [300, 6, 3, 6, -5]
+expected  = 318
+
+[[asserts]]
+arguments = [300, 6, -3, 6, 5]
+expected  = 312
+
+[[asserts]]
+arguments = [123, 8, 1, 10, -1]
+expected  = 131
+
+[[asserts]]
+arguments = [123, 8, -1, 10, 1]
+expected  = 125
+
+[[asserts]]
+arguments = [400, 12, 2, 0, 10]
+expected  = 424
+
+[[asserts]]
+arguments = [400, 0, 10, 12, 2]
+expected  = 424

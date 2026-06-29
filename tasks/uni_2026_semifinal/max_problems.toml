@@ -1,0 +1,195 @@
+# ------------------- Problem metadata -------------------
+level             = "medium"
+name              = "max_problems"
+tags              = ["string", "math", "greedy"]
+time_to_solve_sec = 300
+
+# ------------------- Statements -------------------
+description_ru = """
+Во время раунда участнику каждую секунду записывали ЭЭГ в виде строки. Символ «A» означает, что в эту секунду он думал о задаче, любой другой символ — о чём‑то другом. Известно, что над каждой задачей участник размышлял различное количество секунд. Определите максимальное количество задач в раунде.
+В примере aAAaAbcdAAtrataAtoAApA участник думал над задачами 9 секунд (количество букв A), это могло быть три задачи со временем размышления 1, 3 и 5 секунд (возможны и другие распределения времени на конкретные задачи).
+"""
+
+description_en = """
+During the round, the participant’s EEG was recorded every second as a string. The character ‘A’ indicates that at that second he was thinking about a problem, while any other character means he was thinking about something else. It is known that the participant thought about each problem for a different number of seconds. Determine the maximum possible number of problems in the round.
+In the example of aAAaAbcdAAtrataAtoAApA, the participant thought about the tasks for 9 seconds (the number of letters A), it could be three tasks with a reflection time of 1, 3 and 5 seconds (other time distributions for specific tasks are possible).
+"""
+
+# ------------------- Reference solution -------------------
+solution = """
+def solution(eeg: str) -> int:
+    \"\"\"Return the maximal number of distinct‑length problem‑thinking intervals.
+
+    The only thing that matters is the total count of the character 'A'.
+    We need the largest k such that 1 + 2 + … + k ≤ N, where N = number of 'A's.
+    The answer is floor((sqrt(1 + 8·N) - 1) / 2).
+    \"\"\"
+    import math
+
+    n = eeg.count('A')                     # total seconds spent thinking about problems
+    # integer square root gives floor(sqrt(...))
+    return (math.isqrt(1 + 8 * n) - 1) // 2
+"""
+
+examples = """
+solution("aAAaAbcdAAtrataAtoAApA") == 3
+solution("A") == 1
+solution("rockArollAA") == 2
+"""
+
+[[input_signature]]
+argument_name = "eeg"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["b"]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["A"]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["AA"]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["AAA"]
+expected  = 2
+
+
+[[asserts]]
+arguments = ["AAAA"]
+expected  = 2
+
+
+[[asserts]]
+arguments = ["AAAAA"]
+expected  = 2
+
+
+[[asserts]]
+arguments = ["AAAAAA"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["AAAAAAA"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["AAAAAAAA"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["AAAAAAAAA"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["AAAAAAAAAA"]
+expected  = 4
+
+
+[[asserts]]
+arguments = ["AAAAAAAAAAA"]
+expected  = 4
+
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAA"]
+expected  = 4
+
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAAAAA"]
+expected  = 5
+
+
+[[asserts]]
+arguments = ["aAa"]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["aAAaAbcdAAtrataAtoAApA"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["rockArollAA"]
+expected  = 2
+
+
+[[asserts]]
+arguments = ["BBBBBAAAAAAB"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["AaAaAaAa"]
+expected  = 2
+
+
+[[asserts]]
+arguments = ["AAAxxxAAA"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["xAxAxAxAxA"]
+expected  = 2
+
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAAAAAAAAAAA"]
+expected  = 6
+
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAAAAAAAAAAAAAAAAAA"]
+expected  = 7
+
+
+[[asserts]]
+arguments = ["no_uppercase_a"]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["aA"]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["AAaAAaAA"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"]
+expected  = 8
+
+
+[[asserts]]
+arguments = ["AxxAxxAxxAxxAxxAxxAxxAxxA"]
+expected  = 3
+
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"]
+expected  = 9

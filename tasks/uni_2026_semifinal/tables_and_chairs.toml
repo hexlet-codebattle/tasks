@@ -1,0 +1,213 @@
+level             = "easy"
+name              = "tables_and_chairs"
+tags              = ["math", "greedy", "implementation"]
+time_to_solve_sec = 180
+
+description_en = """
+There are `tables` tables.
+Each table must be surrounded by exactly four chairs of the same colour.
+There are `colors` different colours of chairs.
+For each colour `i`, the array `chairs` contains the number of chairs of that colour.
+
+Determine whether it is possible to arrange the chairs such that **every colour is used at least once** (i.e. each colour appears at some table).
+It is not required to use all chairs – only enough to seat all tables.
+"""
+
+description_ru = """
+Есть `tables` столов, за каждым столом должно стоять четыре стула одинакового цвета.
+Всего есть `colors` цветов стульев.
+Для каждого цвета в массиве `chairs` записано количество стульев такого цвета.
+
+Необходимо определить, возможно ли расставить стулья так, чтобы использовались все цвета (каждый цвет хотя бы один раз).
+Не обязательно использовать все стулья, достаточно разместить их за всеми столами.
+"""
+
+solution = """
+def solution(tables, colors, chairs):
+    if tables < colors:
+        return False
+    for c in chairs:
+        if c < 4:
+            return False
+
+    # maximum number of tables we can fill with each colour
+    total_groups = sum(c // 4 for c in chairs)
+
+    # we need at least `tables` groups of 4 chairs
+    return total_groups >= tables
+"""
+
+examples = """
+solution(7, 3, [5, 21, 9]) == true
+solution(5, 4, [8, 5, 10, 3]) == false
+"""
+
+
+[[input_signature]]
+argument_name = "tables"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "colors"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "chairs"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [1, 1, [4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [1, 1, [3]]
+expected  = false
+
+
+[[asserts]]
+arguments = [2, 1, [8]]
+expected  = true
+
+
+[[asserts]]
+arguments = [2, 2, [4, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [2, 3, [4, 4, 4]]
+expected  = false
+
+
+[[asserts]]
+arguments = [3, 3, [4, 4, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [4, 3, [4, 4, 4]]
+expected  = false
+
+
+[[asserts]]
+arguments = [5, 3, [4, 8, 8]]
+expected  = true
+
+
+[[asserts]]
+arguments = [5, 4, [8, 5, 10, 3]]
+expected  = false
+
+
+[[asserts]]
+arguments = [7, 3, [5, 21, 9]]
+expected  = true
+
+
+[[asserts]]
+arguments = [3, 2, [8, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [4, 2, [8, 4]]
+expected  = false
+
+
+[[asserts]]
+arguments = [5, 2, [8, 4]]
+expected  = false
+
+
+[[asserts]]
+arguments = [5, 2, [8, 12]]
+expected  = true
+
+
+[[asserts]]
+arguments = [6, 2, [8, 12]]
+expected  = false
+
+
+[[asserts]]
+arguments = [6, 2, [8, 16]]
+expected  = true
+
+
+[[asserts]]
+arguments = [3, 3, [3, 100, 100]]
+expected  = false
+
+
+[[asserts]]
+arguments = [3, 3, [4, 3, 100]]
+expected  = false
+
+
+[[asserts]]
+arguments = [3, 3, [4, 4, 3]]
+expected  = false
+
+
+[[asserts]]
+arguments = [10, 3, [40, 4, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [12, 3, [40, 4, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [13, 3, [40, 4, 4]]
+expected  = false
+
+
+[[asserts]]
+arguments = [4, 4, [4, 4, 4, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [5, 4, [4, 4, 4, 4]]
+expected  = false
+
+
+[[asserts]]
+arguments = [5, 4, [8, 4, 4, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [6, 4, [8, 8, 4, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [3, 2, [1000000000, 4]]
+expected  = true
+
+
+[[asserts]]
+arguments = [250000000, 1, [1000000000]]
+expected  = true
+
+
+[[asserts]]
+arguments = [12, 10, [4, 4, 4, 4, 4, 4, 4, 4, 4, 12]]
+expected  = true
+
+
+[[asserts]]
+arguments = [20, 10, [8, 8, 8, 8, 8, 8, 8, 8, 8, 8]]
+expected  = true

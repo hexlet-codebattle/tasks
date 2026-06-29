@@ -1,0 +1,456 @@
+level             = "easy"
+name              = "section_numbering"
+tags              = ["parsing", "strings", "formatting"]
+time_to_solve_sec = 240
+
+description_en = '''
+Given a list of commands describing sections of a document, generate a list of strings with hierarchical numbering.
+The commands can be:
+
+- `section <title>` – a new top‑level section (numbered $1, 2, \ldots$).
+- `subsection <title>` – a subsection inside the most recent section (numbered $1, 2, \ldots$ within that section).
+- `subsubsection <title>` – a sub‑subsection inside the most recent subsection (numbered $1, 2, \ldots$ within that subsection).
+
+After each command a single word – the title of the item – follows. Produce an array where each element consists of the computed number
+(e.g. $1$, $1.2$, $1.2.1$) followed by a space and the title, exactly as shown in the examples.
+'''
+
+description_ru = '''
+Задаются команды, описывающие структуру разделов. Команды могут быть:
+
+- `section <название>` — новый раздел верхнего уровня (нумерация $1, 2, \ldots$).
+- `subsection <название>` — подраздел внутри последнего объявленного раздела (нумерация $1, 2, \ldots$ внутри данного раздела).
+- `subsubsection <название>` — под‑подраздел внутри последнего объявленного подраздела (нумерация $1, 2, \ldots$ внутри данного подраздела).
+
+Cформируйте массив строк, где каждая строка состоит из номера пункта (например, $1$, $1.2$, $1.2.1$) и названия, разделённых одним пробелом, точно в том виде, как показано в примерах.
+'''
+
+solution = """
+def solution(commands):
+    \"\"\"Return a list with hierarchical numbers for each command.
+
+    Parameters
+    ----------
+    commands : list[str]
+        Each element is a string of the form ``"<type> <title>"`` where
+        ``<type>`` is one of ``section``, ``subsection`` or ``subsubsection``,
+        and ``<title>`` is a single word.
+
+    Returns
+    -------
+    list[str]
+        List of strings ``"<number> <title>"`` where ``<number>`` reflects the
+        hierarchical position of the item.
+    \"\"\"
+    result = []
+    sec = 0      # current section number
+    sub = 0      # current subsection number inside the current section
+    subsub = 0   # current subsubsection number inside the current subsection
+
+    for cmd in commands:
+        parts = cmd.split()
+        if len(parts) != 2:
+            # According to the statement all commands are well‑formed.
+            continue
+        typ, title = parts
+
+        if typ == "section":
+            sec += 1
+            sub = 0
+            subsub = 0
+            number = f\"{sec}\"
+        elif typ == "subsection":
+            # subsection belongs to the most recent section
+            sub += 1
+            subsub = 0
+            number = f\"{sec}.{sub}\"
+        elif typ == "subsubsection":
+            # subsubsection belongs to the most recent subsection
+            subsub += 1
+            number = f\"{sec}.{sub}.{subsub}\"
+        else:
+            # Unknown command – ignore (should not happen)
+            continue
+
+        result.append(f\"{number} {title}\")
+
+    return result
+"""
+
+examples = """
+solution(["section plants",
+          "section animals",
+          "section mushrooms"
+         ]) == [
+                "1 plants",
+                "2 animals",
+                "3 mushrooms"
+               ]
+
+solution(["section animals",
+          "subsection cats",
+          "subsection dogs",
+          "subsubsection chewbakka"
+         ]) == [
+                "1 animals",
+                "1.1 cats",
+                "1.2 dogs",
+                "1.2.1 chewbakka"
+               ]
+"""
+
+[[input_signature]]
+argument_name = "commands"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+# -------------------------------------------------
+# Test cases (asserts)
+# -------------------------------------------------
+
+[[asserts]]
+arguments = [["section a"]]
+expected  = ["1 a"]
+
+
+[[asserts]]
+arguments = [["section a", "section b"]]
+expected  = ["1 a", "2 b"]
+
+
+[[asserts]]
+arguments = [["section a", "subsection b"]]
+expected  = ["1 a", "1.1 b"]
+
+
+[[asserts]]
+arguments = [["section a", "subsection b", "subsection c"]]
+expected  = ["1 a", "1.1 b", "1.2 c"]
+
+
+[[asserts]]
+arguments = [["section a", "subsection b", "subsubsection c"]]
+expected  = ["1 a", "1.1 b", "1.1.1 c"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "subsubsection d",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.1.1 c", "1.1.2 d"]
+
+
+[[asserts]]
+arguments = [["section a", "subsection b", "section c"]]
+expected  = ["1 a", "1.1 b", "2 c"]
+
+
+[[asserts]]
+arguments = [["section a", "subsection b", "section c", "subsection d"]]
+expected  = ["1 a", "1.1 b", "2 c", "2.1 d"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "section c",
+    "subsection d",
+    "subsubsection e",
+  ],
+]
+expected = ["1 a", "1.1 b", "2 c", "2.1 d", "2.1.1 e"]
+
+
+[[asserts]]
+arguments = [["section plants", "section animals", "section mushrooms"]]
+expected  = ["1 plants", "2 animals", "3 mushrooms"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section animals",
+    "subsection cats",
+    "subsection dogs",
+    "subsubsection chewbakka",
+  ],
+]
+expected = ["1 animals", "1.1 cats", "1.2 dogs", "1.2.1 chewbakka"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "subsubsection d",
+    "subsection e",
+    "subsubsection f",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.1.1 c", "1.1.2 d", "1.2 e", "1.2.1 f"]
+
+
+[[asserts]]
+arguments = [["section a", "section b", "subsection c", "subsubsection d"]]
+expected  = ["1 a", "2 b", "2.1 c", "2.1.1 d"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsection c",
+    "section d",
+    "subsection e",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.2 c", "2 d", "2.1 e"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "section d",
+    "subsection e",
+    "subsubsection f",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.1.1 c", "2 d", "2.1 e", "2.1.1 f"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section one",
+    "subsection two",
+    "subsubsection three",
+    "subsection four",
+    "subsubsection five",
+    "subsubsection six",
+  ],
+]
+expected = [
+  "1 one",
+  "1.1 two",
+  "1.1.1 three",
+  "1.2 four",
+  "1.2.1 five",
+  "1.2.2 six",
+]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsection c",
+    "subsubsection d",
+    "subsubsection e",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.2 c", "1.2.1 d", "1.2.2 e"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "section b",
+    "section c",
+    "subsection d",
+    "subsubsection e",
+  ],
+]
+expected = ["1 a", "2 b", "3 c", "3.1 d", "3.1.1 e"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "section d",
+    "section e",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.1.1 c", "2 d", "3 e"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "subsubsection d",
+    "section e",
+    "subsection f",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.1.1 c", "1.1.2 d", "2 e", "2.1 f"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "section c",
+    "section d",
+    "subsection e",
+    "subsubsection f",
+  ],
+]
+expected = ["1 a", "1.1 b", "2 c", "3 d", "3.1 e", "3.1.1 f"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "subsection d",
+    "section e",
+    "subsection f",
+    "subsubsection g",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.1.1 c", "1.2 d", "2 e", "2.1 f", "2.1.1 g"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section intro",
+    "subsection setup",
+    "subsubsection cli",
+    "subsubsection api",
+    "subsection run",
+    "section result",
+  ],
+]
+expected = [
+  "1 intro",
+  "1.1 setup",
+  "1.1.1 cli",
+  "1.1.2 api",
+  "1.2 run",
+  "2 result",
+]
+
+
+[[asserts]]
+arguments = [["section a", "subsection b", "subsection c", "subsection d"]]
+expected  = ["1 a", "1.1 b", "1.2 c", "1.3 d"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "subsubsection d",
+    "subsubsection e",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.1.1 c", "1.1.2 d", "1.1.3 e"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "section b",
+    "subsection c",
+    "subsection d",
+    "subsubsection e",
+    "section f",
+  ],
+]
+expected = ["1 a", "2 b", "2.1 c", "2.2 d", "2.2.1 e", "3 f"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "section c",
+    "subsection d",
+    "section e",
+    "subsection f",
+  ],
+]
+expected = ["1 a", "1.1 b", "2 c", "2.1 d", "3 e", "3.1 f"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "subsection d",
+    "subsubsection e",
+    "section f",
+  ],
+]
+expected = ["1 a", "1.1 b", "1.1.1 c", "1.2 d", "1.2.1 e", "2 f"]
+
+
+[[asserts]]
+arguments = [["section a", "section b", "section c", "section d"]]
+expected  = ["1 a", "2 b", "3 c", "4 d"]
+
+
+[[asserts]]
+arguments = [
+  [
+    "section a",
+    "subsection b",
+    "subsubsection c",
+    "subsubsection d",
+    "subsection e",
+    "subsubsection f",
+    "section g",
+    "subsection h",
+    "subsection i",
+    "subsubsection j",
+  ],
+]
+expected = [
+  "1 a",
+  "1.1 b",
+  "1.1.1 c",
+  "1.1.2 d",
+  "1.2 e",
+  "1.2.1 f",
+  "2 g",
+  "2.1 h",
+  "2.2 i",
+  "2.2.1 j",
+]

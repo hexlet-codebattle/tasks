@@ -1,0 +1,218 @@
+level             = "medium"
+name              = "tasks_prize"
+tags              = ["math", "greedy", "strings"]
+time_to_solve_sec = 300
+
+description_en = """
+Given the number of a solved task, compute the minimal possible prize for that task.
+The prize for the first task is 100 rubles. For each subsequent task the prize must be at least twice the previous one.
+Additionally, a prize must be “round enough”: the count of trailing zeros in its decimal representation must be at least half of the total number of digits.
+Return the smallest prize that satisfies all conditions for the given task number.
+"""
+
+description_ru = """
+По известному номеру задачи определите минимальный возможный размер приза.
+Приз за первую задачу — 100 рублей. Приз за каждую следующую задачу должен быть как минимум вдвое больше предыдущего.
+Кроме того, приз должен быть «достаточно круглым»: количество нулей в конце числа должно быть не меньше половины количества всех его цифр.
+Верните минимальный возможный приз для задачи с заданным номером.
+"""
+
+solution = """
+def solution(task_number: int) -> int:
+    \"\"\"Return the minimal possible prize for the given task number.\"\"\"
+
+    if task_number < 1:
+        raise ValueError("task_number must be a positive integer")
+
+    # prize for the first task
+    prize = 100
+
+    # helper: smallest number >= x with enough trailing zeros
+    def _next_valid(x: int) -> int:
+        # we need a number y = k * 10**z, k % 10 != 0, len(str(k)) <= z
+        # and y >= x. Brute‑force over possible z.
+        s = str(x)
+        max_z = len(s) + 5          # safe upper bound for the search
+        best = None
+        for z in range(1, max_z + 1):
+            base = 10 ** z
+            k = (x + base - 1) // base   # ceil division
+            # make k not end with zero (otherwise trailing zeros would be larger)
+            if k % 10 == 0:
+                k += 1
+            if len(str(k)) <= z:
+                candidate = k * base
+                if best is None or candidate < best:
+                    best = candidate
+                    if candidate == x:
+                        return candidate
+        return best
+
+    for _ in range(2, task_number + 1):
+        prize = _next_valid(prize * 2)
+
+    return prize
+"""
+
+examples = """
+solution(1) == 100
+solution(2) == 200
+solution(8) == 13000
+"""
+
+[[input_signature]]
+argument_name = "task_number"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1]
+expected  = 100
+
+
+[[asserts]]
+arguments = [2]
+expected  = 200
+
+
+[[asserts]]
+arguments = [3]
+expected  = 400
+
+
+[[asserts]]
+arguments = [4]
+expected  = 800
+
+
+[[asserts]]
+arguments = [5]
+expected  = 1600
+
+
+[[asserts]]
+arguments = [6]
+expected  = 3200
+
+
+[[asserts]]
+arguments = [7]
+expected  = 6400
+
+
+[[asserts]]
+arguments = [8]
+expected  = 13000
+
+
+[[asserts]]
+arguments = [9]
+expected  = 26000
+
+
+[[asserts]]
+arguments = [10]
+expected  = 52000
+
+
+[[asserts]]
+arguments = [11]
+expected  = 104000
+
+
+[[asserts]]
+arguments = [12]
+expected  = 208000
+
+
+[[asserts]]
+arguments = [13]
+expected  = 416000
+
+
+[[asserts]]
+arguments = [14]
+expected  = 832000
+
+
+[[asserts]]
+arguments = [15]
+expected  = 1670000
+
+
+[[asserts]]
+arguments = [16]
+expected  = 3340000
+
+
+[[asserts]]
+arguments = [17]
+expected  = 6680000
+
+
+[[asserts]]
+arguments = [18]
+expected  = 13360000
+
+
+[[asserts]]
+arguments = [19]
+expected  = 26720000
+
+
+[[asserts]]
+arguments = [20]
+expected  = 53440000
+
+
+[[asserts]]
+arguments = [21]
+expected  = 106900000
+
+
+[[asserts]]
+arguments = [22]
+expected  = 213800000
+
+
+[[asserts]]
+arguments = [23]
+expected  = 427600000
+
+
+[[asserts]]
+arguments = [24]
+expected  = 855200000
+
+
+[[asserts]]
+arguments = [25]
+expected  = 1710400000
+
+
+[[asserts]]
+arguments = [1]
+expected  = 100
+
+
+[[asserts]]
+arguments = [2]
+expected  = 200
+
+
+[[asserts]]
+arguments = [8]
+expected  = 13000
+
+
+[[asserts]]
+arguments = [15]
+expected  = 1670000
+
+
+[[asserts]]
+arguments = [25]
+expected  = 1710400000

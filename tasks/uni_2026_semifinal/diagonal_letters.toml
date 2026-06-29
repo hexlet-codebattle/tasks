@@ -1,0 +1,672 @@
+level             = "easy"
+name              = "diagonal_letters"
+tags              = ["grid", "string", "math"]
+time_to_solve_sec = 180
+
+description_en = '''
+Fill an $n \times n$ square with letters, where the cells on the main diagonal and the secondary (anti‑) diagonal contain the letter “a”, and every other cell is filled with the letter whose position in the alphabet (0‑based) equals the minimal distance (in cells) to the nearest diagonal cell. For a cell $(i, j)$ (0‑based) this distance equals $\min(\lvert i - j \rvert,\ \lvert i + j - (n - 1) \rvert)$. Return an array of $n$ strings, each of length $n$.
+'''
+
+description_ru = '''
+Заполните квадрат $n \times n$ буквами, где клетки главной и побочной диагонали содержат букву 'a', а каждая другая клетка заполнена буквой, номер которой в алфавите (нумерация букв с нуля) равен минимальному расстоянию по клеткам до ближайшей клетки диагонали. Для клетки $(i, j)$ (нумерация с 0) это расстояние равно $\min(\lvert i - j \rvert,\ \lvert i + j - (n - 1) \rvert)$. Верните массив из $n$ строк длиной $n$.
+'''
+
+solution = """
+def solution(n: int) -> list[str]:
+    \"\"\"Return an n×n grid of letters as described in the statement.
+
+    For each cell (i, j) (0‑based) the distance to the nearest diagonal is
+    min(|i - j|, |i + j - (n - 1)|). The letter is 'a' + distance.
+    \"\"\"
+    rows = []
+    for i in range(n):
+        row_chars = []
+        for j in range(n):
+            d = min(abs(i - j), abs(i + j - (n - 1)))
+            row_chars.append(chr(ord('a') + d))
+        rows.append(''.join(row_chars))
+    return rows
+"""
+
+examples = """
+solution(5) == [
+    "abcba",
+    "babab",
+    "cbabc",
+    "babab",
+    "abcba"
+]
+solution(4) == [
+    "abba",
+    "baab",
+    "baab",
+    "abba"
+]
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [1]
+expected  = ["a"]
+
+
+[[asserts]]
+arguments = [2]
+expected  = ["aa", "aa"]
+
+
+[[asserts]]
+arguments = [3]
+expected  = ["aba", "bab", "aba"]
+
+
+[[asserts]]
+arguments = [4]
+expected  = ["abba", "baab", "baab", "abba"]
+
+
+[[asserts]]
+arguments = [5]
+expected  = ["abcba", "babab", "cbabc", "babab", "abcba"]
+
+
+[[asserts]]
+arguments = [6]
+expected  = ["abccba", "babbab", "cbaabc", "cbaabc", "babbab", "abccba"]
+
+
+[[asserts]]
+arguments = [7]
+expected = [
+  "abcdcba",
+  "babcbab",
+  "cbababc",
+  "dcbabcd",
+  "cbababc",
+  "babcbab",
+  "abcdcba",
+]
+
+
+[[asserts]]
+arguments = [8]
+expected = [
+  "abcddcba",
+  "babccbab",
+  "cbabbabc",
+  "dcbaabcd",
+  "dcbaabcd",
+  "cbabbabc",
+  "babccbab",
+  "abcddcba",
+]
+
+
+[[asserts]]
+arguments = [9]
+expected = [
+  "abcdedcba",
+  "babcdcbab",
+  "cbabcbabc",
+  "dcbababcd",
+  "edcbabcde",
+  "dcbababcd",
+  "cbabcbabc",
+  "babcdcbab",
+  "abcdedcba",
+]
+
+
+[[asserts]]
+arguments = [10]
+expected = [
+  "abcdeedcba",
+  "babcddcbab",
+  "cbabccbabc",
+  "dcbabbabcd",
+  "edcbaabcde",
+  "edcbaabcde",
+  "dcbabbabcd",
+  "cbabccbabc",
+  "babcddcbab",
+  "abcdeedcba",
+]
+
+
+[[asserts]]
+arguments = [11]
+expected = [
+  "abcdefedcba",
+  "babcdedcbab",
+  "cbabcdcbabc",
+  "dcbabcbabcd",
+  "edcbababcde",
+  "fedcbabcdef",
+  "edcbababcde",
+  "dcbabcbabcd",
+  "cbabcdcbabc",
+  "babcdedcbab",
+  "abcdefedcba",
+]
+
+
+[[asserts]]
+arguments = [12]
+expected = [
+  "abcdeffedcba",
+  "babcdeedcbab",
+  "cbabcddcbabc",
+  "dcbabccbabcd",
+  "edcbabbabcde",
+  "fedcbaabcdef",
+  "fedcbaabcdef",
+  "edcbabbabcde",
+  "dcbabccbabcd",
+  "cbabcddcbabc",
+  "babcdeedcbab",
+  "abcdeffedcba",
+]
+
+
+[[asserts]]
+arguments = [13]
+expected = [
+  "abcdefgfedcba",
+  "babcdefedcbab",
+  "cbabcdedcbabc",
+  "dcbabcdcbabcd",
+  "edcbabcbabcde",
+  "fedcbababcdef",
+  "gfedcbabcdefg",
+  "fedcbababcdef",
+  "edcbabcbabcde",
+  "dcbabcdcbabcd",
+  "cbabcdedcbabc",
+  "babcdefedcbab",
+  "abcdefgfedcba",
+]
+
+
+[[asserts]]
+arguments = [14]
+expected = [
+  "abcdefggfedcba",
+  "babcdeffedcbab",
+  "cbabcdeedcbabc",
+  "dcbabcddcbabcd",
+  "edcbabccbabcde",
+  "fedcbabbabcdef",
+  "gfedcbaabcdefg",
+  "gfedcbaabcdefg",
+  "fedcbabbabcdef",
+  "edcbabccbabcde",
+  "dcbabcddcbabcd",
+  "cbabcdeedcbabc",
+  "babcdeffedcbab",
+  "abcdefggfedcba",
+]
+
+
+[[asserts]]
+arguments = [15]
+expected = [
+  "abcdefghgfedcba",
+  "babcdefgfedcbab",
+  "cbabcdefedcbabc",
+  "dcbabcdedcbabcd",
+  "edcbabcdcbabcde",
+  "fedcbabcbabcdef",
+  "gfedcbababcdefg",
+  "hgfedcbabcdefgh",
+  "gfedcbababcdefg",
+  "fedcbabcbabcdef",
+  "edcbabcdcbabcde",
+  "dcbabcdedcbabcd",
+  "cbabcdefedcbabc",
+  "babcdefgfedcbab",
+  "abcdefghgfedcba",
+]
+
+
+[[asserts]]
+arguments = [16]
+expected = [
+  "abcdefghhgfedcba",
+  "babcdefggfedcbab",
+  "cbabcdeffedcbabc",
+  "dcbabcdeedcbabcd",
+  "edcbabcddcbabcde",
+  "fedcbabccbabcdef",
+  "gfedcbabbabcdefg",
+  "hgfedcbaabcdefgh",
+  "hgfedcbaabcdefgh",
+  "gfedcbabbabcdefg",
+  "fedcbabccbabcdef",
+  "edcbabcddcbabcde",
+  "dcbabcdeedcbabcd",
+  "cbabcdeffedcbabc",
+  "babcdefggfedcbab",
+  "abcdefghhgfedcba",
+]
+
+
+[[asserts]]
+arguments = [17]
+expected = [
+  "abcdefghihgfedcba",
+  "babcdefghgfedcbab",
+  "cbabcdefgfedcbabc",
+  "dcbabcdefedcbabcd",
+  "edcbabcdedcbabcde",
+  "fedcbabcdcbabcdef",
+  "gfedcbabcbabcdefg",
+  "hgfedcbababcdefgh",
+  "ihgfedcbabcdefghi",
+  "hgfedcbababcdefgh",
+  "gfedcbabcbabcdefg",
+  "fedcbabcdcbabcdef",
+  "edcbabcdedcbabcde",
+  "dcbabcdefedcbabcd",
+  "cbabcdefgfedcbabc",
+  "babcdefghgfedcbab",
+  "abcdefghihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [18]
+expected = [
+  "abcdefghiihgfedcba",
+  "babcdefghhgfedcbab",
+  "cbabcdefggfedcbabc",
+  "dcbabcdeffedcbabcd",
+  "edcbabcdeedcbabcde",
+  "fedcbabcddcbabcdef",
+  "gfedcbabccbabcdefg",
+  "hgfedcbabbabcdefgh",
+  "ihgfedcbaabcdefghi",
+  "ihgfedcbaabcdefghi",
+  "hgfedcbabbabcdefgh",
+  "gfedcbabccbabcdefg",
+  "fedcbabcddcbabcdef",
+  "edcbabcdeedcbabcde",
+  "dcbabcdeffedcbabcd",
+  "cbabcdefggfedcbabc",
+  "babcdefghhgfedcbab",
+  "abcdefghiihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [19]
+expected = [
+  "abcdefghijihgfedcba",
+  "babcdefghihgfedcbab",
+  "cbabcdefghgfedcbabc",
+  "dcbabcdefgfedcbabcd",
+  "edcbabcdefedcbabcde",
+  "fedcbabcdedcbabcdef",
+  "gfedcbabcdcbabcdefg",
+  "hgfedcbabcbabcdefgh",
+  "ihgfedcbababcdefghi",
+  "jihgfedcbabcdefghij",
+  "ihgfedcbababcdefghi",
+  "hgfedcbabcbabcdefgh",
+  "gfedcbabcdcbabcdefg",
+  "fedcbabcdedcbabcdef",
+  "edcbabcdefedcbabcde",
+  "dcbabcdefgfedcbabcd",
+  "cbabcdefghgfedcbabc",
+  "babcdefghihgfedcbab",
+  "abcdefghijihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [20]
+expected = [
+  "abcdefghijjihgfedcba",
+  "babcdefghiihgfedcbab",
+  "cbabcdefghhgfedcbabc",
+  "dcbabcdefggfedcbabcd",
+  "edcbabcdeffedcbabcde",
+  "fedcbabcdeedcbabcdef",
+  "gfedcbabcddcbabcdefg",
+  "hgfedcbabccbabcdefgh",
+  "ihgfedcbabbabcdefghi",
+  "jihgfedcbaabcdefghij",
+  "jihgfedcbaabcdefghij",
+  "ihgfedcbabbabcdefghi",
+  "hgfedcbabccbabcdefgh",
+  "gfedcbabcddcbabcdefg",
+  "fedcbabcdeedcbabcdef",
+  "edcbabcdeffedcbabcde",
+  "dcbabcdefggfedcbabcd",
+  "cbabcdefghhgfedcbabc",
+  "babcdefghiihgfedcbab",
+  "abcdefghijjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [21]
+expected = [
+  "abcdefghijkjihgfedcba",
+  "babcdefghijihgfedcbab",
+  "cbabcdefghihgfedcbabc",
+  "dcbabcdefghgfedcbabcd",
+  "edcbabcdefgfedcbabcde",
+  "fedcbabcdefedcbabcdef",
+  "gfedcbabcdedcbabcdefg",
+  "hgfedcbabcdcbabcdefgh",
+  "ihgfedcbabcbabcdefghi",
+  "jihgfedcbababcdefghij",
+  "kjihgfedcbabcdefghijk",
+  "jihgfedcbababcdefghij",
+  "ihgfedcbabcbabcdefghi",
+  "hgfedcbabcdcbabcdefgh",
+  "gfedcbabcdedcbabcdefg",
+  "fedcbabcdefedcbabcdef",
+  "edcbabcdefgfedcbabcde",
+  "dcbabcdefghgfedcbabcd",
+  "cbabcdefghihgfedcbabc",
+  "babcdefghijihgfedcbab",
+  "abcdefghijkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [22]
+expected = [
+  "abcdefghijkkjihgfedcba",
+  "babcdefghijjihgfedcbab",
+  "cbabcdefghiihgfedcbabc",
+  "dcbabcdefghhgfedcbabcd",
+  "edcbabcdefggfedcbabcde",
+  "fedcbabcdeffedcbabcdef",
+  "gfedcbabcdeedcbabcdefg",
+  "hgfedcbabcddcbabcdefgh",
+  "ihgfedcbabccbabcdefghi",
+  "jihgfedcbabbabcdefghij",
+  "kjihgfedcbaabcdefghijk",
+  "kjihgfedcbaabcdefghijk",
+  "jihgfedcbabbabcdefghij",
+  "ihgfedcbabccbabcdefghi",
+  "hgfedcbabcddcbabcdefgh",
+  "gfedcbabcdeedcbabcdefg",
+  "fedcbabcdeffedcbabcdef",
+  "edcbabcdefggfedcbabcde",
+  "dcbabcdefghhgfedcbabcd",
+  "cbabcdefghiihgfedcbabc",
+  "babcdefghijjihgfedcbab",
+  "abcdefghijkkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [23]
+expected = [
+  "abcdefghijklkjihgfedcba",
+  "babcdefghijkjihgfedcbab",
+  "cbabcdefghijihgfedcbabc",
+  "dcbabcdefghihgfedcbabcd",
+  "edcbabcdefghgfedcbabcde",
+  "fedcbabcdefgfedcbabcdef",
+  "gfedcbabcdefedcbabcdefg",
+  "hgfedcbabcdedcbabcdefgh",
+  "ihgfedcbabcdcbabcdefghi",
+  "jihgfedcbabcbabcdefghij",
+  "kjihgfedcbababcdefghijk",
+  "lkjihgfedcbabcdefghijkl",
+  "kjihgfedcbababcdefghijk",
+  "jihgfedcbabcbabcdefghij",
+  "ihgfedcbabcdcbabcdefghi",
+  "hgfedcbabcdedcbabcdefgh",
+  "gfedcbabcdefedcbabcdefg",
+  "fedcbabcdefgfedcbabcdef",
+  "edcbabcdefghgfedcbabcde",
+  "dcbabcdefghihgfedcbabcd",
+  "cbabcdefghijihgfedcbabc",
+  "babcdefghijkjihgfedcbab",
+  "abcdefghijklkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [24]
+expected = [
+  "abcdefghijkllkjihgfedcba",
+  "babcdefghijkkjihgfedcbab",
+  "cbabcdefghijjihgfedcbabc",
+  "dcbabcdefghiihgfedcbabcd",
+  "edcbabcdefghhgfedcbabcde",
+  "fedcbabcdefggfedcbabcdef",
+  "gfedcbabcdeffedcbabcdefg",
+  "hgfedcbabcdeedcbabcdefgh",
+  "ihgfedcbabcddcbabcdefghi",
+  "jihgfedcbabccbabcdefghij",
+  "kjihgfedcbabbabcdefghijk",
+  "lkjihgfedcbaabcdefghijkl",
+  "lkjihgfedcbaabcdefghijkl",
+  "kjihgfedcbabbabcdefghijk",
+  "jihgfedcbabccbabcdefghij",
+  "ihgfedcbabcddcbabcdefghi",
+  "hgfedcbabcdeedcbabcdefgh",
+  "gfedcbabcdeffedcbabcdefg",
+  "fedcbabcdefggfedcbabcdef",
+  "edcbabcdefghhgfedcbabcde",
+  "dcbabcdefghiihgfedcbabcd",
+  "cbabcdefghijjihgfedcbabc",
+  "babcdefghijkkjihgfedcbab",
+  "abcdefghijkllkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [25]
+expected = [
+  "abcdefghijklmlkjihgfedcba",
+  "babcdefghijklkjihgfedcbab",
+  "cbabcdefghijkjihgfedcbabc",
+  "dcbabcdefghijihgfedcbabcd",
+  "edcbabcdefghihgfedcbabcde",
+  "fedcbabcdefghgfedcbabcdef",
+  "gfedcbabcdefgfedcbabcdefg",
+  "hgfedcbabcdefedcbabcdefgh",
+  "ihgfedcbabcdedcbabcdefghi",
+  "jihgfedcbabcdcbabcdefghij",
+  "kjihgfedcbabcbabcdefghijk",
+  "lkjihgfedcbababcdefghijkl",
+  "mlkjihgfedcbabcdefghijklm",
+  "lkjihgfedcbababcdefghijkl",
+  "kjihgfedcbabcbabcdefghijk",
+  "jihgfedcbabcdcbabcdefghij",
+  "ihgfedcbabcdedcbabcdefghi",
+  "hgfedcbabcdefedcbabcdefgh",
+  "gfedcbabcdefgfedcbabcdefg",
+  "fedcbabcdefghgfedcbabcdef",
+  "edcbabcdefghihgfedcbabcde",
+  "dcbabcdefghijihgfedcbabcd",
+  "cbabcdefghijkjihgfedcbabc",
+  "babcdefghijklkjihgfedcbab",
+  "abcdefghijklmlkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [26]
+expected = [
+  "abcdefghijklmmlkjihgfedcba",
+  "babcdefghijkllkjihgfedcbab",
+  "cbabcdefghijkkjihgfedcbabc",
+  "dcbabcdefghijjihgfedcbabcd",
+  "edcbabcdefghiihgfedcbabcde",
+  "fedcbabcdefghhgfedcbabcdef",
+  "gfedcbabcdefggfedcbabcdefg",
+  "hgfedcbabcdeffedcbabcdefgh",
+  "ihgfedcbabcdeedcbabcdefghi",
+  "jihgfedcbabcddcbabcdefghij",
+  "kjihgfedcbabccbabcdefghijk",
+  "lkjihgfedcbabbabcdefghijkl",
+  "mlkjihgfedcbaabcdefghijklm",
+  "mlkjihgfedcbaabcdefghijklm",
+  "lkjihgfedcbabbabcdefghijkl",
+  "kjihgfedcbabccbabcdefghijk",
+  "jihgfedcbabcddcbabcdefghij",
+  "ihgfedcbabcdeedcbabcdefghi",
+  "hgfedcbabcdeffedcbabcdefgh",
+  "gfedcbabcdefggfedcbabcdefg",
+  "fedcbabcdefghhgfedcbabcdef",
+  "edcbabcdefghiihgfedcbabcde",
+  "dcbabcdefghijjihgfedcbabcd",
+  "cbabcdefghijkkjihgfedcbabc",
+  "babcdefghijkllkjihgfedcbab",
+  "abcdefghijklmmlkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [27]
+expected = [
+  "abcdefghijklmnmlkjihgfedcba",
+  "babcdefghijklmlkjihgfedcbab",
+  "cbabcdefghijklkjihgfedcbabc",
+  "dcbabcdefghijkjihgfedcbabcd",
+  "edcbabcdefghijihgfedcbabcde",
+  "fedcbabcdefghihgfedcbabcdef",
+  "gfedcbabcdefghgfedcbabcdefg",
+  "hgfedcbabcdefgfedcbabcdefgh",
+  "ihgfedcbabcdefedcbabcdefghi",
+  "jihgfedcbabcdedcbabcdefghij",
+  "kjihgfedcbabcdcbabcdefghijk",
+  "lkjihgfedcbabcbabcdefghijkl",
+  "mlkjihgfedcbababcdefghijklm",
+  "nmlkjihgfedcbabcdefghijklmn",
+  "mlkjihgfedcbababcdefghijklm",
+  "lkjihgfedcbabcbabcdefghijkl",
+  "kjihgfedcbabcdcbabcdefghijk",
+  "jihgfedcbabcdedcbabcdefghij",
+  "ihgfedcbabcdefedcbabcdefghi",
+  "hgfedcbabcdefgfedcbabcdefgh",
+  "gfedcbabcdefghgfedcbabcdefg",
+  "fedcbabcdefghihgfedcbabcdef",
+  "edcbabcdefghijihgfedcbabcde",
+  "dcbabcdefghijkjihgfedcbabcd",
+  "cbabcdefghijklkjihgfedcbabc",
+  "babcdefghijklmlkjihgfedcbab",
+  "abcdefghijklmnmlkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [28]
+expected = [
+  "abcdefghijklmnnmlkjihgfedcba",
+  "babcdefghijklmmlkjihgfedcbab",
+  "cbabcdefghijkllkjihgfedcbabc",
+  "dcbabcdefghijkkjihgfedcbabcd",
+  "edcbabcdefghijjihgfedcbabcde",
+  "fedcbabcdefghiihgfedcbabcdef",
+  "gfedcbabcdefghhgfedcbabcdefg",
+  "hgfedcbabcdefggfedcbabcdefgh",
+  "ihgfedcbabcdeffedcbabcdefghi",
+  "jihgfedcbabcdeedcbabcdefghij",
+  "kjihgfedcbabcddcbabcdefghijk",
+  "lkjihgfedcbabccbabcdefghijkl",
+  "mlkjihgfedcbabbabcdefghijklm",
+  "nmlkjihgfedcbaabcdefghijklmn",
+  "nmlkjihgfedcbaabcdefghijklmn",
+  "mlkjihgfedcbabbabcdefghijklm",
+  "lkjihgfedcbabccbabcdefghijkl",
+  "kjihgfedcbabcddcbabcdefghijk",
+  "jihgfedcbabcdeedcbabcdefghij",
+  "ihgfedcbabcdeffedcbabcdefghi",
+  "hgfedcbabcdefggfedcbabcdefgh",
+  "gfedcbabcdefghhgfedcbabcdefg",
+  "fedcbabcdefghiihgfedcbabcdef",
+  "edcbabcdefghijjihgfedcbabcde",
+  "dcbabcdefghijkkjihgfedcbabcd",
+  "cbabcdefghijkllkjihgfedcbabc",
+  "babcdefghijklmmlkjihgfedcbab",
+  "abcdefghijklmnnmlkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [29]
+expected = [
+  "abcdefghijklmnonmlkjihgfedcba",
+  "babcdefghijklmnmlkjihgfedcbab",
+  "cbabcdefghijklmlkjihgfedcbabc",
+  "dcbabcdefghijklkjihgfedcbabcd",
+  "edcbabcdefghijkjihgfedcbabcde",
+  "fedcbabcdefghijihgfedcbabcdef",
+  "gfedcbabcdefghihgfedcbabcdefg",
+  "hgfedcbabcdefghgfedcbabcdefgh",
+  "ihgfedcbabcdefgfedcbabcdefghi",
+  "jihgfedcbabcdefedcbabcdefghij",
+  "kjihgfedcbabcdedcbabcdefghijk",
+  "lkjihgfedcbabcdcbabcdefghijkl",
+  "mlkjihgfedcbabcbabcdefghijklm",
+  "nmlkjihgfedcbababcdefghijklmn",
+  "onmlkjihgfedcbabcdefghijklmno",
+  "nmlkjihgfedcbababcdefghijklmn",
+  "mlkjihgfedcbabcbabcdefghijklm",
+  "lkjihgfedcbabcdcbabcdefghijkl",
+  "kjihgfedcbabcdedcbabcdefghijk",
+  "jihgfedcbabcdefedcbabcdefghij",
+  "ihgfedcbabcdefgfedcbabcdefghi",
+  "hgfedcbabcdefghgfedcbabcdefgh",
+  "gfedcbabcdefghihgfedcbabcdefg",
+  "fedcbabcdefghijihgfedcbabcdef",
+  "edcbabcdefghijkjihgfedcbabcde",
+  "dcbabcdefghijklkjihgfedcbabcd",
+  "cbabcdefghijklmlkjihgfedcbabc",
+  "babcdefghijklmnmlkjihgfedcbab",
+  "abcdefghijklmnonmlkjihgfedcba",
+]
+
+
+[[asserts]]
+arguments = [30]
+expected = [
+  "abcdefghijklmnoonmlkjihgfedcba",
+  "babcdefghijklmnnmlkjihgfedcbab",
+  "cbabcdefghijklmmlkjihgfedcbabc",
+  "dcbabcdefghijkllkjihgfedcbabcd",
+  "edcbabcdefghijkkjihgfedcbabcde",
+  "fedcbabcdefghijjihgfedcbabcdef",
+  "gfedcbabcdefghiihgfedcbabcdefg",
+  "hgfedcbabcdefghhgfedcbabcdefgh",
+  "ihgfedcbabcdefggfedcbabcdefghi",
+  "jihgfedcbabcdeffedcbabcdefghij",
+  "kjihgfedcbabcdeedcbabcdefghijk",
+  "lkjihgfedcbabcddcbabcdefghijkl",
+  "mlkjihgfedcbabccbabcdefghijklm",
+  "nmlkjihgfedcbabbabcdefghijklmn",
+  "onmlkjihgfedcbaabcdefghijklmno",
+  "onmlkjihgfedcbaabcdefghijklmno",
+  "nmlkjihgfedcbabbabcdefghijklmn",
+  "mlkjihgfedcbabccbabcdefghijklm",
+  "lkjihgfedcbabcddcbabcdefghijkl",
+  "kjihgfedcbabcdeedcbabcdefghijk",
+  "jihgfedcbabcdeffedcbabcdefghij",
+  "ihgfedcbabcdefggfedcbabcdefghi",
+  "hgfedcbabcdefghhgfedcbabcdefgh",
+  "gfedcbabcdefghiihgfedcbabcdefg",
+  "fedcbabcdefghijjihgfedcbabcdef",
+  "edcbabcdefghijkkjihgfedcbabcde",
+  "dcbabcdefghijkllkjihgfedcbabcd",
+  "cbabcdefghijklmmlkjihgfedcbabc",
+  "babcdefghijklmnnmlkjihgfedcbab",
+  "abcdefghijklmnoonmlkjihgfedcba",
+]

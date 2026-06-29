@@ -1,0 +1,221 @@
+level             = "hard"
+name              = "balanced_equation"
+tags              = ["parsing", "string", "dict"]
+time_to_solve_sec = 390
+
+description_ru = """
+В химическом уравнении слева и справа записаны наборы молекул, разделённые символом «+».
+Молекула состоит из атомов (каждый атом обозначается заглавной английской буквой). После атома может стоять цифра 1‑9 — количество атомов.
+Перед молекулой может стоять цифра 1‑9 — количество её копий. Нужно определить, сбалансировано ли уравнение, то есть совпадает ли количество вхождений каждого атома в левой и правой частях.
+"""
+
+description_en = """
+In a chemical equation there are two parts: the left side (reactants) and the right side (products).
+Molecules are separated by the '+' sign. A molecule consists of atoms denoted by uppercase English letters.
+A digit 1‑9 after an atom indicates how many such atoms are present.
+A digit 1‑9 before a molecule indicates how many copies of this molecule appear.
+Determine whether the equation is balanced, i.e. the counts of each atom are equal on both sides.
+"""
+
+solution = """
+from collections import Counter
+from typing import Dict
+
+def _parse_side(side: str) -> Counter:
+    \"\"\"Parse a side of the equation and return a Counter of atom → total count.\"\"\"
+    total = Counter()
+    for molecule in side.split('+'):
+        if not molecule:
+            continue
+        # coefficient (optional)
+        coeff = 1
+        idx = 0
+        if molecule[0].isdigit():
+            coeff = int(molecule[0])
+            idx = 1
+        # parse atoms inside the molecule
+        while idx < len(molecule):
+            atom = molecule[idx]            # must be an uppercase letter
+            idx += 1
+            count = 1
+            if idx < len(molecule) and molecule[idx].isdigit():
+                count = int(molecule[idx])
+                idx += 1
+            total[atom] += coeff * count
+    return total
+
+def solution(left: str, right: str) -> bool:
+    \"\"\"Return True iff the chemical equation `left = right` is balanced.\"\"\"
+    left_counts = _parse_side(left)
+    right_counts = _parse_side(right)
+    return left_counts == right_counts
+"""
+
+examples = """
+solution("A+B", "AB") == True
+solution("AB+CD", "AC+DB") == True
+solution("2AB+A", "3AB") == False
+solution("2H2O+2CO2", "2H2CO3") == True
+"""
+
+[[input_signature]]
+argument_name = "left"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "right"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["A", "A"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["A", "B"]
+expected  = false
+
+
+[[asserts]]
+arguments = ["A+B", "AB"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["AB+CD", "AC+DB"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["2AB+A", "3AB"]
+expected  = false
+
+
+[[asserts]]
+arguments = ["A2", "2A"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["2A", "A2"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["2AB", "A2B2"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["2AB", "AB2"]
+expected  = false
+
+
+[[asserts]]
+arguments = ["3A2B", "6A+3B"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["H2O", "H2+O"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["2H2O", "4H+2O"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["CO2", "CO+O"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["2H2O+2CO2", "2H2CO3"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["NH3+H", "NH4"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["C6H6", "6C+6H"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["9A9", "9A8+9A"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["9A9", "9A9"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["A2B3+C", "AB3+AC"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["A+B2+C3", "C3+B2+A"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["2A3B4+5C", "6A+8B+5C"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["2A3B4+5C", "6A+7B+5C"]
+expected  = false
+
+
+[[asserts]]
+arguments = ["ABC+2D", "CAD+B+D"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["4XY+Z2", "X4Y4+Z2"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["4XY+Z2", "X4Y3+Z2"]
+expected  = false
+
+
+[[asserts]]
+arguments = ["A9B+9C", "9A+B+9C"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["8AB2+2C3", "8A+8B2+6C"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["8AB2+2C3", "8A+8B2+5C"]
+expected  = false
+
+
+[[asserts]]
+arguments = ["M+N+O", "ONM"]
+expected  = true
+
+
+[[asserts]]
+arguments = ["7PQ+2R", "P7Q7+R2"]
+expected  = true

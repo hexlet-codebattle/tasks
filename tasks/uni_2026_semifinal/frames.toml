@@ -1,0 +1,300 @@
+level             = "medium"
+name              = "frames"
+tags              = ["simulation", "strings", "grid"]
+time_to_solve_sec = 300
+
+description_en = '''
+We have a screen of size $h \times w$ (rows are numbered from 1 at the top, columns from 1 on the left) initially filled with '.' characters. A list of frames is drawn on the screen. The $i$‑th frame is the border of the rectangle whose opposite corners are $(\mathrm{row}_{i,1}, \mathrm{col}_{i,1})$ and $(\mathrm{row}_{i,2}, \mathrm{col}_{i,2})$ ($\mathrm{row}_{i,1} < \mathrm{row}_{i,2}$, $\mathrm{col}_{i,1} < \mathrm{col}_{i,2}$). The frame consists of the $i$‑th letter of the English alphabet ('a' for $i=1$, 'b' for $i=2$, …). Frames are drawn in the given order, overwriting previous characters. Return the final picture as an array of $h$ strings, each of length $w$.
+'''
+
+description_ru = '''
+На экране размером $h \times w$ (нумерация строк и столбцов начинается с 1) изначально все клетки заполнены символом «.». По очереди рисуются рамки – границы прямоугольников с противоположными углами в клетках с координатами$(\mathrm{row}_{i,1}, \mathrm{col}_{i,1})$ и $(\mathrm{row}_{i,2}, \mathrm{col}_{i,2})$, где $\mathrm{row}_{i,1} < \mathrm{row}_{i,2}$ и $\mathrm{col}_{i,1} < \mathrm{col}_{i,2}$. $i$‑я рамка заполняется $i$‑й буквой английского алфавита (a, b, …). При рисовании рамка перезаписывает уже нарисованные символы. Вернуть получившееся изображение в виде массива из $h$ строк.
+'''
+
+solution = """
+def solution(h, w, frames):
+    # create empty screen filled with '.'
+    grid = [['.' for _ in range(w)] for _ in range(h)]
+
+    for i, (r1, c1, r2, c2) in enumerate(frames):
+        ch = chr(ord('a') + i)          # i‑я буква алфавита
+        r1i, c1i = r1 - 1, c1 - 1
+        r2i, c2i = r2 - 1, c2 - 1
+
+        # top and bottom edges
+        for col in range(c1i, c2i + 1):
+            grid[r1i][col] = ch
+            grid[r2i][col] = ch
+
+        # left and right edges (excluding corners already set)
+        for row in range(r1i + 1, r2i):
+            grid[row][c1i] = ch
+            grid[row][c2i] = ch
+
+    return [''.join(row) for row in grid]
+"""
+
+examples = """
+solution(6, 7, [[3, 1, 6, 6]]) == [
+    ".......",
+    ".......",
+    "aaaaaa.",
+    "a....a.",
+    "a....a.",
+    "aaaaaa."
+]
+solution(5, 8, [[2, 1, 4, 5], [1, 1, 2, 2], [1, 2, 3, 3]]) == [
+    "bcc.....",
+    "bccaa...",
+    "acc.a...",
+    "aaaaa...",
+    "........"
+]
+"""
+
+[[input_signature]]
+argument_name = "h"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "w"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "frames"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [2, 2, []]
+expected  = ["..", ".."]
+
+
+[[asserts]]
+arguments = [2, 3, [[1, 1, 2, 2]]]
+expected  = ["aa.", "aa."]
+
+
+[[asserts]]
+arguments = [2, 3, [[1, 2, 2, 3]]]
+expected  = [".aa", ".aa"]
+
+
+[[asserts]]
+arguments = [3, 3, [[1, 1, 3, 3]]]
+expected  = ["aaa", "a.a", "aaa"]
+
+
+[[asserts]]
+arguments = [3, 4, [[1, 1, 2, 4]]]
+expected  = ["aaaa", "aaaa", "...."]
+
+
+[[asserts]]
+arguments = [3, 4, [[2, 1, 3, 4]]]
+expected  = ["....", "aaaa", "aaaa"]
+
+
+[[asserts]]
+arguments = [4, 4, [[1, 1, 4, 4]]]
+expected  = ["aaaa", "a..a", "a..a", "aaaa"]
+
+
+[[asserts]]
+arguments = [4, 4, [[1, 1, 4, 4], [2, 2, 3, 3]]]
+expected  = ["aaaa", "abba", "abba", "aaaa"]
+
+
+[[asserts]]
+arguments = [4, 5, [[1, 1, 4, 5], [2, 2, 3, 4]]]
+expected  = ["aaaaa", "abbba", "abbba", "aaaaa"]
+
+
+[[asserts]]
+arguments = [5, 5, [[2, 2, 5, 5]]]
+expected  = [".....", ".aaaa", ".a..a", ".a..a", ".aaaa"]
+
+
+[[asserts]]
+arguments = [5, 5, [[1, 1, 3, 3], [3, 3, 5, 5]]]
+expected  = ["aaa..", "a.a..", "aabbb", "..b.b", "..bbb"]
+
+
+[[asserts]]
+arguments = [5, 5, [[1, 3, 5, 5], [2, 1, 4, 4]]]
+expected  = ["..aaa", "bbbba", "b.aba", "bbbba", "..aaa"]
+
+
+[[asserts]]
+arguments = [5, 6, [[1, 1, 5, 6], [1, 1, 2, 2]]]
+expected  = ["bbaaaa", "bb...a", "a....a", "a....a", "aaaaaa"]
+
+
+[[asserts]]
+arguments = [5, 6, [[1, 1, 5, 6], [4, 5, 5, 6]]]
+expected  = ["aaaaaa", "a....a", "a....a", "a...bb", "aaaabb"]
+
+
+[[asserts]]
+arguments = [6, 7, [[3, 1, 6, 6]]]
+expected  = [".......", ".......", "aaaaaa.", "a....a.", "a....a.", "aaaaaa."]
+
+
+[[asserts]]
+arguments = [5, 8, [[2, 1, 4, 5], [1, 1, 2, 2], [1, 2, 3, 3]]]
+expected  = ["bcc.....", "bccaa...", "acc.a...", "aaaaa...", "........"]
+
+
+[[asserts]]
+arguments = [3, 5, [[1, 1, 3, 5], [1, 2, 2, 4]]]
+expected  = ["abbba", "abbba", "aaaaa"]
+
+
+[[asserts]]
+arguments = [4, 6, [[1, 1, 4, 6], [2, 1, 3, 6]]]
+expected  = ["aaaaaa", "bbbbbb", "bbbbbb", "aaaaaa"]
+
+
+[[asserts]]
+arguments = [4, 6, [[1, 1, 4, 3], [1, 4, 4, 6]]]
+expected  = ["aaabbb", "a.ab.b", "a.ab.b", "aaabbb"]
+
+
+[[asserts]]
+arguments = [6, 6, [[1, 1, 6, 6], [2, 2, 5, 5], [3, 3, 4, 4]]]
+expected  = ["aaaaaa", "abbbba", "abccba", "abccba", "abbbba", "aaaaaa"]
+
+
+[[asserts]]
+arguments = [6, 6, [[1, 1, 3, 3], [4, 4, 6, 6], [2, 2, 5, 5]]]
+expected  = ["aaa...", "acccc.", "aca.c.", ".c.bcb", ".ccccb", "...bbb"]
+
+
+[[asserts]]
+arguments = [3, 6, [[1, 1, 3, 2], [1, 5, 3, 6]]]
+expected  = ["aa..bb", "aa..bb", "aa..bb"]
+
+
+[[asserts]]
+arguments = [6, 3, [[1, 1, 2, 3], [5, 1, 6, 3]]]
+expected  = ["aaa", "aaa", "...", "...", "bbb", "bbb"]
+
+
+[[asserts]]
+arguments = [6, 6, [[1, 2, 6, 5]]]
+expected  = [".aaaa.", ".a..a.", ".a..a.", ".a..a.", ".a..a.", ".aaaa."]
+
+
+[[asserts]]
+arguments = [6, 6, [[2, 1, 5, 6]]]
+expected  = ["......", "aaaaaa", "a....a", "a....a", "aaaaaa", "......"]
+
+
+[[asserts]]
+arguments = [6, 6, [[1, 1, 6, 6], [1, 1, 6, 6]]]
+expected  = ["bbbbbb", "b....b", "b....b", "b....b", "b....b", "bbbbbb"]
+
+
+[[asserts]]
+arguments = [6, 6, [[1, 1, 6, 6], [1, 2, 6, 5]]]
+expected  = ["abbbba", "ab..ba", "ab..ba", "ab..ba", "ab..ba", "abbbba"]
+
+
+[[asserts]]
+arguments = [6, 6, [[1, 1, 3, 6], [3, 1, 6, 6]]]
+expected  = ["aaaaaa", "a....a", "bbbbbb", "b....b", "b....b", "bbbbbb"]
+
+
+[[asserts]]
+arguments = [6, 7, [[1, 1, 6, 7], [2, 2, 5, 6], [3, 3, 4, 5]]]
+expected  = ["aaaaaaa", "abbbbba", "abcccba", "abcccba", "abbbbba", "aaaaaaa"]
+
+
+[[asserts]]
+arguments = [
+  8,
+  8,
+  [
+    [
+      1,
+      1,
+      8,
+      8,
+    ],
+    [
+      2,
+      2,
+      7,
+      7,
+    ],
+    [
+      3,
+      3,
+      6,
+      6,
+    ],
+    [
+      4,
+      4,
+      5,
+      5,
+    ],
+    [
+      1,
+      2,
+      8,
+      7,
+    ],
+    [
+      2,
+      1,
+      7,
+      8,
+    ],
+    [
+      1,
+      3,
+      8,
+      6,
+    ],
+    [
+      3,
+      1,
+      6,
+      8,
+    ],
+    [
+      1,
+      4,
+      8,
+      5,
+    ],
+    [
+      4,
+      1,
+      5,
+      8,
+    ],
+  ],
+]
+expected = [
+  "aegiigea",
+  "ffgiigff",
+  "hhhiihhh",
+  "jjjjjjjj",
+  "jjjjjjjj",
+  "hhhiihhh",
+  "ffgiigff",
+  "aegiigea",
+]

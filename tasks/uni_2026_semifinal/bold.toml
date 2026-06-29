@@ -1,0 +1,283 @@
+level             = "medium"
+name              = "bold"
+tags              = ["grid", "implementation", "string_manipulation"]
+time_to_solve_sec = 300
+
+description_en = '''
+Given a matrix consisting of the characters '.' and '#', replace every
+occurrence of '#' with a $2 \times 2$ square of '#'. The square is placed so that its
+top‑left corner coincides with the original '#', i.e. it extends one cell down
+and one cell to the right. The last row and the last column of the matrix never
+contain '#'. Return the resulting matrix.
+'''
+
+description_ru = '''
+Дана матрица, состоящая из символов '.' и '#'. Необходимо заменить каждое
+вхождение символа '#' квадратом $2 \times 2$ из символов '#'. Квадрат размещается так,
+чтобы его верхний левый угол совпадал с позицией исходного '#', то есть он
+расширяется на одну ячейку вниз и одну ячейку вправо. Последняя строка и последний
+столбец матрицы никогда не содержат символ '#'.
+Верните получившуюся матрицу.
+'''
+
+solution = """
+def solution(matrix):
+    \"\"\"Expand each '#' to a 2×2 block down‑right.\"\"\"
+
+    # dimensions
+    n = len(matrix)
+    m = len(matrix[0]) if n else 0
+
+    # mutable copy (list of list of chars)
+    result = [list(row) for row in matrix]
+
+    for i in range(n):
+        for j in range(m):
+            if matrix[i][j] == '#':
+                # the four cells of the 2×2 block
+                result[i][j] = '#'
+                result[i][j + 1] = '#'
+                result[i + 1][j] = '#'
+                result[i + 1][j + 1] = '#'
+
+    # convert rows back to strings
+    return [''.join(row) for row in result]
+"""
+
+examples = """
+solution([
+    "....",
+    ".#..",
+    "....",
+    "...."
+]) == [
+    "....",
+    ".##.",
+    ".##.",
+    "...."
+]
+
+solution([
+    ".......",
+    ".####..",
+    ".#...#.",
+    ".#...#.",
+    ".#...#.",
+    ".####..",
+    "......."
+]) == [
+    ".......",
+    ".#####.",
+    ".######",
+    ".##..##",
+    ".##..##",
+    ".######",
+    ".#####."
+]
+"""
+
+# -------------------- signatures --------------------
+[[input_signature]]
+argument_name = "matrix"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+# -------------------- tests --------------------
+
+[[asserts]]
+arguments = [["..", ".."]]
+expected  = ["..", ".."]
+
+
+[[asserts]]
+arguments = [["#.", ".."]]
+expected  = ["##", "##"]
+
+
+[[asserts]]
+arguments = [[".#.", "...", "..."]]
+expected  = [".##", ".##", "..."]
+
+
+[[asserts]]
+arguments = [["##.", "...", "..."]]
+expected  = ["###", "###", "..."]
+
+
+[[asserts]]
+arguments = [["#..", ".#.", "..."]]
+expected  = ["##.", "###", ".##"]
+
+
+[[asserts]]
+arguments = [[".#..", "#...", "....", "...."]]
+expected  = [".##.", "###.", "##..", "...."]
+
+
+[[asserts]]
+arguments = [["#.#.", "....", "...."]]
+expected  = ["####", "####", "...."]
+
+
+[[asserts]]
+arguments = [["....", ".#..", "....", "...."]]
+expected  = ["....", ".##.", ".##.", "...."]
+
+
+[[asserts]]
+arguments = [["##..", "##..", "...."]]
+expected  = ["###.", "###.", "###."]
+
+
+[[asserts]]
+arguments = [["#.#.", ".#..", "...."]]
+expected  = ["####", "####", ".##."]
+
+
+[[asserts]]
+arguments = [[".....", "..#..", "....."]]
+expected  = [".....", "..##.", "..##."]
+
+
+[[asserts]]
+arguments = [[".....", "#.#..", "....."]]
+expected  = [".....", "####.", "####."]
+
+
+[[asserts]]
+arguments = [[".....", ".##..", "....."]]
+expected  = [".....", ".###.", ".###."]
+
+
+[[asserts]]
+arguments = [[".....", ".....", "..#..", "....."]]
+expected  = [".....", ".....", "..##.", "..##."]
+
+
+[[asserts]]
+arguments = [["#....", ".....", "...#.", "....."]]
+expected  = ["##...", "##...", "...##", "...##"]
+
+
+[[asserts]]
+arguments = [["..#..", ".....", "#....", "....."]]
+expected  = ["..##.", "..##.", "##...", "##..."]
+
+
+[[asserts]]
+arguments = [["#.#..", ".....", "..#..", "....."]]
+expected  = ["####.", "####.", "..##.", "..##."]
+
+
+[[asserts]]
+arguments = [["....", "##..", "....", "...."]]
+expected  = ["....", "###.", "###.", "...."]
+
+
+[[asserts]]
+arguments = [["....", "#.#.", "....", "...."]]
+expected  = ["....", "####", "####", "...."]
+
+
+[[asserts]]
+arguments = [["....", ".##.", "....", "...."]]
+expected  = ["....", ".###", ".###", "...."]
+
+
+[[asserts]]
+arguments = [[".....", ".#.#.", ".....", "....."]]
+expected  = [".....", ".####", ".####", "....."]
+
+
+[[asserts]]
+arguments = [[".....", ".#...", "..#..", "....."]]
+expected  = [".....", ".##..", ".###.", "..##."]
+
+
+[[asserts]]
+arguments = [[".....", "###..", ".....", "....."]]
+expected  = [".....", "####.", "####.", "....."]
+
+
+[[asserts]]
+arguments = [[".....", "#..#.", ".....", "....."]]
+expected  = [".....", "##.##", "##.##", "....."]
+
+
+[[asserts]]
+arguments = [
+  [
+    ".......",
+    ".####..",
+    ".#...#.",
+    ".#...#.",
+    ".#...#.",
+    ".####..",
+    ".......",
+  ],
+]
+expected = [
+  ".......",
+  ".#####.",
+  ".######",
+  ".##..##",
+  ".##..##",
+  ".######",
+  ".#####.",
+]
+
+
+[[asserts]]
+arguments = [["......", "#.#...", "......", ".#....", "......"]]
+expected  = ["......", "####..", "####..", ".##...", ".##..."]
+
+
+[[asserts]]
+arguments = [["......", "##.#..", "......", "......"]]
+expected  = ["......", "#####.", "#####.", "......"]
+
+
+[[asserts]]
+arguments = [["......", "#...#.", "......", "......"]]
+expected  = ["......", "##..##", "##..##", "......"]
+
+
+[[asserts]]
+arguments = [["......", ".#.#..", "#.....", "......"]]
+expected  = ["......", ".####.", "#####.", "##...."]
+
+
+[[asserts]]
+arguments = [
+  [
+    "#.........",
+    ".#........",
+    "..#.......",
+    "...#......",
+    "....#.....",
+    ".....#....",
+    "......#...",
+    ".......#..",
+    "........#.",
+    "..........",
+  ],
+]
+expected = [
+  "##........",
+  "###.......",
+  ".###......",
+  "..###.....",
+  "...###....",
+  "....###...",
+  ".....###..",
+  "......###.",
+  ".......###",
+  "........##",
+]

@@ -1,0 +1,251 @@
+level             = "medium"
+name              = "string_swaps"
+tags              = ["strings", "greedy"]
+time_to_solve_sec = 300
+
+description_en = """
+Given a pattern string and a set of strings of equal length. In one operation you may
+choose any two strings from the set and swap the characters at the same position in
+both strings. Determine the minimum number of such swaps needed so that at least one
+string from the set becomes equal to the pattern string, or return -1 if it is
+impossible.
+"""
+
+description_ru = """
+Задана строка‑образец и набор строк одинаковой длины. Разрешается выбрать любые две
+строки из набора и поменять местами их символы, стоящие на одной и той же позиции.
+Определите минимальное количество таких замен, чтобы хотя бы одна из строк набора
+совпала со строкой‑образцом, или верните ‑1, если получить образец таким способом
+невозможно.
+"""
+
+solution = """
+def solution(pattern: str, strings: list[str]) -> int:
+    \"\"\"Return the minimal number of swaps needed to obtain *pattern*,
+    or -1 if it cannot be obtained.
+
+    Parameters
+    ----------
+    pattern: str
+        The target string.
+    strings: list[str]
+        List of strings, all of the same length as ``pattern``.
+    \"\"\"
+    # No strings – we cannot create the pattern.
+    if not strings:
+        return -1
+
+    length = len(pattern)
+
+    # 1) Every character of the pattern must be present in its column.
+    for i in range(length):
+        column_chars = {s[i] for s in strings}
+        if pattern[i] not in column_chars:
+            return -1
+
+    # 2) The minimal number of swaps equals the minimal Hamming distance
+    #    between the pattern and any row of the matrix.
+    min_swaps = min(
+        sum(1 for i, ch in enumerate(row) if ch != pattern[i])
+        for row in strings
+    )
+    return min_swaps
+"""
+
+examples = """
+solution("acb", ["abc", "cab", "bca"]) == 2
+solution("acd", ["abc", "cab", "bca"]) == -1
+solution("zx", ["zx", "zx"]) == 0
+"""
+
+[[input_signature]]
+argument_name = "pattern"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "strings"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = ["acb", ["abc", "cab", "bca"]]
+expected  = 2
+
+
+[[asserts]]
+arguments = ["acd", ["abc", "cab", "bca"]]
+expected  = -1
+
+
+[[asserts]]
+arguments = ["zx", ["zx", "zx"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["a", ["a"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["a", ["b"]]
+expected  = -1
+
+
+[[asserts]]
+arguments = ["aa", []]
+expected  = -1
+
+
+[[asserts]]
+arguments = ["aa", ["aa"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["aa", ["ab", "ba"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["ab", ["aa", "bb"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["ab", ["ba", "ab"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["abc", ["abc", "bca", "cab"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["abc", ["xbc", "ayz", "abz"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["zzz", ["aaa", "azz", "zza"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["cat", ["car", "bat", "cot"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["dog", ["dig", "dug", "dag"]]
+expected  = -1
+
+
+[[asserts]]
+arguments = ["aaaa", ["bbbb", "aaaa"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["aaaa", ["bbbb", "cccc"]]
+expected  = -1
+
+
+[[asserts]]
+arguments = ["abcd", ["abcf", "xbcd", "axyd"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["abcd", ["abcf", "xbcd", "aycd"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["xy", ["yx", "xy"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["xy", ["xx", "yy"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["xy", ["xx", "yx"]]
+expected  = -1
+
+
+[[asserts]]
+arguments = ["abc", ["aaa", "bbb", "ccc"]]
+expected  = 2
+
+
+[[asserts]]
+arguments = ["abc", ["cba", "bac", "abc"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = ["abc", ["cba", "bac", "bca"]]
+expected  = -1
+
+
+[[asserts]]
+arguments = ["aaaa", ["aaab", "aaba", "abaa", "baaa"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["zz", ["az", "za"]]
+expected  = 1
+
+
+[[asserts]]
+arguments = ["zz", ["za", "az", "zz"]]
+expected  = 0
+
+
+[[asserts]]
+arguments = [
+  "abc",
+  [
+    "abc",
+    "xbc",
+    "ayc",
+    "abz",
+    "xbc",
+    "ayz",
+    "abz",
+    "zzz",
+    "aaa",
+    "bbb",
+  ],
+]
+expected = 0
+
+
+[[asserts]]
+arguments = [
+  "abcd",
+  [
+    "xbcd",
+    "aycd",
+    "abzd",
+    "abcy",
+    "wxyz",
+    "abcd",
+    "dcba",
+    "aaaa",
+    "bbbb",
+    "cccc",
+  ],
+]
+expected = 0

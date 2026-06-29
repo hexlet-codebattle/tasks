@@ -1,0 +1,209 @@
+level             = "medium"
+name              = "course_capacity"
+tags              = ["collections", "university"]
+time_to_solve_sec = 360
+
+description_en = """
+A popular course at the university has `capacity` seats. The registration system processes the array `events` in order, with each event written as one of the strings below:
+
+- `"add:NAME"` requests enrollment for student `NAME`.
+- `"drop:NAME"` cancels `NAME`'s enrollment or waitlist spot.
+
+On enrollment a student takes a free seat, or joins the waitlist (first-in, first-out) when the course is full. When an enrolled student drops, the earliest waitlisted student takes the freed seat. Adding a student who is already enrolled or already waitlisted is ignored.
+
+Return the sorted list of names of students currently enrolled in the course.
+"""
+
+description_ru = """
+На популярном университетском курсе `capacity` мест. Система регистрации обрабатывает массив `events` по порядку; каждое событие записано одной из строк:
+
+- `"add:NAME"` — запрос на запись студента `NAME`.
+- `"drop:NAME"` — отмена записи или места в очереди для `NAME`.
+
+При записи студент занимает свободное место либо встаёт в очередь (FIFO), если курс заполнен. Когда записанный студент уходит, освободившееся место занимает самый ранний из очереди. Повторная запись уже записанного или уже стоящего в очереди студента игнорируется.
+
+Верните отсортированный список имён студентов, записанных на курс в данный момент.
+"""
+
+limits = """
+- $0 \\leq \\text{capacity} \\leq 10^3$
+- $0 \\leq \\text{len}(\\text{events}) \\leq 10^4$
+"""
+
+solution = """
+def solution(capacity: int, events: list) -> list:
+    enrolled = []
+    wait = []
+    for e in events:
+        act, name = e.split(":", 1)
+        if act == "add":
+            if name in enrolled or name in wait:
+                continue
+            if len(enrolled) < capacity:
+                enrolled.append(name)
+            else:
+                wait.append(name)
+        else:
+            if name in enrolled:
+                enrolled.remove(name)
+                if wait:
+                    enrolled.append(wait.pop(0))
+            elif name in wait:
+                wait.remove(name)
+    return sorted(enrolled)
+"""
+
+examples = """
+solution(1, []) == []
+solution(2, ["add:alice"]) == ["alice"]
+solution(1, ["add:alice", "add:bob"]) == ["alice"]
+solution(1, ["add:alice", "drop:alice", "add:bob"]) == ["bob"]
+solution(2, ["add:alice", "add:bob", "drop:alice"]) == ["bob"]
+"""
+
+[[input_signature]]
+argument_name = "capacity"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "events"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [1, []]
+comment   = "No events"
+expected  = []
+
+[[asserts]]
+arguments = [0, ["add:alice"]]
+comment   = "Zero capacity sends to waitlist"
+expected  = []
+
+[[asserts]]
+arguments = [2, ["add:alice"]]
+comment   = "Single enrollment"
+expected  = ["alice"]
+
+[[asserts]]
+arguments = [1, ["add:alice", "add:bob"]]
+comment   = "Second goes to waitlist"
+expected  = ["alice"]
+
+[[asserts]]
+arguments = [1, ["add:alice", "drop:alice"]]
+comment   = "Add then drop empties"
+expected  = []
+
+[[asserts]]
+arguments = [1, ["add:alice", "add:bob", "drop:alice"]]
+comment   = "Waitlisted promoted"
+expected  = ["bob"]
+
+[[asserts]]
+arguments = [2, ["add:alice", "add:bob", "add:carol"]]
+comment   = "Third waitlisted"
+expected  = ["alice", "bob"]
+
+[[asserts]]
+arguments = [2, ["add:alice", "add:bob", "add:carol", "drop:alice"]]
+comment   = "Carol promoted"
+expected  = ["bob", "carol"]
+
+[[asserts]]
+arguments = [1, ["add:alice", "add:alice"]]
+comment   = "Duplicate add ignored"
+expected  = ["alice"]
+
+[[asserts]]
+arguments = [2, ["add:a", "add:b", "add:a"]]
+comment   = "Duplicate while enrolled"
+expected  = ["a", "b"]
+
+[[asserts]]
+arguments = [1, ["add:a", "add:b", "add:b"]]
+comment   = "Duplicate while waiting"
+expected  = ["a"]
+
+[[asserts]]
+arguments = [1, ["drop:ghost"]]
+comment   = "Drop nonexistent"
+expected  = []
+
+[[asserts]]
+arguments = [2, ["add:a", "drop:a", "drop:a"]]
+comment   = "Double drop"
+expected  = []
+
+[[asserts]]
+arguments = [3, ["add:a", "add:b", "add:c", "add:d", "add:e"]]
+comment   = "Two waitlisted"
+expected  = ["a", "b", "c"]
+
+[[asserts]]
+arguments = [2, ["add:a", "add:b", "add:c", "drop:a", "drop:b"]]
+comment   = "Both promoted then one"
+expected  = ["c"]
+
+[[asserts]]
+arguments = [1, ["add:a", "add:b", "add:c", "drop:a", "drop:b"]]
+comment   = "FIFO promotion order"
+expected  = ["c"]
+
+[[asserts]]
+arguments = [1, ["add:a", "add:b", "drop:b", "drop:a"]]
+comment   = "Drop waitlisted then enrolled"
+expected  = []
+
+[[asserts]]
+arguments = [2, ["add:zoe", "add:amy", "add:bob"]]
+comment   = "Sorted output"
+expected  = ["amy", "zoe"]
+
+[[asserts]]
+arguments = [1, ["add:a", "add:b", "add:c", "drop:a", "drop:b", "drop:c"]]
+comment   = "Everyone leaves"
+expected  = []
+
+[[asserts]]
+arguments = [3, ["add:x", "add:y", "add:z"]]
+comment   = "Exactly full"
+expected  = ["x", "y", "z"]
+
+[[asserts]]
+arguments = [2, ["add:a", "add:b", "drop:c"]]
+comment   = "Drop unknown leaves full"
+expected  = ["a", "b"]
+
+[[asserts]]
+arguments = [1, ["add:a", "add:b", "add:c", "drop:b"]]
+comment   = "Drop a waitlisted middle"
+expected  = ["a"]
+
+[[asserts]]
+arguments = [2, ["add:p", "drop:p", "add:q", "drop:q", "add:r"]]
+comment   = "Churn"
+expected  = ["r"]
+
+[[asserts]]
+arguments = [4, ["add:a", "add:b", "add:c", "add:d", "drop:b", "add:e"]]
+comment   = "Refill after drop"
+expected  = ["a", "c", "d", "e"]
+
+[[asserts]]
+arguments = [1, ["add:solo"]]
+comment   = "One seat one student"
+expected  = ["solo"]
+
+[[asserts]]
+arguments = [2, ["add:a", "add:b", "add:c", "add:d", "drop:a", "drop:c"]]
+comment   = "Promote then drop waitlisted"
+expected  = ["b", "d"]

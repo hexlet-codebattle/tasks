@@ -1,0 +1,196 @@
+level             = "medium"
+name              = "longest_free_slot"
+tags              = ["arrays", "sorting", "university"]
+time_to_solve_sec = 300
+
+description_en = """
+A student's study day spans the minutes from $0$ to `day_minutes`. The array `busy` lists `[start, end]` intervals (possibly overlapping, possibly unsorted) when she is occupied with classes, labs, or meetings.
+
+A free slot is any maximal stretch of minutes inside $[0, \\text{day\\_minutes}]$ that is not covered by any busy interval.
+
+Return the length of the longest such free slot, or $0$ if no free time remains.
+"""
+
+description_ru = """
+Учебный день студентки длится от минуты $0$ до `day_minutes`. Массив `busy` содержит интервалы `[start, end]` (возможно пересекающиеся и неотсортированные), когда она занята занятиями, лабораторными или встречами.
+
+Свободный промежуток — это максимальная непрерывная полоса минут внутри $[0, \\text{day\\_minutes}]$, не покрытая ни одним интервалом из `busy`.
+
+Верните длину самого длинного такого свободного промежутка или $0$, если свободного времени не осталось.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{busy}) \\leq 10^4$
+- $0 \\leq \\text{start} < \\text{end} \\leq \\text{day\\_minutes} \\leq 1440$
+"""
+
+solution = """
+def solution(busy: list, day_minutes: int) -> int:
+    if not busy:
+        return day_minutes
+    iv = sorted(busy)
+    free = iv[0][0]
+    end = iv[0][1]
+    for s, e in iv[1:]:
+        if s > end:
+            free = max(free, s - end)
+            end = e
+        else:
+            end = max(end, e)
+    return max(free, day_minutes - end)
+"""
+
+examples = """
+solution([], 480) == 480
+solution([[0, 480]], 480) == 0
+solution([[60, 120]], 480) == 360
+solution([[0, 60], [120, 180]], 240) == 60
+solution([[0, 100], [50, 150]], 300) == 150
+"""
+
+[[input_signature]]
+argument_name = "busy"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "day_minutes"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[], 480]
+comment   = "No busy intervals"
+expected  = 480
+
+[[asserts]]
+arguments = [[], 0]
+comment   = "Zero length day"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 480]], 480]
+comment   = "Fully busy"
+expected  = 0
+
+[[asserts]]
+arguments = [[[60, 120]], 480]
+comment   = "Gap after at end"
+expected  = 360
+
+[[asserts]]
+arguments = [[[0, 420]], 480]
+comment   = "Free at end"
+expected  = 60
+
+[[asserts]]
+arguments = [[[60, 480]], 480]
+comment   = "Free at start"
+expected  = 60
+
+[[asserts]]
+arguments = [[[0, 60], [120, 180]], 240]
+comment   = "Gap at end largest"
+expected  = 60
+
+[[asserts]]
+arguments = [[[0, 100], [50, 150]], 300]
+comment   = "Overlapping merge"
+expected  = 150
+
+[[asserts]]
+arguments = [[[100, 200], [300, 400]], 500]
+comment   = "Three gaps"
+expected  = 100
+
+[[asserts]]
+arguments = [[[0, 60], [60, 120], [120, 180]], 300]
+comment   = "Touching intervals"
+expected  = 120
+
+[[asserts]]
+arguments = [[[200, 300]], 500]
+comment   = "Middle busy"
+expected  = 200
+
+[[asserts]]
+arguments = [[[0, 50], [100, 150], [200, 250]], 300]
+comment   = "Even gaps"
+expected  = 50
+
+[[asserts]]
+arguments = [[[10, 20], [15, 25], [30, 40]], 100]
+comment   = "Overlap then gap"
+expected  = 60
+
+[[asserts]]
+arguments = [[[0, 10], [20, 30], [40, 50], [60, 70]], 100]
+comment   = "Many small gaps"
+expected  = 30
+
+[[asserts]]
+arguments = [[[0, 1440]], 1440]
+comment   = "Full day busy"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 720]], 1440]
+comment   = "Half free"
+expected  = 720
+
+[[asserts]]
+arguments = [[[700, 740]], 1440]
+comment   = "Small lunch break"
+expected  = 700
+
+[[asserts]]
+arguments = [[[0, 100], [100, 200], [200, 300]], 1000]
+comment   = "Long free tail"
+expected  = 700
+
+[[asserts]]
+arguments = [[[500, 600], [400, 700]], 1000]
+comment   = "Nested busy"
+expected  = 400
+
+[[asserts]]
+arguments = [[[0, 30], [30, 60], [90, 120]], 200]
+comment   = "Gap then end gap"
+expected  = 80
+
+[[asserts]]
+arguments = [[[50, 60]], 60]
+comment   = "Busy till end"
+expected  = 50
+
+[[asserts]]
+arguments = [[[0, 10]], 10]
+comment   = "Single fills day"
+expected  = 0
+
+[[asserts]]
+arguments = [[[100, 110], [105, 130], [125, 140]], 300]
+comment   = "Chained overlaps"
+expected  = 160
+
+[[asserts]]
+arguments = [[[0, 200], [600, 800], [1000, 1200]], 1440]
+comment   = "Three blocks"
+expected  = 400
+
+[[asserts]]
+arguments = [[[0, 60], [600, 660], [1380, 1440]], 1440]
+comment   = "Morning noon night"
+expected  = 720
+
+[[asserts]]
+arguments = [[[300, 400], [100, 200], [500, 600]], 700]
+comment   = "Unsorted input"
+expected  = 100

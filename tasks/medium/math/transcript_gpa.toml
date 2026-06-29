@@ -1,0 +1,205 @@
+level             = "medium"
+name              = "transcript_gpa"
+tags              = ["math", "collections", "university"]
+time_to_solve_sec = 300
+
+description_en = """
+The registrar is computing a student's grade point average for the transcript. The array `grades` lists the letter grade earned in each course, and `credits[i]` is the credit weight of course `i`.
+
+Letter grades map to grade points as follows: `A` = 4.0, `A-` = 3.7, `B+` = 3.3, `B` = 3.0, `B-` = 2.7, `C+` = 2.3, `C` = 2.0, `C-` = 1.7, `D+` = 1.3, `D` = 1.0, `D-` = 0.7, `F` = 0.0. The grades `"P"` (pass) and `"NP"` (no pass) are taken pass/fail and are excluded from the GPA entirely, contributing neither grade points nor credits.
+
+The GPA is the credit-weighted average of the grade points across all graded courses: divide the sum of `points * credits` by the sum of the counted credits.
+
+Return the GPA rounded to two decimal places, or $0.0$ if there are no graded credits.
+"""
+
+description_ru = """
+Учебный отдел вычисляет средний балл студента для зачётной книжки. Массив `grades` содержит буквенную оценку за каждый курс, а `credits[i]` — кредитный вес курса `i`.
+
+Буквенные оценки переводятся в баллы так: `A` = 4.0, `A-` = 3.7, `B+` = 3.3, `B` = 3.0, `B-` = 2.7, `C+` = 2.3, `C` = 2.0, `C-` = 1.7, `D+` = 1.3, `D` = 1.0, `D-` = 0.7, `F` = 0.0. Оценки `"P"` (зачёт) и `"NP"` (незачёт) считаются «зачёт/незачёт» и полностью исключаются из среднего балла, не добавляя ни баллов, ни кредитов.
+
+Средний балл — это взвешенное по кредитам среднее баллов по всем оцениваемым курсам: сумма `points * credits`, делённая на сумму учитываемых кредитов.
+
+Верните средний балл, округлённый до двух знаков после запятой, или $0.0$, если оцениваемых кредитов нет.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{grades}) \\leq 10^3$
+- $\\text{len}(\\text{grades}) = \\text{len}(\\text{credits})$
+- $1 \\leq \\text{credits}[i] \\leq 10$
+- $\\text{grades}[i]$ is one of the listed letter grades, `"P"`, or `"NP"`
+"""
+
+solution = """
+def solution(grades: list, credits: list) -> float:
+    pts = {
+        "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7,
+        "C+": 2.3, "C": 2.0, "C-": 1.7, "D+": 1.3, "D": 1.0,
+        "D-": 0.7, "F": 0.0,
+    }
+    total = 0.0
+    counted = 0
+    for g, c in zip(grades, credits):
+        if g in ("P", "NP"):
+            continue
+        total += pts[g] * c
+        counted += c
+    if counted == 0:
+        return 0.0
+    return round(total / counted, 2)
+"""
+
+examples = """
+solution([], []) == 0.0
+solution(["A"], [3]) == 4.0
+solution(["A", "B"], [3, 3]) == 3.5
+solution(["P", "A"], [3, 3]) == 4.0
+solution(["F", "F"], [3, 3]) == 0.0
+"""
+
+[[input_signature]]
+argument_name = "grades"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "credits"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "float"
+
+[[asserts]]
+arguments = [[], []]
+comment   = "No courses"
+expected  = 0.0
+
+[[asserts]]
+arguments = [["A"], [3]]
+comment   = "Single A"
+expected  = 4.0
+
+[[asserts]]
+arguments = [["F"], [3]]
+comment   = "Single F"
+expected  = 0.0
+
+[[asserts]]
+arguments = [["A", "B"], [3, 3]]
+comment   = "Equal weight A and B"
+expected  = 3.5
+
+[[asserts]]
+arguments = [["A", "F"], [4, 2]]
+comment   = "Weighted with a fail"
+expected  = 2.67
+
+[[asserts]]
+arguments = [["P", "A"], [3, 3]]
+comment   = "Pass excluded"
+expected  = 4.0
+
+[[asserts]]
+arguments = [["P", "NP"], [3, 3]]
+comment   = "All pass/fail"
+expected  = 0.0
+
+[[asserts]]
+arguments = [["B+"], [4]]
+comment   = "Single B plus"
+expected  = 3.3
+
+[[asserts]]
+arguments = [["A-", "B+", "C"], [3, 3, 3]]
+comment   = "Three mixed grades"
+expected  = 3.0
+
+[[asserts]]
+arguments = [["A", "A", "A"], [1, 2, 3]]
+comment   = "Same grade different credits"
+expected  = 4.0
+
+[[asserts]]
+arguments = [["C+", "C-"], [3, 3]]
+comment   = "C plus and C minus"
+expected  = 2.0
+
+[[asserts]]
+arguments = [["D-"], [1]]
+comment   = "Lowest passing grade"
+expected  = 0.7
+
+[[asserts]]
+arguments = [["A", "B", "C", "D"], [4, 3, 2, 1]]
+comment   = "Descending grades and credits"
+expected  = 3.0
+
+[[asserts]]
+arguments = [["A", "NP", "B"], [3, 3, 3]]
+comment   = "No pass excluded from middle"
+expected  = 3.5
+
+[[asserts]]
+arguments = [["B-", "B-", "B-"], [2, 2, 2]]
+comment   = "All B minus"
+expected  = 2.7
+
+[[asserts]]
+arguments = [["A", "C"], [3, 1]]
+comment   = "Weighted toward A"
+expected  = 3.5
+
+[[asserts]]
+arguments = [["B", "B", "A"], [3, 3, 4]]
+comment   = "Heavier A"
+expected  = 3.4
+
+[[asserts]]
+arguments = [["A", "A", "F"], [1, 1, 1]]
+comment   = "Thirds rounding up"
+expected  = 2.67
+
+[[asserts]]
+arguments = [["A", "F", "F"], [1, 1, 1]]
+comment   = "Thirds rounding down"
+expected  = 1.33
+
+[[asserts]]
+arguments = [["A", "A", "B"], [1, 1, 1]]
+comment   = "Two A one B"
+expected  = 3.67
+
+[[asserts]]
+arguments = [["D", "C", "B", "A"], [1, 1, 1, 1]]
+comment   = "Ascending grades"
+expected  = 2.5
+
+[[asserts]]
+arguments = [["A", "P", "F"], [4, 3, 4]]
+comment   = "Pass between graded"
+expected  = 2.0
+
+[[asserts]]
+arguments = [["B+", "B+"], [2, 2]]
+comment   = "Both B plus"
+expected  = 3.3
+
+[[asserts]]
+arguments = [["P"], [3]]
+comment   = "Only a pass"
+expected  = 0.0
+
+[[asserts]]
+arguments = [["A", "A", "B", "B", "C", "C"], [3, 3, 3, 3, 3, 3]]
+comment   = "Six balanced courses"
+expected  = 3.0
+
+[[asserts]]
+arguments = [["A-"], [5]]
+comment   = "Single A minus"
+expected  = 3.7

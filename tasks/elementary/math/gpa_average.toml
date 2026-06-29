@@ -1,0 +1,183 @@
+level             = "elementary"
+name              = "gpa_average"
+tags              = ["math", "university"]
+time_to_solve_sec = 150
+
+description_en = """
+A university registrar collects the grade points a student earned this semester into an array `grades`, where each value lies between $0.0$ and $4.0$.
+
+Return the student's GPA, computed as the average of `grades` rounded to $2$ decimal places.
+
+If `grades` is empty, return $0.0$.
+"""
+
+description_ru = """
+Регистратор университета собирает баллы, полученные студентом за семестр, в массив `grades`, где каждое значение лежит между $0.0$ и $4.0$.
+
+Верните средний балл студента — среднее массива `grades`, округлённое до $2$ знаков после запятой.
+
+Если `grades` пуст, верните $0.0$.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{grades}) \\leq 10^4$
+- $0.0 \\leq \\text{grades}[i] \\leq 4.0$
+"""
+
+solution = """
+def solution(grades: list) -> float:
+    return round(sum(grades) / len(grades), 2) if grades else 0.0
+"""
+
+examples = """
+solution([]) == 0.0
+solution([4.0]) == 4.0
+solution([3.0, 4.0]) == 3.5
+solution([2.0, 3.5, 4.0]) == 3.17
+solution([1.0, 2.0, 3.0, 4.0]) == 2.5
+"""
+
+[[input_signature]]
+argument_name = "grades"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "float"
+
+[output_signature.type]
+name = "float"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty list of grades"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[4.0]]
+comment   = "Single perfect grade"
+expected  = 4.0
+
+[[asserts]]
+arguments = [[0.0]]
+comment   = "Single zero grade"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[3.0, 4.0]]
+comment   = "Two grades"
+expected  = 3.5
+
+[[asserts]]
+arguments = [[2.0, 3.5, 4.0]]
+comment   = "Three grades"
+expected  = 3.17
+
+[[asserts]]
+arguments = [[1.0, 2.0, 3.0, 4.0]]
+comment   = "Four evenly spaced grades"
+expected  = 2.5
+
+[[asserts]]
+arguments = [[3.3, 3.7, 4.0]]
+comment   = "Plus/minus grades"
+expected  = 3.67
+
+[[asserts]]
+arguments = [[2.7, 3.3]]
+comment   = "Average needs rounding"
+expected  = 3.0
+
+[[asserts]]
+arguments = [[3.33, 3.33, 3.34]]
+comment   = "Rounds to two places"
+expected  = 3.33
+
+[[asserts]]
+arguments = [[0.0, 0.0, 0.0]]
+comment   = "All zeros"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[4.0, 4.0, 4.0, 4.0]]
+comment   = "All perfect"
+expected  = 4.0
+
+[[asserts]]
+arguments = [[1.5, 2.5, 3.5]]
+comment   = "Half points"
+expected  = 2.5
+
+[[asserts]]
+arguments = [[2.0, 2.0, 2.0, 2.0, 2.0]]
+comment   = "Constant twos"
+expected  = 2.0
+
+[[asserts]]
+arguments = [[3.7, 4.0, 3.3, 3.0, 2.7]]
+comment   = "Mixed semester"
+expected  = 3.34
+
+[[asserts]]
+arguments = [[0.0, 4.0]]
+comment   = "Min and max"
+expected  = 2.0
+
+[[asserts]]
+arguments = [[1.0]]
+comment   = "Single low grade"
+expected  = 1.0
+
+[[asserts]]
+arguments = [[3.9, 3.8, 3.95]]
+comment   = "Near perfect"
+expected  = 3.88
+
+[[asserts]]
+arguments = [[2.33, 2.66, 3.0, 3.33]]
+comment   = "Repeating decimals"
+expected  = 2.83
+
+[[asserts]]
+arguments = [[0.7, 1.3, 1.7, 2.3]]
+comment   = "Low spread"
+expected  = 1.5
+
+[[asserts]]
+arguments = [[4.0, 0.0, 4.0, 0.0]]
+comment   = "Alternating extremes"
+expected  = 2.0
+
+[[asserts]]
+arguments = [[3.5, 3.5, 3.5, 3.5, 3.5, 3.5]]
+comment   = "All identical"
+expected  = 3.5
+
+[[asserts]]
+arguments = [[1.1, 2.2, 3.3, 4.0]]
+comment   = "Increasing"
+expected  = 2.65
+
+[[asserts]]
+arguments = [[2.9, 3.1]]
+comment   = "Straddles three"
+expected  = 3.0
+
+[[asserts]]
+arguments = [[0.5]]
+comment   = "Single half"
+expected  = 0.5
+
+[[asserts]]
+arguments = [[3.0, 3.0, 4.0, 4.0, 2.0]]
+comment   = "Five grades"
+expected  = 3.2
+
+[[asserts]]
+arguments = [[1.0, 1.0, 1.0, 4.0]]
+comment   = "One high outlier"
+expected  = 1.75
+
+[[asserts]]
+arguments = [[3.67, 3.67]]
+comment   = "Identical thirds"
+expected  = 3.67

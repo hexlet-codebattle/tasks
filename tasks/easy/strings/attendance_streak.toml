@@ -1,0 +1,180 @@
+level             = "easy"
+name              = "attendance_streak"
+tags              = ["strings", "university"]
+time_to_solve_sec = 160
+
+description_en = """
+A teaching assistant tracks a student's attendance across the term as a string `log` of `'P'` (present) and `'A'` (absent) characters, one per class.
+
+The dean awards a "perfect streak" bonus based on the longest run of consecutive `'P'` characters in the log.
+
+Return the length of that longest run, or $0$ if the student was never present.
+"""
+
+description_ru = """
+Ассистент кафедры отслеживает посещаемость студента в течение семестра в виде строки `log` из символов `'P'` (присутствует) и `'A'` (отсутствует) — по одному на занятие.
+
+Декан назначает бонус за «идеальную серию», основанный на длине самой длинной серии подряд идущих `'P'`.
+
+Верните длину этой серии или $0$, если студент ни разу не присутствовал.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{log}) \\leq 10^4$
+- $\\text{log} \\in \\{\\text{"P"}, \\text{"A"}\\}^*$
+"""
+
+solution = """
+def solution(log: str) -> int:
+    best = cur = 0
+    for c in log:
+        cur = cur + 1 if c == "P" else 0
+        best = max(best, cur)
+    return best
+"""
+
+examples = """
+solution("") == 0
+solution("P") == 1
+solution("AAA") == 0
+solution("PPAP") == 2
+solution("APPPA") == 3
+"""
+
+[[input_signature]]
+argument_name = "log"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string"
+expected  = 0
+
+[[asserts]]
+arguments = ["P"]
+comment   = "Single present"
+expected  = 1
+
+[[asserts]]
+arguments = ["A"]
+comment   = "Single absent"
+expected  = 0
+
+[[asserts]]
+arguments = ["PP"]
+comment   = "Two present"
+expected  = 2
+
+[[asserts]]
+arguments = ["AA"]
+comment   = "No present"
+expected  = 0
+
+[[asserts]]
+arguments = ["PPAP"]
+comment   = "Run of two then one"
+expected  = 2
+
+[[asserts]]
+arguments = ["APPPA"]
+comment   = "Run of three in middle"
+expected  = 3
+
+[[asserts]]
+arguments = ["PPPPP"]
+comment   = "All present"
+expected  = 5
+
+[[asserts]]
+arguments = ["AAAAA"]
+comment   = "All absent"
+expected  = 0
+
+[[asserts]]
+arguments = ["PAPAPA"]
+comment   = "Always broken"
+expected  = 1
+
+[[asserts]]
+arguments = ["PPAAPPP"]
+comment   = "Longest at end"
+expected  = 3
+
+[[asserts]]
+arguments = ["PPPAAPP"]
+comment   = "Longest at start"
+expected  = 3
+
+[[asserts]]
+arguments = ["AAPPPPAA"]
+comment   = "Block of four"
+expected  = 4
+
+[[asserts]]
+arguments = ["PAAPPPAAPP"]
+comment   = "Three is longest"
+expected  = 3
+
+[[asserts]]
+arguments = ["APPAPPPPA"]
+comment   = "Four beats two"
+expected  = 4
+
+[[asserts]]
+arguments = ["PPPPAPPP"]
+comment   = "Four then three"
+expected  = 4
+
+[[asserts]]
+arguments = ["PPPPPPPPPP"]
+comment   = "Ten present"
+expected  = 10
+
+[[asserts]]
+arguments = ["AAAAAAAAAA"]
+comment   = "Ten absent"
+expected  = 0
+
+[[asserts]]
+arguments = ["PPAPPAPPPAP"]
+comment   = "Triple in middle"
+expected  = 3
+
+[[asserts]]
+arguments = ["AAPAAPAAPAA"]
+comment   = "All singles"
+expected  = 1
+
+[[asserts]]
+arguments = ["PPPPPAAAAA"]
+comment   = "Front loaded"
+expected  = 5
+
+[[asserts]]
+arguments = ["AAAAAPPPPP"]
+comment   = "Back loaded"
+expected  = 5
+
+[[asserts]]
+arguments = ["PAPPAPPPAPPPP"]
+comment   = "Growing runs"
+expected  = 4
+
+[[asserts]]
+arguments = ["PPPPAPPPAPP"]
+comment   = "First is longest"
+expected  = 4
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAAAAAAAAAAPPPPPP"]
+comment   = "Long absence then six"
+expected  = 6
+
+[[asserts]]
+arguments = ["PPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPPPP"]
+comment   = "Gap of thirty"
+expected  = 4

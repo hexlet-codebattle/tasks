@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "exam_grade_letter"
+tags              = ["strings", "university"]
+time_to_solve_sec = 180
+
+description_en = """
+A professor enters a student's final exam `score` (an integer from $0$ to $100$) into the gradebook and the system prints out the matching letter grade.
+
+Return the letter grade for the given `score` using the standard scale:
+
+- `"A"` if $\\text{score} \\geq 90$
+- `"B"` if $\\text{score} \\geq 80$
+- `"C"` if $\\text{score} \\geq 70$
+- `"D"` if $\\text{score} \\geq 60$
+- `"F"` otherwise
+"""
+
+description_ru = """
+Профессор вносит итоговый балл `score` за экзамен (целое число от $0$ до $100$) в журнал, и система выводит соответствующую буквенную оценку.
+
+Верните буквенную оценку для заданного `score` по стандартной шкале:
+
+- `"A"`, если $\\text{score} \\geq 90$
+- `"B"`, если $\\text{score} \\geq 80$
+- `"C"`, если $\\text{score} \\geq 70$
+- `"D"`, если $\\text{score} \\geq 60$
+- `"F"` иначе
+"""
+
+limits = """
+- $0 \\leq \\text{score} \\leq 100$
+"""
+
+solution = """
+def solution(score: int) -> str:
+    for t, g in ((90, "A"), (80, "B"), (70, "C"), (60, "D")):
+        if score >= t:
+            return g
+    return "F"
+"""
+
+examples = """
+solution(0) == "F"
+solution(95) == "A"
+solution(72) == "C"
+solution(60) == "D"
+solution(100) == "A"
+"""
+
+[[input_signature]]
+argument_name = "score"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [100]
+comment   = "Perfect score is A"
+expected  = "A"
+
+[[asserts]]
+arguments = [95]
+comment   = "High A"
+expected  = "A"
+
+[[asserts]]
+arguments = [90]
+comment   = "A boundary"
+expected  = "A"
+
+[[asserts]]
+arguments = [89]
+comment   = "Just below A"
+expected  = "B"
+
+[[asserts]]
+arguments = [85]
+comment   = "Mid B"
+expected  = "B"
+
+[[asserts]]
+arguments = [80]
+comment   = "B boundary"
+expected  = "B"
+
+[[asserts]]
+arguments = [79]
+comment   = "Just below B"
+expected  = "C"
+
+[[asserts]]
+arguments = [75]
+comment   = "Mid C"
+expected  = "C"
+
+[[asserts]]
+arguments = [70]
+comment   = "C boundary"
+expected  = "C"
+
+[[asserts]]
+arguments = [69]
+comment   = "Just below C"
+expected  = "D"
+
+[[asserts]]
+arguments = [65]
+comment   = "Mid D"
+expected  = "D"
+
+[[asserts]]
+arguments = [60]
+comment   = "D boundary"
+expected  = "D"
+
+[[asserts]]
+arguments = [59]
+comment   = "Just below D"
+expected  = "F"
+
+[[asserts]]
+arguments = [50]
+comment   = "Mid F"
+expected  = "F"
+
+[[asserts]]
+arguments = [0]
+comment   = "Zero is F"
+expected  = "F"
+
+[[asserts]]
+arguments = [99]
+comment   = "Near perfect"
+expected  = "A"
+
+[[asserts]]
+arguments = [91]
+comment   = "Low A"
+expected  = "A"
+
+[[asserts]]
+arguments = [88]
+comment   = "High B"
+expected  = "B"
+
+[[asserts]]
+arguments = [81]
+comment   = "Low B"
+expected  = "B"
+
+[[asserts]]
+arguments = [77]
+comment   = "High C"
+expected  = "C"
+
+[[asserts]]
+arguments = [71]
+comment   = "Low C"
+expected  = "C"
+
+[[asserts]]
+arguments = [66]
+comment   = "High D"
+expected  = "D"
+
+[[asserts]]
+arguments = [61]
+comment   = "Low D"
+expected  = "D"
+
+[[asserts]]
+arguments = [45]
+comment   = "Failing"
+expected  = "F"
+
+[[asserts]]
+arguments = [30]
+comment   = "Low failing"
+expected  = "F"
+
+[[asserts]]
+arguments = [10]
+comment   = "Very low"
+expected  = "F"

@@ -1,0 +1,172 @@
+level             = "elementary"
+name              = "roll_call"
+tags              = ["strings", "university"]
+time_to_solve_sec = 130
+
+description_en = """
+A professor takes attendance and writes the result as a string `log`, where `'P'` marks a present student and `'A'` marks an absent one.
+
+Return the number of present students.
+"""
+
+description_ru = """
+Профессор отмечает посещаемость и записывает результат строкой `log`, где `'P'` означает присутствующего студента, а `'A'` — отсутствующего.
+
+Верните количество присутствующих студентов.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{log}) \\leq 10^4$
+- $\\text{log} \\in \\{\\text{"P"}, \\text{"A"}\\}^*$
+"""
+
+solution = """
+def solution(log: str) -> int:
+    return log.count("P")
+"""
+
+examples = """
+solution("") == 0
+solution("P") == 1
+solution("AA") == 0
+solution("PAPA") == 2
+solution("PPAAP") == 3
+"""
+
+[[input_signature]]
+argument_name = "log"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty log"
+expected  = 0
+
+[[asserts]]
+arguments = ["P"]
+comment   = "One present"
+expected  = 1
+
+[[asserts]]
+arguments = ["A"]
+comment   = "One absent"
+expected  = 0
+
+[[asserts]]
+arguments = ["PP"]
+comment   = "Two present"
+expected  = 2
+
+[[asserts]]
+arguments = ["AA"]
+comment   = "Two absent"
+expected  = 0
+
+[[asserts]]
+arguments = ["PA"]
+comment   = "One each"
+expected  = 1
+
+[[asserts]]
+arguments = ["PAPA"]
+comment   = "Alternating"
+expected  = 2
+
+[[asserts]]
+arguments = ["PPAAP"]
+comment   = "Mixed five"
+expected  = 3
+
+[[asserts]]
+arguments = ["AAAA"]
+comment   = "All absent"
+expected  = 0
+
+[[asserts]]
+arguments = ["PPPP"]
+comment   = "All present"
+expected  = 4
+
+[[asserts]]
+arguments = ["PAAAP"]
+comment   = "Two present at ends"
+expected  = 2
+
+[[asserts]]
+arguments = ["APAPAPA"]
+comment   = "Odd alternating"
+expected  = 3
+
+[[asserts]]
+arguments = ["PPPAAA"]
+comment   = "Half and half"
+expected  = 3
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"]
+comment   = "Fifty absent"
+expected  = 0
+
+[[asserts]]
+arguments = ["PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+comment   = "Fifty present"
+expected  = 50
+
+[[asserts]]
+arguments = ["PAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPAPA"]
+comment   = "Fifty alternating"
+expected  = 25
+
+[[asserts]]
+arguments = ["PPPPPAAAAA"]
+comment   = "Block present then absent"
+expected  = 5
+
+[[asserts]]
+arguments = ["AAPPAAPPAA"]
+comment   = "Two blocks present"
+expected  = 4
+
+[[asserts]]
+arguments = ["PAAAAAAAAA"]
+comment   = "One present among nine"
+expected  = 1
+
+[[asserts]]
+arguments = ["AAAAAAAAAP"]
+comment   = "Last present"
+expected  = 1
+
+[[asserts]]
+arguments = ["PAPPAPPPAP"]
+comment   = "Six present"
+expected  = 7
+
+[[asserts]]
+arguments = ["AAPAAPAAPA"]
+comment   = "Three present"
+expected  = 3
+
+[[asserts]]
+arguments = ["PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"]
+comment   = "Hundred each"
+expected  = 100
+
+[[asserts]]
+arguments = ["APPA"]
+comment   = "Two in middle"
+expected  = 2
+
+[[asserts]]
+arguments = ["PPA"]
+comment   = "Two present one absent"
+expected  = 2
+
+[[asserts]]
+arguments = ["AAP"]
+comment   = "Two absent one present"
+expected  = 1

@@ -1,0 +1,178 @@
+level             = "easy"
+name              = "library_fines"
+tags              = ["math", "university"]
+time_to_solve_sec = 180
+
+description_en = """
+The university library bills a student for every overdue book she returns. The array `days` lists the number of days each borrowed book was overdue; a negative value means the book was returned early.
+
+The fine for a book is $0.25$ per day overdue. Early returns add nothing to the total.
+
+Return the total fine the student owes, rounded to $2$ decimal places.
+"""
+
+description_ru = """
+Университетская библиотека выставляет студентке штраф за каждую просроченную книгу. Массив `days` содержит число дней просрочки по каждой взятой книге; отрицательное значение означает досрочный возврат.
+
+Штраф за книгу — $0.25$ за каждый просроченный день. Досрочный возврат ничего не добавляет к итогу.
+
+Верните итоговый штраф студентки, округлённый до $2$ знаков после запятой.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{days}) \\leq 10^4$
+- $-100 \\leq \\text{days}[i] \\leq 1000$
+"""
+
+solution = """
+def solution(days: list) -> float:
+    return round(sum(max(0, d) for d in days) * 0.25, 2)
+"""
+
+examples = """
+solution([]) == 0.0
+solution([4]) == 1.0
+solution([-3]) == 0.0
+solution([1, 2, 3]) == 1.5
+solution([10, -5, 2]) == 3.0
+"""
+
+[[input_signature]]
+argument_name = "days"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "float"
+
+[[asserts]]
+arguments = [[]]
+comment   = "No books"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[0]]
+comment   = "On time"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[1]]
+comment   = "One day late"
+expected  = 0.25
+
+[[asserts]]
+arguments = [[4]]
+comment   = "Four days late"
+expected  = 1.0
+
+[[asserts]]
+arguments = [[-3]]
+comment   = "Returned early"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[10, -5, 2]]
+comment   = "Mix with early return"
+expected  = 3.0
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+comment   = "Several late books"
+expected  = 1.5
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "All on time"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[-1, -2, -3]]
+comment   = "All early"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[100]]
+comment   = "Long overdue"
+expected  = 25.0
+
+[[asserts]]
+arguments = [[5, 5, 5, 5]]
+comment   = "Four equal fines"
+expected  = 5.0
+
+[[asserts]]
+arguments = [[7, -2, 7, -2]]
+comment   = "Alternating"
+expected  = 3.5
+
+[[asserts]]
+arguments = [[2, 2, 2, 2, 2]]
+comment   = "Ten total late days"
+expected  = 2.5
+
+[[asserts]]
+arguments = [[1000]]
+comment   = "Maximum overdue"
+expected  = 250.0
+
+[[asserts]]
+arguments = [[-100, -100]]
+comment   = "Very early returns"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[3, 0, 9, -4, 12]]
+comment   = "Varied"
+expected  = 6.0
+
+[[asserts]]
+arguments = [[6]]
+comment   = "Six days"
+expected  = 1.5
+
+[[asserts]]
+arguments = [[1, 1, 1, 1, 1, 1, 1, 1]]
+comment   = "Eight single days"
+expected  = 2.0
+
+[[asserts]]
+arguments = [[40, 40]]
+comment   = "Two large fines"
+expected  = 20.0
+
+[[asserts]]
+arguments = [[-10, 20, -10, 20]]
+comment   = "Cancel and pay"
+expected  = 10.0
+
+[[asserts]]
+arguments = [[15, 3, 8]]
+comment   = "Three books"
+expected  = 6.5
+
+[[asserts]]
+arguments = [[0, 5, 0, 5, 0]]
+comment   = "Zeros and fives"
+expected  = 2.5
+
+[[asserts]]
+arguments = [[9, 9, 9]]
+comment   = "Three nines"
+expected  = 6.75
+
+[[asserts]]
+arguments = [[2, 4, 6, 8, 10]]
+comment   = "Increasing"
+expected  = 7.5
+
+[[asserts]]
+arguments = [[-50]]
+comment   = "Single early"
+expected  = 0.0
+
+[[asserts]]
+arguments = [[13, 0, -7, 21, 4]]
+comment   = "Five mixed"
+expected  = 9.5

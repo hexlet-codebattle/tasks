@@ -1,0 +1,196 @@
+level             = "medium"
+name              = "honor_roll"
+tags              = ["collections", "university"]
+time_to_solve_sec = 300
+
+description_en = """
+The dean's office is preparing the semester's honor roll. The array `students` lists every student's name, and `gpas[i]` is the GPA of student `students[i]`. A GPA of $-1.0$ marks a student who has not received any grades yet and must be excluded.
+
+A student makes the honor roll if her GPA is at least `threshold`.
+
+Return the honor-roll names sorted by GPA in descending order, breaking ties by name in ascending lexicographic order.
+"""
+
+description_ru = """
+Деканат составляет список отличников за семестр. Массив `students` содержит имена студентов, а `gpas[i]` — средний балл студента `students[i]`. Значение $-1.0$ означает, что студент ещё не получил ни одной оценки, и его нужно исключить.
+
+Студент попадает в список, если его средний балл не ниже `threshold`.
+
+Верните имена отличников, отсортированные по среднему баллу по убыванию, а при равенстве — по имени по возрастанию (лексикографически).
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{students}) \\leq 10^3$
+- $\\text{len}(\\text{students}) = \\text{len}(\\text{gpas})$
+- $-1.0 \\leq \\text{gpas}[i] \\leq 4.0$
+- $0.0 \\leq \\text{threshold} \\leq 4.0$
+"""
+
+solution = """
+def solution(students: list, gpas: list, threshold: float) -> list:
+    q = [(g, n) for n, g in zip(students, gpas) if g >= 0 and g >= threshold]
+    q.sort(key=lambda x: (-x[0], x[1]))
+    return [n for _, n in q]
+"""
+
+examples = """
+solution([], [], 3.5) == []
+solution(["amy"], [2.0], 3.5) == []
+solution(["amy"], [4.0], 3.5) == ["amy"]
+solution(["amy", "bob"], [4.0, 3.0], 3.5) == ["amy"]
+solution(["amy", "bob"], [3.5, 3.5], 3.5) == ["amy", "bob"]
+"""
+
+[[input_signature]]
+argument_name = "students"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "gpas"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "float"
+
+[[input_signature]]
+argument_name = "threshold"
+[input_signature.type]
+name = "float"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [[], [], 3.5]
+comment   = "No students"
+expected  = []
+
+[[asserts]]
+arguments = [["amy"], [4.0], 3.5]
+comment   = "Single qualifies"
+expected  = ["amy"]
+
+[[asserts]]
+arguments = [["amy"], [2.0], 3.5]
+comment   = "Single below threshold"
+expected  = []
+
+[[asserts]]
+arguments = [["amy"], [-1.0], 3.5]
+comment   = "No grades excluded"
+expected  = []
+
+[[asserts]]
+arguments = [["amy", "bob"], [4.0, 3.0], 3.5]
+comment   = "One qualifies"
+expected  = ["amy"]
+
+[[asserts]]
+arguments = [["amy", "bob"], [3.5, 3.5], 3.5]
+comment   = "Tie sorted by name"
+expected  = ["amy", "bob"]
+
+[[asserts]]
+arguments = [["zoe", "amy"], [3.5, 3.5], 3.5]
+comment   = "Tie reverse names"
+expected  = ["amy", "zoe"]
+
+[[asserts]]
+arguments = [["a", "b", "c"], [4.0, 3.8, 3.6], 3.5]
+comment   = "Descending GPAs"
+expected  = ["a", "b", "c"]
+
+[[asserts]]
+arguments = [["a", "b", "c"], [2.0, 2.5, 3.0], 3.5]
+comment   = "None qualify"
+expected  = []
+
+[[asserts]]
+arguments = [["a", "b", "c"], [4.0, 4.0, 4.0], 4.0]
+comment   = "All perfect at threshold"
+expected  = ["a", "b", "c"]
+
+[[asserts]]
+arguments = [["x", "y"], [3.5, 3.5], 3.5]
+comment   = "Both at threshold"
+expected  = ["x", "y"]
+
+[[asserts]]
+arguments = [["p", "q", "r"], [3.6, -1.0, 3.9], 3.5]
+comment   = "Middle has no grades"
+expected  = ["r", "p"]
+
+[[asserts]]
+arguments = [["sam", "max", "leo"], [3.7, 4.0, 3.5], 3.6]
+comment   = "Higher threshold"
+expected  = ["max", "sam"]
+
+[[asserts]]
+arguments = [["a"], [3.49], 3.5]
+comment   = "Just below"
+expected  = []
+
+[[asserts]]
+arguments = [["a"], [3.5], 3.5]
+comment   = "Exactly threshold"
+expected  = ["a"]
+
+[[asserts]]
+arguments = [["alice", "alex"], [3.8, 3.8], 3.5]
+comment   = "Similar names tie"
+expected  = ["alex", "alice"]
+
+[[asserts]]
+arguments = [["w", "x", "y", "z"], [4.0, 3.9, 3.8, 3.7], 3.75]
+comment   = "Top two qualify"
+expected  = ["w", "x", "y"]
+
+[[asserts]]
+arguments = [["d", "c", "b", "a"], [3.5, 3.5, 3.5, 3.5], 3.5]
+comment   = "All tie, alpha order"
+expected  = ["a", "b", "c", "d"]
+
+[[asserts]]
+arguments = [["t1", "t2"], [0.0, 4.0], 0.0]
+comment   = "Zero threshold keeps both"
+expected  = ["t2", "t1"]
+
+[[asserts]]
+arguments = [["a", "b"], [3.0, 3.0], 3.0]
+comment   = "Equal GPAs tie"
+expected  = ["a", "b"]
+
+[[asserts]]
+arguments = [["jo", "mo", "bo"], [3.5, 4.0, -1.0], 3.5]
+comment   = "Mix excluded"
+expected  = ["mo", "jo"]
+
+[[asserts]]
+arguments = [["one"], [2.5], 2.5]
+comment   = "Single at threshold"
+expected  = ["one"]
+
+[[asserts]]
+arguments = [["a", "b", "c"], [3.9, 3.95, 3.99], 3.9]
+comment   = "Tight cluster"
+expected  = ["c", "b", "a"]
+
+[[asserts]]
+arguments = [["q", "r", "s", "t", "u"], [4.0, 3.0, 4.0, 3.0, 4.0], 3.5]
+comment   = "Three qualify"
+expected  = ["q", "s", "u"]
+
+[[asserts]]
+arguments = [["nora", "noah"], [3.6, 3.6], 3.5]
+comment   = "Close names tie"
+expected  = ["noah", "nora"]
+
+[[asserts]]
+arguments = [["solo"], [3.0], 3.0]
+comment   = "Single qualifies at threshold"
+expected  = ["solo"]

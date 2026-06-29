@@ -1,0 +1,196 @@
+level             = "medium"
+name              = "min_lecture_rooms"
+tags              = ["greedy", "sorting", "university"]
+time_to_solve_sec = 300
+
+description_en = """
+The timetabling office must assign rooms for the term's lectures. Each lecture is given as a pair `[start, end]` (in minutes from the day's start) inside the array `lectures`, where `end` is exclusive.
+
+Two lectures may share a room only if their intervals do not overlap. Lectures that merely touch at an endpoint (one ends exactly when another begins) may share a room.
+
+Return the minimum number of rooms needed so that every lecture has a room.
+"""
+
+description_ru = """
+Отдел расписания должен распределить аудитории под лекции семестра. Каждая лекция задана парой `[start, end]` (в минутах от начала суток) в массиве `lectures`, причём `end` не включается.
+
+Две лекции могут занимать одну аудиторию, только если их интервалы не пересекаются. Лекции, соприкасающиеся лишь в граничной точке (одна заканчивается ровно тогда, когда начинается другая), могут делить аудиторию.
+
+Верните минимальное число аудиторий, необходимое, чтобы каждой лекции хватило места.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{lectures}) \\leq 10^4$
+- $0 \\leq \\text{start} < \\text{end} \\leq 1440$
+"""
+
+solution = """
+def solution(lectures: list) -> int:
+    if not lectures:
+        return 0
+    starts = sorted(s for s, e in lectures)
+    ends = sorted(e for s, e in lectures)
+    n = len(lectures)
+    rooms = 0
+    best = 0
+    i = j = 0
+    while i < n:
+        if starts[i] < ends[j]:
+            rooms += 1
+            best = max(best, rooms)
+            i += 1
+        else:
+            rooms -= 1
+            j += 1
+    return best
+"""
+
+examples = """
+solution([]) == 0
+solution([[0, 60]]) == 1
+solution([[0, 60], [60, 120]]) == 1
+solution([[0, 60], [30, 90]]) == 2
+solution([[0, 200], [10, 190], [20, 180]]) == 3
+"""
+
+[[input_signature]]
+argument_name = "lectures"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "No lectures"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 60]]]
+comment   = "Single lecture"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 60], [60, 120]]]
+comment   = "Back to back share a room"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 60], [30, 90]]]
+comment   = "Two overlap"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 60], [70, 130], [140, 200]]]
+comment   = "All separate"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 200], [10, 190], [20, 180]]]
+comment   = "Fully nested"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 30], [15, 45], [30, 60]]]
+comment   = "Staggered overlaps"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 5], [1, 6], [2, 7], [3, 8], [4, 9]]]
+comment   = "Five overlapping"
+expected  = 5
+
+[[asserts]]
+arguments = [[[0, 10], [10, 20], [20, 30]]]
+comment   = "Touching chain"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 30], [5, 10], [15, 20]]]
+comment   = "One spans two small"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 60], [0, 60], [0, 60]]]
+comment   = "Three identical"
+expected  = 3
+
+[[asserts]]
+arguments = [[[100, 200], [150, 250], [50, 120], [210, 300]]]
+comment   = "Sliding pairs unsorted"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 720], [720, 1440]]]
+comment   = "Two halves"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 720], [700, 1440]]]
+comment   = "Halves overlapping"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 1440]]]
+comment   = "Full day"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 10], [5, 15], [12, 20], [18, 25]]]
+comment   = "Adjacent overlaps"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 5], [0, 5], [0, 5], [0, 5]]]
+comment   = "Four identical"
+expected  = 4
+
+[[asserts]]
+arguments = [[[0, 100], [10, 20], [30, 40], [50, 60]]]
+comment   = "One over three small"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 50], [40, 90], [80, 130]]]
+comment   = "Chain overlap"
+expected  = 2
+
+[[asserts]]
+arguments = [[[10, 20], [20, 30], [15, 25]]]
+comment   = "Middle overlaps both"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 90], [45, 135], [90, 180]]]
+comment   = "Sliding windows"
+expected  = 2
+
+[[asserts]]
+arguments = [[[500, 600], [550, 650], [600, 700], [650, 750]]]
+comment   = "Afternoon chain"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 10], [2, 8], [4, 6], [20, 30]]]
+comment   = "Triple nested plus one"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 100], [10, 50], [20, 30], [60, 90], [70, 80]]]
+comment   = "Two triple peaks"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 1], [0, 1], [0, 1]]]
+comment   = "Three single minutes"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 50], [60, 110], [120, 170], [40, 130]]]
+comment   = "One spans three blocks"
+expected  = 2

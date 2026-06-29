@@ -1,0 +1,183 @@
+level             = "medium"
+name              = "essay_word_frequency"
+tags              = ["strings", "hash_maps", "university"]
+time_to_solve_sec = 300
+
+description_en = """
+A writing tutor at the university's writing center wants to know which word a student leans on the most in an essay `text`.
+
+A word is a maximal run of letters, compared case-insensitively; everything else (digits, punctuation, whitespace, accented characters) acts as a separator.
+
+Return the most frequent word in lowercase. If several words tie for the highest frequency, return the alphabetically smallest of them. If `text` contains no letters, return `""`.
+"""
+
+description_ru = """
+Преподаватель из учебного центра письма хочет узнать, какое слово студент чаще всего использует в эссе `text`.
+
+Словом считается максимальная последовательность букв, регистр не учитывается; всё остальное (цифры, знаки препинания, пробелы, символы с диакритикой) служит разделителем.
+
+Верните самое частое слово в нижнем регистре. Если несколько слов встречаются одинаково часто, верните лексикографически наименьшее из них. Если в `text` нет букв, верните `""`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{text}) \\leq 10^4$
+"""
+
+solution = """
+def solution(text: str) -> str:
+    s = "".join(c.lower() if c.isalpha() else " " for c in text)
+    words = s.split()
+    if not words:
+        return ""
+    counts = {}
+    for w in words:
+        counts[w] = counts.get(w, 0) + 1
+    m = max(counts.values())
+    return min(w for w in counts if counts[w] == m)
+"""
+
+examples = """
+solution("") == ""
+solution("123 456") == ""
+solution("a b a b c") == "a"
+solution("the the cat") == "the"
+solution("Hello hello HELLO") == "hello"
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty text"
+expected  = ""
+
+[[asserts]]
+arguments = ["   "]
+comment   = "Only spaces"
+expected  = ""
+
+[[asserts]]
+arguments = ["123 456 !!!"]
+comment   = "No letters"
+expected  = ""
+
+[[asserts]]
+arguments = ["cat"]
+comment   = "Single word"
+expected  = "cat"
+
+[[asserts]]
+arguments = ["the the cat"]
+comment   = "The wins"
+expected  = "the"
+
+[[asserts]]
+arguments = ["Hello hello HELLO"]
+comment   = "Case insensitive"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["a b a b c"]
+comment   = "Tie picks a"
+expected  = "a"
+
+[[asserts]]
+arguments = ["b a b a"]
+comment   = "Tie still picks a"
+expected  = "a"
+
+[[asserts]]
+arguments = ["dog cat dog cat bird"]
+comment   = "Two way tie"
+expected  = "cat"
+
+[[asserts]]
+arguments = ["The quick brown fox the the"]
+comment   = "Repeated the"
+expected  = "the"
+
+[[asserts]]
+arguments = ["one two three two three three"]
+comment   = "Three wins"
+expected  = "three"
+
+[[asserts]]
+arguments = ["apple, apple. apple!"]
+comment   = "Punctuation separates"
+expected  = "apple"
+
+[[asserts]]
+arguments = ["Math math MATH science Science"]
+comment   = "Mixed case counts"
+expected  = "math"
+
+[[asserts]]
+arguments = ["zebra apple apple zebra apple"]
+comment   = "Apple beats zebra"
+expected  = "apple"
+
+[[asserts]]
+arguments = ["x"]
+comment   = "Single letter"
+expected  = "x"
+
+[[asserts]]
+arguments = ["x x y y z z"]
+comment   = "Three way tie picks x"
+expected  = "x"
+
+[[asserts]]
+arguments = ["hello-world hello world"]
+comment   = "Hyphen splits"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["a1a2a3"]
+comment   = "Digits split into a a a"
+expected  = "a"
+
+[[asserts]]
+arguments = ["study study study group"]
+comment   = "Clear winner"
+expected  = "study"
+
+[[asserts]]
+arguments = ["Cat Dog Cat Dog Cat Dog"]
+comment   = "Even tie cat dog"
+expected  = "cat"
+
+[[asserts]]
+arguments = ["The exam was hard the exam"]
+comment   = "Two ties exam the"
+expected  = "exam"
+
+[[asserts]]
+arguments = ["Newton newton NEWTON law"]
+comment   = "Newton thrice"
+expected  = "newton"
+
+[[asserts]]
+arguments = ["caf\u00e9 naive resume"]
+comment   = "Accents split words"
+expected  = "caf\u00e9"
+
+[[asserts]]
+arguments = ["aaa bbb aaa bbb ccc aaa"]
+comment   = "Aaa most"
+expected  = "aaa"
+
+[[asserts]]
+arguments = ["word.word.word"]
+comment   = "Dots between words"
+expected  = "word"
+
+[[asserts]]
+arguments = ["Tie tie BREAK break"]
+comment   = "Two ties pick break"
+expected  = "break"

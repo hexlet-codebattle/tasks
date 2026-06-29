@@ -1,0 +1,186 @@
+level             = "medium"
+name              = "study_buddies"
+tags              = ["arrays", "hash_maps", "university"]
+time_to_solve_sec = 300
+
+description_en = """
+At the start of the term, the dean's office collects each student's course enrollment. `courses[i]` is the list of course codes that student `i` is enrolled in.
+
+Two students are study buddies if they share at least one common course code. The student union wants to know how many such pairs exist on campus.
+
+Return the number of unordered study-buddy pairs.
+"""
+
+description_ru = """
+В начале семестра деканат собирает список курсов каждого студента. `courses[i]` — массив кодов курсов, на которые записан студент `i`.
+
+Два студента — напарники по учёбе, если у них есть хотя бы один общий код курса. Студенческий союз хочет узнать, сколько таких пар на кампусе.
+
+Верните число неупорядоченных пар напарников.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{courses}) \\leq 500$
+- $0 \\leq \\text{len}(\\text{courses}[i]) \\leq 50$
+"""
+
+solution = """
+def solution(courses: list) -> int:
+    sets = [set(c) for c in courses]
+    c = 0
+    for i in range(len(sets)):
+        for j in range(i + 1, len(sets)):
+            if sets[i] & sets[j]:
+                c += 1
+    return c
+"""
+
+examples = """
+solution([]) == 0
+solution([["cs101"]]) == 0
+solution([["cs101"], ["cs101"]]) == 1
+solution([["cs101"], ["ma101"]]) == 0
+solution([["cs101", "ma101"], ["cs101"], ["ph101"]]) == 1
+"""
+
+[[input_signature]]
+argument_name = "courses"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "No students"
+expected  = 0
+
+[[asserts]]
+arguments = [[["cs101"]]]
+comment   = "Single student"
+expected  = 0
+
+[[asserts]]
+arguments = [[["cs101"], ["cs101"]]]
+comment   = "One shared pair"
+expected  = 1
+
+[[asserts]]
+arguments = [[["cs101"], ["ma101"]]]
+comment   = "No shared course"
+expected  = 0
+
+[[asserts]]
+arguments = [[["cs101", "ma101"], ["cs101"], ["ph101"]]]
+comment   = "One pair shares"
+expected  = 1
+
+[[asserts]]
+arguments = [[["cs101"], ["cs101"], ["cs101"]]]
+comment   = "All three share"
+expected  = 3
+
+[[asserts]]
+arguments = [[[], [], []]]
+comment   = "All empty"
+expected  = 0
+
+[[asserts]]
+arguments = [[["a", "b"], ["b", "c"], ["c", "d"]]]
+comment   = "Chain of shares"
+expected  = 2
+
+[[asserts]]
+arguments = [[["a", "b", "c"], ["d", "e", "f"]]]
+comment   = "Disjoint"
+expected  = 0
+
+[[asserts]]
+arguments = [[["math"], ["math"], ["phys"], ["phys"]]]
+comment   = "Two pairs"
+expected  = 2
+
+[[asserts]]
+arguments = [[["x"], ["y"], ["z"], ["x"]]]
+comment   = "First and last share"
+expected  = 1
+
+[[asserts]]
+arguments = [[["cs", "ma"], ["ma", "ph"], ["ph", "cs"]]]
+comment   = "Triangle"
+expected  = 3
+
+[[asserts]]
+arguments = [[["bio"]]]
+comment   = "Single in list"
+expected  = 0
+
+[[asserts]]
+arguments = [[["a"], ["a"], ["a"], ["a"]]]
+comment   = "Four all share"
+expected  = 6
+
+[[asserts]]
+arguments = [[["a", "b"], ["c", "d"], ["a", "d"], ["e"]]]
+comment   = "Some share"
+expected  = 2
+
+[[asserts]]
+arguments = [[["eng101", "hist101"], ["hist101", "art101"], ["mus101"]]]
+comment   = "History links two"
+expected  = 1
+
+[[asserts]]
+arguments = [[[], ["cs101"], ["cs101"]]]
+comment   = "Empty plus pair"
+expected  = 1
+
+[[asserts]]
+arguments = [[["a", "b", "c", "d"], ["d"], ["c"], ["b"], ["a"]]]
+comment   = "Hub student"
+expected  = 4
+
+[[asserts]]
+arguments = [[["m"], ["m"], ["m"], ["n"], ["n"]]]
+comment   = "Three plus two"
+expected  = 4
+
+[[asserts]]
+arguments = [[["cs101"], ["cs102"], ["cs103"], ["cs104"]]]
+comment   = "All different sections"
+expected  = 0
+
+[[asserts]]
+arguments = [[["p", "q"], ["q", "r"], ["r", "s"], ["s", "p"]]]
+comment   = "Cycle of four"
+expected  = 4
+
+[[asserts]]
+arguments = [[["alpha"], ["beta"], ["gamma"], ["delta"], ["alpha"]]]
+comment   = "Greek with repeat"
+expected  = 1
+
+[[asserts]]
+arguments = [[["x", "y", "z"], ["x", "y", "z"], ["x", "y", "z"]]]
+comment   = "Three identical triples"
+expected  = 3
+
+[[asserts]]
+arguments = [[["a"], ["b"], ["a"], ["b"], ["a"], ["b"]]]
+comment   = "Alternating groups"
+expected  = 6
+
+[[asserts]]
+arguments = [[["cs101", "ma101", "ph101"], ["ma101"], ["ph101"], ["cs101"], ["bio101"]]]
+comment   = "Star around first"
+expected  = 3
+
+[[asserts]]
+arguments = [[["one"], ["two"], ["three"]]]
+comment   = "Three distinct"
+expected  = 0

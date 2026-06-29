@@ -1,0 +1,19 @@
+{
+  "name": "grand_slam_s2_2026",
+  "task_names": [
+    "gpa_average",
+    "roll_call",
+    "attendance_streak",
+    "exam_grade_letter",
+    "library_fines",
+    "schedule_conflicts",
+    "study_buddies",
+    "course_capacity",
+    "honor_roll",
+    "essay_word_frequency",
+    "longest_free_slot",
+    "transcript_gpa",
+    "min_lecture_rooms",
+    "min_semesters"
+  ]
+}

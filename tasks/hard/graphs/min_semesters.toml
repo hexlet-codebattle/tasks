@@ -1,0 +1,204 @@
+level             = "hard"
+name              = "min_semesters"
+tags              = ["graphs", "bfs", "university"]
+time_to_solve_sec = 600
+
+description_en = """
+A student is planning the fastest path to graduation. The university offers `n` courses, labelled from $1$ to `n`. Each pair `[a, b]` in `prereqs` means course `a` must be completed before course `b` may be taken.
+
+In a single semester the student may enroll in any number of courses at once, as long as every prerequisite of each chosen course is already completed before that semester begins. There is no per-semester course limit.
+
+Return the minimum number of semesters needed to finish every course, or $-1$ if the prerequisites form a cycle and graduation is impossible.
+"""
+
+description_ru = """
+Студент планирует кратчайший путь к выпуску. В университете предлагается `n` курсов с номерами от $1$ до `n`. Каждая пара `[a, b]` из `prereqs` означает, что курс `a` нужно завершить до того, как можно будет взять курс `b`.
+
+В одном семестре студент может взять сколько угодно курсов одновременно, при условии что все пререквизиты каждого выбранного курса завершены до начала этого семестра. Ограничения на число курсов в семестре нет.
+
+Верните минимальное число семестров, нужное для прохождения всех курсов, или $-1$, если пререквизиты образуют цикл и выпуск невозможен.
+"""
+
+limits = """
+- $1 \\leq n \\leq 10^3$
+- $0 \\leq \\text{len}(\\text{prereqs}) \\leq 10^4$
+- $1 \\leq a, b \\leq n$
+"""
+
+solution = """
+def solution(n: int, prereqs: list) -> int:
+    from collections import deque
+    adj = {i: [] for i in range(1, n + 1)}
+    indeg = {i: 0 for i in range(1, n + 1)}
+    for a, b in prereqs:
+        adj[a].append(b)
+        indeg[b] += 1
+    q = deque([i for i in range(1, n + 1) if indeg[i] == 0])
+    sem = 0
+    done = 0
+    while q:
+        sem += 1
+        for _ in range(len(q)):
+            c = q.popleft()
+            done += 1
+            for nb in adj[c]:
+                indeg[nb] -= 1
+                if indeg[nb] == 0:
+                    q.append(nb)
+    return sem if done == n else -1
+"""
+
+examples = """
+solution(1, []) == 1
+solution(3, []) == 1
+solution(2, [[1, 2]]) == 2
+solution(3, [[1, 3], [2, 3]]) == 2
+solution(2, [[1, 2], [2, 1]]) == -1
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "prereqs"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, []]
+comment   = "Single course"
+expected  = 1
+
+[[asserts]]
+arguments = [3, []]
+comment   = "All independent"
+expected  = 1
+
+[[asserts]]
+arguments = [2, [[1, 2]]]
+comment   = "Simple chain"
+expected  = 2
+
+[[asserts]]
+arguments = [3, [[1, 2], [2, 3]]]
+comment   = "Three in a row"
+expected  = 3
+
+[[asserts]]
+arguments = [2, [[1, 2], [2, 1]]]
+comment   = "Two node cycle"
+expected  = -1
+
+[[asserts]]
+arguments = [3, [[1, 2], [2, 3], [3, 1]]]
+comment   = "Three node cycle"
+expected  = -1
+
+[[asserts]]
+arguments = [3, [[1, 3], [2, 3]]]
+comment   = "Two feed one"
+expected  = 2
+
+[[asserts]]
+arguments = [3, [[1, 2], [1, 3]]]
+comment   = "One feeds two"
+expected  = 2
+
+[[asserts]]
+arguments = [4, [[1, 2], [1, 3], [2, 4], [3, 4]]]
+comment   = "Diamond"
+expected  = 3
+
+[[asserts]]
+arguments = [5, []]
+comment   = "Five independent"
+expected  = 1
+
+[[asserts]]
+arguments = [4, [[1, 2], [2, 3], [3, 4]]]
+comment   = "Long chain"
+expected  = 4
+
+[[asserts]]
+arguments = [6, [[1, 2], [1, 3], [4, 5], [4, 6]]]
+comment   = "Two trees"
+expected  = 2
+
+[[asserts]]
+arguments = [5, [[1, 2], [2, 3], [3, 4], [4, 5]]]
+comment   = "Forced five"
+expected  = 5
+
+[[asserts]]
+arguments = [4, [[2, 1], [3, 1], [4, 1]]]
+comment   = "Three into one"
+expected  = 2
+
+[[asserts]]
+arguments = [5, [[1, 2], [3, 4]]]
+comment   = "Two pairs one free"
+expected  = 2
+
+[[asserts]]
+arguments = [7, [[1, 2], [2, 3], [4, 5], [5, 6], [6, 7]]]
+comment   = "Uneven branches"
+expected  = 4
+
+[[asserts]]
+arguments = [4, [[1, 2], [2, 3], [3, 4], [4, 2]]]
+comment   = "Cycle inside chain"
+expected  = -1
+
+[[asserts]]
+arguments = [3, [[1, 2], [1, 3], [2, 3]]]
+comment   = "Stacked"
+expected  = 3
+
+[[asserts]]
+arguments = [6, [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]]
+comment   = "Six chain"
+expected  = 6
+
+[[asserts]]
+arguments = [2, []]
+comment   = "Two free"
+expected  = 1
+
+[[asserts]]
+arguments = [5, [[1, 2], [1, 3], [1, 4], [1, 5]]]
+comment   = "Star"
+expected  = 2
+
+[[asserts]]
+arguments = [5, [[5, 4], [4, 3], [3, 2], [2, 1]]]
+comment   = "Reverse chain"
+expected  = 5
+
+[[asserts]]
+arguments = [8, [[1, 2], [3, 4], [5, 6], [7, 8]]]
+comment   = "Four pairs"
+expected  = 2
+
+[[asserts]]
+arguments = [4, [[1, 2], [3, 2], [2, 4]]]
+comment   = "Merge then split"
+expected  = 3
+
+[[asserts]]
+arguments = [1, [[1, 1]]]
+comment   = "Self loop cycle"
+expected  = -1
+
+[[asserts]]
+arguments = [6, [[1, 4], [2, 4], [3, 4], [4, 5], [4, 6]]]
+comment   = "Three then fan out"
+expected  = 3

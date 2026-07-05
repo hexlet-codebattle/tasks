@@ -1,3 +1,4 @@
+base_score        = 500
 level             = "hard"
 name              = "workday_schedule_shift"
 tags              = ["algo", "intervals", "greedy", "scheduling", "strings", "time"]

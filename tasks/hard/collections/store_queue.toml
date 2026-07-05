@@ -1,3 +1,4 @@
+base_score        = 410
 level             = "hard"
 name              = "store_queue"
 tags              = ["collections", "algo"]

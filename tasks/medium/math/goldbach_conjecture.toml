@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "medium"
 name              = "goldbach_conjecture"
 tags              = ["math", "number_theory", "primes"]

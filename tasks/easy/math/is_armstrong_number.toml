@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "is_armstrong_number"
 tags              = ["math", "numbers"]

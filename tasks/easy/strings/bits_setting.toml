@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "bits_setting"
 tags              = ["strings", "bits"]

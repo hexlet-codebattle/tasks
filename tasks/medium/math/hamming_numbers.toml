@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "medium"
 name              = "hamming_numbers"
 tags              = ["math", "algo"]

@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "medium"
 name              = "credit_card_validator"
 tags              = ["strings"]

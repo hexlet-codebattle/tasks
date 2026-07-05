@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "maximum_cars_to_finish"
 tags              = ["greedy", "math", "arrays"]

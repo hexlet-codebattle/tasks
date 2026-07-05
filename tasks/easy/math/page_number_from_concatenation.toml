@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "page_number_from_concatenation"
 tags              = ["math", "strings", "parsing"]

@@ -1,3 +1,4 @@
+base_score        = 230
 level             = "easy"
 name              = "max_lost_term_in_ap"
 tags              = ["math", "collections", "greedy", "sorting"]

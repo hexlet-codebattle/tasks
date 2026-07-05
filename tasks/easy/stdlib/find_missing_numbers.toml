@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "find_missing_numbers"
 tags              = ["stdlib", "collections", "sets", "search"]

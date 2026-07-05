@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "typed_string_equality"
 tags              = ["algo", "strings", "two_pointers", "stack"]

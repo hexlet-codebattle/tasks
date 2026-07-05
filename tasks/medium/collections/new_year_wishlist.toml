@@ -1,3 +1,4 @@
+base_score        = 210
 level             = "medium"
 name              = "new_year_wishlist"
 tags              = ["collections", "strings"]

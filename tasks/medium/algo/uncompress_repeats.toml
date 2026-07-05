@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "uncompress_repeats"
 tags              = ["algo", "strings", "linear_scan"]

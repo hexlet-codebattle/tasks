@@ -1,3 +1,4 @@
+base_score        = 20
 level             = "elementary"
 name              = "arithmetic_progression"
 tags              = ["math"]

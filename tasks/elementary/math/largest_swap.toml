@@ -1,3 +1,4 @@
+base_score        = 110
 level             = "elementary"
 name              = "largest_swap"
 tags              = ["math"]

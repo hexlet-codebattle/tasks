@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "medium"
 name              = "prime_array"
 tags              = ["math", "collections"]

@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "squares_and_cubes"
 tags              = ["math"]

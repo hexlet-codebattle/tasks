@@ -1,3 +1,4 @@
+base_score        = 280
 level             = "medium"
 name              = "ruth_aaron_pairs"
 tags              = ["math"]

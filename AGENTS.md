@@ -24,7 +24,7 @@
 - `make build-and-preview` builds first, then starts the preview app.
 
 ## Task Authoring Rules
-- Required fields: `name`, `description_en`, `description_ru`, `input_signature`, `output_signature`, `asserts`, `examples`, `solution`, `level`, `tags`, `time_to_solve_sec`.
+- Required fields: `base_score`, `name`, `description_en`, `description_ru`, `input_signature`, `output_signature`, `asserts`, `examples`, `solution`, `level`, `tags`, `time_to_solve_sec`.
 - Optional fields: `limits`, `comment`.
 - Keep field order aligned with `ai/task_example.toml`.
 - `name` must be English and `snake_case`; the filename must match it exactly.
@@ -56,7 +56,7 @@
 - `easy`: target a 2-6 line solution.
 - `medium`: target a 7-11 line solution.
 - `hard`: target a 12+ line solution.
-- Set `time_to_solve_sec` consistently with the project guidance documented in `ai/task_structure.md`.
+- Set `base_score` and `time_to_solve_sec` consistently with the project guidance documented in `ai/task_structure.md`.
 
 ## Style Notes
 - Follow existing Python style in repository scripts: 4-space indentation and conventional import ordering.

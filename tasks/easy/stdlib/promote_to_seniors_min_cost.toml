@@ -1,3 +1,4 @@
+base_score        = 70
 level             = "easy"
 name              = "promote_to_seniors_min_cost"
 tags              = ["stdlib", "greedy", "sorting"]

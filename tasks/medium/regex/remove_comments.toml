@@ -1,3 +1,4 @@
+base_score        = 220
 level             = "medium"
 name              = "remove_comments"
 tags              = ["strings", "regex", "parsing"]

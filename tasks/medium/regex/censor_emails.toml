@@ -1,3 +1,4 @@
+base_score        = 220
 level             = "medium"
 name              = "censor_emails"
 tags              = ["strings", "formatting"]
@@ -6,7 +7,7 @@ time_to_solve_sec = 400
 description_en = """
 Given a string `text` containing words separated by single spaces. Some of these words are email addresses.
 
-In this task, an email address is defined as any word that contains exactly one `@` symbol and has at least one character before the `@`. 
+In this task, an email address is defined as any word that contains exactly one `@` symbol and has at least one character before the `@`.
 
 Your task is to censor these email addresses by keeping the first character of the local part (the part before `@`), replacing the rest of the local part with exactly three asterisks `***`, and keeping the `@` and the domain part intact.
 
@@ -16,7 +17,7 @@ Return the censored text.
 description_ru = """
 Дана строка `text`, содержащая слова, разделенные одиночными пробелами. Некоторые из этих слов являются email-адресами.
 
-В этой задаче email-адрес определяется как любое слово, содержащее ровно один символ `@` и имеющее хотя бы один символ перед `@`. 
+В этой задаче email-адрес определяется как любое слово, содержащее ровно один символ `@` и имеющее хотя бы один символ перед `@`.
 
 Ваша задача — зацензурить эти email-адреса: оставьте первый символ локальной части (до `@`), замените остальную локальную часть ровно на три звездочки `***`, а символ `@` и доменную часть оставьте без изменений.
 

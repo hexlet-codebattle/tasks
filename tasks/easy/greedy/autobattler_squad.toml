@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "autobattler_squad"
 tags              = ["math", "greedy", "logic"]

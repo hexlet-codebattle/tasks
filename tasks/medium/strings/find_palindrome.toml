@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "medium"
 name              = "find_palindrome"
 tags              = ["strings"]

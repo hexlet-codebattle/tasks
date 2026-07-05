@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "demogorgon_alert"
 tags              = ["strings"]

@@ -1,3 +1,4 @@
+base_score        = 120
 level             = "easy"
 name              = "biathlon_penalty_time"
 tags              = ["math", "winter_olympics"]

@@ -1,3 +1,4 @@
+base_score        = 220
 level             = "medium"
 name              = "checker_to_king"
 tags              = ["math", "dynamic_programming", "games"]

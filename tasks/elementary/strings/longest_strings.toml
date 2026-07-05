@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "elementary"
 name              = "longest_strings"
 tags              = ["strings", "collections"]

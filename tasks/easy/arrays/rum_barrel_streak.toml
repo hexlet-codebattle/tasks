@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "easy"
 name              = "rum_barrel_streak"
 tags              = ["arrays", "pirates"]

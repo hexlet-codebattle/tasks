@@ -1,3 +1,4 @@
+base_score        = 280
 level             = "medium"
 name              = "tic_tac_toe"
 tags              = ["games"]

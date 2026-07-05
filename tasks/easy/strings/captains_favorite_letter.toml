@@ -1,3 +1,4 @@
+base_score        = 70
 level             = "easy"
 name              = "captains_favorite_letter"
 tags              = ["strings", "hash_maps", "pirates"]

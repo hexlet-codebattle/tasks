@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "medium"
 name              = "double_base_palindromes"
 tags              = ["bits"]

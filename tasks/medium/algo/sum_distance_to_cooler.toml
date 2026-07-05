@@ -1,3 +1,4 @@
+base_score        = 260
 level             = "medium"
 name              = "sum_distance_to_cooler"
 tags              = ["algo", "grid", "geometry", "manhattan"]

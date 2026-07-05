@@ -1,3 +1,4 @@
+base_score        = 150
 level             = "easy"
 name              = "leaders_in_an_array"
 tags              = ["collections"]

@@ -1,3 +1,4 @@
+base_score        = 90
 level             = "easy"
 name              = "attendance_streak"
 tags              = ["strings", "university"]

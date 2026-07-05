@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "elementary"
 name              = "book_authors"
 tags              = ["strings", "collections", "hash_maps"]

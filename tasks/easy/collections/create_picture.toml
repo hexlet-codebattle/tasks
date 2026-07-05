@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "create_picture"
 tags              = ["collections", "strings", "graphics"]

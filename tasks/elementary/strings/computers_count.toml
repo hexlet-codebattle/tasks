@@ -1,3 +1,4 @@
+base_score        = 20
 level             = "elementary"
 name              = "computers_count"
 tags              = ["strings", "training"]

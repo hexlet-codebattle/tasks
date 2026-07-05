@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "lecture_hall_schedule"
 tags              = ["greedy", "sorting", "intervals", "arrays"]

@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "easy"
 name              = "signal_flag_groups"
 tags              = ["strings", "pirates"]

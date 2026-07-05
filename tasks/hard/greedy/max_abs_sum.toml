@@ -1,3 +1,4 @@
+base_score        = 210
 level             = "hard"
 name              = "max_abs_sum"
 tags              = ["greedy", "math"]

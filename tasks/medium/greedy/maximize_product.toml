@@ -1,3 +1,4 @@
+base_score        = 220
 level             = "medium"
 name              = "maximize_product"
 tags              = ["math", "strings", "greedy"]

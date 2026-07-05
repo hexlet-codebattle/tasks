@@ -1,3 +1,4 @@
+base_score        = 50
 level             = "elementary"
 name              = "additive_inverse"
 tags              = ["collections", "math", "sign"]

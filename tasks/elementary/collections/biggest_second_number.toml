@@ -1,3 +1,4 @@
+base_score        = 20
 level             = "elementary"
 name              = "biggest_second_number"
 tags              = ["collections", "training"]

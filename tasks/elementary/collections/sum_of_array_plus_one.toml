@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "sum_of_array_plus_one"
 tags              = ["collections", "training"]

@@ -1,3 +1,4 @@
+base_score        = 230
 level             = "medium"
 name              = "queen_pairs_no_blockers"
 tags              = ["algo", "geometry", "hashing", "sorting"]

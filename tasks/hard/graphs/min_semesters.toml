@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "hard"
 name              = "min_semesters"
 tags              = ["graphs", "bfs", "university"]

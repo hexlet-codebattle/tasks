@@ -1,3 +1,4 @@
+base_score        = 110
 level             = "easy"
 name              = "max_divisible_by_30"
 tags              = ["math", "greedy"]

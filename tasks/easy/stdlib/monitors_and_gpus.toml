@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "monitors_and_gpus"
 tags              = ["stdlib", "greedy", "matching"]

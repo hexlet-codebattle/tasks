@@ -1,3 +1,4 @@
+base_score        = 500
 level             = "hard"
 name              = "task_similarity_cliques"
 tags              = ["algo", "graphs", "parsing"]

@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "transcript_gpa"
 tags              = ["math", "collections", "university"]

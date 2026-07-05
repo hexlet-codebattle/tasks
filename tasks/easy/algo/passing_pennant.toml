@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "passing_pennant"
 tags              = ["algo", "graphs", "simulation", "sets"]

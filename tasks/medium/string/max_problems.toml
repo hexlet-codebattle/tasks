@@ -1,3 +1,4 @@
+base_score = 160
 # ------------------- Problem metadata -------------------
 level             = "medium"
 name              = "max_problems"

@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "imposter_search"
 tags              = ["collections", "strings", "games"]

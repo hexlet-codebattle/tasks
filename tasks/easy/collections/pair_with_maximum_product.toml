@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "pair_with_maximum_product"
 tags              = ["collections"]

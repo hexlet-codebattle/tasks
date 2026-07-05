@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "difference_of_squares"
 tags              = ["math"]

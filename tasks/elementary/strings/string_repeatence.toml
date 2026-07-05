@@ -1,3 +1,4 @@
+base_score        = 70
 level             = "elementary"
 name              = "string_repeatence"
 tags              = ["strings", "training"]

@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "complex_number_sum"
 tags              = ["math"]

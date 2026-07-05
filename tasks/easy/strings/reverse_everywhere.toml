@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "reverse_everywhere"
 tags              = ["strings", "collections"]

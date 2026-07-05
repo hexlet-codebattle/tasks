@@ -1,3 +1,4 @@
+base_score        = 200
 level             = "medium"
 name              = "next_lucky_number"
 tags              = ["math"]

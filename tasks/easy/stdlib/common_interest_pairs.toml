@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "common_interest_pairs"
 tags              = ["stdlib", "sets", "pairs", "strings"]

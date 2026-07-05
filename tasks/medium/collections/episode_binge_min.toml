@@ -1,3 +1,4 @@
+base_score        = 230
 level             = "medium"
 name              = "episode_binge_min"
 tags              = ["collections"]

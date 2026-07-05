@@ -1,3 +1,4 @@
+base_score        = 220
 level             = "medium"
 name              = "lucky_base"
 tags              = ["math", "number_theory", "brute_force"]

@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "year_to_century"
 tags              = ["conversion", "date_time"]

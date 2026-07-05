@@ -1,3 +1,4 @@
+base_score        = 250
 level             = "medium"
 name              = "lone_whetstone_dilemma"
 tags              = ["greedy", "sorting"]

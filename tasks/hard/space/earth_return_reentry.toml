@@ -1,3 +1,4 @@
+base_score        = 430
 level             = "hard"
 name              = "earth_return_reentry"
 tags              = ["space", "dp", "matrices"]

@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "sum_numbers_in_text"
 tags              = ["strings", "regex"]

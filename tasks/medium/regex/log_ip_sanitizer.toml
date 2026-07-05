@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "log_ip_sanitizer"
 tags              = ["regex", "strings"]

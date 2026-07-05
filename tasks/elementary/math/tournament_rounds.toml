@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "tournament_rounds"
 tags              = ["math", "training", "codebattle"]

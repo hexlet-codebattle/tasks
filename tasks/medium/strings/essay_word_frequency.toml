@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "essay_word_frequency"
 tags              = ["strings", "hash_maps", "university"]

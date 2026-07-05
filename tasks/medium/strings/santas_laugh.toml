@@ -1,3 +1,4 @@
+base_score        = 190
 level             = "medium"
 name              = "santas_laugh"
 tags              = ["strings"]

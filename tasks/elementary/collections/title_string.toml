@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "title_string"
 tags              = ["collections", "strings", "training"]

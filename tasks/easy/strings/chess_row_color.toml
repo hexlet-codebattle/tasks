@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "chess_row_color"
 tags              = ["strings"]

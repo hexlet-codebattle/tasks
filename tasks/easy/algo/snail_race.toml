@@ -1,3 +1,4 @@
+base_score        = 150
 level             = "easy"
 name              = "snail_race"
 tags              = ["algo", "games"]

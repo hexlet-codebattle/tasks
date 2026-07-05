@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "elemental_combo"
 tags              = ["stdlib", "simulation", "collections", "state"]

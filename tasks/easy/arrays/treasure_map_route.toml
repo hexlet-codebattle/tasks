@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "treasure_map_route"
 tags              = ["arrays", "simulation", "pirates"]

@@ -1,3 +1,4 @@
+base_score        = 120
 level             = "easy"
 name              = "stage_fuel_left"
 tags              = ["space", "math"]

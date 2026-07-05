@@ -1,3 +1,4 @@
+base_score        = 150
 level             = "easy"
 name              = "return_launch_window"
 tags              = ["space", "math", "simulation"]

@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "torus_manhattan_distance"
 tags              = ["algo", "graphs", "grid", "math"]

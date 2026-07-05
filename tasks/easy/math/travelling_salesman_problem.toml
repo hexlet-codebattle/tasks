@@ -1,3 +1,4 @@
+base_score        = 110
 level             = "easy"
 name              = "travelling_salesman_problem"
 tags              = ["math", "recursion"]

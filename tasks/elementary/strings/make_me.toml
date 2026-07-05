@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "elementary"
 name              = "make_me"
 tags              = ["strings"]

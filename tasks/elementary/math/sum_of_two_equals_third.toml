@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "sum_of_two_equals_third"
 tags              = ["math", "collections"]

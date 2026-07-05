@@ -1,3 +1,4 @@
+base_score        = 50
 level             = "easy"
 name              = "complete_string"
 tags              = ["strings"]

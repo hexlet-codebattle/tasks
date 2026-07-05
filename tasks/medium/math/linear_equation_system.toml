@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "linear_equation_system"
 tags              = ["math", "algebra"]

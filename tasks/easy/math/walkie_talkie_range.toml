@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "walkie_talkie_range"
 tags              = ["math"]

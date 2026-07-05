@@ -1,3 +1,4 @@
+base_score        = 260
 level             = "medium"
 name              = "count_rectangles"
 tags              = ["algo", "math", "grid", "geometry", "pattern_counting"]

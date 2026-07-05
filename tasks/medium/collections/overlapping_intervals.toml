@@ -1,3 +1,4 @@
+base_score        = 660
 level             = "medium"
 name              = "overlapping_intervals"
 tags              = ["collections", "math", "sorting", "greedy", "intervals", "linear_scan"]

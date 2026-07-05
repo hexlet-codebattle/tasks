@@ -1,3 +1,4 @@
+base_score        = 250
 level             = "medium"
 name              = "sum_primes"
 tags              = ["math"]

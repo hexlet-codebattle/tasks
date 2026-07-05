@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "millikan_electron_count"
 tags              = ["physics", "experiments", "arrays"]

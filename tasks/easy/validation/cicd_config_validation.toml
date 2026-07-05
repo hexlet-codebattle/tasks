@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "cicd_config_validation"
 tags              = ["validation", "logic", "simulation"]

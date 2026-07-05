@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "largest_pair_sum_in_array"
 tags              = ["collections"]

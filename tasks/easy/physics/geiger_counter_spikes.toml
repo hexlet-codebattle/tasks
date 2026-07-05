@@ -1,3 +1,4 @@
+base_score        = 120
 level             = "easy"
 name              = "geiger_counter_spikes"
 tags              = ["physics", "experiments", "arrays"]

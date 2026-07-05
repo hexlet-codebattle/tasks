@@ -1,3 +1,4 @@
+base_score        = 260
 level             = "medium"
 name              = "skiathlon_points_table"
 tags              = ["algo", "winter_olympics"]

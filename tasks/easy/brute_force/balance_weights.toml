@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "balance_weights"
 tags              = ["brute_force"]

@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "medium"
 name              = "count_multiplications_and_powers"
 tags              = ["strings", "parsing", "math"]

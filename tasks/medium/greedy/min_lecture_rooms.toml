@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "min_lecture_rooms"
 tags              = ["greedy", "sorting", "university"]

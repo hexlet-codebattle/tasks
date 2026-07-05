@@ -1,3 +1,4 @@
+base_score        = 230
 level             = "medium"
 name              = "landing_zone_scan"
 tags              = ["space", "matrices"]

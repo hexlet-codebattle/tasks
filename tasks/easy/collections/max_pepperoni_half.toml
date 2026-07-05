@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "max_pepperoni_half"
 tags              = ["collections", "sliding_window", "circular"]

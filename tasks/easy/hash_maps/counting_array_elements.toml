@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "counting_array_elements"
 tags              = ["hash_maps"]

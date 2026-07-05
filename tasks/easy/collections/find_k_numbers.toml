@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "find_k_numbers"
 tags              = ["collections"]

@@ -1,3 +1,4 @@
+base_score        = 220
 level             = "medium"
 name              = "lowest_common_ancestor"
 tags              = ["trees", "graphs", "algorithms"]

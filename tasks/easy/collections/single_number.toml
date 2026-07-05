@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "single_number"
 tags              = ["collections", "algo"]

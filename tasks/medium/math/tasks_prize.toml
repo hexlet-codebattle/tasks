@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "tasks_prize"
 tags              = ["math", "greedy", "strings"]

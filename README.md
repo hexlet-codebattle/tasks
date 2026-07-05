@@ -87,6 +87,7 @@ tasks/
 Each task is defined in TOML format with the following structure:
 
 ```toml
+base_score = 160
 level = "easy"
 name = "example_task"
 tags = ["arrays", "algorithms"]

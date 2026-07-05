@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "library_fines"
 tags              = ["math", "university"]

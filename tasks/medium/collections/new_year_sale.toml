@@ -1,3 +1,4 @@
+base_score        = 190
 level             = "medium"
 name              = "new_year_sale"
 tags              = ["collections", "algo"]

@@ -1,3 +1,4 @@
+base_score        = 30
 level             = "elementary"
 name              = "add_two_number"
 tags              = ["math", "training"]

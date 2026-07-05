@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "shorten_string"
 tags              = ["strings"]

@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "bike_to_charge"
 tags              = ["algo", "strings", "greedy", "two_pointers", "prefix_scan"]

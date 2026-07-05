@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "christmas_lights_groups"
 tags              = ["strings"]

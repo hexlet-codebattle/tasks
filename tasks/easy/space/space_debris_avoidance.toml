@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "space_debris_avoidance"
 tags              = ["space", "intervals"]

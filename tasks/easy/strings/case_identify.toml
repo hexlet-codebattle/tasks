@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "case_identify"
 tags              = ["strings"]

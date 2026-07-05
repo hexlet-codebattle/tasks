@@ -1,3 +1,4 @@
+base_score        = 230
 level             = "medium"
 name              = "multi_anagram_chunks"
 tags              = ["strings", "anagrams", "greedy"]

@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "eggo_boxes_needed"
 tags              = ["math"]

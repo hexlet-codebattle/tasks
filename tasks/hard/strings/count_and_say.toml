@@ -1,3 +1,4 @@
+base_score        = 500
 level             = "hard"
 name              = "count_and_say"
 tags              = ["strings", "games"]

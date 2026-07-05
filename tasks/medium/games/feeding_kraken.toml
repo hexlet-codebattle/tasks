@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "feeding_kraken"
 tags              = ["games", "game_theory", "algo"]

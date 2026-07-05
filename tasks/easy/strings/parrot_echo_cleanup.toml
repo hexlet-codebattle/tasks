@@ -1,3 +1,4 @@
+base_score        = 70
 level             = "easy"
 name              = "parrot_echo_cleanup"
 tags              = ["strings", "pirates"]

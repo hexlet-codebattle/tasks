@@ -1,3 +1,4 @@
+base_score        = 210
 level             = "hard"
 name              = "calendar_frame"
 tags              = ["strings", "array", "ad_hoc"]

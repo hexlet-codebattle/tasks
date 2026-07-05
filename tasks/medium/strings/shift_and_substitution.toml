@@ -1,3 +1,4 @@
+base_score        = 220
 level             = "medium"
 name              = "shift_and_substitution"
 tags              = ["strings", "mapping", "rotation"]

@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "weighted_drop_by_roll"
 tags              = ["stdlib", "hash_maps", "sorting", "simulation"]

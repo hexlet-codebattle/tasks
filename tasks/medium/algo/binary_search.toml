@@ -1,3 +1,4 @@
+base_score        = 50
 level             = "medium"
 name              = "binary_search"
 tags              = ["algo", "collections"]

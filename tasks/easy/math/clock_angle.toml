@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "clock_angle"
 tags              = ["math"]

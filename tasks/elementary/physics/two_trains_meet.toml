@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "elementary"
 name              = "two_trains_meet"
 tags              = ["physics", "training"]

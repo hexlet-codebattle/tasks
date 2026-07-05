@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "the_big_divide"
 tags              = ["math"]

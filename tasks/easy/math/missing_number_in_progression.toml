@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "missing_number_in_progression"
 tags              = ["math", "collections"]

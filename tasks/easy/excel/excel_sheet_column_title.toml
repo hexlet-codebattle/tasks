@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "excel_sheet_column_title"
 tags              = ["excel"]

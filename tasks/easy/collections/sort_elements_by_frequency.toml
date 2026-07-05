@@ -1,3 +1,4 @@
+base_score        = 150
 level             = "easy"
 name              = "sort_elements_by_frequency"
 tags              = ["collections", "sorting", "algo"]

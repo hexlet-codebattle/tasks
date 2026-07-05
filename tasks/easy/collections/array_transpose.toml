@@ -1,3 +1,4 @@
+base_score        = 110
 level             = "easy"
 name              = "array_transpose"
 tags              = ["collections", "math"]

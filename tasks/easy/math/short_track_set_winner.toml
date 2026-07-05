@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "short_track_set_winner"
 tags              = ["math", "winter_olympics"]

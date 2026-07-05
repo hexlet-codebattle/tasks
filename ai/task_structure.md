@@ -6,6 +6,15 @@ You are generating programming tasks in **TOML format**. Follow this specificati
 
 ## 🎯 Main Fields
 
+### **`base_score`** *(required)*
+- **Type:** `number`
+- **Description:** Average solving time in seconds for the task. This should represent the 40–50th percentile duration across strong competitive programmers through medium-level developers, including top ICPC players.
+- **Guidelines:**
+  - Keep it related to `time_to_solve_sec`
+  - Use a lower value than `time_to_solve_sec`
+  - Prefer practical rounded values
+- **Example:** `120`
+
 ### **`name`** *(required)*
 - **Type:** `string`
 - **Description:** Human-readable task title, only in English and snake_case
@@ -104,7 +113,8 @@ You are generating programming tasks in **TOML format**. Follow this specificati
 
 ### **`time_to_solve_sec`** *(required)*
 - **Type:** `number`
-- **Description:** Recommended solving time in seconds for average users. For elementory 100-200 sec, easy 200-300 sec, medium 300-600 sec, hard 600-90 sec.
+- **Description:** Recommended upper solving time in seconds. About 75% of target developers, mostly juniors, should be able to solve the task within this time.
+- **Guidelines:** For elementary tasks use 100-200 sec, easy 200-300 sec, medium 300-600 sec, hard 600-900 sec.
 - **Example:** `100`
 
 ### **`comment`** *(optional)*
@@ -268,6 +278,7 @@ limits = """
 ## 📦 Complete TOML Example
 
 ```toml
+base_score        = 10
 level             = "elementary"
 name              = "Sum of Two Numbers"
 tags              = ["math"]

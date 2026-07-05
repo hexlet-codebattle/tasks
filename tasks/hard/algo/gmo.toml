@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "hard"
 name              = "gmo"
 tags              = ["algo", "strings", "dp", "greedy"]

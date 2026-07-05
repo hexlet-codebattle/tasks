@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "fixed_point_in_array"
 tags              = ["collections"]

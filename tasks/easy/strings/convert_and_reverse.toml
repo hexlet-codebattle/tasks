@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "convert_and_reverse"
 tags              = ["strings"]

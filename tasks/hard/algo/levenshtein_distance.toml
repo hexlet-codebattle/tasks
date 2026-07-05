@@ -1,3 +1,4 @@
+base_score        = 500
 level             = "hard"
 name              = "levenshtein_distance"
 tags              = ["algo", "strings"]

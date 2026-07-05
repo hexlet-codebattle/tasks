@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "hard"
 name              = "robot_spiral_grid"
 tags              = ["simulation", "grid", "set"]

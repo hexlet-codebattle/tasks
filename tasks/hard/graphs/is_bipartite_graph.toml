@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "hard"
 name              = "is_bipartite_graph"
 tags              = ["graphs", "bfs", "dfs"]

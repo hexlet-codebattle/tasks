@@ -1,3 +1,4 @@
+base_score        = 190
 level             = "easy"
 name              = "more_than_medium"
 tags              = ["strings"]

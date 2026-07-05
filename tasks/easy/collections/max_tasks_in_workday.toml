@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "max_tasks_in_workday"
 tags              = ["collections", "greedy", "sorting"]

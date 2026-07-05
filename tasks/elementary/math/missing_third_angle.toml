@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "elementary"
 name              = "missing_third_angle"
 tags              = ["math"]

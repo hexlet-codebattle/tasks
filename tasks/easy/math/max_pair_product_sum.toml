@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "max_pair_product_sum"
 tags              = ["math", "pairing", "brute_force", "optimization"]

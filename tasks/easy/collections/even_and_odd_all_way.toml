@@ -1,3 +1,4 @@
+base_score        = 110
 level             = "easy"
 name              = "even_and_odd_all_way"
 tags              = ["collections"]

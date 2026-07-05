@@ -1,3 +1,4 @@
+base_score        = 120
 level             = "easy"
 name              = "galileo_fall_matches"
 tags              = ["physics", "experiments", "arrays"]

@@ -1,3 +1,4 @@
+base_score        = 190
 level             = "easy"
 name              = "word_pattern"
 tags              = ["collections", "strings"]

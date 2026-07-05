@@ -1,3 +1,4 @@
+base_score        = 120
 level             = "easy"
 name              = "higgs_candidate_events"
 tags              = ["physics", "experiments", "arrays"]

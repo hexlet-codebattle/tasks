@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "sort_by_length"
 tags              = ["strings", "collections", "sorting"]

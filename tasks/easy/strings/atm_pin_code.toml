@@ -1,3 +1,4 @@
+base_score        = 20
 level             = "easy"
 name              = "atm_pin_code"
 tags              = ["strings"]

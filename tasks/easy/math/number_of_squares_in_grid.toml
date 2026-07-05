@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "number_of_squares_in_grid"
 tags              = ["math"]

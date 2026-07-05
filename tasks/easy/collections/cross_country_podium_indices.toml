@@ -1,3 +1,4 @@
+base_score        = 140
 level             = "easy"
 name              = "cross_country_podium_indices"
 tags              = ["collections", "winter_olympics"]

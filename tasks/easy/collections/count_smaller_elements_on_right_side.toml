@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "count_smaller_elements_on_right_side"
 tags              = ["collections"]

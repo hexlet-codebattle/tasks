@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "sheet_drying_on_rope"
 tags              = ["math", "geometry", "logic"]

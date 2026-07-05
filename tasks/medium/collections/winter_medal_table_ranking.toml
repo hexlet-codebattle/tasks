@@ -1,3 +1,4 @@
+base_score        = 230
 level             = "medium"
 name              = "winter_medal_table_ranking"
 tags              = ["collections", "winter_olympics"]

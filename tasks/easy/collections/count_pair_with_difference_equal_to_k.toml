@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "count_pair_with_difference_equal_to_k"
 tags              = ["collections"]

@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "ski_laps_count"
 tags              = ["math", "winter_olympics"]

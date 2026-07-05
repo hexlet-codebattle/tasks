@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "palindrome_by_removing_one"
 tags              = ["arrays", "algorithms"]

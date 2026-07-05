@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "five_letter_palindromes"
 tags              = ["strings", "filtering"]

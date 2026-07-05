@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "word_square"
 tags              = ["strings", "matrices"]

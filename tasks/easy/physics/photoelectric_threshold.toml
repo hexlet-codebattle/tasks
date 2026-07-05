@@ -1,3 +1,4 @@
+base_score        = 120
 level             = "easy"
 name              = "photoelectric_threshold"
 tags              = ["physics", "experiments", "arrays"]

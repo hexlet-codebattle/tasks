@@ -1,3 +1,4 @@
+base_score        = 30
 level             = "elementary"
 name              = "age_to_days"
 tags              = ["math", "training"]

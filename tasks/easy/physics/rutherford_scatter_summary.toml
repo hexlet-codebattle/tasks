@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "rutherford_scatter_summary"
 tags              = ["physics", "experiments", "arrays"]

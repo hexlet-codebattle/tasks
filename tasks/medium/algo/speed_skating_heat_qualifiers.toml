@@ -1,3 +1,4 @@
+base_score        = 290
 level             = "medium"
 name              = "speed_skating_heat_qualifiers"
 tags              = ["algo", "winter_olympics"]

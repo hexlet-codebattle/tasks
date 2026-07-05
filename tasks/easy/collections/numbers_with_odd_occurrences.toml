@@ -1,3 +1,4 @@
+base_score        = 150
 level             = "easy"
 name              = "numbers_with_odd_occurrences"
 tags              = ["collections"]

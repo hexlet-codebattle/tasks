@@ -1,3 +1,4 @@
+base_score        = 110
 level             = "easy"
 name              = "drop_odd"
 tags              = ["strings", "collections"]

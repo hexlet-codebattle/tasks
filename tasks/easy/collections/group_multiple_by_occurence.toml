@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "group_multiple_by_occurence"
 tags              = ["collections"]

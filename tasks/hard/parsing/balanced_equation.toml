@@ -1,3 +1,4 @@
+base_score        = 210
 level             = "hard"
 name              = "balanced_equation"
 tags              = ["parsing", "string", "dict"]

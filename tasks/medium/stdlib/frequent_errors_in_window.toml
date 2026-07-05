@@ -1,3 +1,4 @@
+base_score        = 300
 level             = "medium"
 name              = "frequent_errors_in_window"
 tags              = ["stdlib", "strings", "hash_maps"]

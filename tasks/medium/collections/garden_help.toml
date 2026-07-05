@@ -1,3 +1,4 @@
+base_score        = 330
 level             = "medium"
 name              = "garden_help"
 tags              = ["collections", "math", "games"]

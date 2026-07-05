@@ -1,3 +1,4 @@
+base_score = 100
 description_en = "A pirate walks along a deck lined with barrels of rum. Each barrel contains a certain number of liters (given as an array of non‑negative integers). The pirate cannot take rum from two adjacent barrels (that would make noise). What is the maximum total amount of rum he can drink unnoticed?\n"
 description_ru = "Пират идет по палубе, заставленной бочками с ромом. В каждой бочке разное количество литров (задано массивом неотрицательных целых чисел). Он не может брать ром из двух соседних бочек (поднимется шум). Какое максимальное количество рома он может выпить незаметно?\n"
 examples = "solution([]) == 0\nsolution([5]) == 5\nsolution([5, 3]) == 5\nsolution([5, 3, 7]) == 12\nsolution([2, 7, 9, 3, 1]) == 12\n"

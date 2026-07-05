@@ -1,3 +1,4 @@
+base_score        = 500
 level             = "hard"
 name              = "euler_totient_function"
 tags              = ["math"]

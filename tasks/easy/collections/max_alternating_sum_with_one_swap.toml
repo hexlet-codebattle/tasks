@@ -1,3 +1,4 @@
+base_score        = 130
 level             = "easy"
 name              = "max_alternating_sum_with_one_swap"
 tags              = ["collections", "greedy", "math"]

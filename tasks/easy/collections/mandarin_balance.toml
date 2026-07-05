@@ -1,3 +1,4 @@
+base_score        = 110
 level             = "easy"
 name              = "mandarin_balance"
 tags              = ["collections", "math"]

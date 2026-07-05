@@ -1,3 +1,4 @@
+base_score        = 500
 level             = "hard"
 name              = "four_is_magic"
 tags              = ["strings", "games"]

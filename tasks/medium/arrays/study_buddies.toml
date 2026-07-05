@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "medium"
 name              = "study_buddies"
 tags              = ["arrays", "hash_maps", "university"]
@@ -176,9 +177,29 @@ comment   = "Alternating groups"
 expected  = 6
 
 [[asserts]]
-arguments = [[["cs101", "ma101", "ph101"], ["ma101"], ["ph101"], ["cs101"], ["bio101"]]]
-comment   = "Star around first"
-expected  = 3
+arguments = [
+  [
+    [
+      "cs101",
+      "ma101",
+      "ph101",
+    ],
+    [
+      "ma101",
+    ],
+    [
+      "ph101",
+    ],
+    [
+      "cs101",
+    ],
+    [
+      "bio101",
+    ],
+  ],
+]
+comment = "Star around first"
+expected = 3
 
 [[asserts]]
 arguments = [[["one"], ["two"], ["three"]]]

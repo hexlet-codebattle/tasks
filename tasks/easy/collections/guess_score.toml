@@ -1,3 +1,4 @@
+base_score        = 160
 level             = "easy"
 name              = "guess_score"
 tags              = ["collections", "games"]

@@ -1,3 +1,4 @@
+base_score        = 80
 level             = "elementary"
 name              = "hawkins_missing"
 tags              = ["math"]

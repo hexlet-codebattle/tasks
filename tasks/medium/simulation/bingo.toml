@@ -1,6 +1,6 @@
 level             = "medium"
 name              = "bingo"
-tags              = ["uni_2026_semifinal", "simulation", "set"]
+tags              = ["simulation", "set"]
 time_to_solve_sec = 300
 
 description_en = '''

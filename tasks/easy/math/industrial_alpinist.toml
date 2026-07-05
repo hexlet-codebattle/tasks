@@ -1,7 +1,7 @@
 base_score        = 100
 level             = "easy"
 name              = "industrial_alpinist"
-tags              = ["uni_2026_final", "math"]
+tags              = ["math"]
 time_to_solve_sec = 210
 
 description_en = """

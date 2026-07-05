@@ -1,7 +1,7 @@
 base_score        = 150
 level             = "hard"
 name              = "team_selection_battle"
-tags              = ["uni_2026_final", "combinatorial", "search", "flow", "team_selection"]
+tags              = ["combinatorial", "search", "flow", "team_selection"]
 time_to_solve_sec = 250
 
 description_en = """

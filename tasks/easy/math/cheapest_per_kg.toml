@@ -1,7 +1,7 @@
 base_score        = 100
 level             = "easy"
 name              = "cheapest_per_kg"
-tags              = ["uni_2026_final", "math", "greedy"]
+tags              = ["math", "greedy"]
 time_to_solve_sec = 150
 
 description_en = """

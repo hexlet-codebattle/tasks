@@ -1,7 +1,7 @@
 base_score        = 100
 level             = "easy"
 name              = "lost_participant"
-tags              = ["uni_2026_final", "strings"]
+tags              = ["strings"]
 time_to_solve_sec = 210
 
 description_en = """

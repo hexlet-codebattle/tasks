@@ -1,7 +1,7 @@
 base_score        = 100
 level             = "easy"
 name              = "max_speed"
-tags              = ["uni_2026_final", "physics", "kinematics", "math"]
+tags              = ["physics", "kinematics", "math"]
 time_to_solve_sec = 210
 
 description_en = """

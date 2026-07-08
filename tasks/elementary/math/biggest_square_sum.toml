@@ -1,4 +1,4 @@
-base_score        = 60
+base_score        = 50
 level             = "elementary"
 name              = "biggest_square_sum"
 tags              = ["math", "training"]

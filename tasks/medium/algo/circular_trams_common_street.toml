@@ -1,4 +1,4 @@
-base_score        = 200
+base_score        = 150
 level             = "medium"
 name              = "circular_trams_common_street"
 tags              = ["algo", "graphs", "sets", "simulation"]

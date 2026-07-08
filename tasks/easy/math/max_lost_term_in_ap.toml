@@ -1,8 +1,8 @@
-base_score        = 230
+base_score        = 100
 level             = "easy"
 name              = "max_lost_term_in_ap"
 tags              = ["math", "collections", "greedy", "sorting"]
-time_to_solve_sec = 420
+time_to_solve_sec = 300
 
 description_en = """
 You are given three integers that were taken from a 4-term arithmetic progression

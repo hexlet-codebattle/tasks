@@ -1,4 +1,4 @@
-base_score        = 60
+base_score        = 50
 level             = "elementary"
 name              = "rect_area"
 tags              = ["math"]

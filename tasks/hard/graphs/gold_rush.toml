@@ -1,4 +1,4 @@
-base_score        = 280
+base_score        = 250
 level             = "hard"
 name              = "gold_rush"
 tags              = ["graphs", "bipartite", "matching"]

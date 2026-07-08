@@ -1,8 +1,8 @@
-base_score        = 140
+base_score        = 50
 level             = "elementary"
 name              = "make_me"
 tags              = ["strings"]
-time_to_solve_sec = 250
+time_to_solve_sec = 150
 
 description_en = """
 Create a function that changes specific emotion words into emoticons.

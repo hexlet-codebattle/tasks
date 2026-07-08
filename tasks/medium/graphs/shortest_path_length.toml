@@ -1,4 +1,4 @@
-base_score        = 220
+base_score        = 150
 level             = "medium"
 name              = "shortest_path_length"
 tags              = ["graphs", "bfs", "algorithms"]

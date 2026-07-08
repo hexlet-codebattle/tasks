@@ -1,4 +1,4 @@
-base_score        = 110
+base_score        = 100
 level             = "easy"
 name              = "add_two_fractions"
 tags              = ["math", "algorithms"]

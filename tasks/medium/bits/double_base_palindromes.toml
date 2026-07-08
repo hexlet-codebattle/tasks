@@ -1,8 +1,8 @@
-base_score        = 330
+base_score        = 150
 level             = "medium"
 name              = "double_base_palindromes"
 tags              = ["bits"]
-time_to_solve_sec = 600
+time_to_solve_sec = 450
 
 description_en = """
 The decimal number $585$ is $1001001001$ in binary. It is palindromic in both bases.

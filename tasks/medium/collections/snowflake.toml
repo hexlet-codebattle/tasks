@@ -1,4 +1,4 @@
-base_score        = 250
+base_score        = 150
 level             = "medium"
 name              = "snowflake"
 tags              = ["collections", "algo"]

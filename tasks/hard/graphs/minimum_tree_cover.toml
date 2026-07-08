@@ -1,4 +1,4 @@
-base_score        = 500
+base_score        = 250
 level             = "hard"
 name              = "minimum_tree_cover"
 tags              = ["graphs", "trees", "dp"]

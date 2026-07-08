@@ -1,8 +1,8 @@
-base_score        = 330
+base_score        = 150
 level             = "medium"
 name              = "prime_array"
 tags              = ["math", "collections"]
-time_to_solve_sec = 600
+time_to_solve_sec = 450
 
 description_en = """
 Generate an array of the first $n$ prime numbers.

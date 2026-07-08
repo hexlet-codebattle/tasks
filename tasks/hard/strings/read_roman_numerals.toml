@@ -1,4 +1,4 @@
-base_score        = 440
+base_score        = 250
 level             = "hard"
 name              = "read_roman_numerals"
 tags              = ["strings"]

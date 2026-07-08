@@ -1,4 +1,4 @@
-base_score        = 230
+base_score        = 150
 level             = "medium"
 name              = "check_phone_number"
 tags              = ["strings"]

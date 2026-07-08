@@ -1,4 +1,4 @@
-base_score        = 150
+base_score        = 100
 level             = "easy"
 name              = "leap_year_count"
 tags              = ["math"]

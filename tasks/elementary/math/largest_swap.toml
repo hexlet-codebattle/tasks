@@ -1,8 +1,8 @@
-base_score        = 110
+base_score        = 50
 level             = "elementary"
 name              = "largest_swap"
 tags              = ["math"]
-time_to_solve_sec = 200
+time_to_solve_sec = 150
 
 description_en = """
 Write a function that checks if a two-digit number is the largest of two possible digit swaps.

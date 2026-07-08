@@ -1,4 +1,4 @@
-base_score        = 80
+base_score        = 50
 level             = "elementary"
 name              = "santas_shop"
 tags              = ["collections", "math"]

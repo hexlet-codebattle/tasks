@@ -1,8 +1,8 @@
-base_score        = 300
+base_score        = 150
 level             = "medium"
 name              = "forecast_quality_pairs"
 tags              = ["algo", "combinatorics", "collections", "hash_maps"]
-time_to_solve_sec = 540
+time_to_solve_sec = 450
 
 description_en = """
 A fan predicted an ordering of winners. After the contest, the final ordering became known.

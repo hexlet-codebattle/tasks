@@ -1,8 +1,8 @@
-base_score        = 190
+base_score        = 100
 level             = "easy"
 name              = "more_than_medium"
 tags              = ["strings"]
-time_to_solve_sec = 350
+time_to_solve_sec = 300
 
 description_en = """
 The sentence is given (as a string). Return a list of words that are longer than the average length of all words. If there are no such words, return `["there is no result!"]`.

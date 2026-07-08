@@ -1,4 +1,4 @@
-base_score = 220
+base_score = 150
 description_en = "You have a list of $n$ pirates ($n \\leq 20$) and $n$ dangerous tasks. Each pirate has a fear level for each task, given as an $n \\times n$ matrix `fear` where `fear[i][j]` is the fear of pirate $i$ for task $j$. You need to assign each pirate exactly one distinct task so that the total sum of fear levels is minimized. Return the minimal possible total.\n"
 description_ru = "У вас есть список из $n$ пиратов ($n \\leq 20$) и $n$ опасных заданий. Каждый пират имеет свой уровень страха перед каждым заданием, заданный матрицей `fear` размером $n \\times n$, где `fear[i][j]` — уровень страха пирата $i$ перед заданием $j$. Необходимо назначить каждому пирату ровно одно уникальное задание так, чтобы суммарный уровень страха был минимальным. Верните минимально возможную сумму.\n"
 examples = "solution([[5]]) == 5\nsolution([[1,2],[3,4]]) == 5\nsolution([[10,1],[1,10]]) == 2\n"

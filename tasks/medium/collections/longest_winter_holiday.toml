@@ -1,4 +1,4 @@
-base_score        = 220
+base_score        = 150
 level             = "medium"
 name              = "longest_winter_holiday"
 tags              = ["collections", "algo"]

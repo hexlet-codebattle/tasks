@@ -1,8 +1,8 @@
-base_score        = 100
+base_score        = 50
 level             = "elementary"
 name              = "two_trains_meet"
 tags              = ["physics", "training"]
-time_to_solve_sec = 180
+time_to_solve_sec = 150
 
 description_en = """
 Compute how long after their departure two trains will meet. Assume that the trains travel between two points along a single section of track, going in opposite directions. The function should consume the trains' speeds and the starting distance between the trains.

@@ -1,4 +1,4 @@
-base_score        = 440
+base_score        = 250
 level             = "hard"
 name              = "santas_final_flight"
 tags              = ["collections", "algo"]

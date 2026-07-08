@@ -1,4 +1,4 @@
-base_score        = 160
+base_score        = 150
 level             = "medium"
 name              = "all_symmetric_pairs"
 tags              = ["collections", "hashing", "pairs"]

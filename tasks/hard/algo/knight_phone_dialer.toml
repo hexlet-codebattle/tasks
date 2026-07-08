@@ -1,4 +1,4 @@
-base_score        = 500
+base_score        = 250
 level             = "hard"
 name              = "knight_phone_dialer"
 tags              = ["graphs", "algorithms", "bfs"]

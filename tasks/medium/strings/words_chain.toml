@@ -1,8 +1,8 @@
-base_score        = 280
+base_score        = 150
 level             = "medium"
 name              = "words_chain"
 tags              = ["strings"]
-time_to_solve_sec = 500
+time_to_solve_sec = 450
 
 description_en = """
 Write a function which takes a sequence of words, and returns true if they can be arranged into one continuous word chain, and false if they cannot. A word chain means that each consecutive pair of words differs by exactly one character. Example: cat -> cot -> coat -> oat -> hat -> hot -> hog -> dog

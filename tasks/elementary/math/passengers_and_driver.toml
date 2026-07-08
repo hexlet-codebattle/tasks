@@ -1,4 +1,4 @@
-base_score        = 70
+base_score        = 50
 level             = "elementary"
 name              = "passengers_and_driver"
 tags              = ["math"]

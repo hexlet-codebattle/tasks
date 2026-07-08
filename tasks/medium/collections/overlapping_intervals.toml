@@ -1,8 +1,8 @@
-base_score        = 660
+base_score        = 150
 level             = "medium"
 name              = "overlapping_intervals"
 tags              = ["collections", "math", "sorting", "greedy", "intervals", "linear_scan"]
-time_to_solve_sec = 1200
+time_to_solve_sec = 450
 
 description_en = """
 You're given a list of integer intervals `[l, r)`.

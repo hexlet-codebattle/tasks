@@ -1,4 +1,4 @@
-base_score        = 280
+base_score        = 250
 level             = "hard"
 name              = "min_team_combinations"
 tags              = ["bitmask", "brute_force", "algo"]

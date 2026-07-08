@@ -1,8 +1,8 @@
-base_score        = 160
+base_score        = 50
 level             = "elementary"
 name              = "boxes_volume"
 tags              = ["collections", "training"]
-time_to_solve_sec = 300
+time_to_solve_sec = 150
 
 description_en = """
 You are given an array `boxes`, where each element is an array of exactly three integers: `[length, width, height]`.

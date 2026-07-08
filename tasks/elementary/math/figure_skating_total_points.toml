@@ -1,8 +1,8 @@
-base_score        = 90
+base_score        = 50
 level             = "elementary"
 name              = "figure_skating_total_points"
 tags              = ["math", "winter_olympics"]
-time_to_solve_sec = 170
+time_to_solve_sec = 150
 
 description_en = """
 Given judges' `points` for a figure skating routine, drop one lowest score and return the total.

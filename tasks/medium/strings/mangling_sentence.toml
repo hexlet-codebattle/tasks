@@ -1,8 +1,8 @@
-base_score        = 330
+base_score        = 150
 level             = "medium"
 name              = "mangling_sentence"
 tags              = ["strings"]
-time_to_solve_sec = 600
+time_to_solve_sec = 450
 
 description_en = """
 Given a sentence, sort characters in each word alphabetically while preserving the original case positions.

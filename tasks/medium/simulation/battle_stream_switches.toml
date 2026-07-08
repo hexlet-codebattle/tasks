@@ -1,4 +1,4 @@
-base_score        = 160
+base_score        = 150
 level             = "medium"
 name              = "battle_stream_switches"
 tags              = ["simulation", "graph", "cycle_detection", "battle_stream"]

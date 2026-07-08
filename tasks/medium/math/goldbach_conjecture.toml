@@ -1,8 +1,8 @@
-base_score        = 330
+base_score        = 150
 level             = "medium"
 name              = "goldbach_conjecture"
 tags              = ["math", "number_theory", "primes"]
-time_to_solve_sec = 600
+time_to_solve_sec = 450
 
 description_en = """
 Represent an even integer $n>3$ as a sum of two prime numbers (primes may be identical). Return any valid pair $[p, q]$ such that $p+q=n$.

@@ -13,6 +13,11 @@ You are generating programming tasks in **TOML format**. Follow this specificati
   - Keep it related to `time_to_solve_sec`
   - Use a lower value than `time_to_solve_sec`
   - Prefer practical rounded values
+  - Do not exceed the maximum for the task level:
+    - `elementary`: `50`
+    - `easy`: `100`
+    - `medium`: `150`
+    - `hard`: `250`
 - **Example:** `120`
 
 ### **`name`** *(required)*
@@ -114,7 +119,11 @@ You are generating programming tasks in **TOML format**. Follow this specificati
 ### **`time_to_solve_sec`** *(required)*
 - **Type:** `number`
 - **Description:** Recommended upper solving time in seconds. About 75% of target developers, mostly juniors, should be able to solve the task within this time.
-- **Guidelines:** For elementary tasks use 100-200 sec, easy 200-300 sec, medium 300-600 sec, hard 600-900 sec.
+- **Guidelines:** Do not exceed the maximum for the task level:
+  - `elementary`: `150`
+  - `easy`: `300`
+  - `medium`: `450`
+  - `hard`: `900`
 - **Example:** `100`
 
 ### **`comment`** *(optional)*

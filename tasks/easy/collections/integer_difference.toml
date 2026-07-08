@@ -1,8 +1,8 @@
-base_score        = 250
+base_score        = 100
 level             = "easy"
 name              = "integer_difference"
 tags              = ["collections"]
-time_to_solve_sec = 450
+time_to_solve_sec = 300
 
 description_en = """
 Find how many pairs $X, Y$ there are in the array, such that $|X - Y|$ is equal to the first argument.

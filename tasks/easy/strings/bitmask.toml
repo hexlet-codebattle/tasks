@@ -1,4 +1,4 @@
-base_score        = 160
+base_score        = 100
 level             = "easy"
 name              = "bitmask"
 tags              = ["strings", "bits"]

@@ -1,4 +1,4 @@
-base_score        = 330
+base_score        = 250
 level             = "hard"
 name              = "baudot_code"
 tags              = ["strings", "decryption"]

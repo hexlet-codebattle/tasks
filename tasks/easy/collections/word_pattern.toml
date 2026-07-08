@@ -1,8 +1,8 @@
-base_score        = 190
+base_score        = 100
 level             = "easy"
 name              = "word_pattern"
 tags              = ["collections", "strings"]
-time_to_solve_sec = 350
+time_to_solve_sec = 300
 
 description_en = """
 Given a `pattern` and a `text`. A pattern is a string in which each letter represents a mask for the corresponding word in the text.

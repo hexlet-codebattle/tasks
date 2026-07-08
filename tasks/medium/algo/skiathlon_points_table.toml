@@ -1,8 +1,8 @@
-base_score        = 260
+base_score        = 150
 level             = "medium"
 name              = "skiathlon_points_table"
 tags              = ["algo", "winter_olympics"]
-time_to_solve_sec = 480
+time_to_solve_sec = 450
 
 description_en = """
 There are `athletes_count` athletes with ids from `0` to `athletes_count - 1`.

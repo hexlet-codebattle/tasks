@@ -1,4 +1,4 @@
-base_score        = 230
+base_score        = 150
 level             = "medium"
 name              = "cloud_chamber_longest_track"
 tags              = ["physics", "experiments", "graphs"]

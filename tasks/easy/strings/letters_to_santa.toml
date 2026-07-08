@@ -1,4 +1,4 @@
-base_score        = 110
+base_score        = 100
 level             = "easy"
 name              = "letters_to_santa"
 tags              = ["strings", "regex"]

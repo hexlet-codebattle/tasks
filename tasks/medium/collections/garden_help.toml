@@ -1,8 +1,8 @@
-base_score        = 330
+base_score        = 150
 level             = "medium"
 name              = "garden_help"
 tags              = ["collections", "math", "games"]
-time_to_solve_sec = 600
+time_to_solve_sec = 450
 
 description_en = """
 Yaroslav helps his grandmother plant carrots in a single-line seedbed where a carrot can be planted at each integer coordinate along the line. Having already planted carrots in cells spaced at various distances along the line, Grandmother has learned carrots do not grow well when planted too sparsely and thinks the carrots need to be planted more densely to grow. She asks Yaroslav to count how many additional cells can be planted with carrots between the current planted cells, given a minimum $\\text{distance}$ between planted cells. Create a function that returns the number of additional cells that can be seeded given 1) an integer array of seeded $\\text{cells}$ in an increasing sequence of $X_1, X_2, ... X_n$ and 2) a minimum $\\text{distance}$ grandmother expects between planted cells.

@@ -1,4 +1,4 @@
-base_score        = 220
+base_score        = 150
 level             = "medium"
 name              = "twin_prime_count"
 tags              = ["math", "algorithms"]

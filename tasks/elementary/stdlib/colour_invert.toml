@@ -1,4 +1,4 @@
-base_score        = 70
+base_score        = 50
 level             = "elementary"
 name              = "colour_invert"
 tags              = ["stdlib", "training"]

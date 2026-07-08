@@ -1,4 +1,4 @@
-base_score        = 200
+base_score        = 150
 level             = "medium"
 name              = "most_frequent_item_in_month"
 tags              = ["stdlib", "hash_maps", "date_time", "collections"]

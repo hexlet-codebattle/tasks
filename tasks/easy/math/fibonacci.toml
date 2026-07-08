@@ -1,8 +1,8 @@
-base_score        = 220
+base_score        = 100
 level             = "easy"
 name              = "fibonacci"
 tags              = ["math", "recursion"]
-time_to_solve_sec = 400
+time_to_solve_sec = 300
 
 description_en = """
 Return the $N$-th item in the Fibonacci sequence.

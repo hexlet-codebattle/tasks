@@ -1,4 +1,4 @@
-base_score        = 250
+base_score        = 150
 level             = "medium"
 name              = "is_ip_address"
 tags              = ["network", "strings"]

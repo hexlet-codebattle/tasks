@@ -1,4 +1,4 @@
-base_score        = 420
+base_score        = 250
 level             = "hard"
 name              = "particle_decay_chain"
 tags              = ["physics", "experiments", "dfs"]

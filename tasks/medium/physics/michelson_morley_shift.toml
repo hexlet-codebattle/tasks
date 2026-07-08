@@ -1,4 +1,4 @@
-base_score        = 200
+base_score        = 150
 level             = "medium"
 name              = "michelson_morley_shift"
 tags              = ["physics", "experiments", "arrays"]

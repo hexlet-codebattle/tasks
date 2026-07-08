@@ -1,4 +1,4 @@
-base_score        = 130
+base_score        = 100
 level             = "easy"
 name              = "section_numbering"
 tags              = ["parsing", "strings", "formatting"]

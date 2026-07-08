@@ -1,4 +1,4 @@
-base_score        = 200
+base_score        = 150
 level             = "medium"
 name              = "lunar_base_power_grid"
 tags              = ["space", "trees", "graphs"]

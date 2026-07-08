@@ -13,7 +13,10 @@ drop-release:
 check-names:
 	@$(PYTHON) check_task_names.py
 
-build: check-names drop-release
+check-limits:
+	@$(PYTHON) check_task_limits.py
+
+build: check-names check-limits drop-release
 	@$(PYTHON) test_solutions.py tasks
 
 build-and-preview: build preview
@@ -40,4 +43,4 @@ push-packs-private:
 push-packs-public:
 	@$(PYTHON) push_task_packs.py https://codebattle.hexlet.io/ext_api/task_packs --public
 
-.PHONY: release preview build build-and-preview check-names push push-private push-public push-local push-packs-local push-packs-private push-packs-public
+.PHONY: release preview build build-and-preview check-names check-limits push push-private push-public push-local push-packs-local push-packs-private push-packs-public

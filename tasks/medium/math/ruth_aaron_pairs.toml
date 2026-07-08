@@ -1,8 +1,8 @@
-base_score        = 280
+base_score        = 150
 level             = "medium"
 name              = "ruth_aaron_pairs"
 tags              = ["math"]
-time_to_solve_sec = 500
+time_to_solve_sec = 450
 
 description_en = """
 Check if a given number is a Ruth-Aaron pair. A Ruth-Aaron pair consists of two consecutive integers (e.g. 714 and 715) for which the sums of the prime factors of each integer are equal. When calculating the sum, take into account the repeating factors. If a number cannot be decomposed into prime multipliers, consider the factorization of this number to be 0.

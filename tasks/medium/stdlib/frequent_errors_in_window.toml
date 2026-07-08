@@ -1,8 +1,8 @@
-base_score        = 300
+base_score        = 150
 level             = "medium"
 name              = "frequent_errors_in_window"
 tags              = ["stdlib", "strings", "hash_maps"]
-time_to_solve_sec = 540
+time_to_solve_sec = 450
 
 description_en = """
 You are given a day's error log as an array of pairs `["HH:MM", "error_text"]` sorted by time. Return all **unique** error texts that occurred at least $4$ times within **any** $5$-minute interval, preserving the order of first appearance in the log.

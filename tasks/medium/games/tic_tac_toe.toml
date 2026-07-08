@@ -1,8 +1,8 @@
-base_score        = 280
+base_score        = 150
 level             = "medium"
 name              = "tic_tac_toe"
 tags              = ["games"]
-time_to_solve_sec = 500
+time_to_solve_sec = 450
 
 description_en = """
 Write a function that checks each move of the game tic-tac-toe. The function takes the current state of the field as a two-dimensional array. If player `"X"` won, return `"X won"`. If player `"O"` won, return `"O won"`. If no one has won yet, return `"Next"`. If the field is full but no one has won, return `"Game over"`.

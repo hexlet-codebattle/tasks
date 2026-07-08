@@ -18,8 +18,9 @@
 
 ## Build And Validation
 - `make check-names` verifies task-name uniqueness and filename alignment.
+- `make check-limits` verifies `base_score` and `time_to_solve_sec` do not exceed the maximum allowed for each level.
 - `python test_solutions.py tasks` validates all public tasks by parsing TOML, running `solution`, and checking `[[asserts]]`.
-- `make build` runs name checks, rebuilds `release/`, and validates public tasks.
+- `make build` runs name and limit checks, rebuilds `release/`, and validates public tasks.
 - `make preview` installs preview dependencies and starts the local UI.
 - `make build-and-preview` builds first, then starts the preview app.
 
@@ -56,6 +57,8 @@
 - `easy`: target a 2-6 line solution.
 - `medium`: target a 7-11 line solution.
 - `hard`: target a 12+ line solution.
+- Maximum `base_score` by level: `elementary` 50, `easy` 100, `medium` 150, `hard` 250.
+- Maximum `time_to_solve_sec` by level: `elementary` 150, `easy` 300, `medium` 450, `hard` 900.
 - Set `base_score` and `time_to_solve_sec` consistently with the project guidance documented in `ai/task_structure.md`.
 
 ## Style Notes

@@ -1,4 +1,4 @@
-base_score        = 220
+base_score        = 150
 level             = "medium"
 name              = "alien_signal_compression"
 tags              = ["strings", "regex"]

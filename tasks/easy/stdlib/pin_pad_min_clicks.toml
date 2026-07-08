@@ -1,4 +1,4 @@
-base_score        = 160
+base_score        = 100
 level             = "easy"
 name              = "pin_pad_min_clicks"
 tags              = ["stdlib", "grid", "greedy", "strings"]

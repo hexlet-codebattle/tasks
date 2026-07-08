@@ -1,8 +1,8 @@
-base_score        = 100
+base_score        = 50
 level             = "elementary"
 name              = "pythagorean_triple"
 tags              = ["math"]
-time_to_solve_sec = 180
+time_to_solve_sec = 150
 
 description_en = """
 Check if 3 given integers form a Pythagorean Triplet. A Pythagorean Triplet is a triplet of numbers, such that $x^2 + y^2 = z^2$. Note that the order of the integers doesn't matter.

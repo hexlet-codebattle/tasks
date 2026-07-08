@@ -1,4 +1,4 @@
-base_score        = 70
+base_score        = 50
 level             = "elementary"
 name              = "years_since_millennium"
 tags              = ["date_time"]

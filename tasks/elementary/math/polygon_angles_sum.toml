@@ -1,4 +1,4 @@
-base_score        = 70
+base_score        = 50
 level             = "elementary"
 name              = "polygon_angles_sum"
 tags              = ["math"]

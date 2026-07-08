@@ -1,8 +1,8 @@
-base_score        = 140
+base_score        = 50
 level             = "elementary"
 name              = "luke_relations"
 tags              = ["strings"]
-time_to_solve_sec = 250
+time_to_solve_sec = 150
 
 description_en = """
 Luke Skywalker has family and friends. Help him remember who is who.

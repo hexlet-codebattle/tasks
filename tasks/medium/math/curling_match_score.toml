@@ -1,4 +1,4 @@
-base_score        = 230
+base_score        = 150
 level             = "medium"
 name              = "curling_match_score"
 tags              = ["math", "winter_olympics"]

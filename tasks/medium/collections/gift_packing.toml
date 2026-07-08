@@ -1,4 +1,4 @@
-base_score        = 220
+base_score        = 150
 level             = "medium"
 name              = "gift_packing"
 tags              = ["collections", "algo"]

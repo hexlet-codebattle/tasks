@@ -1,4 +1,4 @@
-base_score        = 200
+base_score        = 150
 level             = "medium"
 name              = "course_capacity"
 tags              = ["collections", "university"]

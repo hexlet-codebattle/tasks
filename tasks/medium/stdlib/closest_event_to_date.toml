@@ -1,4 +1,4 @@
-base_score        = 200
+base_score        = 150
 level             = "medium"
 name              = "closest_event_to_date"
 tags              = ["stdlib", "date_time", "search"]

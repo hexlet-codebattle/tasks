@@ -1,8 +1,8 @@
-base_score        = 230
+base_score        = 100
 level             = "easy"
 name              = "next_permutation_number"
 tags              = ["math", "permutation", "greedy"]
-time_to_solve_sec = 420
+time_to_solve_sec = 300
 
 description_en = """
 Given an integer $n$, find the **smallest** number greater than $n$ that can be obtained by permuting the digits of $n$. If no such number exists, return $-1$.

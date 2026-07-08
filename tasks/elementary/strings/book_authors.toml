@@ -1,8 +1,8 @@
-base_score        = 140
+base_score        = 50
 level             = "elementary"
 name              = "book_authors"
 tags              = ["strings", "collections", "hash_maps"]
-time_to_solve_sec = 250
+time_to_solve_sec = 150
 
 description_en = """
 You are given a list of books `books`. Each book is represented as a hash (dictionary) with string keys and string values, and contains at least the key `"authors"`.

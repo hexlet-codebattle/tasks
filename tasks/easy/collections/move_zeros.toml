@@ -1,4 +1,4 @@
-base_score        = 120
+base_score        = 100
 level             = "easy"
 name              = "move_zeros"
 tags              = ["collections"]

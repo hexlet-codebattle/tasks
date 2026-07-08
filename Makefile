@@ -32,7 +32,7 @@ push-private:
 	@$(PYTHON) push_tasks.py https://codebattle.hexlet.io/ext_api/tasks --hidden
 
 push-public:
-	@$(PYTHON) push_tasks.py https://codebattle.hexlet.io/ext_api/tasks --public
+	@$(PYTHON) push_tasks.py https://codebattle.hexlet.io/ext_api/tasks --public --batch-size 100
 
 push-packs-local:
 	@$(PYTHON) push_task_packs.py http://localhost:4000/ext_api/task_packs --hidden

@@ -1,0 +1,168 @@
+base_score        = 80
+level             = "easy"
+name              = "stadium_wave_circle"
+tags              = ["world_cup_2026", "strings"]
+time_to_solve_sec = 200
+
+description_en = """
+A circular stadium row is encoded with `W` for a standing fan and `.` for a seated fan.
+Return the longest continuous wave, allowing it to cross the end of the string.
+The wave cannot contain the same seat more than once. For an empty row, return `0`.
+"""
+
+description_ru = """
+Круговой ряд стадиона задан строкой: `W` — вставший болельщик, `.` — сидящий.
+Верните длину самой длинной непрерывной волны с учетом перехода через конец строки.
+Одно место нельзя включать в волну несколько раз. Для пустого ряда верните `0`.
+"""
+
+limits = """
+- $0 \\leq \\operatorname{len}(seats) \\leq 1000$
+- $seats \\in \\{W, .\\}^*$
+"""
+
+solution = """
+def solution(seats: str) -> int:
+    if not seats:
+        return 0
+    return min(len(seats), max(map(len, (seats + seats).split("."))))
+"""
+
+examples = """
+solution("") == 0
+solution("WWW") == 3
+solution("WW..W") == 3
+"""
+
+[[input_signature]]
+argument_name = "seats"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Case 1"
+expected  = 0
+
+[[asserts]]
+arguments = ["."]
+comment   = "Case 2"
+expected  = 0
+
+[[asserts]]
+arguments = ["W"]
+comment   = "Case 3"
+expected  = 1
+
+[[asserts]]
+arguments = [".."]
+comment   = "Case 4"
+expected  = 0
+
+[[asserts]]
+arguments = ["WW"]
+comment   = "Case 5"
+expected  = 2
+
+[[asserts]]
+arguments = ["W."]
+comment   = "Case 6"
+expected  = 1
+
+[[asserts]]
+arguments = [".W"]
+comment   = "Case 7"
+expected  = 1
+
+[[asserts]]
+arguments = ["W.W"]
+comment   = "Case 8"
+expected  = 2
+
+[[asserts]]
+arguments = ["WW."]
+comment   = "Case 9"
+expected  = 2
+
+[[asserts]]
+arguments = [".WW"]
+comment   = "Case 10"
+expected  = 2
+
+[[asserts]]
+arguments = ["W..W"]
+comment   = "Case 11"
+expected  = 2
+
+[[asserts]]
+arguments = ["WW..W"]
+comment   = "Case 12"
+expected  = 3
+
+[[asserts]]
+arguments = ["W.WW"]
+comment   = "Case 13"
+expected  = 3
+
+[[asserts]]
+arguments = ["WWW."]
+comment   = "Case 14"
+expected  = 3
+
+[[asserts]]
+arguments = [".WWW"]
+comment   = "Case 15"
+expected  = 3
+
+[[asserts]]
+arguments = ["WWWW"]
+comment   = "Case 16"
+expected  = 4
+
+[[asserts]]
+arguments = ["...."]
+comment   = "Case 17"
+expected  = 0
+
+[[asserts]]
+arguments = ["W.W.W"]
+comment   = "Case 18"
+expected  = 2
+
+[[asserts]]
+arguments = ["WW.WW"]
+comment   = "Case 19"
+expected  = 4
+
+[[asserts]]
+arguments = ["W...WW"]
+comment   = "Case 20"
+expected  = 3
+
+[[asserts]]
+arguments = ["WWW...WW"]
+comment   = "Case 21"
+expected  = 5
+
+[[asserts]]
+arguments = [".W.WW."]
+comment   = "Case 22"
+expected  = 2
+
+[[asserts]]
+arguments = ["WW.W.WW"]
+comment   = "Case 23"
+expected  = 4
+
+[[asserts]]
+arguments = ["W......W"]
+comment   = "Case 24"
+expected  = 2
+
+[[asserts]]
+arguments = ["WWWWW.WWW"]
+comment   = "Case 25"
+expected  = 8

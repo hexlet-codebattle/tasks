@@ -1,0 +1,976 @@
+base_score        = 230
+level             = "hard"
+name              = "supporter_match_marathon"
+tags              = ["world_cup_2026", "dynamic_programming"]
+time_to_solve_sec = 700
+
+description_en = """
+Each match is `[start, end, city]`; match times are measured in minutes from the start of the tournament.
+`travel[a][b]` is the non-negative travel time in minutes from city `a` to city `b`.
+A supporter may begin at any match.
+After attending match `i`, match `j` is reachable when `end_i + travel[city_i][city_j] <= start_j`; arrival exactly at kickoff is allowed.
+
+Return a longest chronological list of original match indices that the supporter can attend fully.
+For equal lengths, return the lexicographically smaller index list.
+"""
+
+description_ru = """
+Каждый матч задан как `[start, end, city]`; время матчей измеряется в минутах от начала турнира.
+`travel[a][b]` хранит неотрицательное время переезда в минутах из города `a` в город `b`.
+Болельщик может начать маршрут с любого матча.
+После матча `i` можно успеть на матч `j`, если `end_i + travel[city_i][city_j] <= start_j`; прибытие точно к началу разрешено.
+
+Верните самый длинный хронологический список исходных индексов матчей, которые можно посетить полностью.
+При равной длине выберите лексикографически меньший список индексов.
+"""
+
+limits = """
+- $0 \\leq n \\leq 104$
+- $1 \\leq c \\leq 16$
+- $n = \\operatorname{len}(matches)$
+- $\\operatorname{len}(matches_i) = 3$
+- $0 \\leq start_i < end_i \\leq 60000$
+- $0 \\leq city_i < c$
+- $\\operatorname{len}(travel) = c$
+- $\\operatorname{len}(travel_i) = c$
+- $0 \\leq travel_{i,j} \\leq 3000$
+"""
+
+solution = """
+def solution(matches: list[list[int]], travel: list[list[int]]) -> list[int]:
+    order = sorted(range(len(matches)),
+                   key=lambda i: (matches[i][0], matches[i][1], i))
+    best_to = {}
+    answer = ()
+    for position, j in enumerate(order):
+        best = (j,)
+        for i in order[:position]:
+            arrival = matches[i][1] + travel[matches[i][2]][matches[j][2]]
+            if arrival <= matches[j][0]:
+                candidate = best_to[i] + (j,)
+                if len(candidate) > len(best) or (
+                    len(candidate) == len(best) and candidate < best
+                ):
+                    best = candidate
+        best_to[j] = best
+        if len(best) > len(answer) or (
+            len(best) == len(answer) and best < answer
+        ):
+            answer = best
+    return list(answer)
+"""
+
+examples = """
+solution([], [[0]]) == []
+solution([[0, 10, 0]], [[0]]) == [0]
+solution([[0, 10, 0], [10, 20, 0]], [[0]]) == [0, 1]
+"""
+
+[[input_signature]]
+argument_name = "matches"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "travel"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[], [[0]]]
+comment   = "Case 1"
+expected  = []
+
+[[asserts]]
+arguments = [[[0, 10, 0]], [[0]]]
+comment   = "Case 2"
+expected  = [0]
+
+[[asserts]]
+arguments = [[[0, 10, 0], [10, 20, 0]], [[0]]]
+comment   = "Case 3"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [[[0, 10, 0], [10, 20, 1]], [[0, 1], [1, 0]]]
+comment   = "Case 4"
+expected  = [0]
+
+[[asserts]]
+arguments = [[[0, 10, 0], [12, 20, 1], [11, 15, 0]], [[0, 2], [2, 0]]]
+comment   = "Case 5"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [[[0, 5, 0], [0, 5, 1], [5, 10, 0]], [[0, 0], [0, 0]]]
+comment   = "Case 6"
+expected  = [0, 2]
+
+[[asserts]]
+arguments = [[[0, 3, 0], [7, 11, 0], [14, 19, 0]], [[0, 2], [2, 0]]]
+comment   = "Case 7"
+expected  = [0, 1, 2]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      1,
+      5,
+      1,
+    ],
+    [
+      8,
+      13,
+      0,
+    ],
+    [
+      12,
+      15,
+      2,
+    ],
+    [
+      19,
+      23,
+      1,
+    ],
+  ],
+  [
+    [
+      0,
+      3,
+      4,
+    ],
+    [
+      3,
+      0,
+      3,
+    ],
+    [
+      4,
+      3,
+      0,
+    ],
+  ],
+]
+comment = "Case 8"
+expected = [0, 1, 3]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      7,
+      2,
+    ],
+    [
+      6,
+      9,
+      0,
+    ],
+    [
+      13,
+      17,
+      2,
+    ],
+    [
+      20,
+      25,
+      0,
+    ],
+    [
+      24,
+      27,
+      2,
+    ],
+  ],
+  [
+    [
+      0,
+      2,
+      3,
+      4,
+    ],
+    [
+      2,
+      0,
+      2,
+      3,
+    ],
+    [
+      3,
+      2,
+      0,
+      2,
+    ],
+    [
+      4,
+      3,
+      2,
+      0,
+    ],
+  ],
+]
+comment = "Case 9"
+expected = [0, 2, 3]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      3,
+      1,
+    ],
+    [
+      7,
+      11,
+      1,
+    ],
+    [
+      8,
+      19,
+      1,
+    ],
+    [
+      18,
+      21,
+      1,
+    ],
+    [
+      25,
+      29,
+      1,
+    ],
+    [
+      32,
+      37,
+      1,
+    ],
+  ],
+  [
+    [
+      0,
+      3,
+    ],
+    [
+      3,
+      0,
+    ],
+  ],
+]
+comment = "Case 10"
+expected = [0, 1, 3, 4, 5]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      1,
+      5,
+      1,
+    ],
+    [
+      8,
+      13,
+      0,
+    ],
+    [
+      12,
+      15,
+      2,
+    ],
+    [
+      19,
+      23,
+      1,
+    ],
+    [
+      26,
+      31,
+      0,
+    ],
+    [
+      30,
+      33,
+      2,
+    ],
+    [
+      37,
+      41,
+      1,
+    ],
+  ],
+  [
+    [
+      0,
+      2,
+      3,
+    ],
+    [
+      2,
+      0,
+      2,
+    ],
+    [
+      3,
+      2,
+      0,
+    ],
+  ],
+]
+comment = "Case 11"
+expected = [0, 1, 3, 4, 6]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      7,
+      1,
+    ],
+    [
+      6,
+      9,
+      3,
+    ],
+    [
+      13,
+      17,
+      1,
+    ],
+  ],
+  [
+    [
+      0,
+      3,
+      4,
+      5,
+    ],
+    [
+      3,
+      0,
+      3,
+      4,
+    ],
+    [
+      4,
+      3,
+      0,
+      3,
+    ],
+    [
+      5,
+      4,
+      3,
+      0,
+    ],
+  ],
+]
+comment = "Case 12"
+expected = [0, 2]
+
+[[asserts]]
+arguments = [[[0, 3, 0], [7, 11, 0], [8, 19, 0], [18, 21, 0]], [[0, 2], [2, 0]]]
+comment   = "Case 13"
+expected  = [0, 1, 3]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      1,
+      5,
+      1,
+    ],
+    [
+      8,
+      13,
+      0,
+    ],
+    [
+      12,
+      15,
+      2,
+    ],
+    [
+      19,
+      23,
+      1,
+    ],
+    [
+      26,
+      31,
+      0,
+    ],
+  ],
+  [
+    [
+      0,
+      3,
+      4,
+    ],
+    [
+      3,
+      0,
+      3,
+    ],
+    [
+      4,
+      3,
+      0,
+    ],
+  ],
+]
+comment = "Case 14"
+expected = [0, 1, 3, 4]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      7,
+      0,
+    ],
+    [
+      6,
+      9,
+      2,
+    ],
+    [
+      13,
+      17,
+      0,
+    ],
+    [
+      20,
+      25,
+      2,
+    ],
+    [
+      24,
+      27,
+      0,
+    ],
+    [
+      31,
+      35,
+      2,
+    ],
+  ],
+  [
+    [
+      0,
+      2,
+      3,
+      4,
+    ],
+    [
+      2,
+      0,
+      2,
+      3,
+    ],
+    [
+      3,
+      2,
+      0,
+      2,
+    ],
+    [
+      4,
+      3,
+      2,
+      0,
+    ],
+  ],
+]
+comment = "Case 15"
+expected = [0, 2, 3, 5]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      3,
+      1,
+    ],
+    [
+      7,
+      11,
+      1,
+    ],
+    [
+      8,
+      19,
+      1,
+    ],
+    [
+      18,
+      21,
+      1,
+    ],
+    [
+      25,
+      29,
+      1,
+    ],
+    [
+      32,
+      37,
+      1,
+    ],
+    [
+      36,
+      39,
+      1,
+    ],
+  ],
+  [
+    [
+      0,
+      3,
+    ],
+    [
+      3,
+      0,
+    ],
+  ],
+]
+comment = "Case 16"
+expected = [0, 1, 3, 4, 5]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      1,
+      5,
+      1,
+    ],
+    [
+      8,
+      13,
+      0,
+    ],
+    [
+      12,
+      15,
+      2,
+    ],
+  ],
+  [
+    [
+      0,
+      2,
+      3,
+    ],
+    [
+      2,
+      0,
+      2,
+    ],
+    [
+      3,
+      2,
+      0,
+    ],
+  ],
+]
+comment = "Case 17"
+expected = [0, 1]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      7,
+      3,
+    ],
+    [
+      6,
+      9,
+      1,
+    ],
+    [
+      13,
+      17,
+      3,
+    ],
+    [
+      20,
+      25,
+      1,
+    ],
+  ],
+  [
+    [
+      0,
+      3,
+      4,
+      5,
+    ],
+    [
+      3,
+      0,
+      3,
+      4,
+    ],
+    [
+      4,
+      3,
+      0,
+      3,
+    ],
+    [
+      5,
+      4,
+      3,
+      0,
+    ],
+  ],
+]
+comment = "Case 18"
+expected = [0, 2]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      3,
+      0,
+    ],
+    [
+      7,
+      11,
+      0,
+    ],
+    [
+      8,
+      19,
+      0,
+    ],
+    [
+      18,
+      21,
+      0,
+    ],
+    [
+      25,
+      29,
+      0,
+    ],
+  ],
+  [
+    [
+      0,
+      2,
+    ],
+    [
+      2,
+      0,
+    ],
+  ],
+]
+comment = "Case 19"
+expected = [0, 1, 3, 4]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      1,
+      5,
+      1,
+    ],
+    [
+      8,
+      13,
+      0,
+    ],
+    [
+      12,
+      15,
+      2,
+    ],
+    [
+      19,
+      23,
+      1,
+    ],
+    [
+      26,
+      31,
+      0,
+    ],
+    [
+      30,
+      33,
+      2,
+    ],
+  ],
+  [
+    [
+      0,
+      3,
+      4,
+    ],
+    [
+      3,
+      0,
+      3,
+    ],
+    [
+      4,
+      3,
+      0,
+    ],
+  ],
+]
+comment = "Case 20"
+expected = [0, 1, 3, 4]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      7,
+      2,
+    ],
+    [
+      6,
+      9,
+      0,
+    ],
+    [
+      13,
+      17,
+      2,
+    ],
+    [
+      20,
+      25,
+      0,
+    ],
+    [
+      24,
+      27,
+      2,
+    ],
+    [
+      31,
+      35,
+      0,
+    ],
+    [
+      38,
+      43,
+      2,
+    ],
+  ],
+  [
+    [
+      0,
+      2,
+      3,
+      4,
+    ],
+    [
+      2,
+      0,
+      2,
+      3,
+    ],
+    [
+      3,
+      2,
+      0,
+      2,
+    ],
+    [
+      4,
+      3,
+      2,
+      0,
+    ],
+  ],
+]
+comment = "Case 21"
+expected = [0, 2, 3, 5, 6]
+
+[[asserts]]
+arguments = [[[0, 3, 1], [7, 11, 1], [14, 19, 1]], [[0, 3], [3, 0]]]
+comment   = "Case 22"
+expected  = [0, 1, 2]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      1,
+      5,
+      1,
+    ],
+    [
+      8,
+      13,
+      0,
+    ],
+    [
+      12,
+      15,
+      2,
+    ],
+    [
+      19,
+      23,
+      1,
+    ],
+  ],
+  [
+    [
+      0,
+      2,
+      3,
+    ],
+    [
+      2,
+      0,
+      2,
+    ],
+    [
+      3,
+      2,
+      0,
+    ],
+  ],
+]
+comment = "Case 23"
+expected = [0, 1, 3]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      2,
+      7,
+      1,
+    ],
+    [
+      6,
+      9,
+      3,
+    ],
+    [
+      13,
+      17,
+      1,
+    ],
+    [
+      20,
+      25,
+      3,
+    ],
+    [
+      24,
+      27,
+      1,
+    ],
+  ],
+  [
+    [
+      0,
+      3,
+      4,
+      5,
+    ],
+    [
+      3,
+      0,
+      3,
+      4,
+    ],
+    [
+      4,
+      3,
+      0,
+      3,
+    ],
+    [
+      5,
+      4,
+      3,
+      0,
+    ],
+  ],
+]
+comment = "Case 24"
+expected = [0, 2, 4]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      0,
+      3,
+      0,
+    ],
+    [
+      7,
+      11,
+      0,
+    ],
+    [
+      8,
+      19,
+      0,
+    ],
+    [
+      18,
+      21,
+      0,
+    ],
+    [
+      25,
+      29,
+      0,
+    ],
+    [
+      32,
+      37,
+      0,
+    ],
+  ],
+  [
+    [
+      0,
+      2,
+    ],
+    [
+      2,
+      0,
+    ],
+  ],
+]
+comment = "Case 25"
+expected = [0, 1, 3, 4, 5]

@@ -1,0 +1,180 @@
+base_score        = 80
+level             = "easy"
+name              = "penalty_shootout_clinch"
+tags              = ["world_cup_2026", "simulation"]
+time_to_solve_sec = 200
+
+description_en = """
+The string `kicks` contains a prefix of the ten-kick regulation shootout, starting with team A and alternating between the teams.
+Each team may take at most five kicks: `1` is a goal and `0` is a miss.
+
+Return the first kick number after which one team has an insurmountable lead, even if later kicks are present in the string.
+Return `0` if the shootout is not decided within the given prefix. Sudden death is not considered.
+"""
+
+description_ru = """
+Строка `kicks` содержит префикс основной серии из десяти пенальти, начиная с команды A и чередуя команды.
+Каждая команда может выполнить не более пяти ударов: `1` — гол, `0` — промах.
+
+Верните номер первого удара, после которого одна из команд получила недосягаемое преимущество, даже если в строке записаны последующие удары.
+Верните `0`, если серия не решена в данном префиксе. Серия дополнительных ударов не рассматривается.
+"""
+
+limits = """
+- $0 \\leq \\operatorname{len}(kicks) \\leq 10$
+- $kicks \\in \\{0, 1\\}^*$
+"""
+
+solution = """
+def solution(kicks: str) -> int:
+    a = b = taken_a = taken_b = 0
+    for i, kick in enumerate(kicks):
+        if i % 2 == 0:
+            taken_a += 1
+            a += kick == "1"
+        else:
+            taken_b += 1
+            b += kick == "1"
+        if a > b + 5 - taken_b or b > a + 5 - taken_a:
+            return i + 1
+    return 0
+"""
+
+examples = """
+solution("") == 0
+solution("101010") == 6
+solution("111110000") == 9
+"""
+
+[[input_signature]]
+argument_name = "kicks"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Case 1"
+expected  = 0
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Case 2"
+expected  = 0
+
+[[asserts]]
+arguments = ["0"]
+comment   = "Case 3"
+expected  = 0
+
+[[asserts]]
+arguments = ["10"]
+comment   = "Case 4"
+expected  = 0
+
+[[asserts]]
+arguments = ["01"]
+comment   = "Case 5"
+expected  = 0
+
+[[asserts]]
+arguments = ["11"]
+comment   = "Case 6"
+expected  = 0
+
+[[asserts]]
+arguments = ["00"]
+comment   = "Case 7"
+expected  = 0
+
+[[asserts]]
+arguments = ["1010"]
+comment   = "Case 8"
+expected  = 0
+
+[[asserts]]
+arguments = ["0101"]
+comment   = "Case 9"
+expected  = 0
+
+[[asserts]]
+arguments = ["1111"]
+comment   = "Case 10"
+expected  = 0
+
+[[asserts]]
+arguments = ["0000"]
+comment   = "Case 11"
+expected  = 0
+
+[[asserts]]
+arguments = ["101010"]
+comment   = "Case 12"
+expected  = 6
+
+[[asserts]]
+arguments = ["010101"]
+comment   = "Case 13"
+expected  = 6
+
+[[asserts]]
+arguments = ["111000"]
+comment   = "Case 14"
+expected  = 0
+
+[[asserts]]
+arguments = ["000111"]
+comment   = "Case 15"
+expected  = 0
+
+[[asserts]]
+arguments = ["11110000"]
+comment   = "Case 16"
+expected  = 0
+
+[[asserts]]
+arguments = ["00001111"]
+comment   = "Case 17"
+expected  = 0
+
+[[asserts]]
+arguments = ["111110000"]
+comment   = "Case 18"
+expected  = 0
+
+[[asserts]]
+arguments = ["0000011111"]
+comment   = "Case 19"
+expected  = 10
+
+[[asserts]]
+arguments = ["1111111111"]
+comment   = "Case 20"
+expected  = 0
+
+[[asserts]]
+arguments = ["0000000000"]
+comment   = "Case 21"
+expected  = 0
+
+[[asserts]]
+arguments = ["1010101010"]
+comment   = "Case 22"
+expected  = 6
+
+[[asserts]]
+arguments = ["0101010101"]
+comment   = "Case 23"
+expected  = 6
+
+[[asserts]]
+arguments = ["1100110011"]
+comment   = "Case 24"
+expected  = 0
+
+[[asserts]]
+arguments = ["0011001100"]
+comment   = "Case 25"
+expected  = 0

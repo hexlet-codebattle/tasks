@@ -1,0 +1,319 @@
+base_score        = 80
+level             = "easy"
+name              = "watch_party_schedule"
+tags              = ["world_cup_2026", "greedy"]
+time_to_solve_sec = 200
+
+description_en = """
+Each match broadcast is `[start, end]`, measured in minutes from the start of the tournament.
+Choose a maximum-size set of broadcasts that can be watched completely without overlaps.
+A broadcast may start exactly when the previous one ends.
+
+List chosen matches in viewing order.
+If several maximum schedules exist, choose the one whose sequence of pairs `(end, original_index)` is lexicographically smallest.
+Return its original indices.
+"""
+
+description_ru = """
+Каждая трансляция задана как `[start, end]`, где время измеряется в минутах от начала турнира.
+Выберите максимальное число трансляций, которые можно полностью посмотреть без пересечений.
+Следующий матч может начаться точно в момент окончания предыдущего.
+
+Перечислите выбранные матчи в порядке просмотра.
+Если существует несколько максимальных расписаний, выберите расписание с лексикографически наименьшей последовательностью пар `(end, original_index)`.
+Верните исходные индексы матчей из этого расписания.
+"""
+
+limits = """
+- $0 \\leq \\operatorname{len}(matches) \\leq 104$
+- $\\operatorname{len}(matches_i) = 2$
+- $0 \\leq start_i < end_i \\leq 60000$
+"""
+
+solution = """
+def solution(matches: list[list[int]]) -> list[int]:
+    order = sorted(range(len(matches)), key=lambda i: (matches[i][1], i))
+    selected, last_end = [], None
+    for i in order:
+        if last_end is None or matches[i][0] >= last_end:
+            selected.append(i)
+            last_end = matches[i][1]
+    return selected
+"""
+
+examples = """
+solution([]) == []
+solution([[0, 90]]) == [0]
+solution([[0, 90], [90, 180]]) == [0, 1]
+"""
+
+[[input_signature]]
+argument_name = "matches"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Case 1"
+expected  = []
+
+[[asserts]]
+arguments = [[[0, 90]]]
+comment   = "Case 2"
+expected  = [0]
+
+[[asserts]]
+arguments = [[[0, 90], [90, 180]]]
+comment   = "Case 3"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [[[0, 100], [20, 30], [30, 40]]]
+comment   = "Case 4"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [[[0, 10], [0, 10], [10, 20]]]
+comment   = "Case 5"
+expected  = [0, 2]
+
+[[asserts]]
+arguments = [[[5, 8], [1, 3], [3, 5]]]
+comment   = "Case 6"
+expected  = [1, 2, 0]
+
+[[asserts]]
+arguments = [[[0, 4], [1, 2], [2, 3], [3, 4]]]
+comment   = "Case 7"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [[[10, 20], [0, 5], [5, 10]]]
+comment   = "Case 8"
+expected  = [1, 2, 0]
+
+[[asserts]]
+arguments = [[[0, 2], [5, 8], [10, 14]]]
+comment   = "Case 9"
+expected  = [0, 1, 2]
+
+[[asserts]]
+arguments = [[[7, 10], [12, 16], [17, 22], [22, 28]]]
+comment   = "Case 10"
+expected  = [0, 1, 2, 3]
+
+[[asserts]]
+arguments = [[[14, 18], [19, 24], [24, 30], [29, 36], [4, 12]]]
+comment   = "Case 11"
+expected  = [4, 0, 1, 2]
+
+[[asserts]]
+arguments = [[[21, 26], [26, 32], [1, 8], [6, 14], [11, 13], [16, 19]]]
+comment   = "Case 12"
+expected  = [2, 4, 5, 0, 1]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      28,
+      34,
+    ],
+    [
+      3,
+      10,
+    ],
+    [
+      8,
+      16,
+    ],
+    [
+      13,
+      15,
+    ],
+    [
+      18,
+      21,
+    ],
+    [
+      23,
+      27,
+    ],
+    [
+      28,
+      33,
+    ],
+  ],
+]
+comment = "Case 13"
+expected = [1, 3, 4, 5, 6]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      5,
+      12,
+    ],
+    [
+      10,
+      18,
+    ],
+    [
+      15,
+      17,
+    ],
+    [
+      20,
+      23,
+    ],
+    [
+      25,
+      29,
+    ],
+    [
+      0,
+      5,
+    ],
+    [
+      5,
+      11,
+    ],
+    [
+      10,
+      17,
+    ],
+  ],
+]
+comment = "Case 14"
+expected = [5, 6, 2, 3, 4]
+
+[[asserts]]
+arguments = [[[12, 20], [17, 19], [22, 25]]]
+comment   = "Case 15"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [[[19, 21], [24, 27], [29, 33], [4, 9]]]
+comment   = "Case 16"
+expected  = [3, 0, 1, 2]
+
+[[asserts]]
+arguments = [[[26, 29], [1, 5], [6, 11], [11, 17], [16, 23]]]
+comment   = "Case 17"
+expected  = [1, 2, 3, 0]
+
+[[asserts]]
+arguments = [[[3, 7], [8, 13], [13, 19], [18, 25], [23, 31], [28, 30]]]
+comment   = "Case 18"
+expected  = [0, 1, 2, 5]
+
+[[asserts]]
+arguments = [[[10, 15], [15, 21], [20, 27], [25, 33], [0, 2], [5, 8], [10, 14]]]
+comment   = "Case 19"
+expected  = [4, 5, 6, 1, 3]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      17,
+      23,
+    ],
+    [
+      22,
+      29,
+    ],
+    [
+      27,
+      35,
+    ],
+    [
+      2,
+      4,
+    ],
+    [
+      7,
+      10,
+    ],
+    [
+      12,
+      16,
+    ],
+    [
+      17,
+      22,
+    ],
+    [
+      22,
+      28,
+    ],
+  ],
+]
+comment = "Case 20"
+expected = [3, 4, 5, 6, 7]
+
+[[asserts]]
+arguments = [[[24, 31], [29, 37], [4, 6]]]
+comment   = "Case 21"
+expected  = [2, 0]
+
+[[asserts]]
+arguments = [[[1, 9], [6, 8], [11, 14], [16, 20]]]
+comment   = "Case 22"
+expected  = [1, 2, 3]
+
+[[asserts]]
+arguments = [[[8, 10], [13, 16], [18, 22], [23, 28], [28, 34]]]
+comment   = "Case 23"
+expected  = [0, 1, 2, 3, 4]
+
+[[asserts]]
+arguments = [[[15, 18], [20, 24], [25, 30], [0, 6], [5, 12], [10, 18]]]
+comment   = "Case 24"
+expected  = [3, 0, 1, 2]
+
+[[asserts]]
+arguments = [
+  [
+    [
+      22,
+      26,
+    ],
+    [
+      27,
+      32,
+    ],
+    [
+      2,
+      8,
+    ],
+    [
+      7,
+      14,
+    ],
+    [
+      12,
+      20,
+    ],
+    [
+      17,
+      19,
+    ],
+    [
+      22,
+      25,
+    ],
+  ],
+]
+comment = "Case 25"
+expected = [2, 5, 6, 1]

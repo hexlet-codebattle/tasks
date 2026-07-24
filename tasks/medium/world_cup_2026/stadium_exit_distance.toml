@@ -1,0 +1,195 @@
+base_score        = 140
+level             = "medium"
+name              = "stadium_exit_distance"
+tags              = ["world_cup_2026", "bfs"]
+time_to_solve_sec = 400
+
+description_en = """
+A possibly empty rectangular stadium grid uses `E` for an exit, `F` for a fan, `#` for a wall, and `.` for a free cell.
+From a passable cell, a fan may move up, down, left, or right; each move has cost `1`.
+
+For every fan, consider the shortest distance to any exit.
+Return the largest of these distances, or `-1` if at least one fan cannot reach an exit.
+With no fans, return `0`.
+"""
+
+description_ru = """
+Возможно пустая прямоугольная схема стадиона использует `E` для выхода, `F` для болельщика, `#` для стены и `.` для свободной клетки.
+Из проходимой клетки можно двигаться вверх, вниз, влево или вправо; стоимость каждого шага равна `1`.
+
+Для каждого болельщика найдите кратчайшее расстояние до любого выхода.
+Верните максимальное из этих расстояний или `-1`, если хотя бы один болельщик не может добраться до выхода.
+Если болельщиков нет, верните `0`.
+"""
+
+limits = """
+- $0 \\leq n \\leq 100$
+- $0 \\leq m \\leq 100$
+- $n = \\operatorname{len}(stadium)$
+- $\\operatorname{len}(stadium_i) = m$
+- $stadium_i \\in \\{E, F, \\#, .\\}^m$
+"""
+
+solution = """
+from collections import deque
+
+def solution(stadium: list[str]) -> int:
+    n = len(stadium)
+    m = len(stadium[0]) if n else 0
+    queue = deque((r, c) for r in range(n) for c in range(m)
+                  if stadium[r][c] == "E")
+    distance = {cell: 0 for cell in queue}
+    while queue:
+        r, c = queue.popleft()
+        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            cell = r + dr, c + dc
+            if (0 <= cell[0] < n and 0 <= cell[1] < m
+                    and stadium[cell[0]][cell[1]] != "#"
+                    and cell not in distance):
+                distance[cell] = distance[(r, c)] + 1
+                queue.append(cell)
+    fans = [distance.get((r, c), -1) for r in range(n) for c in range(m)
+            if stadium[r][c] == "F"]
+    return 0 if not fans else (-1 if -1 in fans else max(fans))
+"""
+
+examples = """
+solution(["E"]) == 0
+solution(["E.F"]) == 2
+solution(["E#F"]) == -1
+"""
+
+[[input_signature]]
+argument_name = "stadium"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Case 1"
+expected  = 0
+
+[[asserts]]
+arguments = [[""]]
+comment   = "Case 2"
+expected  = 0
+
+[[asserts]]
+arguments = [["E"]]
+comment   = "Case 3"
+expected  = 0
+
+[[asserts]]
+arguments = [["F"]]
+comment   = "Case 4"
+expected  = -1
+
+[[asserts]]
+arguments = [["."]]
+comment   = "Case 5"
+expected  = 0
+
+[[asserts]]
+arguments = [["EF"]]
+comment   = "Case 6"
+expected  = 1
+
+[[asserts]]
+arguments = [["E.F"]]
+comment   = "Case 7"
+expected  = 2
+
+[[asserts]]
+arguments = [["E#F"]]
+comment   = "Case 8"
+expected  = -1
+
+[[asserts]]
+arguments = [["F.E.F"]]
+comment   = "Case 9"
+expected  = 2
+
+[[asserts]]
+arguments = [["E..", "...", "..F"]]
+comment   = "Case 10"
+expected  = 4
+
+[[asserts]]
+arguments = [["E#.", "##.", "F.."]]
+comment   = "Case 11"
+expected  = -1
+
+[[asserts]]
+arguments = [["E#F", "...", "E.."]]
+comment   = "Case 12"
+expected  = 4
+
+[[asserts]]
+arguments = [["F..F", ".##.", "..E."]]
+comment   = "Case 13"
+expected  = 4
+
+[[asserts]]
+arguments = [["E...", "####", "...F"]]
+comment   = "Case 14"
+expected  = -1
+
+[[asserts]]
+arguments = [["E..F"]]
+comment   = "Case 15"
+expected  = 3
+
+[[asserts]]
+arguments = [["E.F", "###", "F.E"]]
+comment   = "Case 16"
+expected  = 2
+
+[[asserts]]
+arguments = [["....", ".FF.", "E..E"]]
+comment   = "Case 17"
+expected  = 2
+
+[[asserts]]
+arguments = [["F#E"]]
+comment   = "Case 18"
+expected  = -1
+
+[[asserts]]
+arguments = [["E", "#", "F"]]
+comment   = "Case 19"
+expected  = -1
+
+[[asserts]]
+arguments = [["E..", "###", "..F"]]
+comment   = "Case 20"
+expected  = -1
+
+[[asserts]]
+arguments = [["E...F"]]
+comment   = "Case 21"
+expected  = 4
+
+[[asserts]]
+arguments = [["F...E", "#####", "E...F"]]
+comment   = "Case 22"
+expected  = 4
+
+[[asserts]]
+arguments = [["E..", ".#.", "F.F"]]
+comment   = "Case 23"
+expected  = 4
+
+[[asserts]]
+arguments = [["E#E", ".F.", "F#F"]]
+comment   = "Case 24"
+expected  = 2
+
+[[asserts]]
+arguments = [["F....", "..#..", "....E"]]
+comment   = "Case 25"
+expected  = 6

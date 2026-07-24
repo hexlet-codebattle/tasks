@@ -1,0 +1,17 @@
+{
+  "name": "masters_s3_2026_1",
+  "task_names": [
+    "stoppage_time_board",
+    "group_match_points",
+    "var_offside_line",
+    "stadium_wave_circle",
+    "goal_lead_changes",
+    "penalty_shootout_clinch",
+    "fair_play_ranking",
+    "watch_party_schedule",
+    "var_delay_blocks",
+    "stadium_exit_distance",
+    "supporter_match_marathon",
+    "final_day_qualification_scenarios"
+  ]
+}

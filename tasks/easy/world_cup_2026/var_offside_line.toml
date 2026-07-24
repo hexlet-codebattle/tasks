@@ -1,0 +1,194 @@
+base_score        = 80
+level             = "easy"
+name              = "var_offside_line"
+tags              = ["world_cup_2026", "arrays"]
+time_to_solve_sec = 200
+
+description_en = """
+Positions use a pitch from `0` to `100`.
+If `attack_right` is `true`, the attack moves toward `100`; otherwise it moves toward `0`.
+
+Return, in ascending order, the indices of attackers who are strictly closer to the opposing goal than the halfway line, the ball, and the second-last defender.
+An attacker exactly on any of these lines is onside.
+"""
+
+description_ru = """
+Координаты заданы на поле от `0` до `100`.
+Если `attack_right` равно `true`, команда атакует в сторону `100`, иначе — в сторону `0`.
+
+Верните по возрастанию индексы нападающих, которые строго ближе к чужим воротам, чем средняя линия, мяч и предпоследний защитник.
+Нападающий точно на любой из этих линий не находится вне игры.
+"""
+
+limits = """
+- $0 \\leq \\operatorname{len}(attackers) \\leq 11$
+- $0 \\leq attackers_i \\leq 100$
+- $0 \\leq ball \\leq 100$
+- $0 \\leq defender \\leq 100$
+"""
+
+solution = """
+def solution(attackers, ball, defender, attack_right):
+    def pos(x):
+        return x if attack_right else 100 - x
+    line = max(50, pos(ball), pos(defender))
+    return [i for i, x in enumerate(attackers) if pos(x) > line]
+"""
+
+examples = """
+solution([], 50, 50, True) == []
+solution([40, 60], 50, 50, True) == [1]
+solution([20, 30, 80], 30, 25, False) == [0]
+"""
+
+[[input_signature]]
+argument_name = "attackers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "ball"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "defender"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "attack_right"
+[input_signature.type]
+name = "boolean"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[], 50, 50, true]
+comment   = "Case 1"
+expected  = []
+
+[[asserts]]
+arguments = [[40], 50, 50, true]
+comment   = "Case 2"
+expected  = []
+
+[[asserts]]
+arguments = [[60], 50, 50, true]
+comment   = "Case 3"
+expected  = [0]
+
+[[asserts]]
+arguments = [[50], 40, 40, true]
+comment   = "Case 4"
+expected  = []
+
+[[asserts]]
+arguments = [[51], 40, 40, true]
+comment   = "Case 5"
+expected  = [0]
+
+[[asserts]]
+arguments = [[70, 80], 75, 72, true]
+comment   = "Case 6"
+expected  = [1]
+
+[[asserts]]
+arguments = [[70, 76, 90], 75, 72, true]
+comment   = "Case 7"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [[40, 60, 80], 70, 75, true]
+comment   = "Case 8"
+expected  = [2]
+
+[[asserts]]
+arguments = [[99, 100], 99, 98, true]
+comment   = "Case 9"
+expected  = [1]
+
+[[asserts]]
+arguments = [[0, 49, 50, 51], 20, 20, true]
+comment   = "Case 10"
+expected  = [3]
+
+[[asserts]]
+arguments = [[20], 50, 50, false]
+comment   = "Case 11"
+expected  = [0]
+
+[[asserts]]
+arguments = [[60], 50, 50, false]
+comment   = "Case 12"
+expected  = []
+
+[[asserts]]
+arguments = [[50], 60, 60, false]
+comment   = "Case 13"
+expected  = []
+
+[[asserts]]
+arguments = [[49], 60, 60, false]
+comment   = "Case 14"
+expected  = [0]
+
+[[asserts]]
+arguments = [[20, 30], 25, 28, false]
+comment   = "Case 15"
+expected  = [0]
+
+[[asserts]]
+arguments = [[20, 24, 30], 25, 28, false]
+comment   = "Case 16"
+expected  = [0, 1]
+
+[[asserts]]
+arguments = [[20, 40, 60], 30, 25, false]
+comment   = "Case 17"
+expected  = [0]
+
+[[asserts]]
+arguments = [[0, 1], 1, 2, false]
+comment   = "Case 18"
+expected  = [0]
+
+[[asserts]]
+arguments = [[49, 50, 51, 100], 80, 80, false]
+comment   = "Case 19"
+expected  = [0]
+
+[[asserts]]
+arguments = [[10, 90], 50, 50, true]
+comment   = "Case 20"
+expected  = [1]
+
+[[asserts]]
+arguments = [[10, 90], 50, 50, false]
+comment   = "Case 21"
+expected  = [0]
+
+[[asserts]]
+arguments = [[45, 55], 60, 40, true]
+comment   = "Case 22"
+expected  = []
+
+[[asserts]]
+arguments = [[45, 55], 60, 40, false]
+comment   = "Case 23"
+expected  = []
+
+[[asserts]]
+arguments = [[0, 25, 50, 75, 100], 50, 50, true]
+comment   = "Case 24"
+expected  = [3, 4]
+
+[[asserts]]
+arguments = [[0, 25, 50, 75, 100], 50, 50, false]
+comment   = "Case 25"
+expected  = [0, 1]

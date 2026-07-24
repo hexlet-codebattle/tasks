@@ -1,0 +1,177 @@
+base_score        = 40
+level             = "elementary"
+name              = "stoppage_time_board"
+tags              = ["world_cup_2026", "math"]
+time_to_solve_sec = 100
+
+description_en = """
+The scoreboard shows base minute `base_minute`, which is either `45` or `90`.
+Given the number of seconds played after it, return the displayed minute.
+
+If `extra_seconds` is `0`, return the base minute without a suffix.
+Otherwise, every started extra minute is shown as a full minute: for example, `121` seconds after minute `90` is displayed as `"90+3"`.
+"""
+
+description_ru = """
+На табло указана основная минута `base_minute`: `45` или `90`.
+По числу сыгранных после нее секунд верните отображаемую минуту.
+
+Если `extra_seconds` равно `0`, верните основную минуту без суффикса.
+Иначе каждая начавшаяся дополнительная минута считается полной: например, `121` секунда после минуты `90` отображается как `"90+3"`.
+"""
+
+limits = """
+- $base\\_minute \\in \\{45, 90\\}$
+- $0 \\leq extra\\_seconds \\leq 900$
+"""
+
+solution = """
+def solution(base_minute: int, extra_seconds: int) -> str:
+    if extra_seconds == 0:
+        return str(base_minute)
+    return f"{base_minute}+{(extra_seconds + 59) // 60}"
+"""
+
+examples = """
+solution(45, 0) == "45"
+solution(45, 60) == "45+1"
+solution(90, 121) == "90+3"
+"""
+
+[[input_signature]]
+argument_name = "base_minute"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "extra_seconds"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [45, 0]
+comment   = "Case 1"
+expected  = "45"
+
+[[asserts]]
+arguments = [90, 0]
+comment   = "Case 2"
+expected  = "90"
+
+[[asserts]]
+arguments = [45, 1]
+comment   = "Case 3"
+expected  = "45+1"
+
+[[asserts]]
+arguments = [90, 59]
+comment   = "Case 4"
+expected  = "90+1"
+
+[[asserts]]
+arguments = [45, 60]
+comment   = "Case 5"
+expected  = "45+1"
+
+[[asserts]]
+arguments = [90, 61]
+comment   = "Case 6"
+expected  = "90+2"
+
+[[asserts]]
+arguments = [45, 119]
+comment   = "Case 7"
+expected  = "45+2"
+
+[[asserts]]
+arguments = [90, 120]
+comment   = "Case 8"
+expected  = "90+2"
+
+[[asserts]]
+arguments = [90, 121]
+comment   = "Case 9"
+expected  = "90+3"
+
+[[asserts]]
+arguments = [45, 179]
+comment   = "Case 10"
+expected  = "45+3"
+
+[[asserts]]
+arguments = [90, 180]
+comment   = "Case 11"
+expected  = "90+3"
+
+[[asserts]]
+arguments = [90, 181]
+comment   = "Case 12"
+expected  = "90+4"
+
+[[asserts]]
+arguments = [45, 240]
+comment   = "Case 13"
+expected  = "45+4"
+
+[[asserts]]
+arguments = [90, 299]
+comment   = "Case 14"
+expected  = "90+5"
+
+[[asserts]]
+arguments = [45, 300]
+comment   = "Case 15"
+expected  = "45+5"
+
+[[asserts]]
+arguments = [90, 301]
+comment   = "Case 16"
+expected  = "90+6"
+
+[[asserts]]
+arguments = [45, 359]
+comment   = "Case 17"
+expected  = "45+6"
+
+[[asserts]]
+arguments = [90, 360]
+comment   = "Case 18"
+expected  = "90+6"
+
+[[asserts]]
+arguments = [90, 599]
+comment   = "Case 19"
+expected  = "90+10"
+
+[[asserts]]
+arguments = [45, 600]
+comment   = "Case 20"
+expected  = "45+10"
+
+[[asserts]]
+arguments = [90, 601]
+comment   = "Case 21"
+expected  = "90+11"
+
+[[asserts]]
+arguments = [45, 30]
+comment   = "Case 22"
+expected  = "45+1"
+
+[[asserts]]
+arguments = [90, 90]
+comment   = "Case 23"
+expected  = "90+2"
+
+[[asserts]]
+arguments = [45, 150]
+comment   = "Case 24"
+expected  = "45+3"
+
+[[asserts]]
+arguments = [90, 900]
+comment   = "Case 25"
+expected  = "90+15"

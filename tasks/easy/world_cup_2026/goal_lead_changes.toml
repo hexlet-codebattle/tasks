@@ -1,0 +1,179 @@
+base_score        = 80
+level             = "easy"
+name              = "goal_lead_changes"
+tags              = ["world_cup_2026", "strings"]
+time_to_solve_sec = 200
+
+description_en = """
+The string `goals` lists scoring teams in chronological order using `A` and `B`.
+Count how many times the lead passes from one team to the other.
+
+The first team to take the lead does not count as a change.
+A tied score is not a separate leader, so `A leads -> tie -> B leads` counts as one lead change.
+"""
+
+description_ru = """
+Строка `goals` хранит авторов голов по порядку с помощью символов `A` и `B`.
+Посчитайте, сколько раз лидерство переходит от одной команды к другой.
+
+Первый выход команды вперед не считается сменой лидера.
+Ничья не считается отдельным лидером, поэтому переход `A лидирует -> ничья -> B лидирует` считается одной сменой.
+"""
+
+limits = """
+- $0 \\leq \\operatorname{len}(goals) \\leq 30$
+- $goals \\in \\{A, B\\}^*$
+"""
+
+solution = """
+def solution(goals: str) -> int:
+    a = b = leader = changes = 0
+    for goal in goals:
+        a += goal == "A"
+        b += goal == "B"
+        new = (a > b) - (a < b)
+        if new and leader and new != leader:
+            changes += 1
+        if new:
+            leader = new
+    return changes
+"""
+
+examples = """
+solution("") == 0
+solution("AAAA") == 0
+solution("ABBAA") == 2
+"""
+
+[[input_signature]]
+argument_name = "goals"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Case 1"
+expected  = 0
+
+[[asserts]]
+arguments = ["A"]
+comment   = "Case 2"
+expected  = 0
+
+[[asserts]]
+arguments = ["B"]
+comment   = "Case 3"
+expected  = 0
+
+[[asserts]]
+arguments = ["AA"]
+comment   = "Case 4"
+expected  = 0
+
+[[asserts]]
+arguments = ["AB"]
+comment   = "Case 5"
+expected  = 0
+
+[[asserts]]
+arguments = ["BA"]
+comment   = "Case 6"
+expected  = 0
+
+[[asserts]]
+arguments = ["BB"]
+comment   = "Case 7"
+expected  = 0
+
+[[asserts]]
+arguments = ["ABA"]
+comment   = "Case 8"
+expected  = 0
+
+[[asserts]]
+arguments = ["ABB"]
+comment   = "Case 9"
+expected  = 1
+
+[[asserts]]
+arguments = ["BAA"]
+comment   = "Case 10"
+expected  = 1
+
+[[asserts]]
+arguments = ["BAB"]
+comment   = "Case 11"
+expected  = 0
+
+[[asserts]]
+arguments = ["ABBAA"]
+comment   = "Case 12"
+expected  = 2
+
+[[asserts]]
+arguments = ["BAABB"]
+comment   = "Case 13"
+expected  = 2
+
+[[asserts]]
+arguments = ["AABB"]
+comment   = "Case 14"
+expected  = 0
+
+[[asserts]]
+arguments = ["BBAA"]
+comment   = "Case 15"
+expected  = 0
+
+[[asserts]]
+arguments = ["ABABAB"]
+comment   = "Case 16"
+expected  = 0
+
+[[asserts]]
+arguments = ["BABABA"]
+comment   = "Case 17"
+expected  = 0
+
+[[asserts]]
+arguments = ["AAABBBB"]
+comment   = "Case 18"
+expected  = 1
+
+[[asserts]]
+arguments = ["BBBAAAA"]
+comment   = "Case 19"
+expected  = 1
+
+[[asserts]]
+arguments = ["AABABB"]
+comment   = "Case 20"
+expected  = 0
+
+[[asserts]]
+arguments = ["BBABAAB"]
+comment   = "Case 21"
+expected  = 0
+
+[[asserts]]
+arguments = ["ABBAABB"]
+comment   = "Case 22"
+expected  = 3
+
+[[asserts]]
+arguments = ["BAABBAA"]
+comment   = "Case 23"
+expected  = 3
+
+[[asserts]]
+arguments = ["AAAABBBBB"]
+comment   = "Case 24"
+expected  = 1
+
+[[asserts]]
+arguments = ["ABABBAABBA"]
+comment   = "Case 25"
+expected  = 3

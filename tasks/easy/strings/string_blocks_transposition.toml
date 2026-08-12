@@ -1,0 +1,204 @@
+level             = "easy"
+name              = "string_blocks_transposition"
+tags              = ["strings", "formatting"]
+time_to_solve_sec = 200
+
+description_en = """
+You are given a string `s` and an integer `k`.
+
+If the length of the string `s` is not divisible by `k`, return an empty string `""`.
+Otherwise, split the string into blocks of length `k`. Construct and return a new string by taking the first character from each block, then the second character from each block, and so on, up to the `k`-th character.
+"""
+
+description_ru = """
+Дана строка `s` и целое число `k`.
+
+Если длина строки `s` не делится на `k`, верните пустую строку `""`.
+В противном случае разбейте строку на блоки длины `k`. Сформируйте и верните новую строку, беря сначала первый символ из каждого блока, затем второй символ из каждого блока, и так далее, вплоть до `k`-го символа.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 100$
+- $1 \\leq k \\leq 100$
+"""
+
+solution = """
+def solution(s: str, k: int) -> str:
+    if len(s) % k != 0:
+        return ""
+    return "".join(s[i::k] for i in range(k))
+"""
+
+examples = """
+solution("abcdef", 2) == "acebdf"
+solution("abcdef", 3) == "adbecf"
+solution("abc", 2) == ""
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["abcdef", 2]
+comment   = "Even length, divided into blocks of 2"
+expected  = "acebdf"
+
+[[asserts]]
+arguments = ["abcdef", 3]
+comment   = "Length 6, divided into blocks of 3"
+expected  = "adbecf"
+
+[[asserts]]
+arguments = ["abc", 2]
+comment   = "Length not divisible by k"
+expected  = ""
+
+[[asserts]]
+arguments = ["abcdef", 1]
+comment   = "k equals 1"
+expected  = "abcdef"
+
+[[asserts]]
+arguments = ["abcdef", 6]
+comment   = "k equals string length"
+expected  = "abcdef"
+
+[[asserts]]
+arguments = ["abcdef", 4]
+comment   = "Length not divisible by 4"
+expected  = ""
+
+[[asserts]]
+arguments = ["", 1]
+comment   = "Empty string"
+expected  = ""
+
+[[asserts]]
+arguments = ["", 5]
+comment   = "Empty string with larger k"
+expected  = ""
+
+[[asserts]]
+arguments = ["a", 1]
+comment   = "Single character string"
+expected  = "a"
+
+[[asserts]]
+arguments = ["ab", 1]
+comment   = "Length 2, k=1"
+expected  = "ab"
+
+[[asserts]]
+arguments = ["ab", 2]
+comment   = "Length 2, k=2"
+expected  = "ab"
+
+[[asserts]]
+arguments = ["hello", 5]
+comment   = "String length equals k"
+expected  = "hello"
+
+[[asserts]]
+arguments = ["hello", 2]
+comment   = "Length 5, k=2 (not divisible)"
+expected  = ""
+
+[[asserts]]
+arguments = ["helloworld", 2]
+comment   = "Longer string, k=2"
+expected  = "hloolelwrd"
+
+[[asserts]]
+arguments = ["123456789", 3]
+comment   = "Numeric string, blocks of 3"
+expected  = "147258369"
+
+[[asserts]]
+arguments = ["1234567890", 5]
+comment   = "Numeric string, blocks of 5"
+expected  = "1627384950"
+
+[[asserts]]
+arguments = ["aabbcc", 2]
+comment   = "Pairs of characters, k=2"
+expected  = "abcabc"
+
+[[asserts]]
+arguments = ["ababab", 2]
+comment   = "Repeating pattern, k=2"
+expected  = "aaabbb"
+
+[[asserts]]
+arguments = ["abcdefgh", 4]
+comment   = "Length 8, blocks of 4"
+expected  = "aebfcgdh"
+
+[[asserts]]
+arguments = ["abcdefgh", 8]
+comment   = "Length 8, k=8"
+expected  = "abcdefgh"
+
+[[asserts]]
+arguments = ["x", 5]
+comment   = "Length 1, k=5 (not divisible)"
+expected  = ""
+
+[[asserts]]
+arguments = ["xxxxxxxx", 2]
+comment   = "Homogeneous string"
+expected  = "xxxxxxxx"
+
+[[asserts]]
+arguments = ["python", 2]
+comment   = "Length 6, k=2"
+expected  = "ptoyhn"
+
+[[asserts]]
+arguments = ["python", 3]
+comment   = "Length 6, k=3"
+expected  = "phyotn"
+
+[[asserts]]
+arguments = ["programming", 1]
+comment   = "Length 11, k=1"
+expected  = "programming"
+
+[[asserts]]
+arguments = ["programming", 2]
+comment   = "Length 11, k=2 (not divisible)"
+expected  = ""
+
+[[asserts]]
+arguments = ["coder", 5]
+comment   = "Length 5, k=5"
+expected  = "coder"
+
+[[asserts]]
+arguments = ["xyzxyzxyz", 3]
+comment   = "Repeating pattern, k=3"
+expected  = "xxxyyyzzz"
+
+[[asserts]]
+arguments = ["ABCDEFGHIJKLMNOPQRST", 4]
+comment   = "Length 20, k=4"
+expected  = "AEIMQBFJNRCGKOSDHLPT"
+
+[[asserts]]
+arguments = ["abcabcabc", 3]
+comment   = "Repeating triplets, k=3"
+expected  = "aaabbbccc"
+
+[[asserts]]
+arguments = ["12345678", 2]
+comment   = "Sequence of 8 numbers, k=2"
+expected  = "13572468"

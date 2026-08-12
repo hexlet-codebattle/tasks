@@ -1,0 +1,178 @@
+level             = "easy"
+name              = "primes_with_prime_digit_sum"
+tags              = ["math", "numbers"]
+time_to_solve_sec = 250
+
+description_en = """
+Find all prime numbers in the inclusive range $[a, b]$ such that the sum of their digits is also a prime number. Return the result as an array.
+"""
+
+description_ru = """
+Найдите все простые числа на отрезке $[a, b]$ (включительно), сумма цифр которых также является простым числом. Верните результат в виде массива.
+"""
+
+limits = """
+- $1 \\leq a \\leq b \\leq 10^4$
+"""
+
+solution = """
+def solution(a: int, b: int) -> list:
+    P = lambda n: n > 1 and all(n % i for i in range(2, int(n**0.5) + 1))
+    return [x for x in range(a, b + 1) if P(x) and P(sum(map(int, str(x))))]
+"""
+
+examples = """
+solution(30, 40) == []
+solution(10, 20) == [11]
+solution(1, 10) == [2, 3, 5, 7]
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 10]
+comment   = "Single digit primes"
+expected  = [2, 3, 5, 7]
+
+[[asserts]]
+arguments = [10, 20]
+comment   = "First two-digit numbers"
+expected  = [11]
+
+[[asserts]]
+arguments = [20, 30]
+comment   = "Twenties"
+expected  = [23, 29]
+
+[[asserts]]
+arguments = [30, 40]
+comment   = "No matching primes in this range"
+expected  = []
+
+[[asserts]]
+arguments = [40, 50]
+comment   = "Forties"
+expected  = [41, 43, 47]
+
+[[asserts]]
+arguments = [50, 60]
+comment   = "Fifties without matches"
+expected  = []
+
+[[asserts]]
+arguments = [60, 70]
+comment   = "Sixties"
+expected  = [61, 67]
+
+[[asserts]]
+arguments = [70, 80]
+comment   = "Seventies without matches"
+expected  = []
+
+[[asserts]]
+arguments = [80, 90]
+comment   = "Eighties"
+expected  = [83, 89]
+
+[[asserts]]
+arguments = [90, 100]
+comment   = "Nineties without matches"
+expected  = []
+
+[[asserts]]
+arguments = [100, 120]
+comment   = "Early hundreds"
+expected  = [101, 113]
+
+[[asserts]]
+arguments = [130, 140]
+comment   = "Range with consecutive valid primes"
+expected  = [131, 137, 139]
+
+[[asserts]]
+arguments = [190, 200]
+comment   = "Late hundreds"
+expected  = [191, 193, 197, 199]
+
+[[asserts]]
+arguments = [200, 210]
+comment   = "Early two-hundreds with no valid primes"
+expected  = []
+
+[[asserts]]
+arguments = [200, 250]
+comment   = "Larger slice in two-hundreds"
+expected  = [223, 227, 229, 241]
+
+[[asserts]]
+arguments = [300, 320]
+comment   = "Early three-hundreds"
+expected  = [311, 313, 317]
+
+[[asserts]]
+arguments = [400, 420]
+comment   = "Early four-hundreds"
+expected  = [401, 409]
+
+[[asserts]]
+arguments = [500, 520]
+comment   = "Early five-hundreds without matches"
+expected  = []
+
+[[asserts]]
+arguments = [600, 620]
+comment   = "Early six-hundreds"
+expected  = [601, 607]
+
+[[asserts]]
+arguments = [700, 720]
+comment   = "Early seven-hundreds"
+expected  = [719]
+
+[[asserts]]
+arguments = [800, 820]
+comment   = "Early eight-hundreds"
+expected  = [809]
+
+[[asserts]]
+arguments = [900, 920]
+comment   = "Early nine-hundreds"
+expected  = [911, 919]
+
+[[asserts]]
+arguments = [990, 1000]
+comment   = "Approaching one thousand"
+expected  = [991]
+
+[[asserts]]
+arguments = [1, 1]
+comment   = "Single value 1 (not prime)"
+expected  = []
+
+[[asserts]]
+arguments = [2, 2]
+comment   = "Single value 2 (prime)"
+expected  = [2]
+
+[[asserts]]
+arguments = [11, 11]
+comment   = "Single value boundary check"
+expected  = [11]
+
+[[asserts]]
+arguments = [1000, 1010]
+comment   = "Past one thousand without matches"
+expected  = []

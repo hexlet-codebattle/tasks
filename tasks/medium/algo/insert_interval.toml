@@ -1,0 +1,236 @@
+level             = "medium"
+name              = "insert_interval"
+tags              = ["algo", "intervals", "sorting"]
+time_to_solve_sec = 400
+
+description_en = """
+You are given an array of non-overlapping `intervals` where $\\text{intervals}[i] = [start_i, end_i]$ represent the start and the end of the $i$-th interval. The array `intervals` is sorted in ascending order by $start_i$.
+
+You are also given an array $\\text{new\\_interval} = [start, end]$ that represents the start and end of another interval.
+
+Insert $\\text{new\\_interval}$ into `intervals` such that `intervals` is still sorted in ascending order by $start_i$ and `intervals` still does not have any overlapping intervals (merge overlapping intervals if necessary).
+
+Return `intervals` after the insertion.
+"""
+
+description_ru = """
+Вам дан массив непересекающихся интервалов `intervals`, где $\\text{intervals}[i] = [start_i, end_i]$ представляют начало и конец $i$-го интервала. Массив `intervals` отсортирован по возрастанию $start_i$.
+
+Вам также дан массив $\\text{new\\_interval} = [start, end]$, который представляет собой начало и конец другого интервала.
+
+Вставьте $\\text{new\\_interval}$ в `intervals` так, чтобы `intervals` оставался отсортированным по возрастанию $start_i$ и не содержал пересекающихся интервалов (при необходимости объедините пересекающиеся интервалы).
+
+Верните `intervals` после вставки.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{intervals}) \\leq 10^4$
+- $\\text{len}(\\text{intervals}[i]) == 2$
+- $\\text{len}(\\text{new\\_interval}) == 2$
+- $0 \\leq \\text{start}_i \\leq \\text{end}_i \\leq 10^5$
+- $0 \\leq \\text{new\\_interval}[0] \\leq \\text{new\\_interval}[1] \\leq 10^5$
+"""
+
+solution = """
+def solution(intervals: list[list[int]], new_interval: list[int]) -> list[list[int]]:
+    res = []
+    i = 0
+    n = len(intervals)
+    
+    while i < n and intervals[i][1] < new_interval[0]:
+        res.append(intervals[i])
+        i += 1
+        
+    start, end = new_interval[0], new_interval[1]
+    while i < n and intervals[i][0] <= end:
+        start = min(start, intervals[i][0])
+        end = max(end, intervals[i][1])
+        i += 1
+    res.append([start, end])
+    
+    while i < n:
+        res.append(intervals[i])
+        i += 1
+        
+    return res
+"""
+
+examples = """
+solution([], [5, 7]) == [[5, 7]]
+solution([[1, 5]], [2, 3]) == [[1, 5]]
+solution([[1, 3], [6, 9]], [2, 5]) == [[1, 5], [6, 9]]
+solution([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8]) == [[1, 2], [3, 10], [12, 16]]
+"""
+
+[[input_signature]]
+argument_name = "intervals"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "new_interval"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[], [5, 7]]
+comment   = "Empty intervals"
+expected  = [[5, 7]]
+
+[[asserts]]
+arguments = [[[1, 3], [6, 9]], [2, 5]]
+comment   = "Merge with first interval"
+expected  = [[1, 5], [6, 9]]
+
+[[asserts]]
+arguments = [[[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8]]
+comment   = "Merge multiple intervals"
+expected  = [[1, 2], [3, 10], [12, 16]]
+
+[[asserts]]
+arguments = [[[1, 5]], [2, 3]]
+comment   = "New interval completely inside"
+expected  = [[1, 5]]
+
+[[asserts]]
+arguments = [[[1, 5]], [0, 6]]
+comment   = "New interval covers all"
+expected  = [[0, 6]]
+
+[[asserts]]
+arguments = [[[1, 5]], [6, 8]]
+comment   = "Insert at the end without merge"
+expected  = [[1, 5], [6, 8]]
+
+[[asserts]]
+arguments = [[[3, 5]], [1, 2]]
+comment   = "Insert at the beginning without merge"
+expected  = [[1, 2], [3, 5]]
+
+[[asserts]]
+arguments = [[[1, 2], [5, 6]], [3, 4]]
+comment   = "Insert in the middle without merge"
+expected  = [[1, 2], [3, 4], [5, 6]]
+
+[[asserts]]
+arguments = [[[1, 2], [5, 6]], [2, 5]]
+comment   = "Merge exactly touching boundaries"
+expected  = [[1, 6]]
+
+[[asserts]]
+arguments = [[[1, 2], [3, 4], [5, 6]], [2, 5]]
+comment   = "Merge touching multiple boundaries"
+expected  = [[1, 6]]
+
+[[asserts]]
+arguments = [[[1, 5], [6, 9]], [1, 5]]
+comment   = "Exact duplicate interval"
+expected  = [[1, 5], [6, 9]]
+
+[[asserts]]
+arguments = [[[1, 5]], [1, 5]]
+comment   = "Duplicate single interval"
+expected  = [[1, 5]]
+
+[[asserts]]
+arguments = [[[1, 5], [8, 9]], [5, 8]]
+comment   = "Bridge two intervals"
+expected  = [[1, 9]]
+
+[[asserts]]
+arguments = [[[1, 2], [4, 5], [7, 8]], [2, 7]]
+comment   = "Bridge three intervals exactly"
+expected  = [[1, 8]]
+
+[[asserts]]
+arguments = [[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]], [1, 10]]
+comment   = "Swallow many small intervals"
+expected  = [[1, 10]]
+
+[[asserts]]
+arguments = [[[2, 3], [5, 6], [8, 9]], [0, 1]]
+comment   = "Insert completely before all"
+expected  = [[0, 1], [2, 3], [5, 6], [8, 9]]
+
+[[asserts]]
+arguments = [[[2, 3], [5, 6], [8, 9]], [10, 11]]
+comment   = "Insert completely after all"
+expected  = [[2, 3], [5, 6], [8, 9], [10, 11]]
+
+[[asserts]]
+arguments = [[[2, 4], [7, 9]], [4, 7]]
+comment   = "Exact fill the gap"
+expected  = [[2, 9]]
+
+[[asserts]]
+arguments = [[[1, 1]], [1, 2]]
+comment   = "Point interval merged"
+expected  = [[1, 2]]
+
+[[asserts]]
+arguments = [[[1, 3], [6, 9]], [3, 6]]
+comment   = "Connect two intervals perfectly"
+expected  = [[1, 9]]
+
+[[asserts]]
+arguments = [[[0, 0], [2, 2], [4, 4]], [0, 4]]
+comment   = "Merge multiple points"
+expected  = [[0, 4]]
+
+[[asserts]]
+arguments = [[[0, 2], [4, 6], [8, 10]], [3, 7]]
+comment   = "Merge with partial overlaps"
+expected  = [[0, 2], [3, 7], [8, 10]]
+
+[[asserts]]
+arguments = [[[1, 3], [5, 7], [9, 11]], [4, 8]]
+comment   = "Merge middle elements"
+expected  = [[1, 3], [4, 8], [9, 11]]
+
+[[asserts]]
+arguments = [[[1, 100]], [50, 60]]
+comment   = "New interval is a subsegment"
+expected  = [[1, 100]]
+
+[[asserts]]
+arguments = [[[10, 20], [30, 40], [50, 60]], [15, 55]]
+comment   = "Merge all with offsets"
+expected  = [[10, 60]]
+
+[[asserts]]
+arguments = [[[1, 2], [3, 4], [5, 6]], [3, 3]]
+comment   = "New interval is a point inside existing"
+expected  = [[1, 2], [3, 4], [5, 6]]
+
+[[asserts]]
+arguments = [[[1, 2], [4, 5]], [3, 3]]
+comment   = "New interval is an isolated point"
+expected  = [[1, 2], [3, 3], [4, 5]]
+
+[[asserts]]
+arguments = [[[1, 5], [10, 15], [20, 25]], [6, 9]]
+comment   = "Insert large gap without merge"
+expected  = [[1, 5], [6, 9], [10, 15], [20, 25]]
+
+[[asserts]]
+arguments = [[[1, 5], [10, 15], [20, 25]], [12, 22]]
+comment   = "Merge last two partially"
+expected  = [[1, 5], [10, 25]]
+
+[[asserts]]
+arguments = [[[0, 1000]], [0, 1000]]
+comment   = "Same exact large bounds"
+expected  = [[0, 1000]]

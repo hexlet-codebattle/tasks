@@ -1,0 +1,183 @@
+level             = "easy"
+name              = "maximum_altitude"
+tags              = ["arrays", "math"]
+time_to_solve_sec = 200
+
+description_en = """
+A cyclist starts their journey at an altitude of $0$. You are given an integer array `gain` of length $n$, where `gain[i]` represents the net altitude gain between point $i$ and point $i + 1$. 
+
+Return the highest altitude the cyclist reaches during their journey.
+"""
+
+description_ru = """
+Велосипедист начинает свой путь на высоте $0$. Вам дан целочисленный массив `gain` длины $n$, где `gain[i]` — это изменение высоты между точкой $i$ и точкой $i + 1$. 
+
+Верните максимальную высоту, которой достигнет велосипедист за время пути.
+"""
+
+limits = """
+- $1 \\leq \text{len}(\text{gain}) \\leq 100$
+- $-100 \\leq \text{gain}[i] \\leq 100$
+"""
+
+solution = """
+def solution(gain: list) -> int:
+    curr = max_alt = 0
+    for g in gain:
+        curr += g
+        max_alt = max(max_alt, curr)
+    return max_alt
+"""
+
+examples = """
+solution([0]) == 0
+solution([1]) == 1
+solution([-4, -3, -2, -1, 4, 3, 2]) == 0
+solution([-5, 1, 5, 0, -7]) == 1
+solution([10, -5, 10, -5]) == 15
+"""
+
+[[input_signature]]
+argument_name = "gain"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[-5, 1, 5, 0, -7]]
+comment   = "Max altitude reached in the middle"
+expected  = 1
+
+[[asserts]]
+arguments = [[-4, -3, -2, -1, 4, 3, 2]]
+comment   = "Never goes above starting altitude"
+expected  = 0
+
+[[asserts]]
+arguments = [[10, -5, 10, -5]]
+comment   = "Fluctuating altitude"
+expected  = 15
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single positive element"
+expected  = 1
+
+[[asserts]]
+arguments = [[-1]]
+comment   = "Single negative element"
+expected  = 0
+
+[[asserts]]
+arguments = [[0]]
+comment   = "Single zero element"
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 0, 0]]
+comment   = "All zeros"
+expected  = 0
+
+[[asserts]]
+arguments = [[5, 5, 5]]
+comment   = "Constantly ascending"
+expected  = 15
+
+[[asserts]]
+arguments = [[-5, -5, -5]]
+comment   = "Constantly descending"
+expected  = 0
+
+[[asserts]]
+arguments = [[100, 100, -200, 50]]
+comment   = "Large peak then drop"
+expected  = 200
+
+[[asserts]]
+arguments = [[-100, 50, 60, -20]]
+comment   = "Large drop then peak"
+expected  = 10
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50]]
+comment   = "Monotonically increasing"
+expected  = 150
+
+[[asserts]]
+arguments = [[-10, -20, -30, -40, -50]]
+comment   = "Monotonically decreasing"
+expected  = 0
+
+[[asserts]]
+arguments = [[50, -50, 50, -50]]
+comment   = "Oscillating starting positive"
+expected  = 50
+
+[[asserts]]
+arguments = [[-50, 50, -50, 50]]
+comment   = "Oscillating starting negative"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, -1, 1, -1, 1, -1]]
+comment   = "Small oscillations starting positive"
+expected  = 1
+
+[[asserts]]
+arguments = [[-1, 1, -1, 1, -1, 1]]
+comment   = "Small oscillations starting negative"
+expected  = 0
+
+[[asserts]]
+arguments = [[100]]
+comment   = "Max possible single value"
+expected  = 100
+
+[[asserts]]
+arguments = [[-100]]
+comment   = "Min possible single value"
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 1, -1, 0, 2, -2]]
+comment   = "Mixed with zeros"
+expected  = 2
+
+[[asserts]]
+arguments = [[5, 4, 3, 2, 1]]
+comment   = "Decreasing positive steps"
+expected  = 15
+
+[[asserts]]
+arguments = [[-5, 4, 3, 2, 1]]
+comment   = "Starts with dip, then recovers"
+expected  = 5
+
+[[asserts]]
+arguments = [[-10, 2, 3, 4, 5]]
+comment   = "Starts with big dip, recovers over time"
+expected  = 4
+
+[[asserts]]
+arguments = [[2, 3, -10, 4, 5]]
+comment   = "Dip in the middle"
+expected  = 5
+
+[[asserts]]
+arguments = [[10, -20, 30, -40, 50]]
+comment   = "Increasing oscillation amplitudes"
+expected  = 30
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, -15, 20]]
+comment   = "Drops completely then rises again"
+expected  = 20
+
+[[asserts]]
+arguments = [[50, 50, -100, 1, 2]]
+comment   = "Peak at the start, drop, small rise"
+expected  = 100

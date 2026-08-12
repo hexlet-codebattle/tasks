@@ -1,0 +1,206 @@
+level             = "medium"
+name              = "topological_sort_possible"
+tags              = ["graphs", "algorithms", "topological_sort"]
+time_to_solve_sec = 400
+
+description_en = """
+You are given `n` nodes labeled from $0$ to $n - 1$ and a list of directed `edges`.
+
+Each edge $[u, v]$ indicates that node $u$ must appear before node $v$ in a topological ordering. 
+
+Return `True` if it is possible to topologically sort the graph (i.e., it contains no directed cycles), and `False` otherwise.
+"""
+
+description_ru = """
+Вам дано `n` вершин, пронумерованных от $0$ до $n - 1$, и список ориентированных ребер `edges`. 
+
+Каждое ребро $[u, v]$ означает, что вершина $u$ должна идти перед вершиной $v$ в топологической сортировке. 
+
+Верните `True`, если граф можно отсортировать топологически (то есть в нем нет ориентированных циклов), и `False` в противном случае.
+"""
+
+limits = """
+- $1 \\leq n \\leq 10^4$
+- $0 \\leq \\text{len}(\\text{edges}) \\leq 10^4$
+- $\\text{edges}[i] = [u, v]$
+- $0 \\leq u, v < n$
+"""
+
+solution = """
+def solution(n: int, edges: list) -> bool:
+    from graphlib import TopologicalSorter, CycleError
+    
+    graph = {i: set() for i in range(n)}
+    for u, v in edges:
+        graph[v].add(u)
+        
+    try:
+        TopologicalSorter(graph).prepare()
+        return True
+    except CycleError:
+        return False
+"""
+
+examples = """
+solution(1, []) == True
+solution(2, [[0, 1]]) == True
+solution(2, [[0, 1], [1, 0]]) == False
+solution(4, [[0, 1], [1, 2], [2, 3]]) == True
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "edges"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [1, []]
+comment   = "Single node without edges"
+expected  = true
+
+[[asserts]]
+arguments = [2, [[0, 1]]]
+comment   = "Two nodes, simple directed edge"
+expected  = true
+
+[[asserts]]
+arguments = [2, [[0, 1], [1, 0]]]
+comment   = "Two nodes, cycle"
+expected  = false
+
+[[asserts]]
+arguments = [3, [[0, 1], [1, 2]]]
+comment   = "Three nodes, straight line"
+expected  = true
+
+[[asserts]]
+arguments = [3, [[0, 1], [1, 2], [2, 0]]]
+comment   = "Three nodes, simple cycle"
+expected  = false
+
+[[asserts]]
+arguments = [4, [[0, 1], [1, 2], [2, 3]]]
+comment   = "Four nodes, straight line"
+expected  = true
+
+[[asserts]]
+arguments = [4, [[0, 1], [1, 2], [2, 3], [3, 0]]]
+comment   = "Four nodes, full cycle"
+expected  = false
+
+[[asserts]]
+arguments = [4, [[0, 1], [2, 3]]]
+comment   = "Disconnected components, no cycles"
+expected  = true
+
+[[asserts]]
+arguments = [5, [[0, 1], [1, 2], [3, 4], [4, 3]]]
+comment   = "Disconnected components, one has a cycle"
+expected  = false
+
+[[asserts]]
+arguments = [3, [[0, 1], [0, 2]]]
+comment   = "Tree pointing outwards"
+expected  = true
+
+[[asserts]]
+arguments = [3, [[1, 0], [2, 0]]]
+comment   = "Tree pointing inwards"
+expected  = true
+
+[[asserts]]
+arguments = [4, [[0, 1], [0, 2], [1, 3], [2, 3]]]
+comment   = "Diamond shape, acyclic"
+expected  = true
+
+[[asserts]]
+arguments = [4, [[0, 1], [1, 3], [3, 2], [2, 0]]]
+comment   = "Cycle of 4 nodes"
+expected  = false
+
+[[asserts]]
+arguments = [1, [[0, 0]]]
+comment   = "Self-loop edge"
+expected  = false
+
+[[asserts]]
+arguments = [5, [[0, 1], [1, 2], [2, 3], [3, 4], [1, 3]]]
+comment   = "DAG with a forward edge"
+expected  = true
+
+[[asserts]]
+arguments = [5, [[0, 1], [1, 2], [2, 3], [3, 4], [3, 1]]]
+comment   = "Line with a back edge (cycle of 3)"
+expected  = false
+
+[[asserts]]
+arguments = [6, [[0, 1], [1, 2], [3, 4], [4, 5]]]
+comment   = "Two separate paths"
+expected  = true
+
+[[asserts]]
+arguments = [6, [[0, 1], [1, 2], [2, 0], [3, 4], [4, 5], [5, 3]]]
+comment   = "Two separate cyclic components"
+expected  = false
+
+[[asserts]]
+arguments = [2, [[0, 1], [0, 1]]]
+comment   = "Duplicate edges, no cycles"
+expected  = true
+
+[[asserts]]
+arguments = [3, [[0, 1], [1, 2], [2, 0], [0, 1]]]
+comment   = "Cycle with duplicate edges"
+expected  = false
+
+[[asserts]]
+arguments = [5, []]
+comment   = "Multiple nodes with no edges"
+expected  = true
+
+[[asserts]]
+arguments = [7, [[0, 1], [0, 2], [1, 3], [1, 4], [2, 5], [2, 6]]]
+comment   = "Binary tree structure"
+expected  = true
+
+[[asserts]]
+arguments = [7, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 0]]]
+comment   = "Large cycle of 7 nodes"
+expected  = false
+
+[[asserts]]
+arguments = [4, [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]]
+comment   = "Complete DAG"
+expected  = true
+
+[[asserts]]
+arguments = [4, [[0, 1], [1, 2], [2, 3], [3, 1]]]
+comment   = "Lollipop graph (line going into a cycle)"
+expected  = false
+
+[[asserts]]
+arguments = [5, [[0, 4], [1, 4], [2, 4], [3, 4]]]
+comment   = "Star graph directed to center"
+expected  = true
+
+[[asserts]]
+arguments = [5, [[4, 0], [4, 1], [4, 2], [4, 3]]]
+comment   = "Star graph directed from center"
+expected  = true
+
+[[asserts]]
+arguments = [8, [[0, 1], [1, 2], [3, 4], [4, 5], [6, 7], [7, 6]]]
+comment   = "Large forest with one cycle hidden"
+expected  = false

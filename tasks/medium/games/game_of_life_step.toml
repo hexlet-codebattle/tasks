@@ -1,0 +1,210 @@
+level             = "medium"
+name              = "game_of_life_step"
+tags              = ["games", "simulation", "algorithms"]
+time_to_solve_sec = 600
+
+description_en = """
+You are given a 2D integer array `grid` representing the current state of a grid in Conway's Game of Life. `1` represents a live cell and `0` represents a dead cell.
+
+Calculate and return the next state of the grid after exactly one step.
+
+The rules are:
+1. A live cell with fewer than `2` live neighbors dies (underpopulation).
+2. A live cell with `2` or `3` live neighbors lives on.
+3. A live cell with more than `3` live neighbors dies (overpopulation).
+4. A dead cell with exactly `3` live neighbors becomes a live cell (reproduction).
+
+Neighbors are the 8 cells horizontally, vertically, or diagonally adjacent.
+"""
+
+description_ru = """
+Вам дан двумерный массив целых чисел `grid`, представляющий текущее состояние сетки в «Игре Жизнь» Конвея, где `1` представляет живую клетку, а `0` — мертвую.
+
+Рассчитайте и верните следующее состояние сетки ровно через один шаг.
+
+Правила:
+1. Живая клетка, у которой меньше `2` живых соседей, умирает (от недонаселения).
+2. Живая клетка с `2` или `3` живыми соседями продолжает жить.
+3. Живая клетка, у которой больше `3` живых соседей, умирает (от перенаселения).
+4. Мертвая клетка, у которой ровно `3` живых соседа, становится живой (размножение).
+
+Соседями считаются 8 клеток по горизонтали, вертикали и диагонали.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(grid) \\leq 50$
+- $1 \\leq \\text{len}(grid[0]) \\leq 50$
+- $grid[i][j] \\in \\{0, 1\\}$
+"""
+
+solution = """
+def solution(grid: list) -> list:
+    m, n = len(grid), len(grid[0])
+    res = [[0] * n for _ in range(m)]
+    for i in range(m):
+        for j in range(n):
+            lives = sum(grid[r][c] for r in range(max(0, i-1), min(m, i+2)) 
+                                   for c in range(max(0, j-1), min(n, j+2))) - grid[i][j]
+            if grid[i][j] == 1 and lives in (2, 3):
+                res[i][j] = 1
+            if grid[i][j] == 0 and lives == 3:
+                res[i][j] = 1
+    return res
+"""
+
+examples = """
+solution([[1]]) == [[0]]
+solution([[0, 1, 0], [0, 1, 0], [0, 1, 0]]) == [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
+solution([[1, 1], [1, 1]]) == [[1, 1], [1, 1]]
+"""
+
+[[input_signature]]
+argument_name = "grid"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[[0]]]
+comment   = "1x1 dead"
+expected  = [[0]]
+
+[[asserts]]
+arguments = [[[1]]]
+comment   = "1x1 live"
+expected  = [[0]]
+
+[[asserts]]
+arguments = [[[0, 0]]]
+comment   = "1x2 dead"
+expected  = [[0, 0]]
+
+[[asserts]]
+arguments = [[[1, 1]]]
+comment   = "1x2 live"
+expected  = [[0, 0]]
+
+[[asserts]]
+arguments = [[[1], [1]]]
+comment   = "2x1 live"
+expected  = [[0], [0]]
+
+[[asserts]]
+arguments = [[[0, 0], [0, 0]]]
+comment   = "2x2 dead"
+expected  = [[0, 0], [0, 0]]
+
+[[asserts]]
+arguments = [[[1, 1], [1, 1]]]
+comment   = "2x2 block (Still life)"
+expected  = [[1, 1], [1, 1]]
+
+[[asserts]]
+arguments = [[[1, 0], [0, 0]]]
+comment   = "2x2 single live"
+expected  = [[0, 0], [0, 0]]
+
+[[asserts]]
+arguments = [[[1, 1], [0, 0]]]
+comment   = "2x2 two live"
+expected  = [[0, 0], [0, 0]]
+
+[[asserts]]
+arguments = [[[1, 1], [1, 0]]]
+comment   = "2x2 three live (creates block)"
+expected  = [[1, 1], [1, 1]]
+
+[[asserts]]
+arguments = [[[0, 0, 0], [0, 0, 0], [0, 0, 0]]]
+comment   = "3x3 dead"
+expected  = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 0], [0, 1, 0], [0, 0, 0]]]
+comment   = "3x3 center live"
+expected  = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 0], [1, 1, 1], [0, 0, 0]]]
+comment   = "3x3 blinker horizontal (Oscillator)"
+expected  = [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
+
+[[asserts]]
+arguments = [[[0, 1, 0], [0, 1, 0], [0, 1, 0]]]
+comment   = "3x3 blinker vertical (Oscillator)"
+expected  = [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
+
+[[asserts]]
+arguments = [[[0, 1, 0], [1, 0, 1], [0, 1, 0]]]
+comment   = "3x3 tub (Still life)"
+expected  = [[0, 1, 0], [1, 0, 1], [0, 1, 0]]
+
+[[asserts]]
+arguments = [[[1, 1, 1], [1, 1, 1], [1, 1, 1]]]
+comment   = "3x3 all live"
+expected  = [[1, 0, 1], [0, 0, 0], [1, 0, 1]]
+
+[[asserts]]
+arguments = [[[0, 1, 0], [1, 1, 1], [0, 1, 0]]]
+comment   = "3x3 cross"
+expected  = [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+
+[[asserts]]
+arguments = [[[1, 0, 0], [1, 1, 0], [0, 0, 0]]]
+comment   = "3x3 L-shape"
+expected  = [[1, 1, 0], [1, 1, 0], [0, 0, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]]
+comment   = "4x4 block in center"
+expected  = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 0, 0], [0, 1, 1, 1], [1, 1, 1, 0], [0, 0, 0, 0]]]
+comment   = "4x4 toad phase 1 (Oscillator)"
+expected  = [[0, 0, 1, 0], [1, 0, 0, 1], [1, 0, 0, 1], [0, 1, 0, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 1, 0], [1, 0, 0, 1], [1, 0, 0, 1], [0, 1, 0, 0]]]
+comment   = "4x4 toad phase 2 (Oscillator)"
+expected  = [[0, 0, 0, 0], [0, 1, 1, 1], [1, 1, 1, 0], [0, 0, 0, 0]]
+
+[[asserts]]
+arguments = [[[1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 1], [0, 0, 1, 1]]]
+comment   = "4x4 beacon (Oscillator)"
+expected  = [[1, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 1]]
+
+[[asserts]]
+arguments = [[[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]]
+comment   = "4x4 all live"
+expected  = [[1, 0, 0, 1], [0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 1]]
+
+[[asserts]]
+arguments = [[[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]]]
+comment   = "4x3 glider step 1"
+expected  = [[0, 0, 0], [1, 0, 1], [0, 1, 1], [0, 1, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0]]]
+comment   = "3x4 horizontal line"
+expected  = [[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 0, 0, 0], [0, 1, 1, 1, 0], [0, 1, 1, 1, 0], [0, 1, 1, 1, 0], [0, 0, 0, 0, 0]]]
+comment   = "5x5 3x3 square in center"
+expected  = [[0, 0, 1, 0, 0], [0, 1, 0, 1, 0], [1, 0, 0, 0, 1], [0, 1, 0, 1, 0], [0, 0, 1, 0, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]]
+comment   = "5x5 completely empty"
+expected  = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]

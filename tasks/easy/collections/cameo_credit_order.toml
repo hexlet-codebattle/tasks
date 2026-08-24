@@ -1,0 +1,146 @@
+base_score        = 90
+level             = "easy"
+name              = "cameo_credit_order"
+tags              = ["collections", "spider_man"]
+time_to_solve_sec = 260
+
+description_en = """
+`appearances` lists character names in the order in which they appear in the new Spider-Man movie. The credits contain every distinct name once.
+
+Return the credits ordered by decreasing number of appearances. If two names have the same count, the one whose first appearance is earlier comes first. Return an empty array for no appearances.
+"""
+
+description_ru = """
+Массив `appearances` содержит имена персонажей в порядке их появления в новом фильме о Человеке-пауке. В титрах каждое уникальное имя встречается один раз.
+
+Верните титры, упорядоченные по убыванию числа появлений. При равенстве раньше идет имя, которое впервые появилось раньше. Для пустого списка появлений верните пустой массив.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{appearances}) \\leq 10^3$
+- $1 \\leq \\text{len}(\\text{appearances}[i]) \\leq 30$
+"""
+
+solution = """
+def solution(appearances: list[str]) -> list[str]:
+    names = list(dict.fromkeys(appearances))
+    return sorted(names, key=lambda name: (-appearances.count(name), names.index(name)))
+"""
+
+examples = """
+solution([]) == []
+solution(["Peter"]) == ["Peter"]
+solution(["A", "B", "C", "B", "C", "C"]) == ["C", "B", "A"]
+"""
+
+[[input_signature]]
+argument_name = "appearances"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [[]]
+expected  = []
+
+[[asserts]]
+arguments = [["Peter"]]
+expected  = ["Peter"]
+
+[[asserts]]
+arguments = [["Peter", "MJ"]]
+expected  = ["Peter", "MJ"]
+
+[[asserts]]
+arguments = [["Peter", "Peter"]]
+expected  = ["Peter"]
+
+[[asserts]]
+arguments = [["Peter", "MJ", "Peter"]]
+expected  = ["Peter", "MJ"]
+
+[[asserts]]
+arguments = [["MJ", "Peter", "MJ", "Peter"]]
+expected  = ["MJ", "Peter"]
+
+[[asserts]]
+arguments = [["Ned", "MJ", "Peter"]]
+expected  = ["Ned", "MJ", "Peter"]
+
+[[asserts]]
+arguments = [["Peter", "MJ", "Ned", "Peter"]]
+expected  = ["Peter", "MJ", "Ned"]
+
+[[asserts]]
+arguments = [["A", "B", "C", "B", "C", "C"]]
+expected  = ["C", "B", "A"]
+
+[[asserts]]
+arguments = [["A", "B", "A", "B", "C"]]
+expected  = ["A", "B", "C"]
+
+[[asserts]]
+arguments = [["Hero", "Villain", "Hero", "Cameo", "Villain", "Hero"]]
+expected  = ["Hero", "Villain", "Cameo"]
+
+[[asserts]]
+arguments = [["Spider Man", "MJ", "Spider Man", "Ned", "MJ"]]
+expected  = ["Spider Man", "MJ", "Ned"]
+
+[[asserts]]
+arguments = [["A", "B", "C", "A", "B", "C"]]
+expected  = ["A", "B", "C"]
+
+[[asserts]]
+arguments = [["Venom", "Peter", "Venom", "MJ", "Peter", "Venom"]]
+expected  = ["Venom", "Peter", "MJ"]
+
+[[asserts]]
+arguments = [["One", "Two", "Three", "Two", "One"]]
+expected  = ["One", "Two", "Three"]
+
+[[asserts]]
+arguments = [["May", "Ben", "May", "Ben", "Peter"]]
+expected  = ["May", "Ben", "Peter"]
+
+[[asserts]]
+arguments = [["A", "A", "B", "C", "B", "C"]]
+expected  = ["A", "B", "C"]
+
+[[asserts]]
+arguments = [["Lead", "Cameo", "Lead", "Cameo", "Extra"]]
+expected  = ["Lead", "Cameo", "Extra"]
+
+[[asserts]]
+arguments = [["Gwen", "Miles", "Peter", "Gwen", "Miles", "Gwen"]]
+expected  = ["Gwen", "Miles", "Peter"]
+
+[[asserts]]
+arguments = [["Prowler", "Scorpion", "Prowler", "Rhino"]]
+expected  = ["Prowler", "Scorpion", "Rhino"]
+
+[[asserts]]
+arguments = [["A", "B", "B", "C", "C", "A", "A"]]
+expected  = ["A", "B", "C"]
+
+[[asserts]]
+arguments = [["Hero", "Hero", "Hero", "Villain"]]
+expected  = ["Hero", "Villain"]
+
+[[asserts]]
+arguments = [["Ned", "Ned", "MJ", "Peter", "MJ", "Peter"]]
+expected  = ["Ned", "MJ", "Peter"]
+
+[[asserts]]
+arguments = [["Alpha", "Beta", "Gamma", "Beta", "Gamma", "Alpha", "Gamma"]]
+expected  = ["Gamma", "Alpha", "Beta"]
+
+[[asserts]]
+arguments = [["Peter", "MJ", "Ned", "May", "Peter", "MJ", "Peter"]]
+expected  = ["Peter", "MJ", "Ned", "May"]

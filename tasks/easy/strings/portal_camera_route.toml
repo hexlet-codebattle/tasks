@@ -1,0 +1,142 @@
+base_score        = 70
+level             = "easy"
+name              = "portal_camera_route"
+tags              = ["strings", "spider_man"]
+time_to_solve_sec = 210
+
+description_en = """
+A camera drone records Spider-Man's route as `N`, `E`, `S`, and `W` commands. A portal rotates every recorded direction $90^\\circ$ clockwise, then plays the clip backward.
+
+Return the command string seen in the portal: rotate every command using `N` $\\to$ `E` $\\to$ `S` $\\to$ `W` $\\to$ `N`, then reverse their order. The empty route remains empty.
+"""
+
+description_ru = """
+Дрон записывает маршрут Человека-паука командами `N`, `E`, `S` и `W`. Портал поворачивает каждое записанное направление на $90^\\circ$ по часовой стрелке, а затем проигрывает запись задом наперед.
+
+Верните строку команд, видимую в портале: замените каждую команду по правилу `N` $\\to$ `E` $\\to$ `S` $\\to$ `W` $\\to$ `N`, затем разверните их порядок. Пустой маршрут остается пустым.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{route}) \\leq 10^4$
+- $\\text{route} \\in \\{N,E,S,W\\}^*$
+"""
+
+solution = """
+def solution(route: str) -> str:
+    turn = {"N": "E", "E": "S", "S": "W", "W": "N"}
+    return "".join(turn[command] for command in reversed(route))
+"""
+
+examples = """
+solution("") == ""
+solution("NE") == "SE"
+solution("NESW") == "NWSE"
+"""
+
+[[input_signature]]
+argument_name = "route"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [""]
+expected  = ""
+
+[[asserts]]
+arguments = ["N"]
+expected  = "E"
+
+[[asserts]]
+arguments = ["E"]
+expected  = "S"
+
+[[asserts]]
+arguments = ["S"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["W"]
+expected  = "N"
+
+[[asserts]]
+arguments = ["NE"]
+expected  = "SE"
+
+[[asserts]]
+arguments = ["NW"]
+expected  = "NE"
+
+[[asserts]]
+arguments = ["ES"]
+expected  = "WS"
+
+[[asserts]]
+arguments = ["SW"]
+expected  = "NW"
+
+[[asserts]]
+arguments = ["NESW"]
+expected  = "NWSE"
+
+[[asserts]]
+arguments = ["NNN"]
+expected  = "EEE"
+
+[[asserts]]
+arguments = ["EEEE"]
+expected  = "SSSS"
+
+[[asserts]]
+arguments = ["NSNS"]
+expected  = "WEWE"
+
+[[asserts]]
+arguments = ["NENW"]
+expected  = "NESE"
+
+[[asserts]]
+arguments = ["SSEEN"]
+expected  = "ESSWW"
+
+[[asserts]]
+arguments = ["WNESW"]
+expected  = "NWSEN"
+
+[[asserts]]
+arguments = ["NNESWW"]
+expected  = "NNWSEE"
+
+[[asserts]]
+arguments = ["NEWSNEWS"]
+expected  = "WNSEWNSE"
+
+[[asserts]]
+arguments = ["NNNNSSSS"]
+expected  = "WWWWEEEE"
+
+[[asserts]]
+arguments = ["ENWSENWS"]
+expected  = "WNESWNES"
+
+[[asserts]]
+arguments = ["NENENENE"]
+expected  = "SESESESE"
+
+[[asserts]]
+arguments = ["SSWWNN"]
+expected  = "EENNWW"
+
+[[asserts]]
+arguments = ["WNNESSE"]
+expected  = "SWWSEEN"
+
+[[asserts]]
+arguments = ["NESWNESWN"]
+expected  = "ENWSENWSE"
+
+[[asserts]]
+arguments = ["EEEEESSSSS"]
+expected  = "WWWWWSSSSS"

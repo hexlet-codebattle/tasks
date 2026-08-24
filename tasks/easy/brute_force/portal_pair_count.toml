@@ -1,0 +1,145 @@
+base_score        = 95
+level             = "easy"
+name              = "portal_pair_count"
+tags              = ["brute_force", "strings", "spider_man"]
+time_to_solve_sec = 280
+
+description_en = """
+Every portal has a circular code in `codes`; all codes have the same positive length. Portals at distinct indices $i < j$ link if `codes[j]` can be obtained from `codes[i]` by a **non-zero** cyclic left rotation.
+
+Count linked index pairs. For a periodic code, a non-zero rotation may reproduce the same string, so equal codes can sometimes link. A one-character code has no non-zero rotation.
+"""
+
+description_ru = """
+У каждого портала есть циклический код из массива `codes`; все коды имеют одинаковую положительную длину. Порталы с разными индексами $i < j$ соединяются, если `codes[j]` можно получить из `codes[i]` **ненулевым** циклическим сдвигом влево.
+
+Посчитайте соединенные пары индексов. Для периодического кода ненулевой сдвиг может дать ту же строку, поэтому одинаковые коды иногда соединяются. У кода из одного символа нет ненулевого сдвига.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{codes}) \\leq 100$
+- $1 \\leq \\text{len}(\\text{codes}[i]) \\leq 8$
+- $\\text{len}(\\text{codes}[i]) = \\text{len}(\\text{codes}[j])$
+"""
+
+solution = """
+def solution(codes: list[str]) -> int:
+    linked = lambda first, second: any(first[shift:] + first[:shift] == second for shift in range(1, len(first)))
+    return sum(linked(first, second) for i, first in enumerate(codes) for second in codes[i + 1:])
+"""
+
+examples = """
+solution([]) == 0
+solution(["AB", "BA"]) == 1
+solution(["ABC", "BCA", "CAB"]) == 3
+"""
+
+[[input_signature]]
+argument_name = "codes"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+expected  = 0
+
+[[asserts]]
+arguments = [["A"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["AB"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["AB", "BA"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["AB", "AB"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["AA", "AA"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["ABC", "BCA", "CAB"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["ABC", "ACB"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["ABCD", "DABC", "CDAB"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["AAAA", "AAAA", "AAAA"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["A", "A"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["ABC", "BCA", "XYZ"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["ABAB", "BABA", "ABAB"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["ABCD", "BCDA", "DCBA", "CDAB"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["XYZ", "YZX", "ZXY", "XYZ"]]
+expected  = 5
+
+[[asserts]]
+arguments = [["ABC", "ABC", "ABC"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["AAB", "ABA", "BAA"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["AAB", "AAB"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["ABCDE", "EABCD", "CDEAB"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["AB", "BA", "CD", "DC"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["010", "100", "001", "010"]]
+expected  = 5
+
+[[asserts]]
+arguments = [["NEWS", "EWSN", "WSNE", "SNEW"]]
+expected  = 6
+
+[[asserts]]
+arguments = [["ABCA", "BCAA", "CAAB", "AABC"]]
+expected  = 6
+
+[[asserts]]
+arguments = [["AAA", "AAA", "AAB"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["SPIDER", "PIDERS", "IDERSP", "HEROES"]]
+expected  = 3

@@ -1,0 +1,171 @@
+base_score        = 145
+level             = "medium"
+name              = "web_anchor_combo"
+tags              = ["dp", "spider_man"]
+time_to_solve_sec = 430
+
+description_en = """
+Rooftop anchors have strictly increasing positive positions `positions`; landing on anchor $i$ adds `bonuses[i]` to Spider-Man's combo score. He starts at position $0$ and may only move right. Every jump distance must be between `min_jump` and `max_jump`, inclusive. Anchors may be skipped, and he may stop after any landing.
+
+Return the maximum possible total bonus. Spider-Man may make no jump, which scores $0$. A route may pass through negative-bonus anchors when that unlocks a better later landing.
+"""
+
+description_ru = """
+Крепления на крышах имеют строго возрастающие положительные координаты `positions`; приземление на крепление $i$ добавляет `bonuses[i]` к счету комбо. Человек-паук начинает в точке $0$ и может двигаться только вправо. Длина каждого прыжка должна находиться между `min_jump` и `max_jump` включительно. Крепления можно пропускать, а остановиться можно после любого приземления.
+
+Верните максимальную сумму бонусов. Можно не делать ни одного прыжка и получить $0$. Маршрут может проходить через крепления с отрицательным бонусом, если это открывает более выгодное приземление дальше.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{positions}) = \\text{len}(\\text{bonuses}) \\leq 500$
+- $1 \\leq \\text{positions}[i] < \\text{positions}[i+1] \\leq 10^6$
+- $-10^6 \\leq \\text{bonuses}[i] \\leq 10^6$
+- $1 \\leq \\text{min\\_jump} \\leq \\text{max\\_jump} \\leq 10^6$
+"""
+
+solution = """
+def solution(positions: list[int], bonuses: list[int], min_jump: int, max_jump: int) -> int:
+    scores, answer = [None] * len(positions), 0
+    for i, position in enumerate(positions):
+        best = 0 if min_jump <= position <= max_jump else None
+        for j in range(i):
+            if scores[j] is not None and min_jump <= position - positions[j] <= max_jump:
+                best = scores[j] if best is None else max(best, scores[j])
+        if best is not None:
+            scores[i] = best + bonuses[i]
+            answer = max(answer, scores[i])
+    return answer
+"""
+
+examples = """
+solution([2], [5], 1, 3) == 5
+solution([5], [10], 1, 3) == 0
+solution([2, 5], [4, 7], 2, 3) == 11
+"""
+
+[[input_signature]]
+argument_name = "positions"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "bonuses"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "min_jump"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "max_jump"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[2], [5], 1, 3]
+expected  = 5
+
+[[asserts]]
+arguments = [[5], [10], 1, 3]
+expected  = 0
+
+[[asserts]]
+arguments = [[2, 5], [4, 7], 2, 3]
+expected  = 11
+
+[[asserts]]
+arguments = [[2, 6], [4, 7], 2, 3]
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 2, 3], [1, 2, 3], 1, 1]
+expected  = 6
+
+[[asserts]]
+arguments = [[1, 3, 5], [5, 6, 7], 1, 2]
+expected  = 18
+
+[[asserts]]
+arguments = [[2, 4, 6], [5, -2, 10], 2, 2]
+expected  = 13
+
+[[asserts]]
+arguments = [[2, 4, 6], [-5, 10, 3], 2, 2]
+expected  = 8
+
+[[asserts]]
+arguments = [[3, 6, 9], [4, 5, 6], 3, 3]
+expected  = 15
+
+[[asserts]]
+arguments = [[3, 7, 10], [4, 100, 5], 3, 4]
+expected  = 109
+
+[[asserts]]
+arguments = [[1, 4, 7, 10], [2, 3, 4, 5], 1, 3]
+expected  = 14
+
+[[asserts]]
+arguments = [[2, 3, 8, 9], [5, 6, 7, 8], 2, 5]
+expected  = 13
+
+[[asserts]]
+arguments = [[2, 5, 7, 11], [4, -3, 10, 6], 2, 4]
+expected  = 17
+
+[[asserts]]
+arguments = [[4, 8, 12], [5, 6, 7], 1, 4]
+expected  = 18
+
+[[asserts]]
+arguments = [[4, 9, 14], [5, 6, 7], 4, 5]
+expected  = 18
+
+[[asserts]]
+arguments = [[1, 10], [100, 100], 1, 9]
+expected  = 200
+
+[[asserts]]
+arguments = [[5, 6, 7], [10, 20, 30], 5, 5]
+expected  = 10
+
+[[asserts]]
+arguments = [[2, 7, 12, 17], [1, 2, 3, 4], 2, 5]
+expected  = 10
+
+[[asserts]]
+arguments = [[2, 5, 9, 14], [3, 4, 5, 6], 2, 5]
+expected  = 18
+
+[[asserts]]
+arguments = [[3, 5, 8, 12], [10, -20, 30, 40], 2, 4]
+expected  = 60
+
+[[asserts]]
+arguments = [[1, 2, 4, 8], [1, 2, 4, 8], 1, 4]
+expected  = 15
+
+[[asserts]]
+arguments = [[6, 12, 18], [5, 10, 20], 1, 6]
+expected  = 35
+
+[[asserts]]
+arguments = [[2, 3, 4, 10], [5, 5, 5, 100], 2, 6]
+expected  = 110
+
+[[asserts]]
+arguments = [[1, 100], [7, 999], 1, 1]
+expected  = 7
+
+[[asserts]]
+arguments = [[100, 200, 300], [10, 20, 30], 100, 100]
+expected  = 60

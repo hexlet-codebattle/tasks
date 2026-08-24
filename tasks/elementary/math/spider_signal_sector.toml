@@ -1,0 +1,144 @@
+base_score        = 40
+level             = "elementary"
+name              = "spider_signal_sector"
+tags              = ["math", "spider_man"]
+time_to_solve_sec = 120
+
+description_en = """
+A Spider-Signal has $12$ beams numbered $0$ through $11$. Beam $0$ points at angle $0^\\circ$, and every next beam is another $30^\\circ$ clockwise.
+
+Given an integer clockwise angle `angle`, return the number of the nearest beam. An angle exactly halfway between two beams belongs to the clockwise beam. Angles wrap around, so beam $0$ is also nearest near $360^\\circ$.
+"""
+
+description_ru = """
+У Паучьего сигнала есть $12$ лучей с номерами от $0$ до $11$. Луч $0$ направлен под углом $0^\\circ$, а каждый следующий луч повернут еще на $30^\\circ$ по часовой стрелке.
+
+Дан целый угол `angle`, отсчитанный по часовой стрелке. Верните номер ближайшего луча. Угол ровно посередине между двумя лучами относится к следующему по часовой стрелке лучу. Углы зациклены, поэтому вблизи $360^\\circ$ ближайшим также является луч $0$.
+"""
+
+limits = """
+- $0 \\leq \\text{angle} < 360$
+"""
+
+solution = """
+def solution(angle: int) -> int:
+    return (angle + 15) // 30 % 12
+"""
+
+examples = """
+solution(0) == 0
+solution(75) == 3
+solution(345) == 0
+"""
+
+[[input_signature]]
+argument_name = "angle"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0]
+expected  = 0
+
+[[asserts]]
+arguments = [1]
+expected  = 0
+
+[[asserts]]
+arguments = [14]
+expected  = 0
+
+[[asserts]]
+arguments = [15]
+expected  = 1
+
+[[asserts]]
+arguments = [16]
+expected  = 1
+
+[[asserts]]
+arguments = [29]
+expected  = 1
+
+[[asserts]]
+arguments = [30]
+expected  = 1
+
+[[asserts]]
+arguments = [44]
+expected  = 1
+
+[[asserts]]
+arguments = [45]
+expected  = 2
+
+[[asserts]]
+arguments = [59]
+expected  = 2
+
+[[asserts]]
+arguments = [60]
+expected  = 2
+
+[[asserts]]
+arguments = [74]
+expected  = 2
+
+[[asserts]]
+arguments = [75]
+expected  = 3
+
+[[asserts]]
+arguments = [89]
+expected  = 3
+
+[[asserts]]
+arguments = [90]
+expected  = 3
+
+[[asserts]]
+arguments = [104]
+expected  = 3
+
+[[asserts]]
+arguments = [105]
+expected  = 4
+
+[[asserts]]
+arguments = [119]
+expected  = 4
+
+[[asserts]]
+arguments = [120]
+expected  = 4
+
+[[asserts]]
+arguments = [149]
+expected  = 5
+
+[[asserts]]
+arguments = [180]
+expected  = 6
+
+[[asserts]]
+arguments = [269]
+expected  = 9
+
+[[asserts]]
+arguments = [330]
+expected  = 11
+
+[[asserts]]
+arguments = [344]
+expected  = 11
+
+[[asserts]]
+arguments = [345]
+expected  = 0
+
+[[asserts]]
+arguments = [359]
+expected  = 0

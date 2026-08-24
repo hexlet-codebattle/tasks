@@ -1,0 +1,186 @@
+base_score        = 220
+level             = "hard"
+name              = "multiverse_identity_swaps"
+tags              = ["algo", "sorting", "spider_man"]
+time_to_solve_sec = 720
+
+description_en = """
+Two universes show a lineup of identities in arrays `original` and `target`. One move swaps two adjacent entries of `original`. Names may repeat, and equal occurrences are indistinguishable.
+
+Return the minimum number of moves needed to obtain `target`. If the arrays contain different multisets of names, return $-1$.
+"""
+
+description_ru = """
+Две вселенные показывают порядок личностей в массивах `original` и `target`. За один ход можно поменять местами два соседних элемента `original`. Имена могут повторяться, а одинаковые вхождения неразличимы.
+
+Верните минимальное количество ходов для получения `target`. Если массивы содержат разные мультимножества имен, верните $-1$.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{original}), \\text{len}(\\text{target}) \\leq 5000$
+- $1 \\leq \\text{len}(\\text{original}[i]), \\text{len}(\\text{target}[i]) \\leq 30$
+"""
+
+solution = """
+def solution(original: list[str], target: list[str]) -> int:
+    positions = {}
+    for index, name in enumerate(original):
+        positions.setdefault(name, []).append(index)
+    used, order = {}, []
+    for name in target:
+        occurrence = used.get(name, 0)
+        if name not in positions or occurrence == len(positions[name]):
+            return -1
+        order.append(positions[name][occurrence])
+        used[name] = occurrence + 1
+    if len(order) != len(original):
+        return -1
+    tree, answer = [0] * (len(order) + 1), 0
+    for seen, position in enumerate(order):
+        index, before = position + 1, 0
+        while index:
+            before += tree[index]
+            index -= index & -index
+        answer += seen - before
+        index = position + 1
+        while index <= len(order):
+            tree[index] += 1
+            index += index & -index
+    return answer
+"""
+
+examples = """
+solution([], []) == 0
+solution(["A", "B"], ["B", "A"]) == 1
+solution(["A", "B", "C"], ["C", "B", "A"]) == 3
+"""
+
+[[input_signature]]
+argument_name = "original"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "target"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[], []]
+expected  = 0
+
+[[asserts]]
+arguments = [["Peter"], ["Peter"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["Peter"], ["MJ"]]
+expected  = -1
+
+[[asserts]]
+arguments = [["A", "B"], ["A", "B"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["A", "B"], ["B", "A"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["A", "B", "C"], ["C", "B", "A"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["A", "A"], ["A", "A"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["A", "B", "A"], ["A", "A", "B"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["A", "B", "A"], ["B", "A", "A"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["A", "B", "B", "A"], ["B", "A", "A", "B"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["Peter", "MJ", "Ned"], ["Ned", "Peter", "MJ"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["A", "B", "C", "D"], ["B", "D", "A", "C"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["A", "B", "C", "A"], ["A", "A", "B", "C"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["X", "Y", "X", "Y"], ["Y", "Y", "X", "X"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["A", "B", "C"], ["A", "B"]]
+expected  = -1
+
+[[asserts]]
+arguments = [["A", "A", "B"], ["A", "B", "B"]]
+expected  = -1
+
+[[asserts]]
+arguments = [["One", "Two", "Three", "Four"], ["Four", "Three", "Two", "One"]]
+expected  = 6
+
+[[asserts]]
+arguments = [["A", "B", "A", "B", "A"], ["B", "A", "B", "A", "A"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["P", "M", "P", "N", "M"], ["M", "P", "M", "P", "N"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["A", "B", "C", "D", "E"], ["E", "A", "D", "B", "C"]]
+expected  = 6
+
+[[asserts]]
+arguments = [["A", "A", "A", "B", "B"], ["B", "B", "A", "A", "A"]]
+expected  = 6
+
+[[asserts]]
+arguments = [["A", "B", "C", "A", "B", "C"], ["C", "B", "A", "C", "B", "A"]]
+expected  = 6
+
+[[asserts]]
+arguments = [
+  [
+    "Spider",
+    "Hero",
+    "Spider",
+    "MJ",
+  ],
+  [
+    "MJ",
+    "Spider",
+    "Hero",
+    "Spider",
+  ],
+]
+expected = 3
+
+[[asserts]]
+arguments = [["A", "B", "C", "D", "A"], ["A", "D", "C", "B", "A"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["Z", "Y", "X", "W", "V", "U"], ["U", "V", "W", "X", "Y", "Z"]]
+expected  = 15

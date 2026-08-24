@@ -1,0 +1,153 @@
+base_score        = 135
+level             = "medium"
+name              = "portal_continuity_cut"
+tags              = ["algo", "two_pointers", "spider_man"]
+time_to_solve_sec = 400
+
+description_en = """
+The trailer timeline is `scene_ids`. Repeated IDs create a continuity error. The editor may delete one contiguous half-open segment, possibly empty, and join the remaining prefix and suffix.
+
+Return the minimum number of deleted elements needed so that every ID in the remaining timeline is distinct. Deleting the whole timeline is allowed.
+"""
+
+description_ru = """
+Монтажная последовательность трейлера задана массивом `scene_ids`. Повторяющиеся идентификаторы создают ошибку непрерывности. Монтажер может удалить один непрерывный полуинтервал, в том числе пустой, и соединить оставшиеся префикс и суффикс.
+
+Верните минимальное количество удаленных элементов, после которого все идентификаторы в оставшейся последовательности различны. Разрешено удалить всю последовательность.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{scene\\_ids}) \\leq 10^5$
+- $-10^9 \\leq \\text{scene\\_ids}[i] \\leq 10^9$
+"""
+
+solution = """
+def solution(scene_ids: list[int]) -> int:
+    right, suffix = len(scene_ids), set()
+    while right and scene_ids[right - 1] not in suffix:
+        right -= 1; suffix.add(scene_ids[right])
+    answer, prefix = right, set()
+    for left, scene in enumerate(scene_ids):
+        if scene in prefix: break
+        prefix.add(scene)
+        while scene in suffix:
+            suffix.remove(scene_ids[right]); right += 1
+        answer = min(answer, right - left - 1)
+    return answer
+"""
+
+examples = """
+solution([]) == 0
+solution([1, 2, 1]) == 1
+solution([1, 2, 1, 2]) == 2
+"""
+
+[[input_signature]]
+argument_name = "scene_ids"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+expected  = 0
+
+[[asserts]]
+arguments = [[1]]
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2, 3]]
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 1, 2]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 1, 1]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3, 2, 4]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 1, 2, 3]]
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 2, 5]]
+expected  = 1
+
+[[asserts]]
+arguments = [[5, 1, 2, 3, 1, 4]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 2, 3, 4]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 1]]
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 3, 2]]
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 1, 0, 2, 3]]
+expected  = 1
+
+[[asserts]]
+arguments = [[4, 4, 1, 2, 3, 4]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3, 2, 1, 4, 5]]
+expected  = 2
+
+[[asserts]]
+arguments = [[7, 8, 9, 7, 10, 8]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 3, 6, 2, 7]]
+expected  = 2
+
+[[asserts]]
+arguments = [[9, 9, 8, 8]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 1, 3, 2, 4, 3]]
+expected  = 3
+
+[[asserts]]
+arguments = [[100, 200, 300, 100]]
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 0, 0, 1, 2, 3]]
+expected  = 2
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]]
+expected  = 5

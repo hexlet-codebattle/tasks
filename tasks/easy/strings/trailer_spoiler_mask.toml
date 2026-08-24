@@ -1,0 +1,154 @@
+base_score        = 85
+level             = "easy"
+name              = "trailer_spoiler_mask"
+tags              = ["strings", "spider_man"]
+time_to_solve_sec = 250
+
+description_en = """
+The studio marks spoiler spans in trailer text `text`. Every pair `[left, right]` denotes the half-open character interval $[\\text{left}, \\text{right})$.
+
+Replace every character covered by at least one span with `*` and return the result. Spans may overlap, touch, be empty, and cover spaces. Uncovered characters keep their original positions.
+"""
+
+description_ru = """
+Студия отмечает спойлеры в тексте трейлера `text`. Каждая пара `[left, right]` задает полуинтервал символов $[\\text{left}, \\text{right})$.
+
+Замените каждый символ, покрытый хотя бы одним отрезком, на `*` и верните результат. Отрезки могут пересекаться, соприкасаться, быть пустыми и покрывать пробелы. Непокрытые символы остаются на своих позициях.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{text}) \\leq 10^4$
+- $0 \\leq \\text{len}(\\text{spans}) \\leq 10^3$
+- $0 \\leq \\text{left} \\leq \\text{right} \\leq \\text{len}(\\text{text})$
+"""
+
+solution = """
+def solution(text: str, spans: list[list[int]]) -> str:
+    result = list(text)
+    for left, right in spans:
+        result[left:right] = "*" * (right - left)
+    return "".join(result)
+"""
+
+examples = """
+solution("Hero", []) == "Hero"
+solution("Hero", [[0, 4]]) == "****"
+solution("Spider Man", [[7, 10]]) == "Spider ***"
+"""
+
+[[input_signature]]
+argument_name = "text"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "spans"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["Hero", []]
+expected  = "Hero"
+
+[[asserts]]
+arguments = ["Hero", [[0, 4]]]
+expected  = "****"
+
+[[asserts]]
+arguments = ["Spider Man", [[0, 6]]]
+expected  = "****** Man"
+
+[[asserts]]
+arguments = ["Spider Man", [[7, 10]]]
+expected  = "Spider ***"
+
+[[asserts]]
+arguments = ["New York", [[3, 4]]]
+expected  = "New*York"
+
+[[asserts]]
+arguments = ["Peter Parker", [[0, 5], [6, 12]]]
+expected  = "***** ******"
+
+[[asserts]]
+arguments = ["Daily Bugle", [[2, 8]]]
+expected  = "Da******gle"
+
+[[asserts]]
+arguments = ["Portal opens", [[0, 0], [12, 12]]]
+expected  = "Portal opens"
+
+[[asserts]]
+arguments = ["Web swing", [[0, 3], [4, 9]]]
+expected  = "*** *****"
+
+[[asserts]]
+arguments = ["Secret cameo", [[0, 6], [3, 10]]]
+expected  = "**********eo"
+
+[[asserts]]
+arguments = ["One two three", [[4, 7]]]
+expected  = "One *** three"
+
+[[asserts]]
+arguments = ["Mask reveal", [[5, 11]]]
+expected  = "Mask ******"
+
+[[asserts]]
+arguments = ["Rooftop chase", [[1, 2], [3, 5], [8, 13]]]
+expected  = "R*o**op *****"
+
+[[asserts]]
+arguments = ["MJ returns", [[0, 2], [3, 10]]]
+expected  = "** *******"
+
+[[asserts]]
+arguments = ["No spoilers", [[2, 2], [5, 5]]]
+expected  = "No spoilers"
+
+[[asserts]]
+arguments = ["City at dawn", [[0, 1], [11, 12]]]
+expected  = "*ity at daw*"
+
+[[asserts]]
+arguments = ["Spider signal", [[6, 13], [0, 6]]]
+expected  = "*************"
+
+[[asserts]]
+arguments = ["Final battle scene", [[6, 12]]]
+expected  = "Final ****** scene"
+
+[[asserts]]
+arguments = ["A B C", [[1, 4]]]
+expected  = "A***C"
+
+[[asserts]]
+arguments = ["Multiverse", [[2, 8], [5, 10]]]
+expected  = "Mu********"
+
+[[asserts]]
+arguments = ["Three heroes", [[0, 5], [6, 12]]]
+expected  = "***** ******"
+
+[[asserts]]
+arguments = ["Brand New Day", [[6, 9]]]
+expected  = "Brand *** Day"
+
+[[asserts]]
+arguments = ["Web", [[1, 2], [0, 1], [2, 3]]]
+expected  = "***"
+
+[[asserts]]
+arguments = ["Unmasked hero", [[0, 8]]]
+expected  = "******** hero"
+
+[[asserts]]
+arguments = ["After credits", [[5, 12], [0, 5]]]
+expected  = "************s"

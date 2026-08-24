@@ -1,0 +1,146 @@
+base_score        = 45
+level             = "elementary"
+name              = "dual_web_cartridges"
+tags              = ["math", "spider_man"]
+time_to_solve_sec = 120
+
+description_en = """
+Spider-Man fires `shots` web shots, alternating shooters: left, right, left, right, and so on. Each cartridge supplies exactly `capacity` shots to the shooter in which it is installed. The two shooters do not share cartridges.
+
+Return the total number of cartridges that must be installed across both shooters. A shooter that is never fired needs no cartridge.
+"""
+
+description_ru = """
+Человек-паук делает `shots` выстрелов паутиной, чередуя устройства: левое, правое, левое, правое и так далее. Один картридж дает ровно `capacity` выстрелов из того устройства, в которое он установлен. Устройства не используют общие картриджи.
+
+Верните общее количество картриджей, которые потребуется установить в оба устройства. Если устройство ни разу не используется, картридж для него не нужен.
+"""
+
+limits = """
+- $0 \\leq \\text{shots} \\leq 10^9$
+- $1 \\leq \\text{capacity} \\leq 10^6$
+"""
+
+solution = """
+def solution(shots: int, capacity: int) -> int:
+    return ((shots + 1) // 2 + capacity - 1) // capacity + (shots // 2 + capacity - 1) // capacity
+"""
+
+examples = """
+solution(0, 5) == 0
+solution(9, 5) == 2
+solution(11, 5) == 3
+"""
+
+[[input_signature]]
+argument_name = "shots"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "capacity"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 1]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [2, 1]
+expected  = 2
+
+[[asserts]]
+arguments = [3, 1]
+expected  = 3
+
+[[asserts]]
+arguments = [4, 1]
+expected  = 4
+
+[[asserts]]
+arguments = [1, 5]
+expected  = 1
+
+[[asserts]]
+arguments = [2, 5]
+expected  = 2
+
+[[asserts]]
+arguments = [9, 5]
+expected  = 2
+
+[[asserts]]
+arguments = [10, 5]
+expected  = 2
+
+[[asserts]]
+arguments = [11, 5]
+expected  = 3
+
+[[asserts]]
+arguments = [19, 5]
+expected  = 4
+
+[[asserts]]
+arguments = [20, 5]
+expected  = 4
+
+[[asserts]]
+arguments = [21, 5]
+expected  = 5
+
+[[asserts]]
+arguments = [7, 2]
+expected  = 4
+
+[[asserts]]
+arguments = [8, 2]
+expected  = 4
+
+[[asserts]]
+arguments = [9, 2]
+expected  = 5
+
+[[asserts]]
+arguments = [12, 3]
+expected  = 4
+
+[[asserts]]
+arguments = [13, 3]
+expected  = 5
+
+[[asserts]]
+arguments = [99, 10]
+expected  = 10
+
+[[asserts]]
+arguments = [100, 10]
+expected  = 10
+
+[[asserts]]
+arguments = [101, 10]
+expected  = 11
+
+[[asserts]]
+arguments = [1000, 100]
+expected  = 10
+
+[[asserts]]
+arguments = [1001, 100]
+expected  = 11
+
+[[asserts]]
+arguments = [999999999, 1000000]
+expected  = 1000
+
+[[asserts]]
+arguments = [1000000000, 1000000]
+expected  = 1000

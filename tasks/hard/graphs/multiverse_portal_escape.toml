@@ -1,0 +1,189 @@
+base_score        = 240
+level             = "hard"
+name              = "multiverse_portal_escape"
+tags              = ["graphs", "state_search", "spider_man"]
+time_to_solve_sec = 800
+
+description_en = """
+Spider-Man is trapped in a rectangular multiverse grid:
+
+- `S` is the start and `E` is the exit.
+- `#` is blocked; `.` is an ordinary open cell.
+- Every other uppercase letter is a portal label and appears exactly twice.
+
+One move enters an orthogonally adjacent non-blocked cell. When he enters a portal whose label has not been used, he may either stay there without using it, or instantly move to its twin as part of the same move and mark that label used. Afterward, both cells of that label are ordinary open cells. Each label can be used at most once, independently of all other labels.
+
+Return the minimum number of moves from `S` to `E`, or $-1$ if escape is impossible.
+"""
+
+description_ru = """
+Человек-паук заперт в прямоугольной сетке мультивселенной:
+
+- `S` — старт, `E` — выход.
+- `#` — препятствие, `.` — обычная свободная клетка.
+- Каждая другая заглавная буква обозначает портал и встречается ровно два раза.
+
+За один ход можно перейти в соседнюю по стороне незаблокированную клетку. Войдя в портал с еще не использованной меткой, можно либо остаться в его клетке и не использовать его, либо мгновенно переместиться в парный портал в рамках того же хода и отметить метку использованной. После этого обе клетки этой метки становятся обычными свободными клетками. Каждая метка используется не более одного раза независимо от остальных.
+
+Верните минимальное число ходов от `S` до `E` или $-1$, если выбраться невозможно.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{grid}) \\leq 20$
+- $1 \\leq \\text{len}(\\text{grid}[i]) = \\text{len}(\\text{grid}[0]) \\leq 20$
+- $\\text{grid}[i][j] \\in \\{A,\\ldots,Z,\\#,\\.\\}$
+- $\\operatorname{count}(S) = \\operatorname{count}(E) = 1$
+- $0 \\leq |\\{c \\mid c \\notin \\{S,E,\\#,\\.\\}\\}| \\leq 8$
+- $\\operatorname{count}(c) = 2$
+"""
+
+solution = """
+from collections import deque
+
+def solution(grid: list[str]) -> int:
+    rows, columns = len(grid), len(grid[0])
+    portals = {}
+    for row in range(rows):
+        for column, cell in enumerate(grid[row]):
+            if cell == "S":
+                start = (row, column)
+            elif cell not in ".#E":
+                portals.setdefault(cell, []).append((row, column))
+    queue = deque([(start[0], start[1], 0, 0)])
+    seen = {(start[0], start[1], 0)}
+    while queue:
+        row, column, used, distance = queue.popleft()
+        if grid[row][column] == "E":
+            return distance
+        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nr, nc = row + dr, column + dc
+            if not (0 <= nr < rows and 0 <= nc < columns) or grid[nr][nc] == "#":
+                continue
+            states, cell = [(nr, nc, used)], grid[nr][nc]
+            if cell in portals:
+                bit = 1 << (ord(cell) - ord("A"))
+                if not used & bit:
+                    twin = portals[cell][0] if portals[cell][1] == (nr, nc) else portals[cell][1]
+                    states.append((twin[0], twin[1], used | bit))
+            for state in states:
+                if state not in seen:
+                    seen.add(state)
+                    queue.append((*state, distance + 1))
+    return -1
+"""
+
+examples = """
+solution(["SE"]) == 1
+solution(["S#E"]) == -1
+solution(["S.A####", "####A.E"]) == 4
+"""
+
+[[input_signature]]
+argument_name = "grid"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["SE"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S.E"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["S#E"]]
+expected  = -1
+
+[[asserts]]
+arguments = [["S", ".", "E"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["S.", ".E"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["S#", ".E"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["S..", "##.", "..E"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["S..", ".#.", "..E"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["S#.", "###", ".#E"]]
+expected  = -1
+
+[[asserts]]
+arguments = [["S...", "###.", "E..."]]
+expected  = 8
+
+[[asserts]]
+arguments = [["S.A####", "####A.E"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["SA.E", "A###"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["SA#E", ".#A."]]
+expected  = 3
+
+[[asserts]]
+arguments = [["S.A", "###", "A.E"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["S.A#E", "...#.", "A...."]]
+expected  = 8
+
+[[asserts]]
+arguments = [["S.A#B", "###.#", "B...A", "###.E"]]
+expected  = 3
+
+[[asserts]]
+arguments = [["S.A###", "..#B.E", "A.#B.."]]
+expected  = -1
+
+[[asserts]]
+arguments = [["S..A", "####", "A..E"]]
+expected  = 6
+
+[[asserts]]
+arguments = [["SAB#E", "###..", "BA..."]]
+expected  = 6
+
+[[asserts]]
+arguments = [["S.A.B#E", "###.#..", "A...B.."]]
+expected  = 8
+
+[[asserts]]
+arguments = [["S...", ".#A.", "A#.E"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["S#A#E", "..#..", "A...."]]
+expected  = 8
+
+[[asserts]]
+arguments = [["S.A.B", "#####", "B.A.E"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["S..#..E", ".##.#..", "A...A.."]]
+expected  = 6
+
+[[asserts]]
+arguments = [["S.A#B.E", "...#...", "A..#B.."]]
+expected  = -1

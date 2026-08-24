@@ -1,0 +1,147 @@
+base_score        = 80
+level             = "easy"
+name              = "swing_energy_reserve"
+tags              = ["math", "spider_man"]
+time_to_solve_sec = 240
+
+description_en = """
+Spider-Man visits rooftops in the order of `heights`. Rising by $d$ meters spends $d$ energy. Dropping by $d$ meters restores $\\lfloor d / 2 \\rfloor$ energy. Energy changes only between consecutive rooftops and may never be negative.
+
+Return the minimum integer energy needed before the first move. With fewer than two rooftops, return $0$.
+"""
+
+description_ru = """
+Человек-паук посещает крыши в порядке массива `heights`. Подъем на $d$ метров расходует $d$ единиц энергии. Спуск на $d$ метров восстанавливает $\\lfloor d / 2 \\rfloor$ единиц. Энергия меняется только между соседними крышами и никогда не может быть отрицательной.
+
+Верните минимальный целый запас энергии перед первым перемещением. Если крыш меньше двух, верните $0$.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{heights}) \\leq 10^4$
+- $0 \\leq \\text{heights}[i] \\leq 10^6$
+"""
+
+solution = """
+def solution(heights: list[int]) -> int:
+    energy = lowest = 0
+    for current, next_height in zip(heights, heights[1:]):
+        energy += (current - next_height) // 2 if next_height < current else current - next_height
+        lowest = min(lowest, energy)
+    return -lowest
+"""
+
+examples = """
+solution([5]) == 0
+solution([0, 5]) == 5
+solution([10, 0, 5]) == 0
+"""
+
+[[input_signature]]
+argument_name = "heights"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[5]]
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 5]]
+expected  = 5
+
+[[asserts]]
+arguments = [[5, 0]]
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 5, 0]]
+expected  = 5
+
+[[asserts]]
+arguments = [[10, 0, 5]]
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 10, 0, 10]]
+expected  = 15
+
+[[asserts]]
+arguments = [[10, 0, 10, 0]]
+expected  = 5
+
+[[asserts]]
+arguments = [[3, 8, 4, 9]]
+expected  = 8
+
+[[asserts]]
+arguments = [[9, 4, 8, 3]]
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 1, 2, 3]]
+expected  = 3
+
+[[asserts]]
+arguments = [[3, 2, 1, 0]]
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 4, 2, 7, 3]]
+expected  = 7
+
+[[asserts]]
+arguments = [[20, 0, 10]]
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 20, 10, 20]]
+expected  = 25
+
+[[asserts]]
+arguments = [[5, 5, 5]]
+expected  = 0
+
+[[asserts]]
+arguments = [[2, 9, 1, 8, 0]]
+expected  = 10
+
+[[asserts]]
+arguments = [[100, 0, 50, 0, 25]]
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 100, 0]]
+expected  = 100
+
+[[asserts]]
+arguments = [[7, 3, 9, 2, 8]]
+expected  = 7
+
+[[asserts]]
+arguments = [[1, 2, 1, 2, 1, 2]]
+expected  = 3
+
+[[asserts]]
+arguments = [[10, 9, 8, 20]]
+expected  = 12
+
+[[asserts]]
+arguments = [[50, 1, 50]]
+expected  = 25
+
+[[asserts]]
+arguments = [[0, 3, 0, 3, 0, 3]]
+expected  = 7
+
+[[asserts]]
+arguments = [[8, 0, 4, 2, 9]]
+expected  = 6
+
+[[asserts]]
+arguments = [[1000000, 0, 1000000]]
+expected  = 500000

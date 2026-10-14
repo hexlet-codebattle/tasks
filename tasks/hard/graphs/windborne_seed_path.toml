@@ -1,0 +1,198 @@
+base_score        = 210
+level             = "hard"
+name              = "windborne_seed_path"
+tags              = ["graphs", "grid"]
+time_to_solve_sec = 750
+
+description_en = """
+The direction of air currents shapes the trajectory of wind-dispersed seeds. Every cell of the rectangular grid `wind` holds the local wind direction: `U` up, `D` down, `L` left, `R` right, where up means towards row $0$ and left means towards column $0$; all rows have the same length. A seed starts in the top left cell and moves between cells sharing a side. A move out of a cell is free when it goes in the wind direction of that cell and costs $1$ otherwise.
+
+Return the minimum total cost of a path to the bottom right cell.
+"""
+
+description_ru = """
+Направление воздушных потоков определяет траекторию ветрораспространяемых семян. Каждая клетка прямоугольной сетки `wind` содержит местное направление ветра: `U` — вверх, `D` — вниз, `L` — влево, `R` — вправо, где вверх означает в сторону строки $0$, а влево — в сторону столбца $0$; все строки имеют одинаковую длину. Семя начинает движение в левой верхней клетке и перемещается между клетками, имеющими общую сторону. Переход из клетки бесплатен, если он совпадает с направлением ветра в этой клетке, и стоит $1$ в противном случае.
+
+Верните минимальную суммарную стоимость пути в правую нижнюю клетку.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{wind}) \\leq 300$
+- $1 \\leq \\text{len}(\\text{wind}[i]) = \\text{len}(\\text{wind}[0]) \\leq 300$
+- $\\text{wind}[i][j] \\in \\{U, D, L, R\\}$
+"""
+
+solution = """
+def solution(wind: list[str]) -> int:
+    from collections import deque
+    height, width = len(wind), len(wind[0])
+    distance = [[float("inf")] * width for _ in range(height)]
+    distance[0][0] = 0
+    queue = deque([(0, 0)])
+    directions = [(0, 1, "R"), (1, 0, "D"), (0, -1, "L"), (-1, 0, "U")]
+    while queue:
+        row, column = queue.popleft()
+        for dr, dc, direction in directions:
+            nr, nc = row + dr, column + dc
+            if 0 <= nr < height and 0 <= nc < width:
+                cost = wind[row][column] != direction
+                new_distance = distance[row][column] + cost
+                if new_distance < distance[nr][nc]:
+                    distance[nr][nc] = new_distance
+                    if cost:
+                        queue.append((nr, nc))
+                    else:
+                        queue.appendleft((nr, nc))
+    return distance[-1][-1]
+"""
+
+examples = """
+solution(["U"]) == 0
+solution(["RD", "LL"]) == 0
+solution(["LL", "UU"]) == 2
+"""
+
+[[input_signature]]
+argument_name = "wind"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["RD", "LL"]]
+comment   = "Wind carries the seed all the way"
+expected  = 0
+
+[[asserts]]
+arguments = [["LL", "UU"]]
+comment   = "Wind never helps"
+expected  = 2
+
+[[asserts]]
+arguments = [["U"]]
+comment   = "Single cell needs no move"
+expected  = 0
+
+[[asserts]]
+arguments = [["RR"]]
+comment   = "Free move to the right"
+expected  = 0
+
+[[asserts]]
+arguments = [["LL"]]
+comment   = "One move against the wind"
+expected  = 1
+
+[[asserts]]
+arguments = [["D", "D"]]
+comment   = "Free move down"
+expected  = 0
+
+[[asserts]]
+arguments = [["U", "U"]]
+comment   = "One move down against the wind"
+expected  = 1
+
+[[asserts]]
+arguments = [["RRD", "UUD", "UUU"]]
+comment   = "Free path around the middle"
+expected  = 0
+
+[[asserts]]
+arguments = [["RRR", "RRR", "RRR"]]
+comment   = "Every row blows to the right"
+expected  = 2
+
+[[asserts]]
+arguments = [["DDD", "DDD", "DDD"]]
+comment   = "Every column blows down"
+expected  = 2
+
+[[asserts]]
+arguments = [["UUU", "UUU", "UUU"]]
+comment   = "Wind blows away from the target"
+expected  = 4
+
+[[asserts]]
+arguments = [["LLL", "LLL", "LLL"]]
+comment   = "Wind blows back to the start"
+expected  = 4
+
+[[asserts]]
+arguments = [["RD", "RD"]]
+comment   = "Two free moves"
+expected  = 0
+
+[[asserts]]
+arguments = [["DR", "RD"]]
+comment   = "Free diagonal staircase"
+expected  = 0
+
+[[asserts]]
+arguments = [["RDL", "URD", "LUR"]]
+comment   = "Rotating wind directions"
+expected  = 0
+
+[[asserts]]
+arguments = [["RRDD", "UURD", "ULLD", "RRRD"]]
+comment   = "Mixed grid with a free border"
+expected  = 0
+
+[[asserts]]
+arguments = [["DRRR", "DUUU", "DUUU", "RRRD"]]
+comment   = "Free frame around a still center"
+expected  = 0
+
+[[asserts]]
+arguments = [["RRRR", "UUUU", "UUUU", "UUUU"]]
+comment   = "Only the first row helps"
+expected  = 3
+
+[[asserts]]
+arguments = [["ULLL", "LLLL", "LLLL", "LLLL"]]
+comment   = "All wind points to the start"
+expected  = 6
+
+[[asserts]]
+arguments = [["RDRD", "DRDR", "RDRD", "DRDR"]]
+comment   = "Alternating right and down"
+expected  = 0
+
+[[asserts]]
+arguments = [["RRRD", "DLLL", "DRRR", "RRRD"]]
+comment   = "Snake of favourable wind"
+expected  = 0
+
+[[asserts]]
+arguments = [["DR", "RD", "DR", "RD", "DR"]]
+comment   = "Tall grid with a staircase"
+expected  = 1
+
+[[asserts]]
+arguments = [["RRRRR", "UUUUD", "LLLLL", "DUUUU", "RRRRR"]]
+comment   = "Free path along three rows"
+expected  = 2
+
+[[asserts]]
+arguments = [["UUUUU", "UUUUU", "UUUUU", "UUUUU", "UUUUU"]]
+comment   = "Wind opposite to the route"
+expected  = 8
+
+[[asserts]]
+arguments = [["RRRRD", "RRRRD", "RRRRD", "RRRRD", "RRRRD"]]
+comment   = "Right border leads down"
+expected  = 0
+
+[[asserts]]
+arguments = [["DDDDD", "RDDDD", "RRDDD", "RRRDD", "RRRRD"]]
+comment   = "Lower triangle blows right"
+expected  = 0
+
+[[asserts]]
+arguments = [["LULU", "ULUL", "LULU", "ULUL"]]
+comment   = "Wind points up and left everywhere"
+expected  = 6

@@ -1,0 +1,222 @@
+base_score        = 200
+level             = "hard"
+name              = "migration_weather_plan"
+tags              = ["dp", "collections"]
+time_to_solve_sec = 700
+
+description_en = """
+Many birds postpone departure in bad weather and use a tail wind to save energy. The route is split into $S$ segments that must be flown in order, and `costs` holds one row per day with $S$ values in each row. On every day the bird either rests or flies the next segment it has not flown yet: flying segment $s$ on day $d$ costs `costs[d][s]` energy, while `costs[d][s]` $= -1$ means that this segment cannot be flown on that day.
+
+Return the minimum total energy needed to fly all $S$ segments within the given days, or $-1$ when that is impossible.
+"""
+
+description_ru = """
+Многие птицы откладывают вылет при плохой погоде и используют попутный ветер для экономии энергии. Маршрут разбит на $S$ участков, которые проходятся по порядку, а `costs` содержит по одной строке на каждый день и по $S$ значений в строке. Каждый день птица либо отдыхает, либо проходит следующий непройденный участок: прохождение участка $s$ в день $d$ стоит `costs[d][s]` энергии, а `costs[d][s]` $= -1$ означает, что этот участок в этот день пройти нельзя.
+
+Верните минимальный суммарный расход энергии на прохождение всех $S$ участков за отведённые дни или $-1$, если это невозможно.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{costs}) \\leq 300$
+- $1 \\leq \\text{len}(\\text{costs}[d]) = \\text{len}(\\text{costs}[0]) \\leq 300$
+- $\\text{costs}[d][s] \\in \\{-1\\} \\cup [0, 10^4]$
+"""
+
+solution = """
+def solution(costs: list[list[int]]) -> int:
+    segments = len(costs[0])
+    infinity = float("inf")
+    dp = [0] + [infinity] * segments
+    for day in costs:
+        next_dp = dp[:]
+        for segment, energy in enumerate(day):
+            if energy >= 0:
+                next_dp[segment + 1] = min(next_dp[segment + 1],
+                                           dp[segment] + energy)
+        dp = next_dp
+    return -1 if dp[-1] == infinity else dp[-1]
+"""
+
+examples = """
+solution([[-1]]) == -1
+solution([[-1], [3]]) == 3
+solution([[1, 5], [2, 1]]) == 2
+"""
+
+[[input_signature]]
+argument_name = "costs"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[[1, 5], [2, 1]]]
+comment   = "Cheaper to wait for the second day"
+expected  = 2
+
+[[asserts]]
+arguments = [[[-1], [3]]]
+comment   = "First day forbids the only segment"
+expected  = 3
+
+[[asserts]]
+arguments = [[[4]]]
+comment   = "Single day and single segment"
+expected  = 4
+
+[[asserts]]
+arguments = [[[-1]]]
+comment   = "The only segment is forbidden"
+expected  = -1
+
+[[asserts]]
+arguments = [[[0]]]
+comment   = "Free flight on the only day"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 2]]]
+comment   = "Not enough days for two segments"
+expected  = -1
+
+[[asserts]]
+arguments = [[[5], [3], [1]]]
+comment   = "Single segment over three days"
+expected  = 1
+
+[[asserts]]
+arguments = [[[-1, -1], [1, 1], [2, 2]]]
+comment   = "Departure is delayed by weather"
+expected  = 3
+
+[[asserts]]
+arguments = [[[1, 1], [-1, -1], [1, 1]]]
+comment   = "Bad weather in the middle"
+expected  = 2
+
+[[asserts]]
+arguments = [[[9, 9], [1, 9], [9, 1]]]
+comment   = "Each segment has its cheap day"
+expected  = 2
+
+[[asserts]]
+arguments = [[[2, 2, 2], [2, 2, 2], [2, 2, 2]]]
+comment   = "Exactly enough days"
+expected  = 6
+
+[[asserts]]
+arguments = [[[2, 2, 2], [2, 2, 2]]]
+comment   = "One day short"
+expected  = -1
+
+[[asserts]]
+arguments = [[[10, 1], [1, 10], [10, 1], [1, 10]]]
+comment   = "Alternating cheap days"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 0], [0, 0]]]
+comment   = "Everything is free"
+expected  = 0
+
+[[asserts]]
+arguments = [[[-1, 5], [4, -1], [3, 3]]]
+comment   = "Forbidden cells force the schedule"
+expected  = 7
+
+[[asserts]]
+arguments = [[[7, -1, -1], [-1, 6, -1], [-1, -1, 5]]]
+comment   = "Only the diagonal is allowed"
+expected  = 18
+
+[[asserts]]
+arguments = [[[7, -1, -1], [-1, 6, -1], [-1, 5, -1]]]
+comment   = "Last segment can never be flown"
+expected  = -1
+
+[[asserts]]
+arguments = [[[3, 8, 9], [8, 2, 9], [9, 8, 1], [1, 1, 1]]]
+comment   = "Cheap final day covers everything"
+expected  = 6
+
+[[asserts]]
+arguments = [[[10000, 10000], [10000, 10000]]]
+comment   = "Maximum energy values"
+expected  = 20000
+
+[[asserts]]
+arguments = [[[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]]
+comment   = "Every day and segment costs one"
+expected  = 4
+
+[[asserts]]
+arguments = [[[5, 4], [4, 5], [3, 6], [6, 3]]]
+comment   = "Balanced costs on four days"
+expected  = 6
+
+[[asserts]]
+arguments = [[[-1, -1], [-1, -1]]]
+comment   = "All flights are forbidden"
+expected  = -1
+
+[[asserts]]
+arguments = [[[2, 9], [9, 2], [2, 9], [9, 2], [2, 9]]]
+comment   = "Two segments over five days"
+expected  = 4
+
+[[asserts]]
+arguments = [[[6, 6, 6], [1, 1, 1], [6, 6, 6], [1, 1, 1], [6, 6, 6], [1, 1, 1]]]
+comment   = "Cheap days repeat"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 100], [100, 0], [50, 50]]]
+comment   = "Two free flights are available"
+expected  = 0
+
+[[asserts]]
+arguments = [[[8, 3], [3, 8], [-1, -1], [2, 2], [5, 5]]]
+comment   = "A forbidden day splits the season"
+expected  = 5
+
+[[asserts]]
+arguments = [
+  [
+    [
+      4,
+      4,
+      4,
+      4,
+      4,
+    ],
+    [
+      3,
+      3,
+      3,
+      3,
+      3,
+    ],
+    [
+      2,
+      2,
+      2,
+      2,
+      2,
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+    ],
+  ],
+]
+comment = "Costs fall day by day"
+expected = -1

@@ -1,0 +1,181 @@
+base_score        = 20
+level             = "elementary"
+name              = "daylight_loss"
+tags              = ["math", "time"]
+time_to_solve_sec = 60
+
+description_en = """
+Photoperiod is the length of the light part of a day. Two observations are given as `september` and `october`, each a two-element array `[sunrise, sunset]` in minutes after midnight with `sunrise` $<$ `sunset`. The length of a day equals `sunset` $-$ `sunrise`.
+
+Return by how many minutes the October day is shorter than the September one. The value is negative when the October day is longer.
+"""
+
+description_ru = """
+Фотопериод — продолжительность светлой части суток. Два наблюдения заданы массивами `september` и `october`, каждый из двух элементов `[sunrise, sunset]` в минутах от полуночи, причём `sunrise` $<$ `sunset`. Продолжительность дня равна `sunset` $-$ `sunrise`.
+
+Верните, на сколько минут октябрьский день короче сентябрьского. Значение отрицательно, если октябрьский день длиннее.
+"""
+
+limits = """
+- $\\text{len}(\\text{september}) = \\text{len}(\\text{october}) = 2$
+- $0 \\leq \\text{september}[0] < \\text{september}[1] \\leq 1439$
+- $0 \\leq \\text{october}[0] < \\text{october}[1] \\leq 1439$
+"""
+
+solution = """
+def solution(september: list[int], october: list[int]) -> int:
+    return september[1] - september[0] - october[1] + october[0]
+"""
+
+examples = """
+solution([390, 1080], [400, 1070]) == 20
+solution([360, 1110], [420, 1020]) == 150
+solution([400, 1000], [380, 1030]) == -50
+"""
+
+[[input_signature]]
+argument_name = "september"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "october"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[360, 1110], [420, 1020]]
+comment   = "Loss of 150 minutes over the two months"
+expected  = 150
+
+[[asserts]]
+arguments = [[390, 1080], [400, 1070]]
+comment   = "Small loss of 20 minutes"
+expected  = 20
+
+[[asserts]]
+arguments = [[365, 1105], [425, 1015]]
+comment   = "Symmetric shift of both boundaries"
+expected  = 150
+
+[[asserts]]
+arguments = [[300, 1200], [360, 1140]]
+comment   = "Wide September day shrinks by two hours"
+expected  = 120
+
+[[asserts]]
+arguments = [[420, 1020], [420, 1020]]
+comment   = "Identical observations give zero"
+expected  = 0
+
+[[asserts]]
+arguments = [[400, 1000], [380, 1030]]
+comment   = "October day is longer, result is negative"
+expected  = -50
+
+[[asserts]]
+arguments = [[0, 1439], [0, 1439]]
+comment   = "Both days span the full range"
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 1439], [1438, 1439]]
+comment   = "October keeps only one minute of light"
+expected  = 1438
+
+[[asserts]]
+arguments = [[1438, 1439], [0, 1439]]
+comment   = "September keeps only one minute of light"
+expected  = -1438
+
+[[asserts]]
+arguments = [[0, 720], [1, 719]]
+comment   = "Difference of two minutes near midnight"
+expected  = 2
+
+[[asserts]]
+arguments = [[345, 1125], [435, 1005]]
+comment   = "Typical early September day"
+expected  = 210
+
+[[asserts]]
+arguments = [[355, 1115], [430, 1010]]
+comment   = "Gradual shortening in mid autumn"
+expected  = 180
+
+[[asserts]]
+arguments = [[372, 1098], [446, 998]]
+comment   = "Uneven shift of sunrise and sunset"
+expected  = 174
+
+[[asserts]]
+arguments = [[401, 1071], [451, 1001]]
+comment   = "Sunrise and sunset move by the same amount"
+expected  = 120
+
+[[asserts]]
+arguments = [[310, 1190], [370, 1130]]
+comment   = "Very long days at high latitude"
+expected  = 120
+
+[[asserts]]
+arguments = [[480, 960], [500, 940]]
+comment   = "Short days with equal shifts"
+expected  = 40
+
+[[asserts]]
+arguments = [[500, 940], [480, 960]]
+comment   = "Reversed order of the same observations"
+expected  = -40
+
+[[asserts]]
+arguments = [[600, 601], [700, 702]]
+comment   = "Minimal day lengths of one and two minutes"
+expected  = -1
+
+[[asserts]]
+arguments = [[120, 1320], [240, 1200]]
+comment   = "Four hours of light lost"
+expected  = 240
+
+[[asserts]]
+arguments = [[59, 1380], [119, 1320]]
+comment   = "Boundary minutes of the day"
+expected  = 120
+
+[[asserts]]
+arguments = [[333, 1111], [444, 1000]]
+comment   = "Unrounded observation values"
+expected  = 222
+
+[[asserts]]
+arguments = [[415, 1045], [415, 1044]]
+comment   = "Sunset one minute earlier"
+expected  = 1
+
+[[asserts]]
+arguments = [[415, 1044], [415, 1045]]
+comment   = "Sunset one minute later"
+expected  = -1
+
+[[asserts]]
+arguments = [[7, 1432], [8, 1431]]
+comment   = "Extreme boundaries with one minute shift"
+expected  = 2
+
+[[asserts]]
+arguments = [[288, 1152], [432, 1008]]
+comment   = "Equinox-like day loses 144 minutes"
+expected  = 288
+
+[[asserts]]
+arguments = [[450, 1050], [455, 1040]]
+comment   = "Late autumn observation"
+expected  = 15

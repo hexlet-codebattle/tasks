@@ -1,0 +1,195 @@
+base_score        = 120
+level             = "medium"
+name              = "peak_leaf_abscission"
+tags              = ["intervals", "sorting"]
+time_to_solve_sec = 400
+
+description_en = """
+Before leaf fall an abscission zone forms at the base of the leaf stalk, and once the connection weakens wind and rain help the leaf to separate. For every tree `intervals` holds the days of its leaf fall as `[start, end]`, with both days included.
+
+Return `[day, count]`, where `count` is the largest number of trees shedding leaves on the same day and `day` is the earliest day on which that number is reached. Return `[-1, 0]` when there are no trees.
+"""
+
+description_ru = """
+Перед листопадом у основания черешка формируется зона абсциссии, и когда связь ослабевает, ветер и дождь помогают листу отделиться. Для каждого дерева массив `intervals` задаёт дни листопада как `[start, end]`, включая обе границы.
+
+Верните `[day, count]`, где `count` — наибольшее количество деревьев, сбрасывающих листья в один и тот же день, а `day` — самый ранний день, в который достигается это количество. Если деревьев нет, верните `[-1, 0]`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{intervals}) \\leq 10^5$
+- $\\text{len}(\\text{intervals}[i]) = 2$
+- $1 \\leq \\text{intervals}[i][0] \\leq \\text{intervals}[i][1] \\leq 10^6$
+"""
+
+solution = """
+def solution(intervals: list[list[int]]) -> list[int]:
+    if not intervals:
+        return [-1, 0]
+    events = {}
+    for start, end in intervals:
+        events[start] = events.get(start, 0) + 1
+        events[end + 1] = events.get(end + 1, 0) - 1
+    active = best = 0
+    best_day = -1
+    for day in sorted(events):
+        active += events[day]
+        if active > best:
+            best_day, best = day, active
+    return [best_day, best]
+"""
+
+examples = """
+solution([]) == [-1, 0]
+solution([[1, 1000000]]) == [1, 1]
+solution([[1, 3], [2, 4], [4, 5]]) == [2, 2]
+"""
+
+[[input_signature]]
+argument_name = "intervals"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[]]
+comment   = "No trees at all"
+expected  = [-1, 0]
+
+[[asserts]]
+arguments = [[[1, 3], [2, 4], [4, 5]]]
+comment   = "Two trees overlap first on day two"
+expected  = [2, 2]
+
+[[asserts]]
+arguments = [[[7, 7]]]
+comment   = "Single tree shedding one day"
+expected  = [7, 1]
+
+[[asserts]]
+arguments = [[[1, 1000000]]]
+comment   = "Single tree over the whole range"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [[[1, 2], [3, 4]]]
+comment   = "Intervals do not overlap"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [[[1, 2], [2, 3]]]
+comment   = "Overlap on a single day"
+expected  = [2, 2]
+
+[[asserts]]
+arguments = [[[1, 5], [1, 5], [1, 5]]]
+comment   = "All trees share one interval"
+expected  = [1, 3]
+
+[[asserts]]
+arguments = [[[5, 9], [1, 4]]]
+comment   = "Later interval listed first"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [[[10, 20], [15, 25], [18, 30]]]
+comment   = "Three overlapping intervals"
+expected  = [18, 3]
+
+[[asserts]]
+arguments = [[[1, 10], [2, 9], [3, 8], [4, 7]]]
+comment   = "Nested intervals"
+expected  = [4, 4]
+
+[[asserts]]
+arguments = [[[4, 7], [3, 8], [2, 9], [1, 10]]]
+comment   = "Nested intervals in reverse order"
+expected  = [4, 4]
+
+[[asserts]]
+arguments = [[[1, 2], [4, 5], [7, 8], [10, 11]]]
+comment   = "Four separated intervals"
+expected  = [1, 1]
+
+[[asserts]]
+arguments = [[[1, 100], [50, 60], [55, 65], [58, 59]]]
+comment   = "Wide interval with nested ones"
+expected  = [58, 4]
+
+[[asserts]]
+arguments = [[[3, 3], [3, 3], [3, 3]]]
+comment   = "Identical single day intervals"
+expected  = [3, 3]
+
+[[asserts]]
+arguments = [[[1, 1], [2, 2], [3, 3], [1, 1]]]
+comment   = "Repeated first day wins"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [[[100, 200], [300, 400], [150, 350]]]
+comment   = "Wide interval bridges two others"
+expected  = [150, 2]
+
+[[asserts]]
+arguments = [[[2, 6], [4, 8], [6, 10], [8, 12]]]
+comment   = "Chain of pairwise overlaps"
+expected  = [6, 3]
+
+[[asserts]]
+arguments = [[[1, 4], [5, 8], [2, 6], [7, 9]]]
+comment   = "Mixed overlaps"
+expected  = [2, 2]
+
+[[asserts]]
+arguments = [[[999998, 1000000], [999999, 1000000], [1000000, 1000000]]]
+comment   = "Maximum day values"
+expected  = [1000000, 3]
+
+[[asserts]]
+arguments = [[[1, 3], [5, 7], [2, 6]]]
+comment   = "Middle interval covers both ends"
+expected  = [2, 2]
+
+[[asserts]]
+arguments = [[[10, 12], [11, 13], [12, 14], [13, 15], [14, 16]]]
+comment   = "Sliding window of intervals"
+expected  = [12, 3]
+
+[[asserts]]
+arguments = [[[1, 1], [1, 2], [1, 3], [1, 4]]]
+comment   = "Common start day"
+expected  = [1, 4]
+
+[[asserts]]
+arguments = [[[1, 4], [2, 4], [3, 4], [4, 4]]]
+comment   = "Common end day"
+expected  = [4, 4]
+
+[[asserts]]
+arguments = [[[20, 30], [1, 10], [25, 35], [5, 15]]]
+comment   = "Two separate pairs of overlaps"
+expected  = [5, 2]
+
+[[asserts]]
+arguments = [[[6, 8], [1, 3], [2, 9], [7, 7], [4, 5]]]
+comment   = "Long interval crosses several short ones"
+expected  = [7, 3]
+
+[[asserts]]
+arguments = [[[1, 2], [1, 2], [3, 4], [3, 4], [5, 6], [5, 6]]]
+comment   = "Three equal pairs, earliest wins"
+expected  = [1, 2]
+
+[[asserts]]
+arguments = [[[40, 50], [45, 55], [50, 60], [55, 65], [42, 62]]]
+comment   = "Five overlapping intervals"
+expected  = [50, 4]

@@ -1,0 +1,261 @@
+base_score        = 110
+level             = "medium"
+name              = "leaf_pigment_transitions"
+tags              = ["dp", "collections"]
+time_to_solve_sec = 360
+
+description_en = """
+In autumn chlorophyll breaks down, carotenoids become visible, and many species also build up red anthocyanins. Observations are listed in chronological order, and `pigments[i]` holds the amounts of green, yellow and red pigment of observation $i$. In every observation one of the three amounts is strictly greater than the other two, and that pigment is the dominant one. Dominant pigments are ordered green $<$ yellow $<$ red.
+
+Remove as few observations as possible so that in the remaining ones, read in order, the dominant pigment never moves back in that order. Return the number of removed observations.
+"""
+
+description_ru = """
+Осенью хлорофилл разрушается, становятся заметны каротиноиды, а у многих видов накапливаются красные антоцианы. Наблюдения перечислены в хронологическом порядке, а `pigments[i]` содержит количества зелёного, жёлтого и красного пигментов в наблюдении $i$. В каждом наблюдении одно из трёх количеств строго больше двух других — это преобладающий пигмент. Преобладающие пигменты упорядочены как зелёный $<$ жёлтый $<$ красный.
+
+Удалите минимум наблюдений так, чтобы в оставшихся, прочитанных по порядку, преобладающий пигмент ни разу не возвращался назад в этом порядке. Верните количество удалённых наблюдений.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{pigments}) \\leq 10^3$
+- $\\text{len}(\\text{pigments}[i]) = 3$
+- $0 \\leq \\text{pigments}[i][j] \\leq 10^6$
+"""
+
+solution = """
+def solution(pigments: list[list[int]]) -> int:
+    states = [max(range(3), key=amounts.__getitem__) for amounts in pigments]
+    best = [0, 0, 0]
+    for state in states:
+        best[state] = 1 + max(best[:state + 1])
+    return len(states) - max(best)
+"""
+
+examples = """
+solution([]) == 0
+solution([[5, 2, 1], [2, 5, 1], [1, 2, 5]]) == 0
+solution([[1, 2, 5], [5, 2, 1], [1, 5, 2]]) == 1
+"""
+
+[[input_signature]]
+argument_name = "pigments"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[[5, 2, 1], [2, 5, 1], [1, 2, 5]]]
+comment   = "Already ordered green to red"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 2, 5], [5, 2, 1], [1, 5, 2]]]
+comment   = "One observation has to be removed"
+expected  = 1
+
+[[asserts]]
+arguments = [[]]
+comment   = "No observations at all"
+expected  = 0
+
+[[asserts]]
+arguments = [[[9, 1, 0]]]
+comment   = "Single green observation"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0, 1]]]
+comment   = "Single red observation"
+expected  = 0
+
+[[asserts]]
+arguments = [[[4, 1, 0], [6, 2, 1], [7, 3, 2]]]
+comment   = "Three green observations"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 9, 2], [2, 8, 1], [3, 7, 0]]]
+comment   = "Three yellow observations"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 1, 9], [1, 2, 8], [2, 3, 7]]]
+comment   = "Three red observations"
+expected  = 0
+
+[[asserts]]
+arguments = [[[1, 0, 9], [9, 0, 1]]]
+comment   = "Red before green"
+expected  = 1
+
+[[asserts]]
+arguments = [[[9, 0, 1], [1, 0, 9]]]
+comment   = "Green before red"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 9, 1], [9, 1, 0], [0, 1, 9], [0, 9, 1]]]
+comment   = "Alternating dominance"
+expected  = 2
+
+[[asserts]]
+arguments = [[[8, 1, 1], [1, 8, 1], [1, 1, 8], [8, 1, 1], [1, 8, 1], [1, 1, 8]]]
+comment   = "Two full cycles of the three pigments"
+expected  = 2
+
+[[asserts]]
+arguments = [[[1, 1, 8], [1, 8, 1], [8, 1, 1]]]
+comment   = "Reversed order of pigments"
+expected  = 2
+
+[[asserts]]
+arguments = [[[10, 3, 2], [4, 11, 3], [5, 4, 12], [13, 5, 4]]]
+comment   = "Green appears again at the end"
+expected  = 1
+
+[[asserts]]
+arguments = [[[6, 5, 4], [5, 6, 4], [4, 5, 6], [6, 5, 4], [5, 6, 4]]]
+comment   = "Repeated partial progressions"
+expected  = 2
+
+[[asserts]]
+arguments = [[[2, 1, 0], [3, 1, 0], [1, 4, 0], [1, 5, 0], [0, 1, 6]]]
+comment   = "Smooth transition through all pigments"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0, 5], [0, 0, 6], [0, 0, 7], [0, 0, 8]]]
+comment   = "Only red observations"
+expected  = 0
+
+[[asserts]]
+arguments = [[[5, 0, 0], [6, 0, 0], [7, 0, 0], [8, 0, 0]]]
+comment   = "Only green observations"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 5, 0], [9, 0, 0], [0, 6, 0], [9, 0, 0], [0, 7, 0]]]
+comment   = "Green interrupts the yellow phase"
+expected  = 2
+
+[[asserts]]
+arguments = [[[1000000, 1, 2], [1, 1000000, 2], [1, 2, 1000000]]]
+comment   = "Large pigment amounts"
+expected  = 0
+
+[[asserts]]
+arguments = [
+  [
+    [
+      3,
+      2,
+      1,
+    ],
+    [
+      1,
+      3,
+      2,
+    ],
+    [
+      2,
+      1,
+      3,
+    ],
+    [
+      3,
+      2,
+      1,
+    ],
+    [
+      1,
+      3,
+      2,
+    ],
+    [
+      2,
+      1,
+      3,
+    ],
+    [
+      3,
+      2,
+      1,
+    ],
+  ],
+]
+comment = "Repeating cycle of seven observations"
+expected = 3
+
+[[asserts]]
+arguments = [[[7, 2, 1], [1, 7, 2], [1, 2, 7], [7, 1, 2], [2, 7, 1], [1, 2, 7]]]
+comment   = "Irregular alternation"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 1, 0], [0, 0, 1], [1, 0, 0], [0, 1, 0], [0, 0, 1]]]
+comment   = "Short cycle of five observations"
+expected  = 2
+
+[[asserts]]
+arguments = [
+  [
+    [
+      4,
+      3,
+      2,
+    ],
+    [
+      3,
+      4,
+      2,
+    ],
+    [
+      2,
+      3,
+      4,
+    ],
+    [
+      4,
+      2,
+      3,
+    ],
+    [
+      2,
+      4,
+      3,
+    ],
+    [
+      2,
+      3,
+      4,
+    ],
+    [
+      4,
+      3,
+      2,
+    ],
+  ],
+]
+comment = "Mixed order with a green tail"
+expected = 3
+
+[[asserts]]
+arguments = [[[9, 8, 7], [8, 9, 7], [7, 8, 9], [9, 7, 8], [7, 9, 8]]]
+comment   = "Green returns twice"
+expected  = 2
+
+[[asserts]]
+arguments = [[[1, 0, 0], [0, 1, 0], [0, 0, 1], [0, 0, 1], [0, 1, 0], [1, 0, 0]]]
+comment   = "Progression followed by its reverse"
+expected  = 2
+
+[[asserts]]
+arguments = [[[5, 4, 3], [5, 4, 3], [3, 5, 4], [3, 5, 4], [3, 4, 5], [3, 4, 5]]]
+comment   = "Each pigment dominates twice"
+expected  = 0

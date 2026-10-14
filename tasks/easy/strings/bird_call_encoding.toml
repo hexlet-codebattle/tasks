@@ -1,0 +1,182 @@
+base_score        = 60
+level             = "easy"
+name              = "bird_call_encoding"
+tags              = ["strings", "linear_scan"]
+time_to_solve_sec = 200
+
+description_en = """
+Contact calls keep a flock together, while alarm calls warn about danger. In a bioacoustic recording `C` marks a contact call, `A` an alarm call and `S` silence.
+
+Compress every maximal block of equal consecutive events into the event character followed by the block length written in decimal, and return the resulting string. An empty recording gives an empty string.
+"""
+
+description_ru = """
+Контактные позывы помогают птицам держаться стаей, а тревожные предупреждают об опасности. В записи биоакустика `C` обозначает контактный позыв, `A` — тревожный, `S` — тишину.
+
+Сожмите каждую максимальную группу подряд идущих одинаковых событий в символ события и длину группы в десятичной записи и верните полученную строку. Для пустой записи верните пустую строку.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{recording}) \\leq 10^4$
+- $\\text{recording}[i] \\in \\{C, A, S\\}$
+"""
+
+solution = """
+def solution(recording: str) -> str:
+    groups = []
+    for event in recording:
+        if groups and groups[-1][0] == event:
+            groups[-1][1] += 1
+        else:
+            groups.append([event, 1])
+    return "".join(f"{event}{count}" for event, count in groups)
+"""
+
+examples = """
+solution("") == ""
+solution("CAS") == "C1A1S1"
+solution("CCAAS") == "C2A2S1"
+"""
+
+[[input_signature]]
+argument_name = "recording"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty recording"
+expected  = ""
+
+[[asserts]]
+arguments = ["CCAAS"]
+comment   = "Three blocks of contact, alarm and silence"
+expected  = "C2A2S1"
+
+[[asserts]]
+arguments = ["C"]
+comment   = "Single event"
+expected  = "C1"
+
+[[asserts]]
+arguments = ["CAS"]
+comment   = "Three blocks of length one"
+expected  = "C1A1S1"
+
+[[asserts]]
+arguments = ["SSSSS"]
+comment   = "One long block of silence"
+expected  = "S5"
+
+[[asserts]]
+arguments = ["CCCCCCCCCC"]
+comment   = "Block length of ten"
+expected  = "C10"
+
+[[asserts]]
+arguments = ["CCCCCCCCCCC"]
+comment   = "Block length of eleven"
+expected  = "C11"
+
+[[asserts]]
+arguments = ["AAAAAAAAAAAAAAAAAAAA"]
+comment   = "Block length of twenty"
+expected  = "A20"
+
+[[asserts]]
+arguments = ["CACACA"]
+comment   = "Alternating contact and alarm calls"
+expected  = "C1A1C1A1C1A1"
+
+[[asserts]]
+arguments = ["SSSCCCAAA"]
+comment   = "Blocks of equal length"
+expected  = "S3C3A3"
+
+[[asserts]]
+arguments = ["AAACCCSSS"]
+comment   = "Same blocks in reverse order"
+expected  = "A3C3S3"
+
+[[asserts]]
+arguments = ["CSCSCSS"]
+comment   = "Silence closes the recording"
+expected  = "C1S1C1S1C1S2"
+
+[[asserts]]
+arguments = ["CCSSCCSS"]
+comment   = "Pairs of alternating blocks"
+expected  = "C2S2C2S2"
+
+[[asserts]]
+arguments = ["ACCSSSAAAA"]
+comment   = "Growing blocks"
+expected  = "A1C2S3A4"
+
+[[asserts]]
+arguments = ["SCCCCSA"]
+comment   = "Silence around a contact block"
+expected  = "S1C4S1A1"
+
+[[asserts]]
+arguments = ["CCCCCCCCCCCCSSSSSSSSSSSSA"]
+comment   = "Two long blocks and a final call"
+expected  = "C12S12A1"
+
+[[asserts]]
+arguments = ["ASA"]
+comment   = "Alarm calls around silence"
+expected  = "A1S1A1"
+
+[[asserts]]
+arguments = ["SAS"]
+comment   = "Silence around an alarm call"
+expected  = "S1A1S1"
+
+[[asserts]]
+arguments = ["CCA"]
+comment   = "Contact block before a single alarm"
+expected  = "C2A1"
+
+[[asserts]]
+arguments = ["CAA"]
+comment   = "Single contact before an alarm block"
+expected  = "C1A2"
+
+[[asserts]]
+arguments = ["SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"]
+comment   = "Forty seconds of silence"
+expected  = "S40"
+
+[[asserts]]
+arguments = ["CCSSSAAAACCCCCSS"]
+comment   = "Mixed blocks of several lengths"
+expected  = "C2S3A4C5S2"
+
+[[asserts]]
+arguments = ["CSSCCASSSAC"]
+comment   = "Short irregular blocks"
+expected  = "C1S2C2A1S3A1C1"
+
+[[asserts]]
+arguments = ["AACCSSAACCSS"]
+comment   = "Repeating pairs of events"
+expected  = "A2C2S2A2C2S2"
+
+[[asserts]]
+arguments = ["CCCAAASSSCCCAAASSS"]
+comment   = "Repeated pattern of three blocks"
+expected  = "C3A3S3C3A3S3"
+
+[[asserts]]
+arguments = ["SACCCSSAAACS"]
+comment   = "Alternating single and multiple events"
+expected  = "S1A1C3S2A3C1S1"
+
+[[asserts]]
+arguments = ["CCCCCSSSSSAAAAACCCCC"]
+comment   = "Three blocks of five events"
+expected  = "C5S5A5C5"

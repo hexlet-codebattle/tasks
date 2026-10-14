@@ -1,0 +1,188 @@
+base_score        = 40
+level             = "easy"
+name              = "ripe_berry_streak"
+tags              = ["collections", "linear_scan"]
+time_to_solve_sec = 120
+
+description_en = """
+Soluble sugar content rises as fruit ripens, so it serves as one measure of ripeness. A berry is ripe when its value in `sugar` is at least `min_sugar`.
+
+Return the length of the longest block of consecutive ripe berries on the branch, or $0$ when no berry is ripe.
+"""
+
+description_ru = """
+При созревании плодов растёт содержание растворимых сахаров, поэтому его используют как показатель зрелости. Ягода считается зрелой, если её значение в `sugar` не меньше `min_sugar`.
+
+Верните длину самого длинного непрерывного участка зрелых ягод на ветке или $0$, если зрелых ягод нет.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{sugar}) \\leq 10^4$
+- $0 \\leq \\text{sugar}[i] \\leq 100$
+- $0 \\leq \\text{min\\_sugar} \\leq 100$
+"""
+
+solution = """
+def solution(sugar: list[int], min_sugar: int) -> int:
+    best = run = 0
+    for value in sugar:
+        run = run + 1 if value >= min_sugar else 0
+        best = max(best, run)
+    return best
+"""
+
+examples = """
+solution([], 5) == 0
+solution([4, 5, 6], 7) == 0
+solution([8, 12, 11, 5, 10], 10) == 2
+"""
+
+[[input_signature]]
+argument_name = "sugar"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "min_sugar"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[4, 5, 6], 7]
+comment   = "No berry reaches the threshold"
+expected  = 0
+
+[[asserts]]
+arguments = [[8, 12, 11, 5, 10], 10]
+comment   = "Two ripe berries in a row"
+expected  = 2
+
+[[asserts]]
+arguments = [[], 5]
+comment   = "Empty branch"
+expected  = 0
+
+[[asserts]]
+arguments = [[9], 9]
+comment   = "Single berry exactly at the threshold"
+expected  = 1
+
+[[asserts]]
+arguments = [[9], 10]
+comment   = "Single berry below the threshold"
+expected  = 0
+
+[[asserts]]
+arguments = [[10, 10, 10, 10], 10]
+comment   = "Every berry is exactly ripe"
+expected  = 4
+
+[[asserts]]
+arguments = [[0, 0, 0], 0]
+comment   = "Zero threshold accepts every berry"
+expected  = 3
+
+[[asserts]]
+arguments = [[100, 100, 100], 100]
+comment   = "Maximum sugar with maximum threshold"
+expected  = 3
+
+[[asserts]]
+arguments = [[3, 14, 15, 9, 26, 5], 9]
+comment   = "Ripe berries separated by unripe ones"
+expected  = 4
+
+[[asserts]]
+arguments = [[12, 4, 13, 14, 15, 2], 12]
+comment   = "Longest block at the middle"
+expected  = 3
+
+[[asserts]]
+arguments = [[7, 8, 9, 10, 11, 12], 10]
+comment   = "Ripe block at the end"
+expected  = 3
+
+[[asserts]]
+arguments = [[12, 11, 10, 9, 8, 7], 10]
+comment   = "Ripe block at the start"
+expected  = 3
+
+[[asserts]]
+arguments = [[20, 1, 20, 1, 20], 20]
+comment   = "Alternating ripe and unripe berries"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 20, 20, 1, 20, 20, 20], 20]
+comment   = "Longer block after a shorter one"
+expected  = 3
+
+[[asserts]]
+arguments = [[5, 6, 7, 8, 9], 100]
+comment   = "Threshold above every value"
+expected  = 0
+
+[[asserts]]
+arguments = [[5, 6, 7, 8, 9], 0]
+comment   = "Threshold of zero covers the branch"
+expected  = 5
+
+[[asserts]]
+arguments = [[18, 19, 4, 21, 22, 23, 3], 18]
+comment   = "Two blocks of different lengths"
+expected  = 3
+
+[[asserts]]
+arguments = [[30, 31, 32, 2, 33, 34], 30]
+comment   = "Leading block is the longest"
+expected  = 3
+
+[[asserts]]
+arguments = [[2, 33, 34, 30, 31, 32], 30]
+comment   = "Trailing block is the longest"
+expected  = 5
+
+[[asserts]]
+arguments = [[16, 17, 18, 19, 20, 21], 16]
+comment   = "Whole branch is ripe"
+expected  = 6
+
+[[asserts]]
+arguments = [[44, 12, 45, 46, 11, 47, 48, 49], 44]
+comment   = "Three separate ripe blocks"
+expected  = 3
+
+[[asserts]]
+arguments = [[60, 59, 58, 57, 56], 58]
+comment   = "Ripe berries at both ends"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6, 7, 8], 5]
+comment   = "Only the tail is ripe"
+expected  = 4
+
+[[asserts]]
+arguments = [[25, 25, 24, 25, 25, 25, 24], 25]
+comment   = "Single unripe berry splits the branch"
+expected  = 3
+
+[[asserts]]
+arguments = [[0, 100, 0, 100, 100, 0], 50]
+comment   = "Two ripe berries around unripe ones"
+expected  = 2
+
+[[asserts]]
+arguments = [[13, 13, 13, 12, 13, 13], 13]
+comment   = "One gap inside a long block"
+expected  = 3
+
+[[asserts]]
+arguments = [[77, 15, 78, 79, 80, 14, 81], 77]
+comment   = "Longest block of three ripe berries"
+expected  = 3

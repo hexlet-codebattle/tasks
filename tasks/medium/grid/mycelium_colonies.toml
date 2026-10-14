@@ -1,0 +1,190 @@
+base_score        = 115
+level             = "medium"
+name              = "mycelium_colonies"
+tags              = ["grid", "graphs"]
+time_to_solve_sec = 380
+
+description_en = """
+Mycelium is a network of branching threads called hyphae, and it can live in the soil for years without producing visible fruiting bodies. On the rectangular map `forest` the character `M` marks a cell with mycelium and `.` marks an empty cell; all rows have the same length.
+
+Two mycelium cells belong to the same colony when they share a side or only a corner, and this relation carries over along chains of cells. Return the number of colonies.
+"""
+
+description_ru = """
+Мицелий — это сеть ветвящихся нитей, называемых гифами; он может годами жить в почве, не образуя видимых плодовых тел. На прямоугольной карте `forest` символ `M` обозначает клетку с мицелием, а `.` — пустую клетку; все строки имеют одинаковую длину.
+
+Две клетки мицелия принадлежат одной колонии, если они соприкасаются стороной или только углом, и это отношение распространяется по цепочкам клеток. Верните количество колоний.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{forest}) \\leq 200$
+- $1 \\leq \\text{len}(\\text{forest}[i]) = \\text{len}(\\text{forest}[0]) \\leq 200$
+- $\\text{forest}[i][j] \\in \\{M, .\\}$
+"""
+
+solution = """
+def solution(forest: list[str]) -> int:
+    cells = {(r, c) for r, row in enumerate(forest) for c, x in enumerate(row) if x == "M"}
+    colonies = 0
+    while cells:
+        colonies += 1
+        stack = [cells.pop()]
+        while stack:
+            r, c = stack.pop()
+            near = {(r + dr, c + dc) for dr in (-1, 0, 1) for dc in (-1, 0, 1)
+                    if (dr or dc) and (r + dr, c + dc) in cells}
+            cells -= near
+            stack += near
+    return colonies
+"""
+
+examples = """
+solution(["M"]) == 1
+solution(["M.M"]) == 2
+solution(["MM.", "..M"]) == 1
+"""
+
+[[input_signature]]
+argument_name = "forest"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["M.M"]]
+comment   = "Two cells separated in one row"
+expected  = 2
+
+[[asserts]]
+arguments = [["MM.", "..M"]]
+comment   = "Diagonal contact joins the cells"
+expected  = 1
+
+[[asserts]]
+arguments = [["."]]
+comment   = "Empty single cell"
+expected  = 0
+
+[[asserts]]
+arguments = [["M"]]
+comment   = "Single mycelium cell"
+expected  = 1
+
+[[asserts]]
+arguments = [["MMM", "MMM", "MMM"]]
+comment   = "Full map is one colony"
+expected  = 1
+
+[[asserts]]
+arguments = [["...", "...", "..."]]
+comment   = "No mycelium at all"
+expected  = 0
+
+[[asserts]]
+arguments = [["M.M", ".M.", "M.M"]]
+comment   = "Center joins all corners"
+expected  = 1
+
+[[asserts]]
+arguments = [["M.M", "...", "M.M"]]
+comment   = "Four separate corner cells"
+expected  = 4
+
+[[asserts]]
+arguments = [["MM..MM", "MM..MM"]]
+comment   = "Two blocks side by side"
+expected  = 2
+
+[[asserts]]
+arguments = [["M....", ".M...", "..M..", "...M.", "....M"]]
+comment   = "Diagonal chain across the map"
+expected  = 1
+
+[[asserts]]
+arguments = [["....M", "...M.", "..M..", ".M...", "M...."]]
+comment   = "Anti-diagonal chain across the map"
+expected  = 1
+
+[[asserts]]
+arguments = [["M.M.M.M"]]
+comment   = "Four isolated cells in a row"
+expected  = 4
+
+[[asserts]]
+arguments = [["M", ".", "M", ".", "M"]]
+comment   = "Three isolated cells in a column"
+expected  = 3
+
+[[asserts]]
+arguments = [["MMMM", "...M", "MMMM", "M...", "MMMM"]]
+comment   = "Rows joined by single cells"
+expected  = 1
+
+[[asserts]]
+arguments = [["M..M", ".MM.", ".MM.", "M..M"]]
+comment   = "Central block with separate corners"
+expected  = 1
+
+[[asserts]]
+arguments = [[".M.", "M.M", ".M."]]
+comment   = "Cells touching only through the center"
+expected  = 1
+
+[[asserts]]
+arguments = [["MM.MM", ".....", "MM.MM"]]
+comment   = "Four separate blocks"
+expected  = 4
+
+[[asserts]]
+arguments = [["M...M", ".....", ".....", "M...M"]]
+comment   = "Corners of a large map"
+expected  = 4
+
+[[asserts]]
+arguments = [["MMMMM", "M...M", "M.M.M", "M...M", "MMMMM"]]
+comment   = "Ring with an isolated center"
+expected  = 2
+
+[[asserts]]
+arguments = [["..M..", ".MMM.", "MMMMM", ".MMM.", "..M.."]]
+comment   = "Diamond shaped colony"
+expected  = 1
+
+[[asserts]]
+arguments = [["M.M.M", "M.M.M", "M.M.M"]]
+comment   = "Three vertical stripes"
+expected  = 3
+
+[[asserts]]
+arguments = [["MMMMM", ".....", "MMMMM", ".....", "MMMMM"]]
+comment   = "Three horizontal stripes"
+expected  = 3
+
+[[asserts]]
+arguments = [[".M..M.", "M.MM.M", ".M..M."]]
+comment   = "Interlocking diagonal cells"
+expected  = 1
+
+[[asserts]]
+arguments = [["M.....M", ".......", "M.....M", ".......", "M.....M"]]
+comment   = "Six isolated cells"
+expected  = 6
+
+[[asserts]]
+arguments = [["MM", "MM"]]
+comment   = "Small square block"
+expected  = 1
+
+[[asserts]]
+arguments = [[".MM.", "MM.M", ".M.M", "M..."]]
+comment   = "Irregular colony shapes"
+expected  = 1
+
+[[asserts]]
+arguments = [["M.......M", ".M.....M.", "..M...M..", "...M.M...", "....M...."]]
+comment   = "Two diagonals meeting at the bottom"
+expected  = 1

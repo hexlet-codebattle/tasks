@@ -1,0 +1,208 @@
+base_score        = 120
+level             = "medium"
+name              = "windborne_seed_landings"
+tags              = ["intervals", "sorting", "search"]
+time_to_solve_sec = 400
+
+description_en = """
+Seed dispersal by wind is called anemochory: winged seeds and seeds with a pappus travel away from the parent plant, but they sprout only in suitable places. Every seed of `seeds` is carried by the same gust, so a seed at position `p` lands at `p + wind`. A landing succeeds when it falls inside at least one fertile interval `[left, right]`, both ends included. The intervals of `fertile` may overlap.
+
+Return how many seeds land on fertile ground. Seeds that share a position are counted separately.
+"""
+
+description_ru = """
+Распространение семян ветром называется анемохорией: крылатки и семена с хохолком уносятся от материнского растения, но прорастают только в подходящих местах. Все семена массива `seeds` уносит один порыв, поэтому семя из позиции `p` приземляется в точке `p + wind`. Приземление удачно, если точка попадает хотя бы в один плодородный интервал `[left, right]` с включёнными границами. Интервалы массива `fertile` могут пересекаться.
+
+Верните количество семян, попавших на плодородную землю. Семена в одинаковых позициях считаются отдельно.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{seeds}) \\leq 10^5$
+- $-10^6 \\leq \\text{seeds}[i] \\leq 10^6$
+- $-10^6 \\leq \\text{wind} \\leq 10^6$
+- $0 \\leq \\text{len}(\\text{fertile}) \\leq 10^5$
+- $\\text{len}(\\text{fertile}[i]) = 2$
+- $-10^6 \\leq \\text{fertile}[i][0] \\leq \\text{fertile}[i][1] \\leq 10^6$
+"""
+
+solution = """
+def solution(seeds: list[int], wind: int, fertile: list[list[int]]) -> int:
+    from bisect import bisect_right
+    intervals = []
+    for left, right in sorted(fertile):
+        if intervals and left <= intervals[-1][1]:
+            intervals[-1][1] = max(intervals[-1][1], right)
+        else:
+            intervals.append([left, right])
+    starts = [left for left, _ in intervals]
+    count = 0
+    for seed in seeds:
+        i = bisect_right(starts, seed + wind) - 1
+        count += i >= 0 and seed + wind <= intervals[i][1]
+    return count
+"""
+
+examples = """
+solution([], 3, [[0, 10]]) == 0
+solution([1, 2], 10, [[0, 5]]) == 0
+solution([0, 5, 10], 2, [[1, 3], [7, 9]]) == 2
+"""
+
+[[input_signature]]
+argument_name = "seeds"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "wind"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "fertile"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[1, 2], 10, [[0, 5]]]
+comment   = "Wind carries every seed past the fertile land"
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 5, 10], 2, [[1, 3], [7, 9]]]
+comment   = "Two seeds land on fertile ground"
+expected  = 2
+
+[[asserts]]
+arguments = [[], 3, [[0, 10]]]
+comment   = "No seeds at all"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2, 3], 0, []]
+comment   = "No fertile intervals"
+expected  = 0
+
+[[asserts]]
+arguments = [[4], 1, [[5, 5]]]
+comment   = "Landing exactly on a single point interval"
+expected  = 1
+
+[[asserts]]
+arguments = [[4], 2, [[5, 5]]]
+comment   = "Landing just past a single point interval"
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4], 0, [[0, 4]]]
+comment   = "Every seed stays on fertile ground"
+expected  = 5
+
+[[asserts]]
+arguments = [[0, 1, 2, 3, 4], 1, [[0, 4]]]
+comment   = "One seed is blown out of the interval"
+expected  = 4
+
+[[asserts]]
+arguments = [[10, 20, 30], -10, [[0, 10], [15, 25]]]
+comment   = "Wind blows the seeds backwards"
+expected  = 3
+
+[[asserts]]
+arguments = [[7, 7, 7], 0, [[7, 7]]]
+comment   = "Repeated seeds on one fertile point"
+expected  = 3
+
+[[asserts]]
+arguments = [[-5, -3, -1], 2, [[-3, -1], [0, 1]]]
+comment   = "Negative positions"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 4, 9, 16, 25], 0, [[2, 5], [8, 17]]]
+comment   = "Landings around two intervals"
+expected  = 3
+
+[[asserts]]
+arguments = [[100, 200, 300], 50, [[140, 260]]]
+comment   = "One wide interval covers the middle seed"
+expected  = 2
+
+[[asserts]]
+arguments = [[0, 50, 100], 0, [[0, 20], [10, 60], [55, 99]]]
+comment   = "Overlapping intervals cover a range"
+expected  = 2
+
+[[asserts]]
+arguments = [[12, 15, 18], 3, [[15, 16], [16, 21]]]
+comment   = "Touching intervals"
+expected  = 3
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5, 6], -1, [[0, 0], [2, 2], [4, 4]]]
+comment   = "Single point intervals with a backward gust"
+expected  = 3
+
+[[asserts]]
+arguments = [[1000000, -1000000], 0, [[-1000000, -999999], [999999, 1000000]]]
+comment   = "Extreme positions at both ends"
+expected  = 2
+
+[[asserts]]
+arguments = [[1000000], 1, [[-1000000, 1000000]]]
+comment   = "Landing outside the limits of the interval"
+expected  = 0
+
+[[asserts]]
+arguments = [[-1000000], -1, [[-1000000, 1000000]]]
+comment   = "Landing at the left end of the interval"
+expected  = 0
+
+[[asserts]]
+arguments = [[3, 6, 9, 12], 0, [[1, 4], [5, 7], [8, 10], [11, 13]]]
+comment   = "Intervals cover every landing"
+expected  = 4
+
+[[asserts]]
+arguments = [[3, 6, 9, 12], 0, [[0, 2], [4, 5], [7, 8], [10, 11]]]
+comment   = "Intervals miss every landing"
+expected  = 0
+
+[[asserts]]
+arguments = [[5, 5, 5, 5], 5, [[9, 11]]]
+comment   = "Four identical seeds land together"
+expected  = 4
+
+[[asserts]]
+arguments = [[2, 4, 6, 8, 10], 1, [[3, 3], [5, 5], [7, 7], [9, 9], [11, 11]]]
+comment   = "Every landing hits its own point interval"
+expected  = 5
+
+[[asserts]]
+arguments = [[0, 10, 20, 30, 40], 5, [[0, 9], [20, 29], [40, 49]]]
+comment   = "Landings between separated intervals"
+expected  = 3
+
+[[asserts]]
+arguments = [[-20, -10, 0, 10, 20], 10, [[-15, -5], [-5, 5], [5, 15]]]
+comment   = "Adjacent intervals share their ends"
+expected  = 3
+
+[[asserts]]
+arguments = [[17], -17, [[0, 0]]]
+comment   = "Landing exactly at the origin"
+expected  = 1
+
+[[asserts]]
+arguments = [[1, 3, 5, 7, 9], 2, [[3, 3], [3, 7], [10, 12]]]
+comment   = "Nested and overlapping intervals"
+expected  = 4

@@ -1,0 +1,19 @@
+{
+  "name": "grand_slam_s3_2026",
+  "task_names": [
+    "daylight_loss",
+    "growing_degree_target",
+    "ripe_berry_streak",
+    "bird_call_encoding",
+    "first_frost_period",
+    "unrecovered_seed_caches",
+    "leaf_pigment_transitions",
+    "mushroom_growth_days",
+    "windborne_seed_landings",
+    "mycelium_colonies",
+    "bird_migration_stops",
+    "peak_leaf_abscission",
+    "migration_weather_plan",
+    "windborne_seed_path"
+  ]
+}

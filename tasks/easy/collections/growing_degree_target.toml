@@ -1,0 +1,195 @@
+base_score        = 45
+level             = "easy"
+name              = "growing_degree_target"
+tags              = ["collections", "linear_scan"]
+time_to_solve_sec = 150
+
+description_en = """
+Phenologists track plant development with accumulated heat: a day with temperature `t` adds $\\max(0, t - \\text{base})$ heat units. Days are processed in the order given by `temperatures`, and the heat of all processed days is summed.
+
+Return the smallest index at which the accumulated heat is at least `target`, or $-1$ if it never reaches `target`.
+"""
+
+description_ru = """
+Фенологи оценивают развитие растений по сумме тепла: день с температурой `t` добавляет $\\max(0, t - \\text{base})$ единиц тепла. Дни обрабатываются в порядке массива `temperatures`, тепло всех обработанных дней суммируется.
+
+Верните наименьший индекс, на котором накопленное тепло не меньше `target`, или $-1$, если оно никогда не достигнет `target`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{temperatures}) \\leq 10^4$
+- $-50 \\leq \\text{temperatures}[i] \\leq 50$
+- $-50 \\leq \\text{base} \\leq 50$
+- $1 \\leq \\text{target} \\leq 10^5$
+"""
+
+solution = """
+def solution(temperatures: list[int], base: int, target: int) -> int:
+    total = 0
+    for i, temperature in enumerate(temperatures):
+        total += max(0, temperature - base)
+        if total >= target:
+            return i
+    return -1
+"""
+
+examples = """
+solution([10], 10, 1) == -1
+solution([5, 6, 7], 10, 1) == -1
+solution([8, 12, 15, 9], 10, 7) == 2
+"""
+
+[[input_signature]]
+argument_name = "temperatures"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "base"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "target"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[5, 6, 7], 10, 1]
+comment   = "All days are below the base temperature"
+expected  = -1
+
+[[asserts]]
+arguments = [[8, 12, 15, 9], 10, 7]
+comment   = "Target reached on the third day"
+expected  = 2
+
+[[asserts]]
+arguments = [[11], 10, 1]
+comment   = "Single warm day reaches the target"
+expected  = 0
+
+[[asserts]]
+arguments = [[10], 10, 1]
+comment   = "Single day exactly at the base adds nothing"
+expected  = -1
+
+[[asserts]]
+arguments = [[20, 20, 20], 10, 30]
+comment   = "Target reached on the last day"
+expected  = 2
+
+[[asserts]]
+arguments = [[20, 20, 20], 10, 10]
+comment   = "Target reached on the first day"
+expected  = 0
+
+[[asserts]]
+arguments = [[25, 25, 25], 20, 16]
+comment   = "Accumulated heat stays below the target"
+expected  = -1
+
+[[asserts]]
+arguments = [[1, 2, 3], 0, 6]
+comment   = "Zero base sums the temperatures"
+expected  = 2
+
+[[asserts]]
+arguments = [[-5, -3, -1], -5, 2]
+comment   = "Negative temperatures with a negative base"
+expected  = 1
+
+[[asserts]]
+arguments = [[-10, 0, 10], 0, 10]
+comment   = "Only the warmest day contributes"
+expected  = 2
+
+[[asserts]]
+arguments = [[30, 1, 1, 1], 25, 5]
+comment   = "One hot day covers the target immediately"
+expected  = 0
+
+[[asserts]]
+arguments = [[12, 13, 14, 15], 12, 3]
+comment   = "Small daily contributions"
+expected  = 2
+
+[[asserts]]
+arguments = [[50, 50], -50, 100]
+comment   = "Large contributions with a negative base"
+expected  = 0
+
+[[asserts]]
+arguments = [[7, 8, 9, 10, 11], 9, 3]
+comment   = "Target reached on the final day"
+expected  = 4
+
+[[asserts]]
+arguments = [[9, 9, 9, 9], 9, 1]
+comment   = "Every day sits exactly at the base"
+expected  = -1
+
+[[asserts]]
+arguments = [[18, 4, 22, 7, 19], 15, 10]
+comment   = "Mixed warm and cool autumn days"
+expected  = 2
+
+[[asserts]]
+arguments = [[14, 16, 18, 20], 13, 16]
+comment   = "Target met exactly at the end"
+expected  = 3
+
+[[asserts]]
+arguments = [[14, 16, 18, 20], 13, 17]
+comment   = "One unit short of the target"
+expected  = -1
+
+[[asserts]]
+arguments = [[-20, -15, -10, -5], -25, 20]
+comment   = "All temperatures above a low base"
+expected  = 2
+
+[[asserts]]
+arguments = [[31, 29, 27, 25, 23], 20, 40]
+comment   = "Cooling trend reaches the target early"
+expected  = -1
+
+[[asserts]]
+arguments = [[6, 6, 6, 6, 6, 6], 5, 6]
+comment   = "Uniform contribution of one unit per day"
+expected  = 5
+
+[[asserts]]
+arguments = [[40, -40, 40, -40], 0, 80]
+comment   = "Alternating warm and freezing days"
+expected  = 2
+
+[[asserts]]
+arguments = [[13, 17, 21, 25, 29], 15, 100]
+comment   = "Target far above the total heat"
+expected  = -1
+
+[[asserts]]
+arguments = [[2, 4, 8, 16, 32], 1, 50]
+comment   = "Doubling temperatures"
+expected  = 4
+
+[[asserts]]
+arguments = [[22, 18, 24, 16, 26], 20, 9]
+comment   = "Target met on the middle day"
+expected  = 4
+
+[[asserts]]
+arguments = [[50], 49, 1]
+comment   = "Minimal contribution of one unit"
+expected  = 0
+
+[[asserts]]
+arguments = [[-50, -50, -50], -50, 1]
+comment   = "All days exactly at the base"
+expected  = -1

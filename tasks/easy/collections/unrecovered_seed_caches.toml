@@ -1,0 +1,225 @@
+base_score        = 50
+level             = "easy"
+name              = "unrecovered_seed_caches"
+tags              = ["collections", "hash_maps", "sorting"]
+time_to_solve_sec = 160
+
+description_en = """
+Squirrels spread food over many caches, and the seeds they never recover sometimes sprout and help trees to spread. A cache label is written down once when a seed is buried there and once more when a seed is taken back.
+
+Return the labels recorded an odd number of times, sorted in ascending alphabetical order. Return an empty array when there is no such label.
+"""
+
+description_ru = """
+Белки распределяют запасы по множеству тайников, а забытые семена иногда прорастают и помогают расселению деревьев. Метка тайника записывается один раз при захоронении семени и ещё раз при его извлечении.
+
+Верните метки, встречающиеся нечётное число раз, отсортированные по алфавиту по возрастанию. Если таких меток нет, верните пустой массив.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{tags}) \\leq 10^4$
+- $1 \\leq \\text{len}(\\text{tags}[i]) \\leq 20$
+- $\\text{tags}[i] \\in \\{a{-}z\\}^*$
+"""
+
+solution = """
+def solution(tags: list[str]) -> list[str]:
+    from collections import Counter
+    return sorted(tag for tag, count in Counter(tags).items() if count % 2)
+"""
+
+examples = """
+solution([]) == []
+solution(["oak", "oak"]) == []
+solution(["pine", "oak", "pine", "birch"]) == ["birch", "oak"]
+"""
+
+[[input_signature]]
+argument_name = "tags"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [["oak", "oak"]]
+comment   = "One cache buried and recovered"
+expected  = []
+
+[[asserts]]
+arguments = [["pine", "oak", "pine", "birch"]]
+comment   = "Two labels stay unrecovered"
+expected  = ["birch", "oak"]
+
+[[asserts]]
+arguments = [[]]
+comment   = "No records at all"
+expected  = []
+
+[[asserts]]
+arguments = [["oak"]]
+comment   = "Single buried cache"
+expected  = ["oak"]
+
+[[asserts]]
+arguments = [["oak", "oak", "oak"]]
+comment   = "Three records of one label"
+expected  = ["oak"]
+
+[[asserts]]
+arguments = [["oak", "oak", "oak", "oak"]]
+comment   = "Four records of one label"
+expected  = []
+
+[[asserts]]
+arguments = [["birch", "oak", "pine"]]
+comment   = "Every label recorded once"
+expected  = ["birch", "oak", "pine"]
+
+[[asserts]]
+arguments = [["pine", "pine", "pine", "pine", "pine"]]
+comment   = "Five records of the same label"
+expected  = ["pine"]
+
+[[asserts]]
+arguments = [["maple", "maple", "beech", "beech"]]
+comment   = "Two recovered caches"
+expected  = []
+
+[[asserts]]
+arguments = [["maple", "beech", "maple", "beech", "maple"]]
+comment   = "One label recorded three times"
+expected  = ["maple"]
+
+[[asserts]]
+arguments = [["walnut", "hazel", "walnut", "hazel", "walnut", "hazel"]]
+comment   = "All labels appear an even number of times"
+expected  = ["hazel", "walnut"]
+
+[[asserts]]
+arguments = [["spruce", "fir", "fir", "spruce", "larch"]]
+comment   = "One label recorded once"
+expected  = ["larch"]
+
+[[asserts]]
+arguments = [["cedar", "cedar", "yew", "yew", "yew", "elm"]]
+comment   = "Two labels stay odd"
+expected  = ["elm", "yew"]
+
+[[asserts]]
+arguments = [["ash", "elm", "ash", "elm", "ash", "elm", "ash"]]
+comment   = "Alternating labels with an odd tail"
+expected  = ["elm"]
+
+[[asserts]]
+arguments = [["rowan", "rowan", "rowan", "alder"]]
+comment   = "Odd label first in alphabetical order"
+expected  = ["alder", "rowan"]
+
+[[asserts]]
+arguments = [["hornbeam"]]
+comment   = "Single record of a long label"
+expected  = ["hornbeam"]
+
+[[asserts]]
+arguments = [["poplar", "willow"]]
+comment   = "Two distinct labels"
+expected  = ["poplar", "willow"]
+
+[[asserts]]
+arguments = [["willow", "poplar"]]
+comment   = "Same labels in reverse order"
+expected  = ["poplar", "willow"]
+
+[[asserts]]
+arguments = [["chestnut", "chestnut", "chestnut", "chestnut", "chestnut"]]
+comment   = "Odd count of a single label"
+expected  = ["chestnut"]
+
+[[asserts]]
+arguments = [["aspen", "aspen", "linden", "linden", "juniper", "juniper"]]
+comment   = "Three recovered pairs"
+expected  = []
+
+[[asserts]]
+arguments = [["oak", "birch", "oak", "birch", "oak", "birch", "pine"]]
+comment   = "Interleaved records with one odd label"
+expected  = ["birch", "oak", "pine"]
+
+[[asserts]]
+arguments = [
+  [
+    "hickory",
+    "hickory",
+    "pecan",
+    "acorn",
+    "pecan",
+    "acorn",
+    "acorn",
+  ],
+]
+comment = "Mixed counts with one odd label"
+expected = ["acorn"]
+
+[[asserts]]
+arguments = [["fir", "fir", "fir", "fir", "fir", "fir", "fir"]]
+comment   = "Seven records of one label"
+expected  = ["fir"]
+
+[[asserts]]
+arguments = [["holly", "ivy", "holly", "ivy", "holly", "ivy", "holly", "ivy"]]
+comment   = "Four pairs of two labels"
+expected  = []
+
+[[asserts]]
+arguments = [
+  [
+    "birch",
+    "beech",
+    "birch",
+    "beech",
+    "birch",
+    "beech",
+    "birch",
+    "beech",
+    "birch",
+  ],
+]
+comment = "Long alternating sequence"
+expected = ["birch"]
+
+[[asserts]]
+arguments = [
+  [
+    "laurel",
+    "myrtle",
+    "laurel",
+    "laurel",
+    "myrtle",
+    "myrtle",
+    "laurel",
+    "laurel",
+  ],
+]
+comment = "Unbalanced records of two labels"
+expected = ["laurel", "myrtle"]
+
+[[asserts]]
+arguments = [
+  [
+    "cypress",
+    "cypress",
+    "sequoia",
+    "redwood",
+    "sequoia",
+    "redwood",
+    "sequoia",
+  ],
+]
+comment = "Three labels with mixed parity"
+expected = ["sequoia"]

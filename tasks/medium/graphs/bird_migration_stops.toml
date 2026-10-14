@@ -1,0 +1,198 @@
+base_score        = 125
+level             = "medium"
+name              = "bird_migration_stops"
+tags              = ["graphs", "search"]
+time_to_solve_sec = 420
+
+description_en = """
+During a stopover birds rest and rebuild their energy reserves, so the loss of key sites can break a long route. Every element of `points` is a location `[x, y]` on a plane: the first point is where the flight starts, the last one is its destination, and the other points are possible stopover sites. One flight leads from any point to any point whose Euclidean distance is at most `max_distance`.
+
+Return the smallest possible number of stopover sites used on the way from the first point to the last one, or $-1$ when no route exists.
+"""
+
+description_ru = """
+Во время миграционной остановки птицы отдыхают и восстанавливают запасы энергии, поэтому потеря ключевых мест может разорвать длинный маршрут. Каждый элемент массива `points` — это точка `[x, y]` на плоскости: первая точка — начало перелёта, последняя — его цель, остальные — возможные места остановки. Один перелёт ведёт из любой точки в любую другую, если евклидово расстояние между ними не больше `max_distance`.
+
+Верните минимальное количество мест остановки на пути от первой точки к последней или $-1$, если маршрута нет.
+"""
+
+limits = """
+- $2 \\leq \\text{len}(\\text{points}) \\leq 500$
+- $\\text{len}(\\text{points}[i]) = 2$
+- $-10^4 \\leq \\text{points}[i][j] \\leq 10^4$
+- $0 \\leq \\text{max\\_distance} \\leq 10^4$
+"""
+
+solution = """
+def solution(points: list[list[int]], max_distance: int) -> int:
+    queue = [(0, 0)]
+    seen = {0}
+    for point, flights in queue:
+        if point == len(points) - 1:
+            return flights - 1
+        for other in range(len(points)):
+            distance = ((points[point][0] - points[other][0]) ** 2 +
+                        (points[point][1] - points[other][1]) ** 2)
+            if other not in seen and distance <= max_distance ** 2:
+                seen.add(other)
+                queue.append((other, flights + 1))
+    return -1
+"""
+
+examples = """
+solution([[0, 0], [3, 0]], 3) == 0
+solution([[0, 0], [5, 0]], 3) == -1
+solution([[0, 0], [3, 0], [6, 0]], 3) == 1
+"""
+
+[[input_signature]]
+argument_name = "points"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "max_distance"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[[0, 0], [5, 0]], 3]
+comment   = "Destination is out of reach"
+expected  = -1
+
+[[asserts]]
+arguments = [[[0, 0], [3, 0], [6, 0]], 3]
+comment   = "One stopover is needed"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 0], [3, 0]], 3]
+comment   = "Direct flight without stopovers"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [0, 0]], 0]
+comment   = "Start and destination coincide"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [1, 0]], 0]
+comment   = "Zero range blocks the flight"
+expected  = -1
+
+[[asserts]]
+arguments = [[[0, 0], [3, 4], [6, 8]], 5]
+comment   = "Two flights through the middle point"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 0], [3, 4], [6, 8]], 4]
+comment   = "Range is just too short"
+expected  = -1
+
+[[asserts]]
+arguments = [[[0, 0], [2, 0], [4, 0], [6, 0], [8, 0]], 2]
+comment   = "Chain of four flights"
+expected  = 3
+
+[[asserts]]
+arguments = [[[0, 0], [2, 0], [4, 0], [6, 0], [8, 0]], 4]
+comment   = "Every second point can be skipped"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 0], [2, 0], [4, 0], [6, 0], [8, 0]], 8]
+comment   = "Direct flight over all sites"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [10, 10], [5, 5]], 8]
+comment   = "Middle site splits a long leg"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [100, 100], [1, 1], [2, 2]], 50]
+comment   = "Nearby sites do not help"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [0, 9], [0, 3], [0, 6]], 3]
+comment   = "Three legs along a line"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 0], [9, 9], [9, 0], [0, 9]], 9]
+comment   = "Corners of a square"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [12, 0], [4, 1], [8, 1]], 5]
+comment   = "Sites slightly off the straight line"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 0], [12, 0], [4, 3], [8, 3]], 5]
+comment   = "Off-line sites keep the route valid"
+expected  = 1
+
+[[asserts]]
+arguments = [[[-5, -5], [5, 5], [0, 0]], 8]
+comment   = "Center site joins two corners"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [20, 0], [5, 0], [10, 0], [15, 0]], 5]
+comment   = "Four legs of equal length"
+expected  = 2
+
+[[asserts]]
+arguments = [[[0, 0], [20, 0], [5, 0], [10, 0], [15, 0]], 4]
+comment   = "Legs are too long for the range"
+expected  = -1
+
+[[asserts]]
+arguments = [[[0, 0], [7, 0], [1, 5], [3, 0], [5, 5]], 4]
+comment   = "Shortest route ignores the far sites"
+expected  = -1
+
+[[asserts]]
+arguments = [[[10000, 10000], [-10000, -10000]], 10000]
+comment   = "Extreme coordinates out of range"
+expected  = -1
+
+[[asserts]]
+arguments = [[[0, 0], [0, 30], [0, 10], [0, 20], [1, 15]], 10]
+comment   = "Extra site off the line"
+expected  = 1
+
+[[asserts]]
+arguments = [[[0, 0], [4, 4], [4, 0], [0, 4], [2, 2]], 3]
+comment   = "Center site is not needed"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [6, 8], [3, 4]], 5]
+comment   = "Single stopover halves the distance"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [6, 8]], 10]
+comment   = "Direct flight of length ten"
+expected  = 0
+
+[[asserts]]
+arguments = [[[0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], 2]
+comment   = "Every second point is enough"
+expected  = 4
+
+[[asserts]]
+arguments = [[[0, 0], [9, 0], [3, 0], [6, 0], [3, 9], [6, 9]], 3]
+comment   = "Two parallel chains of sites"
+expected  = -1

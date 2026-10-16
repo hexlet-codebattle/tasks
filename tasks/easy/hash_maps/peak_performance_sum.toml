@@ -1,0 +1,184 @@
+level             = "easy"
+name              = "peak_performance_sum"
+tags              = ["hashmaps", "arrays"]
+time_to_solve_sec = 250
+
+description_en = """
+You are given two arrays of the same length: `teams` and `scores`.
+For each index $i$, `teams[i]` is the name of a team, and `scores[i]` is the score they achieved in a specific match.
+
+A team can participate in multiple matches. Find the **highest** score achieved by each unique team across all their matches, and return the sum of these highest scores.
+
+If the input arrays are empty, return $0$.
+"""
+
+description_ru = """
+Вам даны два массива одинаковой длины: `teams` и `scores`.
+Для каждого индекса $i$, `teams[i]` — это название команды, а `scores[i]` — количество баллов, которые она получила в конкретном матче.
+
+Команда может участвовать в нескольких матчах. Найдите **наивысший** балл, полученный каждой уникальной командой за все её матчи, и верните сумму этих наивысших баллов.
+
+Если входные массивы пусты, верните $0$.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{teams}) = \\text{len}(\\text{scores}) \\leq 10^4$
+- $-10^4 \\leq \\text{scores}[i] \\leq 10^4$
+"""
+
+solution = """
+def solution(teams: list, scores: list) -> int:
+    best = {}
+    for t, s in zip(teams, scores):
+        best[t] = max(best.get(t, s), s)
+    return sum(best.values())
+"""
+
+examples = """
+solution([], []) == 0
+solution(["A", "A"], [-10, -5]) == -5
+solution(["A", "B"], [10, 20]) == 30
+solution(["A", "B", "A"], [10, 20, 30]) == 50
+"""
+
+[[input_signature]]
+argument_name = "teams"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[[input_signature]]
+argument_name = "scores"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[], []]
+comment   = "Empty arrays"
+expected  = 0
+
+[[asserts]]
+arguments = [["A"], [10]]
+comment   = "Single team, single score"
+expected  = 10
+
+[[asserts]]
+arguments = [["A", "A"], [10, 20]]
+comment   = "Single team, multiple increasing scores"
+expected  = 20
+
+[[asserts]]
+arguments = [["A", "A"], [20, 10]]
+comment   = "Single team, multiple decreasing scores"
+expected  = 20
+
+[[asserts]]
+arguments = [["A", "A"], [-10, -5]]
+comment   = "Single team, negative increasing scores"
+expected  = -5
+
+[[asserts]]
+arguments = [["A", "A"], [-5, -10]]
+comment   = "Single team, negative decreasing scores"
+expected  = -5
+
+[[asserts]]
+arguments = [["A", "B"], [10, 20]]
+comment   = "Two distinct teams"
+expected  = 30
+
+[[asserts]]
+arguments = [["A", "B", "A"], [10, 20, 30]]
+comment   = "Two teams, one improves"
+expected  = 50
+
+[[asserts]]
+arguments = [["A", "B", "A", "B"], [5, 5, 5, 5]]
+comment   = "Multiple teams with identical scores"
+expected  = 10
+
+[[asserts]]
+arguments = [["Red", "Blue", "Green"], [-10, -20, -30]]
+comment   = "Distinct teams with negative scores"
+expected  = -60
+
+[[asserts]]
+arguments = [["T1", "T2", "T1", "T2"], [100, -100, -50, 50]]
+comment   = "Mix of negative and positive improvements"
+expected  = 150
+
+[[asserts]]
+arguments = [["X"], [0]]
+comment   = "Single zero score"
+expected  = 0
+
+[[asserts]]
+arguments = [["X", "X", "X"], [0, 0, 0]]
+comment   = "Multiple zero scores for one team"
+expected  = 0
+
+[[asserts]]
+arguments = [["TeamA", "TeamB", "TeamC", "TeamA"], [15, 25, 35, 10]]
+comment   = "Later score is lower"
+expected  = 75
+
+[[asserts]]
+arguments = [["Alpha", "Beta", "Alpha", "Beta", "Gamma"], [1, 2, 3, 4, 5]]
+comment   = "Various teams interleaving"
+expected  = 12
+
+[[asserts]]
+arguments = [["Z", "Y", "X", "W"], [10, 10, 10, 10]]
+comment   = "All distinct teams, same score"
+expected  = 40
+
+[[asserts]]
+arguments = [["T1", "T1", "T1", "T1", "T1"], [-1, -2, -3, -4, -5]]
+comment   = "Strictly decreasing negative sequence"
+expected  = -1
+
+[[asserts]]
+arguments = [["T1", "T1", "T1", "T1", "T1"], [-5, -4, -3, -2, -1]]
+comment   = "Strictly increasing negative sequence"
+expected  = -1
+
+[[asserts]]
+arguments = [["One"], [9999]]
+comment   = "Large single value"
+expected  = 9999
+
+[[asserts]]
+arguments = [["A", "B", "C", "D", "E"], [1, -1, 2, -2, 3]]
+comment   = "Alternating positive and negative base line"
+expected  = 3
+
+[[asserts]]
+arguments = [["Cats", "Dogs", "Cats", "Dogs"], [13, 14, 13, 15]]
+comment   = "Minor score adjustments"
+expected  = 28
+
+[[asserts]]
+arguments = [["A", "a"], [10, 20]]
+comment   = "Case sensitivity test"
+expected  = 30
+
+[[asserts]]
+arguments = [["Team1", "Team2", "Team3", "Team1"], [-1000, 500, 0, -500]]
+comment   = "Deep negative improvement"
+expected  = 0
+
+[[asserts]]
+arguments = [["Same", "Same", "Different"], [50, 50, 100]]
+comment   = "Duplicate scores on same team"
+expected  = 150
+
+[[asserts]]
+arguments = [["A", "B", "C", "A", "B", "C"], [1, 2, 3, 4, 5, 6]]
+comment   = "Double pass of the same teams"
+expected  = 15

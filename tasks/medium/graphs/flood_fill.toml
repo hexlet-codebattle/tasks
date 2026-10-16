@@ -1,0 +1,226 @@
+level             = "medium"
+name              = "flood_fill"
+tags              = ["graphs"]
+time_to_solve_sec = 400
+
+description_en = """
+An image is represented by a 2D integer array `image`, where `image[i][j]` represents the pixel value of the image.
+
+You are also given three integers `sr`, `sc`, and `color`. You should perform a flood fill on the image starting from the pixel `image[sr][sc]`.
+
+To perform a flood fill, consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color), and so on. Replace the color of all of the aforementioned pixels with `color`.
+
+Return the modified image after performing the flood fill.
+"""
+
+description_ru = """
+Изображение представлено в виде двумерного массива целых чисел `image`, где `image[i][j]` — это значение пикселя.
+
+Вам также даны три целых числа: `sr`, `sc` и `color`. Вы должны выполнить заливку (flood fill) изображения, начиная с пикселя `image[sr][sc]`.
+
+Для выполнения заливки возьмите начальный пиксель, а также все соседние по вертикали и горизонтали пиксели того же цвета, что и начальный. Затем возьмите соседние пиксели для добавленных пикселей (также того же цвета), и так далее. Замените цвет всех этих пикселей на новый `color`.
+
+Верните измененное изображение после выполнения заливки.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{image}) \\leq 50$
+- $1 \\leq \\text{len}(\\text{image}[0]) \\leq 50$
+- $0 \\leq \\text{image}[i][j], \\text{color} \\leq 100$
+- $0 \\leq \\text{sr} < \\text{len}(\\text{image})$
+- $0 \\leq \\text{sc} < \\text{len}(\\text{image}[0])$
+"""
+
+solution = """
+def solution(image: list[list[int]], sr: int, sc: int, color: int) -> list[list[int]]:
+    old = image[sr][sc]
+    if old == color: return image
+    def dfs(r, c):
+        if 0 <= r < len(image) and 0 <= c < len(image[0]) and image[r][c] == old:
+            image[r][c] = color
+            dfs(r + 1, c); dfs(r - 1, c); dfs(r, c + 1); dfs(r, c - 1)
+    dfs(sr, sc)
+    return image
+"""
+
+examples = """
+solution([[1]], 0, 0, 2) == [[2]]
+solution([[0, 0], [0, 0]], 0, 0, 2) == [[2, 2], [2, 2]]
+solution([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2) == [[2, 2, 2], [2, 2, 0], [2, 0, 1]]
+"""
+
+[[input_signature]]
+argument_name = "image"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "array"
+[input_signature.type.nested.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "sr"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "sc"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "color"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "array"
+[output_signature.type.nested.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [[[1]], 0, 0, 2]
+comment   = "1x1 grid, standard fill"
+expected  = [[2]]
+
+[[asserts]]
+arguments = [[[2]], 0, 0, 2]
+comment   = "1x1 grid, same color no change"
+expected  = [[2]]
+
+[[asserts]]
+arguments = [[[1, 1], [1, 1]], 0, 0, 3]
+comment   = "2x2 grid, all same color"
+expected  = [[3, 3], [3, 3]]
+
+[[asserts]]
+arguments = [[[1, 2], [3, 4]], 0, 0, 5]
+comment   = "2x2 grid, distinct colors, start top-left"
+expected  = [[5, 2], [3, 4]]
+
+[[asserts]]
+arguments = [[[1, 2], [3, 4]], 1, 1, 5]
+comment   = "2x2 grid, distinct colors, start bottom-right"
+expected  = [[1, 2], [3, 5]]
+
+[[asserts]]
+arguments = [[[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2]
+comment   = "Classic connected component shape"
+expected  = [[2, 2, 2], [2, 2, 0], [2, 0, 1]]
+
+[[asserts]]
+arguments = [[[0, 0, 0], [0, 0, 0]], 0, 0, 0]
+comment   = "Grid already the target color"
+expected  = [[0, 0, 0], [0, 0, 0]]
+
+[[asserts]]
+arguments = [[[1, 2, 1], [2, 1, 2], [1, 2, 1]], 1, 1, 3]
+comment   = "Checkerboard, isolated center"
+expected  = [[1, 2, 1], [2, 3, 2], [1, 2, 1]]
+
+[[asserts]]
+arguments = [[[1, 2, 1], [2, 1, 2], [1, 2, 1]], 0, 0, 3]
+comment   = "Checkerboard, isolated corner"
+expected  = [[3, 2, 1], [2, 1, 2], [1, 2, 1]]
+
+[[asserts]]
+arguments = [[[1, 1, 1], [2, 2, 2], [1, 1, 1]], 1, 1, 3]
+comment   = "Horizontal stripe"
+expected  = [[1, 1, 1], [3, 3, 3], [1, 1, 1]]
+
+[[asserts]]
+arguments = [[[1, 2, 1], [1, 2, 1], [1, 2, 1]], 1, 1, 3]
+comment   = "Vertical stripe"
+expected  = [[1, 3, 1], [1, 3, 1], [1, 3, 1]]
+
+[[asserts]]
+arguments = [[[0, 0, 0], [0, 1, 0], [0, 0, 0]], 1, 1, 2]
+comment   = "Single central pixel different from background"
+expected  = [[0, 0, 0], [0, 2, 0], [0, 0, 0]]
+
+[[asserts]]
+arguments = [[[0, 0, 0], [0, 1, 0], [0, 0, 0]], 0, 0, 2]
+comment   = "Surrounding background avoiding center"
+expected  = [[2, 2, 2], [2, 1, 2], [2, 2, 2]]
+
+[[asserts]]
+arguments = [[[1, 0, 0], [0, 1, 0], [0, 0, 1]], 0, 0, 2]
+comment   = "Diagonal connection (does not spread)"
+expected  = [[2, 0, 0], [0, 1, 0], [0, 0, 1]]
+
+[[asserts]]
+arguments = [[[1, 1, 1, 1]], 0, 2, 5]
+comment   = "1D horizontal row"
+expected  = [[5, 5, 5, 5]]
+
+[[asserts]]
+arguments = [[[1], [1], [1], [1]], 2, 0, 5]
+comment   = "1D vertical column"
+expected  = [[5], [5], [5], [5]]
+
+[[asserts]]
+arguments = [[[1, 1, 1], [1, 0, 1], [1, 1, 1]], 0, 0, 2]
+comment   = "Ring shape, fill outside"
+expected  = [[2, 2, 2], [2, 0, 2], [2, 2, 2]]
+
+[[asserts]]
+arguments = [[[1, 1, 1], [1, 0, 1], [1, 1, 1]], 1, 1, 2]
+comment   = "Ring shape, fill inside"
+expected  = [[1, 1, 1], [1, 2, 1], [1, 1, 1]]
+
+[[asserts]]
+arguments = [[[0, 1, 0], [1, 0, 1], [0, 1, 0]], 1, 1, 2]
+comment   = "Hollow cross, fill center"
+expected  = [[0, 1, 0], [1, 2, 1], [0, 1, 0]]
+
+[[asserts]]
+arguments = [[[0, 1, 0], [1, 1, 1], [0, 1, 0]], 1, 1, 2]
+comment   = "Filled cross, fill cross"
+expected  = [[0, 2, 0], [2, 2, 2], [0, 2, 0]]
+
+[[asserts]]
+arguments = [[[7, 7, 8], [7, 8, 8], [9, 9, 9]], 0, 0, 1]
+comment   = "Asymmetric blob shape"
+expected  = [[1, 1, 8], [1, 8, 8], [9, 9, 9]]
+
+[[asserts]]
+arguments = [[[2, 2, 2, 2], [2, 3, 3, 2], [2, 3, 3, 2], [2, 2, 2, 2]], 1, 1, 4]
+comment   = "Square inside a square"
+expected  = [[2, 2, 2, 2], [2, 4, 4, 2], [2, 4, 4, 2], [2, 2, 2, 2]]
+
+[[asserts]]
+arguments = [[[5, 5, 5], [5, 5, 5], [5, 5, 5]], 2, 2, 5]
+comment   = "3x3 all same, target color is same"
+expected  = [[5, 5, 5], [5, 5, 5], [5, 5, 5]]
+
+[[asserts]]
+arguments = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]], 2, 2, 0]
+comment   = "All distinct numbers"
+expected  = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+
+[[asserts]]
+arguments = [[[1, 1], [0, 1]], 1, 1, 3]
+comment   = "L-shape component"
+expected  = [[3, 3], [0, 3]]
+
+[[asserts]]
+arguments = [[[0, 1], [1, 1]], 0, 1, 3]
+comment   = "Reverse L-shape component"
+expected  = [[0, 3], [3, 3]]
+
+[[asserts]]
+arguments = [[[1, 1], [1, 1], [1, 1]], 0, 0, 2]
+comment   = "3x2 full block"
+expected  = [[2, 2], [2, 2], [2, 2]]
+
+[[asserts]]
+arguments = [[[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]], 2, 2, 2]
+comment   = "Nested rings, center isolated pixel"
+expected  = [[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 2, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]]
+
+[[asserts]]
+arguments = [[[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]], 0, 0, 2]
+comment   = "Nested rings, outer boundary"
+expected  = [[2, 2, 2, 2, 2], [2, 0, 0, 0, 2], [2, 0, 1, 0, 2], [2, 0, 0, 0, 2], [2, 2, 2, 2, 2]]

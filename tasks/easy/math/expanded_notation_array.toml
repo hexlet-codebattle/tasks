@@ -1,0 +1,175 @@
+level             = "easy"
+name              = "expanded_notation_array"
+tags              = ["math", "strings", "parsing", "arrays"]
+time_to_solve_sec = 250
+
+description_en = """
+Expanded Notation means an integer is written as the sum of its digits multiplied with its place value (in strictly descending powers of $10$). 
+
+For example, $85063 = 8 \\times 10000 + 5 \\times 1000 + 6 \\times 10 + 3$. 
+
+You are given an array of strings `arr`, where each string represents a natural number in expanded notation. The strings use `"x"` for multiplication and `"+"` for addition, with no spaces. Your task is to compute the sum for each string and return an array of these numbers in their normal integer form.
+"""
+
+description_ru = """
+Развернутая запись означает, что целое число записано в виде суммы его цифр, умноженных на их разрядное значение (в строго убывающих степенях $10$).
+
+Например, $85063 = 8 \\times 10000 + 5 \\times 1000 + 6 \\times 10 + 3$.
+
+Вам дан массив строк `arr`, где каждая строка представляет натуральное число в развернутой записи. В строках используется `"x"` для умножения и `"+"` для сложения, без пробелов. Ваша задача — вычислить сумму для каждой строки и вернуть массив этих чисел в обычном целом виде.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(arr) \\leq 100$
+- $3 \\leq \\text{len}(arr[i]) \\leq 100$
+- $arr[i]$ contains only digits, `"x"`, and `"+"`
+- Place values are powers of $10$
+"""
+
+solution = """
+def solution(arr: list) -> list:
+    return [sum(int(part.split('x')[0]) * int(part.split('x')[1]) for part in s.split('+')) for s in arr]
+"""
+
+examples = """
+solution(["1x1"]) == [1]
+solution(["9x10", "1x1"]) == [90, 1]
+solution(["7x100+2x1", "8x10000+5x1000+6x10+3"]) == [702, 85063]
+"""
+
+[[input_signature]]
+argument_name = "arr"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "integer"
+
+[[asserts]]
+arguments = [["8x10000+5x1000+6x10+3x1"]]
+comment   = "Complex example from description"
+expected  = [85063]
+
+[[asserts]]
+arguments = [["7x100+2x1", "1x1"]]
+comment   = "Multiple elements"
+expected  = [702, 1]
+
+[[asserts]]
+arguments = [["1x1"]]
+comment   = "Single digit"
+expected  = [1]
+
+[[asserts]]
+arguments = [["9x10", "4x100000+2x100"]]
+comment   = "Varying lengths"
+expected  = [90, 400200]
+
+[[asserts]]
+arguments = [["1x1000+1x1"]]
+comment   = "One thousand and one"
+expected  = [1001]
+
+[[asserts]]
+arguments = [["1x10", "1x100", "1x1000"]]
+comment   = "Increasing powers of ten"
+expected  = [10, 100, 1000]
+
+[[asserts]]
+arguments = [["5x1000+5x10", "6x10000+6x100+6x1", "7x1000000"]]
+comment   = "Array with three different complexities"
+expected  = [5050, 60606, 7000000]
+
+[[asserts]]
+arguments = [["9x1000+9x100+9x10+9x1"]]
+comment   = "All nines"
+expected  = [9999]
+
+[[asserts]]
+arguments = [["1x100000000+2x10000000+3x1000000+4x100000+5x10000+6x1000+7x100+8x10+9x1"]]
+comment   = "Consecutive digits"
+expected  = [123456789]
+
+[[asserts]]
+arguments = [["2x1000000+1x1", "3x10"]]
+comment   = "Millions and tens"
+expected  = [2000001, 30]
+
+[[asserts]]
+arguments = [["4x100+4x1", "5x100+5x10"]]
+comment   = "Hundreds"
+expected  = [404, 550]
+
+[[asserts]]
+arguments = [["5x10000+5x1000"]]
+comment   = "Fifty five thousand"
+expected  = [55000]
+
+[[asserts]]
+arguments = [["8x100000000", "9x100000000+9x1000000+9x10000+9x100+9x1"]]
+comment   = "Alternating nines and zeros"
+expected  = [800000000, 909090909]
+
+[[asserts]]
+arguments = [["1x10000+1x1000+1x100+1x10+1x1", "2x100+2x10+2x1"]]
+comment   = "All ones and all twos"
+expected  = [11111, 222]
+
+[[asserts]]
+arguments = [["3x10+3x1", "4x1"]]
+comment   = "All threes and fours"
+expected  = [33, 4]
+
+[[asserts]]
+arguments = [["1x1000000000"]]
+comment   = "One billion"
+expected  = [1000000000]
+
+[[asserts]]
+arguments = [["1x1000000000+1x10000000+1x100000+1x1000+1x10"]]
+comment   = "Alternating ones and zeros"
+expected  = [1010101010]
+
+[[asserts]]
+arguments = [["5x10000+4x1000+3x100+2x10+1x1", "1x1"]]
+comment   = "Descending digits"
+expected  = [54321, 1]
+
+[[asserts]]
+arguments = [["9x100000000+8x10000000+7x1000000+6x100000+5x10000+4x1000+3x100+2x10+1x1"]]
+comment   = "Long descending digits"
+expected  = [987654321]
+
+[[asserts]]
+arguments = [["9x100+9x10+9x1", "8x100+8x10+8x1"]]
+comment   = "Nines and eights"
+expected  = [999, 888]
+
+[[asserts]]
+arguments = [["7x1000+2x1", "6x1000+3x10", "5x1000+4x100"]]
+comment   = "Zeros in different positions"
+expected  = [7002, 6030, 5400]
+
+[[asserts]]
+arguments = [["1x10000", "2x10000", "3x10000"]]
+comment   = "Same order of magnitude"
+expected  = [10000, 20000, 30000]
+
+[[asserts]]
+arguments = [["1x100000", "2x1000000"]]
+comment   = "Powers of ten variations"
+expected  = [100000, 2000000]
+
+[[asserts]]
+arguments = [["1x1000000+2x100000+3x10000", "4x1000+5x100+6x10+7x1"]]
+comment   = "Split full number across array elements"
+expected  = [1230000, 4567]
+
+[[asserts]]
+arguments = [["8x100000+5x100+3x1", "2x10000+4x100+1x1"]]
+comment   = "Various missing place values"
+expected  = [800503, 20401]

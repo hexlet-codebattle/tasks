@@ -1,0 +1,198 @@
+level             = "easy"
+name              = "custom_fibonacci"
+tags              = ["math", "algorithms"]
+time_to_solve_sec = 200
+
+description_en = """
+Given three integers `f0`, `f1`, and `n`. 
+
+Consider a sequence where the first two elements are `f0` and `f1`, and every subsequent element is the sum of the two preceding elements. 
+
+Return `True` if `n` belongs to this sequence, and `False` otherwise.
+"""
+
+description_ru = """
+Даны три целых числа `f0`, `f1` и `n`. 
+
+Рассмотрим последовательность, первые два элемента которой равны `f0` и `f1`, а каждый последующий элемент равен сумме двух предыдущих. 
+
+Верните `True`, если `n` принадлежит этой последовательности, и `False` в противном случае.
+"""
+
+limits = """
+- $0 \\leq f_0, f_1 \\leq 1000$
+- $0 \\leq n \\leq 10^9$
+"""
+
+solution = """
+def solution(f0: int, f1: int, n: int) -> bool:
+    if n in (f0, f1): return True
+    if f0 == 0 and f1 == 0: return False
+    while f1 < n:
+        f0, f1 = f1, f0 + f1
+    return f1 == n
+"""
+
+examples = """
+solution(0, 1, 5) == True
+solution(2, 1, 4) == True
+solution(10, 20, 100) == False
+"""
+
+[[input_signature]]
+argument_name = "f0"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "f1"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = [0, 1, 5]
+comment   = "Classic Fibonacci, n = 5 is in the sequence"
+expected  = true
+
+[[asserts]]
+arguments = [0, 1, 8]
+comment   = "Classic Fibonacci, n = 8 is in the sequence"
+expected  = true
+
+[[asserts]]
+arguments = [0, 1, 4]
+comment   = "Classic Fibonacci, n = 4 is NOT in the sequence"
+expected  = false
+
+[[asserts]]
+arguments = [2, 1, 3]
+comment   = "Lucas numbers, 3 is in (2, 1, 3)"
+expected  = true
+
+[[asserts]]
+arguments = [2, 1, 4]
+comment   = "Lucas numbers, 4 is in (2, 1, 3, 4)"
+expected  = true
+
+[[asserts]]
+arguments = [2, 1, 7]
+comment   = "Lucas numbers, 7 is in (2, 1, 3, 4, 7)"
+expected  = true
+
+[[asserts]]
+arguments = [2, 1, 10]
+comment   = "Lucas numbers, 10 is NOT in sequence"
+expected  = false
+
+[[asserts]]
+arguments = [0, 0, 0]
+comment   = "Zero sequence, n = 0"
+expected  = true
+
+[[asserts]]
+arguments = [0, 0, 5]
+comment   = "Zero sequence, n = 5 is NOT in sequence"
+expected  = false
+
+[[asserts]]
+arguments = [5, 5, 10]
+comment   = "Equal starting numbers, 10 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [5, 5, 15]
+comment   = "Equal starting numbers, 15 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [5, 5, 20]
+comment   = "Equal starting numbers, 20 is NOT in sequence"
+expected  = false
+
+[[asserts]]
+arguments = [10, 20, 30]
+comment   = "Multiples of 10, 30 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [10, 20, 50]
+comment   = "Multiples of 10, 50 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [10, 20, 80]
+comment   = "Multiples of 10, 80 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [10, 20, 130]
+comment   = "Multiples of 10, 130 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [10, 20, 100]
+comment   = "Multiples of 10, 100 is NOT in sequence"
+expected  = false
+
+[[asserts]]
+arguments = [100, 1, 101]
+comment   = "Decreasing start, 101 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [100, 1, 102]
+comment   = "Decreasing start, 102 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [100, 1, 203]
+comment   = "Decreasing start, 203 is in sequence"
+expected  = true
+
+[[asserts]]
+arguments = [100, 1, 200]
+comment   = "Decreasing start, 200 is NOT in sequence"
+expected  = false
+
+[[asserts]]
+arguments = [5, 10, 5]
+comment   = "n is equal to f0"
+expected  = true
+
+[[asserts]]
+arguments = [5, 10, 10]
+comment   = "n is equal to f1"
+expected  = true
+
+[[asserts]]
+arguments = [50, 60, 10]
+comment   = "n is smaller than both f0 and f1"
+expected  = false
+
+[[asserts]]
+arguments = [0, 1, 102334155]
+comment   = "Large Fibonacci number"
+expected  = true
+
+[[asserts]]
+arguments = [0, 1, 102334156]
+comment   = "Large number NOT in Fibonacci sequence"
+expected  = false
+
+[[asserts]]
+arguments = [0, 1, 701408733]
+comment   = "Another large Fibonacci number"
+expected  = true
+
+[[asserts]]
+arguments = [13, 21, 5]
+comment   = "n is smaller than f0, f1 with Fibonacci sequence"
+expected  = false

@@ -1,0 +1,197 @@
+level             = "easy"
+name              = "max_stock_profit"
+tags              = ["arrays", "greedy", "math"]
+time_to_solve_sec = 250
+
+description_en = """
+Given an array `prices` where `prices[i]` is the price of a given stock on the $i$-th day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return `0`.
+"""
+
+description_ru = """
+Дан массив `prices`, где `prices[i]` — это цена акции в $i$-й день.
+
+Вы хотите максимизировать свою прибыль, выбрав один день для покупки одной акции и другой день в будущем для ее продажи.
+
+Верните максимальную прибыль, которую вы можете получить от этой сделки. Если получить прибыль невозможно, верните `0`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{prices}) \\leq 10^5$
+- $0 \\leq \\text{prices}[i] \\leq 10^4$
+"""
+
+solution = """
+def solution(prices: list) -> int:
+    max_p, min_p = 0, float('inf')
+    for price in prices:
+        min_p = min(min_p, price)
+        max_p = max(max_p, price - min_p)
+    return max_p
+"""
+
+examples = """
+solution([1]) == 0
+solution([1, 2]) == 1
+solution([2, 1]) == 0
+solution([7, 6, 4, 3, 1]) == 0
+solution([7, 1, 5, 3, 6, 4]) == 5
+"""
+
+[[input_signature]]
+argument_name = "prices"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[7, 1, 5, 3, 6, 4]]
+comment   = "Buy on day 2, sell on day 5"
+expected  = 5
+
+[[asserts]]
+arguments = [[7, 6, 4, 3, 1]]
+comment   = "Decreasing prices, no profit possible"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2]]
+comment   = "Two days, profit possible"
+expected  = 1
+
+[[asserts]]
+arguments = [[2, 1]]
+comment   = "Two days, decreasing prices"
+expected  = 0
+
+[[asserts]]
+arguments = [[1]]
+comment   = "Single day, no transaction possible"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 1, 1, 1]]
+comment   = "Constant prices"
+expected  = 0
+
+[[asserts]]
+arguments = [[2, 4, 1]]
+comment   = "Max price before min price"
+expected  = 2
+
+[[asserts]]
+arguments = [[3, 2, 6, 5, 0, 3]]
+comment   = "Multiple peaks and valleys"
+expected  = 4
+
+[[asserts]]
+arguments = [[1, 2, 3, 4, 5]]
+comment   = "Increasing prices"
+expected  = 4
+
+[[asserts]]
+arguments = [[5, 4, 3, 2, 1]]
+comment   = "Strictly decreasing prices"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 5, 1, 5, 1, 5]]
+comment   = "Alternating low and high"
+expected  = 4
+
+[[asserts]]
+arguments = [[10000, 0]]
+comment   = "Max possible value then 0"
+expected  = 0
+
+[[asserts]]
+arguments = [[0, 10000]]
+comment   = "0 then max possible value"
+expected  = 10000
+
+[[asserts]]
+arguments = [[3, 3, 5, 0, 0, 3, 1, 4]]
+comment   = "Mixed elements with zeroes"
+expected  = 4
+
+[[asserts]]
+arguments = [[7, 2, 5, 1, 6, 4]]
+comment   = "Best buy is later in the array"
+expected  = 5
+
+[[asserts]]
+arguments = [[8, 9, 2, 5, 4, 7, 1]]
+comment   = "Highest peak at start, best profit in middle"
+expected  = 5
+
+[[asserts]]
+arguments = [[5, 1, 5, 1, 5]]
+comment   = "Repeating pattern"
+expected  = 4
+
+[[asserts]]
+arguments = [[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]]
+comment   = "Long increasing sequence"
+expected  = 90
+
+[[asserts]]
+arguments = [[100, 90, 80, 70, 60, 50, 40, 30, 20, 10]]
+comment   = "Long decreasing sequence"
+expected  = 0
+
+[[asserts]]
+arguments = [[1, 2, 10, 1, 20]]
+comment   = "Two distinct upward trends"
+expected  = 19
+
+[[asserts]]
+arguments = [[20, 1, 10, 2, 11]]
+comment   = "Buy at absolute min, sell at local max"
+expected  = 10
+
+[[asserts]]
+arguments = [[10, 8, 7, 5, 2]]
+comment   = "No profit, all decreasing"
+expected  = 0
+
+[[asserts]]
+arguments = [[2, 2, 2, 2, 3]]
+comment   = "Flat then small increase"
+expected  = 1
+
+[[asserts]]
+arguments = [[3, 2, 1, 4, 5, 6]]
+comment   = "Drop to min, then steady increase"
+expected  = 5
+
+[[asserts]]
+arguments = [[1, 100]]
+comment   = "Simple max gain"
+expected  = 99
+
+[[asserts]]
+arguments = [[5, 8, 2, 10]]
+comment   = "Two possible buy days"
+expected  = 8
+
+[[asserts]]
+arguments = [[10, 2, 8, 1, 7]]
+comment   = "Profit 6 on both valid transactions, best is 6"
+expected  = 6
+
+[[asserts]]
+arguments = [[1, 2, 4, 2, 5, 7, 2, 4, 9, 0, 8]]
+comment   = "Complex long array"
+expected  = 8
+
+[[asserts]]
+arguments = [[0, 0, 0, 0]]
+comment   = "All zeroes"
+expected  = 0

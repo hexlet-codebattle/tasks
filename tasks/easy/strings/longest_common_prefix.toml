@@ -1,0 +1,186 @@
+level             = "easy"
+name              = "longest_common_prefix"
+tags              = ["strings", "arrays"]
+time_to_solve_sec = 250
+
+description_en = """
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string `""`.
+"""
+
+description_ru = """
+Напишите функцию для поиска самого длинного общего префикса среди массива строк.
+
+Если общего префикса нет, верните пустую строку `""`.
+"""
+
+limits = """
+- $1 \\leq \\text{len}(\\text{strs}) \\leq 200$
+- $0 \\leq \\text{len}(\\text{strs}[i]) \\leq 200$
+"""
+
+solution = """
+def solution(strs: list[str]) -> str:
+    res = ""
+    for chars in zip(*strs):
+        if len(set(chars)) != 1: break
+        res += chars[0]
+    return res
+"""
+
+examples = """
+solution(["a"]) == "a"
+solution(["dog", "racecar", "car"]) == ""
+solution(["flower", "flow", "flight"]) == "fl"
+"""
+
+[[input_signature]]
+argument_name = "strs"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = [["flower", "flow", "flight"]]
+comment   = "Standard case with a common prefix"
+expected  = "fl"
+
+[[asserts]]
+arguments = [["dog", "racecar", "car"]]
+comment   = "No common prefix"
+expected  = ""
+
+[[asserts]]
+arguments = [["a"]]
+comment   = "Single string"
+expected  = "a"
+
+[[asserts]]
+arguments = [[""]]
+comment   = "Single empty string"
+expected  = ""
+
+[[asserts]]
+arguments = [["", "b"]]
+comment   = "First string is empty"
+expected  = ""
+
+[[asserts]]
+arguments = [["a", ""]]
+comment   = "Last string is empty"
+expected  = ""
+
+[[asserts]]
+arguments = [["ab", "a"]]
+comment   = "Longest prefix is the entire second string"
+expected  = "a"
+
+[[asserts]]
+arguments = [["a", "ab"]]
+comment   = "Longest prefix is the entire first string"
+expected  = "a"
+
+[[asserts]]
+arguments = [["abc", "abc", "abc"]]
+comment   = "All strings are identical"
+expected  = "abc"
+
+[[asserts]]
+arguments = [["abc", "abcd", "abcde"]]
+comment   = "Strings in increasing length"
+expected  = "abc"
+
+[[asserts]]
+arguments = [["abcde", "abcd", "abc"]]
+comment   = "Strings in decreasing length"
+expected  = "abc"
+
+[[asserts]]
+arguments = [["ab", "a", "abc"]]
+comment   = "Shortest string is in the middle"
+expected  = "a"
+
+[[asserts]]
+arguments = [["inters", "interstellar", "internet", "internal"]]
+comment   = "Long prefix"
+expected  = "inter"
+
+[[asserts]]
+arguments = [["throne", "throne"]]
+comment   = "Two identical strings"
+expected  = "throne"
+
+[[asserts]]
+arguments = [["throne", "dungeon"]]
+comment   = "Two completely different strings"
+expected  = ""
+
+[[asserts]]
+arguments = [["prefix", "prefixes", "preform"]]
+comment   = "Prefix variation"
+expected  = "pref"
+
+[[asserts]]
+arguments = [["apple", "ape", "april"]]
+comment   = "Common starting letters"
+expected  = "ap"
+
+[[asserts]]
+arguments = [["car", "cir"]]
+comment   = "Single common character"
+expected  = "c"
+
+[[asserts]]
+arguments = [["c", "c"]]
+comment   = "Identical single characters"
+expected  = "c"
+
+[[asserts]]
+arguments = [["c", "d"]]
+comment   = "Different single characters"
+expected  = ""
+
+[[asserts]]
+arguments = [["alone", "aloof", "albatross"]]
+comment   = "Common start"
+expected  = "al"
+
+[[asserts]]
+arguments = [["zebra", "z", "zephyr"]]
+comment   = "Single character bounds the prefix"
+expected  = "z"
+
+[[asserts]]
+arguments = [["same", "same", "same", "same", "same"]]
+comment   = "Many identical strings"
+expected  = "same"
+
+[[asserts]]
+arguments = [["a", "a", "b"]]
+comment   = "One string breaks the prefix at the end"
+expected  = ""
+
+[[asserts]]
+arguments = [["abcdefgh", "abcdefghij", "abcdefghijk", "abcdefghijkl"]]
+comment   = "Increasing length with long common prefix"
+expected  = "abcdefgh"
+
+[[asserts]]
+arguments = [["x", "x", "x", "y"]]
+comment   = "Break at last string single character"
+expected  = ""
+
+[[asserts]]
+arguments = [["hello", "helloworld", "hell"]]
+comment   = "Substring in middle"
+expected  = "hell"
+
+[[asserts]]
+arguments = [["python", "pyramid", "pyrite", "pyre"]]
+comment   = "Another normal case"
+expected  = "py"

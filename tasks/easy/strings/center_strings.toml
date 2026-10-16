@@ -1,0 +1,205 @@
+level             = "easy"
+name              = "center_strings"
+tags              = ["strings", "formatting"]
+time_to_solve_sec = 200
+
+description_en = """
+Given an array of strings, return a new array where each string is centered to the length of the longest string in the original array, padded with spaces (`" "`).
+
+If the padding is uneven (i.e., the difference between the maximum length and the current string's length is odd), apply the standard Python `str.center()` behavior:
+- If the target width is odd and the margin is odd, the extra space goes to the **left**.
+- Otherwise, the extra space goes to the **right**.
+
+If the input array is empty, return an empty array.
+"""
+
+description_ru = """
+Дан массив строк. Верните новый массив, в котором каждая строка отцентрирована по длине самой длинной строки в исходном массиве и дополнена пробелами (`" "`).
+
+Если количество добавляемых пробелов нечетное, используйте стандартное поведение метода `str.center()` в Python:
+- Если целевая ширина нечетная и общая разница нечетная, дополнительный пробел добавляется **слева**.
+- Во всех остальных случаях дополнительный пробел добавляется **справа**.
+
+Если исходный массив пуст, верните пустой массив.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(strings) \\leq 100$
+- $0 \\leq \\text{len}(strings[i]) \\leq 100$
+"""
+
+solution = """
+def solution(strings: list[str]) -> list[str]:
+    if not strings:
+        return []
+    max_len = max(len(s) for s in strings)
+    return [s.center(max_len) for s in strings]
+"""
+
+examples = """
+solution([]) == []
+solution(["hi", "hello"]) == ["  hi ", "hello"]
+solution(["a", "abc", "a"]) == [" a ", "abc", " a "]
+"""
+
+[[input_signature]]
+argument_name = "strings"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "array"
+[output_signature.type.nested]
+name = "string"
+
+[[asserts]]
+arguments = [[]]
+comment   = "Empty array"
+expected  = []
+
+[[asserts]]
+arguments = [["hello"]]
+comment   = "Single string"
+expected  = ["hello"]
+
+[[asserts]]
+arguments = [["a", "abc"]]
+comment   = "Odd max len, odd string, even margin -> equal padding"
+expected  = [" a ", "abc"]
+
+[[asserts]]
+arguments = [["ab", "abcd"]]
+comment   = "Even max len, even string, even margin -> equal padding"
+expected  = [" ab ", "abcd"]
+
+[[asserts]]
+arguments = [["a", "abcd"]]
+comment   = "Even max len, odd string, odd margin -> extra space right"
+expected  = [" a  ", "abcd"]
+
+[[asserts]]
+arguments = [["abc", "a"]]
+comment   = "Max string first"
+expected  = ["abc", " a "]
+
+[[asserts]]
+arguments = [["hi", "hello"]]
+comment   = "Odd max len, even string, odd margin -> extra space left"
+expected  = ["  hi ", "hello"]
+
+[[asserts]]
+arguments = [["", "a"]]
+comment   = "Odd max len, empty string, odd margin"
+expected  = [" ", "a"]
+
+[[asserts]]
+arguments = [["", "ab"]]
+comment   = "Even max len, empty string, even margin"
+expected  = ["  ", "ab"]
+
+[[asserts]]
+arguments = [["A", "BB", "CCC", "DDDD"]]
+comment   = "Multiple lengths with max 4"
+expected  = [" A  ", " BB ", "CCC ", "DDDD"]
+
+[[asserts]]
+arguments = [["*", "***", "*****"]]
+comment   = "Stars with max 5"
+expected  = ["  *  ", " *** ", "*****"]
+
+[[asserts]]
+arguments = [["python", "is", "fun"]]
+comment   = "Words with max 6"
+expected  = ["python", "  is  ", " fun  "]
+
+[[asserts]]
+arguments = [["short", "loooong"]]
+comment   = "Words with max 7"
+expected  = [" short ", "loooong"]
+
+[[asserts]]
+arguments = [["1", "123456789"]]
+comment   = "1 char to 9 chars"
+expected  = ["    1    ", "123456789"]
+
+[[asserts]]
+arguments = [["12", "123456789"]]
+comment   = "2 chars to 9 chars (extra space left)"
+expected  = ["    12   ", "123456789"]
+
+[[asserts]]
+arguments = [["123", "123456789"]]
+comment   = "3 chars to 9 chars"
+expected  = ["   123   ", "123456789"]
+
+[[asserts]]
+arguments = [["1234", "123456789"]]
+comment   = "4 chars to 9 chars (extra space left)"
+expected  = ["   1234  ", "123456789"]
+
+[[asserts]]
+arguments = [["12345", "123456789"]]
+comment   = "5 chars to 9 chars"
+expected  = ["  12345  ", "123456789"]
+
+[[asserts]]
+arguments = [["123456", "123456789"]]
+comment   = "6 chars to 9 chars (extra space left)"
+expected  = ["  123456 ", "123456789"]
+
+[[asserts]]
+arguments = [["1234567", "123456789"]]
+comment   = "7 chars to 9 chars"
+expected  = [" 1234567 ", "123456789"]
+
+[[asserts]]
+arguments = [["12345678", "123456789"]]
+comment   = "8 chars to 9 chars (extra space left)"
+expected  = [" 12345678", "123456789"]
+
+[[asserts]]
+arguments = [["word", ""]]
+comment   = "Empty string padded to even length"
+expected  = ["word", "    "]
+
+[[asserts]]
+arguments = [["even", "odd lengths"]]
+comment   = "4 chars to 11 chars (extra space left)"
+expected  = ["    even   ", "odd lengths"]
+
+[[asserts]]
+arguments = [["same", "size"]]
+comment   = "Already same size"
+expected  = ["same", "size"]
+
+[[asserts]]
+arguments = [["a", "a", "a"]]
+comment   = "All identical"
+expected  = ["a", "a", "a"]
+
+[[asserts]]
+arguments = [[" ", "   "]]
+comment   = "Spaces only"
+expected  = ["   ", "   "]
+
+[[asserts]]
+arguments = [["x", "y", "longword"]]
+comment   = "Single chars to even max length"
+expected  = ["   x    ", "   y    ", "longword"]
+
+[[asserts]]
+arguments = [["", "", ""]]
+comment   = "All empty strings"
+expected  = ["", "", ""]
+
+[[asserts]]
+arguments = [["align", "me", "please", "to", "center"]]
+comment   = "Multiple mixed strings, max 6"
+expected  = ["align ", "  me  ", "please", "  to  ", "center"]
+
+[[asserts]]
+arguments = [["12345", "1234", "123", "12", "1", ""]]
+comment   = "Decreasing lengths, max 5"
+expected  = ["12345", " 1234", " 123 ", "  12 ", "  1  ", "     "]

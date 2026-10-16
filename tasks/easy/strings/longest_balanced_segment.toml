@@ -1,0 +1,198 @@
+level             = "easy"
+name              = "longest_balanced_segment"
+tags              = ["strings", "hash-map", "algorithms"]
+time_to_solve_sec = 250
+
+description_en = """
+A binary segment is called balanced if it contains the same number of `$0$`s and `$1$`s.
+
+Given a binary string `$s$`, determine the length of the longest balanced contiguous segment. If no such segment exists, return `$0$`.
+"""
+
+description_ru = """
+Бинарный сегмент называется сбалансированным, если он содержит одинаковое количество `$0$` и `$1$`.
+
+Дана бинарная строка `$s$`. Определите длину самого длинного сбалансированного непрерывного сегмента. Если такого сегмента не существует, верните `$0$`.
+"""
+
+limits = """
+- $0 \\leq \\text{len}(s) \\leq 10^5$
+- $s[i] \\in \\{0, 1\\}$
+"""
+
+solution = """
+def solution(s: str) -> int:
+    d, c, r = {0: -1}, 0, 0
+    for i, v in enumerate(s):
+        c += 1 if v == '1' else -1
+        if c in d: r = max(r, i - d[c])
+        else: d[c] = i
+    return r
+"""
+
+examples = """
+solution("0") == 0
+solution("01") == 2
+solution("111") == 0
+solution("1100") == 4
+solution("11010") == 4
+solution("101010") == 6
+"""
+
+[[input_signature]]
+argument_name = "s"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [""]
+comment   = "Empty string case"
+expected  = 0
+
+[[asserts]]
+arguments = ["0"]
+comment   = "Single character zero"
+expected  = 0
+
+[[asserts]]
+arguments = ["1"]
+comment   = "Single character one"
+expected  = 0
+
+[[asserts]]
+arguments = ["01"]
+comment   = "Smallest balanced segment"
+expected  = 2
+
+[[asserts]]
+arguments = ["10"]
+comment   = "Smallest balanced reversed"
+expected  = 2
+
+[[asserts]]
+arguments = ["000"]
+comment   = "Multiple zeros, no balance"
+expected  = 0
+
+[[asserts]]
+arguments = ["111"]
+comment   = "Multiple ones, no balance"
+expected  = 0
+
+[[asserts]]
+arguments = ["001"]
+comment   = "Balanced part at the end"
+expected  = 2
+
+[[asserts]]
+arguments = ["110"]
+comment   = "Balanced part at the end with one"
+expected  = 2
+
+[[asserts]]
+arguments = ["100"]
+comment   = "Balanced part at the start"
+expected  = 2
+
+[[asserts]]
+arguments = ["011"]
+comment   = "Balanced part at the start with zero"
+expected  = 2
+
+[[asserts]]
+arguments = ["0011"]
+comment   = "Fully balanced symmetric"
+expected  = 4
+
+[[asserts]]
+arguments = ["1100"]
+comment   = "Fully balanced symmetric reversed"
+expected  = 4
+
+[[asserts]]
+arguments = ["0101"]
+comment   = "Alternating fully balanced"
+expected  = 4
+
+[[asserts]]
+arguments = ["1010"]
+comment   = "Alternating fully balanced starting with one"
+expected  = 4
+
+[[asserts]]
+arguments = ["000111"]
+comment   = "Longer fully balanced symmetric"
+expected  = 6
+
+[[asserts]]
+arguments = ["111000"]
+comment   = "Longer fully balanced symmetric reversed"
+expected  = 6
+
+[[asserts]]
+arguments = ["11010"]
+comment   = "Balanced segment within unbalanced string"
+expected  = 4
+
+[[asserts]]
+arguments = ["10101"]
+comment   = "Alternating with trailing extra char"
+expected  = 4
+
+[[asserts]]
+arguments = ["001100"]
+comment   = "Balanced segment embedded in zeros"
+expected  = 4
+
+[[asserts]]
+arguments = ["01110"]
+comment   = "Short balanced segments at edges"
+expected  = 2
+
+[[asserts]]
+arguments = ["00001"]
+comment   = "Large imbalance, small result"
+expected  = 2
+
+[[asserts]]
+arguments = ["11110"]
+comment   = "Large imbalance with ones"
+expected  = 2
+
+[[asserts]]
+arguments = ["00011"]
+comment   = "Imbalanced prefix"
+expected  = 4
+
+[[asserts]]
+arguments = ["11100"]
+comment   = "Imbalanced prefix with ones"
+expected  = 4
+
+[[asserts]]
+arguments = ["010101"]
+comment   = "Long alternating balanced"
+expected  = 6
+
+[[asserts]]
+arguments = ["101010"]
+comment   = "Long alternating balanced starting with one"
+expected  = 6
+
+[[asserts]]
+arguments = ["0000111"]
+comment   = "Large imbalance at start"
+expected  = 6
+
+[[asserts]]
+arguments = ["1111000"]
+comment   = "Large imbalance at start with ones"
+expected  = 6
+
+[[asserts]]
+arguments = ["01101100"]
+comment   = "Full string is balanced with internal patterns"
+expected  = 8

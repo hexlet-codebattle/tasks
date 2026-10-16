@@ -21,7 +21,7 @@ limits = """
 solution = """
 def solution(n: int) -> int:
     s = str(n)
-    if '0' not in s or sum(int(d) for d in s) % 3 != 0:
+    if '0' not in s or sum(map(int, s)) % 3 != 0:
         return -1
     return int(''.join(sorted(s, reverse=True)))
 """
@@ -53,28 +53,28 @@ arguments = [30]
 expected  = 30
 
 [[asserts]]
-arguments = [893083911]
-expected  = 998833110
+arguments = [18018]
+expected  = 88110
 
 [[asserts]]
 arguments = [280587678]
 expected  = 888776520
 
 [[asserts]]
-arguments = [629904342]
-expected  = 996443220
+arguments = [629804342]
+expected  = -1
 
 [[asserts]]
 arguments = [903813795]
 expected  = 998753310
 
 [[asserts]]
-arguments = [22621710]
-expected  = 76222110
+arguments = [2620710]
+expected  = 7622100
 
 [[asserts]]
-arguments = [709234782]
-expected  = 987743220
+arguments = [709234783]
+expected  = -1
 
 [[asserts]]
 arguments = [27189840]
@@ -85,76 +85,76 @@ arguments = [502728939]
 expected  = 998753220
 
 [[asserts]]
-arguments = [860352987]
-expected  = 988765320
+arguments = [960352987]
+expected  = -1
 
 [[asserts]]
-arguments = [857507070]
-expected  = 877755000
+arguments = [857407070]
+expected  = -1
 
 [[asserts]]
-arguments = [775301715]
-expected  = 777553110
+arguments = [775011]
+expected  = 775110
 
 [[asserts]]
-arguments = [730306518]
-expected  = 876533100
+arguments = [7016518]
+expected  = -1
 
 [[asserts]]
-arguments = [557807814]
-expected  = 887755410
+arguments = [5814]
+expected  = -1
 
 [[asserts]]
 arguments = [320012625]
 expected  = 653222100
 
 [[asserts]]
-arguments = [230767938]
-expected  = 987763320
+arguments = [236767938]
+expected  = -1
 
 [[asserts]]
-arguments = [80090631]
-expected  = 98631000
+arguments = [890631]
+expected  = 986310
 
 [[asserts]]
-arguments = [228949056]
-expected  = 998654220
+arguments = [289056]
+expected  = 986520
 
 [[asserts]]
-arguments = [702401652]
-expected  = 765422100
+arguments = [7033052]
+expected  = -1
 
 [[asserts]]
-arguments = [608262012]
-expected  = 866222100
+arguments = [208012]
+expected  = -1
 
 [[asserts]]
 arguments = [607174044]
 expected  = 776444100
 
 [[asserts]]
-arguments = [204969762]
-expected  = 997664220
+arguments = [2049762]
+expected  = 9764220
 
 [[asserts]]
 arguments = [567260568]
 expected  = 876665520
 
 [[asserts]]
-arguments = [465238980]
-expected  = 988654320
+arguments = [46523898]
+expected  = -1
 
 [[asserts]]
-arguments = [348320388]
-expected  = 888433320
+arguments = [482088]
+expected  = 888420
 
 [[asserts]]
-arguments = [507957429]
-expected  = 997755420
+arguments = [5079439]
+expected  = -1
 
 [[asserts]]
-arguments = [850017702]
-expected  = 877521000
+arguments = [70080]
+expected  = 87000
 
 [[asserts]]
 arguments = [467044410]

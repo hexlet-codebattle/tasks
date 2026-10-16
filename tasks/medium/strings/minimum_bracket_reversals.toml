@@ -1,3 +1,4 @@
+base_score        = 150
 level             = "medium"
 name              = "minimum_bracket_reversals"
 tags              = ["strings", "greedy", "stack"]

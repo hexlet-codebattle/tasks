@@ -1,3 +1,4 @@
+base_score        = 150
 level             = "medium"
 name              = "insert_interval"
 tags              = ["algo", "intervals", "sorting"]
@@ -11,6 +12,8 @@ You are also given an array $\\text{new\\_interval} = [start, end]$ that represe
 Insert $\\text{new\\_interval}$ into `intervals` such that `intervals` is still sorted in ascending order by $start_i$ and `intervals` still does not have any overlapping intervals (merge overlapping intervals if necessary).
 
 Return `intervals` after the insertion.
+
+Intervals include both endpoints, so intervals sharing an endpoint overlap.
 """
 
 description_ru = """
@@ -21,6 +24,8 @@ description_ru = """
 Вставьте $\\text{new\\_interval}$ в `intervals` так, чтобы `intervals` оставался отсортированным по возрастанию $start_i$ и не содержал пересекающихся интервалов (при необходимости объедините пересекающиеся интервалы).
 
 Верните `intervals` после вставки.
+
+Интервалы включают оба конца, поэтому интервалы с общей конечной точкой пересекаются.
 """
 
 limits = """
@@ -36,22 +41,22 @@ def solution(intervals: list[list[int]], new_interval: list[int]) -> list[list[i
     res = []
     i = 0
     n = len(intervals)
-    
+
     while i < n and intervals[i][1] < new_interval[0]:
         res.append(intervals[i])
         i += 1
-        
+
     start, end = new_interval[0], new_interval[1]
     while i < n and intervals[i][0] <= end:
         start = min(start, intervals[i][0])
         end = max(end, intervals[i][1])
         i += 1
     res.append([start, end])
-    
+
     while i < n:
         res.append(intervals[i])
         i += 1
-        
+
     return res
 """
 

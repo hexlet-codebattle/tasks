@@ -12,6 +12,8 @@ A number is called **fancy** if it does not change when rotated $180$ degrees. W
 - $9$ becomes $6$;
 - $0$, $1$, $8$ remain themselves;
 - other digits break.
+
+Use the usual decimal representation without leading zeros. Negative numbers are never fancy; zero is fancy.
 """
 
 description_ru = """
@@ -22,10 +24,12 @@ description_ru = """
 - $9$ становится $6$;
 - $0$, $1$ и $8$ остаются сами собой;
 - остальные цифры перестают быть цифрами.
+
+Используйте обычную десятичную запись без ведущих нулей. Отрицательные числа не бывают причудливыми; ноль является причудливым.
 """
 
 limits = """
-- $-10^9 \\leq \\text{number} \\leq 10^9
+- $-10^9 \\leq \\text{number} \\leq 10^9$
 """
 
 solution = """
@@ -204,4 +208,14 @@ expected  = false
 [[asserts]]
 arguments = [-600080009]
 comment   = "Long negative number"
+expected  = false
+
+[[asserts]]
+arguments = [-1000000000]
+comment   = "Input bound"
+expected  = false
+
+[[asserts]]
+arguments = [1000000000]
+comment   = "Input bound"
 expected  = false

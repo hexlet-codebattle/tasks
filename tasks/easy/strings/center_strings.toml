@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "center_strings"
 tags              = ["strings", "formatting"]
@@ -6,7 +7,7 @@ time_to_solve_sec = 200
 description_en = """
 Given an array of strings, return a new array where each string is centered to the length of the longest string in the original array, padded with spaces (`" "`).
 
-If the padding is uneven (i.e., the difference between the maximum length and the current string's length is odd), apply the standard Python `str.center()` behavior:
+If the padding is uneven (i.e., the difference between the maximum length and the current string's length is odd), place the extra space as follows:
 - If the target width is odd and the margin is odd, the extra space goes to the **left**.
 - Otherwise, the extra space goes to the **right**.
 
@@ -16,7 +17,7 @@ If the input array is empty, return an empty array.
 description_ru = """
 Дан массив строк. Верните новый массив, в котором каждая строка отцентрирована по длине самой длинной строки в исходном массиве и дополнена пробелами (`" "`).
 
-Если количество добавляемых пробелов нечетное, используйте стандартное поведение метода `str.center()` в Python:
+Если количество добавляемых пробелов нечетное, расположите дополнительный пробел по следующим правилам:
 - Если целевая ширина нечетная и общая разница нечетная, дополнительный пробел добавляется **слева**.
 - Во всех остальных случаях дополнительный пробел добавляется **справа**.
 

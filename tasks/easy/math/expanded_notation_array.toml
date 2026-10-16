@@ -1,14 +1,17 @@
+base_score        = 100
 level             = "easy"
 name              = "expanded_notation_array"
 tags              = ["math", "strings", "parsing", "arrays"]
 time_to_solve_sec = 250
 
 description_en = """
-Expanded Notation means an integer is written as the sum of its digits multiplied with its place value (in strictly descending powers of $10$). 
+Expanded Notation means an integer is written as the sum of its digits multiplied with its place value (in strictly descending powers of $10$).
 
-For example, $85063 = 8 \\times 10000 + 5 \\times 1000 + 6 \\times 10 + 3$. 
+For example, $85063 = 8 \\times 10000 + 5 \\times 1000 + 6 \\times 10 + 3$.
 
-You are given an array of strings `arr`, where each string represents a natural number in expanded notation. The strings use `"x"` for multiplication and `"+"` for addition, with no spaces. Your task is to compute the sum for each string and return an array of these numbers in their normal integer form.
+You are given an array of strings `arr`, where each string represents a non-negative integer in expanded notation. The strings use `"x"` for multiplication and `"+"` for addition, with no spaces. Your task is to compute the sum for each string and return an array of these numbers in their normal integer form.
+
+Each term is a single digit multiplied by a power of ten; a units term may omit `x1`. Place values strictly decrease within each string. Each resulting integer is at most $2 \\cdot 10^9$.
 """
 
 description_ru = """
@@ -16,19 +19,23 @@ description_ru = """
 
 Например, $85063 = 8 \\times 10000 + 5 \\times 1000 + 6 \\times 10 + 3$.
 
-Вам дан массив строк `arr`, где каждая строка представляет натуральное число в развернутой записи. В строках используется `"x"` для умножения и `"+"` для сложения, без пробелов. Ваша задача — вычислить сумму для каждой строки и вернуть массив этих чисел в обычном целом виде.
+Вам дан массив строк `arr`, где каждая строка представляет неотрицательное целое число в развернутой записи. В строках используется `"x"` для умножения и `"+"` для сложения, без пробелов. Ваша задача — вычислить сумму для каждой строки и вернуть массив этих чисел в обычном целом виде.
+
+Каждое слагаемое — одна цифра, умноженная на степень десяти; у единиц можно опустить `x1`. Разрядные значения в каждой строке строго убывают. Каждое полученное целое число не превышает $2 \\cdot 10^9$.
 """
 
 limits = """
 - $1 \\leq \\text{len}(arr) \\leq 100$
-- $3 \\leq \\text{len}(arr[i]) \\leq 100$
-- $arr[i]$ contains only digits, `"x"`, and `"+"`
-- Place values are powers of $10$
+- $1 \\leq \\text{len}(arr[i]) \\leq 100$
+- $0 \\leq \\text{value}(arr[i]) \\leq 2 \\cdot 10^9$
 """
 
 solution = """
-def solution(arr: list) -> list:
-    return [sum(int(part.split('x')[0]) * int(part.split('x')[1]) for part in s.split('+')) for s in arr]
+def solution(arr: list[str]) -> list[int]:
+    def value(term):
+        factors = term.split('x')
+        return int(factors[0]) * (int(factors[1]) if len(factors) == 2 else 1)
+    return [sum(value(term) for term in s.split('+')) for s in arr]
 """
 
 examples = """
@@ -90,9 +97,13 @@ comment   = "All nines"
 expected  = [9999]
 
 [[asserts]]
-arguments = [["1x100000000+2x10000000+3x1000000+4x100000+5x10000+6x1000+7x100+8x10+9x1"]]
-comment   = "Consecutive digits"
-expected  = [123456789]
+arguments = [
+  [
+    "1x100000000+2x10000000+3x1000000+4x100000+5x10000+6x1000+7x100+8x10+9x1",
+  ],
+]
+comment = "Consecutive digits"
+expected = [123456789]
 
 [[asserts]]
 arguments = [["2x1000000+1x1", "3x10"]]
@@ -140,9 +151,13 @@ comment   = "Descending digits"
 expected  = [54321, 1]
 
 [[asserts]]
-arguments = [["9x100000000+8x10000000+7x1000000+6x100000+5x10000+4x1000+3x100+2x10+1x1"]]
-comment   = "Long descending digits"
-expected  = [987654321]
+arguments = [
+  [
+    "9x100000000+8x10000000+7x1000000+6x100000+5x10000+4x1000+3x100+2x10+1x1",
+  ],
+]
+comment = "Long descending digits"
+expected = [987654321]
 
 [[asserts]]
 arguments = [["9x100+9x10+9x1", "8x100+8x10+8x1"]]
@@ -173,3 +188,12 @@ expected  = [1230000, 4567]
 arguments = [["8x100000+5x100+3x1", "2x10000+4x100+1x1"]]
 comment   = "Various missing place values"
 expected  = [800503, 20401]
+[[asserts]]
+arguments = [["7x100+2", "8x10000+5x1000+6x10+3"]]
+comment   = "Units may omit multiplication by one"
+expected  = [702, 85063]
+
+[[asserts]]
+arguments = [["0", "9"]]
+comment   = "Bare units and zero"
+expected  = [0, 9]

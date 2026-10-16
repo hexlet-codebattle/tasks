@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "digit_snake_formatter"
 tags              = ["strings", "formatting"]
@@ -26,7 +27,7 @@ description_ru = """
 limits = """
 - $0 \\leq \\text{len}(n) \\leq 1000$
 - $0 \\leq c \\leq 1000$
-- $n$ contains only digits $0-9$
+- $n \\in \\{0,1,2,3,4,5,6,7,8,9\\}^*$
 """
 
 solution = """

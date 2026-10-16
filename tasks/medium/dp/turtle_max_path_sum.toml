@@ -1,20 +1,21 @@
+base_score        = 150
 level             = "medium"
 name              = "turtle_max_path_sum"
 tags              = ["dp", "matrix", "arrays"]
 time_to_solve_sec = 400
 
 description_en = """
-You are given an $m \\times n$ matrix of integers. A turtle starts its journey in the top-left corner $(0, 0)$ and wants to reach the bottom-right corner $(m-1, n-1)$. 
+You are given an $m \\times n$ matrix of integers. A turtle starts its journey in the top-left corner $(0, 0)$ and wants to reach the bottom-right corner $(m-1, n-1)$.
 
-The turtle can only move **right** or **down**. 
+The turtle can only move **right** or **down**.
 
 Return the maximum sum of the elements along its path.
 """
 
 description_ru = """
-Дана матрица целых чисел размером $m \\times n$. Черепашка начинает свой путь в левом верхнем углу $(0, 0)$ и хочет добраться до правого нижнего угла $(m-1, n-1)$. 
+Дана матрица целых чисел размером $m \\times n$. Черепашка начинает свой путь в левом верхнем углу $(0, 0)$ и хочет добраться до правого нижнего угла $(m-1, n-1)$.
 
-Черепашка может двигаться только **вправо** или **вниз**. 
+Черепашка может двигаться только **вправо** или **вниз**.
 
 Верните максимальную сумму элементов на ее пути.
 """

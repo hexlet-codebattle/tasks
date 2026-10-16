@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "peak_performance_sum"
 tags              = ["hashmaps", "arrays"]
@@ -36,8 +37,8 @@ def solution(teams: list, scores: list) -> int:
 
 examples = """
 solution([], []) == 0
-solution(["A", "A"], [-10, -5]) == -5
 solution(["A", "B"], [10, 20]) == 30
+solution(["A", "A"], [-10, -5]) == -5
 solution(["A", "B", "A"], [10, 20, 30]) == 50
 """
 

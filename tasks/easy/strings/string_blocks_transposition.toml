@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "string_blocks_transposition"
 tags              = ["strings", "formatting"]
@@ -30,9 +31,9 @@ def solution(s: str, k: int) -> str:
 """
 
 examples = """
+solution("abc", 2) == ""
 solution("abcdef", 2) == "acebdf"
 solution("abcdef", 3) == "adbecf"
-solution("abc", 2) == ""
 """
 
 [[input_signature]]

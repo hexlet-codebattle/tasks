@@ -1,20 +1,21 @@
+base_score        = 100
 level             = "easy"
 name              = "custom_fibonacci"
 tags              = ["math", "algorithms"]
 time_to_solve_sec = 200
 
 description_en = """
-Given three integers `f0`, `f1`, and `n`. 
+Given three integers `f0`, `f1`, and `n`.
 
-Consider a sequence where the first two elements are `f0` and `f1`, and every subsequent element is the sum of the two preceding elements. 
+Consider a sequence where the first two elements are `f0` and `f1`, and every subsequent element is the sum of the two preceding elements.
 
 Return `True` if `n` belongs to this sequence, and `False` otherwise.
 """
 
 description_ru = """
-Даны три целых числа `f0`, `f1` и `n`. 
+Даны три целых числа `f0`, `f1` и `n`.
 
-Рассмотрим последовательность, первые два элемента которой равны `f0` и `f1`, а каждый последующий элемент равен сумме двух предыдущих. 
+Рассмотрим последовательность, первые два элемента которой равны `f0` и `f1`, а каждый последующий элемент равен сумме двух предыдущих.
 
 Верните `True`, если `n` принадлежит этой последовательности, и `False` в противном случае.
 """

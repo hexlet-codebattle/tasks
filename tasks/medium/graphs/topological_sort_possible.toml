@@ -1,3 +1,4 @@
+base_score        = 150
 level             = "medium"
 name              = "topological_sort_possible"
 tags              = ["graphs", "algorithms", "topological_sort"]
@@ -6,15 +7,15 @@ time_to_solve_sec = 400
 description_en = """
 You are given `n` nodes labeled from $0$ to $n - 1$ and a list of directed `edges`.
 
-Each edge $[u, v]$ indicates that node $u$ must appear before node $v$ in a topological ordering. 
+Each edge $[u, v]$ indicates that node $u$ must appear before node $v$ in a topological ordering.
 
 Return `True` if it is possible to topologically sort the graph (i.e., it contains no directed cycles), and `False` otherwise.
 """
 
 description_ru = """
-Вам дано `n` вершин, пронумерованных от $0$ до $n - 1$, и список ориентированных ребер `edges`. 
+Вам дано `n` вершин, пронумерованных от $0$ до $n - 1$, и список ориентированных ребер `edges`.
 
-Каждое ребро $[u, v]$ означает, что вершина $u$ должна идти перед вершиной $v$ в топологической сортировке. 
+Каждое ребро $[u, v]$ означает, что вершина $u$ должна идти перед вершиной $v$ в топологической сортировке.
 
 Верните `True`, если граф можно отсортировать топологически (то есть в нем нет ориентированных циклов), и `False` в противном случае.
 """
@@ -29,11 +30,11 @@ limits = """
 solution = """
 def solution(n: int, edges: list) -> bool:
     from graphlib import TopologicalSorter, CycleError
-    
+
     graph = {i: set() for i in range(n)}
     for u, v in edges:
         graph[v].add(u)
-        
+
     try:
         TopologicalSorter(graph).prepare()
         return True

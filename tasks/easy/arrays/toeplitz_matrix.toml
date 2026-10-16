@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "toeplitz_matrix"
 tags              = ["arrays", "matrices"]

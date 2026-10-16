@@ -1,3 +1,4 @@
+base_score        = 100
 level             = "easy"
 name              = "longest_common_prefix"
 tags              = ["strings", "arrays"]

@@ -1,7 +1,8 @@
+base_score        = 150
 level             = "medium"
 name              = "game_of_life_step"
 tags              = ["games", "simulation", "algorithms"]
-time_to_solve_sec = 600
+time_to_solve_sec = 450
 
 description_en = """
 You are given a 2D integer array `grid` representing the current state of a grid in Conway's Game of Life. `1` represents a live cell and `0` represents a dead cell.
@@ -15,6 +16,8 @@ The rules are:
 4. A dead cell with exactly `3` live neighbors becomes a live cell (reproduction).
 
 Neighbors are the 8 cells horizontally, vertically, or diagonally adjacent.
+
+Update all cells simultaneously. Cells outside the grid are dead; the grid does not wrap around.
 """
 
 description_ru = """
@@ -29,6 +32,8 @@ description_ru = """
 4. Мертвая клетка, у которой ровно `3` живых соседа, становится живой (размножение).
 
 Соседями считаются 8 клеток по горизонтали, вертикали и диагонали.
+
+Все клетки обновляются одновременно. Клетки за границей поля мертвы; противоположные края поля не соединены.
 """
 
 limits = """
@@ -43,7 +48,7 @@ def solution(grid: list) -> list:
     res = [[0] * n for _ in range(m)]
     for i in range(m):
         for j in range(n):
-            lives = sum(grid[r][c] for r in range(max(0, i-1), min(m, i+2)) 
+            lives = sum(grid[r][c] for r in range(max(0, i-1), min(m, i+2))
                                    for c in range(max(0, j-1), min(n, j+2))) - grid[i][j]
             if grid[i][j] == 1 and lives in (2, 3):
                 res[i][j] = 1
@@ -54,8 +59,8 @@ def solution(grid: list) -> list:
 
 examples = """
 solution([[1]]) == [[0]]
-solution([[0, 1, 0], [0, 1, 0], [0, 1, 0]]) == [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
 solution([[1, 1], [1, 1]]) == [[1, 1], [1, 1]]
+solution([[0, 1, 0], [0, 1, 0], [0, 1, 0]]) == [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
 """
 
 [[input_signature]]
@@ -200,11 +205,159 @@ comment   = "3x4 horizontal line"
 expected  = [[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0]]
 
 [[asserts]]
-arguments = [[[0, 0, 0, 0, 0], [0, 1, 1, 1, 0], [0, 1, 1, 1, 0], [0, 1, 1, 1, 0], [0, 0, 0, 0, 0]]]
-comment   = "5x5 3x3 square in center"
-expected  = [[0, 0, 1, 0, 0], [0, 1, 0, 1, 0], [1, 0, 0, 0, 1], [0, 1, 0, 1, 0], [0, 0, 1, 0, 0]]
+arguments = [
+  [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      0,
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      0,
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      0,
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+  ],
+]
+comment = "5x5 3x3 square in center"
+expected = [
+  [
+    0,
+    0,
+    1,
+    0,
+    0,
+  ],
+  [
+    0,
+    1,
+    0,
+    1,
+    0,
+  ],
+  [
+    1,
+    0,
+    0,
+    0,
+    1,
+  ],
+  [
+    0,
+    1,
+    0,
+    1,
+    0,
+  ],
+  [
+    0,
+    0,
+    1,
+    0,
+    0,
+  ],
+]
 
 [[asserts]]
-arguments = [[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]]
-comment   = "5x5 completely empty"
-expected  = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+arguments = [
+  [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+  ],
+]
+comment = "5x5 completely empty"
+expected = [
+  [
+    0,
+    0,
+    0,
+    0,
+    0,
+  ],
+  [
+    0,
+    0,
+    0,
+    0,
+    0,
+  ],
+  [
+    0,
+    0,
+    0,
+    0,
+    0,
+  ],
+  [
+    0,
+    0,
+    0,
+    0,
+    0,
+  ],
+  [
+    0,
+    0,
+    0,
+    0,
+    0,
+  ],
+]

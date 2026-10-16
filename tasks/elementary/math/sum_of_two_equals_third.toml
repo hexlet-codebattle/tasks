@@ -1,5 +1,5 @@
-base_score        = 100
-level             = "easy"
+base_score        = 30
+level             = "elementary"
 name              = "sum_of_two_equals_third"
 tags              = ["math", "collections"]
 time_to_solve_sec = 60
@@ -182,11 +182,11 @@ arguments = [10000, 19999, 10000]
 expected  = false
 
 [[asserts]]
-arguments = [1000000000, 1000000000, 2000000000]
+arguments = [500000000, 500000000, 1000000000]
 expected  = true
 
 [[asserts]]
-arguments = [-1000000000, -2000000000, -1000000000]
+arguments = [-500000000, -1000000000, -500000000]
 expected  = true
 
 [[asserts]]

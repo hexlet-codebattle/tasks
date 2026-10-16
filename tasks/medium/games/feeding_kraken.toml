@@ -6,15 +6,18 @@ time_to_solve_sec = 300
 
 description_en = """
 You and the Kraken take turns taking gold coins from three piles containing `a`, `b`, and `c` coins. On each turn, a player may take any positive number of coins from exactly one pile. The player who takes the last coin survives. Determine whether you can win if both players play optimally and you move first.
+
+If all piles are empty, return `False`.
 """
 
 description_ru = """
 Вы и Кракен по очереди берете золотые монеты из трех кучек, в которых лежат `a`, `b` и `c` монет. За один ход можно взять любое положительное количество монет ровно из одной кучки. Тот, кто заберет последнюю монету, выживает. Определите, сможете ли вы победить, если оба игрока играют оптимально и вы ходите первым.
+
+Если все кучки пусты, верните `False`.
 """
 
 limits = """
 - $0 \\leq a, b, c \\leq 1000$
-- $a + b + c \\geq 1$
 """
 
 solution = """
@@ -24,6 +27,7 @@ def solution(a: int, b: int, c: int) -> bool:
 
 examples = """
 solution(1, 0, 0) == True
+solution(0, 0, 0) == False
 solution(1, 1, 0) == False
 solution(1, 2, 3) == False
 """
@@ -195,3 +199,8 @@ expected  = true
 arguments = [50, 7, 7]
 comment   = "Test 30"
 expected  = true
+
+[[asserts]]
+arguments = [0, 0, 0]
+comment   = "Empty position is losing"
+expected  = false

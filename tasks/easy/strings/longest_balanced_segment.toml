@@ -1,18 +1,19 @@
+base_score        = 100
 level             = "easy"
 name              = "longest_balanced_segment"
 tags              = ["strings", "hash-map", "algorithms"]
 time_to_solve_sec = 250
 
 description_en = """
-A binary segment is called balanced if it contains the same number of `$0$`s and `$1$`s.
+A binary segment is called balanced if it contains the same number of $0$s and $1$s.
 
-Given a binary string `$s$`, determine the length of the longest balanced contiguous segment. If no such segment exists, return `$0$`.
+Given a binary string $s$, determine the length of the longest balanced contiguous segment. If no such segment exists, return $0$.
 """
 
 description_ru = """
-Бинарный сегмент называется сбалансированным, если он содержит одинаковое количество `$0$` и `$1$`.
+Бинарный сегмент называется сбалансированным, если он содержит одинаковое количество $0$ и $1$.
 
-Дана бинарная строка `$s$`. Определите длину самого длинного сбалансированного непрерывного сегмента. Если такого сегмента не существует, верните `$0$`.
+Дана бинарная строка $s$. Определите длину самого длинного сбалансированного непрерывного сегмента. Если такого сегмента не существует, верните $0$.
 """
 
 limits = """

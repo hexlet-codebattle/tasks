@@ -18,8 +18,8 @@ description_ru = """
 
 limits = """
 - $1 \\leq n \\leq 10^5$
-- $\text{len}(\text{edges}) = n - 1$
-- $0 \\leq \text{edges}[i][0], \text{edges}[i][1] < n$
+- $\\text{len}(\\text{edges}) = n - 1$
+- $0 \\leq \\text{edges}[i][0], \\text{edges}[i][1] < n$
 """
 
 solution = """

@@ -21,22 +21,21 @@ limits = """
 """
 
 solution = """
-def solution(num: int) -> int:
-    def is_palindrome(s):
-        return s == s[::-1]
+def is_palindrome(s):
+    return s == s[::-1]
 
-    count = 0
-    n = 0
-    while count < num:
-        n += 1
-        if is_palindrome(str(n)) and is_palindrome(bin(n)[2:]):
-            count += 1
-    return n
+def solution(num: int) -> int:
+    x = 0
+    while num:
+        x += 1
+        if is_palindrome(str(x)) and is_palindrome(bin(x)[2:]):
+            num -= 1
+    return x
 """
 
 examples = """
-solution(3) == 5
 solution(1) == 1
+solution(3) == 5
 solution(7) == 99
 solution(15) == 39993
 """
@@ -50,29 +49,19 @@ name = "integer"
 name = "integer"
 
 [[asserts]]
-arguments = [3]
-comment   = "Third palindrome"
-expected  = 5
-
-[[asserts]]
 arguments = [1]
 comment   = "First palindrome"
 expected  = 1
 
 [[asserts]]
-arguments = [7]
-comment   = "Seventh palindrome"
-expected  = 99
-
-[[asserts]]
-arguments = [15]
-comment   = "Fifteenth palindrome"
-expected  = 39993
-
-[[asserts]]
 arguments = [2]
 comment   = "Second palindrome"
 expected  = 3
+
+[[asserts]]
+arguments = [3]
+comment   = "Third palindrome"
+expected  = 5
 
 [[asserts]]
 arguments = [4]
@@ -88,6 +77,11 @@ expected  = 9
 arguments = [6]
 comment   = "Sixth palindrome"
 expected  = 33
+
+[[asserts]]
+arguments = [7]
+comment   = "Seventh palindrome"
+expected  = 99
 
 [[asserts]]
 arguments = [8]
@@ -125,6 +119,11 @@ comment   = "Fourteenth palindrome"
 expected  = 32223
 
 [[asserts]]
+arguments = [15]
+comment   = "Fifteenth palindrome"
+expected  = 39993
+
+[[asserts]]
 arguments = [16]
 comment   = "Sixteenth palindrome"
 expected  = 53235
@@ -145,56 +144,6 @@ comment   = "Nineteenth palindrome"
 expected  = 585585
 
 [[asserts]]
-arguments = [1]
-comment   = "Verify first"
-expected  = 1
-
-[[asserts]]
-arguments = [2]
-comment   = "Verify second"
-expected  = 3
-
-[[asserts]]
-arguments = [3]
-comment   = "Verify third"
-expected  = 5
-
-[[asserts]]
-arguments = [4]
-comment   = "Verify fourth"
-expected  = 7
-
-[[asserts]]
-arguments = [5]
-comment   = "Verify fifth"
-expected  = 9
-
-[[asserts]]
-arguments = [6]
-comment   = "Verify sixth"
-expected  = 33
-
-[[asserts]]
-arguments = [7]
-comment   = "Verify seventh"
-expected  = 99
-
-[[asserts]]
-arguments = [8]
-comment   = "Verify eighth"
-expected  = 313
-
-[[asserts]]
-arguments = [9]
-comment   = "Verify ninth"
-expected  = 585
-
-[[asserts]]
-arguments = [10]
-comment   = "Verify tenth"
-expected  = 717
-
-[[asserts]]
-arguments = [11]
-comment   = "Verify eleventh"
-expected  = 7447
+arguments = [20]
+comment   = "Twentieth palindrome"
+expected  = 1758571

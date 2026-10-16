@@ -1,10 +1,22 @@
-base_score = 100
-description_en = "A pirate walks along a deck lined with barrels of rum. Each barrel contains a certain number of liters (given as an array of non‑negative integers). The pirate cannot take rum from two adjacent barrels (that would make noise). What is the maximum total amount of rum he can drink unnoticed?\n"
-description_ru = "Пират идет по палубе, заставленной бочками с ромом. В каждой бочке разное количество литров (задано массивом неотрицательных целых чисел). Он не может брать ром из двух соседних бочек (поднимется шум). Какое максимальное количество рома он может выпить незаметно?\n"
-examples = "solution([]) == 0\nsolution([5]) == 5\nsolution([5, 3]) == 5\nsolution([5, 3, 7]) == 12\nsolution([2, 7, 9, 3, 1]) == 12\n"
-level = "easy"
-limits = "- $0 \\leq \\text{len}(\\text{barrels}) \\leq 1000$\n- $0 \\leq \\text{barrels}[i] \\leq 1000$\n"
-name = "rum_thirst"
+base_score        = 100
+level             = "easy"
+name              = "rum_thirst"
+tags              = ["dp", "algo", "collections"]
+time_to_solve_sec = 180
+
+description_en = """
+A pirate walks along a deck lined with barrels of rum. Each barrel contains a certain number of liters (given as an array of non‑negative integers). The pirate cannot take rum from two adjacent barrels (that would make noise). What is the maximum total amount of rum he can drink unnoticed?
+"""
+
+description_ru = """
+Пират идет по палубе вдоль ряда бочек с ромом. В каждой бочке есть некоторое количество литров (задано массивом неотрицательных целых чисел). Он не может брать ром из двух соседних бочек (поднимется шум). Какое максимальное количество рома он может выпить незаметно?
+"""
+
+limits = """
+- $0 \\leq \\text{len}(\\text{barrels}) \\leq 1000$
+- $0 \\leq \\text{barrels}[i] \\leq 1000$
+"""
+
 solution = """
 def solution(barrels: list[int]) -> int:
     prev2 = prev1 = 0
@@ -12,15 +24,25 @@ def solution(barrels: list[int]) -> int:
         prev2, prev1 = prev1, max(prev1, prev2 + x)
     return prev1
 """
-tags = ["dp", "algo", "collections"]
-time_to_solve_sec = 180
+
+examples = """
+solution([]) == 0
+solution([5]) == 5
+solution([5, 3]) == 5
+solution([5, 3, 7]) == 12
+solution([2, 7, 9, 3, 1]) == 12
+"""
+
 [[input_signature]]
 argument_name = "barrels"
-
 [input_signature.type]
 name = "array"
 [input_signature.type.nested]
 name = "integer"
+
+[output_signature.type]
+name = "integer"
+
 [[asserts]]
 arguments = [[]]
 comment   = "Test 1"
@@ -309,11 +331,3 @@ arguments = [
 ]
 comment = "Test 29"
 expected = 5307
-
-[[asserts]]
-arguments = [[]]
-comment   = "Test 30"
-expected  = 0
-
-[output_signature.type]
-name = "integer"

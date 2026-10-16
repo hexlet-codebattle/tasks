@@ -17,18 +17,17 @@ limits = """
 """
 
 solution = """
+import re
+
 def solution(text: str) -> str:
-    import re
-    s = text.replace('-', '_')
-    s = re.sub(r'([a-z\\d])([A-Z])', r'\\1_\\2', s)
-    s = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\\1_\\2', s)
-    s = s.replace('::', '/')
-    return s.lower()
+    for pattern in [r'([a-z\\d])([A-Z])', '([A-Z]+)([A-Z][a-z])']:
+        text = re.sub(pattern, r'\\1_\\2', text)
+    return text.replace('-', '_').replace('::', '/').lower()
 """
 
 examples = """
-solution("ActiveModel::Errors") == "active_model/errors"
 solution("HelloHowAreYou") == "hello_how_are_you"
+solution("ActiveModel::Errors") == "active_model/errors"
 solution("MyNAMEIsBOND-JamesBond") == "my_name_is_bond_james_bond"
 solution("MAINCompany::BEST-MAINUser") == "main_company/best_main_user"
 """
@@ -165,3 +164,18 @@ expected  = "css_style"
 arguments = ["SQLQuery"]
 comment   = "SQL acronym"
 expected  = "sql_query"
+
+[[asserts]]
+arguments = ["version2Thing"]
+comment   = "Uppercase word after a digit"
+expected  = "version2_thing"
+
+[[asserts]]
+arguments = ["HTML5Parser"]
+comment   = "Uppercase word after a digit"
+expected  = "html5_parser"
+
+[[asserts]]
+arguments = ["user1ID"]
+comment   = "Uppercase word after a digit"
+expected  = "user1_id"

@@ -1,0 +1,29 @@
+{
+  "name": "vitaly_taskpack",
+  "task_names": [
+    "maximum_altitude",
+    "center_strings",
+    "self_dividing_numbers",
+    "longest_common_prefix",
+    "string_blocks_transposition",
+    "toeplitz_matrix",
+    "expanded_notation_array",
+    "peak_performance_sum",
+    "custom_fibonacci",
+    "max_stock_profit",
+    "largest_perimeter_triangle",
+    "summary_ranges",
+    "digit_snake_formatter",
+    "primes_with_prime_digit_sum",
+    "town_judge",
+    "permutation_period",
+    "longest_balanced_segment",
+    "valid_sudoku",
+    "game_of_life_step",
+    "insert_interval",
+    "flood_fill",
+    "turtle_max_path_sum",
+    "minimum_bracket_reversals",
+    "topological_sort_possible"
+  ]
+}

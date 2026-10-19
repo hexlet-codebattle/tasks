@@ -522,6 +522,13 @@ class TestRunner:
                     if key not in ["name", "asserts"]:
                         json_data[key] = data[key]
 
+                # Codebattle's bot types solutions["python"]; `solution` is always python
+                # (the tests above exec it), so publish it under that key too.
+                if data.get("solution"):
+                    solutions = dict(json_data.get("solutions") or {})
+                    solutions.setdefault("python", data["solution"])
+                    json_data["solutions"] = solutions
+
                 # Ensure subdirectory in release mirrors the source layout
                 out_dir = os.path.join(release_dir, rel_dir)
                 os.makedirs(out_dir, exist_ok=True)

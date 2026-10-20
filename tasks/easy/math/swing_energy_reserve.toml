@@ -16,6 +16,18 @@ description_ru = """
 Верните минимальный целый запас энергии перед первым перемещением. Если крыш меньше двух, верните $0$.
 """
 
+description_es = """
+Spider-Man visita tejados en el orden `heights`. El aumento de metros $d$ gasta energía $d$. Al bajar los medidores $d$ se restaura la energía $\\lfloor d / 2 \\rfloor$. La energía cambia sólo entre tejados consecutivos y nunca puede ser negativa.
+
+Devuelve la energía entera mínima necesaria antes del primer movimiento. Con menos de dos tejados, devuelva $0$.
+"""
+
+description_zh = """
+蜘蛛侠按照 `heights` 的顺序访问屋顶。由$d$米上升花费$d$能量。掉落 $d$ 米会恢复 $\\lfloor d / 2 \\rfloor$ 能量。能量仅在连续屋顶之间变化，并且可能永远不会为负。
+
+返回第一次移动之前所需的最小整数能量。如果屋顶少于两个，则返回 $0$。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{heights}) \\leq 10^4$
 - $0 \\leq \\text{heights}[i] \\leq 10^6$

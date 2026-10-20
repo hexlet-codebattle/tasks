@@ -12,6 +12,14 @@ description_ru = """
 В Хокинсе дети пропадают. Даны `total` пропавших и `found` найденных, верните сколько еще не найдено, но не меньше `0`.
 """
 
+description_es = """
+En Hawkins, los niños desaparecen. Dados los niños desaparecidos `total` y los niños `found`, indique cuántos siguen desaparecidos, pero nunca por debajo de `0`.
+"""
+
+description_zh = """
+在霍金斯，孩子们失踪。给定 `total` 失踪儿童和 `found` 儿童，返回仍然失踪的人数，但不得低于 `0`。
+"""
+
 solution = """
 def solution(total: int, found: int) -> int:
     return max(total - found, 0)

@@ -12,6 +12,14 @@ description_ru = """
 Подсчитайте, сколько раз слово `"tomato"` встречается в строке.
 """
 
+description_es = """
+Cuente cuántas veces aparece la palabra `\"tomato\"` en una cadena.
+"""
+
+description_zh = """
+计算单词 `\"tomato\"` 在字符串中出现的次数。
+"""
+
 limits = """
 - $6 \\leq \\text{len}(\\text{vegetables}) \\leq 1000$
 - String contains only concatenated `"tomato"` words

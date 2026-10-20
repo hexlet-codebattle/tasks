@@ -12,6 +12,14 @@ description_ru = """
 Дан массив чисел, создайте новый массив, содержащий четные числа с четными индексами. Если таких чисел нет, то верните `[0]`.
 """
 
+description_es = """
+Dada una matriz de números, devuelve una matriz que contiene todos los números pares de la matriz original, que también tienen índices pares. Si no existen dichos números, devuelva `[0]`.
+"""
+
+description_zh = """
+给定一个数字数组，返回一个包含原始数组中所有偶数的数组，该数组也具有偶数索引。如果没有这样的数字，则返回 `[0]`。
+"""
+
 solution = """
 def solution(numbers):
     result = [num for i, num in enumerate(numbers) if i % 2 == 0 and num % 2 == 0]

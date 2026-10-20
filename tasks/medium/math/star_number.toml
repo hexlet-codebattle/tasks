@@ -20,6 +20,22 @@ description_ru = """
 Примечание: https://en.wikipedia.org/wiki/Star_number
 """
 
+description_es = """
+Cree una función que tome un número entero positivo y devuelva el enésimo \"número de estrella\". Un número de estrella es un número figurado centrado, un hexagrama centrado (estrella de seis puntas), como en el que se juega a las damas chinas.
+
+La fórmula para el número de estrella $n$-ésima es: $S_n = 6n(n-1) + 1$
+
+Ver: https://en.wikipedia.org/wiki/Star_number
+"""
+
+description_zh = """
+创建一个接受正整数并返回第 n 个“星号”的函数。星号是一个居中的图形数字，一个居中的六芒星（六角星），例如中国跳棋所用的那个。
+
+第 $n$ 星号的公式为：$S_n = 6n(n-1) + 1$
+
+参见：https://en.wikipedia.org/wiki/Star_number
+"""
+
 limits = """
 - $1 \\leq \\text{num} \\leq 1000$
 """

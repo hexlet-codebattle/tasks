@@ -12,6 +12,14 @@ description_ru = """
 Верните алфавит переданной строки; строка представляет собой массив символов. Алфавит строки - это набор всех различных символов, присутствующих в строке. Символы результирующей строки расположены в порядке от $a$ до $z$.
 """
 
+description_es = """
+Devuelve un alfabeto de una cadena determinada; la cadena dada se representa como una matriz de caracteres. Un alfabeto de una cadena es el conjunto de todos los caracteres distintos utilizados en esa cadena. La cadena resultante va en orden desde $a$ hasta $z$.
+"""
+
+description_zh = """
+返回给定字符串的字母表；给定的字符串表示为字符数组。字符串的字母表是该字符串中使用的所有不同字符的集合。生成的字符串按从 $a$ 到 $z$ 的顺序排列。
+"""
+
 solution = """
 def solution(s):
     return "".join(sorted(set(s)))

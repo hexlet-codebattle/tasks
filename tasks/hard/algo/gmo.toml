@@ -18,6 +18,20 @@ description_ru = """
 Найдите минимальную суммарную стоимость вставок, чтобы строка $S$ содержала $P$ ($|P| \\leq 20$) как **подстроку**.
 """
 
+description_es = """
+Un gen es una cadena $S$ ($|S| \\leq 20$) sobre $\\{A,C,G,T\\}$. Puede **insertar** cualquier letra en cualquier lugar.
+Costos de inserción: $\\text{cost}(A)=a$, $\\text{cost}(C)=c$, $\\text{cost}(G)=g$, $\\text{cost}(T)=t$.
+
+Encuentre el costo total mínimo de las inserciones para que $S$ contenga $P$ ($|P| \\leq 20$) como una **subcadena**.
+"""
+
+description_zh = """
+基因是 $\\{A,C,G,T\\}$ 上的字符串 $S$ ($|S| \\leq 20$)。您可以在任何地方**插入**任何字母。
+插入成本：$\\text{cost}(A)=a$、$\\text{cost}(C)=c$、$\\text{cost}(G)=g$、$\\text{cost}(T)=t$。
+
+求使 $S$ 包含 $P$ ($|P| \\leq 20$) 作为**子字符串**的最小插入总成本。
+"""
+
 limits = """
 - $0 \\leq |S| \\leq 20$
 - $0 \\leq |P| \\leq 20$

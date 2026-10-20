@@ -16,6 +16,18 @@ description_ru = """
 Верните максимальную сумму бонусов. Можно не делать ни одного прыжка и получить $0$. Маршрут может проходить через крепления с отрицательным бонусом, если это открывает более выгодное приземление дальше.
 """
 
+description_es = """
+Los anclajes de tejado tienen posiciones positivas estrictamente crecientes `positions`; aterrizar en el ancla $i$ agrega `bonuses[i]` a la puntuación combinada de Spider-Man. Comienza en la posición $0$ y sólo puede moverse hacia la derecha. Cada distancia de salto deberá estar comprendida entre `min_jump` y `max_jump`, inclusive. Se pueden saltar las anclas y detenerse después de cualquier aterrizaje.
+
+Devuelve el máximo bono total posible. Es posible que Spider-Man no dé ningún salto, lo que obtiene una puntuación $0$. Una ruta puede pasar por anclajes de bonificación negativa cuando eso desbloquea un mejor aterrizaje posterior.
+"""
+
+description_zh = """
+屋顶锚点的正坐标 `positions` 严格递增。落在锚点 $i$ 上会使蜘蛛侠的连击得分增加 `bonuses[i]`。他从位置 $0$ 出发，只能向右移动。每次跳跃距离必须介于 `min_jump` 和 `max_jump` 之间，包含两端。他可以跳过锚点，也可以在任意一次着陆后停止。
+
+返回可获得的最大总奖励。他也可以不跳跃，得分为 $0$。路线可以经过奖励为负的锚点，以便到达之后奖励更高的锚点。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{positions}) = \\text{len}(\\text{bonuses}) \\leq 500$
 - $1 \\leq \\text{positions}[i] < \\text{positions}[i+1] \\leq 10^6$

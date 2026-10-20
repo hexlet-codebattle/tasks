@@ -20,6 +20,22 @@ description_ru = """
 Верните, сколько полных пар для залпа можно собрать.
 """
 
+description_es = """
+Un intendente pirata cuenta las balas de cañón sueltas antes de la batalla. Hay balas de cañón en total `cannonballs`, pero `cracked` de ellas están dañadas y no se pueden usar.
+
+Cada equipo de disparo necesita exactamente balas de cañón utilizables `2`.
+
+Devuelve cuántos juegos de cocción completos se pueden fabricar.
+"""
+
+description_zh = """
+海盗军需官在战斗前清点松散的炮弹。总炮弹有`cannonballs`，但其中`cracked`已损坏，无法使用。
+
+每个发射装置都需要 `2` 可用炮弹。
+
+返回可以制作多少个完整的发射装置。
+"""
+
 limits = """
 - $0 \\leq \\text{cannonballs} \\leq 10^9$
 - $0 \\leq \\text{cracked} \\leq \\text{cannonballs}$

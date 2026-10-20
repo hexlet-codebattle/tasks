@@ -16,6 +16,18 @@ description_ru = """
 По заданной строке `pin` проверьте, является ли она корректным ПИН-кодом.
 """
 
+description_es = """
+Los cajeros automáticos solo permiten códigos PIN de 4 o 6 dígitos y deben contener **solo dígitos**.
+
+Dada una cadena `pin`, verifique si es un código PIN válido.
+"""
+
+description_zh = """
+ATM 机仅允许 4 位或 6 位 PIN 码，并且它们必须仅包含**数字**。
+
+给定字符串 `pin`，检查它是否是有效的 PIN 码。
+"""
+
 limits = """
 - $0 \\leq \\text{len(pin)} \\leq 20$
 """

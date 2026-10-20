@@ -16,6 +16,18 @@ description_ru = """
 Каждый хеш имеет ключи `"first"` и `"last"`. Верните массив полных имен в формате `"first last"`.
 """
 
+description_es = """
+Implemente una función que combine el nombre y apellido del hash al nombre completo.
+
+Cada hash tiene las claves `\"first\"` y `\"last\"`. Devuelve una matriz de nombres completos con el formato `\"first last\"`.
+"""
+
+description_zh = """
+实现一个函数，将哈希中的名字和姓氏组合成全名。
+
+每个哈希都有键 `\"first\"` 和 `\"last\"`。返回格式为 `\"first last\"` 的全名数组。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(names) \\leq 50$
 - $1 \\leq \\text{len}(first) \\leq 30$

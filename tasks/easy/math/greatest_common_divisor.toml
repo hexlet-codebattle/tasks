@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая находит наибольший общий делитель.
 """
 
+description_es = """
+Cree una función que calcule MCD (máximo común divisor).
+"""
+
+description_zh = """
+创建一个计算 GCD（最大公约数）的函数。
+"""
+
 limits = """
 - $1 \\leq x, y \\leq 1000$
 """

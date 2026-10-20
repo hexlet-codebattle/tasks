@@ -24,6 +24,26 @@ description_ru = """
 Верните исходные индексы матчей из этого расписания.
 """
 
+description_es = """
+Cada partido transmitido es `[start, end]`, medido en minutos desde el inicio del torneo.
+Elija un conjunto de transmisiones de tamaño máximo que se puedan ver completamente sin superposiciones.
+Una transmisión puede comenzar exactamente cuando finaliza la anterior.
+
+Enumere las coincidencias elegidas en orden de visualización.
+Si existen varios horarios máximos, elija aquel cuya secuencia de pares `(end, original_index)` sea lexicográficamente más pequeña.
+Devuelve sus índices originales.
+"""
+
+description_zh = """
+每场比赛的转播编号为 `[start, end]`，以比赛开始后的分钟为单位。
+选择可以完全观看而不会重叠的最大尺寸的广播集。
+广播可能恰好在前一广播结束时开始。
+
+按观看顺序列出所选比赛。
+如果存在多个最大调度，则选择其对序列 `(end, original_index)` 按字典顺序最小的一个。
+返回其原始索引。
+"""
+
 limits = """
 - $0 \\leq \\operatorname{len}(matches) \\leq 104$
 - $\\operatorname{len}(matches_i) = 2$

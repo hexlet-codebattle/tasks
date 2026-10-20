@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая принимает предсказанный счет и настоящий счет футбольного матча. Верните $2$, если счета совпали, $1$ если победитель предсказан верно, но очки отличаются, $0$ если предсказание оказалось полностью неверным.
 """
 
+description_es = """
+Escriba una función que tome los resultados supuestos y reales del partido de fútbol como argumentos y devuelva $2$ si el resultado es correcto, $1$ si el ganador tiene razón pero el resultado es incorrecto y $0$ si el ganador está equivocado.
+"""
+
+description_zh = """
+编写一个函数，以假设的和真实的足球比赛得分为参数，如果得分正确，则返回 $2$；如果获胜者正确但得分错误，则返回 $1$；如果获胜者错误，则返回 $0$。
+"""
+
 solution = """
 def solution(guess, actual):
     g1, g2 = guess

@@ -20,6 +20,22 @@ description_ru = """
 Если обратного не существует (например, если $a$ кратно $m$), верните $-1$.
 """
 
+description_es = """
+Dado un número entero $a$ y un número primo $m$, encuentre el inverso multiplicativo modular de $a$ módulo $m$.
+
+El inverso modular de $a$ módulo $m$ es un entero $x$ tal que $(a \\times x) \\pmod m = 1$.
+
+Si el inverso no existe (por ejemplo, si $a$ es un múltiplo de $m$), devuelva $-1$.
+"""
+
+description_zh = """
+给定一个整数 $a$ 和一个素数 $m$，求 $a$ 模 $m$ 的模乘逆。
+
+$a$ 模 $m$ 的模逆是整数 $x$，使得 $(a \\times x) \\pmod m = 1$。
+
+如果逆数不存在（例如，如果 $a$ 是 $m$ 的倍数），则返回 $-1$。
+"""
+
 limits = """
 - $-10^9 \\leq a \\leq 10^9$
 - $2 \\leq m \\leq 10^9+7$

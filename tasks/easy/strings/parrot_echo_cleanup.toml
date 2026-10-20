@@ -16,6 +16,18 @@ description_ru = """
 Дана строка `cry` с пиратским криком. Удалите подряд идущие одинаковые буквы и верните очищенную строку.
 """
 
+description_es = """
+Un loro ruidoso alarga los sonidos repitiendo la misma letra muchas veces seguidas.
+
+Dada una cadena de grito pirata `cry`, elimine las letras duplicadas consecutivas y devuelva la cadena limpia.
+"""
+
+description_zh = """
+吵闹的鹦鹉通过连续多次重复同一个字母来延长声音。
+
+给定一个海盗哭泣字符串 `cry`，删除连续的重复字母并返回清理后的字符串。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{cry}) \\leq 100$
 - $\\text{cry} \\in \\{a{-}z\\}^*$

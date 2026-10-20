@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая подсчитывает количество цифр в числе.
 """
 
+description_es = """
+Crea una función que cuente el número de dígitos del número entero.
+"""
+
+description_zh = """
+创建一个计算整数位数的函数。
+"""
+
 limits = """
 - $-1000000 \\leq num \\leq 1000000$
 """

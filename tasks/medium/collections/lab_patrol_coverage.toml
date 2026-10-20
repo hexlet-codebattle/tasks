@@ -12,6 +12,14 @@ description_ru = """
 Лаборатория Хокинса ведет записи патрулей. Дан список интервалов времени `[start, end]` в часах, верните общее покрытое время. Интервалы полуоткрытые: `start` включен, `end` исключен.
 """
 
+description_es = """
+Hawkins Lab registra las patrullas de guardia. Dada una lista de intervalos de tiempo `[start, end]` en horas, devuelva el tiempo total cubierto. Los intervalos están medio abiertos: se incluye `start`, se excluye `end`.
+"""
+
+description_zh = """
+霍金斯实验室记录警卫巡逻。给定时间间隔列表 `[start, end]`（以小时为单位），返回涵盖的总时间。间隔为半开：包括 `start`，排除 `end`。
+"""
+
 solution = """
 def solution(intervals: list[list[int]]) -> int:
     if not intervals: return 0

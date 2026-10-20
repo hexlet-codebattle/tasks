@@ -12,6 +12,14 @@ description_ru = """
 Дана строка `s`. Верните новую строку, в которой каждый символ продублирован.
 """
 
+description_es = """
+Dada una cadena `s`, devuelve una nueva cadena donde cada carácter se duplica.
+"""
+
+description_zh = """
+给定一个字符串 `s`，返回一个新字符串，其中每个字符都加倍。
+"""
+
 solution = """
 def solution(s: str) -> str:
     return ''.join(c * 2 for c in s)

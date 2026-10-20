@@ -12,6 +12,14 @@ description_ru = """
 Промышленный альпинист использует для страховки три карабина. Для каждого карабина известен вес, который он выдерживает. Страховка считается надежной, если хотя бы два карабина выдерживают вес альпиниста. Определите максимальный вес при котором страховка будет надежной.
 """
 
+description_es = """
+El escalador industrial utiliza tres mosquetones por seguridad. De cada mosquetón se conoce el peso que puede soportar. La seguridad se considera fiable si al menos dos mosquetones pueden soportar el peso del escalador. Determine el peso máximo para el cual la seguridad es confiable.
+"""
+
+description_zh = """
+为了安全起见，工业登山器使用三个登山扣。对于每个登山扣，它可以承受的重量是已知的。如果至少有两个登山扣能够承受登山者的重量，则认为安全性可靠。确定安全可靠的最大重量。
+"""
+
 solution = """
 def solution(a, b, c):
     # Return the second largest of the three capacities,

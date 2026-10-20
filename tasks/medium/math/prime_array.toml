@@ -16,6 +16,18 @@ description_ru = """
 Простое число — это натуральное число больше $1$, которое не имеет положительных делителей, кроме $1$ и самого себя.
 """
 
+description_es = """
+Genere una matriz de los primeros números primos $n$.
+
+Un número primo es un número natural mayor que $1$ que no tiene divisores positivos distintos de $1$ y él mismo.
+"""
+
+description_zh = """
+生成前 $n$ 素数的数组。
+
+素数是大于 $1$ 的自然数，除了 $1$ 及其本身之外没有正因数。
+"""
+
 limits = """
 - $1 \\leq n \\leq 50$
 """

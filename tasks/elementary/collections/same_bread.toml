@@ -16,6 +16,18 @@ description_ru = """
 Первый и последний элементы каждого массива представляют ломтики хлеба.
 """
 
+description_es = """
+Se dan dos matrices, que representan dos sándwiches. Indica si ambos sándwiches usan el mismo tipo de pan.
+
+El primer y último elemento de cada matriz representan las rebanadas de pan.
+"""
+
+description_zh = """
+给出了两个数组，代表两个三明治。返回两个三明治是否使用相同类型的面包。
+
+每个数组的第一个和最后一个元素代表面包片。
+"""
+
 solution = """
 def solution(first, second):
     return [first[0], first[-1]] == [second[0], second[-1]]

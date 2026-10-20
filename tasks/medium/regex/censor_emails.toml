@@ -24,6 +24,26 @@ description_ru = """
 Верните зацензуренный текст.
 """
 
+description_es = """
+Dada una cadena `text` que contiene palabras separadas por espacios simples. Algunas de estas palabras son direcciones de correo electrónico.
+
+En esta tarea, una dirección de correo electrónico se define como cualquier palabra que contenga exactamente un símbolo `@` y tenga al menos un carácter antes de `@`.
+
+Su tarea es censurar estas direcciones de correo electrónico manteniendo el primer carácter de la parte local (la parte anterior a `@`), reemplazando el resto de la parte local con exactamente tres asteriscos `***` y manteniendo intactos el `@` y la parte del dominio.
+
+Devuelve el texto censurado.
+"""
+
+description_zh = """
+给定一个字符串 `text` ，其中包含由单个空格分隔的单词。其中一些单词是电子邮件地址。
+
+在此任务中，电子邮件地址定义为恰好包含一个 `@` 符号且在 `@` 之前至少有一个字符的任何单词。
+
+您的任务是通过保留本地部分的第一个字符（`@` 之前的部分），用三个星号 `***` 替换本地部分的其余部分，并保持 `@` 和域部分完整，来审查这些电子邮件地址。
+
+返回经过审查的文本。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{text}) \\leq 10^4$
 """

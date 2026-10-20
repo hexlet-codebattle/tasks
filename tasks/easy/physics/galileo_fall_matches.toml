@@ -18,6 +18,20 @@ description_ru = """
 Верните количество записей, где тела приземлятся одновременно.
 """
 
+description_es = """
+En un experimento de caída simplificado de Galileo, cada registro es `[mass1, height1, mass2, height2]`.
+
+En el vacío ideal, el tiempo de caída depende sólo de la altura, no de la masa.
+Devuelve cuántos registros describen cuerpos que aterrizan al mismo tiempo.
+"""
+
+description_zh = """
+在简化的伽利略坠落实验中，每条记录都是 `[mass1, height1, mass2, height2]`。
+
+在理想真空中，下降时间仅取决于高度，而不取决于质量。
+返回描述同时着陆的物体的记录数。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{experiments}) \\leq 100$
 - $1 \\leq \\text{mass1}, \\text{mass2} \\leq 10^4$

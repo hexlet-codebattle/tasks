@@ -20,6 +20,22 @@ description_ru = """
 Верните длину этой серии или $0$, если студент ни разу не присутствовал.
 """
 
+description_es = """
+Un asistente de enseñanza realiza un seguimiento de la asistencia de un estudiante a lo largo del semestre como una cadena `log` de caracteres `'P'` (presente) y `'A'` (ausente), uno por clase.
+
+El decano otorga una bonificación por \"racha perfecta\" basada en la serie más larga de caracteres `'P'` consecutivos en el registro.
+
+Devuelve la duración de esa carrera más larga, o $0$ si el estudiante nunca estuvo presente.
+"""
+
+description_zh = """
+助教用字符串 `log` 记录学生一学期的出勤情况，每节课对应一个字符：`'P'` 表示出勤，`'A'` 表示缺勤。
+
+院长根据日志中最长的连续 `'P'` 段颁发连续全勤奖励。
+
+返回该连续段的长度；如果学生从未出勤，则返回 $0$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{log}) \\leq 10^4$
 - $\\text{log} \\in \\{\\text{"P"}, \\text{"A"}\\}^*$

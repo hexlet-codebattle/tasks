@@ -28,6 +28,30 @@ description_ru = """
 Интервалы включают оба конца, поэтому интервалы с общей конечной точкой пересекаются.
 """
 
+description_es = """
+Se le proporciona una matriz de `intervals` que no se superponen, donde $\\text{intervals}[i] = [start_i, end_i]$ representa el inicio y el final del intervalo $i$-ésimo. La matriz `intervals` está ordenada en orden ascendente por $start_i$.
+
+También se le proporciona una matriz $\\text{new\\_interval} = [start, end]$ que representa el inicio y el final de otro intervalo.
+
+Inserte $\\text{new\\_interval}$ en `intervals` de modo que `intervals` todavía esté ordenado en orden ascendente por $start_i$ y `intervals` todavía no tenga intervalos superpuestos (combina intervalos superpuestos si es necesario).
+
+Devuelve `intervals` después de la inserción.
+
+Los intervalos incluyen ambos puntos finales, por lo que los intervalos que comparten un punto final se superponen.
+"""
+
+description_zh = """
+给您一个不重叠的 `intervals` 数组，其中 $\\text{intervals}[i] = [start_i, end_i]$ 表示第 $i$ 间隔的开始和结束。数组 `intervals` 按 $start_i$ 升序排序。
+
+您还会获得一个数组 $\\text{new\\_interval} = [start, end]$，它表示另一个间隔的开始和结束。
+
+将 $\\text{new\\_interval}$ 插入 `intervals`，使得 `intervals` 仍然按 $start_i$ 升序排序，并且 `intervals` 仍然没有任何重叠间隔（如有必要，合并重叠间隔）。
+
+插入后返回`intervals`。
+
+间隔包括两个端点，因此共享端点的间隔重叠。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{intervals}) \\leq 10^4$
 - $\\text{len}(\\text{intervals}[i]) == 2$

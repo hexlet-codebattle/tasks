@@ -30,6 +30,31 @@ description_ru = """
 Каждая позиция в `secret` может быть сопоставлена не более чем с одной позицией в `guess`.
 """
 
+description_es = """
+Se le dan dos números enteros de 4 dígitos: `secret` y `guess`.
+
+Para cada puesto:
+
+- Si un dígito de `guess` coincide con el dígito de `secret` en la **misma posición**, cuenta como un **toro**.
+- Si un dígito de `guess` aparece en `secret` en una **posición diferente**, puede contar como una **vaca**.
+
+Devuelve una matriz `[bulls, cows]` con el número de toros y vacas para este par.
+
+Cada posición en `secret` puede coincidir con como máximo una posición en `guess`.
+"""
+
+description_zh = """
+给定两个四位整数：`secret` 和 `guess`。
+
+对于每个位置：
+- 如果 `guess` 中的数字与 `secret` 中**相同位置**的数字相同，计为一个**公牛**。
+- 如果 `guess` 中的数字出现在 `secret` 的**其他位置**，可以计为一个**母牛**。
+
+以数组 `[bulls, cows]` 返回公牛和母牛的数量。
+
+`secret` 中的每个位置至多与 `guess` 中的一个位置匹配。
+"""
+
 limits = """
 - $1000 \\leq secret \\leq 9999$
 - $1000 \\leq guess \\leq 9999$

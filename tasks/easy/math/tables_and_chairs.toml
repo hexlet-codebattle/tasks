@@ -23,6 +23,24 @@ description_ru = """
 Не обязательно использовать все стулья, достаточно разместить их за всеми столами.
 """
 
+description_es = """
+Hay `tables` mesas.
+Cada mesa debe tener exactamente cuatro sillas del mismo color a su alrededor.
+Hay `colors` colores de sillas.
+Para cada color `i`, el array `chairs` contiene el número de sillas de ese color.
+
+Determina si es posible colocar las sillas de modo que **cada color se use al menos una vez** (es decir, aparezca en alguna mesa).
+No es necesario usar todas las sillas, solo las necesarias para todas las mesas.
+"""
+
+description_zh = """
+有 `tables` 张桌子，每张桌子周围必须恰好放四把同色的椅子。
+椅子共有 `colors` 种颜色。对于每种颜色 `i`，数组 `chairs` 给出该颜色的椅子数量。
+
+判断能否为所有桌子配置椅子，并且**每种颜色至少使用一次**，即每种颜色至少出现在一张桌子周围。
+无需使用全部椅子，只需满足所有桌子的要求。
+"""
+
 solution = """
 def solution(tables, colors, chairs):
     if tables < colors:

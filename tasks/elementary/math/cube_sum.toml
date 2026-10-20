@@ -12,6 +12,14 @@ description_ru = """
 Дано целое число `n`. Верните сумму кубов всех целых чисел от $1$ до $n$ включительно.
 """
 
+description_es = """
+Dado un número entero `n`, devuelve la suma de cubos de todos los números enteros desde $1$ hasta $n$ inclusive.
+"""
+
+description_zh = """
+给定一个整数 `n`，返回从 $1$ 到 $n$（含）的所有整数的立方和。
+"""
+
 limits = """
 - $1 \\leq n \\leq 30$
 """

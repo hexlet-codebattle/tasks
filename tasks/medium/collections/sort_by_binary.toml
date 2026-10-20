@@ -12,6 +12,14 @@ description_ru = """
 Отсортируйте массив целых чисел по количеству 1 в их двоичном представлении (в порядке возрастания). Если два числа имеют одинаковое количество 1 в двоичном представлении, их порядок относительно друг друга должен быть таким же, как в исходном массиве (стабильная сортировка).
 """
 
+description_es = """
+Ordena una matriz de números enteros por el número de unos en su representación binaria (en orden ascendente). Si dos números enteros tienen el mismo número de unos en su representación binaria, su orden relativo debe ser el mismo que en la matriz original (ordenación estable).
+"""
+
+description_zh = """
+按二进制表示形式中 1 的数量对整数数组进行排序（按升序）。如果两个整数在其二进制表示中具有相同数量的 1，则它们的相对顺序应与原始数组中的相同（稳定排序）。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 1000$
 - $0 \\leq \\text{arr}[i] \\leq 10^6$

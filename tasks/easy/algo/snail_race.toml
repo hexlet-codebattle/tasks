@@ -50,6 +50,52 @@ description_ru = """
 и False в противном случае.
 """
 
+description_es = """
+Steve y Maurice tienen caracoles corriendo. Cada uno de ellos tiene exactamente 3 caracoles.
+Cada caracol está representado por su velocidad como un número entero positivo.
+
+Se te da:
+- maurice: una lista de 3 números enteros
+- steve: una lista de 3 números enteros
+
+Cada lista contiene las velocidades de los caracoles de ese jugador, en **orden aleatorio**.
+El número más pequeño es el caracol (s) lento (s), el del medio es el mediano (m) y el más grande es el rápido (f).
+
+Maurice siempre utiliza la siguiente estrategia fija:
+
+- Ronda 1: [s, f] — Maurice sacrifica su caracol **más lento** contra el **más rápido** de Steve.
+- Ronda 2: [m, s] — Maurice usa su caracol **medio** contra el **más lento** de Steve.
+- Ronda 3: [f, m] — Maurice usa su caracol **más rápido** contra el **medio** de Steve.
+
+En cada ronda, gana el caracol con **mayor velocidad**.
+
+Escribe una función que devuelva Verdadero si Maurice gana **al menos 2 de 3** rondas con esta estrategia,
+y Falso en caso contrario.
+"""
+
+description_zh = """
+史蒂夫和莫里斯有赛跑蜗牛。他们每人正好有 3 只蜗牛。
+每只蜗牛都用其速度表示为正整数。
+
+您将得到：
+- maurice: 3 个整数的列表
+- steve: 3 个整数的列表
+
+每个列表都包含该玩家的蜗牛速度，按**随机顺序**。
+最小的数字是慢速蜗牛（s），中间的是中速蜗牛（m），最大的是快速蜗牛（f）。
+
+莫里斯总是使用以下固定策略：
+
+- 第 1 轮：[s, f] — 莫里斯牺牲了他的 **最慢的** 蜗牛来对抗史蒂夫的 **最快的**。
+- 第 2 轮：[m, s] — 莫里斯用他的**中间**蜗牛对抗史蒂夫的**最慢**。
+- 第 3 轮：[f，m] — 莫里斯用他的**最快**蜗牛对抗史蒂夫的**中间**。
+
+在每一轮中，**速度较高**的蜗牛获胜。
+
+编写一个函数，如果 Maurice 使用此策略赢得 **至少 3 轮中的 2 轮**，则返回 True，
+否则为 False。
+"""
+
 limits = """
 - $\\text{len}(\\text{maurice}) = 3$
 - $\\text{len}(\\text{steve}) = 3$

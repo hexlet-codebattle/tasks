@@ -12,6 +12,14 @@ description_ru = """
 Найдите числа, которые встречаются нечетное количество раз в массиве. Верните их в порядке первого появления.
 """
 
+description_es = """
+Encuentre números que tengan apariciones impares en una matriz. Devuélvalos en el orden en que aparecieron por primera vez.
+"""
+
+description_zh = """
+查找数组中出现奇数次的数字。按照首次出现的顺序返回它们。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(arr) \\leq 100$
 - $-10000 \\leq arr[i] \\leq 10000$

@@ -16,6 +16,18 @@ description_ru = """
 Верните метки, встречающиеся нечётное число раз, отсортированные по алфавиту по возрастанию. Если таких меток нет, верните пустой массив.
 """
 
+description_es = """
+Las ardillas esparcen comida en muchos escondites y las semillas que nunca recuperan a veces brotan y ayudan a los árboles a propagarse. Una etiqueta de caché se escribe una vez cuando se entierra una semilla allí y una vez más cuando se retira la semilla.
+
+Devuelve las etiquetas grabadas un número impar de veces, ordenadas en orden alfabético ascendente. Devuelve una matriz vacía cuando no existe dicha etiqueta.
+"""
+
+description_zh = """
+松鼠将食物散播到许多储藏室，而它们从未回收的种子有时会发芽，帮助树木蔓延。当种子被埋在那里时，缓存标签被记录一次，当种子被取回时，缓存标签被记录一次。
+
+返回记录奇数次的标签，按字母升序排序。当没有这样的标签时返回一个空数组。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{tags}) \\leq 10^4$
 - $1 \\leq \\text{len}(\\text{tags}[i]) \\leq 20$

@@ -16,6 +16,18 @@ description_ru = """
 Реализуйте функцию Эйлера $\\phi(x)$, которая определяет количество положительных целых чисел меньше или равных $x$, взаимно простых с $x$.
 """
 
+description_es = """
+Dos números son coprimos si su máximo común divisor es $1$.
+
+Implemente la función totiente de Euler $\\phi(x)$, que se define como el número de enteros positivos menores o iguales a $x$ que son coprimos de $x$.
+"""
+
+description_zh = """
+如果两个数的最大公约数等于 $1$，则这两个数互质。
+
+实现欧拉totient函数$\\phi(x)$，其定义为小于或等于$x$且与$x$互质的正整数的个数。
+"""
+
 limits = """
 - $1 \\leq n \\leq 1000$
 """

@@ -16,6 +16,18 @@ description_ru = """
 Арифметическая прогрессия — это последовательность, в которой разность между последовательными членами постоянна. Например, `[2, 4, 6, 8, 10]` имеет общую разность $2$.
 """
 
+description_es = """
+Dada una matriz que representa elementos de una progresión aritmética en orden, con un elemento faltante, devuelve el número que falta.
+
+Una progresión aritmética es una secuencia donde la diferencia entre términos consecutivos es constante. Por ejemplo, `[2, 4, 6, 8, 10]` tiene una diferencia común de $2$.
+"""
+
+description_zh = """
+给定一个按顺序表示等差数列元素的数组，如果缺少一个元素，则返回缺少的数字。
+
+算术级数是连续项之间的差值恒定的数列。例如，`[2, 4, 6, 8, 10]` 的公差为 $2$。
+"""
+
 limits = """
 - $3 \\leq \\text{len}(\\text{arr}) \\leq 100$
 - $-1000 \\leq \\text{arr}[i] \\leq 1000$

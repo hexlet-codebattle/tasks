@@ -16,6 +16,18 @@ description_ru = """
 Например, в сетке $2 \\times 2$ есть $4$ квадрата размера $1 \\times 1$ и $1$ квадрат размера $2 \\times 2$, всего $5$ квадратов.
 """
 
+description_es = """
+Calcula el número de cuadrados diferentes en una cuadrícula $n \\times n$.
+
+Por ejemplo, en una cuadrícula $2 \\times 2$, hay cuadrados $4$ de tamaño $1 \\times 1$ y cuadrados $1$ de tamaño $2 \\times 2$, para un total de cuadrados $5$.
+"""
+
+description_zh = """
+计算 $n \\times n$ 方格中不同方格的数量。
+
+例如，在 $2 \\times 2$ 网格中，有大小为 $1 \\times 1$ 的 $4$ 正方形和大小为 $2 \\times 2$ 的 $1$ 正方形，总共有 $5$ 正方形。
+"""
+
 limits = """
 - $1 \\leq n \\leq 50$
 """

@@ -12,6 +12,14 @@ description_ru = """
 По числу голов команд A и B верните их турнирные очки в виде `[points_a, points_b]`: три за победу, одно за ничью и ноль за поражение.
 """
 
+description_es = """
+Dados los goles marcados por los equipos A y B, devuelva sus puntos del torneo como `[points_a, points_b]`: tres por victoria, uno por empate y cero por derrota.
+"""
+
+description_zh = """
+根据 A 队和 B 队的进球数，将他们的比赛积分返回为 `[points_a, points_b]`：胜 3 分，平 1 分，负 0 分。
+"""
+
 limits = """
 - $0 \\leq a \\leq 20$
 - $0 \\leq b \\leq 20$

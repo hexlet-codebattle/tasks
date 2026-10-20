@@ -16,6 +16,18 @@ description_ru = """
 Верните минимальную суммарную абсолютную ошибку между первым профилем и любым циклическим сдвигом второго профиля.
 """
 
+description_es = """
+En una configuración simplificada de Michelson-Morley, se miden dos perfiles de brillo circulares antes y después de la rotación.
+
+Devuelve el error absoluto total más pequeño entre el primer perfil y cualquier cambio cíclico del segundo perfil.
+"""
+
+description_zh = """
+在简化的迈克尔逊-莫雷装置中，在旋转之前和之后测量两个圆形亮度分布。
+
+返回第一个配置文件与第二个配置文件的任何循环移位之间的最小总绝对误差。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{before}) = \\text{len}(\\text{after}) \\leq 50$
 - $0 \\leq \\text{brightness} \\leq 10^4$

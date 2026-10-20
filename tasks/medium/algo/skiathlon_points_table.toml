@@ -40,6 +40,42 @@ description_ru = """
 Верните суммарные очки для каждого id.
 """
 
+description_es = """
+Hay atletas `athletes_count` con identificaciones desde `0` hasta `athletes_count - 1`.
+
+`events` es una lista de resultados de carreras.
+Cada carrera es una serie de identificaciones de atletas en orden de llegada.
+
+`points` define la puntuación por lugar:
+- lugar `0` obtiene `points[0]`
+- lugar `1` obtiene `points[1]`
+
+Reglas:
+- si el lugar no tiene ningún valor de puntos coincidente, no se agregan puntos
+- ignorar las identificaciones de atletas no válidas
+- en una carrera, la identificación repetida se cuenta una vez (primera aparición)
+
+Devuelve el total de puntos para cada identificación de atleta.
+"""
+
+description_zh = """
+有 `athletes_count` 运动员，ID 为 `0` 到 `athletes_count - 1`。
+
+`events` 是比赛成绩列表。
+每场比赛都是按完成顺序排列的运动员 ID 数组。
+
+`points` 定义按地点评分：
+- 地点 `0` 获得 `points[0]`
+- 地点 `1` 获得 `points[1]`
+
+规则：
+- 如果地点没有匹配的积分值，则不添加积分
+- 忽略无效的运动员 ID
+- 在一场比赛中，重复的 ID 计算一次（第一次出现）
+
+返回每个运动员 ID 的总分。
+"""
+
 solution = """
 def solution(athletes_count: int, events: list[list[int]], points: list[int]) -> list[int]:
     total = [0] * athletes_count

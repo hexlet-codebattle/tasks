@@ -14,6 +14,16 @@ description_ru = """
 но некоторые числа пропущены. Верните список **всех пропущенных чисел** в порядке возрастания.
 """
 
+description_es = """
+Se le proporciona una lista `nums` que debe contener todos los números enteros desde `1` hasta `n` (inclusive),
+pero faltan algunos números. Devuelve una lista de **todos los números faltantes** en orden ascendente.
+"""
+
+description_zh = """
+给您一个列表 `nums`，其中应包含从 `1` 到 `n`（含）的所有整数，
+但有些数字缺失。按升序返回**所有缺失数字**的列表。
+"""
+
 solution = """
 def solution(nums: list, n: int) -> list:
     s = set(nums)

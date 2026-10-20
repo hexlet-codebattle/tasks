@@ -28,6 +28,30 @@ description_ru = """
 рамку плитками $1 \\times a_i$. Числа $x$ и $y$ до $10^6$, $n$ до $300$.
 """
 
+description_es = """
+Un marco de tamaño $x \\times y$ es un rectángulo de tamaño $x \\times y$ de cuyo centro se ha recortado un rectángulo de tamaño $(x - 2) \\times (y - 2)$.
+Ejemplo de cuadro $4 \\times 3$:
+```text
+####
+#..#
+####
+```
+El marco tiene un espesor de una celda. Para cada una de las longitudes de loseta $n$ $a_i$, determine si el marco se puede colocar en mosaico.
+con azulejos del tamaño $1 \\times a_i$. Los números $x$ y $y$ son hasta $10^6$, y $n$ son hasta $300$.
+"""
+
+description_zh = """
+尺寸为 $x \\times y$ 的框架是尺寸为 $x \\times y$ 的矩形，从其中心切出尺寸为 $(x - 2) \\times (y - 2)$ 的矩形。
+帧 $4 \\times 3$ 示例：
+```text
+####
+#..#
+####
+```
+框架的厚度为一个电池单元的厚度。对于每个 $n$ 平铺长度 $a_i$ 确定帧是否可以平铺
+瓷砖尺寸为 $1 \\times a_i$。编号 $x$ 和 $y$ 最大为 $10^6$，$n$ 最大为 $300$。
+"""
+
 solution = """
 def solution(x, y, a):
     # Return a list of booleans: for each tile length a_i indicate if the frame can be tiled.

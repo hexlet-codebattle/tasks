@@ -12,6 +12,14 @@ description_ru = """
 Верните строку `"Value is num"`, где `num` — число, переданное в функцию. Дополните число нулями слева, если в нем меньше 5 цифр.
 """
 
+description_es = """
+Dado un número como entrada, devuelve una cadena `\"Value is num\"`, donde `num` es el número dado con ceros agregados al principio para que haya 5 dígitos en total.
+"""
+
+description_zh = """
+给定一个数字作为输入，返回一个字符串 `\"Value is num\"`，其中 `num` 是给定的数字，在开头添加零，以便总共 5 位数字。
+"""
+
 limits = """
 - $0 \\leq \\text{num} \\leq 99999$
 """

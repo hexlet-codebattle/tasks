@@ -16,6 +16,18 @@ description_ru = """
 Используйте простое правило: слово во множественном числе, если оно заканчивается на букву 's'. Игнорируйте исключения вроде "goose/geese", "fungus/fungi" и т.д.
 """
 
+description_es = """
+Cree una función que tome una palabra y determine si es plural o no.
+
+Utilice la regla simple: una palabra es plural si termina con la letra 's'. Ignore los casos extremos como \"ganso/gansos\", \"hongos/hongos\", etc.
+"""
+
+description_zh = """
+创建一个函数，它接受一个单词并确定它是否是复数。
+
+使用简单的规则：如果单词以字母“s”结尾，则该单词是复数。忽略边缘情况，如“鹅/鹅”、“真菌/真菌”等。
+"""
+
 limits = """
 - $1 \\leq |\\text{word}| \\leq 50$
 """

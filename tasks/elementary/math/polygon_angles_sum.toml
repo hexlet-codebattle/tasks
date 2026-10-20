@@ -12,6 +12,14 @@ description_ru = """
 Дан $n$-сторонний правильный многоугольник. Рассчитайте сумму внутренних углов в градусах.
 """
 
+description_es = """
+Dado un polígono regular de lados $n$, calcula la suma total de los ángulos internos en grados.
+"""
+
+description_zh = """
+给定一个 $n$ 边的正多边形，计算内角的总和（以度为单位）。
+"""
+
 limits = """
 - $3 \\leq n \\leq 1000$
 """

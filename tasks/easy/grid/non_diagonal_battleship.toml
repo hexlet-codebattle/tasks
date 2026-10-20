@@ -15,6 +15,16 @@ description_ru = """
 ни одна из соседних по стороне клеток (сверху, снизу, слева, справа) не была занята.
 """
 
+description_es = """
+Algunas casillas del tablero $n \\times m$ del juego Unusual Naval Battle están ocupadas (marcadas con el símbolo *).
+Determina el número de formas de colocar un barco de un solo piso (ocupa un cuadrado) de modo que ninguno de los cuadrados adyacentes (arriba, abajo, izquierda o derecha) esté ocupado.
+"""
+
+description_zh = """
+异常海战游戏的 $n \\times m$ 棋盘上的一些方格已被占用（标有 * 符号）。
+确定放置一艘单层船（占据一个方格）的方式数，以使相邻方格（上、下、左或右）都不被占据。
+"""
+
 solution = """
 def solution(N, M, field):
     cnt = 0

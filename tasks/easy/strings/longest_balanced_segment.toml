@@ -16,6 +16,18 @@ description_ru = """
 Дана бинарная строка $s$. Определите длину самого длинного сбалансированного непрерывного сегмента. Если такого сегмента не существует, верните $0$.
 """
 
+description_es = """
+Un segmento binario se denomina equilibrado si contiene el mismo número de $0$ y $1$.
+
+Dada una cadena binaria $s$, determine la longitud del segmento contiguo equilibrado más largo. Si no existe dicho segmento, devuelva $0$.
+"""
+
+description_zh = """
+如果二进制段包含相同数量的 $0$ 和 $1$，则该二进制段称为平衡的。
+
+给定一个二进制字符串 $s$，确定最长平衡连续段的长度。如果不存在这样的段，则返回 $0$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 10^5$
 - $s[i] \\in \\{0, 1\\}$

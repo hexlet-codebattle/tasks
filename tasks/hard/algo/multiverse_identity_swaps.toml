@@ -16,6 +16,18 @@ description_ru = """
 Верните минимальное количество ходов для получения `target`. Если массивы содержат разные мультимножества имен, верните $-1$.
 """
 
+description_es = """
+Dos universos muestran una alineación de identidades en las matrices `original` y `target`. Un movimiento intercambia dos entradas adyacentes de `original`. Los nombres pueden repetirse y las apariciones iguales son indistinguibles.
+
+Devuelve el número mínimo de movimientos necesarios para obtener `target`. Si las matrices contienen diferentes conjuntos múltiples de nombres, devuelva $-1$.
+"""
+
+description_zh = """
+两个 Universe 在数组 `original` 和 `target` 中显示一系列身份。一步操作交换 `original` 的两个相邻条目。名称可能会重复，并且相同的出现是无法区分的。
+
+返回获得 `target` 所需的最小移动次数。如果数组包含不同的多组名称，则返回 $-1$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{original}), \\text{len}(\\text{target}) \\leq 5000$
 - $1 \\leq \\text{len}(\\text{original}[i]), \\text{len}(\\text{target}[i]) \\leq 30$

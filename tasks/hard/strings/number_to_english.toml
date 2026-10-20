@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая принимает положительное целое число между 0 и 2000 включительно, и возвращает строковое представление этого числа на английском языке.
 """
 
+description_es = """
+Escriba una función que acepte un número entero positivo entre 0 y 2000 inclusive y devuelva una representación de cadena de ese número entero escrita en inglés.
+"""
+
+description_zh = """
+编写一个函数，接受 0 到 2000 之间的正整数（含 0 和 2000），并返回该整数的英文字符串表示形式。
+"""
+
 limits = """
 - $0 \\leq num \\leq 2000$
 """

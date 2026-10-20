@@ -16,6 +16,18 @@ description_ru = """
 Верните предмет, соответствующий данному `roll`.
 """
 
+description_es = """
+Se le proporcionan pesos de elementos como un diccionario `{ \"item\": WEIGHT }` y un número entero `roll` de $1$ a la suma de todos los pesos.
+Los artículos se ordenan por peso (ascendente), luego por nombre (alfabéticamente) y ocupan intervalos consecutivos proporcionales a su peso.
+Devuelve el artículo correspondiente al `roll` dado.
+"""
+
+description_zh = """
+您将以字典 `{ \"item\": WEIGHT }` 和从 $1$ 到所有权重总和的整数 `roll` 的形式给出项目权重。
+项目按重量（升序）排序，然后按名称（按字母顺序）排序，并占据与其重量成比例的连续间隔。
+返回与给定 `roll` 对应的项目。
+"""
+
 limits = """
 - $1 \\leq \\text{roll} \\leq \\sum \\text{weights}$
 - $\\text{weight}_i \\ge 0$, $\\exists i: \\text{weight}_i > 0$

@@ -20,6 +20,22 @@ description_ru = """
 Верните `True`, если каждая открывающая скобка имеет соответствующую закрывающую в правильном порядке, иначе верните `False`.
 """
 
+description_es = """
+Compruebe si todos los paréntesis de la cadena dada están equilibrados.
+
+Sólo los caracteres `\"(\"` y `\")\"` afectan el saldo; todos los demás caracteres se ignoran.
+
+Devuelve `True` si cada paréntesis de apertura tiene un paréntesis de cierre coincidente en el orden correcto; de lo contrario, devuelve `False`.
+"""
+
+description_zh = """
+检查给定字符串中的所有括号是否平衡。
+
+只有字符`\"(\"`和`\")\"`影响平衡；所有其他字符都将被忽略。
+
+如果每个左括号都有一个按正确顺序匹配的右括号，则返回 `True`，否则返回 `False`。
+"""
+
 solution = """
 def solution(brackets: str) -> bool:
     c = 0

@@ -16,6 +16,18 @@ $F = \\left\\lfloor \\frac{9}{5} C + 32 \\right\\rfloor$.
 Используйте округление вниз.
 """
 
+description_es = """
+Convierte una temperatura de Celsius a Fahrenheit mediante la fórmula
+$F = \\left\\lfloor \\frac{9}{5} C + 32 \\right\\rfloor$.
+Redondea el resultado hacia abajo.
+"""
+
+description_zh = """
+使用公式
+$F = \\left\\lfloor \\frac{9}{5} C + 32 \\right\\rfloor$
+将摄氏温度转换为华氏温度。结果向下取整。
+"""
+
 limits = """
 - $-100 \\leq C \\leq 100$
 """

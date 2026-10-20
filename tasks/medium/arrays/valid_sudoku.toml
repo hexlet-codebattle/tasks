@@ -24,6 +24,26 @@ description_ru = """
 Поле судоку может быть частично заполнено, пустые ячейки обозначаются символом `"."`.
 """
 
+description_es = """
+Determinar si un tablero Sudoku $9 \\times 9$ es válido. Sólo es necesario validar las celdas llenas de acuerdo con las siguientes reglas:
+
+1. Cada fila debe contener los dígitos `\"1\"`-`\"9\"` sin repetición.
+2. Cada columna debe contener los dígitos `\"1\"`-`\"9\"` sin repetición.
+3. Cada uno de los nueve subcuadros $3 \\times 3$ del grid debe contener los dígitos `\"1\"`-`\"9\"` sin repetición.
+
+El tablero de Sudoku podría estar parcialmente lleno, donde las celdas vacías se llenan con el personaje `\".\"`.
+"""
+
+description_zh = """
+确定 $9 \\times 9$ 数独板是否有效。仅需要根据以下规则验证填充的单元格：
+
+1. 每行必须包含数字`\"1\"`-`\"9\"`，且不能重复。
+2. 每列必须包含数字`\"1\"`-`\"9\"`，且不能重复。
+3. 网格的9个$3 \\times 3$子框中的每一个都必须包含数字`\"1\"`-`\"9\"`，且不重复。
+
+数独板可以部分填充，其中空白单元格用字符 `\".\"` 填充。
+"""
+
 limits = """
 - $\\text{len}(\\text{board}) = 9$
 - $\\text{len}(\\text{board}[i]) = 9$

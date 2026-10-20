@@ -17,6 +17,18 @@ description_ru = """
 `[-1, -1]`.
 """
 
+description_es = """
+Dados los números enteros $l$, $r$ y $x$, donde $0 \\le l \\le r \\le 10000$, encuentre el entero más pequeño y más grande
+entre $l$ y $r$ inclusive cuya suma de dígitos sea igual a $x$. Devuelve el resultado como
+`[minimum, maximum]`. Si no existe tal número, devuelva `[-1, -1]`.
+"""
+
+description_zh = """
+给定整数 $l$、$r$ 和 $x$，其中 $0 \\le l \\le r \\le 10000$，找到最小和最大整数
+$l$ 和 $r$（含）之间，其数字和等于 $x$。返回结果为
+`[minimum, maximum]`。如果没有这个数字，则返回`[-1, -1]`。
+"""
+
 solution = """
 def solution(l, r, x):
     min_val = None

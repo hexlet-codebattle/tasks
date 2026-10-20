@@ -20,6 +20,22 @@ description_ru = """
 Верните число неупорядоченных пар конфликтующих лекций.
 """
 
+description_es = """
+Un estudiante elige varias conferencias para el semestre. Cada conferencia se da como un par `[start, end]` (en minutos desde el inicio del día) dentro de la matriz `lectures`, donde `end` es exclusivo.
+
+Dos conferencias entran en conflicto si sus intervalos se superponen (comparten al menos un minuto). Las conferencias que simplemente tocan un punto final no entran en conflicto.
+
+Devuelve el número de pares desordenados de conferencias en conflicto.
+"""
+
+description_zh = """
+学生为本学期选择若干讲座。数组 `lectures` 中的每个讲座用 `[start, end]` 表示，单位为从当天开始计的分钟，**不包含**结束时刻 `end`。
+
+如果两个讲座的区间重叠，即至少有一分钟相同，则它们冲突。仅在端点相接的讲座不冲突。
+
+返回冲突讲座的无序对数量。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{lectures}) \\leq 10^3$
 - $0 \\leq \\text{start} < \\text{end} \\leq 1440$

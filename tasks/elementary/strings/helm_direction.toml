@@ -24,6 +24,26 @@ description_ru = """
 Верните правильное слово-команду.
 """
 
+description_es = """
+El timonel recibe una orden de giro firmada `turn`.
+
+- Si es `turn < 0`, el barco vira a `\"port\"`.
+- Si es `turn > 0`, el barco vira a `\"starboard\"`.
+- Si `turn = 0`, el barco pasa a `\"ahead\"`.
+
+Devuelve la palabra de comando correcta.
+"""
+
+description_zh = """
+舵手收到签名的转弯命令 `turn`。
+
+- 如果是 `turn < 0`，则船舶转向 `\"port\"`。
+- 如果是`turn > 0`，则船舶转向`\"starboard\"`。
+- 如果是 `turn = 0`，则船舶前往 `\"ahead\"`。
+
+返回正确的命令字。
+"""
+
 limits = """
 - $-10^9 \\leq \\text{turn} \\leq 10^9$
 """

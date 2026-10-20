@@ -16,6 +16,18 @@ description_ru = """
 Верните инвертированный цвет, в котором каждая компонента заменяется на $255 - v$.
 """
 
+description_es = """
+Se le proporciona un color RGB como una matriz de tres números enteros `[r, g, b]`, donde cada componente está en el rango $[0, 255]$.
+
+Devuelve el color invertido, donde cada componente se reemplaza por $255 - v$.
+"""
+
+description_zh = """
+您将获得一个 RGB 颜色，作为三个整数 `[r, g, b]` 的数组，其中每个分量都在 $[0, 255]$ 范围内。
+
+返回反转的颜色，其中每个组件都替换为 $255 - v$。
+"""
+
 limits = """
 - $0 \\leq colours[i] \\leq 255$
 - $\\text{len}(colours) = 3$

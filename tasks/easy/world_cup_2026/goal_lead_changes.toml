@@ -20,6 +20,22 @@ description_ru = """
 Ничья не считается отдельным лидером, поэтому переход `A лидирует -> ничья -> B лидирует` считается одной сменой.
 """
 
+description_es = """
+La cadena `goals` enumera los equipos puntuadores en orden cronológico utilizando `A` y `B`.
+Cuente cuántas veces la ventaja pasa de un equipo a otro.
+
+El primer equipo que tome la delantera no cuenta como cambio.
+Un puntaje empatado no es un líder separado, por lo que `A leads -> tie -> B leads` cuenta como un cambio de líder.
+"""
+
+description_zh = """
+字符串 `goals` 使用 `A` 和 `B` 按时间顺序列出得分团队。
+计算领先优势从一支球队转移到另一支球队的次数。
+
+最先取得领先的队伍不算作换人。
+平局得分并不是单独的领先者，因此 `A leads -> tie -> B leads` 算作一次领先变化。
+"""
+
 limits = """
 - $0 \\leq \\operatorname{len}(goals) \\leq 30$
 - $goals \\in \\{A, B\\}^*$

@@ -16,6 +16,18 @@ description_ru = """
 Верните разброс между самой горячей и самой холодной измеренной точкой.
 """
 
+description_es = """
+Un mapa de fondo cósmico de microondas almacena desviaciones de temperatura enteras.
+
+Devuelve la diferencia entre los puntos medidos más calientes y más fríos.
+"""
+
+description_zh = """
+宇宙微波背景图存储整数温度偏差。
+
+返回最热和最冷测量点之间的差值。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{temperature\\_map}) \\leq 20$
 - $1 \\leq \\text{len}(\\text{row}) \\leq 20$

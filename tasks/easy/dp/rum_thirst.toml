@@ -12,6 +12,14 @@ description_ru = """
 Пират идет по палубе вдоль ряда бочек с ромом. В каждой бочке есть некоторое количество литров (задано массивом неотрицательных целых чисел). Он не может брать ром из двух соседних бочек (поднимется шум). Какое максимальное количество рома он может выпить незаметно?
 """
 
+description_es = """
+Un pirata camina por una cubierta llena de barriles de ron. Cada barril contiene una cierta cantidad de litros (dada como una matriz de números enteros no negativos). El pirata no puede coger ron de dos barriles adyacentes (eso haría ruido). ¿Cuál es la cantidad total máxima de ron que puede beber sin que nadie se dé cuenta?
+"""
+
+description_zh = """
+一名海盗沿着摆满朗姆酒桶的甲板行走。每个桶包含一定数量的升（以非负整数数组形式给出）。海盗不能从两个相邻的桶中取出朗姆酒（这会发出噪音）。他在不被注意的情况下最多可以喝多少朗姆酒？
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{barrels}) \\leq 1000$
 - $0 \\leq \\text{barrels}[i] \\leq 1000$

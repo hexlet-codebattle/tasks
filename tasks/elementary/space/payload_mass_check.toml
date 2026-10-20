@@ -12,6 +12,14 @@ description_ru = """
 Миссия Selene начинается на Земле. По массам всех грузовых контейнеров и лимиту полезной нагрузки ракеты определите, можно ли стартовать без превышения лимита.
 """
 
+description_es = """
+La misión Selene comienza en la Tierra. Dadas las masas de todos los contenedores de carga y el límite de carga útil del cohete, determine si la tripulación puede lanzar sin exceder el límite.
+"""
+
+description_zh = """
+塞勒涅任务在地球上开始。考虑到所有货物集装箱的质量和火箭的有效载荷限制，确定乘员是否可以在不超过限制的情况下发射。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{cargo\\_masses}) \\leq 100$
 - $0 \\leq \\text{cargo\\_masses}[i] \\leq 10^4$

@@ -20,6 +20,22 @@ description_ru = """
 Формально, верните `True`, если выполняется неравенство $x^2 + y^2 \\le r^2$, иначе верните `False`.
 """
 
+description_es = """
+Se le da un círculo en el plano centrado en el origen $(0, 0)$ con radio $r$ y un punto con coordenadas $(x, y)$.
+
+Determina si el punto se encuentra dentro o en el límite del círculo.
+
+Formalmente, devuelva `True` si es $x^2 + y^2 \\le r^2$; de lo contrario, devuelva `False`.
+"""
+
+description_zh = """
+在平面上给出一个以原点 $(0, 0)$ 为中心、半径为 $r$ 的圆和一个坐标为 $(x, y)$ 的点。
+
+确定该点是在圆的内部还是在圆的边界上。
+
+形式上，如果 $x^2 + y^2 \\le r^2$，则返回 `True`，否则返回 `False`。
+"""
+
 limits = """
 - $-50 \\leq x \\leq 50$
 - $-50 \\leq y \\leq 50$

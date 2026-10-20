@@ -12,6 +12,14 @@ description_ru = """
 Наблюдения записывают по имени. Дан список `sightings`, верните `true`, если есть запись `"demogorgon"` без учета регистра и не-буквенных символов.
 """
 
+description_es = """
+Los avistamientos se informan por su nombre. Dada una lista de `sightings`, devuelva `true` si alguna entrada es igual a `\"demogorgon\"` ignorando los caracteres entre mayúsculas y minúsculas.
+"""
+
+description_zh = """
+目击事件均按姓名报告。给定 `sightings` 列表，如果任何条目等于 `\"demogorgon\"`，则返回 `true`，忽略大小写和非字母字符。
+"""
+
 solution = """
 def solution(sightings: list[str]) -> bool:
     for s in sightings:

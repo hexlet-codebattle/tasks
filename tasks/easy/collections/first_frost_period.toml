@@ -16,6 +16,18 @@ description_ru = """
 Верните индекс первого дня, с которого начинается блок из `days` подряд идущих холодных дней, или $-1$, если такого блока нет.
 """
 
+description_es = """
+Una sola mañana fría y una ola de frío duradera afectan a los organismos de manera diferente, por lo que un modelo fenológico busca una serie de días fríos. Un día es frío cuando su temperatura es como máximo `threshold`.
+
+Devuelve el índice del primer día que inicia un bloque de días fríos consecutivos `days`, o $-1$ si no existe dicho bloque.
+"""
+
+description_zh = """
+一个寒冷的早晨和持续的寒潮对生物体的影响不同，因此物候模型会寻找一系列寒冷的日子。当温度最高为 `threshold` 时，一天是寒冷的。
+
+返回`days`连续冷天区块的第一天的索引，如果没有这样的区块则返回$-1$。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{temperatures}) \\leq 10^4$
 - $-60 \\leq \\text{temperatures}[i] \\leq 40$

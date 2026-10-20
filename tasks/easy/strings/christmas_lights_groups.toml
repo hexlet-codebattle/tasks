@@ -12,6 +12,14 @@ description_ru = """
 Джойс использует рождественские лампочки. Дана строка `pattern` из `"L"` (включено) и `"."` (выключено), верните число групп подряд идущих ламп длиной не меньше `2`.
 """
 
+description_es = """
+Joyce usa luces navideñas para comunicarse. Dada una cadena `pattern` de `\"L\"` (luz encendida) y `\".\"` (apagada), devuelve el número de grupos de luces consecutivas con una longitud mínima de `2`.
+"""
+
+description_zh = """
+乔伊斯使用圣诞灯进行交流。给定字符串 `pattern` `\"L\"`（灯亮）和 `\".\"`（灯灭），返回长度至少为 `2` 的连续灯组的数量。
+"""
+
 solution = """
 def solution(pattern: str) -> int:
     count = run = 0

@@ -34,6 +34,36 @@ description_ru = """
 Если число эндов различается, используйте только общую префиксную часть.
 """
 
+description_es = """
+Se te dan distancias de piedra por final hasta el botón para dos equipos de curling:
+- `a_ends[i]` para el equipo A al final `i`
+- `b_ends[i]` para el equipo B al final `i`
+
+Una distancia más pequeña es mejor.
+Sólo un equipo puede anotar en un parcial:
+- si un lado no tiene piedras, el otro lado anota todas sus piedras en ese extremo
+- de lo contrario, el bando con la mejor piedra obtiene puntos iguales al número de piedras que están más cerca que la mejor piedra del oponente.
+- si las mejores piedras son iguales, nadie puntúa
+
+Devuelve la puntuación total del partido como `[a_total, b_total]`.
+Si el número de extremos difiere, utilice únicamente extremos de prefijo comunes.
+"""
+
+description_zh = """
+您将获得两个冰壶队每端冰石到按钮的距离：
+- `a_ends[i]` 为 A 队最终 `i`
+- B队最后`b_ends[i]` `i`
+
+距离越小越好。
+最终只有一支球队可以得分：
+- 如果一方没有棋子，则另一方在这一局中得分所有棋子
+- 否则，拥有单个最佳棋子的一方得分等于其比对手最佳棋子更近的棋子数量
+- 如果最好的石头相同，则没有人得分
+
+返回比赛总得分为 `[a_total, b_total]`。
+如果端点数不同，则仅使用公共前缀端点。
+"""
+
 solution = """
 def solution(a_ends: list[list[int]], b_ends: list[list[int]]) -> list[int]:
     a = b = 0

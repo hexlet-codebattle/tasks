@@ -15,6 +15,16 @@ description_ru = """
 Если оценок нет, верните `0.0`.
 """
 
+description_es = """
+Dado el `points` de los jueces para una rutina de patinaje artístico, reste una puntuación más baja y devuelva el total.
+Si no hay puntuaciones, devuelve `0.0`.
+"""
+
+description_zh = """
+给定花样滑冰例行裁判的 `points`，去掉一个最低分并返回总分。
+如果没有分数，则返回 `0.0`。
+"""
+
 solution = """
 def solution(points: list[float]) -> float:
     return 0.0 if not points else float(sum(points) - min(points))

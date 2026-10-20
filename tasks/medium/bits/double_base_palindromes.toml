@@ -16,6 +16,18 @@ description_ru = """
 Найдите $n$-е десятичное число, которое будет палиндромом по обоим основаниям.
 """
 
+description_es = """
+El número decimal $585$ es $1001001001$ en binario. Es palindrómico en ambas bases.
+
+Encuentre el número palindrómico $n$-ésimo en base decimal y binaria.
+"""
+
+description_zh = """
+十进制数 $585$ 的二进制数为 $1001001001$。它在两个进制中都是回文的。
+
+查找十进制和二进制中的第 $n$ 个回文数。
+"""
+
 limits = """
 - $1 \\leq n \\leq 20$
 """

@@ -16,6 +16,18 @@ description_ru = """
 Найдите минимальное количество удалений, чтобы все оставшиеся подарки были одного размера.
 """
 
+description_es = """
+Dada una variedad de tamaños de obsequio, puede retirar un obsequio por operación.
+
+Encuentre la cantidad mínima de eliminaciones necesarias para que todos los obsequios restantes sean del mismo tamaño.
+"""
+
+description_zh = """
+给定一系列礼物尺寸，您每次操作可以删除一件礼物。
+
+找出所需的最少移除次数，以使所有剩余的礼物大小相同。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{gifts}) \\leq 1000$
 - $1 \\leq \\text{gifts}[i] \\leq 10^5$

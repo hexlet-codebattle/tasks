@@ -12,6 +12,14 @@ description_ru = """
 Фанаты Хокинса планируют марафон. Даны длительности серий и цель `minutes`, верните минимальное число подряд идущих серий с суммой не меньше `minutes`. Если это невозможно, верните `0`.
 """
 
+description_es = """
+Los fanáticos de Hawkins planean un maratón de episodios. Dadas las duraciones de los episodios en minutos y un objetivo `minutes`, devuelve el número mínimo de episodios consecutivos necesarios para alcanzar al menos `minutes`. Si es imposible, devuelva `0`.
+"""
+
+description_zh = """
+霍金斯的粉丝们计划狂欢。给定剧集持续时间（以分钟为单位）和目标 `minutes`，返回达到至少 `minutes` 所需的最小连续剧集数。如果不可能，则返回`0`。
+"""
+
 solution = """
 def solution(durations: list[int], minutes: int) -> int:
     n = len(durations)

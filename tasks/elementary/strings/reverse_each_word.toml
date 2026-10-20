@@ -12,6 +12,14 @@ description_ru = """
 На вход подается строка, переверните каждое слово, но сохраните порядок слов. Слова разделены пробелом.
 """
 
+description_es = """
+Dada una cadena como entrada, invierta cada palabra, pero mantenga el mismo orden. Las palabras están separadas por espacios en blanco.
+"""
+
+description_zh = """
+给定一个字符串作为输入，反转每个单词，但保持单词顺序相同。单词之间用空格分隔。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 1000$
 """

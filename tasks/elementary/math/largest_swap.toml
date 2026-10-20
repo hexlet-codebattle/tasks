@@ -16,6 +16,18 @@ description_ru = """
 Например, `87` — это наибольшее, потому что перестановка цифр дает `78`, которое меньше. Но `27` не является наибольшим, потому что перестановка дает `72`, которое больше.
 """
 
+description_es = """
+Escribe una función que verifique si un número de dos dígitos es el mayor de dos posibles intercambios de dígitos.
+
+Por ejemplo, `87` es el más grande porque al intercambiar dígitos se obtiene `78`, que es más pequeño. Pero `27` no es el más grande porque al intercambiarlo se obtiene `72`, que es más grande.
+"""
+
+description_zh = """
+编写一个函数来检查两位数字是否是两个可能的数字交换中最大的数字。
+
+例如，`87` 是最大的，因为交换数字会得到较小的 `78`。但 `27` 不是最大的，因为交换得到的 `72` 更大。
+"""
+
 limits = """
 - $10 \\leq \\text{number} \\leq 99$
 """

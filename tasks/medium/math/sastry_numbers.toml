@@ -20,6 +20,22 @@ description_ru = """
 Например, $183$ является числом Састри, потому что $183184 = 428^2$.
 """
 
+description_es = """
+Compruebe si un número entero dado `n` es un número Sastry.
+
+Un número `n` es un número Sastry si se concatena con `n + 1` da un cuadrado perfecto.
+
+Por ejemplo, $183$ es un número Sastry porque $183184 = 428^2$.
+"""
+
+description_zh = """
+检查给定整数 `n` 是否是 Sastry 数。
+
+数字 `n` 是一个 Sastry 数字，如果与 `n + 1` 连接，它会给出一个完美的平方。
+
+例如，$183$ 是 Sastry 号码，因为 $183184 = 428^2$。
+"""
+
 solution = """
 def solution(number):
     concatenated = int(str(number) + str(number + 1))

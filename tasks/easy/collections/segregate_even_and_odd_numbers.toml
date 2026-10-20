@@ -14,6 +14,18 @@ description_ru = """
 Дан массив чисел, верните массив, который содержит сначала четные числа, а потом нечетные. В новом массиве числа должны быть в том же порядке.
 """
 
+description_es = """
+Dada una matriz de números, devuelve una matriz en la que todos los números pares van primero y todos los impares van después.
+
+Se debe preservar el orden relativo de los números pares e impares.
+"""
+
+description_zh = """
+给定一个数字数组，返回一个数组，其中所有偶数排在第一位，所有奇数排在第二位。
+
+应保留偶数和奇数的相对顺序。
+"""
+
 solution = """
 def solution(arr):
     evens = [x for x in arr if x % 2 == 0]

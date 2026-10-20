@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая по строке `text` и двум строкам `left` и `right` возвращает подстроку из `text`, расположенную между `left` и `right`. Если такой подстроки нет, верните пустую строку.
 """
 
+description_es = """
+Escriba una función que, dada una cadena `text` y dos cadenas `left` y `right`, devuelva la subcadena de `text` que se encuentra entre `left` y `right`. Si `text` no contiene dicha subcadena, devuelve una cadena vacía.
+"""
+
+description_zh = """
+编写一个函数，给定一个字符串 `text` 和两个字符串 `left` 和 `right`，返回 `text` 中位于 `left` 和 `right` 之间的子字符串。如果 `text` 不包含这样的子字符串，则返回空字符串。
+"""
+
 solution = """
 import re
 

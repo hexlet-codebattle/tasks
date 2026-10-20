@@ -20,6 +20,22 @@ description_ru = """
 Верните `True`, если хотя бы один участник может быть удалён с сохранением способности команды решить задачу, иначе верните `False`.
 """
 
+description_es = """
+Un equipo con habilidades de miembros $s_1,\\dots,s_n$ puede resolver una tarea que requiere el nivel de habilidad $X$ si la suma de todas las habilidades de los miembros es al menos $X$: $\\sum_{i=1}^{n} s_i \\ge X$.
+
+Dado que el equipo actual **puede** resolver la tarea, determine si existe un miembro **redundante** cuya eliminación aún dejaría al equipo capaz de resolverla.
+
+Devuelva `True` si al menos un miembro puede ser eliminado mientras se mantiene al equipo capaz de resolver la tarea; de lo contrario, devuelva `False`.
+"""
+
+description_zh = """
+如果所有成员技能的总和至少为 $X$：$\\sum_{i=1}^{n} s_i \\ge X$，则具有成员技能 $s_1,\\dots,s_n$ 的团队可以解决需要技能级别 $X$ 的任务。
+
+鉴于当前团队**可以**解决该任务，请确定是否存在**冗余**成员，将其删除后团队仍然能够解决该任务。
+
+如果至少可以移除一名成员，同时保持团队有能力解决任务，则返回 `True`，否则返回 `False`。
+"""
+
 limits = """
 - $n \\ge 1$
 - $X \\ge 0$

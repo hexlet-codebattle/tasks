@@ -12,6 +12,14 @@ description_ru = """
 Дан текст, верните количество слов в нем.
 """
 
+description_es = """
+Dado un texto, devuelve el número de palabras que contiene.
+"""
+
+description_zh = """
+给定一个文本，返回其中的单词数。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{text}) \\leq 100$
 """

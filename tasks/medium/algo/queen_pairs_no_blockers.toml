@@ -16,6 +16,18 @@ description_ru = """
 Посчитайте число неупорядоченных пар ферзей, которые **бьют друг друга** (одна горизонталь, вертикаль или диагональ) и **между ними нет других ферзей**. Эквивалентно: на каждой линии (фиксированные $x$, $y$, $x+y$ или $x-y$) вклад дают только **соседние** ферзи в отсортированном порядке.
 """
 
+description_es = """
+En un tablero de ajedrez infinito hay reinas $N$, cada una en coordenadas enteras $(x_i, y_i)$.
+
+Cuente el número de parejas de reinas desordenadas que **se atacan entre sí** (misma fila, columna o diagonal) **sin otra reina entre ellas**. De manera equivalente, en cada línea ($x$ fijo, $y$ fijo, $x+y$ fijo o $x-y$ fijo), solo las reinas **adyacentes** en el orden clasificado contribuyen con un par.
+"""
+
+description_zh = """
+在无限棋盘上有 $N$ 皇后，每个皇后的坐标为整数 $(x_i, y_i)$。
+
+计算**相互攻击**（同一行、同一列或对角线）**且中间没有其他皇后**的无序皇后对的数量。同样，在每一行（固定 $x$、固定 $y$、固定 $x+y$ 或固定 $x-y$）上，只有按排序顺序的**相邻**皇后贡献一对。
+"""
+
 limits = """
 - $1 \\le N$
 - $x_i, y_i \\in \\mathbb{Z}$

@@ -22,6 +22,24 @@ description_ru = """
 - Если ни одно основание не дает ни одной цифры `k` на конце, верните наименьшее проверяемое основание (то есть $\\max(3, k + 1)$).
 """
 
+description_es = """
+Al colegial Vasya le gustan los números que terminan con su dígito de la suerte `k`. Cada vez que ve un número natural `n`, intenta encontrar una base `d` ($d > 2$) tal que la representación de `n` en base `d` termine con el máximo número posible de dígitos `k`.
+
+Escriba una función que, dados `n` y `k`, encuentre dicho `d`.
+- Una base válida debe ser estrictamente mayor a $2$ y estrictamente mayor a $k$ (ya que $k$ es un dígito en la base $d$).
+- Si hay varias bases que proporcionan el mismo número máximo de `k` finales, devuelva la más pequeña.
+- Si ninguna base puede producir ni siquiera un solo `k` al final, devuelve la base válida más pequeña evaluada (que es $\\max(3, k + 1)$).
+"""
+
+description_zh = """
+小学生 Vasya 喜欢以他的幸运数字 `k` 结尾的数字。每次他看到自然数 `n` 时，他都会尝试找到基数 `d` ($d > 2$)，使得 `n` 在基数 `d` 中的表示以最大可能位数 `k` 结尾。
+
+编写一个函数，给定 `n` 和 `k`，找到这样的 `d`。
+- 有效基数必须严格大于 $2$ 且严格大于 $k$（因为 $k$ 是基数 $d$ 中的数字）。
+- 如果有多个基数提供相同最大数量的尾随 `k`，则返回最小的一个。
+- 如果最后没有基数可以生成单个 `k`，则返回评估的最小有效基数（即 $\\max(3, k + 1)$）。
+"""
+
 limits = """
 - $1 \\leq n \\leq 10^4$
 - $0 \\leq k \\leq 10^4$

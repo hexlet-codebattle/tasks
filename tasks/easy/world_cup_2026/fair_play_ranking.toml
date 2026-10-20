@@ -14,6 +14,16 @@ description_ru = """
 Верните индексы в порядке таблицы: больше очков, лучше разница голов, больше забитых голов, меньше штрафных баллов, затем меньший исходный индекс.
 """
 
+description_es = """
+El registro de cada equipo es `[points, goal_difference, goals_scored, penalty_points]`.
+Devuelva los índices de los equipos en el orden de la tabla: más puntos, mejor diferencia de goles, más goles marcados, menos puntos de penalización y luego un índice original más pequeño.
+"""
+
+description_zh = """
+每支球队记录为`[points, goal_difference, goals_scored, penalty_points]`。
+按表格顺序返回球队指数：得分越高，净胜球越好，进球数越多，罚分越少，则原始指数越小。
+"""
+
 limits = """
 - $0 \\leq \\operatorname{len}(records) \\leq 48$
 - $\\operatorname{len}(records_i) = 4$

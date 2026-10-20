@@ -20,6 +20,22 @@ description_ru = """
 Верните самое частое слово в нижнем регистре. Если несколько слов встречаются одинаково часто, верните лексикографически наименьшее из них. Если в `text` нет букв, верните `""`.
 """
 
+description_es = """
+Un tutor de redacción del centro de redacción de la universidad quiere saber en qué palabra se apoya más un estudiante en un ensayo `text`.
+
+Una palabra es una serie máxima de letras, comparadas sin distinguir entre mayúsculas y minúsculas; todo lo demás (dígitos, puntuación, espacios en blanco, caracteres acentuados) actúa como separador.
+
+Devuelve la palabra más frecuente en minúsculas. Si varias palabras empatan en la frecuencia más alta, devuelve la más pequeña alfabéticamente. Si `text` no contiene letras, devuelva `\"\"`.
+"""
+
+description_zh = """
+大学写作中心的一位写作导师想知道学生在论文 `text` 中最依赖哪个单词。
+
+单词是字母的最大串，比较时不区分大小写；其他所有内容（数字、标点符号、空格、重音字符）都充当分隔符。
+
+以小写形式返回最常见的单词。如果多个单词出现频率最高，则返回其中按字母顺序排列最小的单词。如果 `text` 不包含字母，则返回 `\"\"`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{text}) \\leq 10^4$
 """

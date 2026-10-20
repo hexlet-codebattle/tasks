@@ -16,6 +16,18 @@ description_ru = """
 Например: $5! = 120$ - число конечных нулей - $1$; $10! = 3628800$ - число конечных нулей - $2$.
 """
 
+description_es = """
+Devuelve el número de ceros finales en $n!$
+
+Por ejemplo: $5! = 120$, el número de ceros finales es $1$; $10! = 3628800$, el número de ceros finales es $2$.
+"""
+
+description_zh = """
+返回 $n!$ 中尾随零的数量
+
+例如：$5! = 120$，尾随零的个数为$1$； $10! = 3628800$，尾随零的数量为 $2$。
+"""
+
 limits = """
 - $0 \\leq n \\leq 100$
 """

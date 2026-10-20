@@ -20,6 +20,22 @@ description_ru = """
 Верните абсолютное значение угла между стрелками (не обязательно меньший угол).
 """
 
+description_es = """
+Dada la hora en un reloj analógico en horas y minutos, calcule el ángulo (en grados) entre las manecillas de las horas y los minutos.
+
+La manecilla de las horas mueve $30^\\circ$ por hora completa y $0.5^\\circ$ por minuto. El minutero mueve $6^\\circ$ por minuto.
+
+Devuelve el ángulo absoluto entre las dos manos (no necesariamente el ángulo más pequeño).
+"""
+
+description_zh = """
+给定模拟时钟上的时间（以小时和分钟为单位），计算时针和分针之间的角度（以度为单位）。
+
+时针每整小时移动 $30^\\circ$，每分钟移动 $0.5^\\circ$。分针每分钟移动 $6^\\circ$。
+
+返回两只手之间的绝对角度（不一定是较小的角度）。
+"""
+
 limits = """
 - $0 \\leq hour \\leq 11$
 - $0 \\leq minute \\leq 59$

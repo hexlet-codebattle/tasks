@@ -16,6 +16,18 @@ description_ru = """
 Верните минимальное количество мест остановки на пути от первой точки к последней или $-1$, если маршрута нет.
 """
 
+description_es = """
+Durante las escalas, las aves descansan y recuperan energía, por lo que perder lugares clave puede interrumpir una ruta larga. Cada elemento de `points` es una posición `[x, y]` en un plano: el primero es el origen, el último es el destino y los demás son posibles escalas. Un vuelo puede unir dos puntos si su distancia euclidiana es como máximo `max_distance`.
+
+Devuelve el mínimo número de escalas entre el primer punto y el último, o $-1$ si no existe ninguna ruta.
+"""
+
+description_zh = """
+鸟类在中途停歇时休息并恢复能量，因此失去关键停歇地可能使迁徙路线中断。`points` 的每项都是平面上的位置 `[x, y]`：第一个点为起点，最后一个点为终点，其余为可选停歇地。两点的欧氏距离不超过 `max_distance` 时，可以直接飞行。
+
+返回从第一个点到最后一个点所需的最少中途停歇次数；若不存在路线，则返回 $-1$。
+"""
+
 limits = """
 - $2 \\leq \\text{len}(\\text{points}) \\leq 500$
 - $\\text{len}(\\text{points}[i]) = 2$

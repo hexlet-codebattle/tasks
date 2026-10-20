@@ -20,6 +20,22 @@ description_ru = """
 Игнорируйте все не-скобочные символы. Верните `True`, если каждая открывающая скобка имеет соответствующую закрывающую в правильном порядке, иначе верните `False`.
 """
 
+description_es = """
+Compruebe si todos los corchetes de la cadena dada están equilibrados.
+
+Los corchetes pueden ser redondos `\"()\"`, cuadrados `\"[]\"`, rizados `\"{}\"` y angulares `\"<>\"`.
+
+Ignore todos los caracteres que no estén entre corchetes. Devuelva `True` si cada corchete de apertura tiene un corchete de cierre coincidente en el orden correcto; de lo contrario, devuelva `False`.
+"""
+
+description_zh = """
+检查给定字符串中的所有括号是否平衡。
+
+括号可以是圆形 `\"()\"`、方形 `\"[]\"`、花形 `\"{}\"` 和角形 `\"<>\"`。
+
+忽略所有非括号字符。如果每个左括号都有一个按正确顺序匹配的右括号，则返回 `True`，否则返回 `False`。
+"""
+
 solution = """
 def solution(brackets: str) -> bool:
     m = {"(": ")", "[": "]", "{": "}", "<": ">"}

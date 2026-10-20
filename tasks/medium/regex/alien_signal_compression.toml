@@ -28,6 +28,30 @@ description_ru = """
 Верните полностью сжатую передачу.
 """
 
+description_es = """
+Interceptas una transmisión alienígena y debes comprimirla para ahorrar espacio.
+
+La transmisión contiene palabras formadas solo por letras inglesas, números enteros válidos de 32 bits sin ceros iniciales, espacios, tabulaciones y saltos de línea. Aplica estos pasos en orden:
+
+1. Sustituye los saltos de línea por punto y coma (`;`) y elimina todos los espacios y tabulaciones.
+2. Reduce cada palabra (secuencia contigua de letras) a su primera letra, conservando las mayúsculas y minúsculas originales.
+3. Comprime los números que terminan en ceros consecutivos mediante notación científica; por ejemplo, `1750000` pasa a `175e4`. Hazlo solo si el resultado es **estrictamente más corto** que el número original.
+
+Devuelve la transmisión comprimida.
+"""
+
+description_zh = """
+你截获了一条外星消息，需要压缩以节省存储空间。
+
+消息包含仅由英文字母构成的单词、无前导零的合法三十二位整数、空格、制表符和换行符。按顺序执行：
+
+1. 将所有换行符替换为分号（`;`），再删除所有空格和制表符。
+2. 每个单词，即连续字母序列，只保留首字母，并保持原来的大小写。
+3. 用标准科学记数法压缩以连续零结尾的数字，例如将 `1750000` 转为 `175e4`。仅当结果比原数字**严格更短**时才替换。
+
+返回完整压缩后的消息。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{text}) \\leq 10^4$
 - $\\text{text}$ contains only English letters, digits, spaces, tabs, and newline characters.

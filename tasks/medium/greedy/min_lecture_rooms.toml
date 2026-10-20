@@ -20,6 +20,22 @@ description_ru = """
 Верните минимальное число аудиторий, необходимое, чтобы каждой лекции хватило места.
 """
 
+description_es = """
+La oficina de horarios deberá asignar salas para las conferencias del trimestre. Cada conferencia se da como un par `[start, end]` (en minutos desde el inicio del día) dentro de la matriz `lectures`, donde `end` es exclusivo.
+
+Dos conferencias podrán compartir sala sólo si sus intervalos no se superponen. Las conferencias que simplemente tocan un punto final (una termina exactamente cuando comienza otra) pueden compartir una habitación.
+
+Devuelve el número mínimo de salas necesarias para que cada conferencia tenga una sala.
+"""
+
+description_zh = """
+排课办公室需要为本学期的讲座安排教室。数组 `lectures` 中的每个讲座用 `[start, end]` 表示，单位为从当天开始计的分钟，**不包含**结束时刻 `end`。
+
+两个讲座只有在区间不重叠时才能使用同一教室。一个讲座恰好在另一个开始时结束时，可以共用教室。
+
+返回使每个讲座都有教室所需的最少教室数。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{lectures}) \\leq 10^4$
 - $0 \\leq \\text{start} < \\text{end} \\leq 1440$

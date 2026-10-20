@@ -12,6 +12,14 @@ description_ru = """
 Одиннадцать любит вафли Eggo. Даны `waffles`, `per_box` и `max_boxes`, верните минимальное число коробок. Если нужно больше чем `max_boxes`, верните `-1`.
 """
 
+description_es = """
+A Once le encantan los gofres Eggo. Dados `waffles`, `per_box` y `max_boxes`, devuelva la cantidad mínima de cajas necesarias. Si la necesidad excede `max_boxes`, devuelva `-1`.
+"""
+
+description_zh = """
+十一喜欢 Eggo 华夫饼。给定 `waffles`、`per_box` 和 `max_boxes`，返回所需的最小盒子数。如果需要量超过`max_boxes`，则返回`-1`。
+"""
+
 solution = """
 def solution(waffles: int, per_box: int, max_boxes: int) -> int:
     q, r = divmod(waffles, per_box)

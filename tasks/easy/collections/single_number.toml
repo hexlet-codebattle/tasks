@@ -12,6 +12,14 @@ description_ru = """
 Дан массив целых чисел, в нем все элементы кроме одного присутствует по два раза. Найдите элемент одиночку.
 """
 
+description_es = """
+Dada una matriz de números enteros, cada elemento aparece dos veces excepto uno. Encuentra ese único.
+"""
+
+description_zh = """
+给定一个整数数组，除了一个元素之外，每个元素都出现两次。找到那一个。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
 - $-1000 \\leq \\text{arr}[i] \\leq 1000$

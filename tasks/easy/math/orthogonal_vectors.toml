@@ -20,6 +20,22 @@ description_ru = """
 $$\\vec{a} \\cdot \\vec{b} = a_1 \\cdot b_1 + a_2 \\cdot b_2 + \\cdots + a_n \\cdot b_n$$
 """
 
+description_es = """
+Crea una función que tome dos vectores y verifique si son ortogonales o no.
+
+Dos vectores son ortogonales si su producto escalar es igual a cero. El producto escalar de dos vectores $\\vec{a} = (a_1, a_2, \\ldots, a_n)$ y $\\vec{b} = (b_1, b_2, \\ldots, b_n)$ se calcula como:
+
+$$\\vec{a} \\cdot \\vec{b} = a_1 \\cdot b_1 + a_2 \\cdot b_2 + \\cdots + a_n \\cdot b_n$$
+"""
+
+description_zh = """
+创建一个接受两个向量并检查它们是否正交的函数。
+
+如果两个向量的点积为零，则它们是正交的。两个向量 $\\vec{a} = (a_1, a_2, \\ldots, a_n)$ 和 $\\vec{b} = (b_1, b_2, \\ldots, b_n)$ 的点积计算如下：
+
+$$\\vec{a} \\cdot \\vec{b} = a_1 \\cdot b_1 + a_2 \\cdot b_2 + \\cdots + a_n \\cdot b_n$$
+"""
+
 limits = """
 - $2 \\leq |\\text{vec1}| = |\\text{vec2}| \\leq 10$
 - $-50 \\leq \\text{vec1}[i], \\text{vec2}[i] \\leq 50$

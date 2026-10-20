@@ -16,6 +16,18 @@ description_ru = """
 Если таких чисел нет, то верните `[0]`.
 """
 
+description_es = """
+Dada una matriz de números, devuelve una matriz que contiene todos los números impares de la matriz original, que también tienen índices impares.
+
+Si no existen tales números, devuelva `[0]`.
+"""
+
+description_zh = """
+给定一个数字数组，返回一个包含原始数组中所有奇数的数组，该数组也具有奇数索引。
+
+如果没有这样的数字，则返回 `[0]`。
+"""
+
 limits = """
 - $1 \\leq |\\text{numbers}| \\leq 50$
 - $-20 \\leq \\text{numbers}[i] \\leq 20$

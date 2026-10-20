@@ -11,6 +11,14 @@ description_ru = """
 Для борьбы с трипофобией (боязнью отверстий) из английского алфавита было решено удалить все строчные (маленькие) буквы, содержащие "полости" (такие как "g", "q", "a", "b" и т.д.), а буквы без "полостей" решено оставить (такие как "w", "k" и т.д.). Определите, сколько букв будет удалено из строки.
 """
 
+description_es = """
+Para combatir la tripofobia (miedo a los agujeros), se decidió eliminar del alfabeto inglés todas las letras minúsculas (pequeñas) que contengan \"agujeros\" (como \"g\", \"q\", \"a\", \"b\", etc.), dejando letras sin \"agujeros\" (como \"w\", \"k\", etc.). Determine cuántas letras se eliminarán de la cadena.
+"""
+
+description_zh = """
+为了对抗密集恐惧症（对洞的恐惧），决定从英文字母表中删除所有包含“洞”的小写字母（例如“g”、“q”、“a”、“b”等），同时保留不带“洞”的字母（例如“w”、“k”等）。确定将从字符串中删除多少个字母。
+"""
+
 solution = """
 def solution(s):
     holes = set('abdegopq')

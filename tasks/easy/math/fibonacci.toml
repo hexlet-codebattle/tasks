@@ -16,6 +16,18 @@ description_ru = """
 Подсказка: первый элемент последовательности равен $0$.
 """
 
+description_es = """
+Devuelve el elemento $N$-ésimo en la secuencia de Fibonacci.
+
+Sugerencia: El primer elemento de la secuencia es $0$.
+"""
+
+description_zh = """
+返回斐波那契数列中的第 $N$ 项。
+
+提示：序列中的第一项是 $0$。
+"""
+
 limits = """
 - $0 \\leq n \\leq 30$
 """

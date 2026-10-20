@@ -20,6 +20,22 @@ description_ru = """
 Например, $6$ - совершенное число, потому что его делители $1, 2, 3$ и $1 + 2 + 3 = 6$.
 """
 
+description_es = """
+Determinar si un número dado es \"perfecto\".
+
+Un número perfecto es un entero positivo que es igual a la suma de sus divisores positivos propios (la suma de sus divisores positivos excluyendo el número mismo).
+
+Por ejemplo, $6$ es perfecto porque sus divisores son $1, 2, 3$ y $1 + 2 + 3 = 6$.
+"""
+
+description_zh = """
+确定给定的数字是否“完美”。
+
+完全数是一个正整数，等于其真正因数之和（其正因数之和不包括该数本身）。
+
+例如，$6$ 是完美的，因为它的除数是 $1, 2, 3$ 和 $1 + 2 + 3 = 6$。
+"""
+
 limits = """
 - $0 \\leq \\text{num} \\leq 10000$
 """

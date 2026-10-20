@@ -20,6 +20,22 @@ description_ru = """
 Верните двоичную строку после циклического сдвига.
 """
 
+description_es = """
+Se le proporciona una cadena binaria `bitstring` y un número entero `shift`.
+
+Mueva cíclicamente `bitstring` hacia la **izquierda** en posiciones $|shift|$. Si es $|shift| \\geq \\text{len}(\\text{bitstring})$, utilice el módulo de valor de desplazamiento de la longitud de la cadena. El signo de `shift` se ignora, por lo que `shift = 3` y `shift = -3` producen el mismo resultado.
+
+Devuelve la cadena binaria resultante después del cambio cíclico.
+"""
+
+description_zh = """
+给定一个二进制字符串 `bitstring` 和一个整数 `shift`。
+
+循环将 `bitstring` 向**左**移动 $|shift|$ 位置。如果是 $|shift| \\geq \\text{len}(\\text{bitstring})$，则使用移位值对字符串长度取模。 `shift` 的符号被忽略，因此 `shift = 3` 和 `shift = -3` 产生相同的结果。
+
+返回循环移位后得到的二进制字符串。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{bitstring}) \\leq 50$
 - $\\text{bitstring} \\in \\{0, 1\\}^*$

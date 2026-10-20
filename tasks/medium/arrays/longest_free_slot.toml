@@ -20,6 +20,22 @@ description_ru = """
 Верните длину самого длинного такого свободного промежутка или $0$, если свободного времени не осталось.
 """
 
+description_es = """
+El día de estudio de un estudiante abarca minutos desde $0$ hasta `day_minutes`. La matriz `busy` enumera los intervalos `[start, end]` (posiblemente superpuestos, posiblemente sin clasificar) cuando está ocupada con clases, laboratorios o reuniones.
+
+Un espacio libre es cualquier tramo máximo de minutos dentro de $[0, \\text{day\\_minutes}]$ que no está cubierto por ningún intervalo de ocupación.
+
+Devuelve la longitud del espacio libre más largo, o $0$ si no queda tiempo libre.
+"""
+
+description_zh = """
+学生的学习日从 $0$ 到 `day_minutes` 分钟。数组 `busy` 列出了她忙于课程、实验室或会议时的 `[start, end]` 间隔（可能重叠，可能未排序）。
+
+空闲时段是 $[0, \\text{day\\_minutes}]$ 内未被任何繁忙间隔覆盖的任何最大分钟段。
+
+返回此类空闲时间最长的长度，如果没有空闲时间，则返回 $0$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{busy}) \\leq 10^4$
 - $0 \\leq \\text{start} < \\text{end} \\leq \\text{day\\_minutes} \\leq 1440$

@@ -16,6 +16,18 @@ description_ru = """
 Верните `true`, если паттерн совпадает, иначе `false`.
 """
 
+description_es = """
+Dada una cadena `s`, ignore todos los caracteres excepto `'h'` y `'o'`. Compruebe si los caracteres restantes forman el patrón `\"hohoho...\"` con un número impar de subcadenas `\"ho\"`.
+
+Devuelve `true` si el patrón coincide; en caso contrario, `false`.
+"""
+
+description_zh = """
+给定字符串 `s`，忽略除 `'h'` 和 `'o'` 之外的所有字符。检查剩余字符是否构成具有奇数个 `\"ho\"` 子字符串的模式 `\"hohoho...\"`。
+
+如果模式匹配，则返回 `true`，否则返回 `false`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(s) \\leq 10^4$
 """

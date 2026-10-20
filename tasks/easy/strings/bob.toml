@@ -26,6 +26,28 @@ description_ru = """
 Верните ответ Боба в виде строки.
 """
 
+description_es = """
+Bob es un interlocutor que responde a una única cadena de entrada `sentence` de acuerdo con estas reglas:
+
+- Si le **gritas** (la oración tiene al menos una letra y todas las letras están en mayúsculas), responde `\"Whoa, chill out!\"`.
+- Si **haces una pregunta** (la oración recortada termina con `\"?\"`) y **no** estás gritando, él responde `\"Sure.\"`.
+- Si **no dices nada** o solo espacios en blanco, responde `\"Fine. Be that way!\"`.
+- En todos los demás casos responde `\"Whatever.\"`.
+
+Devuelve la respuesta de Bob como una cadena.
+"""
+
+description_zh = """
+Bob 是一个会话伙伴，他根据以下规则响应单个输入字符串 `sentence`：
+
+- 如果你对他**吼**（这句话至少有一个字母，并且所有字母都是大写的），他会回答`\"Whoa, chill out!\"`。
+- 如果你**问问题**（修剪后的句子以`\"?\"`结尾）并且你**没有**大喊大叫，他会回答`\"Sure.\"`。
+- 如果你**什么都不说**或只留空格，他会回答`\"Fine. Be that way!\"`。
+- 在所有其他情况下，他回答 `\"Whatever.\"`。
+
+以字符串形式返回 Bob 的答案。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{sentence}) \\leq 100$
 """

@@ -20,6 +20,22 @@ description_ru = """
 - `"Miss"` в остальных случаях
 """
 
+description_es = """
+Una apuesta de hockey contiene el resultado previsto (`pred_a`, `pred_b`) y el resultado final (`real_a`, `real_b`).
+Retorno:
+- `\"Score\"` si se adivina la puntuación exacta
+- `\"Result\"` si no se adivina la puntuación exacta, pero sí se adivina el resultado del partido (victoria A, victoria B o empate)
+- `\"Miss\"` en caso contrario
+"""
+
+description_zh = """
+冰球投注包含预测得分 (`pred_a`、`pred_b`) 和最终得分 (`real_a`、`real_b`)。
+返回：
+- `\"Score\"`（如果猜出准确分数）
+- `\"Result\"` 如果未猜测准确比分，但猜测比赛结果（A 胜、B 胜或平局）
+- `\"Miss\"` 否则
+"""
+
 solution = """
 def solution(pred_a: int, pred_b: int, real_a: int, real_b: int) -> str:
     if pred_a == real_a and pred_b == real_b:

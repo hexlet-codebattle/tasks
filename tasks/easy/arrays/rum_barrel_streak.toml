@@ -20,6 +20,22 @@ description_ru = """
 Верните длину самой длинной подряд идущей серии достаточно полных бочек.
 """
 
+description_es = """
+La cubierta tiene una hilera de barriles de ron. `barrels[i]` es la cantidad de ron en el barril `i`-ésimo.
+
+Un barril se considera suficientemente lleno si su cantidad es estrictamente superior a `0`.
+
+Devuelve la longitud de la racha consecutiva más larga de barriles suficientemente llenos.
+"""
+
+description_zh = """
+甲板上有一排朗姆酒桶。`barrels[i]` 表示第 `i` 个桶中的朗姆酒量。
+
+如果一个桶中的酒量严格大于 `0`，就认为该桶足够满。
+
+返回连续足够满的桶的最大数量。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{barrels}) \\leq 100$
 - $0 \\leq \\text{barrels}[i] \\leq 100$

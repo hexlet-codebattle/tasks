@@ -16,6 +16,18 @@ description_ru = """
 Любой год, который делится на 4 без остатка, является високосным годом. Тем не менее, есть еще небольшая особенность, которая должна быть учтена например, григорианский календарь предусматривает, что год, который делится без остатка на 100 является високосным годом только в том случае, если он также без остатка делится на 400.
 """
 
+description_es = """
+Determina si el año es bisiesto.
+
+Todos los años bisiestos son divisibles por 4. Pero para el calendario gregoriano, un año que es divisible por 100 (por ejemplo, 1900) es un año bisiesto sólo si también es divisible por 400.
+"""
+
+description_zh = """
+判断该年份是否为闰年。
+
+闰年都能被 4 整除。但对于公历来说，能被 100 整除的年份（例如 1900 年）只有同时能被 400 整除的年份才是闰年。
+"""
+
 limits = """
 - $1600 \\leq year \\leq 3000$
 """

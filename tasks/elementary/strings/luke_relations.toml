@@ -34,6 +34,36 @@ description_ru = """
 ```
 """
 
+description_es = """
+Luke Skywalker tiene familiares y amigos. Ayúdalo a recordar quién es quién.
+
+Dada una cadena con un nombre, devuelve la relación de esa persona con Luke en el formato: `\"Luke, I am your {relation}.\"`
+
+```
+| Person      | Relation        |
+|-------------|-----------------|
+| Darth Vader | father          |
+| Leia        | sister          |
+| Han         | brother in law  |
+| R2D2        | droid           |
+```
+"""
+
+description_zh = """
+卢克·天行者有家人和朋友。帮助他记住谁是谁。
+
+给定一个带有名字的字符串，以以下格式返回该人与 Luke 的关系：`\"Luke, I am your {relation}.\"`
+
+```
+| Person      | Relation        |
+|-------------|-----------------|
+| Darth Vader | father          |
+| Leia        | sister          |
+| Han         | brother in law  |
+| R2D2        | droid           |
+```
+"""
+
 limits = """
 - Person name is one of: Darth Vader, Leia, Han, R2D2
 """

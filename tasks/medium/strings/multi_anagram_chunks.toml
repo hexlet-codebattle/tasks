@@ -12,6 +12,14 @@ description_ru = """
 Дана строка $s$. Найдите минимальную длину $|P|$ такую, что $s$ — конкатенация анаграмм строки $P$.
 """
 
+description_es = """
+Dada una cadena $s$, encuentre la longitud mínima $|P|$ tal que $s$ sea una concatenación de anagramas de una cadena $P$.
+"""
+
+description_zh = """
+给定字符串 $s$，找到最小长度 $|P|$，使得 $s$ 是字符串 $P$ 字谜词的串联。
+"""
+
 limits = """
 - $1 \\leq |s| \\leq 40$
 """

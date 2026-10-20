@@ -18,6 +18,20 @@ description_ru = """
 Если сбалансировать строку невозможно, верните `-1`.
 """
 
+description_es = """
+Dada una cadena `s` que consta solo de paréntesis `(` y `)`, determine el número mínimo de inversiones de paréntesis necesarias para equilibrar la cadena.
+
+Una reversión cambia de `(` a `)` o de `)` a `(`.
+Si es imposible equilibrar la cadena, devuelva `-1`.
+"""
+
+description_zh = """
+给定一个仅由括号 `(` 和 `)` 组成的字符串 `s`，确定使字符串平衡所需的最小括号反转次数。
+
+逆转将 `(` 更改为 `)` 或 `)` 更改为 `(`。
+如果无法平衡字符串，则返回 `-1`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 10^5$
 """

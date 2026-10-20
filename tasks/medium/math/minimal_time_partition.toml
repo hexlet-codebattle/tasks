@@ -20,6 +20,22 @@ description_ru = """
 Верните эти три числа в виде списка, отсортированного по возрастанию.
 """
 
+description_es = """
+En un planeta lejano, un día dura exactamente $n$ segundos.
+
+Representa el número $n$ como producto de tres números naturales $a, b, c$ ($a \\cdot b \\cdot c = n$) de manera que la diferencia entre el máximo y el mínimo de estos tres números sea **mínima**.
+
+Devuelve los tres números como una lista ordenada en orden ascendente.
+"""
+
+description_zh = """
+在一个遥远的星球上，一天正好持续 $n$ 秒。
+
+将数字 $n$ 表示为三个自然数 $a, b, c$ ($a \\cdot b \\cdot c = n$) 的乘积，使得这三个数字的最大值和最小值之间的差异为**最小**。
+
+返回三个数字作为按升序排序的列表。
+"""
+
 limits = """
 - $1 \\leq n \\leq 10^9$
 """

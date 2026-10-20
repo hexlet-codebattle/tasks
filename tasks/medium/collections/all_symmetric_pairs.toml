@@ -18,6 +18,20 @@ description_ru = """
 Если симметричных пар нет, верните $[[-1]]$.
 """
 
+description_es = """
+Dada una matriz de pares de enteros $p = [[a_1,b_1], [a_2,b_2],\\dots]$, devuelva todos los **pares simétricos únicos** $[x,y]$ de modo que tanto $[x,y]$ como $[y,x]$ aparezcan en $p$.
+
+Devuelve pares en orden ascendente con $x < y$, ordenados lexicográficamente.
+Si no existen pares simétricos, devuelve $[[-1]]$.
+"""
+
+description_zh = """
+给定一个整数对数组 $p = [[a_1,b_1], [a_2,b_2],\\dots]$，返回所有**唯一对称对** $[x,y]$，使得 $[x,y]$ 和 $[y,x]$ 都出现在 $p$ 中。
+
+按 $x < y$ 升序返回对，按字典顺序排序。
+如果不存在对称对，则返回 $[[-1]]$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(p) \\leq 10^5$
 - $-10^6 \\leq a_i, b_i \\leq 10^6$

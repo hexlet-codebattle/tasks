@@ -20,6 +20,22 @@ description_ru = """
 Если `words` пуст, верните пустой хеш.
 """
 
+description_es = """
+Se le proporciona una matriz de cadenas `words` y un número entero `num`.
+
+Cree y devuelva un nuevo hash (diccionario) donde cada elemento de `words` es una **clave** y cada clave tiene el mismo valor `num`.
+
+Si `words` está vacío, devuelve un hash vacío.
+"""
+
+description_zh = """
+给定一个字符串数组 `words` 和一个整数 `num`。
+
+创建并返回一个新的哈希（字典），其中 `words` 的每个元素都是一个**键**，并且每个键都具有相同的值 `num`。
+
+如果 `words` 为空，则返回空哈希。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(words) \\leq 50$
 - $-100 \\leq num \\leq 100$

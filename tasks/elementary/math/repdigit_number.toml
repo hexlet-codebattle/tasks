@@ -16,6 +16,18 @@ description_ru = """
 Создайте функцию, которая проверяет является ли переданное число репдиджитом.
 """
 
+description_es = """
+Un repdígito es un número positivo compuesto por el mismo dígito.
+
+Cree una función que verifique si un número entero es un repdígito o no.
+"""
+
+description_zh = """
+重复数字是由相同数字组成的正数。
+
+创建一个函数来检查整数是否是重复数字。
+"""
+
 limits = """
 - $10 \\leq number \\leq 999999999$
 """

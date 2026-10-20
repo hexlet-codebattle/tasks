@@ -16,6 +16,18 @@ description_ru = """
 Оба массива содержат одних и тех же уникальных участников (перестановка). Верните качество.
 """
 
+description_es = """
+Un fan predijo un orden de ganadores. Luego del concurso se conoció el ordenamiento final.
+Sea la **calidad** del pronóstico el número de pares $(p_i, p_j)$ de modo que $p_i$ se clasifique antes que $p_j$ en **tanto** el pronóstico como los resultados.
+Ambas matrices contienen los mismos participantes distintos (una permutación). Devuelve la calidad.
+"""
+
+description_zh = """
+一位粉丝预测了获胜者的顺序。比赛结束后，最终的排序结果揭晓。
+令预测的**质量**为 $(p_i, p_j)$ 对的数量，这样 $p_i$ 在预测和结果中都排名在 $p_j$ 之前。
+两个数组都包含相同的不同参与者（排列）。返回质量。
+"""
+
 limits = """
 - $1 \\leq \\text{len(predicted)} \\leq 20$
 - $\\text{len(predicted)} = \\text{len(real)}$

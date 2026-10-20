@@ -20,6 +20,22 @@ description_ru = """
 Если `grades` пуст, верните $0.0$.
 """
 
+description_es = """
+Un registrador universitario recopila los puntos de calificaciones que obtuvo un estudiante este semestre en una matriz `grades`, donde cada valor se encuentra entre $0.0$ y $4.0$.
+
+Devuelve el GPA del estudiante, calculado como el promedio de `grades` redondeado a $2$ decimales.
+
+Si `grades` está vacío, devuelva $0.0$.
+"""
+
+description_zh = """
+大学注册商将学生本学期获得的成绩收集到数组 `grades` 中，其中每个值位于 $0.0$ 和 $4.0$ 之间。
+
+返回学生的 GPA，计算为 `grades` 的平均值，四舍五入到 $2$ 小数位。
+
+如果 `grades` 为空，则返回 $0.0$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{grades}) \\leq 10^4$
 - $0.0 \\leq \\text{grades}[i] \\leq 4.0$

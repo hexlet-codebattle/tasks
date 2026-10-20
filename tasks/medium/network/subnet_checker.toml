@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая проверяет, что подсеть (`subnet`) содержит адрес (`address`). Подсеть содержит IPv4 адрес сети и маску подсети в нотации CIDR (например, `"192.168.0.0/24"`).
 """
 
+description_es = """
+Cree una función que verifique si `subnet` contiene `address`. La subred contiene la dirección IPv4 de la red y la máscara de subred en notación CIDR (por ejemplo, `\"192.168.0.0/24\"`).
+"""
+
+description_zh = """
+创建一个函数来检查 `subnet` 是否包含 `address`。子网包含采用 CIDR 表示法的 IPv4 网络地址和子网掩码（例如，`\"192.168.0.0/24\"`）。
+"""
+
 limits = """
 - $\\text{address}$ — valid IPv4 address
 - $\\text{subnet}$ — valid IPv4 network/mask in CIDR notation

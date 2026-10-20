@@ -20,6 +20,22 @@ description_ru = """
 Верните **суммарный** урон.
 """
 
+description_es = """
+Recibe acciones: `hit` o `miss`.
+Un `hit` causa daño $10 \\times m$, donde el multiplicador combinado $m$ comienza en $1$ y aumenta en $1$ por cada `hit` **consecutivo**.
+Un `miss` restablece el combo a $0$ (por lo que el siguiente `hit` usa el multiplicador $1$).
+
+Devuelve el daño **total**.
+"""
+
+description_zh = """
+您收到操作：`hit` 或 `miss`。
+`hit` 造成 $10 \\times m$ 伤害，其中组合乘数 $m$ 从 $1$ 开始，并为每个**连续** `hit` 增加 $1$。
+`miss` 将组合重置为 $0$（因此下一个 `hit` 使用乘数 $1$）。
+
+返回**总**伤害。
+"""
+
 limits = """
 - $0 \\leq \\text{len(actions)} \\leq 100$
 """

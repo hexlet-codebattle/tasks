@@ -20,6 +20,22 @@ description_ru = """
 Если пути между `start` и `end` не существует, верните `-1`.
 """
 
+description_es = """
+Se le proporciona un gráfico no ponderado y no dirigido con nodos $n$ numerados de $0$ a $n - 1$. También se le proporciona una matriz `edges`, donde $\\text{edges}[i] = [u_i, v_i]$ representa un borde bidireccional entre el nodo $u_i$ y el nodo $v_i$.
+
+Encuentre la longitud de la ruta más corta entre el nodo `start` y el nodo `end`. La longitud de un camino es el número de aristas que tiene.
+
+Si no hay una ruta válida entre `start` y `end`, devuelva `-1`.
+"""
+
+description_zh = """
+给定一个无权无向图，共有 $n$ 个节点，编号为 $0$ 到 $n - 1$。数组 `edges` 中的 $\\text{edges}[i] = [u_i, v_i]$ 表示节点 $u_i$ 与节点 $v_i$ 之间的双向边。
+
+求节点 `start` 到节点 `end` 的最短路径长度，路径长度为其中的边数。
+
+如果 `start` 与 `end` 之间不存在路径，则返回 `-1`。
+"""
+
 limits = """
 - $1 \\leq n \\leq 1000$
 - $0 \\leq \\text{len}(\\text{edges}) \\leq 2000$

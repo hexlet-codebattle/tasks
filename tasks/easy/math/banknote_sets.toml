@@ -12,6 +12,14 @@ description_ru = """
 У Васи есть неограниченное количество купюр номиналом $50$, $100$ и $200$ рублей. Определите количество различных наборов купюр, с помощью которых можно набрать сумму $n$ рублей, где $0 \\le n \\le 1\\,000\\,000$. Наборы считаются различными, если в них различается количество какого-либо типа купюр.
 """
 
+description_es = """
+Vasya tiene un número ilimitado de billetes de denominaciones de rublos $50$, $100$ y $200$. Determine el número de diferentes conjuntos de billetes que suman rublos $n$, donde $0 \\le n \\le 1\\,000\\,000$. Los conjuntos se consideran diferentes si difieren en el número de cualquier tipo de billete.
+"""
+
+description_zh = """
+Vasya 拥有无限数量的面额为 $50$、$100$ 和 $200$ 卢布的纸币。确定总和为 $n$ 卢布的不同组纸币的数量，其中 $0 \\le n \\le 1\\,000\\,000$。如果任何类型纸币的数量不同，则视为不同套装。
+"""
+
 solution = """
 def solution(n):
     # If n is not a multiple of 50, there is no way to compose it

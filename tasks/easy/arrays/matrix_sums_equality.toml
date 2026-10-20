@@ -12,6 +12,14 @@ description_ru = """
 Дана матрица $3 \\times 3$, состоящая из целых чисел. Проверьте, равны ли суммы чисел во всех строках и всех столбцах. Верните `true`, если все суммы равны, иначе — `false`.
 """
 
+description_es = """
+Dada una matriz de números enteros $3 \\times 3$, determine si la suma de los elementos en cada fila y en cada columna es la misma. Devuelve `true` si todas las sumas son iguales; de lo contrario, devuelve `false`.
+"""
+
+description_zh = """
+给定一个 $3 \\times 3$ 整数矩阵，判断每一行和每一列的元素之和是否相同。如果所有总和相等，则返回 `true`，否则返回 `false`。
+"""
+
 limits = """
 - $\\text{len}(m) = 3$
 - $\\text{len}(m[i]) = 3$

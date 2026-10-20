@@ -16,6 +16,18 @@ description_ru = """
 Если все кучки пусты, верните `False`.
 """
 
+description_es = """
+Tú y el Kraken se turnan para tomar monedas de oro de tres montones que contienen monedas `a`, `b` y `c`. En cada turno, un jugador puede tomar cualquier número positivo de monedas exactamente de una pila. El jugador que coja la última moneda sobrevive. Determina si puedes ganar si ambos jugadores juegan de manera óptima y tú te mueves primero.
+
+Si todas las pilas están vacías, devuelva `False`.
+"""
+
+description_zh = """
+三堆金币分别有 `a`、`b` 和 `c` 枚。你和海怪轮流取金币，每次必须从恰好一堆中取走任意正数枚金币，取走最后一枚的玩家存活。双方都采用最优策略且你先手，判断你能否获胜。
+
+如果所有堆都为空，则返回 `False`。
+"""
+
 limits = """
 - $0 \\leq a, b, c \\leq 1000$
 """

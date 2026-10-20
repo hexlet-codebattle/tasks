@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая проверяет каждый ход в игре крестики-нолики. Функция принимает текущее состояние поля в виде двумерного массива. Если игрок `"X"` выиграл — верните `"X won"`, если выиграл игрок `"O"` — верните `"O won"`. Если никто пока не выиграл — верните `"Next"`. Если поле полностью заполнено, но никто не выиграл — верните `"Game over"`.
 """
 
+description_es = """
+Escribe una función que verifique cada movimiento del juego tres en raya. La función toma el estado actual del campo como una matriz bidimensional. Si el jugador `\"X\"` ganó, devuelve `\"X won\"`. Si el jugador `\"O\"` ganó, devuelve `\"O won\"`. Si nadie ha ganado todavía, devuelve `\"Next\"`. Si el campo está lleno pero nadie ha ganado, devuelve `\"Game over\"`.
+"""
+
+description_zh = """
+编写一个函数来检查井字游戏的每个动作。该函数将场的当前状态作为二维数组。如果玩家 `\"X\"` 获胜，则返回 `\"X won\"`。如果玩家 `\"O\"` 获胜，则返回 `\"O won\"`。如果还没有人获胜，则返回 `\"Next\"`。如果字段已满但无人获胜，则返回 `\"Game over\"`。
+"""
+
 limits = """
 - Field is always $3 \\times 3$
 - Each cell contains `"X"`, `"O"`, or `"_"`

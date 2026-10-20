@@ -16,6 +16,18 @@ description_ru = """
 Например: $A \\rightarrow 1$, $B \\rightarrow 2$, $C \\rightarrow 3$, $\\ldots$, $Z \\rightarrow 26$, $AA \\rightarrow 27$, $AB \\rightarrow 28$
 """
 
+description_es = """
+Dado el título de una columna (tal como aparece en una hoja de Excel), devuelva su número de columna correspondiente.
+
+Por ejemplo: $A \\rightarrow 1$, $B \\rightarrow 2$, $C \\rightarrow 3$, $\\ldots$, $Z \\rightarrow 26$, $AA \\rightarrow 27$, $AB \\rightarrow 28$.
+"""
+
+description_zh = """
+给定列标题（如 Excel 工作表中显示的那样），返回其相应的列号。
+
+例如：$A \\rightarrow 1$、$B \\rightarrow 2$、$C \\rightarrow 3$、$\\ldots$、$Z \\rightarrow 26$、$AA \\rightarrow 27$、$AB \\rightarrow 28$
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{title}) \\leq 7$
 - $\\text{title} \\in \\{A{-}Z\\}^*$

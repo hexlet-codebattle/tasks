@@ -12,6 +12,14 @@ description_ru = """
 Центр управления открывает стартовое окно каждые `period` дней, начиная с `first_window`. По номеру дня определите, может ли Selene стартовать в этот день.
 """
 
+description_es = """
+El control de la misión abre una ventana de lanzamiento cada `period` días a partir de `first_window`. Dado un número de día, determine si Selene puede lanzarse ese día.
+"""
+
+description_zh = """
+从 `first_window` 开始，任务控制中心每隔 `period` 天打开一个发射窗口。给定一个天数，确定 Selene 是否可以在这一天启动。
+"""
+
 limits = """
 - $0 \\leq \\text{first\\_window} \\leq \\text{day} \\leq 10^9$
 - $1 \\leq \\text{period} \\leq 10^6$

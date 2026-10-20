@@ -16,6 +16,18 @@ description_ru = """
 Для каждой цифры $d \\in \\{0,1,\\ldots,9\\}$ верните, сколько раз $d$ встречается среди всех этих показаний.
 """
 
+description_es = """
+Un reloj digital muestra la hora en el formato `HH:MM:SS` con ceros a la izquierda. Inicialmente muestra $T_1$, finalmente muestra $T_2$, y pasan menos de $24$ horas entre ellos. Se enumeran todas las lecturas desde $T_1$ hasta $T_2$ (inclusive), una por segundo.
+
+Para cada dígito $d \\in \\{0,1,\\ldots,9\\}$, indique cuántas veces aparece $d$ en todas estas lecturas.
+"""
+
+description_zh = """
+数字时钟以带前导零的 `HH:MM:SS` 格式显示时间。开始时显示 $T_1$，结束时显示 $T_2$，两者相隔不到 $24$ 小时。列出从 $T_1$ 到 $T_2$ 的所有显示值，包含两端，每秒一个。
+
+对于每个数字 $d \\in \\{0,1,\\ldots,9\\}$，返回 $d$ 在所有这些显示值中出现的总次数。
+"""
+
 limits = """
 - $0 \\le \\text{HH} < 24$, $0 \\le \\text{MM} < 60$, $0 \\le \\text{SS} < 60$
 - $T_2 - T_1 < 24$ hours

@@ -16,6 +16,18 @@ description_ru = """
 Верните титры, упорядоченные по убыванию числа появлений. При равенстве раньше идет имя, которое впервые появилось раньше. Для пустого списка появлений верните пустой массив.
 """
 
+description_es = """
+`appearances` enumera los nombres de los personajes en el orden en que aparecen en la nueva película de Spider-Man. Los créditos contienen cada nombre distinto una vez.
+
+Devuelve los créditos ordenados por número decreciente de apariciones. Si dos nombres tienen el mismo número, el que aparece por primera vez es el primero. Devuelve una matriz vacía sin apariciones.
+"""
+
+description_zh = """
+`appearances` 按顺序记录新蜘蛛侠电影中出现的角色名称。演职员表中每个不同的名称只列出一次。
+
+返回按出现次数降序排列的名称。如果两个名称的出现次数相同，则首次出现较早的排在前面。若没有角色出现，则返回空数组。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{appearances}) \\leq 10^3$
 - $1 \\leq \\text{len}(\\text{appearances}[i]) \\leq 30$

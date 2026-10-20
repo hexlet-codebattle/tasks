@@ -16,6 +16,18 @@ description_ru = """
 Посчитайте соединенные пары индексов. Для периодического кода ненулевой сдвиг может дать ту же строку, поэтому одинаковые коды иногда соединяются. У кода из одного символа нет ненулевого сдвига.
 """
 
+description_es = """
+Todo portal tiene un código circular en `codes`; Todos los códigos tienen la misma longitud positiva. Los portales en índices distintos $i < j$ se vinculan si `codes[j]` se pueden obtener de `codes[i]` mediante una rotación cíclica hacia la izquierda **distinta de cero**.
+
+Cuente los pares de índices vinculados. Para un código periódico, una rotación distinta de cero puede reproducir la misma cadena, por lo que a veces se pueden vincular códigos iguales. Un código de un carácter no tiene rotación distinta de cero.
+"""
+
+description_zh = """
+每个门户都有一个循环代码`codes`；所有代码都具有相同的正长度。如果可以通过**非零**循环左旋转从 `codes[i]` 获得 `codes[j]`，则不同索引 $i < j$ 处的门户链接。
+
+计算链接索引对。对于周期码，非零旋转可能会再现相同的字符串，因此相等的码有时可以链接。单字符代码没有非零旋转。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{codes}) \\leq 100$
 - $1 \\leq \\text{len}(\\text{codes}[i]) \\leq 8$

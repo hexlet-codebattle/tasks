@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая принимает номер кредитной карты в виде строки и возвращает новую строку, в которой видны только последние 4 символа, а все предыдущие символы заменены на `*`.
 """
 
+description_es = """
+Escriba una función que tome un número de tarjeta de crédito como una cadena y devuelva una nueva cadena donde solo los últimos cuatro caracteres permanezcan visibles y todos los caracteres anteriores se reemplacen con `*`.
+"""
+
+description_zh = """
+编写一个函数，将信用卡号作为字符串并返回一个新字符串，其中仅最后四个字符保持可见，并且所有前面的字符都替换为 `*`。
+"""
+
 limits = """
 - $4 \\leq \\text{len}(number) \\leq 19$
 - $number \\in \\{0,1,2,3,4,5,6,7,8,9\\}^{*}$

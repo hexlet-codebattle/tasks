@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая проверяет, является ли `address` адресом IPv4.
 """
 
+description_es = """
+Cree una función que verifique si `address` es una dirección IPv4.
+"""
+
+description_zh = """
+创建一个函数来检查 `address` 是否是 IPv4 地址。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(address) \\leq 100$
 """

@@ -20,6 +20,22 @@ description_ru = """
 Иначе каждая начавшаяся дополнительная минута считается полной: например, `121` секунда после минуты `90` отображается как `"90+3"`.
 """
 
+description_es = """
+El marcador muestra el minuto base `base_minute`, que es `45` o `90`.
+Dado el número de segundos jugados después, devuelve el minuto mostrado.
+
+Si `extra_seconds` es `0`, devuelve el minuto base sin sufijo.
+De lo contrario, cada minuto adicional iniciado se muestra como un minuto completo: por ejemplo, `121` segundos después del minuto `90` se muestra como `\"90+3\"`.
+"""
+
+description_zh = """
+记分牌显示基本分钟 `base_minute`，即 `45` 或 `90`。
+给定其后播放的秒数，返回显示的分钟。
+
+如果 `extra_seconds` 是 `0`，则返回不带后缀的基本分钟。
+否则，每个开始的额外分钟将显示为一整分钟：例如，`90` 分钟后的 `121` 秒数显示为 `\"90+3\"`。
+"""
+
 limits = """
 - $base\\_minute \\in \\{45, 90\\}$
 - $0 \\leq extra\\_seconds \\leq 900$

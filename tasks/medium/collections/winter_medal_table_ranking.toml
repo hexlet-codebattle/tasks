@@ -38,6 +38,40 @@ description_ru = """
 Если длины массивов различаются, используйте общую префиксную длину.
 """
 
+description_es = """
+Se le dan matrices paralelas:
+- `countries`
+- `gold`
+- `silver`
+- `bronze`
+
+Clasificar a los países según las reglas de la mesa olímpica de invierno:
+1. más oro
+2. luego más plata
+3. luego más bronce
+4. luego el nombre del país alfabéticamente
+
+Devolver nombres de países clasificados.
+Si las longitudes difieren, utilice una longitud de prefijo común.
+"""
+
+description_zh = """
+给你并行数组：
+- `countries`
+- `gold`
+- `silver`
+- `bronze`
+
+按冬奥会积分表规则对国家进行排名：
+1. 更多黄金
+2. 然后更多的银子
+3. 然后更多青铜
+4. 然后按字母顺序排列国家名称
+
+返回排名的国家/地区名称。
+如果长度不同，请使用公共前缀长度。
+"""
+
 solution = """
 def solution(countries: list[str], gold: list[int], silver: list[int], bronze: list[int]) -> list[str]:
     n = min(len(countries), len(gold), len(silver), len(bronze))

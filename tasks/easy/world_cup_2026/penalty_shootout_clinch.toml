@@ -20,6 +20,22 @@ description_ru = """
 Верните `0`, если серия не решена в данном префиксе. Серия дополнительных ударов не рассматривается.
 """
 
+description_es = """
+La cadena `kicks` contiene un prefijo de la tanda de penales reglamentaria de diez tiros, comenzando con el equipo A y alternando entre los equipos.
+Cada equipo podrá realizar como máximo cinco tiros de puerta: `1` es un gol y `0` es un fallo.
+
+Devuelve el primer número de patadas después del cual un equipo tiene una ventaja insuperable, incluso si hay patadas posteriores en la cadena.
+Devuelve `0` si el tiroteo no se decide dentro del prefijo dado. No se considera muerte súbita.
+"""
+
+description_zh = """
+字符串 `kicks` 包含十踢规则点球赛的前缀，从 A 队开始，在各队之间交替。
+每队最多可踢五次球：`1` 为进球，`0` 为失球。
+
+返回第一个踢球号码，之后一支球队具有不可逾越的领先优势，即使字符串中存在后续的踢球。
+如果在给定的前缀内没有决定点球大战，则返回 `0`。不考虑猝死。
+"""
+
 limits = """
 - $0 \\leq \\operatorname{len}(kicks) \\leq 10$
 - $kicks \\in \\{0, 1\\}^*$

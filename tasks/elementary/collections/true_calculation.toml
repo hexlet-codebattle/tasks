@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая подсчитывает количество истин в массиве.
 """
 
+description_es = """
+Cree una función que devuelva el número de valores verdaderos que hay en una matriz.
+"""
+
+description_zh = """
+创建一个返回数组中真值数量的函数。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{facts}) \\leq 100$
 """

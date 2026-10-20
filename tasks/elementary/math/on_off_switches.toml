@@ -16,6 +16,18 @@ description_ru = """
 Например, для 2 переключателей существует 4 возможных комбинации: оба выключены, первый включен/второй выключен, первый выключен/второй включен, оба включены.
 """
 
+description_es = """
+Cree una función que devuelva cuántos resultados posibles pueden provenir de una cierta cantidad de interruptores (encendido/apagado).
+
+Por ejemplo, con 2 interruptores, hay 4 resultados posibles: ambos apagados, primero encendido/segundo apagado, primero apagado/segundo encendido, ambos encendidos.
+"""
+
+description_zh = """
+创建一个函数，返回一定数量的开关（开/关）可以产生多少种可能的结果。
+
+例如，对于 2 个开关，有 4 种可能的结果：都关闭、第一次打开/第二次关闭、第一次关闭/第二次打开、都打开。
+"""
+
 limits = """
 - $1 \\leq \\text{switches} \\leq 20$
 """

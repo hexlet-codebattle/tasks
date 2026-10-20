@@ -24,6 +24,26 @@ description_ru = """
 Верните средний балл, округлённый до двух знаков после запятой, или $0.0$, если оцениваемых кредитов нет.
 """
 
+description_es = """
+El registrador está calculando el promedio de calificaciones del estudiante para el expediente académico. La matriz `grades` enumera la calificación con letras obtenida en cada curso y `credits[i]` es el peso en créditos del curso `i`.
+
+Las calificaciones con letras se asignan a los puntos de calificación de la siguiente manera: `A` = 4.0, `A-` = 3.7, `B+` = 3.3, `B` = 3.0, `B-` = 2.7, `C+` = 2.3, `C` = 2,0, `C-` = 1,7, `D+` = 1,3, `D` = 1,0, `D-` = 0,7, `F` = 0,0. Las calificaciones `\"P\"` (aprobado) y `\"NP\"` (no aprobado) se toman como aprobado/reprobado y están excluidas del GPA por completo, sin aportar puntos ni créditos.
+
+El GPA es el promedio ponderado por créditos de los puntos de calificación en todos los cursos calificados: divida la suma de `points * credits` por la suma de los créditos contados.
+
+Devuelve el GPA redondeado a dos decimales, o $0.0$ si no hay créditos calificados.
+"""
+
+description_zh = """
+注册员正在计算学生成绩单的平均绩点。数组`grades`列出了每门课程获得的字母成绩，`credits[i]`是课程`i`的学分权重。
+
+字母等级映射到等级点如下：`A` = 4.0、`A-` = 3.7、`B+` = 3.3、`B` = 3.0、`B-` = 2.7、`C+` = 2.3、`C` = 2.0、`C-` = 1.7、`D+` = 1.3、`D` = 1.0、`D-` = 0.7、`F` = 0.0。成绩 `\"P\"`（通过）和 `\"NP\"`（不及格）被视为通过/未通过，并完全排除在 GPA 之外，既不贡献绩点也不贡献学分。
+
+GPA 是所有评分课程的学分加权平均值：将 `points * credits` 的总和除以计算的学分总和。
+
+返回四舍五入到小数点后两位的 GPA，如果没有评分学分，则返回 $0.0$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{grades}) \\leq 10^3$
 - $\\text{len}(\\text{grades}) = \\text{len}(\\text{credits})$

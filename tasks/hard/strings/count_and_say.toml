@@ -26,6 +26,28 @@ description_ru = """
 Дана строка с описанием, преобразуйте её обратно в числовое представление.
 """
 
+description_es = """
+En la secuencia «Look and Say» de Conway, cada término describe los dígitos del anterior en inglés:
+
+- `1` se describe como \"one 1\";
+- `11` como \"two 1's\";
+- `21` como \"one 2, then one 1\";
+- `1211` como \"one 1, then one 2, then two 1's\".
+
+Dada una cadena con esta descripción en inglés, conviértela de nuevo a su representación numérica.
+"""
+
+description_zh = """
+康威的「外观数列」中，每一项用英文描述前一项的数字：
+
+- `1` 描述为 \"one 1\"；
+- `11` 描述为 \"two 1's\"；
+- `21` 描述为 \"one 2, then one 1\"；
+- `1211` 描述为 \"one 1, then one 2, then two 1's\"。
+
+给定这样的英文描述字符串，将其转换回数字表示形式。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{text}) \\leq 200$
 """

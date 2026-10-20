@@ -12,6 +12,14 @@ description_ru = """
 Дан список слов в единственном числе. Верните список этих слов, где дубликаты преобразованы во множественное число добавлением `"s"`. Сохраните исходный порядок слов (используя только первое вхождение каждого уникального слова).
 """
 
+description_es = """
+Dada una lista de palabras en forma singular, devuelva una lista de aquellas palabras donde los duplicados se convierten a forma plural agregando `\"s\"`. Mantenga el orden original de las palabras (usando solo la primera aparición de cada palabra única).
+"""
+
+description_zh = """
+给定单数形式的单词列表，返回这些单词的列表，其中通过添加 `\"s\"` 将重复项转换为复数形式。保持原始词序（仅使用每个唯一单词的第一次出现）。
+"""
+
 limits = """
 - $1 \\leq |\\text{words}| \\leq 100$
 - $1 \\leq |\\text{words}[i]| \\leq 20$

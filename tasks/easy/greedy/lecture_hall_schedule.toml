@@ -20,6 +20,22 @@ description_ru = """
 Составьте расписание занятий так, чтобы выполнить **максимальное** количество заявок.
 """
 
+description_es = """
+Te dan una sala de conferencias donde varios profesores quieren dar sus conferencias. Para elaborar un cronograma, los profesores presentaron solicitudes representadas como una matriz de dos números enteros `[start, end]`, que indican la hora de inicio y la hora de finalización de la conferencia.
+
+Las conferencias son intervalos medio abiertos `[start, end)`, lo que significa que una nueva conferencia puede comenzar en el momento exacto en que termina otra sin interrupción.
+
+Determine el número **máximo** de solicitudes que se pueden cumplir sin superposiciones.
+"""
+
+description_zh = """
+你有一个演讲厅，几位教授想在那里演讲。为了制定时间表，教授们提交了以两个整数数组 `[start, end]` 表示的请求，表示讲座的开始时间和结束时间。
+
+讲座采用半开放间隔 `[start, end)`，这意味着新讲座可以在另一讲座结束时开始，无需休息。
+
+确定可以在没有任何重叠的情况下满足的请求的**最大**数量。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{requests}) \\leq 10^5$
 - $0 \\leq \\text{start} < \\text{end} \\leq 10^9$

@@ -16,6 +16,18 @@ description_ru = """
 Верните строку команд, видимую в портале: замените каждую команду по правилу `N` $\\to$ `E` $\\to$ `S` $\\to$ `W` $\\to$ `N`, затем разверните их порядок. Пустой маршрут остается пустым.
 """
 
+description_es = """
+Un dron con cámara registra la ruta de Spider-Man como comandos `N`, `E`, `S` y `W`. Un portal gira cada dirección grabada $90^\\circ$ en el sentido de las agujas del reloj y luego reproduce el clip hacia atrás.
+
+Devuelva la cadena de comando que se ve en el portal: gire cada comando usando `N` $\\to$ `E` $\\to$ `S` $\\to$ `W` $\\to$ `N`, luego invierta su orden. La ruta vacía permanece vacía.
+"""
+
+description_zh = """
+无人机将蜘蛛侠的路线记录为 `N`、`E`、`S` 和 `W` 命令。门户顺时针旋转每个记录的方向 $90^\\circ$，然后向后播放剪辑。
+
+返回在门户中看到的命令字符串：使用 `N` $\\to$ `E` $\\to$ `S` $\\to$ `W` $\\to$ 旋转每个命令`N`，然后颠倒顺序。空的路线仍然是空的。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{route}) \\leq 10^4$
 - $\\text{route} \\in \\{N,E,S,W\\}^*$

@@ -16,6 +16,18 @@ description_ru = """
 Верните букву, которая встречается чаще всего. Если несколько букв имеют одинаковую максимальную частоту, верните лексикографически наименьшую из них.
 """
 
+description_es = """
+El capitán estudia una palabra de registro no vacía `log`.
+
+Devuelve la carta que aparece con más frecuencia. Si varias letras tienen la misma frecuencia más alta, devuelve la lexicográficamente más pequeña.
+"""
+
+description_zh = """
+队长研究一个非空日志词 `log`。
+
+返回最常出现的字母。如果多个字母具有相同的最高频率，则返回字典顺序最小的字母。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{log}) \\leq 100$
 - $\\text{log} \\in \\{a{-}z\\}^*$

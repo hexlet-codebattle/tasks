@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая принимает слово и произносит его по буквам, последовательно добавляя буквы, пока слово не будет произнесено полностью.
 """
 
+description_es = """
+Cree una función que tome una palabra y la deletree, agregando letras consecutivamente hasta completar la palabra completa.
+"""
+
+description_zh = """
+创建一个函数，它接受一个单词并通过连续添加字母直到完成整个单词来拼写它。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{word}) \\leq 50$
 """

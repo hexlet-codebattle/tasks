@@ -12,6 +12,14 @@ description_ru = """
 Переверните каждое слово в массиве слов, а затем и сам массив.
 """
 
+description_es = """
+Invierta cada carácter de la palabra en la matriz y luego invierta la matriz misma.
+"""
+
+description_zh = """
+反转数组中单词的每个字符，然后反转数组本身。
+"""
+
 solution = """
 def solution(words: list[str]) -> list[str]:
     return [word[::-1] for word in words][::-1]

@@ -16,6 +16,18 @@ description_ru = """
 Даны энергии фотонов и работа выхода. Верните количество фотонов, способных выбить электроны.
 """
 
+description_es = """
+En el efecto fotoeléctrico, un fotón expulsa un electrón sólo si su energía alcanza la función de trabajo del metal.
+
+Dadas las energías de los fotones y la función de trabajo, devuelva cuántos fotones pueden expulsar electrones.
+"""
+
+description_zh = """
+在光电效应中，只有当光子的能量达到金属功函数时，光子才会发射出电子。
+
+给定光子能量和功函数，返回有多少光子可以喷射电子。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{energies}) \\leq 100$
 - $0 \\leq \\text{energy} \\leq 10^4$

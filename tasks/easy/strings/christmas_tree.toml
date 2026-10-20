@@ -18,6 +18,20 @@ description_ru = """
 Верните рисунок в виде массива строк, каждая строка - отдельная строка вывода.
 """
 
+description_es = """
+Dibuja un árbol de Navidad con niveles $k$. El nivel $i$-ésimo consta de filas $i + 1$.
+En la primera fila hay un asterisco, en la segunda fila hay tres y en la fila $j$ hay asteriscos $2j - 1$.
+Todas las filas están centradas y las celdas que no están ocupadas por el árbol deben rellenarse con el carácter `\".\"`.
+Devuelve el dibujo como una matriz de cadenas, cada cadena representa una línea.
+"""
+
+description_zh = """
+绘制一棵具有 $k$ 级别的圣诞树。第 $i$ 层由 $i + 1$ 行组成。
+第一行有一个星号，第二行有三个星号，第 $j$ 行有 $2j - 1$ 星号。
+所有行均居中，未被树占用的单元格必须用字符 `\".\"` 填充。
+将绘图作为字符串数组返回，每个字符串代表一条线。
+"""
+
 solution = """
 def solution(k):
     # width of the whole picture (the widest line)

@@ -12,6 +12,14 @@ description_ru = """
 Дано двузначное целое число $n$. Верните сумму его цифр.
 """
 
+description_es = """
+Dado un entero de dos dígitos $n$, devuelve la suma de sus dígitos.
+"""
+
+description_zh = """
+给定一个两位数整数 $n$，返回其数字之和。
+"""
+
 limits = """
 - $10 \\leq n \\leq 99$
 """

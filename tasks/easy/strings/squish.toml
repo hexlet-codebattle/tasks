@@ -12,6 +12,14 @@ description_ru = """
 Дан текст. Удалите все пробельные символы с обоих концов текста. Сверните группы пробельных символов внутри строки в один пробел. Обработайте как ASCII так и Unicode пробелы.
 """
 
+description_es = """
+Dado un texto, elimine todos los espacios en blanco de ambos extremos del texto. Luego, colapsa grupos de espacios en blanco dentro del texto en un solo espacio en blanco cada uno. Maneja espacios en blanco ASCII y Unicode.
+"""
+
+description_zh = """
+给定一段文本，删除首尾的所有空白字符，再将文本内部每段连续空白字符压缩为一个空格。需要处理 ASCII 和 Unicode 空白字符。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{text}) \\leq 1000$
 """

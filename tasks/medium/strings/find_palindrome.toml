@@ -12,6 +12,14 @@ description_ru = """
 Палиндром - слово или фраза, которые одинаково читаются слева направо и справа налево. Создайте функцию которая находит наидлиннейший палиндром в строке.
 """
 
+description_es = """
+Un palíndromo es una cadena que se escribe igual hacia adelante que hacia atrás. Escribe una función para devolver el palíndromo más largo en una cadena determinada.
+"""
+
+description_zh = """
+回文是正向和反向书写相同的字符串。编写一个函数以返回给定字符串中最长的回文。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(s) \\leq 100$
 """

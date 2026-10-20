@@ -12,6 +12,14 @@ description_ru = """
 Переверните введенное число и конвертируйте его в строку, сохраняя знак.
 """
 
+description_es = """
+Invierta el número de entrada y conviértalo en cadena. Mantenga el signo numérico.
+"""
+
+description_zh = """
+将输入的数字反转并转换为字符串。保留数字符号。
+"""
+
 limits = """
 - $-999999 \\leq \\text{number} \\leq 999999$
 """

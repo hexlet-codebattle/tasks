@@ -12,6 +12,14 @@ description_ru = """
 Проверьте, все ли символы в тексте являются цифрами.
 """
 
+description_es = """
+Compruebe si el texto dado contiene solo caracteres de dígitos.
+"""
+
+description_zh = """
+检查给定文本是否仅包含数字字符。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(text) \\leq 1000$
 """

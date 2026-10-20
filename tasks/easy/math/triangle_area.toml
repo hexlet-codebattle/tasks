@@ -18,6 +18,20 @@ $$s = \\sqrt{p \\cdot (p - a) \\cdot (p - b) \\cdot (p - c)}$$
 Округлите результат в меньшую сторону.
 """
 
+description_es = """
+Calcula el área del triángulo usando la fórmula de Heron:
+$$p = \\frac{a + b + c}{2}$$
+$$s = \\sqrt{p \\cdot (p - a) \\cdot (p - b) \\cdot (p - c)}$$
+Utilice el redondeo hacia abajo para el área resultante.
+"""
+
+description_zh = """
+使用海伦公式计算三角形面积：
+$$p = \\frac{a + b + c}{2}$$
+$$s = \\sqrt{p \\cdot (p - a) \\cdot (p - b) \\cdot (p - c)}$$
+将所得面积向下取整后返回。
+"""
+
 limits = """
 - $-100 \\leq a, b, c \\leq 100$
 """

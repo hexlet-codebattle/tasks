@@ -16,6 +16,18 @@ description_ru = """
 Число является степенью двойки, если его можно выразить как $2^k$ для некоторого неотрицательного целого числа $k$.
 """
 
+description_es = """
+Determina si un número entero dado es una potencia de dos.
+
+Un número es una potencia de dos si se puede expresar como $2^k$ para algún entero no negativo $k$.
+"""
+
+description_zh = """
+确定给定整数是否为 2 的幂。
+
+如果某个数字对于某些非负整数 $k$ 可以表示为 $2^k$，则该数字是 2 的幂。
+"""
+
 limits = """
 - $0 \\leq \\text{num} \\leq 10^6$
 """

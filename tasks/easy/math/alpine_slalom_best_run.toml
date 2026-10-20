@@ -17,6 +17,18 @@ description_ru = """
 Если валидных заездов нет, верните `0`.
 """
 
+description_es = """
+Dados los tiempos de carrera `times_sec` de un atleta de slalom alpino, obtenga el mejor tiempo de carrera.
+Los valores no positivos (`<= 0`) significan una ejecución no válida (`DNF`) y deben ignorarse.
+Si no hay ejecuciones válidas, devuelva `0`.
+"""
+
+description_zh = """
+给定一名高山回转运动员的跑步时间 `times_sec`，请返回最佳跑步时间。
+非正值（`<= 0`）表示无效运行（`DNF`）并且必须被忽略。
+如果没有有效的运行，则返回 `0`。
+"""
+
 solution = """
 def solution(times_sec: list[int]) -> int:
     t = [x for x in times_sec if x > 0]

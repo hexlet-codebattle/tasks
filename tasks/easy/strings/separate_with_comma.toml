@@ -12,6 +12,14 @@ description_ru = """
 На вход дано число, верните строку, где это число отформатировано таким образом, что начиная с правого края каждые 3 цифры отделяются запятой.
 """
 
+description_es = """
+Dado un número como entrada, devuelve una cadena con ese número formateado con comas para separar cada tres dígitos de la derecha.
+"""
+
+description_zh = """
+给定一个数字作为输入，返回一个字符串，该数字的格式用逗号分隔右侧的每三位数字。
+"""
+
 solution = """
 def solution(num):
     s = str(num)[::-1]

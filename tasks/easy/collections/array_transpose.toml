@@ -18,6 +18,20 @@ description_ru = """
 Верните новую матрицу, в которой строки и столбцы поменяны местами (т.е. транспонируйте матрицу).
 """
 
+description_es = """
+Implementar una función de transposición matricial.
+
+La matriz se proporciona como una matriz de matrices, donde cada matriz interna es una fila.
+Devuelve una nueva matriz donde las filas se convierten en columnas y las columnas en filas (es decir, transpone la matriz).
+"""
+
+description_zh = """
+实现矩阵转置函数。
+
+该矩阵以数组的数组形式给出，其中每个内部数组都是一行。
+返回一个新矩阵，其中行变为列，列变为行（即转置矩阵）。
+"""
+
 limits = """
 - $2 \\leq \\text{rows} \\leq 9$
 - $1 \\leq \\text{cols} \\leq 9$

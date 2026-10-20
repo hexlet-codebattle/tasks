@@ -16,6 +16,18 @@ description_ru = """
 Верните индексы всех таких дней в порядке возрастания или пустой массив, если их нет.
 """
 
+description_es = """
+Un hongo visible es un cuerpo fructífero, mientras que la parte principal del organismo vive en el suelo como micelio y muchas especies necesitan suficiente humedad para dar fruto. En este modelo, un cuerpo fructífero aparece el día $i$ cuando la precipitación total durante los días `window` que terminan en el día $i$ inclusive es al menos `min_rain`. Los días con menos de `window` días detrás nunca cuentan.
+
+Devuelve los índices de todos esos días en orden creciente, o una matriz vacía cuando no hay ninguno.
+"""
+
+description_zh = """
+可见的蘑菇是子实体，而生物体的主要部分以菌丝体的形式生活在土壤中，许多物种需要足够的水分才能结果。在此模型中，当 $i$ 日结束的 `window` 天内的总降雨量至少为 `min_rain` 时，子实体会在 $i$ 日出现。后面少于 `window` 天的天数不计算在内。
+
+按升序返回所有此类日期的索引，如果没有则返回空数组。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{rain}) \\leq 10^5$
 - $0 \\leq \\text{rain}[i] \\leq 100$

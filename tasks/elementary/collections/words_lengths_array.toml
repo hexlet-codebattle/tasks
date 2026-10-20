@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая трансформирует массив слов в массив длин этих слов.
 """
 
+description_es = """
+Cree una función que tome una matriz de palabras y la transforme en una matriz de la longitud de cada palabra.
+"""
+
+description_zh = """
+创建一个函数，该函数接受单词数组并将其转换为每个单词长度的数组。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{words}) \\leq 100$
 - $1 \\leq \\text{len}(\\text{word}) \\leq 50$

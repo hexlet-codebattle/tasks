@@ -18,6 +18,20 @@ description_ru = """
 для всех сотрудников добраться до кулера (сумму расстояний).
 """
 
+description_es = """
+Se le entrega un mapa de oficina rectangular como una serie de cadenas. Exactamente una celda es un refrigerador `\"W\"`,
+algunas células son empleados `\"E\"` y otras son `\".\"`. En un segundo, un empleado puede pasar a una celda adyacente.
+Los empleados toman los caminos más cortos (Manhattan), pasando por cualquier celda. Devuelve el **tiempo total**
+para que todos los empleados lleguen al refrigerador (suma de distancias).
+"""
+
+description_zh = """
+您将获得一个矩形办公室地图作为字符串数组。恰好有一个电池是冷却器 `\"W\"`，
+有些单元格是员工 `\"E\"`，其他单元格是 `\".\"`。一秒钟内，员工就可以移动到旁边的单元格。
+员工采取最短（曼哈顿）路径，穿过任何单元格。返回**总时间**
+让所有员工到达冷却器（距离总和）。
+"""
+
 limits = """
 - $1 \\leq \\text{rows}, \\text{cols} \\leq 100$
 """

@@ -16,6 +16,18 @@ description_ru = """
 Две клетки мицелия принадлежат одной колонии, если они соприкасаются стороной или только углом, и это отношение распространяется по цепочкам клеток. Верните количество колоний.
 """
 
+description_es = """
+El micelio es una red de hilos ramificados llamados hifas y puede vivir en el suelo durante años sin producir cuerpos fructíferos visibles. En el mapa rectangular `forest` el carácter `M` marca una celda con micelio y `.` marca una celda vacía; todas las filas tienen la misma longitud.
+
+Dos células de micelio pertenecen a la misma colonia cuando comparten un lado o sólo una esquina, y esta relación se transmite a lo largo de cadenas de células. Devuelve el número de colonias.
+"""
+
+description_zh = """
+菌丝体是一种称为菌丝的分支线网络，它可以在土壤中生存多年，而不产生可见的子实体。在矩形图 `forest` 上，字符 `M` 标记有菌丝体的细胞，`.` 标记空细胞；所有行的长度都相同。
+
+当两个菌丝体细胞共享一侧或仅一个角时，它们属于同一菌落，并且这种关系沿着细胞链延续。返回菌落数。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{forest}) \\leq 200$
 - $1 \\leq \\text{len}(\\text{forest}[i]) = \\text{len}(\\text{forest}[0]) \\leq 200$

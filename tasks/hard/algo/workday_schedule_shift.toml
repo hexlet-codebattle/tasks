@@ -26,6 +26,28 @@ description_ru = """
 Гарантируется, что вставка всегда выполнима в рамках дня и ничего не выходит за **18:00**.
 """
 
+description_es = """
+El día laborable es de **09:00** a **18:00**.
+
+Se le proporciona un cronograma **ordenado** y no superpuesto `meetings` de intervalos de tiempo en el formato `[['HH:MM','HH:MM'], ...]`
+y un nuevo intervalo `meeting` de la misma forma.
+Inserte la nueva reunión moviendo **hacia adelante** solo aquellas reuniones existentes que se superpongan (y cualquiera que posteriormente se superponga a las desplazadas), formando una **cadena** hacia adelante.
+Devuelve el nuevo horario incluyendo la reunión insertada, en orden cronológico.
+
+Se garantiza que la inserción siempre es factible dentro del mismo día y nada pasa de las **18:00**.
+"""
+
+description_zh = """
+工作日为 **09:00** 至 **18:00**。
+
+您将获得一个**有序**、不重叠的时间间隔时间表 `meetings`，格式为 `[['HH:MM','HH:MM'], ...]`
+以及相同形式的新区间 `meeting`。
+通过仅**向前**移动那些与其重叠的现有会议（以及任何随后与移动的会议重叠的会议）来插入新会议，形成向前**链**。
+按时间顺序返回包括插入的会议的新日程表。
+
+保证当天插入始终可行，并且不会超过 **18:00**。
+"""
+
 solution = """
 def solution(meetings, meeting):
     to_min = lambda t: int(t[:2]) * 60 + int(t[3:])

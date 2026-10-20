@@ -20,6 +20,22 @@ description_ru = """
 В массиве viewers для каждого зрителя задана пара (любимый участник, нелюбимый участник).
 """
 
+description_es = """
+En la nueva transmisión de University Battle, puedes ver a un participante específico. La transmisión de la batalla es vista por espectadores de $n$, con un total de participantes de $m$. Cada espectador tiene un participante favorito y uno menos favorito. Si la transmisión muestra a un participante que no le agrada a un espectador, ese espectador se molesta y cambia la transmisión a su participante favorito. Si varios espectadores no agradan al participante actual, el espectador con el número más bajo cambia la transmisión. Este proceso se repite siempre que haya espectadores que no les gusten.
+
+Primero, en la transmisión se muestra el número de participante $p$. Determina cuántas veces los espectadores cambiarán la transmisión. Si el proceso de conmutación de transmisión es infinito, devuelva $-1$.
+
+La matriz de espectadores especifica un par (participante favorito, participante menos favorito) para cada espectador.
+"""
+
+description_zh = """
+在新的大学之战直播中，您可以观看特定的参赛者。观看战斗转播的观众人数为$n$，参与人数总计为$m$。每个观众都有一个最喜欢的和最不喜欢的参与者。如果广播显示观众不喜欢的参与者，则该观众会感到不安并将广播切换到他们最喜欢的参与者。如果当前参与者被多个观众不喜欢，则数量最少的观众会切换广播。只要有不喜欢的观众，就会重复这个过程。
+
+首先，广播中显示参与者编号$p$。确定观众切换广播的次数。如果广播切换过程无限，则返回$-1$。
+
+观众数组为每个观众指定一对（最喜欢的参与者，最不喜欢的参与者）。
+"""
+
 solution = """
 def solution(n, m, p, viewers):
     \"\"\"Return the number of switches of the broadcast, or -1 if it is infinite.

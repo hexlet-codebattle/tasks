@@ -20,6 +20,22 @@ description_ru = """
 Верните число неупорядоченных пар напарников.
 """
 
+description_es = """
+Al inicio del semestre, el decano recoge la matrícula de cada estudiante. `courses[i]` es la lista de códigos de curso en los que está inscrito el estudiante `i`.
+
+Dos estudiantes son compañeros de estudio si comparten al menos un código de curso común. El sindicato de estudiantes quiere saber cuántas parejas de este tipo existen en el campus.
+
+Devuelve el número de pares de compañeros de estudio desordenados.
+"""
+
+description_zh = """
+学期开始时，院长办公室收集每个学生的课程注册情况。 `courses[i]` 是学生 `i` 注册的课程代码列表。
+
+如果两个学生至少有一个共同的课程代码，那么他们就是学习伙伴。学生会想知道校园里有多少这样的对。
+
+返回无序学习伙伴对的数量。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{courses}) \\leq 500$
 - $0 \\leq \\text{len}(\\text{courses}[i]) \\leq 50$

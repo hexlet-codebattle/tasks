@@ -14,6 +14,16 @@ description_ru = """
 чтобы весы уравновесились.
 """
 
+description_es = """
+Te dan los pesos de cuatro pesas. Determine si es posible colocar los cuatro
+pesas en los dos platos de una balanza para que la balanza quede equilibrada.
+"""
+
+description_zh = """
+给你四个重量的重量。确定是否可以放置所有四个
+将重物放在天平的两个秤盘上，使天平保持平衡。
+"""
+
 solution = """
 def solution(weights):
     \"\"\"Return True if the four weights can be split into two groups with equal sum.

@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая достает из `domains` IP, связанный с именем `domain`. Если такая запись отсутствует, то верните `"DNS_PROBE_FINISHED_NXDOMAIN"`.
 """
 
+description_es = """
+Cree una función que recoja una IP de `domains` con el nombre `domain`. Si no hay ningún registro, devuelva `\"DNS_PROBE_FINISHED_NXDOMAIN\"`.
+"""
+
+description_zh = """
+创建一个函数，通过 `domain` 名称从 `domains` 获取 IP。如果没有记录，则返回`\"DNS_PROBE_FINISHED_NXDOMAIN\"`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{domain}) \\leq 50$
 - $1 \\leq \\text{len}(\\text{domains}) \\leq 50$

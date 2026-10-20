@@ -12,6 +12,14 @@ description_ru = """
 Дан список цен подарков и число `k`. Удалите все подарки дороже `k`, сохранив порядок остальных.
 """
 
+description_es = """
+Dada una lista de precios de obsequios y un número `k`, elimine todos los obsequios que cuesten más de `k`, conservando el orden de los obsequios restantes.
+"""
+
+description_zh = """
+给定一份礼物价格列表和编号 `k`，删除所有价格超过 `k` 的礼物，保留剩余礼物的顺序。
+"""
+
 limits = """
 - $0 \\leq k \\leq 10^6$
 - $0 \\leq \\text{len}(\\text{prices}) \\leq 1000$

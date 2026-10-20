@@ -26,6 +26,28 @@ description_ru = """
 Для набора конфигов верните массив логических вердиктов.
 """
 
+description_es = """
+Tareas: `build`, `test`, `deploy`.
+
+Una configuración de CI/CD es una secuencia de tareas. Es **válido** si:
+- cada `test` aparece **después** de algún `build`,
+- cada `deploy` aparece **después** del **más reciente** `test` exitoso,
+- cualquier `build` nuevo **invalida** las pruebas anteriores (por lo que el siguiente `deploy` debe tener un `test` más nuevo).
+
+Dadas múltiples configuraciones, devuelve una serie de veredictos booleanos.
+"""
+
+description_zh = """
+任务类型为 `build`、`test` 和 `deploy`。
+
+CI/CD 配置是一个任务序列。当且仅当以下条件全部成立时，配置才**有效**：
+- 每个 `test` **之前**都有某个 `build`；
+- 每个 `deploy` 都出现在**最近一次**成功的 `test` **之后**；
+- 每次新的 `build` 都会**使之前的测试失效**，因此之后的 `deploy` 必须有更新的 `test`。
+
+给定多个配置，返回布尔值数组，表示各配置是否有效。
+"""
+
 limits = """
 - $1 \\leq \\text{len(configs)} \\leq 100$
 - $0 \\leq \\text{len(config)} \\leq 100$

@@ -12,6 +12,14 @@ description_ru = """
 Даны два целых числа `a` и `b`. Верните их сумму.
 """
 
+description_es = """
+Dados dos números enteros `a` y `b`, devuelve su suma.
+"""
+
+description_zh = """
+给定两个整数 `a` 和 `b`，返回它们的和。
+"""
+
 limits = """
 - $0 \\leq a \\leq 30$
 - $0 \\leq b \\leq 30$

@@ -16,6 +16,18 @@ description_ru = """
 Дан целый угол `angle`, отсчитанный по часовой стрелке. Верните номер ближайшего луча. Угол ровно посередине между двумя лучами относится к следующему по часовой стрелке лучу. Углы зациклены, поэтому вблизи $360^\\circ$ ближайшим также является луч $0$.
 """
 
+description_es = """
+Una Spider-Signal tiene haces $12$ numerados del $0$ al $11$. El haz $0$ apunta al ángulo $0^\\circ$, y cada haz siguiente es otro $30^\\circ$ en el sentido de las agujas del reloj.
+
+Dado un ángulo entero en el sentido de las agujas del reloj `angle`, devuelve el número del haz más cercano. Un ángulo exactamente a mitad de camino entre dos haces pertenece al haz en el sentido de las agujas del reloj. Los ángulos se envuelven, por lo que la viga $0$ también está más cerca de $360^\\circ$.
+"""
+
+description_zh = """
+蜘蛛信号具有编号为 $0$ 到 $11$ 的 $12$ 光束。光束 $0$ 指向角度 $0^\\circ$，并且每个下一个光束都是顺时针方向的另一个 $30^\\circ$。
+
+给定整数顺时针角度 `angle`，返回最近光束的编号。两束光束正好中间的角度属于顺时针光束。角度环绕，因此梁 $0$ 也最接近 $360^\\circ$。
+"""
+
 limits = """
 - $0 \\leq \\text{angle} < 360$
 """

@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая принимает 2 числа и проверяет равен ли квадратный корень первого числа кубическому корню второго числа.
 """
 
+description_es = """
+Crea una función que tome dos números y verifique si la raíz cuadrada del primer número es igual a la raíz cúbica del segundo número.
+"""
+
+description_zh = """
+创建一个接受两个数字的函数，并检查第一个数字的平方根是否等于第二个数字的立方根。
+"""
+
 limits = """
 - $0 \\leq \\text{first} \\leq 10^6$
 - $0 \\leq \\text{second} \\leq 10^6$

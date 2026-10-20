@@ -12,6 +12,14 @@ description_ru = """
 Есть $26$ бригад с метками $A\\ldots Z$. Изначально переходящий знак у бригады `first`. Последовательно проходят соревнования $(i,j)$. Если кто-то из участников владел знаком до матча, знак переходит к (неизвестному) победителю из этой пары. Найдите, сколько бригад **могло** владеть знаком к концу (при всех возможных исходах матчей).
 """
 
+description_es = """
+Hay brigadas $26$ etiquetadas como $A\\ldots Z$. Inicialmente, el banderín de paso lo ostenta la brigada `first`. Se lleva a cabo una secuencia de competiciones $(i,j)$ **en orden**. En cada competición, si alguno de los participantes tenía el banderín antes del partido, el banderín pasa al ganador (desconocido) entre esos dos. Calcule cuántas brigadas **podrían** poseer el banderín al final (sobre todas las opciones de ganadores).
+"""
+
+description_zh = """
+有 $26$ 支队伍，编号为 $A\\ldots Z$。最初，流动锦旗由队伍 `first` 持有。一系列比赛 $(i,j)$ **按给定顺序**进行。每场比赛中，如果任意一方在比赛前持有锦旗，锦旗就归这两支队伍中的获胜者所有，获胜者未知。考虑所有可能的比赛结果，计算最终**可能**持有锦旗的队伍数量。
+"""
+
 limits = """
 - $0 \\leq m \\leq 10^5$
 - $i,j \\in \\{A,\\ldots,Z\\}$

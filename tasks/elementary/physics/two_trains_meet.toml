@@ -12,6 +12,14 @@ description_ru = """
 Вычислите, через какое время после отправления два поезда встретятся. Предположим, что поезда движутся между двумя пунктами по одному участку пути, двигаясь в противоположных направлениях. Функция должна принимать скорости поездов и начальное расстояние между ними.
 """
 
+description_es = """
+Calcule cuánto tiempo después de su partida se encontrarán dos trenes. Supongamos que los trenes viajan entre dos puntos a lo largo de un solo tramo de vía, yendo en direcciones opuestas. La función debería consumir las velocidades de los trenes y la distancia de salida entre los trenes.
+"""
+
+description_zh = """
+计算两列火车出发后多久会相遇。假设火车沿着单段轨道在两点之间行驶，方向相反。该函数应该消耗火车的速度和火车之间的起始距离。
+"""
+
 limits = """
 - $1 \\leq v_1, v_2 \\leq 1000$
 - $1 \\leq \\text{distance} \\leq 100000$

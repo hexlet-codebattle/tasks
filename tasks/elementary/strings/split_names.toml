@@ -17,6 +17,18 @@ description_ru = """
 Сохраните порядок.
 """
 
+description_es = """
+Dada una matriz de cadenas donde cada cadena es una combinación de nombre y apellido
+(por ejemplo, \"Alan Turing\", \"Ada Lovelace\"), cree una función que divida cada cadena en la primera
+y apellido y los agrega como [primero, apellido] a la matriz de resultados. Mantenga el orden igual.
+"""
+
+description_zh = """
+给定一个字符串数组，其中每个字符串都是名字和姓氏的组合
+（例如“Alan Turing”、“Ada Lovelace”），创建一个函数，将每个字符串分成第一个
+和姓氏并将它们作为 [first, last] 添加到结果数组中。保持顺序相同。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{names}) \\leq 100$
 - $3 \\leq \\text{len}(\\text{names}[i]) \\leq 50$

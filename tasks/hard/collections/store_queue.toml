@@ -16,6 +16,18 @@ description_ru = """
 Определите общее время обслуживания всех покупателей (время, когда последняя касса закончит работу).
 """
 
+description_es = """
+Dada una variedad de tiempos de servicio para clientes y cajas registradoras `k`, cada cliente elige la caja registradora que estará gratuita antes.
+
+Determine el tiempo total para atender a todos los clientes (el momento en que finaliza el último registro).
+"""
+
+description_zh = """
+给定一系列客户服务时间和 `k` 收银机，每个客户选择最早空闲的收银机。
+
+确定为所有顾客提供服务的总时间（最后一次收银完成的时间）。
+"""
+
 limits = """
 - $1 \\leq k \\leq 100$
 - $1 \\leq \\text{len}(\\text{times}) \\leq 10^4$

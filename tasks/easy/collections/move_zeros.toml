@@ -12,6 +12,14 @@ description_ru = """
 Переместите все 0 в конец массива сохраняя порядок ненулевых элементов.
 """
 
+description_es = """
+Mueve todos los ceros al final de la matriz manteniendo el orden relativo de los elementos distintos de cero.
+"""
+
+description_zh = """
+将所有 0 移至数组末尾，同时保持非零元素的相对顺序。
+"""
+
 limits = """
 - $0 \\leq arr[i] \\leq 100$
 - $1 \\leq \\text{len}(arr) \\leq 100$

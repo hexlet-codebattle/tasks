@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая меняет регистр каждого символа в тексте на противоположный.
 """
 
+description_es = """
+Implemente una función que cambie el caso de cada letra del texto al contrario.
+"""
+
+description_zh = """
+实现一个函数，将文本中每个字母的大小写更改为相反的大小写。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(text) \\leq 1000$
 """

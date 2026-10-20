@@ -12,6 +12,14 @@ description_ru = """
 Хокинс фиксирует число наблюдений порталов по дням. Дан список дневных значений, верните сумму только положительных значений.
 """
 
+description_es = """
+Hawkins registra cuántos avistamientos de portales ocurren cada día. Dada una lista de recuentos diarios, devuelva únicamente el total de recuentos positivos.
+"""
+
+description_zh = """
+霍金斯记录每天发生的门户目击事件。给定每日计数列表，仅返回正计数的总数。
+"""
+
 solution = """
 def solution(sightings: list[int]) -> int:
     return sum(x for x in sightings if x > 0)

@@ -12,6 +12,14 @@ description_ru = """
 Посчитайте сумму двумерного массива.
 """
 
+description_es = """
+Calcular la suma de una matriz bidimensional.
+"""
+
+description_zh = """
+计算二维数组的总和。
+"""
+
 limits = """
 - $-100 \\leq arr[i][j] \\leq 100$
 - $1 \\leq \\text{len}(arr) \\leq 20$

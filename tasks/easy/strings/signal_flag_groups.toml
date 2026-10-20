@@ -16,6 +16,18 @@ description_ru = """
 Верните длину самой длинной непрерывной группы.
 """
 
+description_es = """
+Una fila de indicadores de señal se escribe como una cadena `flags`. Letras adyacentes iguales representan un grupo continuo de la misma bandera.
+
+Devuelve la longitud del grupo continuo más largo.
+"""
+
+description_zh = """
+一行信号标志被写入字符串 `flags`。相邻的字母相等表示同一标志的连续组。
+
+返回最长连续组的长度。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{flags}) \\leq 100$
 - $\\text{flags} \\in \\{A{-}Z\\}^*$

@@ -24,6 +24,26 @@ description_ru = """
 При выезде из пункта A бак был полон. Если достичь пункта B невозможно, верните `-1`.
 """
 
+description_es = """
+Andrey conduce del punto A al punto B. La distancia entre estos puntos es de kilómetros `n`. Con el depósito lleno, el coche puede recorrer `k` kilómetros.
+
+Se le proporciona una matriz `stations` que contiene las coordenadas de las estaciones de servicio relativas al punto A. Las coordenadas están estrictamente ordenadas en orden ascendente.
+
+Determine el número mínimo de reabastecimientos de combustible que Andrey necesita hacer para llegar exitosamente al punto B.
+
+Comienza con el tanque lleno en el punto A. Si es imposible llegar al punto B, regresa `-1`.
+"""
+
+description_zh = """
+Andrey 正从 A 点开车到 B 点。这些点之间的距离为 `n` 公里。油箱加满后，汽车可行驶`k`公里。
+
+给定一个数组 `stations`，其中包含加油站相对于 A 点的坐标。坐标严格按升序排序。
+
+确定 Andrey 成功到达 B 点所需的最少加油次数。
+
+他从 A 点开始，油箱已满。如果无法到达 B 点，则返回 `-1`。
+"""
+
 limits = """
 - $1 \\leq n \\leq 10^5$
 - $1 \\leq k \\leq 10^5$

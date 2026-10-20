@@ -8,6 +8,14 @@ description_ru = """
 Даны четыре целых числа. Разделите их на две пары так, чтобы сумма произведений чисел в парах была максимальной. Верните эту сумму.
 """
 
+description_es = """
+Dados cuatro números enteros, divídalos en dos pares de modo que la suma de los productos de los números de cada par sea máxima. Devuelve esta suma máxima.
+"""
+
+description_zh = """
+给定四个整数，将它们分成两对，使得每对中的数字的乘积之和最大。返回这个最大总和。
+"""
+
 description_en = """
 Given four integers, split them into two pairs such that the sum of the products of the numbers in each pair is maximal. Return this maximum sum.
 """

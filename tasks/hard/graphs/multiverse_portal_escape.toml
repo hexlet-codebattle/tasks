@@ -28,6 +28,30 @@ description_ru = """
 Верните минимальное число ходов от `S` до `E` или $-1$, если выбраться невозможно.
 """
 
+description_es = """
+Spider-Man está atrapado en una cuadrícula multiverso rectangular:
+
+- `S` es el inicio y `E` es la salida.
+- `#` está bloqueado; `.` es una celda abierta ordinaria.
+- Cada dos letras mayúsculas es una etiqueta de portal y aparece exactamente dos veces.
+
+Un movimiento ingresa a una celda no bloqueada ortogonalmente adyacente. Cuando ingresa a un portal cuya etiqueta no ha sido utilizada, puede permanecer allí sin usarla o moverse instantáneamente a su gemelo como parte del mismo movimiento y marcar esa etiqueta usada. Posteriormente, ambas celdas de esa etiqueta son celdas abiertas ordinarias. Cada etiqueta se puede utilizar como máximo una vez, independientemente de todas las demás etiquetas.
+
+Devuelve el número mínimo de movimientos de `S` a `E`, o $-1$ si escapar es imposible.
+"""
+
+description_zh = """
+蜘蛛侠被困在一个矩形的多元宇宙网格中：
+
+- `S` 是开始，`E` 是出口。
+- `#` 被屏蔽； `.`是普通开孔。
+- 每隔一个大写字母都是门户标签，并且恰好出现两次。
+
+一次移动进入一个正交相邻的非阻塞单元。当他进入一个尚未使用标签的传送门时，他可以留在那儿而不使用它，或者作为同一移动的一部分立即移动到其孪生并标记所使用的标签。之后，该标签的两个单元格都是普通的开路单元格。每个标签最多可以使用一次，独立于所有其他标签。
+
+返回从 `S` 到 `E` 的最小移动次数，如果无法逃脱，则返回 $-1$。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{grid}) \\leq 20$
 - $1 \\leq \\text{len}(\\text{grid}[i]) = \\text{len}(\\text{grid}[0]) \\leq 20$

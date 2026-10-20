@@ -16,6 +16,18 @@ description_ru = """
 `Следующий больший элемент` для элемента `x` - это первый наибольший элемент в массиве справа от `x`. Для элементов у которых нет большего элемента справа, `следующий больший элемент` считайте равным `-1`.
 """
 
+description_es = """
+Dada una matriz, devuelve el siguiente elemento mayor (NGE) para cada elemento.
+
+El siguiente elemento mayor para un elemento `x` es el primer elemento mayor en el lado derecho de `x` en la matriz. Elementos para los cuales no existe un elemento mayor, considere el siguiente elemento mayor como `-1`.
+"""
+
+description_zh = """
+给定一个数组，返回每个元素的下一个更大元素 (NGE)。
+
+元素 `x` 的下一个更大元素是数组中 `x` 右侧的第一个更大元素。对于不存在更大元素的元素，将下一个更大元素视为 `-1`。
+"""
+
 limits = """
 - $1 \\leq |\\text{arr}| \\leq 100$
 - $-100 \\leq \\text{arr}[i] \\leq 100$

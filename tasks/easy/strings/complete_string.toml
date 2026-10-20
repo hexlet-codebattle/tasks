@@ -16,6 +16,18 @@ description_ru = """
 По заданной строке `text` верните `True`, если текст полный, и `False` в противном случае. Учитываются только буквы от `$a$` до `$z$`, остальные символы игнорируются.
 """
 
+description_es = """
+Un texto se considera completo si contiene cada letra minúscula en inglés desde $a$ hasta $z$ al menos una vez.
+
+Dada una cadena `text`, devuelva `True` si está completa; de lo contrario, devuelva `False`. Sólo se consideran cartas de `$a$` a `$z$`; otros personajes son ignorados.
+"""
+
+description_zh = """
+如果文本包含从 $a$ 到 $z$ 的每个小写英文字母至少一次，则称为完整文本。
+
+给定一个字符串 `text`，如果完整则返回 `True`，否则返回 `False`。仅考虑从 `$a$` 到 `$z$` 的字母；其他字符将被忽略。
+"""
+
 solution = """
 def solution(text: str) -> bool:
     letters = {ch for ch in text if "a" <= ch <= "z"}

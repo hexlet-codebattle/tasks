@@ -22,6 +22,24 @@ description_ru = """
 Если нет совпадений — вернуть строку `"ERROR"`.
 """
 
+description_es = """
+Un cliente envió una carta que contenía su apellido e iniciales.
+Se le proporciona el formulario breve del cliente (apellido e iniciales) y una lista de nombres completos.
+Devuelve el **nombre completo** del cliente si se encuentra una coincidencia.
+
+Si hay varias coincidencias posibles, devuelva la **primera**.
+Si no existe ninguna coincidencia, devuelve la cadena `\"ERROR\"`.
+"""
+
+description_zh = """
+一位客户发送了一封包含其姓氏和姓名缩写的信件。
+您将获得客户的简短表格（姓氏和缩写）和全名列表。
+如果找到匹配，则返回客户的**全名**。
+
+如果有多个可能的匹配项，则返回**第一个**。
+如果不存在匹配项，则返回字符串 `\"ERROR\"`。
+"""
+
 solution = """
 def solution(initials: str, names: list) -> str:
     for full_name in names:

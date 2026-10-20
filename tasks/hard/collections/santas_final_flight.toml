@@ -20,6 +20,22 @@ description_ru = """
 Каждая доставка представлена как `[длительность, дедлайн]`.
 """
 
+description_es = """
+Dada una lista de entregas, cada una con un tiempo de ejecución y una fecha límite. Sólo se puede realizar una entrega en un momento dado.
+
+Determine la cantidad máxima de entregas que Santa puede completar antes de Año Nuevo (todas las entregas deben finalizar antes de la fecha límite).
+
+Cada entrega se representa como `[duration, deadline]`.
+"""
+
+description_zh = """
+给定一个交付列表，每个交付都有执行时间和截止日期。在任何给定时刻只能执行一次交付。
+
+确定圣诞老人在新年之前可以完成的最大递送数量（所有递送必须在截止日期前完成）。
+
+每次交货均表示为 `[duration, deadline]`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{deliveries}) \\leq 1000$
 - $1 \\leq \\text{duration} \\leq 1000$

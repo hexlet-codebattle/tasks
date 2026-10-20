@@ -12,6 +12,14 @@ description_ru = """
 Есть $m$ пиратов, $k$ вакантных мест на разных судах и список `preferences`, где `preferences[i]` содержит индексы кораблей, на которых пират $i$ готов работать. Найдите максимальное количество пиратов, которых можно назначить на корабли, если каждый пират может быть назначен не более чем на один корабль, а каждый корабль — не более чем на одного пирата.
 """
 
+description_es = """
+Hay piratas $m$, puestos vacantes $k$ en diferentes barcos y una lista `preferences` donde `preferences[i]` contiene los índices de los barcos en los que el pirata $i$ está dispuesto a trabajar. Encuentra el número máximo de piratas que se pueden asignar a los barcos, con cada pirata asignado como máximo a un barco y cada barco asignado a como máximo un pirata.
+"""
+
+description_zh = """
+有$m$海盗，$k$不同船舶上的空缺位置，以及列表`preferences`，其中`preferences[i]`包含海盗$i$愿意工作的船舶索引。找出可以分配给船只的海盗的最大数量，每个海盗最多分配一艘船，每艘船最多分配一名海盗。
+"""
+
 limits = """
 - $0 \\leq m \\leq 100$
 - $0 \\leq k \\leq 100$

@@ -16,6 +16,18 @@ description_ru = """
 Две строки являются изоморфными, если символы в первой строке можно заменить так, чтобы получить вторую строку. Все вхождения определенного символа должны быть заменены другим символом, с сохранением порядка символов. Два различных символа не могут быть отражены на один и тот же итоговый, но символ может быть отражен на самого себя.
 """
 
+description_es = """
+Determina si dos cuerdas son isomorfas.
+
+Dos cadenas son isomorfas si los caracteres de la primera cadena se pueden reemplazar para obtener la segunda cadena. Todas las apariciones de un personaje deben ser reemplazadas por otro personaje preservando el orden de los personajes. No pueden asignarse dos personajes al mismo personaje, pero un personaje puede asignarse a sí mismo.
+"""
+
+description_zh = """
+判断两个字符串是否同构。
+
+如果可以替换第一个字符串中的字符以获得第二个字符串，则两个字符串是同构的。所有出现的字符都必须替换为另一个字符，同时保留字符的顺序。两个字符不能映射到同一个字符，但一个字符可以映射到其自身。
+"""
+
 limits = """
 - $1 \\leq |s_1|, |s_2| \\leq 100$
 - $|s_1| = |s_2|$

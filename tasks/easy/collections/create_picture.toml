@@ -12,6 +12,14 @@ description_ru = """
 Дан массив слов, напишите функцию, которая возвращает картинку (массив) с границей из звездочек `*`, внутри границы находятся самые длинные слова.
 """
 
+description_es = """
+Dada una serie de palabras, escriba una función que devuelva una imagen (matriz) con bordes formados por asteriscos `*` usando las palabras más largas.
+"""
+
+description_zh = """
+给定一个单词数组，编写一个函数，返回一个图片（数组），其边框由星号 `*` 使用最长的单词组成。
+"""
+
 limits = """
 - $2 \\leq \\text{len}(\\text{words}) \\leq 50$
 - $1 \\leq \\text{len}(\\text{words}[i]) \\leq 30$

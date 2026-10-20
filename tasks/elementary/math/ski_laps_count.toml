@@ -16,6 +16,18 @@ description_ru = """
 Верните итоговый зачет кругов.
 """
 
+description_es = """
+Un esquiador recorrió `distance_m` metros en un bucle de longitud `lap_m`.
+Por cada vuelta completa de `5`, se agrega una vuelta extra a la puntuación.
+Devuelve la puntuación total de la vuelta.
+"""
+
+description_zh = """
+一名滑雪者在长度为 `lap_m` 的环路上滑行了 `distance_m` 米。
+对于每 `5` 整圈，得分中会添加一圈奖励。
+返回总圈数。
+"""
+
 solution = """
 def solution(distance_m: int, lap_m: int) -> int:
     x = distance_m // lap_m

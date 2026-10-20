@@ -18,6 +18,20 @@ description_ru = """
 Ведра в массиве buckets представлены как (количество воды в ведре, его вместимость).
 """
 
+description_es = """
+Para cada balde se conoce la cantidad de agua que contiene, $w_i$, y su capacidad, $c_i$.
+Se le permite verter cualquier cantidad de agua de cualquier balde a cualquier otro. Está prohibido verter agua fuera de los cubos.
+Encuentre la cantidad máxima de cubos que pueden vaciarse después de cualquier vertido.
+Los cubos en la matriz de cubos se representan como (cantidad de agua en el cubo, su capacidad).
+"""
+
+description_zh = """
+对于每个桶，其水量 $w_i$ 及其容量 $c_i$ 是已知的。
+您可以将任意数量的水从任何桶倒入任何其他桶中。禁止将水倒到水桶外。
+找出每次倾倒后可以清空的桶的最大数量。
+桶数组中的桶表示为（桶中的水量，其容量）。
+"""
+
 solution = """
 def solution(buckets):
     total_water = sum(w for w, _ in buckets)

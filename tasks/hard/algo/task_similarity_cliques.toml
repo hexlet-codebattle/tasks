@@ -28,6 +28,30 @@ description_ru = """
 2. Список групп отсортируйте по лексикографическому порядку исходных индексов (например, `[1, 5]` перед `[2, 3]`).
 """
 
+description_es = """
+Dada una lista no vacía de cadenas `tasks`, cada tarea contiene al menos una palabra.
+
+Dos tareas son **similares** si comparten alguna palabra. Una *palabra* es una secuencia maximal de letras o dígitos; la comparación **no distingue mayúsculas de minúsculas** e **ignora la puntuación**.
+
+Un **grupo** contiene al menos dos tareas y **cada** tarea es directamente similar a **todas las demás** del grupo, formando un clique. Devuelve **todos los cliques maximales**, es decir, los que no pueden ampliarse añadiendo otra tarea.
+
+Ordenación:
+1. Dentro de cada grupo, conserva el orden relativo original de `tasks`.
+2. Ordena los grupos lexicográficamente por sus índices originales; por ejemplo, `[1, 5]` precede a `[2, 3]`.
+"""
+
+description_zh = """
+给定非空任务字符串列表 `tasks`，每个任务至少包含一个单词。
+
+如果两个任务共享至少一个单词，则它们**相似**。单词是由字母或数字组成的极长连续序列；比较**不区分大小写**，并且**忽略标点符号**。
+
+一个**组**至少包含两个任务，组中**每个**任务都与**其他所有**任务直接相似，即构成一个团。返回**所有极大团**：无法再加入其他任务而仍保持两两相似的组。
+
+排序规则：
+1. 每个组内保留 `tasks` 中的原始相对顺序。
+2. 按原始索引序列的字典顺序排列各组，例如 `[1, 5]` 排在 `[2, 3]` 之前。
+"""
+
 solution = """
 import re
 from collections import defaultdict

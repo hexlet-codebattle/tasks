@@ -12,6 +12,14 @@ description_ru = """
 Верните сумму всех простых чисел от 2 до переданного числа, не включая само число.
 """
 
+description_es = """
+Devuelve la suma de todos los números primos desde 2 hasta un número determinado, sin incluir este número.
+"""
+
+description_zh = """
+返回从 2 到给定数字的所有素数之和，不包括该数字。
+"""
+
 limits = """
 - $2 \\leq \\text{num} \\leq 10000$
 """

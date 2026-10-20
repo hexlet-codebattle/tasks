@@ -16,6 +16,18 @@ description_ru = """
 Верните наименьший индекс, на котором накопленное тепло не меньше `target`, или $-1$, если оно никогда не достигнет `target`.
 """
 
+description_es = """
+Los fenólogos rastrean el desarrollo de las plantas con el calor acumulado: un día con temperatura `t` suma unidades de calor $\\max(0, t - \\text{base})$. Los días se procesan en el orden indicado por `temperatures` y se suma el calor de todos los días procesados.
+
+Devuelve el índice más pequeño en el que el calor acumulado es al menos `target`, o $-1$ si nunca llega a `target`.
+"""
+
+description_zh = """
+物候学家利用累积热量跟踪植物发育：温度为 `t` 的一天增加了 $\\max(0, t - \\text{base})$ 热量单位。按照 `temperatures` 给出的顺序处理天数，并对所有处理天数的热量进行求和。
+
+返回累积热量至少为 `target` 的最小索引，如果从未达到 `target`，则返回 $-1$。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{temperatures}) \\leq 10^4$
 - $-50 \\leq \\text{temperatures}[i] \\leq 50$

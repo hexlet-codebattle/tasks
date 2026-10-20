@@ -20,6 +20,22 @@ description_ru = """
 Верните `True`, если строка соответствует допустимому формату телефонного номера, иначе верните `False`.
 """
 
+description_es = """
+Valide si una cadena determinada puede representar un número de teléfono.
+
+Opcionalmente, el número puede comenzar con un prefijo de país o troncal (`8`, `0`, `+cc` o `00cc`), puede contener un código de área opcional con o sin paréntesis y puede usar espacios o guiones como separadores.
+
+Devuelve `True` si la cadena coincide con el formato de número de teléfono permitido; de lo contrario, devuelve `False`.
+"""
+
+description_zh = """
+验证给定字符串是否可以代表电话号码。
+
+该号码可以选择以国家/地区或中继前缀（`8`、`0`、`+cc` 或 `00cc`）开头，可以包含带或不带括号的可选区号，并且可以使用空格或连字符作为分隔符。
+
+如果字符串与允许的电话号码格式匹配，则返回 `True`，否则返回 `False`。
+"""
+
 solution = """
 import re
 

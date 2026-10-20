@@ -12,6 +12,14 @@ description_ru = """
 Если число делится на $3$, верните "Fizz". Если число делится на $5$, верните "Buzz". Если число делится на $3$ и $5$, верните "FizzBuzz". В ином случае верните пустую строку.
 """
 
+description_es = """
+Si un número es divisible por $3$, devuelve \"Fizz\". Si un número es divisible por $5$, devuelve \"Buzz\". Si un número es divisible por $3$ y $5$, devuelve \"FizzBuzz\". De lo contrario, devuelve una cadena vacía.
+"""
+
+description_zh = """
+如果一个数同时能被 $3$ 和 $5$ 整除，返回 \"FizzBuzz\"；否则，如果能被 $3$ 整除，返回 \"Fizz\"；否则，如果能被 $5$ 整除，返回 \"Buzz\"。其他情况返回空字符串。
+"""
+
 solution = """
 def solution(n):
     return ("Fizz" if n % 3 == 0 else "") + ("Buzz" if n % 5 == 0 else "")

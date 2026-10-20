@@ -20,6 +20,21 @@ description_ru = """
 Нападающий точно на любой из этих линий не находится вне игры.
 """
 
+description_es = """
+Las posiciones utilizan un paso de `0` a `100`.
+Si `attack_right` es `true`, el ataque se mueve hacia `100`; de lo contrario, se mueve hacia `0`.
+
+Devuelve, en orden ascendente, los índices de los atacantes que están estrictamente más cerca de la portería contraria que la línea media, el balón y el penúltimo defensor.
+Un atacante exactamente en cualquiera de estas líneas está en juego.
+"""
+
+description_zh = """
+球场坐标范围为 `0` 到 `100`。
+如果 `attack_right` 为 `true`，进攻方向朝向 `100`；否则朝向 `0`。
+
+返回同时比中线、球和倒数第二名防守者更靠近对方球门的进攻球员索引，按索引升序排列。恰好位于任意一条判定线上的球员不越位。
+"""
+
 limits = """
 - $0 \\leq \\operatorname{len}(attackers) \\leq 11$
 - $0 \\leq attackers_i \\leq 100$

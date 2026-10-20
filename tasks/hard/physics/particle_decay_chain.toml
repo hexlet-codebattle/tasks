@@ -22,6 +22,24 @@ description_ru = """
 Порядок не важен, но повторы важны. Частица без правила просто остаётся стабильной.
 """
 
+description_es = """
+Las reglas de desintegración de partículas son cadenas como `\"Higgs->photon+photon\"`.
+Esto significa que una partícula `Higgs` podrá ser reemplazada por una `photon` y otra `photon`.
+
+A partir de `start`, aplique cualquier cantidad de reglas a cualquier partícula actual.
+Devuelve `true` si puedes terminar exactamente con las partículas de `target`.
+El orden no importa, pero los duplicados sí. Una partícula sin regla simplemente permanece estable.
+"""
+
+description_zh = """
+粒子衰减规则是类似 `\"Higgs->photon+photon\"` 的字符串。
+这意味着一个 `Higgs` 颗粒可以被一个 `photon` 和另一个 `photon` 替换。
+
+从 `start` 开始，对任何当前粒子应用任意数量的规则。
+如果您可以完全使用 `target` 中的粒子来完成，请返回 `true`。
+顺序并不重要，但重复却很重要。没有规则的粒子只是保持稳定。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{rules}) \\leq 30$
 - $1 \\leq \\text{len}(\\text{target}) \\leq 12$

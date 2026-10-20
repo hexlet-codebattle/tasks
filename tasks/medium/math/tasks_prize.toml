@@ -18,6 +18,20 @@ description_ru = """
 Верните минимальный возможный приз для задачи с заданным номером.
 """
 
+description_es = """
+Dado el número de tareas resueltas, calcule el premio mínimo posible por esa tarea.
+El premio por la primera tarea es de 100 rublos. Para cada tarea posterior el premio deberá ser al menos el doble del anterior.
+Además, un premio debe ser “suficientemente redondo”: el número de ceros finales en su representación decimal debe ser al menos la mitad del número total de dígitos.
+Devuelve el premio más pequeño que cumpla todas las condiciones para el número de tarea dado.
+"""
+
+description_zh = """
+给定已解决任务的数量，计算该任务的最小可能奖励。
+第一个任务的奖金是100卢布。对于每个后续任务，奖励必须至少是前一个任务的两倍。
+此外，奖品必须“足够四舍五入”：十进制表示形式中尾随零的数量必须至少是总位数的一半。
+返回满足给定任务编号的所有条件的最小奖励。
+"""
+
 solution = """
 def solution(task_number: int) -> int:
     \"\"\"Return the minimal possible prize for the given task number.\"\"\"

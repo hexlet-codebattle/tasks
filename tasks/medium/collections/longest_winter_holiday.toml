@@ -16,6 +16,18 @@ description_ru = """
 Найдите максимальную длину непрерывного праздничного периода.
 """
 
+description_es = """
+Dada una matriz de `0` y `1`, donde `1` representa un día festivo. Puede reemplazar como máximo los ceros `k` por unos.
+
+Encuentre la duración máxima de un período de vacaciones continuo después de los reemplazos.
+"""
+
+description_zh = """
+给定一个数组 `0` 和 `1`，其中 `1` 代表假期。您最多可以将 `k` 0 替换为 1。
+
+求更换后连续假期的最大长度。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{days}) \\leq 10^5$
 - $0 \\leq k \\leq \\text{len}(\\text{days})$

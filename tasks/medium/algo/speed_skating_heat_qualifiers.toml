@@ -28,6 +28,30 @@ description_ru = """
 Верните всех квалифицировавшихся как пары `[heat_index, athlete_index]`, отсортированные по возрастанию.
 """
 
+description_es = """
+Se le proporciona `heats`, donde cada fila contiene tiempos para una serie de patinaje de velocidad.
+Cuanto menos tiempo, mejor.
+
+Reglas de calificación:
+1. En cada serie, los mejores atletas `k` se clasifican directamente.
+2. De todos los atletas restantes, elija el siguiente `m` más rápido en general.
+3. Tie-break: índice de eliminatoria más pequeño, luego índice de atleta más pequeño.
+
+Devuelve todos los calificadores como pares `[heat_index, athlete_index]`, ordenados de forma ascendente.
+"""
+
+description_zh = """
+您将得到 `heats`，其中每一行包含一次速滑预赛的时间。
+时间越小越好。
+
+资格规则：
+1. 每场预赛，`k` 成绩最好的运动员直接晋级。
+2. 从所有剩余的运动员中，获得总体最快的下一个 `m`。
+3. 抢七：热度指数越小，运动员指数越小。
+
+以 `[heat_index, athlete_index]` 对的形式返回所有限定符，按升序排序。
+"""
+
 solution = """
 def solution(heats: list[list[int]], k: int, m: int) -> list[list[int]]:
     q, rest = [], []

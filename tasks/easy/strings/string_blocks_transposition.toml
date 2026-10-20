@@ -18,6 +18,20 @@ description_ru = """
 В противном случае разбейте строку на блоки длины `k`. Сформируйте и верните новую строку, беря сначала первый символ из каждого блока, затем второй символ из каждого блока, и так далее, вплоть до `k`-го символа.
 """
 
+description_es = """
+Se le proporciona una cadena `s` y un número entero `k`.
+
+Si la longitud de la cadena `s` no es divisible por `k`, devuelva una cadena vacía `\"\"`.
+De lo contrario, divida la cadena en bloques de longitud `k`. Construya y devuelva una nueva cadena tomando el primer carácter de cada bloque, luego el segundo carácter de cada bloque, y así sucesivamente, hasta el carácter `k`-ésimo.
+"""
+
+description_zh = """
+给定一个字符串 `s` 和一个整数 `k`。
+
+如果字符串 `s` 的长度不能被 `k` 整除，则返回空字符串 `\"\"`。
+否则，将字符串拆分为长度为 `k` 的块。通过从每个块中取出第一个字符，然后从每个块中取出第二个字符，依此类推，直到第 `k` 个字符，构造并返回一个新字符串。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 100$
 - $1 \\leq k \\leq 100$

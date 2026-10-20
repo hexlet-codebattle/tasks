@@ -26,6 +26,28 @@ description_ru = """
 Верните отсортированный список имён студентов, записанных на курс в данный момент.
 """
 
+description_es = """
+Un curso popular en la universidad tiene plazas `capacity`. El sistema de registro procesa la matriz `events` en orden, con cada evento escrito como una de las siguientes cadenas:
+
+- `\"add:NAME\"` solicita inscripción para estudiante `NAME`.
+- `\"drop:NAME\"` cancela la inscripción o el lugar en la lista de espera de `NAME`.
+
+Al inscribirse, un estudiante toma un asiento libre o se une a la lista de espera (primero en entrar, primero en salir) cuando el curso está lleno. Cuando un estudiante inscrito abandona, el primer estudiante en lista de espera ocupa el asiento libre. Se ignora agregar un estudiante que ya está inscrito o en lista de espera.
+
+Devuelve la lista ordenada de nombres de los estudiantes actualmente matriculados en el curso.
+"""
+
+description_zh = """
+大学里一门热门课程有 `capacity` 座位。注册系统按顺序处理数组 `events`，每个事件写为以下字符串之一：
+
+- `\"add:NAME\"` 请求学生 `NAME` 注册。
+- `\"drop:NAME\"` 取消 `NAME` 的注册或候补名额。
+
+注册时，学生可以享受免费座位，或者在课程已满时加入候补名单（先进先出）。当注册的学生退学时，最早在候补名单上的学生将占据空出的座位。添加已注册或已列入候补名单的学生将被忽略。
+
+返回当前就读该课程的学生姓名的排序列表。
+"""
+
 limits = """
 - $0 \\leq \\text{capacity} \\leq 10^3$
 - $0 \\leq \\text{len}(\\text{events}) \\leq 10^4$

@@ -12,6 +12,14 @@ description_ru = """
 Ярослав помогает бабушке сажать морковку на грядке. Грядка, которую засевает Ярослав, представляет собой бесконечную прямую. В каждой целочисленной координате можно посадить морковку. Бабушка уже посадила $n$ морковок в $n$ ячеек, однако она считает, что недостаточно плотно посадила морковку, и просит Ярослава посчитать, сколько ещё ячеек можно засеять. У морковки есть особенность: она не растёт, если посажена слишком часто. А именно: бабушка хочет, чтобы расстояние от любой морковки из новой посадки до других морковок (и старых, и новых) было не меньше $\\text{distance}$. Бабушка понимает, что снаружи задействованной зоны можно посадить ещё бесконечно много новых морковок, поэтому просит Ярослава посчитать только ячейки между другими засеянными ячейками. Создайте функцию, которая принимает массив $\\text{cells}$ из возрастающей последовательности чисел $X_1, X_2, ... X_n$ - координаты засеянных ячеек, и $\\text{distance}$ - минимальное расстояние, которое ожидает бабушка, и находит наибольшее количество морковок, которое можно подсадить к уже посаженным.
 """
 
+description_es = """
+Yaroslav ayuda a su abuela a plantar zanahorias en un semillero de una sola línea donde se puede plantar una zanahoria en cada coordenada entera a lo largo de la línea. Habiendo ya plantado zanahorias en celdas espaciadas a varias distancias a lo largo de la línea, la abuela ha aprendido que las zanahorias no crecen bien cuando se plantan muy escasamente y piensa que es necesario plantarlas más densamente para crecer. Le pide a Yaroslav que cuente cuántas celdas adicionales se pueden plantar con zanahorias entre las celdas plantadas actualmente, dado un mínimo de $\\text{distance}$ entre las celdas plantadas. Cree una función que devuelva el número de celdas adicionales que se pueden sembrar dada 1) una matriz entera de $\\text{cells}$ sembrados en una secuencia creciente de $X_1, X_2, ... X_n$ y 2) un mínimo de $\\text{distance}$ que la abuela espera entre las celdas plantadas.
+"""
+
+description_zh = """
+雅罗斯拉夫帮助他的祖母在单行苗床上种植胡萝卜，沿着该行的每个整数坐标都可以种植一根胡萝卜。祖母已经在沿线间隔不同距离的单元格中种植了胡萝卜，她了解到，如果种植得太稀疏，胡萝卜生长得不好，并认为胡萝卜需要种植得更密才能生长。她要求 Yaroslav 计算在当前种植的细胞之间可以种植多少个额外的胡萝卜细胞，前提是种植的细胞之间的最小值为 $\\text{distance}$。创建一个函数，返回可以播种的附加细胞数，给定 1) 以 $X_1, X_2, ... X_n$ 递增序列排列的播种 $\\text{cells}$ 的整数数组，以及 2) 祖母期望的播种细胞之间的最小 $\\text{distance}$。
+"""
+
 limits = """
 - $2 \\leq \\text{len}(\\text{cells}) \\leq 100$
 - $1 \\leq \\text{distance} \\leq 10$

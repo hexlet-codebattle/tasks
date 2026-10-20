@@ -36,6 +36,38 @@ $$
 Среди полученных значений найдите наибольшее.
 """
 
+description_es = """
+Implementar la función $f(x)$ definida por:
+
+$$
+f(x) =
+\\begin{cases}
+x^{2}, & -2 \\le x < 2,\\\\
+x^{2} + 4x + 5, & x \\ge 2,\\\\
+4, & x < -2.
+\\end{cases}
+$$
+
+Usando esta función para los números dados $n$, calcule todos los valores $f(x)$.
+Entre los valores calculados, encuentre el más grande.
+"""
+
+description_zh = """
+实现由以下定义的函数 $f(x)$：
+
+$$
+f(x) =
+\\begin{cases}
+x^{2}, & -2 \\le x < 2,\\\\
+x^{2} + 4x + 5, & x \\ge 2,\\\\
+4, & x < -2.
+\\end{cases}
+$$
+
+对给定数字 $n$ 使用此函数，计算所有值 $f(x)$。
+在计算出的值中，找到最大的值。
+"""
+
 limits = """
 - $-100 \\leq \\text{arr}[i] \\leq 100$
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 100$

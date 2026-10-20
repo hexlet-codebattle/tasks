@@ -20,6 +20,22 @@ description_ru = """
 Гарантируется, что кавычки всегда закрыты и внутри строк нет экранированных кавычек (например, `\\"`). Верните измененный код.
 """
 
+description_es = """
+Dada una cadena `code`, elimine todos los comentarios de una sola línea que comiencen con `//`.
+
+Un comentario comienza con `//` y continúa hasta el final de la línea (el carácter `\\n`). Sin embargo, si `//` se encuentra dentro de una cadena literal (entre comillas dobles `\"` o simples `'`), **no** debe eliminarse.
+
+Supongamos que las comillas siempre están cerradas correctamente y que no hay comillas escapadas (como `\\\"`) dentro de las cadenas. Devuelve el código modificado.
+"""
+
+description_zh = """
+给定字符串 `code`，删除所有以 `//` 开头的单行注释。
+
+注释以 `//` 开始，一直持续到行尾（`\\n` 字符）。但是，如果 `//` 位于字符串文字内部（用双 `\"` 或单 `'` 引号括起来），则不应将其删除。
+
+假设引号始终正确闭合，并且字符串内没有转义引号（如 `\\\"`）。返回修改后的代码。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{code}) \\leq 10^4$
 - The string only contains valid ASCII characters.

@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая фильтрует сообщения в чате Codebattle по имени пользователя. Если таких сообщений нет, верните `['no messages!']`
 """
 
+description_es = """
+Implementar una función que extraiga los mensajes de los usuarios del chat de Codebattle. Si no hay tales mensajes, devuelva `['no messages!']`
+"""
+
+description_zh = """
+实现从 Codebattle 聊天中提取用户消息的功能。如果没有此类消息，则返回`['no messages!']`
+"""
+
 solution = """
 def solution(messages, user):
     result = [msg["text"] for msg in messages if msg["user"] == user]

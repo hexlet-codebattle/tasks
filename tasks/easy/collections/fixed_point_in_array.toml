@@ -12,6 +12,14 @@ description_ru = """
 Дан массив из $n$ различных целых чисел, упорядоченных по возрастанию. Верните фиксированную точку в данном массиве, если она присутствует в нём, иначе верните $-1$. Фиксированная точка в массиве $\\text{arr}$ - это индекс $i$, такой, что элемент $\\text{arr}[i]$ равен $i$. Предполагается, что индексация массива начинается с нуля.
 """
 
+description_es = """
+Dada una matriz de enteros distintos $n$ ordenados en orden ascendente, devuelve un punto fijo en la matriz, si hay un punto fijo presente en la matriz; de lo contrario, devuelva $-1$. El punto fijo en una matriz es un índice $i$ tal que $\\text{arr}[i]$ es igual a $i$.
+"""
+
+description_zh = """
+给定一个按升序排序的 $n$ 不同整数的数组，如果数组中存在固定点，则返回数组中的固定点；否则返回 $-1$。数组中的定点是索引 $i$，使得 $\\text{arr}[i]$ 等于 $i$。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
 """

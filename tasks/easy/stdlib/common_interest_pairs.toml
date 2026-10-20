@@ -34,6 +34,34 @@ description_ru = """
 2) Пары отсортированы по индексу первого имени, затем по индексу второго имени (оба по `names`).
 """
 
+description_es = """
+Se dan dos listas:
+- `names`: nombres **únicos** de amigos.
+- `interests`: la lista de la posición `i` contiene los intereses de `names[i]`.
+
+Todas las listas son no vacías, `names` e `interests` tienen igual longitud y la comparación de intereses **distingue mayúsculas de minúsculas**.
+
+Devuelve **todos los pares** `['name1', 'name2']` de amigos que compartan **al menos un** interés.
+
+Ordenación:
+1. Dentro de cada par, va primero quien aparece antes en `names`.
+2. Ordena los pares por el índice de su primer nombre y después por el de su segundo nombre, ambos según `names`.
+"""
+
+description_zh = """
+给定两个列表：
+- `names`：朋友姓名列表，姓名**互不相同**；
+- `interests`：列表，其中第 `i` 项是 `names[i]` 的兴趣列表。
+
+所有列表均非空，`names` 和 `interests` 长度相同，兴趣比较**区分大小写**。
+
+返回共享**至少一项**兴趣的**所有朋友对** `['name1', 'name2']`。
+
+排序规则：
+1. 每对中，在 `names` 中位置较早的朋友排在前面。
+2. 先按每对第一个姓名的索引升序排列，再按第二个姓名的索引升序排列，索引均取自 `names`。
+"""
+
 solution = """
 def solution(names, interests):
     sets = [set(xs) for xs in interests]

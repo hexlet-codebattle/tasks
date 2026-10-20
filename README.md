@@ -13,7 +13,7 @@ This project contains programming tasks organized by difficulty levels (easy, el
 - **Task Management**: 100+ programming tasks in TOML format
 - **Automated Testing**: Python-based test runner with comprehensive assertions
 - **Web Preview**: React-based interface for browsing tasks with mathematical rendering
-- **Multi-language Support**: English and Russian descriptions
+- **Multi-language Support**: English, Russian, Spanish, and Simplified Chinese descriptions
 - **Difficulty Levels**: Easy, Elementary, Medium, Hard
 - **Categories**: Algorithms, Arrays, Graph, Math, Regex, Stdlib, Strings
 
@@ -101,6 +101,14 @@ description_ru = """
 Описание задачи на русском языке.
 """
 
+description_es = """
+Descripción de la tarea en español.
+"""
+
+description_zh = """
+简体中文任务描述。
+"""
+
 solution = """
 def solution(arg1, arg2):
     # Reference implementation
@@ -141,7 +149,7 @@ The React-based preview interface provides:
 - **Code Highlighting**: Syntax highlighting for solutions and examples
 - **Responsive Design**: Mobile-friendly interface
 - **Search & Filter**: Easy navigation through task collection
-- **Multi-language Display**: Side-by-side English/Russian descriptions
+- **Multi-language Display**: English, Russian, Spanish, and Simplified Chinese descriptions
 
 ## Testing
 
@@ -162,7 +170,7 @@ The test runner:
 1. Add new tasks as `.toml` files in appropriate difficulty directories
 2. Follow the established task format with complete metadata
 3. Include comprehensive test cases with edge cases
-4. Provide both English and Russian descriptions
+4. Provide equivalent English, Russian, Spanish, and Simplified Chinese descriptions
 5. Run `make build` to generate JSON files
 6. Test with `make build-and-preview` to verify web display
 

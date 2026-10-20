@@ -16,6 +16,18 @@ description_ru = """
 Матрица называется **Тёплицевой**, если каждая диагональ от верхнего левого угла до нижнего правого состоит из одинаковых элементов.
 """
 
+description_es = """
+Dado un $m \\times n$ `matrix`, devuelve `True` si la matriz es Toeplitz. De lo contrario, devuelva `False`.
+
+Una matriz es **Toeplitz** si cada diagonal desde arriba a la izquierda hasta abajo a la derecha tiene los mismos elementos.
+"""
+
+description_zh = """
+给定 $m \\times n$ `matrix`，如果矩阵是 Toeplitz，则返回 `True`。否则，返回`False`。
+
+如果从左上角到右下角的每条对角线都具有相同的元素，则矩阵为 **Toeplitz**。
+"""
+
 limits = """
 - $1 \\leq m, n \\leq 20$
 - $0 \\leq \\text{matrix}[i][j] \\leq 100$

@@ -12,6 +12,14 @@ description_ru = """
 Даны два целых числа. Создайте простой калькулятор, который поддерживает следующие операции: `+` (сложение), `-` (вычитание), `^` (возведение в степень), `*` (умножение).
 """
 
+description_es = """
+Dados dos números enteros. Cree una calculadora sencilla que admita las siguientes operaciones: `+` (suma), `-` (resta), `^` (potencia), `*` (multiplicación).
+"""
+
+description_zh = """
+给定两个整数。创建一个简单的计算器，支持以下运算：`+`（加）、`-`（减）、`^`（幂）、`*`（乘）。
+"""
+
 limits = """
 - $-100 \\leq \\text{first} \\leq 100$
 - $-100 \\leq \\text{second} \\leq 100$

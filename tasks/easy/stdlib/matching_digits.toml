@@ -16,6 +16,18 @@ description_ru = """
 Верните количество позиций, в которых цифры чисел `a` и `b` совпадают.
 """
 
+description_es = """
+Se le dan dos números enteros de 4 dígitos: `a` y `b`.
+
+Devuelve el número de posiciones donde los dígitos de `a` y `b` son iguales.
+"""
+
+description_zh = """
+给定两个 4 位整数：`a` 和 `b`。
+
+返回 `a` 和 `b` 的位数相等的位置数。
+"""
+
 limits = """
 - $1000 \\leq a \\leq 9999$
 - $1000 \\leq b \\leq 9999$

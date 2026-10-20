@@ -20,6 +20,22 @@ description_ru = """
 Верните получившуюся двоичную строку.
 """
 
+description_es = """
+Se le proporcionan dos cadenas binarias `bitstring` y `bitmask` de igual longitud.
+
+Aplicarles el operador lógico `OR` **bit a bit**: cada posición en el resultado es `\"1\"` si al menos uno de los bits correspondientes en `bitstring` o `bitmask` es `\"1\"`, y `\"0\"` solo si ambos bits son `\"0\"`.
+
+Devuelve la cadena binaria resultante.
+"""
+
+description_zh = """
+给定两个长度相等的二进制字符串 `bitstring` 和 `bitmask`。
+
+**一点一点**对它们应用逻辑运算符 `OR`：如果 `bitstring` 或 `bitmask` 中的至少一个相应位是 `\"1\"`，则结果中的每个位置是 `\"1\"`，并且仅当两个位都是 `\"0\"` 时`\"0\"`。
+
+返回生成的二进制字符串。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{bitstring}) \\leq 60$
 - $\\text{len}(\\text{bitstring}) = \\text{len}(\\text{bitmask})$

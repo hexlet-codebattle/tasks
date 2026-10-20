@@ -16,6 +16,18 @@ description_ru = """
 Верните минимальное количество удаленных элементов, после которого все идентификаторы в оставшейся последовательности различны. Разрешено удалить всю последовательность.
 """
 
+description_es = """
+La línea de tiempo del avance es `scene_ids`. Las identificaciones repetidas crean un error de continuidad. El editor puede eliminar un segmento medio abierto contiguo, posiblemente vacío, y unir el prefijo y el sufijo restantes.
+
+Devuelve la cantidad mínima de elementos eliminados necesarios para que cada ID en la línea de tiempo restante sea distinta. Se permite eliminar toda la línea de tiempo.
+"""
+
+description_zh = """
+预告片时间线为`scene_ids`。重复的 ID 会产生连续性错误。编辑器可以删除一个连续的半开段（可能是空的），并加入剩余的前缀和后缀。
+
+返回所需的最小删除元素数，以便剩余时间线中的每个 ID 都是不同的。允许删除整个时间线。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{scene\\_ids}) \\leq 10^5$
 - $-10^9 \\leq \\text{scene\\_ids}[i] \\leq 10^9$

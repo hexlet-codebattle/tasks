@@ -20,6 +20,22 @@ description_ru = """
 Например: после `p` идёт `q`, после `l` — `a`, после `m` — `z`.
 """
 
+description_es = """
+Dada una letra minúscula en inglés `letter`, devuelve la letra que está inmediatamente a su derecha en un teclado QWERTY estándar **en la misma fila**, con envolvente.
+
+Las filas son: `qwertyuiop`, `asdfghjkl`, `zxcvbnm`.
+
+Por ejemplo: después de `p` viene `q`, después de `l` viene `a`, después de `m` viene `z`.
+"""
+
+description_zh = """
+给定一个小写英文字母 `letter`，返回标准 QWERTY 键盘**同一行**上紧邻其右侧的字母，并进行环绕。
+
+行为：`qwertyuiop`、`asdfghjkl`、`zxcvbnm`。
+
+例如：`p`之后是`q`，`l`之后是`a`，`m`之后是`z`。
+"""
+
 solution = """
 def solution(letter: str) -> str:
     rows = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm']

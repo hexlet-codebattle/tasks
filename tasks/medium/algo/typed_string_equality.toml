@@ -16,6 +16,18 @@ description_ru = """
 После применения всех удалений верните `True`, если итоговые тексты равны, иначе `False`.
 """
 
+description_es = """
+Se le proporcionan dos cadenas `a` y `b` que pueden contener el carácter de retroceso `\"#\"`.
+Un `\"#\"` elimina el carácter anterior si existe (sin efecto al inicio).
+Después de aplicar todos los retrocesos, devuelva `True` si los textos resultantes son iguales; de lo contrario, devuelva `False`.
+"""
+
+description_zh = """
+给定两个字符串 `a` 和 `b`，它们可能包含退格字符 `\"#\"`。
+`\"#\"` 删除前一个字符（如果存在）（开始时没有效果）。
+应用所有退格键后，如果结果文本相等，则返回 `True`，否则返回 `False`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(a) \\leq 50$
 - $0 \\leq \\text{len}(b) \\leq 50$

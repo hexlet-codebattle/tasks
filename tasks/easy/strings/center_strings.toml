@@ -24,6 +24,26 @@ description_ru = """
 Если исходный массив пуст, верните пустой массив.
 """
 
+description_es = """
+Dada una matriz de cadenas, devuelve una nueva matriz donde cada cadena está centrada en la longitud de la cadena más larga de la matriz original, rellenada con espacios (`\" \"`).
+
+Si el relleno es desigual (es decir, la diferencia entre la longitud máxima y la longitud de la cadena actual es impar), coloque el espacio adicional de la siguiente manera:
+- Si el ancho del objetivo es impar y el margen es impar, el espacio adicional va a la **izquierda**.
+- De lo contrario, el espacio adicional irá a la **derecha**.
+
+Si la matriz de entrada está vacía, devuelve una matriz vacía.
+"""
+
+description_zh = """
+给定一个字符串数组，返回一个新数组，其中每个字符串以原始数组中最长字符串的长度为中心，并用空格填充 (`\" \"`)。
+
+如果填充不均匀（即最大长度与当前字符串长度之间的差异为奇数），则按如下方式放置额外的空间：
+- 如果目标宽度为奇数且边距为奇数，则额外的空间将移至**左侧**。
+- 否则，多余的空间将移至**右侧**。
+
+如果输入数组为空，则返回空数组。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(strings) \\leq 100$
 - $0 \\leq \\text{len}(strings[i]) \\leq 100$

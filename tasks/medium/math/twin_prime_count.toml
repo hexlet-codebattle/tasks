@@ -20,6 +20,22 @@ description_ru = """
 Обратите внимание, что парное число $x$ не обязательно должно принадлежать отрезку $[a, b]$.
 """
 
+description_es = """
+Se considera que un número primo $p$ tiene un \"par\" si existe otro número primo $x$ tal que $|p - x| = 2$.
+
+Dado un segmento $[a, b]$, encuentre el número total de números primos dentro de este segmento que tienen un par.
+
+Tenga en cuenta que el par $x$ no necesariamente tiene que pertenecer al segmento $[a, b]$.
+"""
+
+description_zh = """
+如果存在另一个素数 $x$ 使得 $|p - x| = 2$ ，则素数 $p$ 被视为具有“对”。
+
+给定一个线段 $[a, b]$，求该线段内有一对素数的总数。
+
+请注意，$x$ 对不一定必须属于段 $[a, b]$。
+"""
+
 limits = """
 - $0 \\leq a \\leq b \\leq 10^5$
 """

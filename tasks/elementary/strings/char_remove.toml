@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая принимает массив строк `words` и строку `character`, затем возвращает новый массив строк, в котором все вхождения `character` удалены из каждой строки массива `words`.
 """
 
+description_es = """
+Escriba una función que tome una matriz de cadenas `words` y una cadena `character`, y devuelva una nueva matriz de cadenas donde todas las apariciones de `character` se eliminan de cada cadena en `words`.
+"""
+
+description_zh = """
+编写一个函数，该函数接受字符串数组 `words` 和字符串 `character`，并返回一个新的字符串数组，其中从 `words` 中的每个字符串中删除所有出现的 `character`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(character) \\leq 1$
 - $0 \\leq \\text{len}(words) \\leq 20$

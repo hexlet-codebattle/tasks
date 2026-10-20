@@ -16,6 +16,18 @@ description_ru = """
 Если несколько товаров встречаются одинаково часто, верните тот, который встречается **первым** в исходном списке.
 """
 
+description_es = """
+Dadas las compras como `(item, date)` con fecha en `'YYYY-MM-DD'` y un mes `'YYYY-MM'`,
+Devuelve el artículo comprado **con más frecuencia** en ese mes.
+Si varios elementos empatan, devuelva el que aparece **primero** en la lista original.
+"""
+
+description_zh = """
+假设购买为 `(item, date)`，日期为 `'YYYY-MM-DD'`，月份为 `'YYYY-MM'`，
+退回该月**最常**购买的商品。
+如果多个项目相同，则返回原始列表中**第一个**出现的项目。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{purchases}) \\leq 10^5$
 - $\\text{date} = \\text{YYYY-MM-DD}$

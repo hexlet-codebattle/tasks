@@ -20,6 +20,22 @@ description_ru = """
 Если анаграмм нет, верните `[["anagrams not found!"]]`.
 """
 
+description_es = """
+Dada una serie de palabras en minúscula $w$, agrupe las palabras que son anagramas.
+Devuelve una matriz de grupos (cada uno de ellos una matriz de cadenas) donde cada grupo tiene el tamaño $\\ge 2$.
+Dentro de cada grupo, las palabras se ordenan lexicográficamente (se permiten duplicados).
+Los grupos se ordenan por su primer elemento y luego por tamaño del grupo.
+Si no hay anagramas, devuelve `[[\"anagrams not found!\"]]`.
+"""
+
+description_zh = """
+给定一组小写单词 $w$，将字谜词分组。
+返回一个组数组（每个组都是字符串数组），其中每个组的大小为 $\\ge 2$。
+在每个组内，单词按字典顺序排序（允许重复）。
+组按其第一个元素排序，然后按组大小排序。
+如果没有字谜，则返回 `[[\"anagrams not found!\"]]`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(w) \\leq 5\\cdot 42$
 - $1 \\leq \\text{len}(w_i) \\leq 30$

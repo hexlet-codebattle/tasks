@@ -12,6 +12,14 @@ description_ru = """
 Дан массив целых чисел, найдите первый повторяющийся в нём элемент. Если такого элемента нет, верните `-1`.
 """
 
+description_es = """
+Dada una matriz de números enteros, encuentre el primer elemento repetido en ella. Si no se encuentra nada, devuelva `-1`.
+"""
+
+description_zh = """
+给定一个整数数组，找到其中的第一个重复元素。如果未找到任何内容，则返回 `-1`。
+"""
+
 limits = """
 - $2 \\leq \\text{len}(\\text{arr}) \\leq 100$
 """

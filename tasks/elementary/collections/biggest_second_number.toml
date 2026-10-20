@@ -12,6 +12,14 @@ description_ru = """
 По заданному массиву целых чисел `numbers` верните второе наибольшее число в массиве. Массив всегда содержит не менее трёх элементов. Если наибольшее значение встречается несколько раз, второе наибольшее число может совпадать с наибольшим.
 """
 
+description_es = """
+Dada una matriz de números enteros `numbers`, devuelve el segundo número más grande de la matriz. La matriz siempre contiene al menos tres elementos. Si el valor más grande aparece varias veces, el segundo número más grande puede ser igual al valor más grande.
+"""
+
+description_zh = """
+给定一个整数数组 `numbers`，返回数组中第二大的数字。该数组始终包含至少三个元素。如果最大值出现多次，则第二大数可能等于最大值。
+"""
+
 limits = """
 - $3 \\leq n \\leq 100$
 - $-100 \\leq a_i \\leq 100$

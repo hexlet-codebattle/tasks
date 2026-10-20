@@ -31,12 +31,12 @@
 - Before publishing, verify that the JSON files currently in `release/` exactly match the intended task pack; never rely on artifacts left by an earlier build.
 
 ## Task Authoring Rules
-- Required fields: `base_score`, `name`, `description_en`, `description_ru`, `input_signature`, `output_signature`, `asserts`, `examples`, `solution`, `level`, `tags`, `time_to_solve_sec`.
+- Required fields: `base_score`, `name`, `description_en`, `description_ru`, `description_es`, `description_zh`, `input_signature`, `output_signature`, `asserts`, `examples`, `solution`, `level`, `tags`, `time_to_solve_sec`.
 - Optional fields: `limits`, `comment`.
 - Keep field order aligned with `ai/task_example.toml`.
 - `name` must be English and `snake_case`; the filename must match it exactly.
-- `description_en` and `description_ru` are Markdown strings rendered with math support; keep them concise.
-- English and Russian descriptions must define the same complete contract. State units, strict versus inclusive boundaries, output ordering, tie-breaks, empty/impossible behavior, and movement or scoring rules whenever relevant.
+- `description_en`, `description_ru`, `description_es`, and `description_zh` are Markdown strings rendered with math support; keep them concise. Use Simplified Chinese for `description_zh`.
+- All four descriptions must define the same complete contract. State units, strict versus inclusive boundaries, output ordering, tie-breaks, empty/impossible behavior, and movement or scoring rules whenever relevant. Preserve code literals and mathematical notation in translations.
 - Do not rely on domain knowledge for rules that affect the answer. For example, explicitly state point awards, allowed movement directions, interval semantics, and whether equality is allowed.
 - Describe the goal rather than prescribing the intended algorithm unless reproducing a specified procedure is itself the task.
 - Wrap mathematical notation in LaTeX using `$...$` or `$$...$$`.

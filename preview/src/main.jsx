@@ -36,6 +36,8 @@ function TaskCard({ task }) {
     time_to_solve_sec,
     description_en,
     description_ru,
+    description_es,
+    description_zh,
     limits,
     examples,
     input_signature,
@@ -73,6 +75,12 @@ function TaskCard({ task }) {
         </Section>
         <Section title="Описание (RU)">
           <TaskDescriptionMarkdown>{description_ru}</TaskDescriptionMarkdown>
+        </Section>
+        <Section title="Descripción (ES)">
+          <TaskDescriptionMarkdown>{description_es}</TaskDescriptionMarkdown>
+        </Section>
+        <Section title="描述 (ZH)">
+          <TaskDescriptionMarkdown>{description_zh}</TaskDescriptionMarkdown>
         </Section>
       </div>
 

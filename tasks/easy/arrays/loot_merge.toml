@@ -16,6 +16,18 @@ description_ru = """
 Объедините оба списка добычи в одну сводку. Верните отсортированный массив пар `[weight, count]`, где `count` показывает, сколько ящиков такого веса всего есть у обеих команд.
 """
 
+description_es = """
+Dos tripulaciones piratas traen listas de botín ordenadas `port_loot` y `starboard_loot`, donde cada número es el peso de una caja en orden no decreciente.
+
+Fusiona ambas listas de botín en un solo resumen. Devuelve una matriz ordenada de pares `[weight, count]`, donde `count` es cuántas cajas de ese peso aparecen en total en ambos equipos.
+"""
+
+description_zh = """
+两名海盗船员带来了排序后的战利品清单 `port_loot` 和 `starboard_loot`，其中每个数字都是按非递减顺序排列的板条箱重量。
+
+将两个战利品列表合并为一个摘要。返回 `[weight, count]` 对的排序数组，其中 `count` 是两个船员中总共出现了多少个该重量的板条箱。
+"""
+
 limits = """
 - $0 \\leq \\lvert \\text{port\\_loot} \\rvert,\\ \\lvert \\text{starboard\\_loot} \\rvert \\leq 100$
 - $0 \\leq \\text{port\\_loot}[i],\\ \\text{starboard\\_loot}[i] \\leq 100$

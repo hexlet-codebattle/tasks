@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая возвращает массив строк, отсортированных по длине в убывающем порядке. Сохраните порядок следования для слов с одинаковой длиной (стабильная сортировка).
 """
 
+description_es = """
+Cree una función que devuelva una matriz de cadenas ordenadas por longitud en orden descendente. Mantenga el orden original de las cadenas con la misma longitud (clasificación estable).
+"""
+
+description_zh = """
+创建一个函数，返回按长度降序排列的字符串数组。保持字符串的原始顺序具有相同的长度（稳定排序）。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{words}) \\leq 100$
 - $1 \\leq \\text{len}(\\text{words}[i]) \\leq 50$

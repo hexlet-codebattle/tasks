@@ -16,6 +16,18 @@ description_ru = """
 По заданному начальному столбцу `x` (от $1$ до $8$, считая слева) и строке `y` (от $1$ до $8$, считая снизу), верните количество способов, которыми она может дойти до последней строки ($y = 8$) и стать дамкой. Шашка не может выходить за пределы доски.
 """
 
+description_es = """
+En un tablero de ajedrez $8 \\times 8$, hay una sola ficha blanca. Puede moverse en diagonal hacia adelante (un paso hacia arriba, hacia la izquierda o hacia arriba, hacia la derecha).
+
+Dada su columna inicial `x` (de $1$ a $8$, contando desde la izquierda) y la fila `y` (de $1$ a $8$, contando desde abajo), devuelve el número de formas en que puede llegar a la última fila ($y = 8$) para convertirse en rey. La ficha no puede moverse fuera de los límites del tablero.
+"""
+
+description_zh = """
+在 $8 \\times 8$ 棋盘上，有一个白色棋子。它可以沿对角线向前移动（左上或右上一步）。
+
+给定起始列 `x`（从 $1$ 到 $8$，从左数起）和行 `y`（从 $1$ 到 $8$，从下数起），返回它可以到达最后一行的方式数（$y = 8$）成为国王。检查员不能移动到棋盘限制之外。
+"""
+
 limits = """
 - $1 \\leq x \\leq 8$
 - $1 \\leq y \\leq 8$

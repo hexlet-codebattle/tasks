@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая рассчитывает количество кадров, показанных в заданном количестве минут для определенного FPS. Примечание: FPS означает "количество кадров в секунду" и это количество кадров, показываемых каждую секунду на экране компьютера.
 """
 
+description_es = """
+Cree una función que devuelva el número de fotogramas mostrados en un número determinado de minutos para un determinado FPS. Nota: FPS significa \"fotogramas por segundo\" y es la cantidad de fotogramas que muestra la pantalla de una computadora cada segundo.
+"""
+
+description_zh = """
+创建一个函数，返回特定 FPS 在给定分钟数内显示的帧数。注意：FPS 代表“每秒帧数”，它是计算机屏幕每秒显示的帧数。
+"""
+
 limits = """
 - $1 \\leq \\text{minutes} \\leq 1000$
 - $1 \\leq \\text{fps} \\leq 240$

@@ -16,6 +16,18 @@ description_ru = """
 Замените каждый символ, покрытый хотя бы одним отрезком, на `*` и верните результат. Отрезки могут пересекаться, соприкасаться, быть пустыми и покрывать пробелы. Непокрытые символы остаются на своих позициях.
 """
 
+description_es = """
+El estudio marca spoilers en el texto del tráiler `text`. Cada par `[left, right]` denota el intervalo de caracteres medio abierto $[\\text{left}, \\text{right})$.
+
+Reemplace cada carácter cubierto por al menos un intervalo con `*` y devuelva el resultado. Los tramos pueden superponerse, tocarse, estar vacíos y cubrir espacios. Los personajes descubiertos mantienen sus posiciones originales.
+"""
+
+description_zh = """
+工作室在预告片文字 `text` 中标记了剧透跨度。每对`[left, right]`表示半开字符间隔$[\\text{left}, \\text{right})$。
+
+将至少一个范围覆盖的每个字符替换为 `*` 并返回结果。跨度可以重叠、接触、为空和覆盖空间。未被覆盖的角色保持原来的位置。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{text}) \\leq 10^4$
 - $0 \\leq \\text{len}(\\text{spans}) \\leq 10^3$

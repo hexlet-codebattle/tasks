@@ -16,6 +16,18 @@ description_ru = """
 Дано $n$ человек, рассчитайте сколько машин потребуется, чтобы все доехали в комфорте.
 """
 
+description_es = """
+Un automóvil típico tiene capacidad para tres pasajeros y un conductor, lo que permite que cuatro personas viajen a algún lugar.
+
+Dado el número de personas $n$, calcula cuántos automóviles se necesitan para sentar a todos cómodamente.
+"""
+
+description_zh = """
+一辆典型的汽车可以容纳三名乘客和一名司机，从而允许四个人前往某个地方。
+
+给定 $n$ 人数，计算需要多少辆车才能让每个人都舒适地就座。
+"""
+
 limits = """
 - $0 \\leq \\text{people} \\leq 100$
 """

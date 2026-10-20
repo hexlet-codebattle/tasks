@@ -12,6 +12,14 @@ description_ru = """
 Selene должна выполнить один корректирующий маневр длительностью `duration` последовательных секунд. Интервалы опасности `[l, r]` задают моменты с космическим мусором и включают границы. Найдите самый ранний безопасный момент старта внутри `[window_start, window_end]` или верните `-1`.
 """
 
+description_es = """
+Selene debe realizar una quemadura de corrección que dure `duration` segundos consecutivos. Los intervalos de peligro `[l, r]` marcan tiempos con desechos peligrosos, inclusive. Encuentre la hora de inicio segura más temprana dentro de `[window_start, window_end]` o devuelva `-1`.
+"""
+
+description_zh = """
+Selene 必须执行一次持续 `duration` 个连续秒的修正点火。危险区间 `[l, r]` 包含两个端点，表示有危险碎片的时段。求使整个点火过程位于 `[window_start, window_end]` 内的最早安全开始时间；如果不存在，则返回 `-1`。
+"""
+
 limits = """
 - $0 \\leq \\text{window\\_start} \\leq \\text{window\\_end} \\leq 10^6$
 - $1 \\leq \\text{duration} \\leq 10^5$

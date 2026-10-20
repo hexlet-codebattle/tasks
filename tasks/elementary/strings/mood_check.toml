@@ -20,6 +20,22 @@ description_ru = """
 Если настроение - пустая строка, верните `"Today, I am feeling neutral."`
 """
 
+description_es = """
+Cree una función que adopte un estado de ánimo actual y devuelva una oración en el siguiente formato:
+
+`\"Today, I am feeling {mood}.\"`
+
+Si el estado de ánimo es una cadena vacía, devuelve `\"Today, I am feeling neutral.\"`
+"""
+
+description_zh = """
+创建一个接受当前心情并返回以下格式的句子的函数：
+
+`\"Today, I am feeling {mood}.\"`
+
+如果心情为空字符串，则返回`\"Today, I am feeling neutral.\"`
+"""
+
 limits = """
 - $0 \\leq \\text{len}(mood) \\leq 50$
 """

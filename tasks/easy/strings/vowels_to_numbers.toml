@@ -12,6 +12,14 @@ description_ru = """
 Дан массив со словами. Замените гласные буквы в каждом слове на их индексы. Нумерация индексов начинается с нуля. Гласные: a, e, i, o, u, y.
 """
 
+description_es = """
+En una matriz de palabras determinada, reemplace las vocales de cada palabra con sus índices. Los índices están numerados empezando desde cero. Las vocales son: a, e, i, o, u, y.
+"""
+
+description_zh = """
+在给定的单词数组中，将每个单词中的元音替换为其索引。索引从零开始编号。元音有：a、e、i、o、u、y。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{words}) \\leq 50$
 - $1 \\leq \\text{len}(\\text{word}) \\leq 50$

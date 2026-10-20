@@ -12,6 +12,14 @@ description_ru = """
 В городе $N$ перекрёстков, соединённых улицами. Даны два **кольцевых** трамвайных маршрута как упорядоченные списки перекрёстков. Каждая соседняя пара (включая последнюю с первой) задаёт улицу. Известно, что существует ровно **одна** улица, по которой ходят **оба** маршрута. Верните номера перекрёстков этой улицы в возрастающем порядке.
 """
 
+description_es = """
+Una ciudad tiene intersecciones $N$ conectadas por calles. Dos rutas de tranvía **circulares** vienen dadas por las listas ordenadas de intersecciones que visitan. Cada par adyacente (incluido el último con el primero) define una calle. Se sabe que hay exactamente **una** calle utilizada por **ambas** rutas. Devuelve los puntos finales de esa calle en orden ascendente.
+"""
+
+description_zh = """
+某城市有 $N$ 交叉路口，由街道连接。两条**环形**电车路线由它们访问的交叉路口的有序列表给出。每对相邻的对（包括最后一对和第一对）定义一条街道。据了解，**两条**路线恰好使用**一条**街道。按升序返回该街道的端点。
+"""
+
 limits = """
 - $2 \\leq N$
 - $1 \\leq \\text{len(first)},\\ \\text{len(second)} \\leq N$

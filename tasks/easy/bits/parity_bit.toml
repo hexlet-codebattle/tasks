@@ -22,6 +22,24 @@ description_ru = """
 - Бит паритета добавляется в конец бинарной строки.
 """
 
+description_es = """
+Cree una función que agregue el bit de paridad correcto a una cadena binaria.
+
+Los bits de paridad se utilizan como una suma de verificación muy simple para garantizar que los datos binarios no se corrompan durante el tránsito. Así es como funcionan:
+- Si una cadena binaria tiene un número impar de `1`, el bit de paridad es un `1`.
+- Si una cadena binaria tiene un número par de `1`, el bit de paridad es un `0`.
+- El bit de paridad se añade al final de la cadena binaria.
+"""
+
+description_zh = """
+创建一个函数，将正确的奇偶校验位添加到二进制字符串中。
+
+奇偶校验位用作非常简单的校验和，以确保二进制数据在传输过程中不会损坏。它们的工作原理如下：
+- 如果二进制串有奇数个 `1`，则奇偶校验位为 `1`。
+- 如果二进制串有偶数个 `1`，则奇偶校验位为 `0`。
+- 奇偶校验位附加到二进制字符串的末尾。
+"""
+
 limits = """
 - $1 \\leq |\\text{bitstring}| \\leq 20$
 - $x \\in \\{0,1\\}^*$

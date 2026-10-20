@@ -14,6 +14,18 @@ description_ru = """
 Дан паттерн `pattern` и текст `text`. Паттерн — это строка, в которой каждая буква представляет собой маску для соответствующего слова в тексте. Если два разных слова в тексте соответствуют одной и той же букве в паттерне, то эти слова должны быть одинаковыми. Проверьте, соответствует ли текст паттерну.
 """
 
+description_es = """
+Dado un `pattern` y un `text`. Un patrón es una cadena en la que cada letra representa una máscara para la palabra correspondiente en el texto.
+Si dos palabras diferentes en el texto corresponden a la misma letra en el patrón, entonces estas palabras deben ser idénticas.
+Compruebe si el texto coincide con el patrón.
+"""
+
+description_zh = """
+给定 `pattern` 和 `text`。模式是一个字符串，其中每个字母代表文本中相应单词的掩码。
+如果文本中的两个不同单词对应于模式中的相同字母，则这些单词必须相同。
+检查文本是否与模式匹配。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{pattern}) \\leq 50$
 - $1 \\leq \\text{len}(\\text{text}) \\leq 500$

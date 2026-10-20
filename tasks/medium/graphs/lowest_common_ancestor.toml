@@ -16,6 +16,18 @@ description_ru = """
 Учитывая два узла $u$ и $v$, верните их наименьшего общего предка (LCA). LCA — это самый глубокий узел, который является предком как для $u$, так и для $v$.
 """
 
+description_es = """
+Se le proporciona un árbol de nodos $n$ representados por una matriz `parent`, donde `parent[i]` es el padre del nodo $i$. La raíz del árbol tiene `parent[root] = -1`.
+
+Dados dos nodos $u$ y $v$, devuelva su ancestro común más bajo (LCA). El LCA es el nodo más profundo y es un antepasado de $u$ y $v$.
+"""
+
+description_zh = """
+给您一个由 `parent` 数组表示的 $n$ 节点树，其中 `parent[i]` 是节点 $i$ 的父节点。树的根为`parent[root] = -1`。
+
+给定两个节点 $u$ 和 $v$，返回它们的最低共同祖先 (LCA)。 LCA 是最深的节点，是 $u$ 和 $v$ 的祖先。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{parent}) \\leq 1000$
 - $-1 \\leq \\text{parent}[i] < \\text{len}(\\text{parent})$

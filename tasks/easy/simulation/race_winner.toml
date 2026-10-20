@@ -12,6 +12,14 @@ description_ru = """
 В кольцевых гонках участвовало $n$ участников. Система фиксировала каждое пересечение участником финишной прямой, записывая номера участников в том порядке, в котором они ее пересекали. Гонка состоит из $k$ кругов, однако число $k$ неизвестно. Некоторые участники могли выбыть и пройти меньше $k$ кругов, однако гарантируется, что хотя бы один участник прошел все $k$ кругов. Определите участника, который прошел $k$ кругов первым.
 """
 
+description_es = """
+Hay $n$ participantes en una carrera circular. El sistema registra cada vez que un participante cruza la línea de meta, anotando los números de los participantes en el orden en que cruzan. La carrera consta de vueltas $k$, pero se desconoce el valor de $k$. Es posible que algunos participantes se hayan retirado y, por lo tanto, hayan cruzado la línea de meta menos de $k$, pero se garantiza que al menos un participante completó todas las vueltas de $k$. Determine el participante que completó primero las vueltas $k$.
+"""
+
+description_zh = """
+有 $n$ 参加环形比赛。系统会记录参与者每次冲过终点线的时间，并按照冲过终点线的顺序记下参与者的编号。比赛由 $k$ 圈组成，但 $k$ 的值未知。有些参赛者可能退出，因此冲过终点线的次数少于 $k$ 次，但可以保证至少有一名参赛者完成所有 $k$ 圈。确定先完成 $k$ 圈的参与者。
+"""
+
 solution = """
 def solution(n, a):
     # Compute total occurrences of each participant.

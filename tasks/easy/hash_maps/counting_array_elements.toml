@@ -12,6 +12,14 @@ description_ru = """
 Верните ассоциативный массив, который отражает, сколько раз элементы повторяются в полученном массиве.
 """
 
+description_es = """
+Devuelve un mapa hash que muestra cuántas veces aparece cada elemento en la matriz dada.
+"""
+
+description_zh = """
+返回一个哈希映射，显示每个元素在给定数组中出现的次数。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
 - $1 \\leq \\text{len}(\\text{arr}[i]) \\leq 20$

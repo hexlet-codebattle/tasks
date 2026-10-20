@@ -16,6 +16,18 @@ description_ru = """
 Найдите **максимально** возможное начальное количество пицц с ананасом.
 """
 
+description_es = """
+En una fiesta hay actualmente pizzas de pera $g$, pizzas de piña $a$ y cajas vacías $e$ (cada caja contenía un poco de pizza).
+Inicialmente, la cantidad de pizzas de pera no era menor que la cantidad de pizzas de piña.
+Calcula el número inicial **máximo** posible de pizzas de piña.
+"""
+
+description_zh = """
+聚会上目前有 $g$ 个梨披萨、$a$ 个菠萝披萨和 $e$ 个空盒子，每个盒子原来都装有一个披萨。
+最初，梨披萨的数量**不少于**菠萝披萨的数量。
+求最初菠萝披萨数量的**最大**可能值。
+"""
+
 limits = """
 - $0 \\leq g, a, e \\leq 10^9$
 """

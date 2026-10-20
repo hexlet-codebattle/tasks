@@ -16,6 +16,18 @@ description_ru = """
 Если общего префикса нет, верните пустую строку `""`.
 """
 
+description_es = """
+Escriba una función para encontrar la cadena de prefijo común más larga entre una matriz de cadenas.
+
+Si no hay un prefijo común, devuelve una cadena vacía `\"\"`.
+"""
+
+description_zh = """
+编写一个函数来查找字符串数组中最长的公共前缀字符串。
+
+如果没有公共前缀，则返回空字符串 `\"\"`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{strs}) \\leq 200$
 - $0 \\leq \\text{len}(\\text{strs}[i]) \\leq 200$

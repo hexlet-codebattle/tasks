@@ -20,6 +20,22 @@ description_ru = """
 Верните максимальную сумму элементов на ее пути.
 """
 
+description_es = """
+Se le proporciona una matriz de números enteros $m \\times n$. Una tortuga comienza su viaje en la esquina superior izquierda $(0, 0)$ y quiere llegar a la esquina inferior derecha $(m-1, n-1)$.
+
+La tortuga sólo puede moverse **hacia la derecha** o **hacia abajo**.
+
+Devuelve la suma máxima de los elementos a lo largo de su camino.
+"""
+
+description_zh = """
+给定一个 $m \\times n$ 整数矩阵。一只乌龟从左上角 $(0, 0)$ 开始旅程，想要到达右下角 $(m-1, n-1)$。
+
+海龟只能**向右**或**向下**移动。
+
+返回沿其路径的元素的最大总和。
+"""
+
 limits = """
 - $1 \\leq m, n \\leq 100$
 - $-1000 \\leq \\text{matrix}[i][j] \\leq 1000$

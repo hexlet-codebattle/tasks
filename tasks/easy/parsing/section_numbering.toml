@@ -26,6 +26,30 @@ description_ru = '''
 Cформируйте массив строк, где каждая строка состоит из номера пункта (например, $1$, $1.2$, $1.2.1$) и названия, разделённых одним пробелом, точно в том виде, как показано в примерах.
 '''
 
+description_es = """
+Dada una lista de comandos que describen secciones de un documento, genere una lista de cadenas con numeración jerárquica.
+Los comandos pueden ser:
+
+- `section <title>`: una nueva sección de nivel superior (numerada $1, 2, \\ldots$).
+- `subsection <title>` – una subsección dentro de la sección más reciente (numerada $1, 2, \\ldots$ dentro de esa sección).
+- `subsubsection <title>` – una subsección dentro de la subsección más reciente (numerada $1, 2, \\ldots$ dentro de esa subsección).
+
+Después de cada comando sigue una sola palabra: el título del elemento. Producir una matriz donde cada elemento consta del número calculado
+(por ejemplo, $1$, $1.2$, $1.2.1$) seguido de un espacio y el título, exactamente como se muestra en los ejemplos.
+"""
+
+description_zh = """
+给定描述文档各部分的命令列表，生成具有分层编号的字符串列表。
+命令可以是：
+
+- `section <title>` – 新的顶级部分（编号为 $1, 2, \\ldots$）。
+- `subsection <title>` – 最新部分内的一个小节（该部分内编号为 $1, 2, \\ldots$）。
+- `subsubsection <title>` – 最新小节内的子小节（该小节内编号为 $1, 2, \\ldots$）。
+
+每个命令后面都会跟着一个单词——项目的标题。生成一个数组，其中每个元素由计算出的数字组成
+（例如 $1$、$1.2$、$1.2.1$）后跟空格和标题，与示例中所示完全相同。
+"""
+
 solution = """
 def solution(commands):
     \"\"\"Return a list with hierarchical numbers for each command.

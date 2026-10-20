@@ -12,6 +12,14 @@ description_ru = """
 Найдите сумму квадратов всех четных элементов в массиве.
 """
 
+description_es = """
+Encuentra la suma de los cuadrados de todos los números pares de la matriz.
+"""
+
+description_zh = """
+求数组中所有偶数的平方和。
+"""
+
 solution = """
 def solution(arr):
     return sum(num * num for num in arr if num % 2 == 0)

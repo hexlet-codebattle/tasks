@@ -12,6 +12,14 @@ description_ru = """
 Сэму и Фродо надо держаться вместе. Проверьте, нет ли между ними других персонажей.
 """
 
+description_es = """
+Sam y Frodo necesitan estar cerca. Si están uno al lado del otro en la matriz, su función debería devolver verdadero. Si hay otras personas entre ellos, devuelve falso.
+"""
+
+description_zh = """
+山姆和弗罗多需要保持亲密关系。如果它们在数组中并排，您的函数应该返回 true。如果他们之间有其他人，则返回 false。
+"""
+
 solution = """
 def solution(persons: list[str]) -> bool:
     if "Sam" not in persons or "Frodo" not in persons:

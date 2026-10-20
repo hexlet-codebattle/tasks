@@ -12,6 +12,14 @@ description_ru = """
 Дано целое число $n$. Найдите **минимальное** число, строго большее $n$, которое можно получить перестановкой цифр $n$. Если такого числа не существует, верните $-1$.
 """
 
+description_es = """
+Dado un número entero $n$, encuentre el número **más pequeño** mayor que $n$ que se puede obtener permutando los dígitos de $n$. Si no existe dicho número, devuelva $-1$.
+"""
+
+description_zh = """
+给定一个整数 $n$，找到大于 $n$ 的**最小**数，该数可以通过排列 $n$ 的数字来获得。如果不存在这样的数字，则返回 $-1$。
+"""
+
 limits = """
 - $1 \\le n \\le 10^6$
 """

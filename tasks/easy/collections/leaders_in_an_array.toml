@@ -20,6 +20,22 @@ description_ru = """
 Например, в массиве `[16, 17, 4, 3, 5, 2]` лидерами являются `[17, 5, 2]`.
 """
 
+description_es = """
+Devuelve todos los líderes de la matriz.
+
+Un elemento es líder si es mayor que todos los elementos a su derecha. El elemento más derechista es siempre un líder.
+
+Por ejemplo, en la matriz `[16, 17, 4, 3, 5, 2]`, los líderes son `[17, 5, 2]`.
+"""
+
+description_zh = """
+返回数组中的所有领导者。
+
+如果一个元素大于其右侧的所有元素，则该元素是领导者。最右边的元素始终是领导者。
+
+例如，在数组 `[16, 17, 4, 3, 5, 2]` 中，领导者是 `[17, 5, 2]`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(arr) \\leq 1000$
 - $-100 \\leq arr[i] \\leq 100$

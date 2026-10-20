@@ -28,6 +28,30 @@ description_ru = """
 - `"F"` иначе
 """
 
+description_es = """
+Un profesor ingresa el examen final de un estudiante `score` (un número entero de $0$ a $100$) en el libro de calificaciones y el sistema imprime la calificación con letras correspondiente.
+
+Devuelve la calificación en letras para el `score` dado usando la escala estándar:
+
+- `\"A\"` si $\\text{score} \\geq 90$
+- `\"B\"` si $\\text{score} \\geq 80$
+- `\"C\"` si $\\text{score} \\geq 70$
+- `\"D\"` si $\\text{score} \\geq 60$
+- `\"F\"` en caso contrario
+"""
+
+description_zh = """
+教授将学生的期末考试 `score`（从 $0$ 到 $100$ 的整数）输入成绩簿，系统打印出匹配的字母成绩。
+
+使用标准比例返回给定 `score` 的字母等级：
+
+- `\"A\"` 如果 $\\text{score} \\geq 90$
+- `\"B\"` 如果 $\\text{score} \\geq 80$
+- `\"C\"` 如果 $\\text{score} \\geq 70$
+- `\"D\"` 如果 $\\text{score} \\geq 60$
+- `\"F\"` 其他情况
+"""
+
 limits = """
 - $0 \\leq \\text{score} \\leq 100$
 """

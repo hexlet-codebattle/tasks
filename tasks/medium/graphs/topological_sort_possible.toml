@@ -20,6 +20,22 @@ description_ru = """
 Верните `True`, если граф можно отсортировать топологически (то есть в нем нет ориентированных циклов), и `False` в противном случае.
 """
 
+description_es = """
+Se le proporcionan nodos `n` etiquetados desde $0$ a $n - 1$ y una lista de `edges` dirigidos.
+
+Cada borde $[u, v]$ indica que el nodo $u$ debe aparecer antes del nodo $v$ en un orden topológico.
+
+Devuelve `True` si es posible ordenar topológicamente el gráfico (es decir, no contiene ciclos dirigidos) y `False` en caso contrario.
+"""
+
+description_zh = """
+您将获得标记为从 $0$ 到 $n - 1$ 的 `n` 节点以及有向 `edges` 的列表。
+
+每条边 $[u, v]$ 表示节点 $u$ 在拓扑排序中必须出现在节点 $v$ 之前。
+
+如果可以对图进行拓扑排序（即它不包含有向循环），则返回 `True`，否则返回 `False`。
+"""
+
 limits = """
 - $1 \\leq n \\leq 10^4$
 - $0 \\leq \\text{len}(\\text{edges}) \\leq 10^4$

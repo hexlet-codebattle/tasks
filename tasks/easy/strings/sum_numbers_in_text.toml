@@ -18,6 +18,20 @@ description_ru = """
 Если чисел нет, верните `0`.
 """
 
+description_es = """
+Se le proporciona una cadena `s`.
+Encuentre todos los números enteros que contiene (con el signo inicial opcional `+` o `-`) y devuelva su **suma**.
+Los números son series máximas de dígitos. Ignore letras, puntuación y otros caracteres que no sean números.
+Si no hay números, devuelva `0`.
+"""
+
+description_zh = """
+您将获得一个字符串 `s`。
+查找其中的所有整数（带有可选的前导 `+` 或 `-` 符号）并返回它们的**和**。
+数字是最大的数字串。忽略字母、标点符号和其他非数字字符。
+如果没有数字，则返回 `0`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 42$
 """

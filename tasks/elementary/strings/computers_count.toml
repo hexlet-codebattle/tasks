@@ -16,6 +16,18 @@ description_ru = """
 Если `number` равно $1$, верните `"1 computer"`. Во всех остальных случаях верните `"<number> computers"`.
 """
 
+description_es = """
+Dado un número entero `number`, devuelve una cadena con el número y la forma correcta en inglés de la palabra `\"computer\"`.
+
+Si `number` es igual a $1$, devuelve `\"1 computer\"`. En todos los demás casos, devuelva `\"<number> computers\"`.
+"""
+
+description_zh = """
+给定一个整数 `number`，返回一个字符串，其中包含该数字和单词 `\"computer\"` 的正确英文形式。
+
+如果 `number` 等于 $1$，则返回 `\"1 computer\"`。在所有其他情况下，返回 `\"<number> computers\"`。
+"""
+
 solution = """
 def solution(number: int) -> str:
     return "1 computer" if number == 1 else f"{number} computers"

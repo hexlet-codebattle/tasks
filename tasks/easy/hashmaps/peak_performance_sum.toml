@@ -22,6 +22,24 @@ description_ru = """
 Если входные массивы пусты, верните $0$.
 """
 
+description_es = """
+Se le proporcionan dos matrices de la misma longitud: `teams` y `scores`.
+Para cada índice $i$, `teams[i]` es el nombre de un equipo y `scores[i]` es la puntuación que lograron en un partido específico.
+
+Un equipo puede participar en múltiples partidos. Encuentre el puntaje **más alto** logrado por cada equipo único en todos sus partidos y obtenga la suma de estos puntajes más altos.
+
+Si las matrices de entrada están vacías, devuelve $0$.
+"""
+
+description_zh = """
+给定两个长度相同的数组：`teams` 和 `scores`。
+对于每个索引$i$，`teams[i]`是球队的名称，`scores[i]`是他们在特定比赛中取得的分数。
+
+一支队伍可以参加多场比赛。查找每个独特团队在所有比赛中取得的**最高**得分，并返回这些最高得分的总和。
+
+如果输入数组为空，则返回 $0$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{teams}) = \\text{len}(\\text{scores}) \\leq 10^4$
 - $-10^4 \\leq \\text{scores}[i] \\leq 10^4$

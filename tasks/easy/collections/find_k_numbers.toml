@@ -12,6 +12,14 @@ description_ru = """
 Дан неупорядоченный массив целых чисел. Найдите K-й наибольший элемент.
 """
 
+description_es = """
+Dada una matriz de números enteros sin clasificar, encuentre el K-ésimo elemento más grande.
+"""
+
+description_zh = """
+给定一个未排序的整数数组，找到第 K 大的元素。
+"""
+
 limits = """
 - $1 \\leq k \\leq \\text{len}(\\text{arr}) \\leq 100$
 """

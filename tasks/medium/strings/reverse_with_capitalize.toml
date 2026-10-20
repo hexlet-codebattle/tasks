@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая принимает на вход строку и меняет порядок букв в каждом слове на обратный с сохранением регистра и пунктуации.
 """
 
+description_es = """
+Cree una función que tome una cadena como entrada e invierta el orden de las letras en cada palabra, conservando mayúsculas y minúsculas.
+"""
+
+description_zh = """
+创建一个函数，将字符串作为输入并反转每个单词中字母的顺序，保留大小写和标点符号。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(sentence) \\leq 200$
 """

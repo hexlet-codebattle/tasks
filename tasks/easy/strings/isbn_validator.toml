@@ -20,6 +20,22 @@ ISBN - это десятизначный код, который идентифи
 Для проверки ISBN нужно просуммировать 10 раз первую цифру, 9 раз вторую, 8 раз третью и так далее, в конце нужно прибавить 1 раз последнюю цифру. Если при делении полученной суммы на 11 нет остатка, то ISBN корректен.
 """
 
+description_es = """
+Validar el identificador ISBN proporcionado.
+
+Un ISBN es un código de diez dígitos que identifica un libro. Los primeros nueve dígitos representan el libro y el último dígito se utiliza para garantizar que el ISBN sea correcto.
+
+Para verificar un ISBN obtienes la suma de 10 veces el primer dígito, 9 veces el segundo dígito, 8 veces el tercer dígito... hasta sumar 1 vez el último dígito. Si la suma no deja resto al dividirla por 11 el código es ISBN válido.
+"""
+
+description_zh = """
+验证给定的 ISBN 标识符。
+
+ISBN 是标识一本书的十位数字代码。前九位数字代表书籍，最后一位数字用于确保 ISBN 正确。
+
+要验证 ISBN，您需要计算第一个数字的 10 倍、第二个数字的 9 倍、第三个数字的 8 倍……一直到最后一个数字加上 1。如果除以 11 后没有余数，则该代码是有效的 ISBN。
+"""
+
 limits = """
 - $\\text{len}(code) \\leq 20$
 """

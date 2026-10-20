@@ -12,6 +12,14 @@ description_ru = """
 Selene выходит на опорную орбиту и выполняет несколько плановых импульсов. По начальному запасу топлива, расходам на импульсы и обязательному резерву верните остаток топлива или `-1`, если резерв будет нарушен.
 """
 
+description_es = """
+Selene alcanza la órbita de estacionamiento y realiza varias quemaduras planificadas. Dado el combustible de arranque, los costos de quemado y la reserva obligatoria, devuelva el combustible restante o `-1` si se violara la reserva.
+"""
+
+description_zh = """
+Selene 到达停泊轨道后执行若干次计划点火。给定初始燃料量、各次点火的燃料消耗以及必须保留的储备量，返回剩余燃料量；如果无法保留所需储备，则返回 `-1`。
+"""
+
 limits = """
 - $0 \\leq \\text{fuel}, \\text{reserve} \\leq 10^6$
 - $0 \\leq \\text{len}(\\text{burns}) \\leq 100$

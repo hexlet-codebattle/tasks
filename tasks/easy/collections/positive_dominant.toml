@@ -12,6 +12,14 @@ description_ru = """
 Проверьте, больше ли количество уникальных положительных чисел, чем количество уникальных отрицательных чисел в массиве (нули игнорируются).
 """
 
+description_es = """
+Compruebe si el recuento de números positivos únicos es mayor que el recuento de números negativos únicos en la matriz (se ignoran los ceros).
+"""
+
+description_zh = """
+检查数组中唯一正数的计数是否大于唯一负数的计数（忽略零）。
+"""
+
 limits = """
 - $1 \\leq |\\text{numbers}| \\leq 100$
 - $-1000 \\leq \\text{numbers}[i] \\leq 1000$

@@ -12,6 +12,14 @@ description_ru = """
 Selene возвращается на Землю через многослойный коридор входа в атмосферу. Каждая клетка хранит тепловую стоимость прохождения сектора, а `-1` обозначает штормовой сектор, через который проходить нельзя. Капсула стартует в строке `0`, столбце `start_col`. На каждом шаге она переходит в следующую строку в том же столбце, на один столбец влево или на один столбец вправо. Диагональный ход тратит `1` единицу управляющего топлива, прямой ход — `0`. Верните минимальную суммарную тепловую стоимость достижения любой клетки последней строки при расходе не более `fuel` единиц, или `-1`, если посадка невозможна.
 """
 
+description_es = """
+Selene regresa a la Tierra a través de un corredor de reentrada en capas. Cada celda almacena el costo de calor que supone pasar por ese sector, y `-1` marca un sector de tormenta que no se puede utilizar. La cápsula comienza en la fila `0`, columna `start_col`. En cada paso, pasa a la siguiente fila de la misma columna, una columna a la izquierda o una columna a la derecha. Un movimiento diagonal utiliza la unidad `1` de combustible de dirección, un movimiento recto utiliza `0`. Devuelva el calor total mínimo necesario para llegar a cualquier celda de la última fila utilizando como máximo unidades `fuel`, o `-1` si el aterrizaje es imposible.
+"""
+
+description_zh = """
+塞勒涅通过分层的再入走廊返回地球。每个单元存储通过该扇区的热量成本，`-1` 标记无法使用的风暴扇区。胶囊从 `0` 行、`start_col` 列开始。在每一步中，它都会移动到同一列的下一行、左移一列或右移一列。对角移动使用 `1` 转向燃油单元，直线移动使用 `0`。返回最多使用 `fuel` 单位到达最后一行中任何单元格所需的最小总热量，如果不可能着陆，则返回 `-1` 单位。
+"""
+
 limits = """
 - $1 \\leq \\text{rows}, \\text{cols} \\leq 50$
 - $0 \\leq \\text{fuel} \\leq 50$

@@ -19,6 +19,22 @@ description_ru = """
 По известным числам $n$, $k$ и $s$ определите наименьшее количество лестничных пролетов между этажами, вверх или вниз, которые Васе нужно будет пройти пешком.
 """
 
+description_es = """
+Los botones del ascensor en un edificio con pisos $2n$ están dispuestos en dos columnas con botones $n$ cada una.
+La primera columna contiene botones de $1$ a $n$ de abajo hacia arriba, y la segunda columna contiene botones de $n + 1$ a $2n$ de abajo hacia arriba.
+Vasya está en el primer piso y necesita llegar al piso $k$.
+Solo puede llegar a los botones $s$ inferiores de cada columna.
+Dados $n$, $k$ y $s$, determine el menor número de tramos de escaleras entre pisos, hacia arriba o hacia abajo, que Vasya debe caminar.
+"""
+
+description_zh = """
+$2n$ 层楼的电梯按钮排列为两列，每列按钮为 $n$。
+第一列从下到上包含从 $1$ 到 $n$ 的按钮，第二列从下到上包含从 $n + 1$ 到 $2n$ 的按钮。
+Vasya 位于一楼，需要到达 $k$ 楼。
+他只能触及每列中底部的 $s$ 按钮。
+给定 $n$、$k$ 和 $s$，确定 Vasya 必须行走的楼层之间（向上或向下）的最小楼梯数。
+"""
+
 solution = """
 def solution(n, k, s):
     # If Vasya cannot reach any button, he must walk all the way.

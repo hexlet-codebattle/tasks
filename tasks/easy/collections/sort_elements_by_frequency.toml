@@ -12,6 +12,14 @@ description_ru = """
 Дан массив целых чисел, отсортируйте его элементы по частоте присутствия в массиве. Самые часто встречающиеся элементы должны быть в начале. Если существует несколько групп элементов одинаковой частоты, они должны быть расположены в порядке первой встречи соответствующих элементов в исходном массиве.
 """
 
+description_es = """
+Dada una matriz de números enteros, ordene la matriz según la frecuencia de los elementos. Los números más frecuentes aparecen primero. Si existen varios grupos del mismo tamaño, deben aparecer en el orden de los números correspondientes en la matriz de entrada (mantenga el primer orden de aparición para los empates).
+"""
+
+description_zh = """
+给定一个整数数组，根据元素出现的频率对数组进行排序。最常见的数字排在第一位。如果存在多个相同大小的组，则它们应按输入数组中相应数字的顺序出现（保持并列的第一个出现顺序）。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 1000$
 - $-100 \\leq \\text{arr}[i] \\leq 100$

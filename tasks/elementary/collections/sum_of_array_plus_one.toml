@@ -12,6 +12,14 @@ description_ru = """
 Дается массив с числами, рассчитайте сумму чисел после добавления единицы к каждому.
 """
 
+description_es = """
+Dada una matriz de números enteros, devuelve la suma de los números enteros después de sumar 1 a cada uno.
+"""
+
+description_zh = """
+给定一个整数数组，将每个整数加 1 后返回整数之和。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
 - $-100 \\leq \\text{arr}[i] \\leq 100$

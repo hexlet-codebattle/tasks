@@ -12,6 +12,14 @@ description_ru = """
 Дана строка, представляющая название переменной. Определите, какое соглашение об именовании используется, и верните одну из строк: `"flat case"`, `"snake case"`, `"camel case"`, `"kebab case"` или `"train case"`.
 """
 
+description_es = """
+Se le proporciona una cadena que representa un nombre de variable. Identifique qué convención de nomenclatura se utiliza y devuelva una de las cadenas: `\"flat case\"`, `\"snake case\"`, `\"camel case\"`, `\"kebab case\"` o `\"train case\"`.
+"""
+
+description_zh = """
+您将获得一个表示变量名称的字符串。确定使用哪种命名约定并返回字符串之一：`\"flat case\"`、`\"snake case\"`、`\"camel case\"`、`\"kebab case\"` 或 `\"train case\"`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(variable) \\leq 50$
 - $variable \\in \\{a$–$z, A$–$Z, \\_ , -\\}^*$

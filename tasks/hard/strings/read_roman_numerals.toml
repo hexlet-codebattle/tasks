@@ -12,6 +12,14 @@ description_ru = """
 Разберите строку римских цифр и верните число представленное ими.
 """
 
+description_es = """
+Analiza una cadena de números romanos y devuelve el número que representa.
+"""
+
+description_zh = """
+解析罗马数字字符串并返回它代表的数字。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(num) \\leq 20$
 - $1 \\leq \\text{result} \\leq 3999$

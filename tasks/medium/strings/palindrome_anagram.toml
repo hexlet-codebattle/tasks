@@ -12,6 +12,14 @@ description_ru = """
 Выясните, можно ли переставить буквы данной строки таким образом, чтобы она читалась одинаково слева направо и справа налево.
 """
 
+description_es = """
+Descubra si es posible reorganizar las letras de la cadena dada para que se lea igual de izquierda a derecha y de derecha a izquierda.
+"""
+
+description_zh = """
+找出是否可以重新排列给定字符串的字母，使其从左到右和从右到左读起来都相同。
+"""
+
 limits = """
 - $0 \\leq |\\text{s}| \\leq 100$
 """

@@ -12,6 +12,14 @@ description_ru = """
 Представьте чётное целое число $n>3$ в виде суммы двух простых чисел (простые могут совпадать). Верните любую корректную пару $[p, q]$, такую что $p+q=n$.
 """
 
+description_es = """
+Representa un número entero par $n>3$ como la suma de dos números primos (los primos pueden ser idénticos). Devuelve cualquier par válido $[p, q]$ tal como $p+q=n$.
+"""
+
+description_zh = """
+将偶数 $n>3$ 表示为两个素数之和（素数可以相同）。返回任何有效的对 $[p, q]$，使得 $p+q=n$。
+"""
+
 limits = """
 $ n>3 $
 $ n \\bmod 2 = 0 $

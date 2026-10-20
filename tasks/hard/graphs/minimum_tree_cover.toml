@@ -16,6 +16,18 @@ description_ru = """
 Вершина считается покрывающей все свои непосредственно подключенные (инцидентные) ребра.
 """
 
+description_es = """
+Dado un árbol no dirigido con vértices `n` etiquetados de $0$ a $n - 1$ y una matriz de `edges`, encuentre el número mínimo de vértices necesarios para cubrir todos los bordes.
+
+Se considera que un vértice cubre todos sus bordes directamente conectados (incidentes).
+"""
+
+description_zh = """
+给定一棵有 `n` 个顶点的无向树，顶点编号为 $0$ 到 $n - 1$，边由数组 `edges` 给出。求覆盖所有边所需的最少顶点数。
+
+一个顶点覆盖与它直接相连的所有边。
+"""
+
 limits = """
 - $1 \\leq n \\leq 10^5$
 - $\\text{len}(\\text{edges}) = n - 1$

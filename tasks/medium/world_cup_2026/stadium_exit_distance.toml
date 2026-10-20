@@ -22,6 +22,18 @@ description_ru = """
 Если болельщиков нет, верните `0`.
 """
 
+description_es = """
+Una cuadrícula rectangular de un estadio, que puede estar vacía, usa `E` para una salida, `F` para un aficionado, `#` para una pared y `.` para una celda libre. Un aficionado puede moverse desde una celda transitable hacia arriba, abajo, izquierda o derecha; cada paso cuesta `1`.
+
+Para cada aficionado, considera la distancia mínima a cualquier salida. Devuelve la mayor de estas distancias, o `-1` si al menos uno no puede alcanzar ninguna salida. Si no hay aficionados, devuelve `0`.
+"""
+
+description_zh = """
+给定可能为空的矩形体育场网格：`E` 表示出口，`F` 表示球迷，`#` 表示墙，`.` 表示空地。球迷可从可通行的格子向上、下、左、右移动，每步费用为 `1`。
+
+对每名球迷，求其到任意出口的最短距离。返回这些距离中的最大值；如果至少一名球迷无法到达出口，则返回 `-1`。如果没有球迷，则返回 `0`。
+"""
+
 limits = """
 - $0 \\leq n \\leq 100$
 - $0 \\leq m \\leq 100$

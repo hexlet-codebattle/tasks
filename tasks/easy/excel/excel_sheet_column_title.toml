@@ -16,6 +16,18 @@ description_ru = """
 Например: $1 \\rightarrow A$, $2 \\rightarrow B$, $3 \\rightarrow C$, $\\ldots$, $26 \\rightarrow Z$, $27 \\rightarrow AA$, $28 \\rightarrow AB$
 """
 
+description_es = """
+Dado un número entero positivo, devuelve el título de columna correspondiente tal como aparece en una hoja de Excel.
+
+Por ejemplo: $1 \\rightarrow A$, $2 \\rightarrow B$, $3 \\rightarrow C$, $\\ldots$, $26 \\rightarrow Z$, $27 \\rightarrow AA$, $28 \\rightarrow AB$.
+"""
+
+description_zh = """
+给定一个正整数，返回其在 Excel 工作表中显示的相应列标题。
+
+例如：$1 \\rightarrow A$、$2 \\rightarrow B$、$3 \\rightarrow C$、$\\ldots$、$26 \\rightarrow Z$、$27 \\rightarrow AA$、$28 \\rightarrow AB$
+"""
+
 limits = """
 - $1 \\leq \\text{num} \\leq 500000$
 """

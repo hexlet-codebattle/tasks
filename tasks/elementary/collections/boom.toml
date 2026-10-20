@@ -16,6 +16,18 @@ description_ru = """
 Если число `7` не встречается, верните `"There is no 7."`
 """
 
+description_es = """
+Dada una matriz de números enteros `numbers`, devuelva `\"Boom!\"` si el número `7` aparece en cualquier parte de la matriz.
+
+Si no aparece el número `7` devuelve `\"There is no 7.\"`
+"""
+
+description_zh = """
+给定一个整数数组 `numbers`，如果数字 `7` 出现在数组中的任何位置，则返回 `\"Boom!\"`。
+
+如果没有出现数字`7`，则返回`\"There is no 7.\"`
+"""
+
 limits = """
 - $1 \\leq \\text{len}(numbers) \\leq 100$
 - $-100 \\leq numbers[i] \\leq 100$

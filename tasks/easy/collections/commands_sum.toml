@@ -20,6 +20,22 @@ description_ru = """
 Дан массив целых чисел — веса людей. Верните массив из двух чисел: суммарный вес `команды 1` и суммарный вес `команды 2`.
 """
 
+description_es = """
+Varias personas están paradas en fila y deben dividirse en dos equipos.
+
+La primera persona (índice $0$) va a `team 1`, la segunda (índice $1$) a `team 2`, la tercera (índice $2$) nuevamente a `team 1`, la cuarta (índice $3$) a `team 2`, y así sucesivamente, alternando según la paridad del índice.
+
+Se le proporciona una serie de números enteros: los pesos de las personas. Devuelve una matriz de dos números enteros: el peso total de `team 1` y el peso total de `team 2`.
+"""
+
+description_zh = """
+若干人站成一排，需要分成两队。
+
+第一个人（索引 $0$）进入 `team 1`，第二个人（索引 $1$）进入 `team 2`，第三个人（索引 $2$）再次进入 `team 1`，第四个人（索引 $3$）进入 `team 2`，依此类推，按索引的奇偶性交替分队。
+
+给定这些人的体重组成的整数数组，返回两个整数构成的数组，依次为 `team 1` 和 `team 2` 的体重总和。
+"""
+
 limits = """
 - $5 \\leq \\text{len}(players) \\leq 15$
 - $50 \\leq players[i] \\leq 90$

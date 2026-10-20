@@ -12,6 +12,14 @@ description_ru = """
 Пицца состоит из $2N$ ломтиков по кругу. На каждом ломтике — неотрицательное количество пепперони. Разрешено взять любые $N$ **подряд** идущих ломтиков. Верните максимальную возможную сумму пепперони.
 """
 
+description_es = """
+Una pizza tiene $2N$ porciones dispuestas en círculo. Cada porción contiene una cantidad no negativa de pepperoni. Puedes tomar cualesquiera $N$ porciones **consecutivas**. Devuelve la máxima cantidad total de pepperoni que puedes tomar.
+"""
+
+description_zh = """
+一个披萨分成环形排列的 $2N$ 块，每块上的意大利辣香肠数量非负。你可以取走任意 $N$ 块**连续**的披萨。返回能取走的辣香肠总量的最大值。
+"""
+
 limits = """
 - $2N = \\text{len}(a)$
 - $2N \\leq 20$

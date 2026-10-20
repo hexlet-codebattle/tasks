@@ -16,6 +16,18 @@ description_ru = """
 Верните результат в виде строки, так как число может быть очень большим и выходить за пределы диапазона целого типа.
 """
 
+description_es = """
+Construya el mayor número posible concatenando todos los números enteros de la matriz dada en algún orden.
+
+Devuelve el resultado como una cadena, porque el número puede ser muy grande y exceder el rango de enteros habitual.
+"""
+
+description_zh = """
+通过按某种顺序连接给定数组中的所有整数来构造最大可能的数字。
+
+将结果作为字符串返回，因为数字可能非常大，超出通常的整数范围。
+"""
+
 limits = """
 - $1 \\leq \\text{len(numbers)} \\leq 5$
 - $0 \\leq numbers_i \\leq 500$

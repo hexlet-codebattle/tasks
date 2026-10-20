@@ -19,6 +19,20 @@ description_ru = """
 - Группы длины `1` или `2` оставить без изменений.
 """
 
+description_es = """
+Dada una cadena `s`, comprime caracteres repetidos consecutivos.
+
+- Reemplazar un grupo del mismo carácter de longitud `k ≥ 3` por `char + k`.
+- Mantener sin cambios los grupos de longitud `1` o `2`.
+"""
+
+description_zh = """
+给定一个字符串 `s`，压缩连续的重复字符。
+
+- 将一组长度相同的字符 `k ≥ 3` 替换为 `char + k`。
+- 保持长度组 `1` 或 `2` 不变。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 100$
 """

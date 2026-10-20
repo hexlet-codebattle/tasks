@@ -16,6 +16,18 @@ description_ru = """
 Простые множители должны быть расположены в порядке возрастания. Представьте разложение в формате `"p1^k1*p2^k2*..."`. Если степень множителя равна $1$, опустите показатель степени.
 """
 
+description_es = """
+Dado un número entero $n$, descompóngalo en factores primos y devuelve el resultado como una cadena.
+
+Los factores primos deben ordenarse en orden ascendente. Representa la descomposición en el formato `\"p1^k1*p2^k2*...\"`. Si un factor primo tiene una potencia de $1$, omite el exponente.
+"""
+
+description_zh = """
+给定一个整数 $n$，将其分解为质因数并以字符串形式返回结果。
+
+质因数必须按升序排列。以 `\"p1^k1*p2^k2*...\"` 格式表示分解。如果质因数的幂为 $1$，则省略指数。
+"""
+
 limits = """
 - $2 \\leq n \\leq 10^9$
 """

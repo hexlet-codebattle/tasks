@@ -16,6 +16,18 @@ description_ru = """
 Определите, сколько желаний можно выполнить.
 """
 
+description_es = """
+Dadas dos listas de cadenas: deseos de los niños y regalos de Santa. Cada regalo sólo se puede utilizar una vez.
+
+Determina cuántos deseos se pueden cumplir.
+"""
+
+description_zh = """
+给定两个字符串列表：孩子们的愿望和圣诞老人​​的礼物。每份礼物只能使用一次。
+
+确定可以实现多少个愿望。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{wishes}) \\leq 1000$
 - $1 \\leq \\text{len}(\\text{gifts}) \\leq 1000$

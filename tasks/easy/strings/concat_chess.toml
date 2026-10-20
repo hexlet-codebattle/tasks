@@ -22,6 +22,24 @@ description_ru = """
 Если одна строка закончилась раньше другой, продолжайте с оставшимися символами более длинной строки. Верните получившуюся строку.
 """
 
+description_es = """
+Se le proporcionan dos cadenas `str1` y `str2`. Concatenarlos por caracteres en orden alterno:
+
+- tome el carácter $1$-st de `str1`, luego el carácter $1$-st de `str2`,
+- luego el carácter $2$-nd de `str1`, luego el $2$-nd de `str2`, y así sucesivamente.
+
+Si una cadena termina antes que la otra, continúe con los caracteres restantes de la cadena más larga. Devuelve la cadena resultante.
+"""
+
+description_zh = """
+给您两个字符串 `str1` 和 `str2`。按交替顺序的字符连接它们：
+
+- 从 `str1` 中取出 $1$-st 字符，然后从 `str2` 中取出 $1$-st 字符，
+- 然后是 `str1` 中的 $2$-nd 字符，然后是 `str2` 中的 $2$-nd 字符，依此类推。
+
+如果一个字符串早于另一个字符串结束，则继续处理较长字符串的剩余字符。返回结果字符串。
+"""
+
 solution = """
 def solution(str1: str, str2: str) -> str:
     res = []

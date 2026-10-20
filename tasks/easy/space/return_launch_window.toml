@@ -12,6 +12,14 @@ description_ru = """
 Чтобы покинуть Луну, посадочный модуль может взлетать каждые `lander_period` минут, начиная с `lander_start`, а орбитальный модуль проходит над базой каждые `orbiter_period` минут, начиная с `orbiter_start`. По времени готовности экипажа `ready_time` и миссионному дедлайну `deadline` верните самый ранний момент стыковки или `-1`, если его нет.
 """
 
+description_es = """
+Para salir de la Luna, el módulo de aterrizaje puede despegar cada `lander_period` minutos a partir de `lander_start`, y el orbitador pasa por encima cada `orbiter_period` minutos a partir de `orbiter_start`. Dado el `ready_time` de la tripulación y una misión `deadline`, devuelva la hora de encuentro más temprana, o `-1` si no existe ninguna.
+"""
+
+description_zh = """
+为了离开月球，着陆器可以从 `lander_start` 开始，每 `lander_period` 分钟升空，轨道器从 `orbiter_start` 开始，每 `orbiter_period` 分钟从头顶飞过。给定机组人员 `ready_time` 和任务 `deadline`，返回最早的交会时间，如果不存在则返回 `-1`。
+"""
+
 limits = """
 - $0 \\leq \\text{ready\\_time} \\leq \\text{deadline} \\leq 10^6$
 - $0 \\leq \\text{lander\\_start}, \\text{orbiter\\_start} \\leq 10^6$

@@ -20,6 +20,22 @@ description_ru = """
 Граф является двудольным, если его вершины можно разбить на два независимых множества так, что каждое ребро соединяет вершину из одного множества с вершиной из другого. Граф может быть несвязным.
 """
 
+description_es = """
+Se le proporciona un gráfico no dirigido representado como una lista de adyacencia, donde `graph[i]` es una lista de nodos conectados al nodo `i`.
+
+Devuelve `True` si y sólo si es bipartito.
+
+Un grafo es bipartito si sus nodos se pueden dividir en dos conjuntos independientes de modo que cada arista conecte un nodo de un conjunto con un nodo del otro. Es posible que el gráfico no esté conectado.
+"""
+
+description_zh = """
+给您一个表示为邻接列表的无向图，其中 `graph[i]` 是连接到节点 `i` 的节点列表。
+
+当且仅当它是二分的时，返回 `True`。
+
+如果图的节点可以划分为两个独立的集合，使得每条边将一个集合中的节点连接到另一个集合中的节点，则该图是二分图。该图可能未连接。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{graph}) \\leq 100$
 - $0 \\leq \\text{graph}[i][j] < \\text{len}(\\text{graph})$

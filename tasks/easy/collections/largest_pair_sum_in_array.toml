@@ -16,6 +16,18 @@ description_ru = """
 Сумма пары — это сумма двух наибольших чисел в массиве. Например, сумма наибольшей пары чисел в `[12, 34, 10, 6, 40]` это `74` (сумма `34` и `40`).
 """
 
+description_es = """
+Dada una matriz de números enteros `arr`, encuentre la suma del par más grande que contiene.
+
+Una suma de pares es la suma de los dos números más grandes de la matriz. Por ejemplo, la suma del par más grande en `[12, 34, 10, 6, 40]` es `74` (suma de `34` y `40`).
+"""
+
+description_zh = """
+给定一个整数数组 `arr`，找到其中最大的对和。
+
+对和是数组中两个最大数字的总和。例如，`[12, 34, 10, 6, 40]` 中最大的对和是 `74`（`34` 和 `40` 的和）。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(arr) \\leq 100$
 - $-100 \\leq arr[i] \\leq 100$

@@ -12,6 +12,14 @@ description_ru = """
 Найдите второе наименьшее число в массиве.
 """
 
+description_es = """
+Encuentra el segundo número más pequeño en una matriz.
+"""
+
+description_zh = """
+找到数组中第二小的数字。
+"""
+
 limits = """
 - $2 \\leq \\text{len}(\\text{numbers}) \\leq 100$
 - $-100 \\leq \\text{numbers}[i] \\leq 100$

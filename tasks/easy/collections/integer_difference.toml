@@ -12,6 +12,14 @@ description_ru = """
 Найдите сколько в массиве существует пар $X, Y$, таких что модуль значения выражения $(X - Y)$ равен первому аргументу.
 """
 
+description_es = """
+Encuentre cuántos pares $X, Y$ hay en la matriz, de modo que $|X - Y|$ sea igual al primer argumento.
+"""
+
+description_zh = """
+查找数组中有多少对 $X, Y$，使得 $|X - Y|$ 等于第一个参数。
+"""
+
 limits = """
 - $0 \\leq differ \\leq 50$
 - $2 \\leq \\text{len}(arr) \\leq 20$

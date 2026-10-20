@@ -12,6 +12,14 @@ description_ru = """
 Дан массив двузначных целых чисел. Посчитайте сумму цифр каждого числа, затем верните общую сумму всех таких сумм.
 """
 
+description_es = """
+Dada una matriz de números enteros de dos dígitos, calcule la suma de los dígitos de cada número y luego devuelva la suma total de todas las sumas de los dígitos.
+"""
+
+description_zh = """
+给定一个两位整数数组，计算每个数字的数字和，然后返回所有数字和的总和。
+"""
+
 limits = """
 - $3 \\leq \\text{len(numbers)} \\leq 10$
 - $10 \\leq numbers_i \\leq 99$

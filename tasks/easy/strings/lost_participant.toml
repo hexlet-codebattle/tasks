@@ -16,6 +16,18 @@ description_ru = """
 По спискам стартовавших и финишировавших участников определите имя потерявшегося в лесу участника (имена участников могут совпадать).
 """
 
+description_es = """
+Según las nuevas reglas para la final de University Battle, los participantes deben programar y correr simultáneamente una maratón a través del bosque.
+Un participante no llegó a la meta.
+Utilizando las listas de titulares y finalistas, identifica el nombre del participante perdido en el bosque (los nombres de los participantes pueden ser los mismos).
+"""
+
+description_zh = """
+根据大学之战决赛的新规则，参赛者必须同时编程和跑马拉松穿越森林。
+一名参与者未能到达终点线。
+使用出发者和结束者名单，确定在森林中迷失的参与者的姓名（参与者的姓名可能相同）。
+"""
+
 solution = """
 def solution(participants, finishers):
     from collections import Counter

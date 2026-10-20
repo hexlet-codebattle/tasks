@@ -14,6 +14,16 @@ $K$ школьников стоят в ряд, каждый смотрит на 
 Верните минимальное количество школьников, которым нужно повернуться, чтобы все смотрели в одну сторону.
 """
 
+description_es = """
+Los estudiantes de $K$ se paran en fila, cada uno mirando al **norte** (`N`), al **sur** (`S`), al **este** (`E`) o al **oeste** (`W`).
+Devuelve el número mínimo de estudiantes que deben girar para que todos miren en la misma dirección.
+"""
+
+description_zh = """
+$K$ 学生站成一排，每个面向**北**（`N`）、**南**（`S`）、**东**（`E`）或**西**（`W`）。
+返回必须转向以使每个人都面向同一方向的最少学生人数。
+"""
+
 limits = """
 - $K = \\text{len}(s) \\ge 0$
 - $s \\in \\{\\text{\"N\"},\\text{\"S\"},\\text{\"E\"},\\text{\"W\"}\\}^*$

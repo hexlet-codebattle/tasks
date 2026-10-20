@@ -12,6 +12,14 @@ description_ru = """
 Миша решил упростить задачу и сделать машинку, которая будет считать беспарные носки. Функция принимает массив из $n$ целых чисел $X$, где $X$ — это цвет носка от 0 до 1000. Верните количество носков, не имеющих пары.
 """
 
+description_es = """
+Misha decidió simplificar la tarea y fabricar una máquina que contara calcetines sin pares. La función acepta una matriz de números enteros $n$ $X$, donde $X$ es el color del calcetín de 0 a 1000. Devuelve el recuento de calcetines que no tienen un par.
+"""
+
+description_zh = """
+米莎决定简化任务，制造一台可以计算不成双的袜子的机器。该函数接受 $n$ 整数 $X$ 数组，其中 $X$ 是从 0 到 1000 的袜子颜色。返回没有一双的袜子的数量。
+"""
+
 limits = """
 - $1 \\leq n \\leq 1000$
 - $0 \\leq X \\leq 1000$

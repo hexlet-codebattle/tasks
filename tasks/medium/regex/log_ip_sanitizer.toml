@@ -32,6 +32,34 @@ IPv4 не должен быть частью более длинной цифр�
 Если корректных IPv4 нет — верните исходную строку.
 """
 
+description_es = """
+Se le proporciona una línea de registro como una cadena `s`.
+Reemplace cada dirección IPv4 **válida** con el texto exacto `[REDACTED]`.
+
+Un IPv4 válido son cuatro octetos decimales separados por puntos: `a.b.c.d`, donde cada `a..d` está en `0..255`.
+Se permiten ceros a la izquierda (por ejemplo, `001.002.003.004`).
+Un IPv4 no debe ser parte de una secuencia de dígitos más larga (está delimitada por extremos de cadena o que no son dígitos).
+
+Procese direcciones válidas de izquierda a derecha sin superponer reemplazos.
+Devuelve la cadena transformada.
+Mantenga todos los demás personajes sin cambios.
+Si no hay direcciones IPv4 válidas, devuelva la cadena original.
+"""
+
+description_zh = """
+您将获得一个字符串 `s` 形式的日志行。
+将每个**有效** IPv4 地址替换为确切的文本 `[REDACTED]`。
+
+有效的 IPv4 是由点分隔的四个十进制八位字节：`a.b.c.d`，其中每个 `a..d` 位于 `0..255` 中。
+允许使用前导零（例如 `001.002.003.004`）。
+IPv4 不能是较长数字序列的一部分（它由非数字或字符串结尾界定）。
+
+从左到右处理有效地址，不重叠替换。
+返回转换后的字符串。
+保持所有其他字符不变。
+如果没有有效的 IPv4 地址，则返回原始字符串。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 100$
 """

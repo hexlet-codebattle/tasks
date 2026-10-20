@@ -18,6 +18,20 @@ description_ru = """
 Одинственное измерение считается одной яркой полосой.
 """
 
+description_es = """
+En el experimento de la doble rendija de Young, las franjas brillantes aparecen como máximos de intensidad local.
+
+Dadas las intensidades de la pantalla, cuente las posiciones que sean estrictamente más brillantes que todos los vecinos existentes.
+Una sola lectura cuenta como una franja brillante.
+"""
+
+description_zh = """
+在杨的双缝实验中，明亮的条纹表现为局部强度最大值。
+
+给定屏幕强度，计算严格比每个现有邻居更亮的位置。
+一次读数算作一个明亮的边缘。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{intensities}) \\leq 100$
 - $0 \\leq \\text{intensity} \\leq 10^4$

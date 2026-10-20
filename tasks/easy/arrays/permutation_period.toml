@@ -24,6 +24,26 @@ description_ru = """
 Если вернуться в исходное состояние невозможно, верните $-1$.
 """
 
+description_es = """
+Se le proporciona una matriz `p` de longitud $n$ que contiene números enteros desde $0$ hasta $n - 1$.
+
+Imaginemos que tenemos una matriz inicial $\\text{arr} = [0, 1, 2, \\dots, n - 1]$.
+En un paso, permutamos los elementos de $\\text{arr}$ de modo que la nueva matriz sea $\\text{new\\_arr}$, donde $\\text{new\\_arr}[i] = \\text{arr}[p[i]]$.
+
+Devuelve el número mínimo de pasos necesarios para devolver $\\text{arr}$ a su estado inicial $[0, 1, 2, \\dots, n - 1]$.
+Si es imposible volver al estado inicial, devuelva $-1$.
+"""
+
+description_zh = """
+给定一个长度为 $n$ 的数组 `p`，其中包含从 $0$ 到 $n - 1$ 的整数。
+
+假设我们有一个初始数组 $\\text{arr} = [0, 1, 2, \\dots, n - 1]$。
+在一步中，我们对 $\\text{arr}$ 的元素进行排列，使得新数组为 $\\text{new\\_arr}$，其中 $\\text{new\\_arr}[i] = \\text{arr}[p[i]]$。
+
+返回将 $\\text{arr}$ 返回到其初始状态 $[0, 1, 2, \\dots, n - 1]$ 所需的最少步数。
+如果不可能返回到初始状态，则返回 $-1$。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(p) \\leq 30$
 - $0 \\leq p[i] < \\text{len}(p)$

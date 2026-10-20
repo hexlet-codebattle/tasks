@@ -14,6 +14,16 @@ description_ru = """
 $K = C + 273$.
 """
 
+description_es = """
+Convertir una temperatura de Celsius a Kelvin usando la fórmula
+$K = C + 273$.
+"""
+
+description_zh = """
+使用以下公式将温度从摄氏度转换为开尔文
+$K = C + 273$。
+"""
+
 limits = """
 - $-273 \\leq C \\leq 500$
 """

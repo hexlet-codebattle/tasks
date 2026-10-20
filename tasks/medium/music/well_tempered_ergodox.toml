@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая получает номер струны (1-6) и лад (0-24) 6-струнной гитары в стандартной настройке и возвращает соответствующую ноту. Для этой задачи мы используем модель с 24 ладами. Ноты следующие: C, C#, D, D#, E, F, F#, G, G#, A, A#, B. Стандартная настройка от струны 1 до 6: E, B, G, D, A, E.
 """
 
+description_es = """
+Escribe una función que obtenga un número de cuerda (1-6) y un traste (0-24) de una guitarra de 6 cuerdas en afinación estándar y devuelva la nota correspondiente. Para este desafío utilizamos un modelo de 24 trastes. Las notas son: C, C#, D, D#, E, F, F#, G, G#, A, A#, B. La afinación estándar de las cuerdas 1 a 6 es: E, B, G, D, A, E.
+"""
+
+description_zh = """
+编写一个函数，获取标准调弦的 6 弦吉他的弦号 (1-6) 和品格 (0-24)，并返回相应的音符。对于此挑战，我们使用 24 品模型。音符为：C、C#、D、D#、E、F、F#、G、G#、A、A#、B。从 1 弦到 6 弦的标准调音为：E、B、G、D、A、E。
+"""
+
 limits = """
 - $1 \\leq \\text{string\\_num} \\leq 6$
 - $0 \\leq \\text{fret} \\leq 24$

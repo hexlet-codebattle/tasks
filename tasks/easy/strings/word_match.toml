@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая принимает две строки и проверяет, можно ли записать первую строку символами из второй строки, соблюдая при этом порядок, в котором эти символы появляются во второй строке.
 """
 
+description_es = """
+Escribe una función que tome dos cadenas y verifique si es posible escribir la primera cadena con caracteres de la segunda cadena, respetando el orden en que aparecen estos caracteres en la segunda cadena.
+"""
+
+description_zh = """
+编写一个函数，该函数接受两个字符串，并检查是否可以使用第二个字符串中的字符写入第一个字符串，同时尊重这些字符在第二个字符串中出现的顺序。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{str1}) \\leq 100$
 - $0 \\leq \\text{len}(\\text{str2}) \\leq 100$

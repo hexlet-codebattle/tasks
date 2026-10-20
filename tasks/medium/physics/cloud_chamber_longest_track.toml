@@ -18,6 +18,20 @@ description_ru = """
 Верните размер самого большого связного следа, где клетки соединяются во всех `8` направлениях.
 """
 
+description_es = """
+Una imagen de la cámara de niebla de Wilson está representada por una cuadrícula `15 x 15`.
+
+Cada celda `\"*\"` es parte de una pista de partículas visible y `\".\"` es un espacio vacío.
+Devuelve el tamaño de la pista conectada más grande, donde las celdas están conectadas en todas las direcciones `8`.
+"""
+
+description_zh = """
+威尔逊云室图像由 `15 x 15` 网格表示。
+
+每个 `\"*\"` 单元都是可见粒子轨迹的一部分，而 `\".\"` 是空白空间。
+返回最大连接轨道的大小，其中单元格在所有 `8` 方向上连接。
+"""
+
 limits = """
 - $\\text{len}(\\text{chamber}) = 15$
 - $\\text{len}(\\text{row}) = 15$

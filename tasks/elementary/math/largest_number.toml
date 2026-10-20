@@ -12,6 +12,14 @@ description_ru = """
 Дано число $n$, найдите наибольшее число, которое содержит ровно $n$ цифр.
 """
 
+description_es = """
+Dado un número entero $n$, devuelve el número más grande que contenga exactamente dígitos $n$.
+"""
+
+description_zh = """
+给定一个整数 $n$，返回恰好包含 $n$ 数字的最大数字。
+"""
+
 limits = """
 - $1 \\leq n \\leq 9$
 """

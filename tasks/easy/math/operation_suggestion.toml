@@ -16,6 +16,18 @@ description_ru = """
 Верните одно из: `"addition"`, `"subtraction"`, `"multiplication"`, или `"unrecognized operation!!"` если ничего не подходит.
 """
 
+description_es = """
+Escriba una función que tome tres números (primer operando, segundo operando y resultado) y devuelva una cadena que indique qué operación se debe utilizar para obtener el resultado.
+
+Devuelve uno de: `\"addition\"`, `\"subtraction\"`, `\"multiplication\"` o `\"unrecognized operation!!\"` si ninguno coincide.
+"""
+
+description_zh = """
+编写一个函数，它接受三个数字（第一个操作数、第二个操作数和结果）并返回一个字符串，指示应使用哪个操作来获取结果。
+
+返回以下之一：`\"addition\"`、`\"subtraction\"`、`\"multiplication\"` 或 `\"unrecognized operation!!\"`（如果不匹配）。
+"""
+
 limits = """
 - $-100 \\leq \\text{first} \\leq 100$
 - $-100 \\leq \\text{second} \\leq 100$

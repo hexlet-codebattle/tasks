@@ -16,6 +16,18 @@ description_ru = """
 Верните по возрастанию индексы, значения которых **строго больше** значений обоих соседей по кольцу. Равные значения не образуют пик.
 """
 
+description_es = """
+Los sensores de peligro de la máscara forman un anillo. `readings[i]` es la señal en el sensor $i$; El sensor $0$ está adyacente al sensor $1$ y al último sensor.
+
+Devuelve, en orden creciente, los índices cuya lectura es **estrictamente mayor** que la de ambos vecinos cíclicos. Lecturas iguales nunca forman un pico.
+"""
+
+description_zh = """
+面罩的危险传感器形成一个环。 `readings[i]` 是传感器 $i$ 处的信号；传感器 $0$ 与传感器 $1$ 和最后一个传感器相邻。
+
+按升序返回读数**严格大于**两个循环邻居的索引。相同的读数永远不会形成峰值。
+"""
+
 limits = """
 - $3 \\leq \\text{len}(\\text{readings}) \\leq 10^4$
 - $0 \\leq \\text{readings}[i] \\leq 10^9$

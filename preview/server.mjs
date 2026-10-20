@@ -36,6 +36,8 @@ async function loadAllJsonFiles() {
             solution: data.solution || "",
             description_en: data.description_en || "",
             description_ru: data.description_ru || "",
+            description_es: data.description_es || "",
+            description_zh: data.description_zh || "",
             examples: data.examples || "",
             limits: data.limits || "",
           });

@@ -16,6 +16,18 @@ description_ru = """
 Считайте, что `num` — это последовательность десятичных цифр; запись корректна, если **каждая цифра** строго меньше `base`.
 """
 
+description_es = """
+Dado un número entero no negativo `num` y un número entero `base`, verifique si `num` se puede escribir como un número base `base` válido.
+
+Trate a `num` como una secuencia de dígitos decimales; es válido si **cada dígito** es estrictamente menor que `base`.
+"""
+
+description_zh = """
+给定一个非负整数 `num` 和一个整数 `base`，检查 `num` 是否可以写为有效的基数 `base` 数。
+
+将 `num` 视为十进制数字序列；如果**每个数字**严格小于 `base`，则该值有效。
+"""
+
 limits = """
 - $0 \\leq num \\leq 10^5$
 - $1 \\leq base \\leq 9$

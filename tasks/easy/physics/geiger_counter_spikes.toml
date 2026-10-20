@@ -16,6 +16,18 @@ description_ru = """
 Даны фоновый уровень, множитель `k` и измерения. Посчитайте значения не меньше `background * k`.
 """
 
+description_es = """
+Un contador Geiger registra la radiación de fondo y picos ocasionales.
+
+Dado el nivel de fondo, el multiplicador `k` y las mediciones, cuente las lecturas al menos `background * k`.
+"""
+
+description_zh = """
+盖革计数器记录背景辐射和偶尔的尖峰。
+
+给定背景水平、乘数 `k` 和测量值，计数读数至少为 `background * k`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{measurements}) \\leq 100$
 - $0 \\leq \\text{background} \\leq 10^4$

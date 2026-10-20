@@ -20,6 +20,22 @@ description_ru = """
 Посчитайте число умножений и число возведений в степень. Верните `[mul_count, pow_count]`.
 """
 
+description_es = """
+Se le proporciona una expresión aritmética válida con números, variables de una sola letra, signos de operación y espacios.
+
+La multiplicación es `*`, la exponenciación es `**` (dos asteriscos consecutivos sin espacio). El signo `*` **puede omitirse** entre un número y una variable escrita **adyacente** (por ejemplo, `2x`), pero los espacios infringen esta regla.
+
+Cuente el número de multiplicaciones y el número de exponenciaciones. Devuelve `[mul_count, pow_count]`.
+"""
+
+description_zh = """
+您将获得一个包含数字、单字母变量、运算符号和空格的有效算术表达式。
+
+乘法为 `*`，求幂为 `**`（两个连续的星号，中间没有空格）。在数字和**相邻**书写的变量之间，`*` 符号**可以省略**（例如，`2x`），但空格违反了此规则。
+
+计算乘法的次数和求幂的次数。返回`[mul_count, pow_count]`。
+"""
+
 limits = """
 - $1 \\le \\text{len}(s) \\le 10^5$
 """

@@ -46,6 +46,48 @@ $$
 Дана строка `code` из цифр. Верните **минимальное** число кликов для набора.
 """
 
+description_es = """
+Escribe un PIN numérico en un teclado virtual:
+
+$$
+\\begin{array}{|c|c|c|}
+\\hline
+\\color{red}{\\mathbf{1}} & 2 & 3 \\\\
+\\hline
+4 & 5 & 6 \\\\
+\\hline
+7 & 8 & 9 \\\\
+\\hline
+~ & 0 & ~ \\\\
+\\hline
+\\end{array}
+$$
+
+El cursor comienza en $1$. Mover una celda con una flecha cuesta $1$ clic, seleccionar un dígito con **OK** cuesta $1$ clic.
+Dada una cadena `code` de dígitos, devuelve el número **mínimo** de clics para escribirla.
+"""
+
+description_zh = """
+您在虚拟键盘上键入数字 PIN：
+
+$$
+\\begin{array}{|c|c|c|}
+\\hline
+\\color{red}{\\mathbf{1}} & 2 & 3 \\\\
+\\hline
+4 & 5 & 6 \\\\
+\\hline
+7 & 8 & 9 \\\\
+\\hline
+~ & 0 & ~ \\\\
+\\hline
+\\end{array}
+$$
+
+光标从 $1$ 开始。通过箭头移动一个单元格需要 $1$ 单击，使用 **确定** 选择数字需要 $1$ 单击。
+给定一个数字字符串 `code`，返回输入该字符串的**最小**次数。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{code}) \\leq 100$
 - $\\text{code} \\in \\{0,1,2,3,4,5,6,7,8,9\\}^*$

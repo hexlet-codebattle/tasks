@@ -28,6 +28,30 @@ description_ru = """
 Если `address` **некорректен** (неправильный формат, неверный октет или некорректная длина префикса), верните строку `"invalid adress!!111"`.
 """
 
+description_es = """
+Se le proporciona una cadena `address` que contiene una dirección IPv4 con una máscara de subred en notación CIDR: `\"a.b.c.d/n\"`.
+
+Si `address` es un CIDR IPv4 **válido**:
+
+- Interpretar `a.b.c.d` como una dirección IPv4.
+- Interpretar `n` como una longitud de prefijo entero ($0 \\leq n \\leq 32$).
+- Calcule la **dirección de transmisión** de esa red (la última dirección IPv4 en la subred) y devuélvala como una cadena de puntos, por ejemplo `\"192.168.0.255\"`.
+
+Si `address` es **no válido** (formato incorrecto, octeto no válido o longitud de prefijo no válida), devuelva la cadena `\"invalid adress!!111\"`.
+"""
+
+description_zh = """
+您将获得一个字符串 `address`，其中包含 IPv4 地址以及 CIDR 表示法中的子网掩码：`\"a.b.c.d/n\"`。
+
+如果 `address` 是**有效** IPv4 CIDR：
+
+- 将 `a.b.c.d` 解释为 IPv4 地址。
+- 将 `n` 解释为整数前缀长度 ($0 \\leq n \\leq 32$)。
+- 计算该网络的**广播地址**（子网中的最后一个 IPv4 地址）并将其作为点分字符串返回，例如 `\"192.168.0.255\"`。
+
+如果 `address` **无效**（格式错误、八位字节无效或前缀长度无效），则返回字符串 `\"invalid adress!!111\"`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{address}) \\leq 50$
 - $0 \\leq a,b,c,d \\leq 255$

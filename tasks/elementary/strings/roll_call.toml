@@ -16,6 +16,18 @@ description_ru = """
 Верните количество присутствующих студентов.
 """
 
+description_es = """
+Un profesor toma lista y escribe el resultado como una cadena `log`, donde `'P'` marca un estudiante presente y `'A'` marca un estudiante ausente.
+
+Devuelve el número de estudiantes presentes.
+"""
+
+description_zh = """
+一位教授记录出勤情况并将结果写入字符串 `log`，其中 `'P'` 标记在场学生，`'A'` 标记缺席学生。
+
+返回当前学生的人数。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{log}) \\leq 10^4$
 - $\\text{log} \\in \\{\\text{"P"}, \\text{"A"}\\}^*$

@@ -12,6 +12,14 @@ description_ru = """
 Дети делятся на команды. Дан список `names` и индекс `k`, верните два списка: первые `k` имен и оставшиеся. Если `k` отрицателен, считайте от конца. Ограничьте `k` диапазоном от `0` до длины списка.
 """
 
+description_es = """
+Los niños se dividieron en equipos. Dada una lista de `names` y un índice `k`, devuelve dos listas: la primera `k` con nombres y el resto. Si `k` es negativo, cuente desde el final. Sujete `k` al rango de `0` a la longitud de la lista.
+"""
+
+description_zh = """
+孩子们分成小组。给定 `names` 列表和索引 `k`，返回两个列表：第一个 `k` 名称和其余列表。如果`k`为负数，则从末尾开始计数。将 `k` 限制在从 `0` 到列表长度的范围内。
+"""
+
 solution = """
 def solution(names: list[str], k: int) -> list[list[str]]:
     if k < 0:

@@ -28,6 +28,30 @@ description_ru = """
 Пропускайте варианты, которые уже встречаются в `taken_logins`. Верните ровно три предложения.
 """
 
+description_es = """
+Se le proporciona el inicio de sesión deseado `login` (que no está disponible) y una lista `taken_logins`.
+
+Sugiera **las primeras tres** alternativas disponibles aplicando estrategias en orden:
+
+1) agregue `_` al principio y al final,
+2) reemplace todos los caracteres `o`, `l`, `s` con dígitos: `o→0`, `l→1`, `s→5`,
+3) añadir el sufijo entero positivo más pequeño; reutilice esta estrategia tantas veces como sea necesario.
+
+Omita cualquier candidato que ya esté presente en `taken_logins`. Devuelve exactamente tres sugerencias.
+"""
+
+description_zh = """
+您将获得所需的登录名 `login`（不可用）和列表 `taken_logins`。
+
+通过按顺序应用策略来建议**前三个**可用的替代方案：
+
+1. 在开头和结尾添加 `_`，
+2. 将所有字符 `o`、`l`、`s` 替换为数字：`o→0`、`l→1`、`s→5`，
+3. 附加最小正整数后缀；根据需要多次重复使用此策略。
+
+跳过 `taken_logins` 中已存在的任何候选者。准确返回三个建议。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{login}) \\leq 30$
 - $0 \\leq \\text{len}(\\text{taken\\_logins}) \\leq 10^4$

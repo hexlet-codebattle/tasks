@@ -12,6 +12,14 @@ description_ru = """
 Последовательность чисел Хэмминга $1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, 32, 36, \\ldots$ состоит из всех чисел вида $2^i \\cdot 3^j \\cdot 5^k$, где $i$, $j$ и $k$ - неотрицательные целые числа. Сгенерируйте $n$-ое число Хэмминга.
 """
 
+description_es = """
+La secuencia de números de Hamming $1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, 32, 36, \\ldots$ consta de todos los números de la forma $2^i \\cdot 3^j \\cdot 5^k$ donde $i$, $j$ y $k$ son números enteros no negativos. Generar $n$-ésimo número.
+"""
+
+description_zh = """
+汉明数序列 $1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, 32, 36, \\ldots$ 由 $2^i \\cdot 3^j \\cdot 5^k$ 形式的所有数字组成，其中 $i$、$j$ 和 $k$ 是非负整数。生成第 $n$ 个号码。
+"""
+
 limits = """
 - $1 \\leq n \\leq 1000$
 """

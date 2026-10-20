@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая удаляет слова с нечетной длиной в строке, а слова с четной длиной переворачивает.
 """
 
+description_es = """
+Te dan una serie de palabras. Elimina cada palabra con longitud impar e invierte cada palabra con longitud par.
+"""
+
+description_zh = """
+给你一串单词。删除每个奇数长度的单词并反转每个偶数长度的单词。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(sentence) \\leq 200$
 """

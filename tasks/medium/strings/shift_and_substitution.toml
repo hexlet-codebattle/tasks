@@ -18,6 +18,20 @@ description_ru = """
 По данным $S$ и $T$ верните минимальный сдвиг $K \\ge 0$, при котором можно получить $T$, или $-1$, если это невозможно.
 """
 
+description_es = """
+Una cadena $S$ se desplaza cíclicamente hacia la izquierda en posiciones $K$, luego se aplica una sustitución biyectiva sobre letras minúsculas:
+letras iguales se asignan a letras iguales, letras diferentes se asignan a letras diferentes.
+
+Dados $S$ y $T$, devuelva el desplazamiento mínimo $K \\ge 0$ para el cual se puede obtener $T$, o $-1$ si es imposible.
+"""
+
+description_zh = """
+将字符串 $S$ 循环左移 $K$ 位置，然后对小写字母应用双射替换：
+相同的字母映射到相同的字母，不同的字母映射到不同的字母。
+
+给定 $S$ 和 $T$，返回可以获得 $T$ 的最小移位 $K \\ge 0$，如果不可能，则返回 $-1$。
+"""
+
 limits = """
 - $1 \\le |S| = |T| \\le 20$
 - $S, T \\in \\{a,\\ldots,z\\}^{|S|}$

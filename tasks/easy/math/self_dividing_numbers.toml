@@ -26,6 +26,26 @@ description_ru = """
 Верните числа в порядке возрастания.
 """
 
+description_es = """
+Un número autodivisible es un número que es divisible por cada dígito que contiene.
+Por ejemplo, `128` es un número que se autodivide porque $128 \\pmod 1 = 0$, $128 \\pmod 2 = 0$ y $128 \\pmod 8 = 0$.
+
+Un número autodivisible no puede contener el dígito `0`.
+
+Dados dos números enteros `left` y `right`, devuelve una matriz de todos los números autodivisibles en el rango `[left, right]` (inclusive).
+
+Devuelve los números en orden creciente.
+"""
+
+description_zh = """
+自除数是能被自身每一位数字整除的数。
+例如，`128` 是自除数，因为 $128 \\pmod 1 = 0$、$128 \\pmod 2 = 0$、$128 \\pmod 8 = 0$。
+
+自除数不能包含数字 `0`。
+
+给定两个整数 `left` 和 `right`，返回闭区间 `[left, right]` 内所有自除数组成的数组，按升序排列。
+"""
+
 limits = """
 - $1 \\leq \\text{left} \\leq \\text{right} \\leq 10^4$
 """

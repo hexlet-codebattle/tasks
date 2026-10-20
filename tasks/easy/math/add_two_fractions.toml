@@ -16,6 +16,18 @@ description_ru = """
 Верните результат в виде несократимой дроби $m/n$, представленной как массив из двух целых чисел `[m, n]`.
 """
 
+description_es = """
+Dadas dos fracciones racionales $a/b$ y $c/d$, calcula su suma.
+
+Devuelve el resultado como una fracción irreducible $m/n$, representada como una matriz de dos números enteros `[m, n]`.
+"""
+
+description_zh = """
+给定两个有理分数 $a/b$ 和 $c/d$，计算它们的和。
+
+以不可约分数 $m/n$ 的形式返回结果，表示为两个整数的数组 `[m, n]`。
+"""
+
 limits = """
 - $-1000 \\leq a, c \\leq 1000$
 - $1 \\leq b, d \\leq 1000$

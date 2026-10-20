@@ -12,6 +12,14 @@ description_ru = """
 Есть $N$ программистов с скиллами из $\\{1,2,3\\}$ (джун $=1$, миддл $=2$, синьор $=3$). Повышение скилла на $1$ стоит $1$. Нужно иметь не менее $\\lceil N/2 \\rceil$ синьоров. Найдите минимальную суммарную стоимость.
 """
 
+description_es = """
+Hay programadores $N$ con habilidades en $\\{1,2,3\\}$ ($=1$ junior, $=2$ medio, $=3$ senior). Aumentar la habilidad de un programador en $1$ cuesta $1$. El proyecto requiere al menos personas mayores $\\lceil N/2 \\rceil$. Encuentre el costo total mínimo para satisfacer el requisito.
+"""
+
+description_zh = """
+拥有$\\{1,2,3\\}$技能的$N$程序员（初级$=1$，中级$=2$，高级$=3$）。将程序员的技能提高 $1$ 的成本为 $1$。该项目至少需要$\\lceil N/2 \\rceil$的高年级学生。找出满足要求的最小总成本。
+"""
+
 limits = """
 - $1 \\leq N$
 - $\\text{skill}_i \\in \\{1,2,3\\}$

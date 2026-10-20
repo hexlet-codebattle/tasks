@@ -16,6 +16,18 @@ description_ru = """
 Верните минимальную суммарную стоимость пути в правую нижнюю клетку.
 """
 
+description_es = """
+La dirección de las corrientes de aire da forma a la trayectoria de las semillas dispersadas por el viento. Cada celda de la cuadrícula rectangular `wind` contiene la dirección del viento local: `U` arriba, `D` abajo, `L` izquierda, `R` derecha, donde arriba significa hacia la fila $0$ e izquierda significa hacia la columna $0$; todas las filas tienen la misma longitud. Una semilla comienza en la celda superior izquierda y se mueve entre las celdas que comparten un lado. Salir de una celda es gratis cuando va en la dirección del viento de esa celda y cuesta $1$ en caso contrario.
+
+Devuelve el costo total mínimo de una ruta a la celda inferior derecha.
+"""
+
+description_zh = """
+风向决定种子的传播路线。矩形网格 `wind` 的每个单元格记录当地风向：`U` 向上、`D` 向下、`L` 向左、`R` 向右。向上表示朝第 $0$ 行移动，向左表示朝第 $0$ 列移动；所有行长度相同。种子从左上角出发，每次移到共边的相邻单元格。如果离开当前格子的方向与该格风向相同，费用为零，否则费用为 $1$。
+
+返回到达右下角的最小总费用。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{wind}) \\leq 300$
 - $1 \\leq \\text{len}(\\text{wind}[i]) = \\text{len}(\\text{wind}[0]) \\leq 300$

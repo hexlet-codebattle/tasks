@@ -20,6 +20,22 @@ description_ru = """
 Даны буква столбца `row` и номер строки `column`. Верните `"black"` или `"white"` в зависимости от цвета клетки.
 """
 
+description_es = """
+Determina el color de un cuadrado en un tablero de ajedrez estándar.
+
+El tablero tiene columnas de `A` a `H` y filas de `1` a `8`. El cuadrado `A1` es negro y los colores se alternan en filas y columnas.
+
+Se le proporciona la letra de columna `row` y el número de fila `column`. Devuelve `\"black\"` o `\"white\"` para el color del cuadrado.
+"""
+
+description_zh = """
+确定标准棋盘上正方形的颜色。
+
+该板具有从 `A` 到 `H` 的列和从 `1` 到 `8` 的行。正方形 `A1` 为黑色，颜色沿行和列交替。
+
+您将获得列字母 `row` 和行号 `column`。返回 `\"black\"` 或 `\"white\"` 作为方块的颜色。
+"""
+
 limits = """
 - $row \\in \\{A, B, C, D, E, F, G, H\\}$
 - $1 \\leq column \\leq 8$

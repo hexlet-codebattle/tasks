@@ -18,6 +18,20 @@ description_ru = """
 Верните список найденных уникальных палиндромов в нижнем регистре, отсортированный по алфавиту.
 """
 
+description_es = """
+Dada una cadena `text`, busque todas las palabras palíndromas de exactamente caracteres $5$.
+
+Una palabra consta únicamente de letras inglesas. Ignore todos los signos de puntuación, dígitos y casos de caracteres.
+Devuelve una lista de palíndromos encontrados únicos en minúsculas, ordenados alfabéticamente.
+"""
+
+description_zh = """
+给定一个字符串 `text`，找到恰好包含 $5$ 字符的所有回文词。
+
+一个单词仅由英文字母组成。忽略所有标点符号、数字和字符大小写。
+以小写形式返回唯一找到的回文列表，按字母顺序排序。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{text}) \\leq 10^5$
 """

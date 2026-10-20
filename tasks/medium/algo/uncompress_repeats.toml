@@ -18,6 +18,20 @@ description_ru = """
 - Символы без последующих цифр остаются без изменений (тем самым одиночные и парные символы — `a`, `aa` — сохраняются).
 """
 
+description_es = """
+Dada una cadena `s`, descomprímala según las siguientes reglas:
+
+- Expanda un carácter seguido de un número entero `k` (por ejemplo, `a3`, `z10`) en ese carácter repetido `k` veces.
+- Los caracteres que no van seguidos de dígitos permanecen sin cambios (esto naturalmente conserva los individuales y los pares como `a`, `aa`).
+"""
+
+description_zh = """
+给定一个字符串 `s`，根据以下规则对其进行解压缩：
+
+- 将后跟整数 `k` 的字符（例如，`a3`、`z10`）扩展为重复 `k` 次的该字符。
+- 后面不跟数字的字符保持不变（这自然会保留单个字符和对，例如 `a`、`aa`）。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 100$
 - $0 \\leq k \\leq 100$

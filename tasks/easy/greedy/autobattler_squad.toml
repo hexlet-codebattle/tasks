@@ -38,6 +38,40 @@ description_ru = """
 Определите максимальную суммарную силу отряда, который вы сможете сформировать.
 """
 
+description_es = """
+En el juego Autobattler, los jugadores forman un escuadrón comprando guerreros en una tienda.
+
+El sistema de actualización funciona de la siguiente manera:
+- Los guerreros $3$ **normales** se convierten automáticamente en guerreros $1$ **actualizados**.
+- Los guerreros $3$ **actualizados** se convierten automáticamente en $1$ **mejor** guerrero.
+
+Cada tipo de unidad tiene un valor de fuerza específico:
+- **Normal**: $1$
+- **Actualizado**: $4$
+- **Mejor**: $16$
+
+Has comprado guerreros normales $n$. Sin embargo, solo puedes presentar un escuadrón de guerreros $k$ como máximo de cualquier calidad.
+
+Determina la fuerza total máxima posible de tu escuadrón.
+"""
+
+description_zh = """
+在《Autobattler》游戏中，玩家通过从商店购买战士来组建小队。
+
+升级系统的工作原理如下：
+- $3$ **普通**战士自动转换为$1$ **升级**战士。
+- $3$ **升级**战士自动转换为$1$ **最佳**战士。
+
+每种单位类型都有特定的强度值：
+- **正常**：$1$
+- **升级**：$4$
+- **最佳**：$16$
+
+您已购买$n$普通战士。然而，你最多只能派出一支由任意品质的 $k$ 战士组成的小队。
+
+确定你的小队的最大可能总兵力。
+"""
+
 limits = """
 - $0 \\leq n \\leq 10^9$
 - $0 \\leq k \\leq 10^9$

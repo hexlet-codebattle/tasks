@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая проверяет, находится ли число `n` в границах между `lower` и `upper` включительно.
 """
 
+description_es = """
+Cree una función que valide si un número `n` está inclusive dentro de los límites de `lower` y `upper`.
+"""
+
+description_zh = """
+创建一个函数，用于验证数字 `n` 是否包含在 `lower` 和 `upper` 的范围内。
+"""
+
 limits = """
 - $0 \\leq num \\leq 100$
 - $0 \\leq lower \\leq 100$

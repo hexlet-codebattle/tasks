@@ -16,6 +16,18 @@ description_ru = """
 Каждый элемент можно использовать лишь единожды (вы не можете умножить число на само себя). Элементы пары должны быть расположены в порядке возрастания.
 """
 
+description_es = """
+Dada una matriz con números enteros positivos y negativos, devuelve un par de números enteros que, cuando se multiplican, producirían el mayor número posible.
+
+Un elemento sólo se puede utilizar una vez (no se puede multiplicar un número por sí mismo). Los elementos del par deben disponerse en orden ascendente.
+"""
+
+description_zh = """
+给定一个同时包含正整数和负整数的数组，返回一对整数，它们相乘时会产生最大的可能数字。
+
+一个元素只能使用一次（不能将数字与其本身相乘）。该对的元素应按升序排列。
+"""
+
 limits = """
 - $2 \\leq |\\text{arr}| \\leq 50$
 - $-100 \\leq \\text{arr}[i] \\leq 100$

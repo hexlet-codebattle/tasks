@@ -24,6 +24,26 @@ description_ru = """
 Это возможно тогда и только тогда, когда либо $A \\le L$ и $2H > B$, либо $B \\le L$ и $2H > A$.
 """
 
+description_es = """
+Una sábana tiene el tamaño $A\\times B$ centímetros. Una cuerda de longitud $L$ cuelga a la altura $H$ sobre el suelo.
+
+Lanzas la sábana sobre la cuerda para que quede doblada **exactamente por la mitad** a lo largo de un lado. Determine si es posible colocar la sábana de modo que:
+- se ajusta completamente a la cuerda, y
+- **no** toca el suelo (estrictamente).
+
+Esto es posible si $A \\le L$ y $2H > B$, o $B \\le L$ y $2H > A$.
+"""
+
+description_zh = """
+一张床单的尺寸为 $A\\times B$ 厘米。长度为 $L$ 的绳子悬挂在地面上方高度 $H$ 处。
+
+您将床单扔到绳子上，使其沿一侧**完全对半**折叠。确定是否可以放置床单，以便：
+- 它完全适合绳子，并且
+- 它**不**接触地板（严格来说）。
+
+当 $A \\le L$ 和 $2H > B$ 或 $B \\le L$ 和 $2H > A$ 时，这是可能的。
+"""
+
 limits = """
 - $1 \\le A,B,H,L \\le 10^9$
 """

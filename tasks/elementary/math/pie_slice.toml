@@ -22,6 +22,24 @@ description_ru = """
 Верните `True`, если кусков достаточно для всех, `False` в противном случае.
 """
 
+description_es = """
+Cree una función que determine si es posible o no dividir un pastel de manera justa dados estos tres parámetros:
+- Número total de rebanadas
+- Número de destinatarios
+- ¿Cuántas rebanadas recibe cada persona?
+
+Devuelve `True` si hay suficientes porciones para que todos obtengan su parte, `False` en caso contrario.
+"""
+
+description_zh = """
+创建一个函数，根据这三个参数确定是否可以公平地分割饼图：
+- 切片总数
+- 收件人数量
+- 每人得到多少片
+
+如果有足够的切片供每个人获得其份额，则返回 `True`，否则返回 `False`。
+"""
+
 limits = """
 - $1 \\leq \\text{total} \\leq 100$
 - $1 \\leq \\text{people} \\leq 50$

@@ -28,6 +28,30 @@ description_ru = """
 но нулевые интервалы не дают вклада.
 """
 
+description_es = """
+Se le proporciona una lista de intervalos enteros `[l, r)`.
+Cada intervalo representa un rango **medio abierto** que incluye `l` pero excluye `r`.
+Su tarea es fusionar todos los intervalos superpuestos y devolver la **longitud total** cubierta por los fusionados.
+
+Dos intervalos solo se **superponen** si comparten al menos un punto entero dentro del rango.
+Si dos intervalos solo se **tocan** (por ejemplo, `[1,2)` y `[2,4)`), **no** se fusionan.
+
+Los intervalos de longitud cero (`l == r`) no aportan nada.
+Los intervalos pueden aparecer en cualquier orden o estar duplicados.
+"""
+
+description_zh = """
+您将获得一个整数间隔 `[l, r)` 的列表。
+每个间隔代表一个**半开**范围，其中包括 `l` 但不包括 `r`。
+您的任务是合并所有重叠的间隔并返回合并间隔所覆盖的**总长度**。
+
+如果两个区间在范围内至少共享一个整数点，则它们才会**重叠**。
+如果两个间隔仅**接触**（例如 `[1,2)` 和 `[2,4)`），则它们**不会**合并。
+
+零长度间隔 (`l == r`) 没有任何贡献。
+间隔可以以任何顺序出现或重复。
+"""
+
 limits = """
 - $1 \\leq l < r \\leq 1000$
 - Number of intervals $< 10$

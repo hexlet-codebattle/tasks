@@ -16,6 +16,18 @@ description_ru = """
 Сожмите каждую максимальную группу подряд идущих одинаковых событий в символ события и длину группы в десятичной записи и верните полученную строку. Для пустой записи верните пустую строку.
 """
 
+description_es = """
+Las llamadas de contacto mantienen unida a la bandada, mientras que las llamadas de alarma advierten sobre el peligro. En una grabación bioacústica `C` marca una llamada de contacto, `A` una llamada de alarma y `S` silencio.
+
+Comprime cada bloque máximo de eventos consecutivos iguales en el carácter de evento seguido de la longitud del bloque escrita en decimal y devuelve la cadena resultante. Una grabación vacía da una cadena vacía.
+"""
+
+description_zh = """
+联络叫声将群体聚集在一起，而警报叫声则警告危险。在生物声学记录中，`C` 标记为接触呼叫，`A` 为报警呼叫，`S` 为静音。
+
+将相等连续事件的每个最大块压缩为事件字符，后跟以十进制写入的块长度，并返回结果字符串。空录音给出空字符串。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{recording}) \\leq 10^4$
 - $\\text{recording}[i] \\in \\{C, A, S\\}$

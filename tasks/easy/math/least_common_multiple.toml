@@ -16,6 +16,18 @@ description_ru = """
 НОК двух целых чисел $x$ и $y$ — это наименьшее положительное целое число, которое делится и на $x$, и на $y$.
 """
 
+description_es = """
+Cree una función que calcule el MCM (mínimo común múltiplo) de dos números enteros positivos.
+
+El MCM de dos números enteros $x$ y $y$ es el entero positivo más pequeño que es divisible por $x$ y $y$.
+"""
+
+description_zh = """
+创建一个计算两个正整数的 LCM（最小公倍数）的函数。
+
+两个整数 $x$ 和 $y$ 的最小公倍数是可被 $x$ 和 $y$ 整除的最小正整数。
+"""
+
 limits = """
 - $1 \\leq x \\leq 100$
 - $1 \\leq y \\leq 100$

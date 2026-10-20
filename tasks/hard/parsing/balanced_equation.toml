@@ -10,6 +10,22 @@ description_ru = """
 Перед молекулой может стоять цифра 1‑9 — количество её копий. Нужно определить, сбалансировано ли уравнение, то есть совпадает ли количество вхождений каждого атома в левой и правой частях.
 """
 
+description_es = """
+En una ecuación química hay dos partes: el lado izquierdo (reactivos) y el lado derecho (productos).
+Las moléculas están separadas por el signo '+'. Una molécula está formada por átomos indicados con letras mayúsculas en inglés.
+Un dígito del 1 al 9 después de un átomo indica cuántos átomos de ese tipo están presentes.
+Un dígito del 1 al 9 antes de una molécula indica cuántas copias de esta molécula aparecen.
+Determina si la ecuación está equilibrada, es decir, los recuentos de cada átomo son iguales en ambos lados.
+"""
+
+description_zh = """
+在化学方程式中，有两部分：左侧（反应物）和右侧（产物）。
+分子由“+”号分隔。分子由用大写英文字母表示的原子组成。
+原子后面的数字 1-9 表示存在多少个这样的原子。
+分子前面的数字 1-9 表示该分子出现了多少个副本。
+判断方程是否平衡，即两边每个原子的数量相等。
+"""
+
 description_en = """
 In a chemical equation there are two parts: the left side (reactants) and the right side (products).
 Molecules are separated by the '+' sign. A molecule consists of atoms denoted by uppercase English letters.

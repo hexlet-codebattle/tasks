@@ -12,6 +12,14 @@ description_ru = """
 Дано количество денег `x` и список цен подарков `prices`. Определите максимальное количество подарков, которые можно купить.
 """
 
+description_es = """
+Dada una cantidad de dinero `x` y una lista de precios de regalos `prices`, determine la cantidad máxima de regalos que se pueden comprar.
+"""
+
+description_zh = """
+给定金额 `x` 和礼品价格列表 `prices`，确定可以购买的最大礼品数量。
+"""
+
 limits = """
 - $0 \\leq x \\leq 10^6$
 - $0 \\leq \\text{len}(\\text{prices}) \\leq 1000$

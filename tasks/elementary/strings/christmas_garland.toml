@@ -12,6 +12,14 @@ description_ru = """
 Дано число `n`. Выведите строку длины `n` с чередующимися символами `*o*o*o...`, начиная со `*`.
 """
 
+description_es = """
+Dado un número `n`, devuelve una cadena de longitud `n` con caracteres alternos `*o*o*o...`, comenzando con `*`.
+"""
+
+description_zh = """
+给定数字 `n`，返回长度为 `n` 的字符串，其中包含交替字符 `*o*o*o...`，从 `*` 开始。
+"""
+
 limits = """
 - $1 \\leq n \\leq 1000$
 """

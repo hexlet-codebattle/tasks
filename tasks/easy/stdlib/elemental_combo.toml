@@ -20,6 +20,22 @@ description_ru = """
 Верните суммарный урон.
 """
 
+description_es = """
+El objetivo comienza en el estado `neutral`. Te dan una variedad de ataques:
+- `fireball` inflige daño $20$, o $40$ si el objetivo era `wet`, luego establece el estado en `neutral`.
+- `water_blast` causa daño $15$ y establece el estado en `wet`.
+
+Devolver el daño total.
+"""
+
+description_zh = """
+目标以状态 `neutral` 启动。您将受到一系列攻击：
+- `fireball` 造成 $20$ 伤害，如果目标是 `wet`，则造成 $40$ 伤害，然后将状态设置为 `neutral`。
+- `water_blast` 造成 $15$ 伤害并将状态设置为 `wet`。
+
+返回总伤害。
+"""
+
 limits = """
 - $0 \\le \\text{len(attacks)} \\le 42$
 """

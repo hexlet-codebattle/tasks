@@ -24,6 +24,26 @@ description_ru = """
 Верните измененное изображение после выполнения заливки.
 """
 
+description_es = """
+Una imagen está representada por una matriz de enteros 2D `image`, donde `image[i][j]` representa el valor de píxel de la imagen.
+
+También se le proporcionan tres números enteros `sr`, `sc` y `color`. Debe realizar un relleno de inundación en la imagen a partir del píxel `image[sr][sc]`.
+
+Para realizar un relleno de inundación, considere el píxel inicial, más los píxeles conectados en 4 direcciones al píxel inicial del mismo color que el píxel inicial, más los píxeles conectados en 4 direcciones a esos píxeles (también con el mismo color), y así sucesivamente. Reemplace el color de todos los píxeles antes mencionados con `color`.
+
+Devuelve la imagen modificada después de realizar el relleno de inundación.
+"""
+
+description_zh = """
+图像由二维整数数组 `image` 表示，其中 `image[i][j]` 表示图像的像素值。
+
+还给出了三个整数 `sr`、`sc` 和 `color`。您应该从像素 `image[sr][sc]` 开始对图像执行洪水填充。
+
+要执行洪水填充，请考虑起始像素，加上与起始像素颜色相同的 4 向连接到起始像素的任何像素，加上与这些像素（也具有相同颜色）4 向连接的任何像素，依此类推。将上述所有像素的颜色替换为 `color`。
+
+执行洪水填充后返回修改后的图像。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{image}) \\leq 50$
 - $1 \\leq \\text{len}(\\text{image}[0]) \\leq 50$

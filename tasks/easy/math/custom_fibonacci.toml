@@ -20,6 +20,22 @@ description_ru = """
 Верните `True`, если `n` принадлежит этой последовательности, и `False` в противном случае.
 """
 
+description_es = """
+Dados tres números enteros `f0`, `f1` y `n`.
+
+Considere una secuencia donde los dos primeros elementos son `f0` y `f1`, y cada elemento posterior es la suma de los dos elementos anteriores.
+
+Devuelve `True` si `n` pertenece a esta secuencia y `False` en caso contrario.
+"""
+
+description_zh = """
+给定三个整数 `f0`、`f1` 和 `n`。
+
+考虑一个序列，其中前两个元素是 `f0` 和 `f1`，并且每个后续元素都是前面两个元素的总和。
+
+如果 `n` 属于该序列，则返回 `True`，否则返回 `False`。
+"""
+
 limits = """
 - $0 \\leq f_0, f_1 \\leq 1000$
 - $0 \\leq n \\leq 10^9$

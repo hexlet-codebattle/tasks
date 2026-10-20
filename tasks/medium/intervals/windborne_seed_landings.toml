@@ -16,6 +16,18 @@ description_ru = """
 Верните количество семян, попавших на плодородную землю. Семена в одинаковых позициях считаются отдельно.
 """
 
+description_es = """
+La dispersión de semillas por el viento se llama anemocoria: las semillas aladas y con vilano se alejan de la planta madre, pero solo brotan en lugares adecuados. Cada semilla de `seeds` es transportada por la misma ráfaga, por lo que una semilla en la posición `p` aterriza en `p + wind`. Un aterrizaje tiene éxito cuando cae dentro de al menos un intervalo fértil `[left, right]`, ambos extremos incluidos. Los intervalos de `fertile` pueden superponerse.
+
+Devuelve cuántas semillas aterrizan en tierra fértil. Las semillas que comparten una posición se cuentan por separado.
+"""
+
+description_zh = """
+通过风传播的种子称为风传播：带翅膀的种子和带有冠毛的种子远离母体植物，但它们只在合适的地方发芽。 `seeds` 的每个种子都由同一阵风携带，因此位置 `p` 的种子降落在 `p + wind` 处。当落在至少一个肥沃区间 `[left, right]`（包括两端）内时，着陆成功。 `fertile` 的间隔可能重叠。
+
+返回有多少种子落在肥沃的土地上。共享位置的种子单独计算。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{seeds}) \\leq 10^5$
 - $-10^6 \\leq \\text{seeds}[i] \\leq 10^6$

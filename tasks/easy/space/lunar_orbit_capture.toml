@@ -12,6 +12,14 @@ description_ru = """
 Selene приближается к Луне с начальной скоростью. Тормозные импульсы применяются по порядку, и каждый импульс уменьшает скорость. Верните номер первого импульса, после которого скорость попадает в безопасный диапазон захвата `[min_speed, max_speed]`, или `-1`, если этого не происходит.
 """
 
+description_es = """
+Selene se acerca a la Luna con una velocidad inicial. Las quemaduras de freno se aplican en orden y cada quemada reduce la velocidad. Devuelve el primer recuento de grabación después del cual la velocidad ingresa al rango de captura segura `[min_speed, max_speed]`, o `-1` si nunca lo hace.
+"""
+
+description_zh = """
+Selene 以给定初速度接近月球，按顺序执行制动点火，每次点火都使速度降低。返回使速度首次进入安全捕获区间 `[min_speed, max_speed]` 的已执行点火次数。如果始终未进入该区间，则返回 `-1`。
+"""
+
 limits = """
 - $0 \\leq \\text{speed}, \\text{min\\_speed}, \\text{max\\_speed} \\leq 10^6$
 - $0 \\leq \\text{len}(\\text{burns}) \\leq 100$

@@ -16,6 +16,18 @@ description_ru = """
 Слова разделены пробелом. Если присутствуют знаки препинания, их не следует учитывать (кроме дефисов).
 """
 
+description_es = """
+La oración se da (como una cadena). Devuelve una lista de palabras que son más largas que la longitud promedio de todas las palabras. Si no existen tales palabras, devuelva `[\"there is no result!\"]`.
+
+Las palabras están separadas por un espacio en blanco. Si hay signos de puntuación, deben omitirse (excepto los guiones).
+"""
+
+description_zh = """
+给出句子（作为字符串）。返回比所有单词的平均长度长的单词列表。如果没有这样的字，则返回`[\"there is no result!\"]`。
+
+单词之间用空格分隔。如果有标点符号，应省略（连字符除外）。
+"""
+
 limits = """
 - $1 \\leq |\\text{sentence}| \\leq 1000$
 """

@@ -12,6 +12,14 @@ description_ru = """
 Дан несортированный массив с повторяющимися элементами, сгруппируйте повторяющиеся элементы вместе. Группировка должна происходить таким образом, чтобы сохранялся порядок первых вхождений всех элементов.
 """
 
+description_es = """
+Dada una matriz desordenada con repeticiones, agrupe múltiples apariciones de elementos individuales. La agrupación debe realizarse de manera que se mantenga el orden de las primeras apariciones de todos los elementos.
+"""
+
+description_zh = """
+给定一个具有重复项的未排序数组，将多次出现的单个元素分组。分组的方式应该保持所有元素首次出现的顺序。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
 """

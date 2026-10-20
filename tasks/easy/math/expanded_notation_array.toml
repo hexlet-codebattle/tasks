@@ -24,6 +24,26 @@ description_ru = """
 Каждое слагаемое — одна цифра, умноженная на степень десяти; у единиц можно опустить `x1`. Разрядные значения в каждой строке строго убывают. Каждое полученное целое число не превышает $2 \\cdot 10^9$.
 """
 
+description_es = """
+Notación expandida significa que un número entero se escribe como la suma de sus dígitos multiplicada por su valor posicional (en potencias estrictamente descendentes de $10$).
+
+Por ejemplo, $85063 = 8 \\times 10000 + 5 \\times 1000 + 6 \\times 10 + 3$.
+
+Se le proporciona una matriz de cadenas `arr`, donde cada cadena representa un número entero no negativo en notación expandida. Las cadenas usan `\"x\"` para multiplicación y `\"+\"` para suma, sin espacios. Su tarea es calcular la suma de cada cadena y devolver una matriz de estos números en su forma entera normal.
+
+Cada término es un solo dígito multiplicado por una potencia de diez; un término de unidades puede omitir `x1`. Los valores posicionales disminuyen estrictamente dentro de cada cadena. Cada número entero resultante es como máximo $2 \\cdot 10^9$.
+"""
+
+description_zh = """
+扩展表示法意味着整数被写为其数字之和与其位值的乘积（严格为 $10$ 的降幂）。
+
+例如，$85063 = 8 \\times 10000 + 5 \\times 1000 + 6 \\times 10 + 3$。
+
+给您一个字符串数组 `arr`，其中每个字符串代表扩展表示法中的非负整数。字符串使用 `\"x\"` 进行乘法，使用 `\"+\"` 进行加法，没有空格。您的任务是计算每个字符串的总和，并以正常整数形式返回这些数字的数组。
+
+每一项都是一位数乘以十的幂；单位术语可以省略 `x1`。每个字符串中的位值严格递减。每个结果整数最多为 $2 \\cdot 10^9$。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(arr) \\leq 100$
 - $1 \\leq \\text{len}(arr[i]) \\leq 100$

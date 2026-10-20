@@ -22,6 +22,24 @@ description_ru = """
 Алгоритм должен использовать бинарный поиск.
 """
 
+description_es = """
+Se le proporciona una matriz ordenada de números enteros `nums` (en orden no decreciente) y un número entero `target`.
+
+Implemente una función que devuelva el índice de la **primera aparición** de `target` en `nums`.
+Si `target` no está presente en `nums`, devuelva `-1`.
+
+El algoritmo debe utilizar búsqueda binaria.
+"""
+
+description_zh = """
+给您一个经过排序的整数数组 `nums`（按非递减顺序）和一个整数 `target`。
+
+实现一个函数，返回 `target` 在 `nums` 中**第一次出现**的索引。
+如果 `target` 不存在于 `nums` 中，则返回 `-1`。
+
+该算法必须使用二分搜索。
+"""
+
 limits = """
 - $0 \\leq n \\leq 100$
 - $-100 \\leq a_i \\leq 100 $

@@ -20,6 +20,22 @@ description_ru = """
 невозможно.
 """
 
+description_es = """
+Dada una cadena patrón y un conjunto de cadenas de igual longitud. En una sola operación usted puede
+elija dos cadenas cualesquiera del conjunto e intercambie los caracteres en la misma posición en
+ambas cuerdas. Determine el número mínimo de dichos intercambios necesarios para que al menos uno
+La cadena del conjunto se vuelve igual a la cadena del patrón, o devuelve -1 si es
+imposible.
+"""
+
+description_zh = """
+给定一个模式字符串和一组长度相等的字符串。在一次操作中您可以
+从集合中选择任意两个字符串并交换其中相同位置的字符
+两个字符串。确定所需的此类交换的最小数量，以便至少有一个
+集合中的字符串变得等于模式字符串，如果相等则返回 -1
+不可能的。
+"""
+
 solution = """
 def solution(pattern: str, strings: list[str]) -> int:
     \"\"\"Return the minimal number of swaps needed to obtain *pattern*,

@@ -12,6 +12,14 @@ description_ru = """
 Вид вражеского форта с моря представлен как гистограмма (массив высот стен). Ваши пушки стреляют только горизонтально. Найдите прямоугольную область стены максимальной площади, которую можно разнести одним точным массированным залпом.
 """
 
+description_es = """
+La vista de un fuerte enemigo desde el mar se representa como un histograma (una serie de alturas de muros). Tus cañones disparan sólo horizontalmente. Encuentre el área rectangular de la pared de tamaño máximo que puede destruirse con una única andanada precisa.
+"""
+
+description_zh = """
+从海上看到的敌方堡垒的视图用直方图（墙高度数组）表示。你的大炮只能水平射击。找出可以用单次精确的舷侧齐射摧毁的最大尺寸的矩形区域。
+"""
+
 limits = """
 - $0 \\leq n \\leq 100$
 - $0 \\leq h_i \\leq 100$

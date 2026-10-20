@@ -20,6 +20,22 @@ description_ru = """
 *Примечание:* Количество людей достаточно мало, чтобы перебрать все возможные комбинации (подмножества) людей, однако перебор всех перестановок будет слишком медленным.
 """
 
+description_es = """
+Se le proporciona una matriz de números enteros `people`, donde cada número entero representa el conjunto de habilidades de una persona como una máscara de bits (el bit $i$-ésimo es $1$ si tiene la habilidad $i$-ésimo, y $0$ en caso contrario). También se le proporciona un número entero `target_skills` que representa todas las habilidades necesarias para un proyecto como máscara de bits.
+
+Encuentre el número mínimo de personas necesarias para formar un equipo que cubra todas las habilidades requeridas. Si es imposible cubrir todas las habilidades requeridas, devuelva `-1`.
+
+*Nota:* El número de personas es lo suficientemente pequeño como para que puedas iterar a través de todas las combinaciones (subconjuntos) posibles de personas, pero iterar a través de todas las permutaciones será demasiado lento.
+"""
+
+description_zh = """
+给您一个整数数组 `people`，其中每个整数代表一个人的技能集作为位掩码（如果他们具有 $i$ 技能，则第 $i$ 位为 $1$，否则为 $0$）。您还将获得一个整数 `target_skills`，表示项目所需的所有技能作为位掩码。
+
+找出组建涵盖所有所需技能的团队所需的最少人数。如果无法涵盖所有​​所需技能，请返回 `-1`。
+
+*注意：* 人数足够小，您可以迭代所有可能的人员组合（子集），但迭代所有排列会太慢。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{people}) \\leq 15$
 - $0 \\leq \\text{people}[i] \\leq 65535$

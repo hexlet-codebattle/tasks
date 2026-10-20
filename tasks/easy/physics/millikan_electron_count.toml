@@ -18,6 +18,20 @@ description_ru = """
 Если заряд ровно посередине между двумя числами, выберите большее число.
 """
 
+description_es = """
+En el experimento de la gota de aceite de Millikan, las cargas de las gotas medidas son cercanas a múltiplos de la carga elemental.
+
+Dadas las cargas de las gotas y la carga elemental en las mismas unidades, devuelva el recuento de electrones más cercano para cada gota.
+Si un cargo está exactamente a medio camino entre dos cargos, elija el cargo mayor.
+"""
+
+description_zh = """
+在密立根的油滴实验中，测得的液滴电荷接近基本电荷的倍数。
+
+给定相同单位的液滴电荷和基本电荷，返回每个液滴最接近的电子计数。
+如果充电正好位于两个计数之间的中间，请选择较大的计数。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{charges}) \\leq 100$
 - $0 \\leq \\text{charge} \\leq 10^6$

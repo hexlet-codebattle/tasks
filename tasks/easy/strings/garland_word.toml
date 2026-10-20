@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая принимает слово в нижнем регистре, и возвращает степень слова, если это слово-гирлянда и $0$ в противном случае. Слово-гирлянда - такое слово, которое начинается и заканчивается одними и теми же $N$ буквами расположенными в одном и том же порядке. $N$ больше $0$, но меньше длины слова.
 """
 
+description_es = """
+Función de escritura que, dada una palabra en minúscula, devuelve el grado de la palabra si es una palabra guirnalda y $0$ en caso contrario. Una palabra guirnalda es aquella que comienza y termina con las mismas letras $N$ en el mismo orden, para algunas $N$ mayor que $0$, pero menor que la longitud de la palabra.
+"""
+
+description_zh = """
+编写一个函数，给定一个小写单词，如果它是花环单词，则返回该单词的程度，否则返回 $0$。花环词是指以相同顺序以相同的 $N$ 字母开头和结尾的词，对于某些 $N$ 大于 $0$，但小于单词的长度。
+"""
+
 limits = """
 - $2 \\leq \\text{len}(\\text{word}) \\leq 50$
 """

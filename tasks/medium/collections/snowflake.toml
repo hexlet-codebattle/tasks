@@ -24,6 +24,26 @@ description_ru = """
 Верните `true`, если существует минимум три симметрии, иначе `false`.
 """
 
+description_es = """
+Dada una matriz cuadrada de caracteres `*` y `.`, determine si tiene al menos tres de las siguientes simetrías:
+- Verticales
+-Horizontales
+- A lo largo de la diagonal principal
+- A lo largo de la antidiagonal
+
+Devuelve `true` si existen al menos tres simetrías; en caso contrario, `false`.
+"""
+
+description_zh = """
+给定一个字符 `*` 和 `.` 的方阵，确定它是否至少具有以下对称性中的三个：
+- 垂直
+- 水平
+- 沿着主对角线
+- 沿反对角线
+
+如果至少存在三个对称性，则返回 `true`，否则返回 `false`。
+"""
+
 limits = """
 - $1 \\leq n \\leq 100$ (where $n$ is the size of the square matrix)
 """

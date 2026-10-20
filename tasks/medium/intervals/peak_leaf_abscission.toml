@@ -16,6 +16,18 @@ description_ru = """
 Верните `[day, count]`, где `count` — наибольшее количество деревьев, сбрасывающих листья в один и тот же день, а `day` — самый ранний день, в который достигается это количество. Если деревьев нет, верните `[-1, 0]`.
 """
 
+description_es = """
+Antes de la caída de las hojas se forma una zona de abscisión en la base del tallo de la hoja, y una vez que la conexión se debilita, el viento y la lluvia ayudan a que la hoja se separe. Para cada árbol, `intervals` mantiene los días de caída de sus hojas como `[start, end]`, con ambos días incluidos.
+
+Devuelve `[day, count]`, donde `count` es el mayor número de árboles que pierden hojas en el mismo día y `day` es el primer día en el que se alcanza ese número. Devuelve `[-1, 0]` cuando no hay árboles.
+"""
+
+description_zh = """
+在叶子落下之前，叶柄基部会形成一个脱离区，一旦连接减弱，风雨就会帮助叶子分离。对于每棵树，`intervals` 将其落叶的天数保存为 `[start, end]`，包括这两天。
+
+返回 `[day, count]`，其中 `count` 是同一天落叶的最大树木数量，`day` 是达到该数量的最早日期。当没有树时返回`[-1, 0]`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{intervals}) \\leq 10^5$
 - $\\text{len}(\\text{intervals}[i]) = 2$

@@ -16,6 +16,18 @@ description_ru = """
 Даны две стороны треугольника, третья сторона должна удовлетворять неравенству треугольника: сумма любых двух сторон должна быть больше третьей стороны. Максимальная целочисленная длина возникает непосредственно перед суммой двух данных сторон.
 """
 
+description_es = """
+Crea una función que encuentre la longitud máxima posible del tercer borde de un triángulo, donde todas las longitudes de los lados sean números enteros.
+
+Dados dos lados de un triángulo, el tercer lado debe satisfacer la desigualdad del triángulo: la suma de dos lados cualesquiera debe ser mayor que el tercer lado. La longitud máxima del entero ocurre justo antes de la suma de los dos lados dados.
+"""
+
+description_zh = """
+创建一个函数，用于查找三角形第三条边的最大可能长度，其中所有边长均为整数。
+
+给定三角形的两条边，第三条边必须满足三角形不等式：任意两条边的和必须大于第三条边。最大整数长度出现在两个给定边之和之前。
+"""
+
 limits = """
 - $1 \\leq \\text{first} \\leq 100$
 - $1 \\leq \\text{second} \\leq 100$

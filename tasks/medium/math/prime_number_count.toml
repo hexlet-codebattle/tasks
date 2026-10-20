@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая подсчитывает сколько простых чисел содержится в последовательности от 0 до заданного числа включительно.
 """
 
+description_es = """
+Crea una función que encuentre cuántos números primos hay en una secuencia desde cero hasta un número entero dado, inclusive.
+"""
+
+description_zh = """
+创建一个函数，用于查找从零到给定整数（含）的序列中有多少个素数。
+"""
+
 limits = """
 - $0 \\leq number \\leq 1000$
 """

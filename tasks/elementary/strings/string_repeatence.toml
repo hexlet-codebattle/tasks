@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая принимает строку `sentence` и число `n` и возвращает строку `sentence`, повторенную `n` раз.
 """
 
+description_es = """
+Cree una función que tome una cadena `sentence` y un número `n` y devuelva el `sentence` y el `n` repetidos varias veces.
+"""
+
+description_zh = """
+创建一个函数，该函数接受字符串 `sentence` 和数字 `n`，并返回重复的 `sentence` 和 `n` 次数。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{sentence}) \\leq 100$
 - $-100 \\leq n \\leq 100$

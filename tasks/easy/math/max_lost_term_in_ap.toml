@@ -16,6 +16,16 @@ $a_1, a_2, a_3, a_4$ (разность $d = a_{i+1} - a_i$). Один член �
 Верните **максимально возможное** значение потерянного члена.
 """
 
+description_es = """
+Te dan tres números enteros que fueron tomados de una progresión aritmética de 4 términos.
+$a_1, a_2, a_3, a_4$ (diferencia común $d = a_{i+1} - a_i$). Se perdió un mandato y se barajaron los tres restantes.
+Devuelve el valor **máximo posible** del término perdido.
+"""
+
+description_zh = """
+给定三个整数，它们来自四项等差数列 $a_1, a_2, a_3, a_4$，其公差为 $d = a_{i+1} - a_i$。删除了其中一项，并将剩余三项打乱。返回被删除项的**最大可能**值。
+"""
+
 limits = """
 - $0 \\leq a_i \\leq 100$
 """

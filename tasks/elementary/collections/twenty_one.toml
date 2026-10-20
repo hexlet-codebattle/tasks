@@ -12,6 +12,14 @@ description_ru = """
 Определите, равна ли сумма всех чисел в массиве 21.
 """
 
+description_es = """
+Dada una matriz, determina si la suma de todos sus elementos es igual a 21.
+"""
+
+description_zh = """
+给定一个数组，判断其所有元素之和是否等于 21。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
 - $-100 \\leq \\text{arr}[i] \\leq 100$

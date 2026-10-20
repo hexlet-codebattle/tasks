@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая заменяет символ `_` пробелами и переводит первую букву каждого слова в верхний регистр.
 """
 
+description_es = """
+Te dan una serie de palabras. Debe reemplazar los símbolos `_` con espacios y poner en mayúscula cada palabra en una cadena.
+"""
+
+description_zh = """
+给你一串单词。您需要将 `_` 符号替换为空格，并将字符串中的每个单词大写。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(sentence) \\leq 100$
 """

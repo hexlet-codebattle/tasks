@@ -62,6 +62,64 @@ $$
 5. Пустая строка или строка из одной цифры требуют $0$ ходов.
 """
 
+description_es = """
+Está utilizando un teléfono de botón estándar con la siguiente distribución de teclado:
+
+$$
+\\begin{array}{|c|c|c|}
+\\hline
+\\color{red}{\\mathbf{1}} & 2 & 3 \\\\
+\\hline
+4 & 5 & 6 \\\\
+\\hline
+7 & 8 & 9 \\\\
+\\hline
+~ & 0 & ~ \\\\
+\\hline
+\\end{array}
+$$
+
+Un caballo de ajedrez se mueve en forma $L$: dos casillas en una dirección cardinal y luego una casilla perpendicularmente.
+
+Dada una cadena `digits` que representa un número de teléfono, calcule el **número total mínimo de movimientos de caballero** necesarios para marcar la secuencia.
+
+Reglas:
+1. Comienzas en el primer dígito de la secuencia ($0$ se mueve para alcanzarlo).
+2. Para pasar de un dígito al siguiente, debes utilizar el número mínimo de movimientos de caballo.
+3. Si dos dígitos consecutivos son iguales, la distancia entre ellos es $0$.
+4. Si es imposible alcanzar el siguiente dígito (por ejemplo, el dígito $5$ que no tiene movimientos de caballo), devuelva $-1$.
+5. Una cadena vacía o una cadena de un solo dígito requiere movimientos $0$.
+"""
+
+description_zh = """
+您使用的是具有以下键盘布局的标准按钮电话：
+
+$$
+\\begin{array}{|c|c|c|}
+\\hline
+\\color{red}{\\mathbf{1}} & 2 & 3 \\\\
+\\hline
+4 & 5 & 6 \\\\
+\\hline
+7 & 8 & 9 \\\\
+\\hline
+~ & 0 & ~ \\\\
+\\hline
+\\end{array}
+$$
+
+国际象棋马以 $L$ 形状移动：两个方格沿一个基本方向移动，然后一个方格垂直移动。
+
+给定一个表示电话号码的字符串 `digits`，计算拨打该序列所需的**最小骑士移动总数**。
+
+规则：
+1. 从序列的第一个数字开始（$0$ 移动到它）。
+2. 要从一位数字移动到下一位数字，您必须使用最少的马移动次数。
+3. 如果连续两个数字相同，则它们之间的距离为$0$。
+4. 如果无法到达下一个数字（例如，没有马走法的数字 $5$），则返回 $-1$。
+5. 空字符串或个位数字符串需要 $0$ 移动。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(digits) \\leq 50$
 - $digits[i] \\in \\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}$

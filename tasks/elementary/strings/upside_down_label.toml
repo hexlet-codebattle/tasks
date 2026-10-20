@@ -12,6 +12,14 @@ description_ru = """
 Изнанка отражает обычные места. Дано имя места `place`, обрежьте пробелы и верните подпись `"<place> in the Upside Down"`. Если после обрезки имя пустое, используйте `"Unknown"`.
 """
 
+description_es = """
+The Upside Down refleja lugares normales. Dado el nombre de un lugar `place`, recorte los espacios en blanco y devuelva la etiqueta `\"<place> in the Upside Down\"`. Si el nombre recortado está vacío, utilice `\"Unknown\"`.
+"""
+
+description_zh = """
+颠倒反映了正常的地方。给定一个地名 `place`，修剪空格并返回标签 `\"<place> in the Upside Down\"`。如果修剪后的名称为空，则使用 `\"Unknown\"`。
+"""
+
 solution = """
 def solution(place: str) -> str:
     place = place.strip()

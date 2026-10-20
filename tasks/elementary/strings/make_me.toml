@@ -26,6 +26,28 @@ description_ru = """
 - `shocked` → `D:`
 """
 
+description_es = """
+Cree una función que convierta palabras de emociones específicas en emoticones.
+
+Dada una oración como una cadena, reemplace las palabras `smile`, `grin`, `sad`, `shocked` con sus correspondientes emoticones:
+
+- `smile` → `:D`
+- `grin` → `:)`
+- `sad` → `:(`
+- `shocked` → `D:`
+"""
+
+description_zh = """
+创建一个将特定情感词转换为表情符号的函数。
+
+给定一个字符串形式的句子，将单词 `smile`、`grin`、`sad`、`shocked` 替换为其相应的表情符号：
+
+- `smile` → `:D`
+- `grin` → `:)`
+- `sad` → `:(`
+- `shocked` → `D:`
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{sentence}) \\leq 100$
 """

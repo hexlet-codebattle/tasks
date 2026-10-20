@@ -20,6 +20,22 @@ description_ru = """
 Верните имена отличников, отсортированные по среднему баллу по убыванию, а при равенстве — по имени по возрастанию (лексикографически).
 """
 
+description_es = """
+La oficina del decano se encuentra preparando el cuadro de honor del semestre. La matriz `students` enumera el nombre de cada estudiante y `gpas[i]` es el GPA del estudiante `students[i]`. Un GPA de $-1.0$ marca a un estudiante que aún no ha recibido ninguna calificación y debe ser excluido.
+
+Un estudiante entra en el cuadro de honor si su GPA es al menos `threshold`.
+
+Devuelve los nombres del cuadro de honor ordenados por GPA en orden descendente, rompiendo empates por nombre en orden lexicográfico ascendente.
+"""
+
+description_zh = """
+院长办公室正在编制本学期的荣誉榜。数组 `students` 列出学生姓名，`gpas[i]` 是学生 `students[i]` 的 GPA。GPA 为 $-1.0$ 表示尚未获得成绩，必须排除此学生。
+
+GPA 至少达到 `threshold` 的学生进入荣誉榜。
+
+返回荣誉榜上的姓名，先按 GPA 降序排列；GPA 相同时，按姓名的字典顺序升序排列。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{students}) \\leq 10^3$
 - $\\text{len}(\\text{students}) = \\text{len}(\\text{gpas})$

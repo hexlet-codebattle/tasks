@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая генерирует команду сборки docker образа для codebattle с помощью `language`, `version` и `path` (который может быть пустой строкой).
 """
 
+description_es = """
+Cree una función que cree un comando de compilación de Docker a partir de `language`, `version` y `path` (que puede ser una cadena vacía) para codebattle.
+"""
+
+description_zh = """
+创建一个函数，从 `language`、`version` 和 `path`（可以是空字符串）创建 docker build 命令以进行 codebattle。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{path}) \\leq 100$
 - $1 \\leq \\text{len}(\\text{version}) \\leq 30$

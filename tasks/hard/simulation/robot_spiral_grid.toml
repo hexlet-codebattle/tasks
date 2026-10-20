@@ -22,6 +22,24 @@ description_ru = '''
 Всего робот совершил $n$ пермещений. Верните массив строк минимального размера, в которых "*" помечены посещенные роботом клетки, а "." — непосещенные.
 '''
 
+description_es = """
+El robot comienza en la celda $(0, 0)$ e inicialmente mira hacia la derecha. Sigue el siguiente algoritmo:
+
+- Repita las siguientes acciones dos veces: avance las celdas $d$, luego gire a la izquierda,
+- Multiplica $d$ por $2$ y vuelve al paso anterior.
+
+El robot realiza un total de movimientos $n$. Devuelve una matriz de cadenas de tamaño mínimo en la que un \"*\" marca una celda visitada por el robot y un \".\" Marca una celda no visitada.
+"""
+
+description_zh = """
+机器人从单元格 $(0, 0)$ 出发，最初朝右，按以下步骤行动：
+
+- 重复两次：向前移动 $d$ 格，然后左转；
+- 将 $d$ 乘以 $2$，返回上一步。
+
+机器人总共移动 $n$ 次。返回能容纳轨迹的最小尺寸字符串数组，用 \"*\" 标记机器人访问过的单元格，用 \".\" 标记未访问的单元格。
+"""
+
 solution = """
 def solution(n, d, k):
     # starting position and direction (0: right, 1: up, 2: left, 3: down)

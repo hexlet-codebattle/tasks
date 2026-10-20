@@ -94,6 +94,96 @@ description_ru = """
 Дан код Бодо в виде строки `code`. Декодируйте и верните сообщение.
 """
 
+description_es = """
+El código Baudot o Código Internacional de Teleimpresor fue inventado por Emile Baudot en 1870. Se utilizó para mensajes de teleimpresor en lugar del código morse. Baudot utiliza cinco bits por carácter, lo que permite hasta 32 caracteres distintos. El código utiliza modos de cambio hacia arriba y hacia abajo como una máquina de escribir.
+
+En el código Baudot, cada cinco bits transmitidos debe interpretarse según si están desplazados hacia arriba (cifras) o hacia abajo (letras). El patrón de bits `ooooo` representa el cambio de letras y `oo.oo` representa el cambio de cifras. Todos los caracteres transmitidos después de `oo.oo` pero antes de `ooooo` se tratan como cifras. Todos los caracteres transmitidos después de `ooooo` se tratan como letras hasta que se reconozca `oo.oo`.
+
+Tabla de mapeo (o = 1, . = 0):
+
+```
+| Code  | Letter         | Figure         |
+|-------|----------------|----------------|
+| .o.o. | R              | 4              |
+| .o.oo | J              | (not alloc.)   |
+| .ooo. | C              | :              |
+| oo.o. | G              | (not alloc.)   |
+| .o..o | D              | (not alloc.)   |
+| .oooo | K              | (              |
+| .oo.. | N              | ,              |
+| ...oo | A              | -              |
+| ..... | BLANK          | BLANK          |
+| oo.oo | Figures shift  | Figures shift  |
+| ..oo. | I              | 8              |
+| oo... | O              | 9              |
+| oooo. | V              | =              |
+| o..o. | L              | )              |
+| .oo.o | F              | (not alloc.)   |
+| ....o | E              | 3              |
+| ..ooo | U              | 7              |
+| oo..o | B              | ?              |
+| ..o.. | SPACE          | SPACE          |
+| ooooo | Letters shift  | Letters shift  |
+| ooo.. | M              | :              |
+| o..oo | W              | 2              |
+| o.oo. | P              | 0              |
+| ..o.o | S              | ,              |
+| ooo.o | X              | /              |
+| o...o | Z              | +              |
+| o.ooo | Q              | 1              |
+| o.o.. | H              | (not alloc.)   |
+| o.o.o | Y              | 6              |
+| o.... | T              | 5              |
+```
+
+Dada una cadena de código Baudot `code`, decodifica y devuelve el mensaje.
+"""
+
+description_zh = """
+Baudot 码或国际电传打字机代码由 Emile Baudot 于 1870 年发明。它用于电传打字机消息而不是莫尔斯电码。 Baudot 每个字符使用 5 位，最多允许 32 个不同的字符。该代码像打字机一样使用升档和降档模式。
+
+在博多码中，传输的每五个位必须根据它们是上移（数字）还是下移（字母）来解释。位模式 `ooooo` 表示字母移位，`oo.oo` 表示数字移位。 `oo.oo` 之后、`ooooo` 之前传输的所有字符都被视为数字。 `ooooo` 之后传输的所有字符均被视为字母，直到 `oo.oo` 被识别为止。
+
+映射表（o=1，.=0）：
+
+```
+| Code  | Letter         | Figure         |
+|-------|----------------|----------------|
+| .o.o. | R              | 4              |
+| .o.oo | J              | (not alloc.)   |
+| .ooo. | C              | :              |
+| oo.o. | G              | (not alloc.)   |
+| .o..o | D              | (not alloc.)   |
+| .oooo | K              | (              |
+| .oo.. | N              | ,              |
+| ...oo | A              | -              |
+| ..... | BLANK          | BLANK          |
+| oo.oo | Figures shift  | Figures shift  |
+| ..oo. | I              | 8              |
+| oo... | O              | 9              |
+| oooo. | V              | =              |
+| o..o. | L              | )              |
+| .oo.o | F              | (not alloc.)   |
+| ....o | E              | 3              |
+| ..ooo | U              | 7              |
+| oo..o | B              | ?              |
+| ..o.. | SPACE          | SPACE          |
+| ooooo | Letters shift  | Letters shift  |
+| ooo.. | M              | :              |
+| o..oo | W              | 2              |
+| o.oo. | P              | 0              |
+| ..o.o | S              | ,              |
+| ooo.o | X              | /              |
+| o...o | Z              | +              |
+| o.ooo | Q              | 1              |
+| o.o.. | H              | (not alloc.)   |
+| o.o.o | Y              | 6              |
+| o.... | T              | 5              |
+```
+
+给定 Baudot 代码字符串 `code`，解码并返回消息。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(code) \\leq 1000$
 - $code$ consists of characters `'o'` and `'.'`

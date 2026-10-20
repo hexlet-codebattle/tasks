@@ -21,6 +21,23 @@ description_ru = """
 Гарантируется, что есть хотя бы одна `"C"`. Если нет `"B"`, верните `0`.
 """
 
+description_es = """
+Se te proporciona una calle unidimensional como una cadena `s` formada por los caracteres:
+`\"C\"` (estación de carga), `\"B\"` (bicicleta) y `\".\"` (vacío).
+Cada segundo, una bicicleta puede moverse de posición `1` hacia la izquierda o hacia la derecha.
+Cada `\"B\"` va a su `\"C\"` **más cercano** a lo largo de un camino más corto (el tiempo es igual a la distancia absoluta).
+Devuelve la **suma** de tiempos de todas las bicicletas.
+Hay al menos un `\"C\"`. Si no hay `\"B\"`, devuelva `0`.
+"""
+
+description_zh = """
+一维街道用字符串 `s` 表示，由 `\"C\"`（充电站）、`\"B\"`（自行车）和 `\".\"`（空地）组成。
+
+自行车每秒可向左或向右移动 `1` 个位置。每辆 `\"B\"` 都沿最短路径到达**最近的** `\"C\"`，时间等于两者位置的绝对距离。
+
+返回所有自行车所需时间的**总和**。保证至少有一个 `\"C\"`。如果没有 `\"B\"`，返回 `0`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(s) \\leq 17$
 - $s \\in \\{\\text{"C"}, \\text{"B"}, \\text{"."}\\}^*$

@@ -12,6 +12,14 @@ description_ru = """
 Дано два множества, представляющих собой два массива. Проверьте, отсутствует ли пересечение между этими двумя множествами.
 """
 
+description_es = """
+Dados dos conjuntos representados por dos matrices, verifique si los dos conjuntos dados son disjuntos o no. Las matrices dadas no tienen duplicados.
+"""
+
+description_zh = """
+给定由两个数组表示的两个集合，检查给定的两个集合是否不相交。给定的数组没有重复项。
+"""
+
 limits = """
 - $0 \\leq \\text{arr1}[i] \\leq 20$
 - $0 \\leq \\text{arr2}[i] \\leq 20$

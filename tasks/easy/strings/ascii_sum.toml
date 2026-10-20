@@ -12,6 +12,14 @@ description_ru = """
 Дана строка. Верните сумму ASCII-кодов всех её символов.
 """
 
+description_es = """
+Dada una cadena, devuelve la suma de los códigos ASCII de todos sus caracteres.
+"""
+
+description_zh = """
+给定一个字符串，返回其所有字符的 ASCII 码之和。
+"""
+
 limits = """
 - $1 \\leq \\text{len(word)} \\leq 50$
 """

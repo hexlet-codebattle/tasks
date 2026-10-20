@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая принимает две строки и возвращает индекс первого вхождения строки `second` в строку `first`. В ином случае верните `-1`.
 """
 
+description_es = """
+Cree una función que tome 2 parámetros (`first` y `second`) y ubique la primera aparición de `second` en `first` y devuelva su posición. Devuelva `-1` si no lo encuentra.
+"""
+
+description_zh = """
+创建一个函数，该函数采用 2 个参数（`first` 和 `second`），并定位 `second` 在 `first` 中第一次出现的位置并返回其位置。如果没有找到则返回`-1`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{first}) \\leq 100$
 - $0 \\leq \\text{len}(\\text{second}) \\leq 100$

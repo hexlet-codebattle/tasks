@@ -36,6 +36,38 @@ description_ru = """
 Все клетки обновляются одновременно. Клетки за границей поля мертвы; противоположные края поля не соединены.
 """
 
+description_es = """
+Se le proporciona una matriz de enteros 2D `grid` que representa el estado actual de una cuadrícula en el Juego de la vida de Conway. `1` representa una célula viva y `0` representa una célula muerta.
+
+Calcule y devuelva el siguiente estado de la cuadrícula después de exactamente un paso.
+
+Las reglas son:
+1. Muere una célula viva con menos de `2` vecinos vivos (subpoblación).
+2. Una celda activa con vecinos activos `2` o `3` sigue viva.
+3. Muere una célula viva con más de `3` vecinos vivos (sobrepoblación).
+4. Una célula muerta con exactamente `3` vecinos vivos se convierte en una célula viva (reproducción).
+
+Los vecinos son las 8 celdas adyacentes horizontal, vertical o diagonalmente.
+
+Actualiza todas las celdas simultáneamente. Las células fuera de la red están muertas; La rejilla no se enrolla.
+"""
+
+description_zh = """
+给您一个二维整数数组 `grid`，表示康威生命游戏中网格的当前状态。 `1` 代表活细胞，`0` 代表死细胞。
+
+恰好一步后计算并返回网格的下一个状态。
+
+规则是：
+1. 活邻居数量少于 `2` 的活细胞死亡（人口不足）。
+2. 具有 `2` 或 `3` 活邻居的活单元继续存在。
+3. 具有超过 `3` 活邻居的活细胞死亡（人口过剩）。
+4. 与 `3` 活邻居完全相同的死细胞成为活细胞（复制）。
+
+邻居是水平、垂直或对角相邻的 8 个单元格。
+
+同时更新所有单元格。网格外的细胞已死亡；网格不会环绕。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(grid) \\leq 50$
 - $1 \\leq \\text{len}(grid[0]) \\leq 50$

@@ -12,6 +12,14 @@ description_ru = """
 Сконвертируйте числовую строку в массив чисел. Гарантируется, что строковое число не отрицательное. Если строка пустая, верните пустой массив.
 """
 
+description_es = """
+Convierte una cadena numérica en un array de números. Se garantiza que los números son no negativos. Si la cadena está vacía, devuelve un array vacío.
+"""
+
+description_zh = """
+将数字字符串转换为数字数组。保证数组中的数字均非负。如果字符串为空，则返回空数组。
+"""
+
 limits = """
 - $digits \\in \\{0{-}9\\}^*$
 - $0 \\leq \\text{len}(digits) \\leq 100$

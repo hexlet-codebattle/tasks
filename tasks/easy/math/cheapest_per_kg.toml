@@ -11,6 +11,14 @@ description_ru = """
 Товары продаются в упаковках с различной ценой и весом. Определите номер товара при нумерации с $0$ с самой низкой ценой за килограмм. Если таких товаров несколько, выберите товар с наименьшим номером. Товар описывается парой (цена, вес).
 """
 
+description_es = """
+Los productos se venden en paquetes con distintos precios y pesos. Cada producto se describe mediante un par (precio, peso). Devuelve el índice del producto con el menor precio por kilogramo; los índices comienzan en cero. En caso de empate, elige el índice menor.
+"""
+
+description_zh = """
+商品的包装价格和重量各不相同，每件商品用一对数值（价格、重量）表示。返回每千克价格最低的商品编号，编号从零开始。若有多个商品并列，返回最小编号。
+"""
+
 solution = """
 def solution(items):
     # items is a list of [price, weight] pairs

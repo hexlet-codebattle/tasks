@@ -12,6 +12,14 @@ description_ru = """
 Преобразуйте возраст в годах $a$ в дни, считая $365$ дней в году и игнорируя високосные годы.
 """
 
+description_es = """
+Convierta la edad en años $a$ a días, asumiendo $365$ días en un año e ignorando los años bisiestos.
+"""
+
+description_zh = """
+将年数 $a$ 转换为天数，假设一年中有 $365$ 天数并忽略闰年。
+"""
+
 limits = """
 - $0 \\leq a \\leq 120$
 """

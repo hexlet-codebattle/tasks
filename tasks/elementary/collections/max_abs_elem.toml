@@ -12,6 +12,14 @@ description_ru = """
 Найдите максимальное по модулю число в массиве. Если их несколько, верните наибольшее.
 """
 
+description_es = """
+Encuentre el número en la matriz con el valor absoluto máximo. Si hay varios de esos números, devuelve el mayor.
+"""
+
+description_zh = """
+找出数组中绝对值最大的数。如果有多个这样的数字，则返回最大的一个。
+"""
+
 limits = """
 - $-100 \\leq arr[i] \\leq 100$
 - $1 \\leq \\text{len}(arr) \\leq 20$

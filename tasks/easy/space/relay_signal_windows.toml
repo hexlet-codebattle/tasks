@@ -12,6 +12,14 @@ description_ru = """
 На пути к Луне несколько ретрансляторов дают окна связи `[l, r]` с включенными границами. После объединения пересекающихся или соприкасающихся окон верните длину самого длинного непрерывного периода связи.
 """
 
+description_es = """
+En el camino a la Luna, varios relevos proporcionan ventanas de comunicación `[l, r]`, inclusive. Después de fusionar ventanas superpuestas o tocarlas, devuelva la duración del período de contacto continuo más largo.
+"""
+
+description_zh = """
+在前往月球的途中，多个中继提供了通信窗口 `[l, r]`（含）。合并重叠或接触窗口后，返回最长连续接触时间段的长度。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{windows}) \\leq 100$
 - $0 \\leq l \\leq r \\leq 10^6$

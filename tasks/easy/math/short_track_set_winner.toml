@@ -22,6 +22,24 @@ description_ru = """
 Победа фиксируется от `15` очков при разнице минимум `2`.
 """
 
+description_es = """
+Dados los puntos de carrera `a` y `b` en un duelo en pista corta, regresa:
+- `\"A\"` si A ya ganó
+- `\"B\"` si B ya ganó
+- `\"InProgress\"` en caso contrario
+
+Un equipo gana con puntos `15` con al menos `2` puntos de ventaja.
+"""
+
+description_zh = """
+给定短道决斗中的比赛积分 `a` 和 `b`，返回：
+- `\"A\"` 如果 A 已经获胜
+- `\"B\"` 如果 B 已经获胜
+- `\"InProgress\"` 否则
+
+一方以 `15` 分获胜，至少领先 `2` 分。
+"""
+
 solution = """
 def solution(a: int, b: int) -> str:
     if max(a, b) < 15 or abs(a - b) < 2:

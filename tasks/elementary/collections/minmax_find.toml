@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая принимает массив чисел и возвращает его минимальное и максимальное значения.
 """
 
+description_es = """
+Cree una función que tome una matriz de números y devuelva tanto el número mínimo como el máximo.
+"""
+
+description_zh = """
+创建一个函数，该函数接受数字数组并返回最小和最大数字。
+"""
+
 solution = """
 def solution(numbers: list[int]) -> list[int]:
     return [min(numbers), max(numbers)]

@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая находит самозванцев (imposter) в массиве игроков, у каждого игрока своя роль. Если самозванцев нет, верните `["there are no imposters here!"]`. Если в массиве только самозванцы, верните `["imposters are everywhere!"]`. В ином случае верните массив с именами самозванцев.
 """
 
+description_es = """
+Crea una función que encuentre impostores en una variedad de jugadores, cada jugador tiene su propio rol. Si no se encontraron impostores, devuelva `[\"there are no imposters here!\"]`. Si en la matriz se presentan solo impostores, devuelve `[\"imposters are everywhere!\"]`. En otros casos, devuelve una serie de nombres de impostores.
+"""
+
+description_zh = """
+创建一个在玩家数组中查找冒名顶替者的函数，每个玩家都有自己的角色。如果没有发现冒名顶替者，则返回 `[\"there are no imposters here!\"]`。如果数组中仅显示冒名顶替者，则返回 `[\"imposters are everywhere!\"]`。在其他情况下，返回冒名顶替者姓名数组。
+"""
+
 solution = """
 def solution(players):
     imposters = [name for name, role in players if role == "imposter"]

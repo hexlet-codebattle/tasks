@@ -12,6 +12,14 @@ description_ru = """
 Дано поле из символов `.` (пусто) и `*` (закрашено). Каждая закрашенная область — **прямоугольник**, причём прямоугольники не пересекаются и не касаются даже по диагонали. Посчитайте количество прямоугольников.
 """
 
+description_es = """
+Se le proporciona una cuadrícula de `.` (vacío) y `*` (relleno). Cada región rellena es un **rectángulo**, y los rectángulos están separados por pares y **no** se tocan ni siquiera en diagonal. Cuente cuántos rectángulos hay.
+"""
+
+description_zh = """
+您将获得一个 `.`（空）和 `*`（填充）的网格。每个填充区域都是一个**矩形**，并且矩形是成对不相交的，并且即使对角线也**不**接触。计算有多少个矩形。
+"""
+
 limits = """
 - $1 \\leq H, W \\leq 50$
 """

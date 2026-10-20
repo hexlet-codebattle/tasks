@@ -14,6 +14,16 @@ description_ru = """
 Для каждого индекса $i$ вычислите $\\max(p_i - d_i, 0)$ и верните сумму этих значений.
 """
 
+description_es = """
+Se le proporcionan dos matrices de igual longitud: precios $p$ y descuentos $d$.
+Para cada índice $i$, calcule $\\max(p_i - d_i, 0)$ y devuelva la suma de estos valores.
+"""
+
+description_zh = """
+给您两个等长数组：价格 $p$ 和折扣 $d$。
+对于每个索引 $i$，计算 $\\max(p_i - d_i, 0)$ 并返回这些值的总和。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(p) = \\text{len}(d) \\leq 42$
 - $0 \\leq p_i, d_i \\leq 10^6$

@@ -12,6 +12,14 @@ description_ru = """
 Дан массив целых чисел $x$. Верните массив их аддитивных инверсий: для каждого $x_i$ верните $-x_i$.
 """
 
+description_es = """
+Dada una matriz de números enteros $x$, devuelve una matriz de sus inversos aditivos, es decir, para cada $x_i$ devuelve $-x_i$.
+"""
+
+description_zh = """
+给定一个整数数组 $x$，返回其加法逆数组，即对于每个 $x_i$ 返回 $-x_i$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(x) \\leq 10^5$
 - $-10^4 \\leq x_i \\leq 10^4$

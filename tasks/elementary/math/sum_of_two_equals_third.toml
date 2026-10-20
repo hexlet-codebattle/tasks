@@ -16,6 +16,18 @@ description_ru = """
 Верните `True`, если такая пара существует, иначе `False`.
 """
 
+description_es = """
+Dados tres números enteros, determina si la suma de dos de ellos es igual al tercero.
+
+Devuelve `True` si dicho par existe; de ​​lo contrario, devuelve `False`.
+"""
+
+description_zh = """
+给定三个整数，判断其中两个整数之和是否等于第三个整数。
+
+如果存在这样的对，则返回 `True`，否则返回 `False`。
+"""
+
 limits = """
 - $-10^9 \\leq x, y, z \\leq 10^9$
 """

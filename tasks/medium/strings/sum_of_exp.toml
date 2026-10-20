@@ -12,6 +12,14 @@ description_ru = """
 Дана цифра $x$ (1-8), верните сумму $x + xx + xxx + \\ldots$ ($x$ раз) в виде строки. Например, для 2: $2 + 22 = 24$.
 """
 
+description_es = """
+Dado un número entero $x$ (1-8), devuelve la suma $x + xx + xxx + \\ldots$ ($x$ veces) como una cadena. Por ejemplo, para 2: $2 + 22 = 24$.
+"""
+
+description_zh = """
+给定一个整数 $x$ (1-8)，以字符串形式返回总和 $x + xx + xxx + \\ldots$（$x$ 次）。例如，对于 2：$2 + 22 = 24$。
+"""
+
 limits = """
 - $1 \\leq x \\leq 8$
 """

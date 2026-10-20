@@ -20,6 +20,22 @@ description_ru = """
 Верните минимальное число семестров, нужное для прохождения всех курсов, или $-1$, если пререквизиты образуют цикл и выпуск невозможен.
 """
 
+description_es = """
+Un estudiante está planeando el camino más rápido hacia la graduación. La universidad ofrece cursos `n`, etiquetados desde $1$ hasta `n`. Cada par `[a, b]` en `prereqs` significa que el curso `a` debe completarse antes de poder tomar el curso `b`.
+
+En un solo semestre, el estudiante puede inscribirse en cualquier número de cursos a la vez, siempre y cuando todos los requisitos previos de cada curso elegido ya se hayan completado antes de que comience ese semestre. No hay límite de cursos por semestre.
+
+Devuelve el número mínimo de semestres necesarios para terminar cada curso, o $-1$ si los requisitos previos forman un ciclo y la graduación es imposible.
+"""
+
+description_zh = """
+一名学生正在规划最快的毕业路径。该大学提供 `n` 课程，标记为 $1$ 至 `n`。 `prereqs` 中的每一对 `[a, b]` 表示必须先完成课程 `a`，然后才能学习课程 `b`。
+
+在一个学期内，学生可以同时注册任意数量的课程，只要在该学期开始之前已经完成每门所选课程的每个先决条件。每学期的课程没有限制。
+
+返回完成每门课程所需的最少学期数，如果先决条件形成一个循环且无法毕业，则返回 $-1$。
+"""
+
 limits = """
 - $1 \\leq n \\leq 10^3$
 - $0 \\leq \\text{len}(\\text{prereqs}) \\leq 10^4$

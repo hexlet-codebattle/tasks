@@ -12,6 +12,14 @@ description_ru = """
 На каждой из $n$ карточек написано число. Игрок может выбрать любое подмножество карточек, в том числе пустое. Выигрыш равен модулю суммы чисел на выбранных карточках. Определите максимальный возможный выигрыш.
 """
 
+description_es = """
+Dadas las tarjetas $n$, cada tarjeta tiene un número entero escrito. El jugador puede elegir cualquier subconjunto de cartas, posiblemente ninguna. La ganancia es el valor absoluto de la suma de los números de las cartas seleccionadas. Determine la ganancia máxima posible.
+"""
+
+description_zh = """
+给定 $n$ 卡，每张卡上都写有一个整数。玩家可以选择卡牌的任何子集，也可能没有。增益是所选卡片上数字总和的绝对值。确定最大可能增益。
+"""
+
 solution = """
 def solution(n, a):
     pos_sum = sum(x for x in a if x > 0)

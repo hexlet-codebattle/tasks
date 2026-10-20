@@ -24,6 +24,26 @@ description_ru = """
 - бумага бьет камень
 """
 
+description_es = """
+Cuenta tu puntuación en un juego de piedra, papel y tijera.
+Tienes dos conjuntos: tus movimientos y los movimientos de tu oponente.
+Obtienes puntos `1` por una victoria, `-1` por una derrota y `0` por un empate.
+Déjame recordarte que según las reglas:
+- la piedra vence a las tijeras
+- las tijeras vencieron al papel
+- el papel vence a la piedra
+"""
+
+description_zh = """
+计算你在石头剪刀布游戏中的得分。
+您有两个数组：您的动作和对手的动作。
+获胜则获得 `1` 积分，失败则获得 `-1` 积分，平局则获得 `0` 积分。
+让我提醒您一下，根据规则：
+- 石头胜剪刀
+- 剪刀打败布
+- 纸胜石
+"""
+
 limits = """
 - $1 \\leq \\text{len}(your) \\leq 100$
 - $\\text{len}(your) = \\text{len}(opponent)$

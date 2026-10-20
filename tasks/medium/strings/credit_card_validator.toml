@@ -24,6 +24,26 @@ description_ru = """
 3. Если сумма кратна $10$ (заканчивается нулём), то номер карты верен по формуле Луна; в противном случае номер неправильный.
 """
 
+description_es = """
+Los números de tarjetas de crédito se pueden validar con un proceso llamado algoritmo de Luhn.
+
+En pocas palabras, el algoritmo de Luhn funciona así:
+
+1. Desde el dígito más a la derecha, que es el dígito de control, moviéndose hacia la izquierda, duplique el valor de cada segundo dígito; si el producto de esta operación de duplicación es mayor que $9$ (p. ej., $8 \\times 2 = 16$), entonces sume los dígitos de los productos (p. ej., $16: 1 + 6 = 7$, $18: 1 + 8 = 9$).
+2. Toma la suma de todos los dígitos.
+3. Si el módulo total $10$ es igual a $0$ (si el total termina en cero) entonces el número es válido según la fórmula de Luhn; de lo contrario no es válido.
+"""
+
+description_zh = """
+信用卡号可以通过称为 Luhn 算法的过程进行验证。
+
+简单来说，Luhn 算法的工作原理如下：
+
+1. 从最右边的数字（即校验位）开始，向左移动，每隔一个数字的值加倍；如果此加倍运算的乘积大于 $9$（例如，$8 \\times 2 = 16$），则将乘积的数字相加（例如，$16: 1 + 6 = 7$、$18: 1 + 8 = 9$）。
+2. 计算所有数字的总和。
+3. 如果总模 $10$ 等于 $0$（如果总和以零结尾），则根据 Luhn 公式，该数字有效；否则无效。
+"""
+
 limits = """
 - $12 \\leq \\text{len}(\\text{arr}) \\leq 19$
 - $\\text{arr} \\in \\{0{-}9\\}^*$

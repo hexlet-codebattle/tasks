@@ -16,6 +16,18 @@ description_ru = """
 Верните длину самого длинного непрерывного участка зрелых ягод на ветке или $0$, если зрелых ягод нет.
 """
 
+description_es = """
+El contenido de azúcar soluble aumenta a medida que la fruta madura, por lo que sirve como medida de madurez. Una baya está madura cuando su valor en `sugar` es al menos `min_sugar`.
+
+Devuelve la longitud del bloque más largo de bayas maduras consecutivas en la rama, o $0$ cuando ninguna baya esté madura.
+"""
+
+description_zh = """
+随着果实成熟，可溶性糖含量上升，因此它可以作为成熟度的衡量标准之一。当浆果在 `sugar` 中的值至少为 `min_sugar` 时，浆果就成熟了。
+
+返回树枝上最长的连续成熟浆果块的长度，如果没有浆果成熟，则返回 $0$。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{sugar}) \\leq 10^4$
 - $0 \\leq \\text{sugar}[i] \\leq 100$

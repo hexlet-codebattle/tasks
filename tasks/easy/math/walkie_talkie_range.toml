@@ -12,6 +12,14 @@ description_ru = """
 Ребята используют рации в городе. Даны позиции `(x1, y1)` и `(x2, y2)`, радиус `r` и `battery`, верните `true`, если манхэттенское расстояние не больше `r` и батареи хватает на это расстояние.
 """
 
+description_es = """
+Los niños usan walkie-talkies por la ciudad. Dadas dos posiciones `(x1, y1)` y `(x2, y2)`, rango `r` y `battery`, devuelva `true` si su distancia de Manhattan es como máximo `r` y la batería puede cubrir esa distancia.
+"""
+
+description_zh = """
+孩子们在城里使用对讲机。给定两个位置 `(x1, y1)` 和 `(x2, y2)`、范围 `r` 和 `battery`，如果曼哈顿距离最大为 `r` 并且电池可以覆盖该距离，则返回 `true`。
+"""
+
 solution = """
 def solution(x1: int, y1: int, x2: int, y2: int, r: int, battery: int) -> bool:
     d = abs(x1 - x2) + abs(y1 - y2)

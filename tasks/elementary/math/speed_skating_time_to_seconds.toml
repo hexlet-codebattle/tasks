@@ -15,6 +15,16 @@ description_ru = """
 Если время не нулевое, добавьте фиксированную задержку реакции `2` секунды.
 """
 
+description_es = """
+Dado el resultado de patinaje de velocidad como `minutes` y `seconds`, devuelve el total de segundos.
+Si el tiempo no es cero, agregue un retraso de reacción fijo de segundos `2`.
+"""
+
+description_zh = """
+给定速滑成绩 `minutes` 和 `seconds`，返回总秒数。
+如果时间非零，则添加固定的 `2` 秒反应延迟。
+"""
+
 solution = """
 def solution(minutes: int, seconds: int) -> int:
     t = minutes * 60 + seconds

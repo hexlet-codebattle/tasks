@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая принимает массив из трех элементов представляющих собой результат запуска слот-машины из казино. Проверьте, является ли комбинация элементов удачной (все элементы равны).
 """
 
+description_es = """
+Cree una función que tome una matriz (resultado de la máquina tragamonedas) y devuelva verdadero si todos los elementos de la matriz son idénticos y falso en caso contrario. La matriz contendrá 3 elementos.
+"""
+
+description_zh = """
+创建一个函数，该函数接受一个数组（老虎机结果），如果数组中的所有元素都相同，则返回 true，否则返回 false。该数组将包含 3 个元素。
+"""
+
 limits = """
 - $\\text{len}(elements) = 3$
 """

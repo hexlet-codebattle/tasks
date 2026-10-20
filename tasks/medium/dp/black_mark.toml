@@ -16,6 +16,18 @@ description_ru = """
 Необходимо назначить каждому пирату ровно одно уникальное задание так, чтобы суммарный уровень страха был минимальным. Верните минимально возможную сумму.
 """
 
+description_es = """
+Tienes una lista de piratas $n$ ($n \\leq 20$) y tareas peligrosas de $n$. Cada pirata tiene un nivel de miedo para cada tarea, expresado como una matriz $n \\times n$ `fear` donde `fear[i][j]` es el miedo del pirata $i$ para la tarea $j$.
+
+Tienes que asignar a cada pirata exactamente una tarea distinta para minimizar la suma total de niveles de miedo. Devuelve el total mínimo posible.
+"""
+
+description_zh = """
+您有 $n$ 海盗 ($n \\leq 20$) 和 $n$ 危险任务的列表。每个海盗对每个任务都有一个恐惧级别，以 $n \\times n$ 矩阵 `fear` 的形式给出，其中 `fear[i][j]` 是任务 $j$ 的海盗 $i$ 的恐惧。
+
+你必须为每个海盗准确地分配一项不同的任务，以便最大限度地减少恐惧水平的总和。返回尽可能小的总数。
+"""
+
 limits = """
 - $1 \\leq n \\leq 20$
 - $0 \\leq \\text{fear}[i][j] \\leq 1000$

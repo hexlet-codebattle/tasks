@@ -30,6 +30,32 @@ description_ru = """
 Вы должны написать функцию, которая возвращает общее число ног всех животных.
 """
 
+description_es = """
+Un granjero te pide que le digas cuántas patas se pueden contar entre todos sus animales.
+
+El agricultor cría tres especies:
+- pollos = $2$ patas
+- vacas = $4$ patas
+- cerdos = $4$ patas
+
+El granjero ha contado sus animales y te da un subtotal para cada especie.
+
+Tienes que implementar una función que devuelva el número total de patas de todos los animales.
+"""
+
+description_zh = """
+一位农民要求你告诉他他所有的动物有多少条腿。
+
+农民饲养了三个品种：
+- 鸡 = $2$ 腿
+- 牛 = $4$ 腿
+- 猪 = $4$ 腿
+
+农民清点了他的动物，并为您提供了每个物种的小计。
+
+您必须实现一个返回所有动物的腿总数的函数。
+"""
+
 limits = """
 - $0 \\leq \\text{chickens} \\leq 100$
 - $0 \\leq \\text{cows} \\leq 100$

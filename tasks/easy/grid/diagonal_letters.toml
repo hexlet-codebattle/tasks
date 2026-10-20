@@ -12,6 +12,14 @@ description_ru = '''
 Заполните квадрат $n \times n$ буквами, где клетки главной и побочной диагонали содержат букву 'a', а каждая другая клетка заполнена буквой, номер которой в алфавите (нумерация букв с нуля) равен минимальному расстоянию по клеткам до ближайшей клетки диагонали. Для клетки $(i, j)$ (нумерация с 0) это расстояние равно $\min(\lvert i - j \rvert,\ \lvert i + j - (n - 1) \rvert)$. Верните массив из $n$ строк длиной $n$.
 '''
 
+description_es = """
+Llene un cuadrado $n \\times n$ con letras, donde las celdas de la diagonal principal y la diagonal secundaria (anti) contienen la letra “a”, y cada dos celdas se llenan con la letra cuya posición en el alfabeto (basada en 0) es igual a la distancia mínima (en celdas) a la celda diagonal más cercana. Para una celda $(i, j)$ (basada en 0), esta distancia es igual a $\\min(\\lvert i - j \\rvert,\\ \\lvert i + j - (n - 1) \\rvert)$. Devuelve una matriz de cadenas $n$, cada una de la longitud $n$.
+"""
+
+description_zh = """
+用字母填充 $n \\times n$ 正方形，其中主对角线和辅助（反）对角线上的单元格包含字母“a”，并且每个其他单元格填充字母表中的位置（从 0 开始）等于到最近的对角线单元格的最小距离（以单元格为单位）的字母。对于单元格 $(i, j)$（基于 0），此距离等于 $\\min(\\lvert i - j \\rvert,\\ \\lvert i + j - (n - 1) \\rvert)$。返回 $n$ 字符串数组，每个字符串的长度为 $n$。
+"""
+
 solution = """
 def solution(n: int) -> list[str]:
     \"\"\"Return an n×n grid of letters as described in the statement.

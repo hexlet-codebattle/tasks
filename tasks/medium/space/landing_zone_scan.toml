@@ -12,6 +12,14 @@ description_ru = """
 Карта высот Луны задана целыми числами, где `-1` обозначает кратер, непригодный для посадки. Среди всех корректных зон посадки `2 x 2` выберите ту, у которой минимальна шероховатость `max - min`. При равенстве выбирайте меньшую манхэттенскую дистанцию от левого верхнего угла зоны до `(target_row, target_col)`, затем меньшие строку и столбец. Верните `[row, col]` или `[-1, -1]`, если подходящей зоны нет.
 """
 
+description_es = """
+Un mapa de altura lunar se proporciona en números enteros, donde `-1` marca un cráter que no se puede utilizar. Entre todas las zonas de aterrizaje válidas `2 x 2`, elija la que tenga la menor rugosidad `max - min`. Rompe los empates por una distancia más pequeña de Manhattan desde la esquina superior izquierda de la zona hasta `(target_row, target_col)`, luego por una fila y columna más pequeña. Devuelve `[row, col]` o `[-1, -1]` si ninguna zona es válida.
+"""
+
+description_zh = """
+月球高度图以整数形式给出，其中 `-1` 标记了无法使用的陨石坑。在所有有效的 `2 x 2` 着陆区中，选择粗糙度 `max - min` 最小的着陆区。通过从区域左上角到 `(target_row, target_col)` 的较小曼哈顿距离来打破平局，然后通过较小的行和列来打破平局。返回 `[row, col]`，如果没有有效区域，则返回 `[-1, -1]`。
+"""
+
 limits = """
 - $2 \\leq \\text{rows}, \\text{cols} \\leq 30$
 - $\\text{field}[i][j] \\in \\{-1\\} \\cup [0, 10^4]$

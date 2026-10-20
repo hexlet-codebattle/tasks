@@ -12,6 +12,14 @@ description_ru = """
 Даны слова, описывающие картинки. У каждого слова могут быть апострофы (`'`) слева и/или справа. Каждый ведущий апостроф удаляет одну букву слева; каждый замыкающий апостроф удаляет одну букву справа. Если удалений больше длины слова, результат — пустая строка. Сконкатенируйте все полученные фрагменты и верните итоговую строку.
 """
 
+description_es = """
+Se le dan palabras que describen imágenes. Cada palabra puede tener apóstrofes (`'`) a la izquierda y/o derecha. Cada apóstrofe inicial elimina una letra de la **izquierda** de la palabra; cada apóstrofo final elimina una letra de la **derecha**. Si las eliminaciones exceden la longitud, el resultado está vacío. Concatena todos los fragmentos resultantes y devuelve la cadena final.
+"""
+
+description_zh = """
+你会得到描述图片的文字。每个单词的左侧和/或右侧可能有撇号 (`'`)。每个前导撇号都会从单词的**左侧**删除一个字母；每个尾随撇号都会从**右侧**删除一个字母。如果删除超过长度，结果为空。连接所有生成的片段并返回最终的字符串。
+"""
+
 limits = """
 - $0 \\leq n = \\text{len(words)}$
 - $\\text{words}[i] \\in \\{\\text{letters},\\ '\\}^*$

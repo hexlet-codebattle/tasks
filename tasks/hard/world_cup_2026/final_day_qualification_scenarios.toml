@@ -28,6 +28,30 @@ description_ru = """
 Критерии таблицы: очки, разница голов, забитые голы, затем меньший индекс команды.
 """
 
+description_es = """
+Un grupo de cuatro equipos utiliza índices de equipo desde `0` hasta `3` y le quedan dos partidos.
+Cada artículo de `played` es `[team_a, team_b, goals_a, goals_b]`; `remaining` contiene exactamente dos pares ordenados `[team_a, team_b]`.
+
+Una victoria otorga puntos `3`, un empate otorga puntos `1` a cada equipo y una derrota otorga puntos `0`.
+Para cada partido restante, ambos recuentos de goles pueden tomar de forma independiente cualquier valor entero desde `0` hasta `max_goals`.
+Cada combinación ordenada de cuatro goles cuenta es un escenario separado.
+
+Cuente los escenarios en los que `target` termina entre los dos primeros.
+Clasifique los equipos por puntos, diferencia de goles, goles marcados y luego un índice de equipo más pequeño.
+"""
+
+description_zh = """
+由四支球队组成的小组使用从 `0` 到 `3` 的球队索引，并且还剩两场比赛。
+`played`的每一项为`[team_a, team_b, goals_a, goals_b]`； `remaining` 恰好包含两个有序对 `[team_a, team_b]`。
+
+获胜给每支球队带来 `3` 积分，平局给每支球队带来 `1` 积分，而失败则给每个球队带来 `0` 积分。
+对于剩余的每场比赛，两个进球计数可以独立地采用从 `0` 到 `max_goals` 的任何整数值。
+四个目标计数的每个有序组合都是一个单独的场景。
+
+计算 `target` 进入前两名的场景。
+按积分、净胜球、进球数对球队进行排名，然后是较小的球队指数。
+"""
+
 limits = """
 - $0 \\leq \\operatorname{len}(played) \\leq 6$
 - $\\operatorname{len}(played_i) = 4$

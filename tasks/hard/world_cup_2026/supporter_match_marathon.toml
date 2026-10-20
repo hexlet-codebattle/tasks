@@ -24,6 +24,26 @@ description_ru = """
 При равной длине выберите лексикографически меньший список индексов.
 """
 
+description_es = """
+Cada coincidencia es `[start, end, city]`; Los tiempos de los partidos se miden en minutos desde el inicio del torneo.
+`travel[a][b]` es el tiempo de viaje no negativo en minutos desde la ciudad `a` hasta la ciudad `b`.
+Un seguidor puede comenzar en cualquier partido.
+Después de asistir al partido `i`, se puede acceder al partido `j` cuando `end_i + travel[city_i][city_j] <= start_j`; Se permite llegar exactamente al saque inicial.
+
+Devuelve una lista cronológica más larga de índices de partidos originales a los que el aficionado puede asistir en su totalidad.
+Para longitudes iguales, devuelve la lista de índice lexicográficamente más pequeña.
+"""
+
+description_zh = """
+每场比赛为`[start, end, city]`；比赛时间以比赛开始后的分钟为单位。
+`travel[a][b]` 是从城市 `a` 到城市 `b` 的非负行驶时间（以分钟为单位）。
+支持者可以在任何一场比赛中首发。
+参加比赛`i`后，当`end_i + travel[city_i][city_j] <= start_j`时比赛`j`可达；允许在开球时准确到达。
+
+返回支持者可以完全参加的原始比赛索引的最长时间顺序列表。
+对于相等的长度，返回字典顺序较小的索引列表。
+"""
+
 limits = """
 - $0 \\leq n \\leq 104$
 - $1 \\leq c \\leq 16$

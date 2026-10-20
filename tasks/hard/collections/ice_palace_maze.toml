@@ -28,6 +28,30 @@ description_ru = """
 Найдите минимальное количество шагов от `S` до `T`. Если путь не существует — выведите `-1`.
 """
 
+description_es = """
+Dado un campo rectangular representado por caracteres:
+- `S` — Posición inicial de Santa
+- `T` — objetivo
+- `#` — pared (no se puede pasar)
+- `.` — celda libre
+
+Santa puede moverse hacia arriba, abajo, izquierda y derecha, pero no puede atravesar las paredes.
+
+Encuentre el número mínimo de pasos desde `S` hasta `T`. Si no existe ninguna ruta, devuelva `-1`.
+"""
+
+description_zh = """
+给定一个由字符表示的矩形字段：
+- `S` — 圣诞老人的起始位置
+- `T` — 目标
+- `#` — 墙（无法通过）
+- `.` — 空闲单元
+
+圣诞老人可以上下左右移动，但不能穿墙。
+
+求从 `S` 到 `T` 的最小步数。如果不存在路径，则返回 `-1`。
+"""
+
 limits = """
 - $1 \\leq \\text{rows} \\leq 100$
 - $1 \\leq \\text{cols} \\leq 100$

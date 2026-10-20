@@ -32,6 +32,34 @@ description_ru = """
 Все пары доверия различны; обе метки находятся от $1$ до $n$ и отличаются друг от друга.
 """
 
+description_es = """
+En un pueblo, hay personas $n$ etiquetadas desde $1$ hasta $n$. Corre el rumor de que una de estas personas es en secreto el juez del pueblo.
+
+El juez del pueblo satisface dos propiedades:
+1. El juez municipal no se fía de nadie.
+2. Todo el mundo (excepto el juez municipal) confía en el juez municipal.
+
+Se le proporciona una matriz `trust` donde `trust[i] = [a, b]` representa que la persona etiquetada `a` confía en la persona etiquetada `b`.
+
+Devolver la etiqueta del juez del pueblo si existen y se pueden identificar, o devolver `-1` en caso contrario.
+
+Cada par de confianza es distinto, con ambas etiquetas entre $1$ y $n$ y diferentes entre sí.
+"""
+
+description_zh = """
+在一个城镇中，有 $n$ 人，标签为 $1$ 到 $n$。有传言说，其中一个人秘密是镇法官。
+
+城镇法官满足两个属性：
+1. 镇法官不相信任何人。
+2. 每个人（镇法官除外）都信任镇法官。
+
+给您一个数组 `trust`，其中 `trust[i] = [a, b]` 表示标记为 `a` 的人信任标记为 `b` 的人。
+
+如果存在且可识别则返回镇法官的标签，否则返回`-1`。
+
+每个信任对都是不同的，两个标签都在 $1$ 和 $n$ 之间，并且彼此不同。
+"""
+
 limits = """
 - $1 \\leq n \\leq 1000$
 - $0 \\leq \\text{len}(\\text{trust}) \\leq 10^4$

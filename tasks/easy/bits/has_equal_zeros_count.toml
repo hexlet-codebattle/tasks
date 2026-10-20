@@ -12,6 +12,14 @@ description_ru = """
 Проверьте, одинаково ли количество нулей двух чисел, представленных в двоичном виде.
 """
 
+description_es = """
+¿Calcular el número de ceros es igual si los dos números se representan en binario?
+"""
+
+description_zh = """
+计算二进制表示的两个数的零个数是否相等？
+"""
+
 limits = """
 - $0 \\leq a, b \\leq 100$
 """

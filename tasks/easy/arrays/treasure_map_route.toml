@@ -30,6 +30,32 @@ description_ru = """
 Верните итоговые координаты в виде `[x, y]`.
 """
 
+description_es = """
+Un pirata sigue una ruta escrita como una matriz `moves` que contiene solo `\"N\"`, `\"S\"`, `\"E\"` y `\"W\"`.
+
+Comience en las coordenadas `[0, 0]`. Cada movimiento cambia la posición en una celda:
+
+- `\"N\"` aumenta `y`
+- `\"S\"` disminuye `y`
+- `\"E\"` aumenta `x`
+- `\"W\"` disminuye `x`
+
+Devuelve las coordenadas finales como `[x, y]`.
+"""
+
+description_zh = """
+一名海盗按照数组 `moves` 中的路线移动，数组仅包含 `\"N\"`、`\"S\"`、`\"E\"` 和 `\"W\"`。
+
+从坐标 `[0, 0]` 出发，每次移动一格：
+
+- `\"N\"` 使 `y` 增加一
+- `\"S\"` 使 `y` 减少一
+- `\"E\"` 使 `x` 增加一
+- `\"W\"` 使 `x` 减少一
+
+以 `[x, y]` 返回最终坐标。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{moves}) \\leq 100$
 - $\\text{moves}[i] \\in \\{\\text{"N"}, \\text{"S"}, \\text{"E"}, \\text{"W"}\\}$

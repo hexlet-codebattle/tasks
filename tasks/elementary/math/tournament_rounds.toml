@@ -12,6 +12,14 @@ description_ru = """
 Игроков Codebattle делят на пары для проведения одного раунда игр. Из каждой пары всегда выходит один победитель. Новые раунды создаются до тех пор, пока не останется одна пара игроков. Например, для 8 игроков будет проведено 3 раунда: 1/4 финала, 1/2 финала и финал. Создайте функцию, которая принимает количество участников (всегда степень 2) и возвращает количество раундов.
 """
 
+description_es = """
+Los jugadores de Codebattle se emparejan para jugar una ronda de juegos. Siempre hay un ganador de cada pareja. Se crean nuevas rondas hasta que quede un par de jugadores. Por ejemplo, para 8 jugadores habrá 3 rondas: 1/4 de final, 1/2 de final y final. Cree una función que tome el número de participantes (siempre una potencia de 2) y devuelva el número de rondas.
+"""
+
+description_zh = """
+Codebattle 玩家配对进行一轮游戏。每对中总会有一个获胜者。将创建新的回合，直到剩下一对玩家。例如，8名选手将进行3轮：1/4决赛、1/2决赛和决赛。创建一个函数，获取参与者数量（始终为 2 的幂）并返回轮数。
+"""
+
 limits = """
 - $2 \\leq \\text{participants} \\leq 2^{14}$
 """

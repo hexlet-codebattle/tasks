@@ -12,6 +12,14 @@ description_ru = """
 Даны предложение и слово, найдите все местоположения слова в предложении и соберите их в массив.
 """
 
+description_es = """
+Dadas una oración y una palabra, encuentre todas las posiciones en las que aparece la palabra en la oración. Devuelve una serie de dichas posiciones.
+"""
+
+description_zh = """
+给定一个句子和一个单词，找到该单词在句子中出现的所有位置。返回此类位置的数组。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{word}) \\leq 50$
 - $1 \\leq \\text{len}(\\text{sentence}) \\leq 500$

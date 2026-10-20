@@ -14,6 +14,18 @@ description_ru = """
 Создайте функцию, которая из цифр заданного числа собирает наибольшее возможное число.
 """
 
+description_es = """
+Su tarea es crear una función que pueda tomar cualquier número entero no negativo como argumento y devolverlo con sus dígitos en orden descendente.
+
+Básicamente, reorganice los dígitos para crear el número más alto posible.
+"""
+
+description_zh = """
+您的任务是创建一个函数，该函数可以接受任何非负整数作为参数，并按降序返回它及其数字。
+
+本质上，重新排列数字以创建尽可能大的数字。
+"""
+
 limits = """
 - $0 \\leq \\text{num} \\leq 10^9$
 """

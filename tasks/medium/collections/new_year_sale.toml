@@ -16,6 +16,18 @@ description_ru = """
 Если такой пары не существует, верните `0`.
 """
 
+description_es = """
+Dada una serie de precios de obsequios y un número `k`, encuentre la suma máxima de dos obsequios diferentes que no exceda de `k`.
+
+Si no existe tal par, devuelva `0`.
+"""
+
+description_zh = """
+给定一系列礼物价格和数字 `k`，找到两种不同礼物的最大总和不超过 `k`。
+
+如果不存在这样的对，则返回 `0`。
+"""
+
 limits = """
 - $1 \\leq k \\leq 10^6$
 - $2 \\leq \\text{len}(\\text{prices}) \\leq 1000$

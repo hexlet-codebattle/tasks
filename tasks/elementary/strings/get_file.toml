@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая возвращает имя файла с расширением из переданного пути файловой системы.
 """
 
+description_es = """
+Implemente una función que devuelva el nombre del archivo con la extensión de una ruta determinada.
+"""
+
+description_zh = """
+实现一个从给定路径返回带有扩展名的文件名的函数。
+"""
+
 solution = """
 def solution(filepath):
     return filepath.split("/")[-1]

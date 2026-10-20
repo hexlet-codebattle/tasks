@@ -26,6 +26,27 @@ description_ru = """
 Если участников меньше трех, верните все индексы по рангу.
 """
 
+description_es = """
+La matriz `times_sec` almacena los tiempos de finalización de los esquiadores por índice de salida.
+Índices de retorno de los tres mejores atletas.
+
+Ordenar por:
+1. menos tiempo
+2. índice más pequeño para empates
+
+Si existen menos de tres atletas, devuelva todos los índices clasificados.
+"""
+
+description_zh = """
+数组 `times_sec` 按出发索引记录滑雪选手的完赛时间。返回前三名选手的索引。
+
+排名规则：
+1. 时间较短的优先；
+2. 时间相同时，索引较小的优先。
+
+如果选手不足三人，则返回所有选手的索引，按排名排列。
+"""
+
 solution = """
 def solution(times_sec: list[int]) -> list[int]:
     order = sorted(range(len(times_sec)), key=lambda i: (times_sec[i], i))

@@ -20,6 +20,22 @@ description_ru = """
 Верните максимальную прибыль, которую вы можете получить от этой сделки. Если получить прибыль невозможно, верните `0`.
 """
 
+description_es = """
+Dada una matriz `prices` donde `prices[i]` es el precio de una acción determinada en el día $i$.
+
+Desea maximizar sus ganancias eligiendo un solo día para comprar una acción y eligiendo un día diferente en el futuro para vender esa acción.
+
+Devuelve el máximo beneficio que puedas obtener de esta transacción. Si no puede obtener ningún beneficio, devuelva `0`.
+"""
+
+description_zh = """
+给定一个数组 `prices`，其中 `prices[i]` 是给定股票在第 $i$ 天的价格。
+
+您希望通过选择某一天购买一只股票并选择未来的另一天出售该股票来最大化您的利润。
+
+返回您可以从本次交易中获得的最大利润。如果您无法获得任何利润，请返回`0`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{prices}) \\leq 10^5$
 - $0 \\leq \\text{prices}[i] \\leq 10^4$

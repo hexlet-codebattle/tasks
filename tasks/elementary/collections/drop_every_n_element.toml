@@ -12,6 +12,14 @@ description_ru = """
 Удалите каждый $n$-ый элемент из массива.
 """
 
+description_es = """
+Elimine cada elemento $N$-ésimo de una lista.
+"""
+
+description_zh = """
+删除列表中每第 $N$ 个元素，即第 $N$、第 $2N$、第 $3N$ 个元素，依此类推。
+"""
+
 limits = """
 - $2 \\leq n \\leq 20$
 - $0 \\leq \\text{list}[i] \\leq 100$

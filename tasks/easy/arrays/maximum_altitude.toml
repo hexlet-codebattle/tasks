@@ -16,6 +16,18 @@ description_ru = """
 Верните максимальную высоту, которой достигнет велосипедист за время пути.
 """
 
+description_es = """
+Un ciclista inicia su recorrido a una altitud de $0$. Se le proporciona una matriz de números enteros `gain` de longitud $n$, donde `gain[i]` representa la ganancia de altitud neta entre el punto $i$ y el punto $i + 1$.
+
+Devuelve la mayor altitud que alcanza el ciclista durante su recorrido.
+"""
+
+description_zh = """
+一名骑自行车的人从海拔 $0$ 开始旅程。给定一个长度为 $n$ 的整数数组 `gain`，其中 `gain[i]` 表示点 $i$ 和点 $i + 1$ 之间的净高度增益。
+
+返回骑车人在旅途中到达的最高高度。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{gain}) \\leq 100$
 - $-100 \\leq \\text{gain}[i] \\leq 100$

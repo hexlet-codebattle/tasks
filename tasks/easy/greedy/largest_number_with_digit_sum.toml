@@ -12,6 +12,14 @@ description_ru = """
 Даны целые $A$ (сумма цифр) и $B$ (число цифр). Постройте **наибольшее** десятичное число из ровно $B$ цифр с суммой цифр $A$. Верните его в виде строки.
 """
 
+description_es = """
+Dados los números enteros $A$ (suma de dígitos) y $B$ (número de dígitos), construya el número de base 10 **más grande** con exactamente $B$ dígitos y suma de dígitos $A$. Devuélvelo como una cadena.
+"""
+
+description_zh = """
+给定整数 $A$（数字和）和 $B$（数字位数），构造**最大**以 10 为基数的数字，其中数字恰好为 $B$ 数字和数字和 $A$。将其作为字符串返回。
+"""
+
 limits = """
 - $0 \\leq A$
 - $1 \\leq B$

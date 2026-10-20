@@ -14,6 +14,16 @@ description_ru = """
 Верните новый массив строк, в котором каждое вхождение `character` в каждой строке заменено на `replacement`.
 """
 
+description_es = """
+Escriba una función que tome una matriz de cadenas `words`, una cadena `character` y una cadena `replacement`.
+Devuelve una nueva matriz de cadenas donde cada aparición de `character` en cada palabra se reemplaza con `replacement`.
+"""
+
+description_zh = """
+编写一个函数，该函数接受字符串数组 `words`、字符串 `character` 和字符串 `replacement`。
+返回一个新的字符串数组，其中每个单词中出现的每个 `character` 都被替换为 `replacement`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(character) \\leq 1$
 - $1 \\leq \\text{len}(replacement) \\leq 1$

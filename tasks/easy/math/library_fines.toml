@@ -20,6 +20,22 @@ description_ru = """
 Верните итоговый штраф студентки, округлённый до $2$ знаков после запятой.
 """
 
+description_es = """
+La biblioteca de la universidad factura a un estudiante por cada libro vencido que devuelve. La matriz `days` enumera el número de días en que cada libro prestado estuvo vencido; un valor negativo significa que el libro se devolvió antes de tiempo.
+
+La multa por un libro es de $0.25$ por día de retraso. Los retornos anticipados no añaden nada al total.
+
+Devuelve la multa total que adeuda el estudiante, redondeada a $2$ decimales.
+"""
+
+description_zh = """
+大学图书馆向学生收取每本逾期归还的书籍的费用。数组`days`列出了每本借书的逾期天数；负值表示该书被提前归还。
+
+图书逾期每天罚款 $0.25$。早期回报对总数没有任何影响。
+
+返回学生所欠的罚款总额，四舍五入至 $2$ 小数位。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{days}) \\leq 10^4$
 - $-100 \\leq \\text{days}[i] \\leq 1000$

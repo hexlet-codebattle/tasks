@@ -12,6 +12,14 @@ description_ru = """
 Проверьте, начинаются ли все слова в строке с заглавной буквы.
 """
 
+description_es = """
+Compruebe si una cadena `title` es una cadena de título o no. Una cadena de título es aquella en la que todas las palabras de la cadena comienzan con una letra mayúscula.
+"""
+
+description_zh = """
+检查字符串 `title` 是否是标题字符串。标题字符串是字符串中所有单词都以大写字母开头的字符串。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{title}) \\leq 100$
 """

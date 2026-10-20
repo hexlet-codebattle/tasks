@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая ищет `Nemo` в строке и если он был найден, возвращает "I found Nemo at [позиция Немо в строке]!". Если Немо не был найден, то верните "I can't find Nemo :(".
 """
 
+description_es = """
+Dada una cadena de palabras, encuentra la palabra `Nemo` y devuelve una cadena con el formato \"I found Nemo at [the order of the word you find nemo]!\", sustituyendo el texto entre corchetes por la posición de la palabra. Si no aparece, devuelve exactamente \"I can't find Nemo :(\".
+"""
+
+description_zh = """
+给定一串单词，查找单词 `Nemo`，返回格式为 \"I found Nemo at [the order of the word you find nemo]!\" 的字符串，将方括号部分替换为该单词的位置。如果找不到，则原样返回 \"I can't find Nemo :(\"。
+"""
+
 solution = """
 def solution(sentence):
     words = sentence.split()

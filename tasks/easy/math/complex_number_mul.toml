@@ -16,6 +16,18 @@ description_ru = """
 Реализуйте функцию, которая перемножает эти два комплексных числа и возвращает результат в виде массива `[x, y]`, где $x$ — вещественная часть произведения, а $y$ — мнимая часть.
 """
 
+description_es = """
+Se le dan dos números complejos, cada uno representado como una matriz `[a, b]` correspondiente a $a + bi$.
+
+Implemente una función que multiplique estos dos números complejos y devuelva el resultado como una matriz `[x, y]`, donde $x$ es la parte real y $y$ es la parte imaginaria del producto.
+"""
+
+description_zh = """
+给定两个复数，每个复数表示为对应于 $a + bi$ 的数组 `[a, b]`。
+
+实现一个函数，将这两个复数相乘并将结果作为数组 `[x, y]` 返回，其中 $x$ 是乘积的实部，$y$ 是乘积的虚部。
+"""
+
 solution = """
 def solution(first, second):
     a, b = first

@@ -12,6 +12,14 @@ description_ru = """
 Перед посадкой каждому астронавту нужен `1` скафандр, `2` батарейных блока и `3` кислородных баллона. Верните максимальное число астронавтов, которых можно полностью экипировать.
 """
 
+description_es = """
+Antes de abordar, cada astronauta necesita un traje `1`, paquetes de baterías `2` y botes de oxígeno `3`. Devuelve el número máximo de astronautas que pueden estar completamente equipados.
+"""
+
+description_zh = """
+登机前，每位宇航员需要`1`套装、`2`电池组和`3`氧气罐。返回可以装备齐全的宇航员的最大数量。
+"""
+
 limits = """
 - $0 \\leq \\text{suits}, \\text{batteries}, \\text{oxygen\\_canisters} \\leq 10^6$
 """

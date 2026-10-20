@@ -13,6 +13,14 @@ description_ru = """
 Верните общее число сегментов, содержащихся во входной строке.
 """
 
+description_es = """
+Dada una cadena que contiene solo dígitos decimales `(0-9)`, calcule el número total de guiones (segmentos) necesarios para mostrar todos los dígitos en la pantalla de una calculadora LCD. Cada dígito está formado por una determinada cantidad de guiones: `0=6, 1=2, 2=5, 3=5, 4=4, 5=5, 6=6, 7=3, 8=7, 9=6` guiones.
+"""
+
+description_zh = """
+给定一个仅包含十进制数字 `(0-9)` 的字符串，计算在 LCD 计算器显示屏上显示所有数字所需的破折号（段）总数。每个数字都由一定数量的破折号组成：`0=6, 1=2, 2=5, 3=5, 4=4, 5=5, 6=6, 7=3, 8=7, 9=6` 破折号。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{text}) \\leq 1000$
 - $\\text{text} \\in \\{0{-}9\\}^*$

@@ -16,6 +16,18 @@ description_ru = """
 Ваша задача — определить, какого минимального количества монет достаточно, чтобы набрать сумму ровно $n$.
 """
 
+description_es = """
+Tienes $5$ diferentes tipos de monedas, cada una con un valor igual a uno de los primeros números triangulares $5$: $1$, $3$, $6$, $10$ y $15$. Todos los tipos de monedas están disponibles en cantidades ilimitadas.
+
+Su tarea es determinar la cantidad mínima de monedas suficientes para hacer una suma de exactamente $n$.
+"""
+
+description_zh = """
+您有 $5$ 不同类型的硬币，每种硬币的值等于前一个 $5$ 三角形数字之一：$1$、$3$、$6$、$10$ 和 $15$。所有硬币类型均无限数量供应。
+
+您的任务是确定足以使总和恰好为 $n$ 的最小硬币数量。
+"""
+
 limits = """
 - $0 \\leq n \\leq 10^4$
 """

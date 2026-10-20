@@ -16,6 +16,18 @@ description_ru = """
 Верните минимальное число ходов.
 """
 
+description_es = """
+Estás en una cuadrícula toroidal de tamaño $N \\times M$ (filas $\\times$ columnas). Desde $(R_1, C_1)$ debes llegar a $(R_2, C_2)$. En un movimiento puedes subir, bajar, izquierda o derecha, y la cuadrícula rodea ambos ejes.
+
+Devuelve el número mínimo de movimientos.
+"""
+
+description_zh = """
+您位于大小为 $N \\times M$ 的环形网格上（行 $\\times$ 列）。从 $(R_1, C_1)$ 出发，您必须到达 $(R_2, C_2)$。只需一次移动，您就可以向上、向下、向左或向右移动，并且网格会环绕两个轴。
+
+返回最小移动次数。
+"""
+
 limits = """
 - $1 \\leq N, M$
 - $1 \\leq R_1, R_2 \\leq N$

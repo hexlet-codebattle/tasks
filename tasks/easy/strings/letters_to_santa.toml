@@ -16,6 +16,18 @@ description_ru = """
 Верните сумму всех трёх счётчиков.
 """
 
+description_es = """
+Te dan una cadena: una carta escrita a Santa. Cuente cuántas veces aparecen las palabras `\"gift\"`, `\"tree\"` y `\"snow\"` en la carta. La búsqueda no distingue entre mayúsculas y minúsculas.
+
+Devuelve la suma total de los tres recuentos de palabras.
+"""
+
+description_zh = """
+给你一个字符串——一封写给圣诞老人的信。计算 `\"gift\"`、`\"tree\"` 和 `\"snow\"` 在信件中出现的次数。搜索不区分大小写。
+
+返回所有三个字数的总和。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{letter}) \\leq 10^4$
 """

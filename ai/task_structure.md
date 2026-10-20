@@ -40,6 +40,16 @@ You are generating programming tasks in **TOML format**. Follow this specificati
 - **Rendering:** Uses `react-markdown` + `remark-math` + `rehype-katex`
 - **Guidelines:** Same as `description_en`
 
+### **`description_es`** *(required)*
+- **Type:** `string` (Markdown)
+- **Description:** Task description in **Spanish**
+- **Guidelines:** Same as `description_en`; preserve the complete task contract, code literals, and mathematical notation.
+
+### **`description_zh`** *(required)*
+- **Type:** `string` (Markdown)
+- **Description:** Task description in **Simplified Chinese**
+- **Guidelines:** Same as `description_en`; preserve the complete task contract, code literals, and mathematical notation.
+
 ### **`limits`** *(optional)*
 - **Type:** `string` (Markdown list)
 - **Description:** Constraints on input variables
@@ -299,6 +309,14 @@ Given two integers `a` and `b`, return their sum.
 
 description_ru = """
 Даны два целых числа `a` и `b`. Верните их сумму.
+"""
+
+description_es = """
+Dados dos números enteros `a` y `b`, devuelve su suma.
+"""
+
+description_zh = """
+给定两个整数 `a` 和 `b`，返回它们的和。
 """
 
 limits = """

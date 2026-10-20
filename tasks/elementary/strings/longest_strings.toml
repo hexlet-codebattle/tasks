@@ -16,6 +16,18 @@ description_ru = """
 Если есть несколько строк с одинаковой максимальной длиной, включите все из них в результат.
 """
 
+description_es = """
+Dada una matriz de cadenas `words`, devuelve otra matriz que contiene todas sus cadenas más largas.
+
+Si hay varias cadenas con la misma longitud máxima, inclúyalas todas en el resultado.
+"""
+
+description_zh = """
+给定一个字符串数组 `words`，返回另一个包含其所有最长字符串的数组。
+
+如果存在多个具有相同最大长度的字符串，请将它们全部包含在结果中。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{words}) \\leq 100$
 - $0 \\leq \\text{len}(\\text{word}) \\leq 50$

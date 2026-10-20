@@ -31,6 +31,32 @@ $$
 Ваша задача — восстановить исходный массив $A$ по данной матрице $S$. Гарантируется единственность ответа.
 """
 
+description_es = """
+Se le proporciona una matriz cuadrada $S$ de tamaño $n \\times n$ construida a partir de una matriz positiva $A$ de longitud $n$. Cada elemento de la matriz se define de la siguiente manera:
+
+$$
+S[i][j] = \\begin{cases}
+A[i] + A[j], & i \\ne j,\\\\
+0, & i = j.
+\\end{cases}
+$$
+
+Su tarea es recuperar la matriz original $A$ de la matriz dada $S$. Se garantiza que la respuesta será única.
+"""
+
+description_zh = """
+给定一个大小为 $n \\times n$ 的方阵 $S$，该方阵由长度为 $n$ 的正数组 $A$ 构建而成。矩阵的每个元素定义如下：
+
+$$
+S[i][j] = \\begin{cases}
+A[i] + A[j], & i \\ne j,\\\\
+0, & i = j.
+\\end{cases}
+$$
+
+您的任务是从给定矩阵 $S$ 恢复原始数组 $A$。答案保证是唯一的。
+"""
+
 limits = """
 - $3 \\leq n \\leq 10$ (where $n$ is the size of the matrix and length of array $A$)
 - $1 \\leq A[i] \\leq 50$ (all elements of $A$ are positive)

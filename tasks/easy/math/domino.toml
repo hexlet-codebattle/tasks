@@ -31,6 +31,32 @@ description_ru = """
 ```
 """
 
+description_es = """
+La entrada es el número máximo de puntos que pueden aparecer en un lado de una ficha de dominó (`x`).
+Un juego de dominó contiene todas las fichas únicas del formulario `i|j` donde `0 ≤ i ≤ j ≤ x`.
+
+Genere el número total de puntos en todo el conjunto de dominó (la suma de `i + j` sobre todos los mosaicos).
+
+```
+1 → 3
+Tiles: \"0|0\", \"0|1\", \"1|1\"
+Sum: 0 + 0 + 0 + 1 + 1 + 1 = 3
+```
+"""
+
+description_zh = """
+输入是多米诺骨牌一侧可以出现的最大点数 (`x`)。
+多米诺骨牌组包含 `i|j` 形式的所有独特瓷砖，其中 `0 ≤ i ≤ j ≤ x`.
+
+输出整个多米诺骨牌集中的点数（所有瓷砖上 `i + j` 的总和）。
+
+```
+1 → 3
+Tiles: \"0|0\", \"0|1\", \"1|1\"
+Sum: 0 + 0 + 0 + 1 + 1 + 1 = 3
+```
+"""
+
 limits = """
 - $0 \\leq x \\leq 20$
 """

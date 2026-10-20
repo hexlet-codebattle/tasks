@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая сортирует комбинацию имени и фамилии людей по фамилии.
 """
 
+description_es = """
+Implemente una función que ordene los nombres de las personas por su apellido.
+"""
+
+description_zh = """
+实现一个按姓氏对人名进行排序的函数。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{names}) \\leq 100$
 - $3 \\leq \\text{len}(\\text{names}[i]) \\leq 50$

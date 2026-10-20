@@ -24,6 +24,26 @@ description_ru = """
 Верните получившийся массив троек.
 """
 
+description_es = """
+Se le proporcionan tres matrices $A_1$, $A_2$, $A_3$ de igual longitud $n$.
+
+Forma una **trenza** de la siguiente manera. Para cada índice $i$ desde $0$ hasta $n-1$: agregue el triplete $[A_1[i], A_2[i], A_3[i]]$ y luego
+- si $i$ es par, intercambie las dos primeras cintas: $(A_1, A_2, A_3) \\rightarrow (A_2, A_1, A_3)$;
+- en caso contrario, intercambie las dos últimas cintas: $(A_1, A_2, A_3) \\rightarrow (A_1, A_3, A_2)$.
+
+Devuelve la matriz resultante de tripletes.
+"""
+
+description_zh = """
+给定三个长度相等的数组 $A_1$、$A_2$、$A_3$ $n$。
+
+如下形成**辫子**。对于从 $0$ 到 $n-1$ 的每个索引 $i$：添加三元组 $[A_1[i], A_2[i], A_3[i]]$，然后
+- 如果 $i$ 是偶数，则交换前两条色带：$(A_1, A_2, A_3) \\rightarrow (A_2, A_1, A_3)$；
+- 否则，交换最后两条色带：$(A_1, A_2, A_3) \\rightarrow (A_1, A_3, A_2)$。
+
+返回三元组的结果数组。
+"""
+
 limits = """
 - $1 \\le n \\le 42$
 - $\\text{len}(a1) = \\text{len}(a2) = \\text{len}(a3) = n$

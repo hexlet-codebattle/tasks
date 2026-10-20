@@ -16,6 +16,18 @@ description_ru = """
 Список должен быть разделен максимально равномерно, причем первые части могут иметь на один элемент больше, чем последние, если деление неточное.
 """
 
+description_es = """
+Cree una función que divida la lista en un número específico de partes.
+
+La lista debe dividirse lo más uniformemente posible; las partes anteriores pueden tener un elemento más que las posteriores si la división no es exacta.
+"""
+
+description_zh = """
+创建一个函数，将列表分为指定数量的部分。
+
+该列表应尽可能均匀地分割，如果分割不精确，前面的部分可能会比​​后面的部分多一个元素。
+"""
+
 limits = """
 - $1 \\leq |\\text{numbers}| \\leq 100$
 - $1 \\leq \\text{parts} \\leq 100$

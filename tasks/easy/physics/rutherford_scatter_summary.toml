@@ -20,6 +20,22 @@ description_ru = """
 а большие углы — к `backscatter`.
 """
 
+description_es = """
+En la dispersión de Rutherford, las partículas alfa abandonan la lámina en diferentes ángulos.
+
+Dados los ángulos de dispersión en grados, devuelve `[forward, side, backscatter]`.
+Los ángulos por debajo de los grados `30` son `forward`, los ángulos hasta los grados `120` son `side`,
+y los ángulos más grandes son `backscatter`.
+"""
+
+description_zh = """
+在卢瑟福散射中，α粒子以不同的角度离开箔片。
+
+给定散射角（以度为单位），返回 `[forward, side, backscatter]`。
+`30` 度以下的角度为 `forward`，`120` 度以下的角度为 `side`，
+更大的角度是`backscatter`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{angles}) \\leq 100$
 - $0 \\leq \\text{angle} \\leq 180$

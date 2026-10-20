@@ -16,6 +16,18 @@ description_ru = """
 Верните `true`, если равномерное перераспределение возможно, иначе `false`.
 """
 
+description_es = """
+Dada una matriz que representa la cantidad de mandarinas que tiene cada niño, determine si se pueden redistribuir para que todos tengan la misma cantidad.
+
+Devuelve `true` si es posible una redistribución equitativa; en caso contrario, `false`.
+"""
+
+description_zh = """
+给定一个表示每个孩子拥有的橘子数量的数组，确定是否可以重新分配这些橘子，以便每个人都有相同的数量。
+
+如果可以进行相等的重新分配，则返回 `true`，否则返回 `false`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{mandarins}) \\leq 1000$
 - $0 \\leq \\text{mandarins}[i] \\leq 10^6$

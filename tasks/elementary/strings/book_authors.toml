@@ -16,6 +16,18 @@ description_ru = """
 Верните список строк с именами авторов в **том же порядке**, в котором книги идут во входном списке. Для каждой книги возьмите значение поля `"authors"`.
 """
 
+description_es = """
+Se le proporciona una lista de libros `books`. Cada libro se representa como un hash (diccionario) con claves de cadena y valores de cadena, y contiene al menos la clave `\"authors\"`.
+
+Devuelve una lista de cadenas de autores en el **mismo orden** que los libros en la entrada. Para cada libro, tome el valor de su campo `\"authors\"`.
+"""
+
+description_zh = """
+您将获得一份图书清单 `books`。每本书都表示为具有字符串键和字符串值的哈希（字典），并且至少包含键 `\"authors\"`。
+
+以与输入中的书籍**相同的顺序**返回作者字符串列表。对于每本书，取其 `\"authors\"` 字段的值。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{books}) \\leq 50$
 """

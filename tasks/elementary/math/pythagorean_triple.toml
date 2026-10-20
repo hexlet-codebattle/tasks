@@ -12,6 +12,14 @@ description_ru = """
 Проверьте являются ли 3 переданных числа Пифагоровой тройкой. Пифагорова тройка - это 3 числа $x$, $y$, $z$, такие что $x^2 + y^2 = z^2$. Обратите внимание, что порядок чисел не имеет значения.
 """
 
+description_es = """
+Comprueba si 3 números enteros dados forman un triplete pitagórico. Un triplete pitagórico es un triplete de números, como $x^2 + y^2 = z^2$. Tenga en cuenta que el orden de los números enteros no importa.
+"""
+
+description_zh = """
+检查 3 个给定整数是否构成毕达哥拉斯三元组。毕达哥拉斯三元组是数字的三元组，例如 $x^2 + y^2 = z^2$。请注意，整数的顺序并不重要。
+"""
+
 limits = """
 - $\\text{len}(nums) = 3$
 - $1 \\leq nums[i] \\leq 1000$

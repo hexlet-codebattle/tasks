@@ -32,6 +32,34 @@ $1^2 + 2^2 + ... + 10^2 = 385$
 Таким образом, разность между квадратом суммы и суммой квадратов первых десяти натуральных чисел это $3025 - 385 = 2640$.
 """
 
+description_es = """
+Encuentra la diferencia entre el cuadrado de la suma y la suma de los cuadrados de los primeros números naturales $N$.
+
+El cuadrado de la suma de los diez primeros números naturales es:
+
+$(1 + 2 + ... + 10)^2 = 55^2 = 3025$
+
+La suma de los cuadrados de los diez primeros números naturales es:
+
+$1^2 + 2^2 + ... + 10^2 = 385$
+
+Por tanto, la diferencia entre el cuadrado de la suma y la suma de los cuadrados es $3025 - 385 = 2640$.
+"""
+
+description_zh = """
+求总和的平方与前一个 $N$ 自然数的平方和之间的差。
+
+前十个自然数之和的平方为：
+
+$(1 + 2 + ... + 10)^2 = 55^2 = 3025$
+
+前十个自然数的平方和为：
+
+$1^2 + 2^2 + ... + 10^2 = 385$
+
+因此，总和的平方与平方和之间的差为$3025 - 385 = 2640$。
+"""
+
 limits = """
 - $1 \\leq n \\leq 200$
 """

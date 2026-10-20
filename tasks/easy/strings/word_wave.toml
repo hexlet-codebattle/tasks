@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая `'запускает волну'` по слову. Функция принимает одну строку в качестве аргумента и возвращает список строк, представляющих все возможные вариации данной строки, где каждая буква может быть в верхнем регистре, а все остальные буквы остаются в нижнем регистре.
 """
 
+description_es = """
+Escriba una función que `'waves'` recorra la palabra, es decir, cambie las mayúsculas para cada letra siguiente y devuelva la matriz de palabras resultante.
+"""
+
+description_zh = """
+编写一个函数，将 `'waves'` 遍历单词，即将下一个字母的大小写更改为大写，并返回结果单词数组。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{word}) \\leq 50$
 """

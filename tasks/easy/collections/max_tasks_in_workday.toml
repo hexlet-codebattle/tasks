@@ -14,6 +14,16 @@ description_ru = """
 Верните **максимальное** количество задач, которое можно выполнить за $480$ минут.
 """
 
+description_es = """
+Se le proporcionan las duraciones (en minutos) de las tareas como una matriz `nums`.
+Una jornada laboral dura $480$ minutos. Devuelve el número **máximo** de tareas que puedes finalizar en minutos $480$.
+"""
+
+description_zh = """
+您将以数组 `nums` 的形式给出任务的持续时间（以分钟为单位）。
+一个工作日持续 $480$ 分钟。返回您在 $480$ 分钟内可以完成的**最大**任务数。
+"""
+
 solution = """
 def solution(nums: list) -> int:
     s = 0

@@ -20,6 +20,22 @@ description_ru = """
 Дано целое число $n$. Верните `true`, если оно является числом Армстронга, и `false` в противном случае.
 """
 
+description_es = """
+Un número de Armstrong (o número narcisista) es un número que es la suma de sus propios dígitos, cada uno elevado a la potencia del número de dígitos.
+
+Por ejemplo, $153$ es un número de Armstrong porque tiene dígitos $3$ y $1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153$.
+
+Dado un número entero $n$, devuelve `true` si es un número de Armstrong y `false` en caso contrario.
+"""
+
+description_zh = """
+阿姆斯特朗数（或自恋数）是一个数字，它是它自己的数字的总和，每个数字的数字次幂。
+
+例如，$153$ 是阿姆斯壮数，因为它具有 $3$ 数字和 $1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153$。
+
+给定一个整数 $n$，如果它是阿姆斯特朗数，则返回 `true`，否则返回 `false`。
+"""
+
 limits = """
 - $0 \\leq n \\leq 10^9$
 """

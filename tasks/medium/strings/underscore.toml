@@ -12,6 +12,14 @@ description_ru = """
 Дан текст со словами, которые разделены разными способами (CamelCase, дефис, двойное двоеточие), верните текст, в котором слова разделены нижними подчеркиваниями и обращены в нижний регистр. Например: `"ActiveModel::Errors"` становится `"active_model/errors"`, `"HelloHowAreYou"` становится `"hello_how_are_you"`.
 """
 
+description_es = """
+Dado un texto con palabras separadas de diferentes maneras (CamelCase, guión, dos puntos dobles), devuelve una forma subrayada y minúscula. Por ejemplo: `\"ActiveModel::Errors\"` se convierte en `\"active_model/errors\"`, `\"HelloHowAreYou\"` se convierte en `\"hello_how_are_you\"`.
+"""
+
+description_zh = """
+给定一个以不同方式分隔单词的文本（驼峰命名法、破折号、双冒号），返回带下划线的小写形式。例如：`\"ActiveModel::Errors\"` 变为 `\"active_model/errors\"`，`\"HelloHowAreYou\"` 变为 `\"hello_how_are_you\"`。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{text}) \\leq 200$
 """

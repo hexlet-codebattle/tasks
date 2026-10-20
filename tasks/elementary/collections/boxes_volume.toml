@@ -20,6 +20,22 @@ description_ru = """
 Если коробок нет, верните `0`.
 """
 
+description_es = """
+Se le proporciona una matriz `boxes`, donde cada elemento es una matriz de exactamente tres números enteros: `[length, width, height]`.
+
+Para cada caja, calcule su volumen como `length * width * height` y devuelva la **suma** de los volúmenes de todas las cajas.
+
+Si no hay casillas, devuelva `0`.
+"""
+
+description_zh = """
+给定一个数组 `boxes`，其中每个元素都是由三个整数组成的数组：`[length, width, height]`。
+
+对于每个盒子，将其体积计算为 `length * width * height` 并返回所有盒子体积的**总和**。
+
+如果没有盒子，则返回 `0`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(boxes) \\leq 50$
 - $\\forall b \\in boxes: \\text{len}(b) = 3$

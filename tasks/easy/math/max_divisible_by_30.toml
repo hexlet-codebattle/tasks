@@ -14,6 +14,16 @@ description_ru = """
 Если это невозможно, верните $-1$.
 """
 
+description_es = """
+Dado un número entero $N$ ($0 \\leq N \\leq 10^9$), reorganice sus dígitos para obtener el número **máximo** divisible por $30$.
+Si es imposible, devuelva $-1$.
+"""
+
+description_zh = """
+给定一个整数 $N$ ($0 \\leq N \\leq 10^9$)，重新排列其数字以获得可被 $30$ 整除的**最大**数。
+如果不可能，则返回$-1$。
+"""
+
 limits = """
 - $0 \\leq N \\leq 10^9$
 """

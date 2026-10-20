@@ -12,6 +12,14 @@ description_ru = '''
 На экране размером $h \times w$ (нумерация строк и столбцов начинается с 1) изначально все клетки заполнены символом «.». По очереди рисуются рамки – границы прямоугольников с противоположными углами в клетках с координатами$(\mathrm{row}_{i,1}, \mathrm{col}_{i,1})$ и $(\mathrm{row}_{i,2}, \mathrm{col}_{i,2})$, где $\mathrm{row}_{i,1} < \mathrm{row}_{i,2}$ и $\mathrm{col}_{i,1} < \mathrm{col}_{i,2}$. $i$‑я рамка заполняется $i$‑й буквой английского алфавита (a, b, …). При рисовании рамка перезаписывает уже нарисованные символы. Вернуть получившееся изображение в виде массива из $h$ строк.
 '''
 
+description_es = """
+Tenemos una pantalla de tamaño $h \\times w$ (las filas están numeradas desde 1 en la parte superior, las columnas desde 1 a la izquierda) inicialmente llena con '.' personajes. Se dibuja una lista de fotogramas en la pantalla. El marco $i$-ésimo es el borde del rectángulo cuyas esquinas opuestas son $(\\mathrm{row}_{i,1}, \\mathrm{col}_{i,1})$ y $(\\mathrm{row}_{i,2}, \\mathrm{col}_{i,2})$ ($\\mathrm{row}_{i,1} < \\mathrm{row}_{i,2}$, $\\mathrm{col}_{i,1} < \\mathrm{col}_{i,2}$). El marco consta de la $i$, enésima letra del alfabeto inglés ('a' para $i=1$, 'b' para $i=2$,...). Los fotogramas se dibujan en el orden indicado, sobrescribiendo los caracteres anteriores. Devuelve la imagen final como una matriz de cadenas $h$, cada una de longitud $w$.
+"""
+
+description_zh = """
+我们有一个大小为 $h \\times w$ 的屏幕（行从顶部的 1 开始编号，列从左侧的 1 开始编号），最初用“.”填充。人物。屏幕上绘制了帧列表。第 $i$ 帧是对角为 $(\\mathrm{row}_{i,1}, \\mathrm{col}_{i,1})$ 和 $(\\mathrm{row}_{i,2}, \\mathrm{col}_{i,2})$（$\\mathrm{row}_{i,1} < \\mathrm{row}_{i,2}$、$\\mathrm{col}_{i,1} < \\mathrm{col}_{i,2}$）的矩形的边界。该帧由英文字母表中的第 $i$ 字母组成（“a”代表 $i=1$，“b”代表 $i=2$，...）。帧按照给定的顺序绘制，覆盖之前的字符。将最终图片作为 $h$ 字符串数组返回，每个字符串的长度为 $w$。
+"""
+
 solution = """
 def solution(h, w, frames):
     # create empty screen filled with '.'

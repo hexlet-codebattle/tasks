@@ -12,6 +12,14 @@ description_ru = """
 Даны два списка, определите содержится ли первый список во втором списке, содержится ли второй список в первом списке, содержатся ли оба списка друг в друге или ничего из вышеперечисленного. Верните одно из: `"A is sublist of B"`, `"A is equal B"`, `"A is superlist of B"` или `"A is unequal B"`.
 """
 
+description_es = """
+Dadas dos listas, determine si la primera lista está contenida dentro de la segunda lista, si la segunda lista está contenida dentro de la primera lista, si ambas listas están contenidas entre sí o si ninguna de estas es verdadera. Devuelve uno de: `\"A is sublist of B\"`, `\"A is equal B\"`, `\"A is superlist of B\"` o `\"A is unequal B\"`.
+"""
+
+description_zh = """
+给定两个列表，确定第一个列表是否包含在第二个列表中，第二个列表是否包含在第一个列表中，两个列表是否彼此包含，或者这些列表是否都不为真。返回以下之一：`\"A is sublist of B\"`、`\"A is equal B\"`、`\"A is superlist of B\"` 或 `\"A is unequal B\"`。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{arr1}) \\leq 100$
 - $0 \\leq \\text{len}(\\text{arr2}) \\leq 100$

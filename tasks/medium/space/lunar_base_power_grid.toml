@@ -12,6 +12,14 @@ description_ru = """
 После посадки экипаж разворачивает небольшую лунную базу. Модуль `0` — главный хаб, `parent[i]` задает модуль, который питает модуль `i`, а `demand[i]` — его энергопотребление. Кабель `i` должен выдерживать суммарное потребление модуля `i` и всех его потомков, а его лимит равен `capacity[i]`. Верните индексы перегруженных модулей в порядке возрастания.
 """
 
+description_es = """
+Después del aterrizaje, la tripulación despliega una pequeña base lunar. El módulo `0` es el centro principal, `parent[i]` es el módulo que alimenta el módulo `i` y `demand[i]` es su uso de energía. El cable `i` debe transportar la demanda total del módulo `i` y todos sus descendientes, y su límite es `capacity[i]`. Devuelve los índices de los módulos sobrecargados en orden ascendente.
+"""
+
+description_zh = """
+着陆后，机组人员部署了一个小型月球基地。模块 `0` 是主集线器，`parent[i]` 是为模块 `i` 供电的模块，`demand[i]` 是其电源使用情况。电缆`i`必须承载模块`i`及其所有后代的总需求，其限制为`capacity[i]`。按升序返回重载模块的索引。
+"""
+
 limits = """
 - $1 \\leq n \\leq 200$
 - $\\text{len}(\\text{parent}) = \\text{len}(\\text{demand}) = \\text{len}(\\text{capacity}) = n$

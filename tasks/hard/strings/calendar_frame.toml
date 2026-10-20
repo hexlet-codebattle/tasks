@@ -17,6 +17,20 @@ description_ru = """
 Каждый день занимает три символа, пустые ячейки заполняются точками, рамка состоит из символов '+', '-', и '|'.
 """
 
+description_es = """
+Dado el número de días de un mes y el día de la semana en el que comienza el mes,
+generar un calendario rodeado por un marco. Cada día ocupa exactamente tres
+caracteres, las celdas vacías se llenan de puntos. Las semanas corresponden a filas, y el
+frame utiliza los caracteres '+', '-' y '|'.
+"""
+
+description_zh = """
+给定一个月中的天数以及该月开始的工作日，
+生成一个被框架包围的日历。每天正好占用三
+字符，空单元格用点填充。周对应于行，并且
+框架使用字符“+”、“-”和“|”。
+"""
+
 solution = """
 def solution(days: int, start: int) -> list[str]:
     \"\"\"Return a framed calendar as a list of strings.

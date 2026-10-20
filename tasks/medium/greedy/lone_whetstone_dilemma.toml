@@ -54,6 +54,56 @@ $$
 Верните минимально возможную общую ярость.
 """
 
+description_es = """
+Eres el único guardián de la piedra de afilar en un barco pirata. Cada pirata trae un sable que necesita ser afilado.
+
+Se le proporcionan dos matrices de igual longitud $n$:
+
+- `times[i]` es el número de minutos necesarios para afilar el sable $i$-ésimo
+- `furies[i]` es el coeficiente de furia del pirata $i$-ésimo
+
+Puedes procesar los sables en cualquier orden. Una vez que comienzas un sable, debes terminarlo sin interrupción.
+
+Si se completa un sable en el momento $c$, contribuye con $c \\cdot f$ a la furia total, donde $f$ es el coeficiente de furia de ese sable. Entonces, si el orden elegido es $p_1, p_2, \\dots, p_n$, entonces
+
+$$
+c_k = \\text{times}[p_1] + \\text{times}[p_2] + \\dots + \\text{times}[p_k]
+$$
+
+y la furia total es
+
+$$
+\\sum_{k=1}^{n} c_k \\cdot \\text{furies}[p_k]
+$$
+
+Devuelve la mínima furia total posible.
+"""
+
+description_zh = """
+你是海盗船上唯一的磨刀石守护者。每个海盗都带着一把需要磨刀的军刀。
+
+给定两个长度相等的数组 $n$：
+
+- `times[i]`是磨$i$第一把军刀所需的分钟数
+- `furies[i]`是第$i$海盗的愤怒系数
+
+您可以按任何顺序处理军刀。一旦开始出刀，就必须不间断地完成它。
+
+如果一把剑在时间 $c$ 完成，它会将 $c \\cdot f$ 贡献给总愤怒，其中 $f$ 是该剑的愤怒系数。因此，如果选择的订单是 $p_1, p_2, \\dots, p_n$，那么
+
+$$
+c_k = \\text{times}[p_1] + \\text{times}[p_2] + \\dots + \\text{times}[p_k]
+$$
+
+总愤怒是
+
+$$
+\\sum_{k=1}^{n} c_k \\cdot \\text{furies}[p_k]
+$$
+
+返回尽可能小的总愤怒。
+"""
+
 limits = """
 - $1 \\leq n \\leq 100$
 - $1 \\leq T_i \\leq 100$

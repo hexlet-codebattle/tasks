@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая рассчитывает век от полученного года.
 """
 
+description_es = """
+Crea una función que tome un año y devuelva su siglo correspondiente.
+"""
+
+description_zh = """
+创建一个函数，该函数需要一年并返回其对应的世纪。
+"""
+
 limits = """
 - $1 \\leq \\text{year} \\leq 10000$
 """

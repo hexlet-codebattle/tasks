@@ -18,6 +18,20 @@ description_ru = """
 Если это невозможно, верните `[0, 0]`. Суммарное количество заказанных машин должно быть минимальным.
 """
 
+description_es = """
+En un taxi de clase económica hay asientos $3$, y en un taxi de clase confort hay asientos $4$.
+Dado un número entero $m$, donde $0 \\le m \\le 2 \\cdot 10^9$, determine cuántos taxis económicos y confort pedir
+para transportar exactamente $m$ personas. Ningún taxi debería tener asientos vacíos.
+Si es imposible, devuelva `[0, 0]`. El número total de taxis solicitados debe ser mínimo.
+"""
+
+description_zh = """
+经济舱出租车有 $3$ 座位，舒适舱出租车有 $4$ 座位。
+给定一个整数 $m$，其中 $0 \\le m \\le 2 \\cdot 10^9$，确定要订购多少辆经济型和舒适型出租车
+正好运送 $m$ 人。出租车不应该有空座位。
+如果不可能，则返回`[0, 0]`。订购出租车的总数必须最少。
+"""
+
 solution = """
 def solution(m):
     # smallest non‑negative x such that 3*x ≡ m (mod 4)

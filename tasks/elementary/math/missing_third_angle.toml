@@ -28,6 +28,30 @@ description_ru = """
 Сумма углов любого треугольника всегда равна 180 градусам.
 """
 
+description_es = """
+2 de 3 ángulos están dados en un triángulo, en grados.
+
+Escribe una función que clasifique el ángulo faltante como `\"acute\"`, `\"right\"` o `\"obtuse\"`.
+
+- Un ángulo agudo es inferior a 90 grados.
+- Un ángulo recto mide exactamente 90 grados.
+- Un ángulo obtuso es mayor de 90 grados (pero menor de 180 grados).
+
+La suma de los ángulos de cualquier triángulo es siempre 180 grados.
+"""
+
+description_zh = """
+三角形中 3 个角中的 2 个以度为单位。
+
+编写一个函数，将缺失的角度分类为 `\"acute\"`、`\"right\"` 或 `\"obtuse\"`。
+
+- 锐角小于 90 度。
+- 直角正好是 90 度。
+- 钝角大于 90 度（但小于 180 度）。
+
+任何三角形的内角和总是 180 度。
+"""
+
 limits = """
 - $1 \\leq first \\leq 179$
 - $1 \\leq second \\leq 179$

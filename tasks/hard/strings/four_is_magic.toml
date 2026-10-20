@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая берет целое число и возвращает текстовую последовательность на английском языке, начинающуюся со словесного представления исходного числа, далее следует слово 'is' и словесное представление количества букв получившегося первого слова, за которым следует запятая. Продолжите последовательность используя предыдущее получившееся слово как первое, добавьте 'is' и словесное представление количества букв получившегося слова. Продолжайте пока представление количества символов не станет равным 'four'. Так как 'four' состоит из четырех символов, завершите последовательность добавив слова 'four is magic' и точку. Все целые числа в конечном итоге сойдутся к четырём. Гарантируется, что переданное число не больше $20$.
 """
 
+description_es = """
+Escribe una función que tome un entero y devuelva una secuencia de texto en inglés. Cada frase contiene la representación cardinal inglesa del número, la palabra 'is' y la representación cardinal inglesa del número de letras de la primera palabra, seguida de una coma. Usa ese recuento como número de la siguiente frase y repite hasta llegar a four. Como four tiene cuatro letras, termina con 'four is magic' y un punto. Todos los enteros terminan llegando a four. El número de entrada no es mayor que $20$.
+"""
+
+description_zh = """
+编写函数，接收一个整数并返回英文文本序列。每个短语依次包含该整数的英文基数词、单词 'is'、第一个单词中字母数量对应的英文基数词，最后加逗号。将上一次得到的数量词作为下一个短语的第一个词，重复此过程，直到到达 four。由于 four 有四个字母，最后以 'four is magic' 和句号结尾。所有整数最终都会到达 four。输入整数不大于 $20$。
+"""
+
 limits = """
 - $0 \\leq n \\leq 20$
 """

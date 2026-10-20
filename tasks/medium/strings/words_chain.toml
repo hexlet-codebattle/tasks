@@ -12,6 +12,14 @@ description_ru = """
 Напишите функцию, которая принимает последовательность слов и проверяет, могут ли слова быть организованы в одну непрерывную цепочку слов. Цепочка слов означает, что каждая пара последовательных слов отличается ровно на один символ. Пример: cat -> cot -> coat -> oat -> hat -> hot -> hog -> dog
 """
 
+description_es = """
+Dada una secuencia de palabras, devuelve verdadero si pueden ordenarse en una única cadena continua, y falso en caso contrario. En una cadena, cada par de palabras consecutivas difiere en exactamente un carácter. Ejemplo: cat -> cot -> coat -> oat -> hat -> hot -> hog -> dog.
+"""
+
+description_zh = """
+给定一组单词，判断能否将它们排列成一条连续的单词链。可以则返回真，否则返回假。单词链中每两个相邻单词恰好相差一个字符。例如：cat -> cot -> coat -> oat -> hat -> hot -> hog -> dog。
+"""
+
 limits = """
 - $2 \\leq \\text{len}(\\text{words}) \\leq 20$
 - $1 \\leq \\text{len}(\\text{word}) \\leq 10$

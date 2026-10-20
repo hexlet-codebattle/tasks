@@ -12,6 +12,14 @@ description_ru = """
 Счастливые числа - это положительные целые числа, которые вычисляются следующим образом: каждую цифру числа возведите в квадрат, затем сложите получившиеся значение, чтобы получить новое число. Повторите процесс с получившимся числом и т.д. У вас может получится число, сумма квадратов которого равна $1$. Это счастливое число. Несчастливое (или грустное) число - такое число, которое бесконечно повторяется. Напишите функцию которая определяет счастливое число или нет.
 """
 
+description_es = """
+Los números felices son números enteros positivos que siguen una fórmula particular: toma cada dígito individual, eleva el cuadrado y luego suma los cuadrados para obtener un nuevo número. Repita con el nuevo número y, eventualmente, podría llegar a un número cuya suma al cuadrado sea $1$. Este es un número feliz. Un número infeliz (o número triste) es aquel que se repite sin cesar. Escribe una función que determine si un número es feliz o no.
+"""
+
+description_zh = """
+快乐数字是遵循特定公式的正整数：取每个数字，对其求平方，然后将平方相加得到一个新数字。重复新的数字，最终您可能会得到一个平方和为 $1$ 的数字。这是一个令人高兴的数字。一个不快乐的数字（或悲伤的数字）是一个无限循环的数字。编写一个函数来确定一个数字是否快乐。
+"""
+
 limits = """
 - $1 \\leq n \\leq 10^9$
 """

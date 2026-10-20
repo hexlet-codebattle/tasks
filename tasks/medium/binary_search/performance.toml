@@ -18,6 +18,20 @@ description_ru = """
 По заданному количеству часов $k$ определите максимальную успеваемость, которую Вася может достичь, потратив не более $k$ часов.
 """
 
+description_es = """
+Vasya estudia temas $n$. Para cada materia tiene una calificación actual y las calificaciones no están limitadas desde arriba.
+Su desempeño se define como la nota más baja entre todas las materias.
+En una hora, Vasya puede aumentar la nota de cualquier materia en $1$.
+Dadas las horas $k$, determine el rendimiento máximo posible que Vasya puede lograr después de dedicar como máximo las horas $k$.
+"""
+
+description_zh = """
+Vasya 研究 $n$ 科目。对于每个科目，他都有一个当前成绩，并且成绩不受上面的限制。
+他的成绩被定义为所有科目中成绩最低的。
+Vasya 可以在一小时内将任意一门科目的成绩提高 $1$。
+给定 $k$ 小时，确定 Vasya 在花费最多 $k$ 小时后可以实现的最大可能性能。
+"""
+
 solution = """
 def solution(n, k, grades):
     # Find the maximal possible minimum grade after at most k increments.

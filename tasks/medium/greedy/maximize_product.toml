@@ -20,6 +20,22 @@ description_ru = """
 Верните максимально возможное произведение чисел `x` и `y`, которого можно достичь с помощью этих операций.
 """
 
+description_es = """
+Se le proporcionan dos cadenas `x` y `y` de la misma longitud, que constan de dígitos desde `1` hasta `9`.
+
+Puede realizar la siguiente operación tantas veces como desee: intercambie el dígito $i$ de `x` con el dígito $i$ de `y`.
+
+Devuelve el producto máximo posible de los números enteros representados por `x` y `y` después de realizar cualquier número de intercambios.
+"""
+
+description_zh = """
+给定两个长度相同的字符串 `x` 和 `y`，由从 `1` 到 `9` 的数字组成。
+
+您可以多次执行以下操作：将 `x` 的第 $i$ 与 `y` 的 $i$ 进行交换。
+
+在执行任意次数的交换后，返回 `x` 和 `y` 表示的整数的最大可能乘积。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(x) = \\text{len}(y) \\leq 5$
 - $x_i, y_i \\in \\{1, 2, \\dots, 9\\}$

@@ -20,6 +20,22 @@ description_ru = """
 Треугольник можно составить из трех отрезков с длинами $a$, $b$ и $c$, если и только если сумма длин любых двух отрезков строго больше длины третьего отрезка (то есть $a + b > c$).
 """
 
+description_es = """
+Dada una matriz de enteros `nums` que representa las longitudes de los segmentos de línea, devuelve el perímetro más grande de un triángulo con un área distinta de cero, formado a partir de tres de estas longitudes.
+
+Si es imposible formar algún triángulo, devuelve `0`.
+
+Un triángulo puede estar formado por tres segmentos de longitudes $a$, $b$ y $c$ si y sólo si la suma de las longitudes de dos segmentos cualesquiera es estrictamente mayor que la longitud del tercer segmento (es decir, $a + b > c$).
+"""
+
+description_zh = """
+给定一个表示线段长度的整数数组 `nums`，返回由其中三个长度形成的具有非零面积的三角形的最大周长。
+
+如果无法形成任何三角形，则返回 `0`。
+
+当且仅当任意两个线段的长度之和严格大于第三个线段的长度（即 $a + b > c$）时，一个三角形可以由三个长度为 $a$、$b$ 和 $c$ 的线段形成。
+"""
+
 limits = """
 - $3 \\leq \\text{len}(nums) \\leq 10^4$
 - $1 \\leq nums[i] \\leq 10^6$

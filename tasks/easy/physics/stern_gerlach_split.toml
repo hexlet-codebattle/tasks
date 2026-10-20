@@ -16,6 +16,18 @@ description_ru = """
 Дана строка результатов. Верните абсолютную разницу между количествами в двух пучках.
 """
 
+description_es = """
+En el experimento de Stern-Gerlach, los átomos se dividieron en haces `U` y `D`.
+
+Dada una serie de resultados de haces, devuelve la diferencia absoluta entre los dos recuentos de haces.
+"""
+
+description_zh = """
+在 Stern-Gerlach 实验中，原子分裂成 `U` 和 `D` 光束。
+
+给定一串光束结果，返回两个光束计数之间的绝对差。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{results}) \\leq 100$
 - $\\text{results} \\in \\{U, D\\}^*$

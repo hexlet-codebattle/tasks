@@ -16,6 +16,18 @@ description_ru = """
 которую достигал автомобиль.
 """
 
+description_es = """
+Un automóvil se mueve con velocidad inicial $v_0$. Luego acelera con aceleración $a_1$ durante $t_1$ segundos,
+y luego acelera con aceleración $a_2$ durante $t_2$ segundos. determinar el máximo
+Velocidad que alcanza el auto durante todo el movimiento.
+"""
+
+description_zh = """
+汽车以初始速度 $v_0$ 移动。然后它以加速度 $a_1$ 加速 $t_1$ 秒，
+然后它以加速度 $a_2$ 加速 $t_2$ 秒。确定最大值
+汽车在整个运动过程中达到的速度。
+"""
+
 solution = """
 def solution(v0, t1, a1, t2, a2):
     # speed after the first acceleration interval

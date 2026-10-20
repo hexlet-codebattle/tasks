@@ -17,6 +17,18 @@ description_ru = """
 Если `misses == 0`, применяется бонус за чистую стрельбу: вычтите `10` секунд, но итог не может быть меньше `0`.
 """
 
+description_es = """
+En biatlón, cada fallo suma una penalización fija.
+Dados `base_time_sec`, `misses` y `penalty_per_miss_sec`, regrese la última vez.
+Si es `misses == 0`, aplica una bonificación por tiro limpio: resta los segundos de `10`, pero el tiempo final no puede bajar de `0`.
+"""
+
+description_zh = """
+在冬季两项比赛中，每次失误都会受到固定处罚。
+给定 `base_time_sec`、`misses` 和 `penalty_per_miss_sec`，返回最终时间。
+如果是 `misses == 0`，则应用干净射击奖励：减去 `10` 秒，但最终时间不能低于 `0`。
+"""
+
 solution = """
 def solution(base_time_sec: int, misses: int, penalty_per_miss_sec: int) -> int:
     t = base_time_sec + misses * penalty_per_miss_sec - (10 if misses == 0 else 0)

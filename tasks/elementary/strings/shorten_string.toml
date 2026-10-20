@@ -12,6 +12,14 @@ description_ru = """
 Представьте данное слово в виде аббревиатуры, состоящей из первой буквы, числа, представляющего количество букв в слове минус 2 и последней буквы слова.
 """
 
+description_es = """
+Dada una palabra, proporciónela en forma de acrónimo compuesto por la primera letra, el número de letras de la palabra menos 2 y la última letra de la palabra.
+"""
+
+description_zh = """
+给定一个单词，以首字母缩略词的形式提供它，由第一个字母、单词中的字母数减 2 和单词的最后一个字母组成。
+"""
+
 limits = """
 - $3 \\leq \\text{len}(s) \\leq 100$
 """

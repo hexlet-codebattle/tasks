@@ -11,6 +11,16 @@ description_ru = """
 В примере aAAaAbcdAAtrataAtoAApA участник думал над задачами 9 секунд (количество букв A), это могло быть три задачи со временем размышления 1, 3 и 5 секунд (возможны и другие распределения времени на конкретные задачи).
 """
 
+description_es = """
+Durante la ronda, el EEG del participante se registró cada segundo como una cuerda. El carácter ‘A’ indica que en ese segundo estaba pensando en un problema, mientras que cualquier otro carácter significa que estaba pensando en otra cosa. Se sabe que el participante pensó en cada problema durante una cantidad diferente de segundos. Determina el máximo número posible de problemas en la ronda.
+En el ejemplo de aAAaAbcdAAtrataAtoAApA, el participante pensó en las tareas durante 9 segundos (el número de letras A), podrían ser tres tareas con un tiempo de reflexión de 1, 3 y 5 segundos (son posibles otras distribuciones de tiempo para tareas específicas).
+"""
+
+description_zh = """
+在这一轮中，参与者的脑电图每秒被记录为一条线。字符“A”表示在那一刻他正在考虑一个问题，而任何其他字符则表示他正在考虑其他事情。众所周知，参与者思考每个问题的秒数不同。确定本轮中可能出现的最大问题数。
+在aAAAaAbcdAAtrataAtoAApA的例子中，参与者思考了9秒的任务（字母A的数量），它可以是三个任务，思考时间分别为1秒、3秒和5秒（特定任务的其他时间分布也是可能的）。
+"""
+
 description_en = """
 During the round, the participant’s EEG was recorded every second as a string. The character ‘A’ indicates that at that second he was thinking about a problem, while any other character means he was thinking about something else. It is known that the participant thought about each problem for a different number of seconds. Determine the maximum possible number of problems in the round.
 In the example of aAAaAbcdAAtrataAtoAApA, the participant thought about the tasks for 9 seconds (the number of letters A), it could be three tasks with a reflection time of 1, 3 and 5 seconds (other time distributions for specific tasks are possible).

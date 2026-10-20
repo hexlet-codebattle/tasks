@@ -24,6 +24,26 @@ description_ru = """
 Верните это количество.
 """
 
+description_es = """
+Un pie de página se veía así: `Page K of N`, pero todo lo que no era dígito se borró, dejando una cadena `s` solo de dígitos.
+
+Cuente de cuántas formas se puede dividir `s` en dos enteros positivos $(K, N)$ (insertando exactamente un corte) de manera que:
+- ni $K$ ni $N$ tienen un cero a la izquierda;
+- $K \\le N$.
+
+Devuelve este recuento.
+"""
+
+description_zh = """
+页脚看起来像：`Page K of N`，但所有非数字都被删除，只留下数字字符串 `s`。
+
+计算有多少种方法可以将 `s` 拆分为两个正整数 $(K, N)$（通过插入一次切割），使得：
+- $K$ 和 $N$ 都没有前导零；
+- $K \\le N$。
+
+返回此计数。
+"""
+
 limits = """
 - $1 \\le \\text{len}(s) \\le 100$
 - $s \\in \\{0,1,2,3,4,5,6,7,8,9\\}^+$

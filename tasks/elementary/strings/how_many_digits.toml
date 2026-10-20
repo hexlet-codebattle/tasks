@@ -12,6 +12,14 @@ description_ru = """
 Представьте, что вы берете все числа от $1$ до $n$ и соединяете их в одну большую строку. Как много цифр между $0$ и $n$? Создайте функцию, которая рассчитывает это.
 """
 
+description_es = """
+Imagine que toma todos los números desde $1$ hasta $n$ y los concatena en una cadena larga. ¿Cuántos dígitos hay entre $0$ y $n$? Escribe una función que pueda calcular esto.
+"""
+
+description_zh = """
+想象一下，您获取了从 $1$ 到 $n$ 的所有数字，并将它们连接在一起形成一个长字符串。 $0$ 和 $n$ 之间有多少位数字？编写一个可以计算这个的函数。
+"""
+
 limits = """
 - $1 \\leq n \\leq 100000$
 """

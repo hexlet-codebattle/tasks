@@ -36,6 +36,38 @@ description_ru = """
 Каждый элемент вычисляется как: $C(n, k) = \\frac{n!}{k!(n-k)!}$ где $n$ - номер строки и $k$ - позиция в строке.
 """
 
+description_es = """
+Devuelve la fila $n$-ésima del Triángulo de Pascal.
+
+El Triángulo de Pascal es una matriz triangular donde cada número es la suma de los dos números directamente encima de él. La primera fila es `[1]`, la segunda fila es `[1, 1]`, y así sucesivamente:
+
+```
+Row 0:        1
+Row 1:      1   1
+Row 2:    1   2   1
+Row 3:  1   3   3   1
+Row 4: 1  4   6   4  1
+```
+
+Cada elemento se calcula como: $C(n, k) = \\frac{n!}{k!(n-k)!}$ donde $n$ es el número de fila y $k$ es la posición en la fila.
+"""
+
+description_zh = """
+返回帕斯卡三角形的第 $n$ 行。
+
+帕斯卡三角形是一个三角形数组，其中每个数字都是其正上方两个数字的总和。第一行是 `[1]`，第二行是 `[1, 1]`，依此类推：
+
+```
+Row 0:        1
+Row 1:      1   1
+Row 2:    1   2   1
+Row 3:  1   3   3   1
+Row 4: 1  4   6   4  1
+```
+
+每个元素的计算方式为：$C(n, k) = \\frac{n!}{k!(n-k)!}$，其中 $n$ 是行号，$k$ 是行中的位置。
+"""
+
 limits = """
 - $0 \\leq n \\leq 20$
 """

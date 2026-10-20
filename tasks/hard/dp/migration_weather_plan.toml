@@ -16,6 +16,18 @@ description_ru = """
 Верните минимальный суммарный расход энергии на прохождение всех $S$ участков за отведённые дни или $-1$, если это невозможно.
 """
 
+description_es = """
+Muchas aves posponen la salida cuando hace mal tiempo y utilizan el viento de cola para ahorrar energía. La ruta se divide en segmentos $S$ que deben volarse en orden, y `costs` tiene una fila por día con valores $S$ en cada fila. Cada día el ave descansa o vuela el siguiente segmento que aún no ha volado: volar el segmento $s$ el día $d$ cuesta energía `costs[d][s]`, mientras que `costs[d][s]` $= -1$ significa que este segmento no se puede volar ese día.
+
+Devuelve la energía total mínima necesaria para volar todos los segmentos $S$ dentro de los días indicados, o $-1$ cuando eso sea imposible.
+"""
+
+description_zh = """
+许多鸟类会在恶劣天气下推迟起飞，并利用顺风来节省能量。该航线被分为必须按顺序飞行的 $S$ 航段，`costs` 每天保留一行，每行包含 $S$ 值。每天，这只鸟要么休息，要么飞下一个尚未飞过的航段：在 $d$ 日飞行航段 $s$ 会消耗 `costs[d][s]` 能量，而 `costs[d][s]` $= -1$ 表示该航段当天不能飞行。
+
+返回给定天内飞行所有 $S$ 航段所需的最小总能量，如果不可能，则返回 $-1$。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{costs}) \\leq 300$
 - $1 \\leq \\text{len}(\\text{costs}[d]) = \\text{len}(\\text{costs}[0]) \\leq 300$

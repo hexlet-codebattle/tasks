@@ -12,6 +12,14 @@ description_ru = """
 Дан лог за день в виде массива пар `["HH:MM", "текст_ошибки"]`, отсортированных по времени. Верните все **уникальные** тексты ошибок, которые встречались не менее $4$ раз в **любом** интервале длиной $5$ минут, сохранив порядок первого появления в логе.
 """
 
+description_es = """
+Se le proporciona un registro de errores de un día como una matriz de pares `[\"HH:MM\", \"error_text\"]` ordenados por tiempo. Devuelve todos los textos de error **únicos** que ocurrieron al menos $4$ veces dentro de **cualquier** intervalo de minutos $5$, preservando el orden de primera aparición en el registro.
+"""
+
+description_zh = """
+您将获得一天的错误日志，作为按时间排序的 `[\"HH:MM\", \"error_text\"]` 对数组。返回在**任意** $5$ 分钟间隔内至少发生 $4$ 次的所有**唯一**错误文本，保留日志中首次出现的顺序。
+"""
+
 limits = """
 - $0 \\leq \\text{len(log)} \\leq 100$
 - $00\\!:\\!00 \\leq t \\leq 23\\!:\\!59$

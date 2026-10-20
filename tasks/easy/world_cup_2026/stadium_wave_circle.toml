@@ -16,6 +16,18 @@ description_ru = """
 Одно место нельзя включать в волну несколько раз. Для пустого ряда верните `0`.
 """
 
+description_es = """
+Una fila circular de estadio está codificada con `W` para un aficionado de pie y `.` para un aficionado sentado.
+Devuelve la onda continua más larga, permitiéndole cruzar el final de la cuerda.
+La ola no puede contener el mismo asiento más de una vez. Para una fila vacía, devuelva `0`.
+"""
+
+description_zh = """
+圆形体育场排对于站立式球迷编码为 `W`，对于坐式球迷编码为 `.`。
+返回最长的连续波，使其穿过字符串的末端。
+波浪不能多次包含同一个座位。对于空行，返回 `0`。
+"""
+
 limits = """
 - $0 \\leq \\operatorname{len}(seats) \\leq 1000$
 - $seats \\in \\{W, .\\}^*$

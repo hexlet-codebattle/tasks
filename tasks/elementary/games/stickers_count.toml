@@ -12,6 +12,14 @@ description_ru = """
 Дан кубик Рубика размером $n \\times n \\times n$, найдите необходимое количество стикеров, чтобы покрыть весь кубик.
 """
 
+description_es = """
+Dado un cubo de Rubik $n \\times n \\times n$, encuentra la cantidad de pegatinas que se necesitan para cubrir todo el cubo.
+"""
+
+description_zh = """
+给定一个 $n \\times n \\times n$ 魔方，求覆盖整个魔方所需的贴纸数量。
+"""
+
 limits = """
 - $1 \\leq n \\leq 100$
 """

@@ -12,6 +12,14 @@ description_ru = """
 Разные группы сравнивают улики. Даны два списка строк с уликами, верните отсортированный список уникальных улик, которые есть в обоих списках. Сравнивайте без учета регистра и возвращайте строки в нижнем регистре.
 """
 
+description_es = """
+Diferentes grupos comparan pistas. Dadas dos listas de cadenas de pistas, devuelve una lista ordenada de pistas únicas que aparecen en ambas listas, comparando sin distinguir entre mayúsculas y minúsculas y devolviendo cadenas en minúsculas.
+"""
+
+description_zh = """
+不同的小组比较线索。给定两个线索字符串列表，返回两个列表中出现的唯一线索的排序列表，不区分大小写进行比较并返回小写字符串。
+"""
+
 solution = """
 def solution(a: list[str], b: list[str]) -> list[str]:
     return sorted({x.lower() for x in a} & {x.lower() for x in b})

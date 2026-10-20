@@ -12,6 +12,14 @@ description_ru = """
 Дана строка $S$ и массив строк одинаковой длины, суммарная длина которых равна $|S|$. Определите, можно ли собрать $S$, используя каждую строку из массива **ровно один раз** в некотором порядке.
 """
 
+description_es = """
+Dada una cadena $S$ y una matriz de cadenas de igual longitud, cuya longitud total es igual a $|S|$, determine si $S$ se puede formar usando cada cadena de matriz **exactamente una vez**, en algún orden.
+"""
+
+description_zh = """
+给定一个字符串 $S$ 和一个等长字符串数组，其总长度等于 $|S|$，确定是否可以通过按某种顺序使用每个数组字符串**恰好一次**来形成 $S$。
+"""
+
 limits = """
 - $|S| \\ge 0$
 - $\\forall t \\in \\text{ss}:\\ |t| = k$

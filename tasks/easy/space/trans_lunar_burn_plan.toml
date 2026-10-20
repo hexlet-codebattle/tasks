@@ -12,6 +12,14 @@ description_ru = """
 Чтобы покинуть земную орбиту, Selene может использовать каждый доступный импульс двигателя не более одного раза. Найдите минимальное число импульсов, достаточное для достижения требуемого `delta-v`, или верните `-1`, если перелет невозможен.
 """
 
+description_es = """
+Para abandonar la órbita terrestre, Selene puede utilizar cada impulso de motor disponible como máximo una vez. Encuentre el número mínimo de impulsos necesarios para alcanzar al menos el `delta-v` requerido, o devuelva `-1` si la transferencia es imposible.
+"""
+
+description_zh = """
+为了离开地球轨道，Selene 最多可以使用每个可用的发动机脉冲一次。找到至少达到所需的 `delta-v` 所需的最小脉冲数，或者如果无法传输，则返回 `-1`。
+"""
+
 limits = """
 - $0 \\leq \\text{target} \\leq 10^6$
 - $0 \\leq \\text{len}(\\text{impulses}) \\leq 100$

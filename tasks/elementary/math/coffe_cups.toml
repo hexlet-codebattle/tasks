@@ -16,6 +16,18 @@ description_ru = """
 Дано целое число $n$ — количество купленных чашек. Верните общее количество чашек.
 """
 
+description_es = """
+Por cada taza de café $6$ que compres, recibirás una taza extra $1$ gratis.
+
+Dado un número entero $n$ (la cantidad de tazas que compras), devuelve la cantidad total de tazas que recibes.
+"""
+
+description_zh = """
+您购买每个 $6$ 咖啡杯，即可免费获得 $1$ 额外一杯。
+
+给定一个整数 $n$（您购买的杯子数量），返回您收到的杯子总数。
+"""
+
 limits = """
 - $0 \\leq cups \\leq 1000$
 """

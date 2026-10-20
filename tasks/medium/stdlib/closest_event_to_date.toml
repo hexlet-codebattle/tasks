@@ -16,6 +16,18 @@ description_ru = """
 Если несколько на одинаковом расстоянии, выберите событие с **минимальной датой**; если и тут несколько — **первое** в списке.
 """
 
+description_es = """
+Dada una lista de eventos `(name, date)` con fecha en formato `'YYYY-MM-DD'` y una fecha objetivo,
+devuelve el **nombre** del evento cuya fecha es **más cercana** al objetivo.
+Si varios están igualmente cerca, elija el evento con la **fecha más temprana**; si todavía son múltiples, tome el **primero** de la lista.
+"""
+
+description_zh = """
+给定事件列表 `(name, date)`，日期格式为 `'YYYY-MM-DD'` 和目标日期，
+返回日期与目标**最接近**的事件的**名称**。
+如果几个事件同样接近，请选择**最早日期**的事件；如果仍然有多个，则取列表中的**第一个**。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{events}) \\leq 10^5$
 - $\\text{date} = \\text{YYYY-MM-DD}$

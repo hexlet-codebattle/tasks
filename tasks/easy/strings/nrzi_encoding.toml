@@ -28,6 +28,30 @@ NRZI кодирование — метод сопоставления двоич
 ```
 """
 
+description_es = """
+Sin retorno a cero, invertido (NRZI) es un método para asignar una señal binaria a una señal física. La señal NRZI de dos niveles tiene una transición en un límite de reloj si el bit que se transmite es un $1$ lógico, y no tiene una transición si el bit que se transmite es un $0$ lógico.
+
+Dada una cadena codificada con NRZI que utiliza los caracteres `\"¯\"` (alto), `\"_\"` (bajo) y `\"|\"` (transición), decodifíquela en una cadena binaria.
+
+Por ejemplo:
+```
+0 100 10000 100 1 1 1
+¯|___|¯¯¯¯¯|___|¯|_|¯
+```
+"""
+
+description_zh = """
+反相不归零 (NRZI) 是一种将二进制信号映射到物理信号的方法。如果正在发送的位是逻辑$1$，则两级NRZI信号在时钟边界处具有转变，并且如果正在发送的位是逻辑$0$则没有转变。
+
+给定一个使用字符 `\"¯\"`（高）、`\"_\"`（低）和 `\"|\"`（转换）的 NRZI 编码字符串，将其解码为二进制字符串。
+
+例如：
+```
+0 100 10000 100 1 1 1
+¯|___|¯¯¯¯¯|___|¯|_|¯
+```
+"""
+
 limits = """
 - $1 \\leq |\\text{seq}| \\leq 200$
 """

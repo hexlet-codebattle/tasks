@@ -28,6 +28,30 @@ $\\begin{cases} ax + by + c = 0 \\\\ dx + ey + f = 0 \\end{cases}$
 - Иначе округлите до 3 знаков после запятой (напр., `"-0.625"`, `"1.5"`).
 """
 
+description_es = """
+Dados los coeficientes $a,b,c,d,e,f$ de un sistema lineal:
+$\\begin{cases} ax + by + c = 0 \\\\ dx + ey + f = 0 \\end{cases}$
+Devuelve la solución **como cadenas**: `[\"x\",\"y\"]` si existe una solución única.
+Si hay infinitas soluciones, devuelva `[\"Inf\"]`.
+Si no hay soluciones, devuelva `[\"None\"]`.
+
+Formato:
+- Si una coordenada es un número entero, la devuelve sin decimales (por ejemplo, `\"2\"`, `\"-7\"`).
+- De lo contrario, redondee a 3 decimales (por ejemplo, `\"-0.625\" -> \"-0.625\"`, `\"1.5\" -> \"1.5\"`).
+"""
+
+description_zh = """
+给定线性系统的系数 $a,b,c,d,e,f$：
+$\\begin{cases} ax + by + c = 0 \\\\ dx + ey + f = 0 \\end{cases}$
+如果存在唯一的解决方案，则以字符串形式返回解决方案：`[\"x\",\"y\"]`。
+如果有无穷多个解，则返回`[\"Inf\"]`。
+如果无解，则返回`[\"None\"]`。
+
+格式设置：
+- 如果坐标是整数，则返回不带小数位的坐标（例如，`\"2\"`、`\"-7\"`）。
+- 否则，四舍五入到小数点后 3 位（例如，`\"-0.625\" -> \"-0.625\"`、`\"1.5\" -> \"1.5\"`）。
+"""
+
 limits = """
 $ a,b,c,d,e,f\\in\\mathbb{Z} $
 $ |a|,|b|,|c|,|d|,|e|,|f| \\le 10^3 $

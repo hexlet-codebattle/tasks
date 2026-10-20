@@ -18,6 +18,20 @@ description_ru = """
 Отрицательный индекс означает отсчёт с конца массива (например, $-1$ — это последний элемент).
 """
 
+description_es = """
+Dada una matriz de números enteros, un índice y un valor predeterminado, devuelve el elemento en el índice dado.
+Si el índice está fuera de los límites, devuelve el valor predeterminado.
+
+Un índice negativo significa contar desde el final de la matriz (es decir, $-1$ es el último elemento).
+"""
+
+description_zh = """
+给定一个整数数组、一个索引和一个默认值，返回给定索引处的元素。
+如果索引越界，则返回默认值。
+
+负索引表示从数组末尾开始计数（即 $-1$ 是最后一个元素）。
+"""
+
 limits = """
 - $2 \\leq \\text{len(numbers)} \\leq 5$
 - $-20 \\leq numbers_i \\leq 20$

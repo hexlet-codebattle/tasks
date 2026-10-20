@@ -16,6 +16,18 @@ description_ru = """
 Слово — это любая подстрока, отделённая пробелами. Слово **засчитывается**, если его **первый символ** — заглавная латинская буква (`'A'`–`'Z'`), даже если далее следует пунктуация (например, `"Hello,"` считается).
 """
 
+description_es = """
+Dada una cadena `s`, cuente cuántas **palabras** comienzan con una letra mayúscula.
+
+Una palabra es cualquier subcadena separada por espacios. Una palabra **cuenta** si su **primer carácter** es una letra mayúscula (`'A'`–`'Z'`), incluso si va seguida de puntuación (por ejemplo, se cuenta `\"Hello,\"`).
+"""
+
+description_zh = """
+给定一个字符串 `s`，计算其中有多少个**单词**以大写字母开头。
+
+单词是由空格分隔的任何子字符串。如果单词的**第一个字符**是大写字母 (`'A'`–`'Z'`)，则该单词**计数**，即使其后面带有标点符号（例如，`\"Hello,\"` 也被计数）。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s) \\leq 1000$
 """

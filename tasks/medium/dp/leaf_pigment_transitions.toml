@@ -16,6 +16,18 @@ description_ru = """
 Удалите минимум наблюдений так, чтобы в оставшихся, прочитанных по порядку, преобладающий пигмент ни разу не возвращался назад в этом порядке. Верните количество удалённых наблюдений.
 """
 
+description_es = """
+En otoño, la clorofila se descompone, los carotenoides se hacen visibles y muchas especies también acumulan antocianinas rojas. Las observaciones se enumeran en orden cronológico y `pigments[i]` contiene las cantidades de pigmento verde, amarillo y rojo de observación $i$. En cada observación una de las tres cantidades es estrictamente mayor que las otras dos, y ese pigmento es el dominante. Los pigmentos dominantes se piden verde $<$ amarillo $<$ rojo.
+
+Elimine la menor cantidad de observaciones posible para que en las restantes, leídas en orden, el pigmento dominante nunca retroceda en ese orden. Devuelve el número de observaciones eliminadas.
+"""
+
+description_zh = """
+秋天，叶绿素分解，类胡萝卜素变得可见，许多物种也会产生红色花青素。观测值按时间顺序列出，`pigments[i]` 保存观测值 $i$ 的绿色、黄色和红色色素的量。在每次观察中，这三个量中的一个严格大于其他两个，并且该颜料是主要的。主要颜料为绿色 $<$ 黄色 $<$ 红色。
+
+删除尽可能少的观察结果，以便在剩余的观察结果中，按顺序阅读，占主导地位的颜料永远不会按该顺序向后移动。返回删除的观测值的数量。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{pigments}) \\leq 10^3$
 - $\\text{len}(\\text{pigments}[i]) = 3$

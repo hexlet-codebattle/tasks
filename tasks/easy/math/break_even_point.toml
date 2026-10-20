@@ -20,6 +20,22 @@ $$n\\,(C-B) \\ge A.$$
 Верните $n$.
 """
 
+description_es = """
+Una máquina cuesta $A$. Las materias primas por artículo cuestan $B$. Cada artículo se vende por $C$ ($C>B$ garantizado).
+
+Encuentre el entero más pequeño $n$ tal que la ganancia cubra el costo de la máquina:
+$$n\\,(C-B) \\ge A.$$
+Devolver $n$.
+"""
+
+description_zh = """
+一台机器的成本为 $A$。每件原材料的成本为 $B$。每件商品售价为 $C$（保证 $C>B$）。
+
+找到最小整数 $n$ 使得利润覆盖机器成本：
+$$n\\,(C-B) \\ge A.$$
+返回$n$。
+"""
+
 limits = """
 - $0 \\le A \\le 100$
 - $0 \\le B < C \\le 100$

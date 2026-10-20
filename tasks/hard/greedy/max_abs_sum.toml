@@ -10,6 +10,18 @@ description_ru = '''
 с помощью этих операций.
 '''
 
+description_es = """
+En una secuencia, puede cambiar el signo de como máximo números $K$.
+Determine el valor absoluto máximo posible de la suma de la secuencia después
+realizando estas operaciones.
+"""
+
+description_zh = """
+在序列中，您最多可以更改 $K$ 数字的符号。
+确定之后序列之和的最大可能绝对值
+执行这些操作。
+"""
+
 description_en = '''
 In a sequence you are allowed to change the sign of at most $K$ numbers.
 Determine the maximum possible absolute value of the sum of the sequence after

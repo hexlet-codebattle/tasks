@@ -28,6 +28,30 @@ $(D, M, S)$ - требуемым количеством защитников, п
 заданные количества защитников, полузащитников и нападающих.
 """
 
+description_es = """
+En una competición de batalla universitaria, un equipo está formado exactamente por jugadores $10$.
+Cada jugador puede jugar como defensor (`D`), mediocampista (`M`) o delantero (`S`).
+El técnico preparó varias formaciones posibles, cada una descrita por tres números
+$(D, M, S)$: el número requerido de defensores, centrocampistas y delanteros.
+Hay como máximo candidatos $22$, y para cada candidato conocemos el conjunto de roles
+él o ella puede ocupar, por ejemplo, `\"D\"`, `\"DM\"` o `\"DMS\"`.
+Para cada formación determine si es posible seleccionar candidatos distintos $10$
+y asignar a cada uno de ellos uno de sus roles permitidos para que el número de
+Los defensores, centrocampistas y delanteros coinciden exactamente con la formación.
+"""
+
+description_zh = """
+在一场大学战斗比赛中，一支队伍恰好由 $10$ 选手组成。
+每个球员都可以担任后卫（`D`）、中场（`M`）或前锋（`S`）。
+教练准备了几种可能的阵型，每种阵型由三个数字描述
+$(D, M, S)$ - 所需的后卫、中场和前锋人数。
+最多有 $22$ 候选者，对于每个候选者，我们知道角色集
+他或她可以占用，例如 `\"D\"`、`\"DM\"` 或 `\"DMS\"`。
+对于每个编队，确定是否可以选择 $10$ 不同的候选者
+并将他们每个人分配给他/她允许的角色之一，以便
+后卫、中场和前锋的阵型完全匹配。
+"""
+
 solution = """
 def solution(schemes, candidates):
     '''Return a list of booleans indicating for each scheme whether a valid team exists.

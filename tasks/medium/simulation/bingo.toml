@@ -12,6 +12,14 @@ description_ru = '''
 Поле для игры в бинго имеет размер $5 \times 5$ и состоит из различных чисел от $1$ до $90$. Игрок зачеркивает вертикальный, горизонтальный ряд или одну из двух диагоналей, если были названы все пять чисел из этого ряда. Определите, сколько рядов будет зачеркнуто.
 '''
 
+description_es = """
+El campo de bingo tiene un tamaño de $5 \\times 5$ y consta de varios números desde $1$ hasta $90$. El jugador tacha una fila vertical, horizontal o una de las dos diagonales si se han nombrado los cinco números de esta fila. Determina cuántas filas se tacharán.
+"""
+
+description_zh = """
+宾果字段的大小为 $5 \\times 5$，由 $1$ 到 $90$ 的各种数字组成。如果该行的所有五个数字都已被命名，则玩家划掉垂直、水平行或两条对角线之一。确定将划掉多少行。
+"""
+
 solution = """
 def solution(field, nums):
     named = set(nums)

@@ -198,6 +198,11 @@ class TestRunner:
 
         task_name = data.get("name", os.path.basename(toml_path))
 
+        for language in ("en", "ru", "es", "zh"):
+            field = f"description_{language}"
+            if not isinstance(data.get(field), str) or not data[field].strip():
+                raise ValueError(f"[{task_name}] {field} must be a non-empty Markdown string")
+
         if "input_signature" in data:
             input_sigs = data["input_signature"]
             if isinstance(input_sigs, list):

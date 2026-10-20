@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая переворачивает слова с четной длиной в строке.
 """
 
+description_es = """
+Te dan una serie de palabras. Invierte cada palabra con longitud uniforme.
+"""
+
+description_zh = """
+给定一串单词，反转每个长度为偶数的单词。
+"""
+
 solution = """
 def solution(sentence: str) -> str:
     words = sentence.split()

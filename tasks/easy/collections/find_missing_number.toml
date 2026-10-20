@@ -12,6 +12,14 @@ description_ru = """
 Дана последовательность целых чисел от $1$ до $n$ в случайном порядке. Одно число отсутствует, $n$ заранее неизвестно. Найдите отсутствующее число.
 """
 
+description_es = """
+Dada una secuencia de números enteros desde $1$ hasta $N$ en orden aleatorio. Falta uno de los números (los demás se encuentran exactamente una vez). $N$ no se conoce de antemano. Determina el número que falta.
+"""
+
+description_zh = """
+以随机顺序给出从 $1$ 到 $N$ 的整数序列。其中一个数字丢失（其他数字只找到一次）。 $N$ 事先未知。确定缺失的数字。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{arr}) \\leq 100$
 """

@@ -18,6 +18,20 @@ $$S = a_0 - a_1 + a_2 - a_3 + \\cdots + (-1)^{n-1} a_{n-1}.$$
 Верните максимальное возможное значение $S$.
 """
 
+description_es = """
+Dada una matriz de enteros `a` de longitud $n$, considere la suma alterna
+$$S = a_0 - a_1 + a_2 - a_3 + \\cdots + (-1)^{n-1} a_{n-1}.$$
+Puede intercambiar **como máximo** un par de elementos para maximizar $S$ (o no hacer nada).
+Devuelve el valor máximo posible de $S$.
+"""
+
+description_zh = """
+给定长度为 $n$ 的整数数组 `a`，考虑交替和
+$$S = a_0 - a_1 + a_2 - a_3 + \\cdots + (-1)^{n-1} a_{n-1}.$$
+你可以**至多交换一对**元素，也可以不交换，以使 $S$ 最大。
+返回 $S$ 的最大可能值。
+"""
+
 limits = """
 - $1 \\leq n \\leq 10$
 - $0 \\leq a_i \\leq 10$

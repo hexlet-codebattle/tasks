@@ -22,6 +22,24 @@ description_ru = """
 Верните максимально возможное число пар.
 """
 
+description_es = """
+Tiene recuentos de monitores $a = [a_0,a_1,a_2]$ y recuentos de tarjetas de video $b = [b_0,b_1,b_2]$:
+- $a_0$: monitores solo HDMI, $a_1$: monitores solo DP, $a_2$: monitores con ambas entradas
+- $b_0$: GPU solo HDMI, $b_1$: GPU solo DP, $b_2$: GPU con ambas salidas
+
+Cada monitor debe conectarse exactamente a una GPU y cada GPU a exactamente un monitor.
+Devuelve el número máximo de pares que se pueden formar.
+"""
+
+description_zh = """
+您有显示器计数 $a = [a_0,a_1,a_2]$ 和显卡计数 $b = [b_0,b_1,b_2]$：
+- $a_0$：仅 HDMI 显示器，$a_1$：仅 DP 显示器，$a_2$：具有两个输入的显示器
+- $b_0$：仅 HDMI GPU，$b_1$：仅 DP GPU，$b_2$：具有两种输出的 GPU
+
+每台显示器必须恰好连接到一个 GPU，并且每个 GPU 必须恰好连接到一台显示器。
+返回可以形成的最大对数。
+"""
+
 limits = """
 - $a_i \\ge 0$, $b_i \\ge 0$ для всех $i \\in \\{0,1,2\\}$
 - $\\text{len}(a) = \\text{len}(b) = 3$

@@ -16,6 +16,18 @@ description_ru = """
 Реализуйте функцию, которая делит первое комплексное число на второе и возвращает результат в виде массива `[x, y]`, где $x$ — вещественная часть, а $y$ — мнимая. Применяйте округление вниз (функция $\\lfloor\\cdot\\rfloor$) к обеим частям. Если происходит деление на ноль, верните `[0, 0]`.
 """
 
+description_es = """
+Se le dan dos números complejos, cada uno representado como una matriz de dos números enteros `[a, b]` correspondientes a $a + bi$.
+
+Implemente una función que divida el primer número complejo entre el segundo y devuelva el resultado como una matriz `[x, y]`, donde $x$ es la parte real y $y$ es la parte imaginaria. Utilice redondeo hacia abajo (aplicar $\\lfloor\\cdot\\rfloor$) en ambas partes. Si se produce una división por cero, devuelve `[0, 0]`.
+"""
+
+description_zh = """
+给定两个复数，各自以两个整数构成的数组 `[a, b]` 表示，对应 $a + bi$。
+
+将第一个复数除以第二个复数，以数组 `[x, y]` 返回结果，其中 $x$ 为实部，$y$ 为虚部。两部分均向下取整，即应用 $\\lfloor\\cdot\\rfloor$。如果除数为零，则返回 `[0, 0]`。
+"""
+
 solution = """
 from math import floor
 

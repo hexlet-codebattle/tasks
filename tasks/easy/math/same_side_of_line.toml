@@ -16,6 +16,18 @@ description_ru = """
 Гарантируется, что ни одна точка не лежит на прямой.
 """
 
+description_es = """
+Dadas tres listas: `[a,b,c]` para la línea $ax+by+c=0$, punto $[x_1,y_1]$ y punto $[x_2,y_2]$.
+Devuelve `true` si ambos puntos se encuentran en el mismo lado de la línea; de lo contrario, devuelva `false`.
+Se garantiza que ninguno de los puntos se encuentre en la recta.
+"""
+
+description_zh = """
+给定三个列表：线 $ax+by+c=0$、点 $[x_1,y_1]$ 和点 $[x_2,y_2]$ 的 `[a,b,c]`。
+如果两个点位于直线的同一侧，则返回 `true`；否则返回`false`。
+保证两个点都不在线上。
+"""
+
 limits = """
 $ a^2+b^2>0 $
 $ a,b,c\\in\\mathbb{Z} $

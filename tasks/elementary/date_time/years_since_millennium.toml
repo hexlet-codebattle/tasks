@@ -12,6 +12,14 @@ description_ru = """
 Рассчитайте, сколько лет прошло с последнего миллениума. Например, для 2015 года ответ 15.
 """
 
+description_es = """
+Cuente cuántos años han pasado desde el último milenio. Por ejemplo, para 2015 la respuesta es 15.
+"""
+
+description_zh = """
+数一数自上个千年以来已经过去了多少年。例如，2015 年的答案是 15。
+"""
+
 limits = """
 - $1 \\leq \\text{year} \\leq 100000$
 """

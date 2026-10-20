@@ -12,6 +12,14 @@ description_ru = """
 Реализуйте функцию, которая принимает три целых числа `a`, `b` и `c` и возвращает сумму квадратов двух наибольших из них.
 """
 
+description_es = """
+Implemente una función que tome tres números enteros `a`, `b` y `c` y devuelva la suma de los cuadrados de los dos números más grandes entre ellos.
+"""
+
+description_zh = """
+实现一个函数，该函数接受三个整数 `a`、`b` 和 `c`，并返回其中两个最大数字的平方和。
+"""
+
 limits = """
 - $-100 \\leq a \\leq 100$
 - $-100 \\leq b \\leq 100$

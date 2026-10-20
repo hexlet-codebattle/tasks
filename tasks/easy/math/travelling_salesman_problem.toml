@@ -18,6 +18,20 @@ description_ru = """
 если каждый город посещается ровно один раз.
 """
 
+description_es = """
+Un viajante de comercio quiere visitar varias ciudades diferentes.
+Dado un número entero `n`, que representa el número de ciudades,
+calcular en cuantos pedidos diferentes puede visitar todas las ciudades `n`
+si cada ciudad debe ser visitada exactamente una vez.
+"""
+
+description_zh = """
+一位旅行推销员想要访问几个不同的城市。
+给定一个整数 `n`，代表城市数量，
+计算他可以访问所有 `n` 城市的不同顺序有多少
+如果每个城市必须只访问一次。
+"""
+
 limits = """
 - $0 \\leq \\text{paths} \\leq 12$
 """

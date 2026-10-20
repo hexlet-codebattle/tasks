@@ -16,6 +16,18 @@ description_ru = """
 Верните общее количество картриджей, которые потребуется установить в оба устройства. Если устройство ни разу не используется, картридж для него не нужен.
 """
 
+description_es = """
+Spider-Man dispara tiros de red `shots`, alternando tiradores: izquierda, derecha, izquierda, derecha, etc. Cada cartucho suministra exactamente disparos `capacity` al tirador en el que está instalado. Los dos tiradores no comparten cartuchos.
+
+Devuelva la cantidad total de cartuchos que deben instalarse en ambos tiradores. Un tirador que nunca dispara no necesita cartucho.
+"""
+
+description_zh = """
+蜘蛛侠发射 `shots` 蛛网射击，交替射击：左、右、左、右，依此类推。每个弹药筒都向安装它的射手提供精确的 `capacity` 弹丸。两名射手不共用弹药筒。
+
+返回必须安装在两个射击器上的弹药筒总数。从未开过火的射手不需要子弹。
+"""
+
 limits = """
 - $0 \\leq \\text{shots} \\leq 10^9$
 - $1 \\leq \\text{capacity} \\leq 10^6$

@@ -16,6 +16,18 @@ description_ru = """
 Расстояние Левенштейна — это метрика для измерения разницы между двумя строками. Это минимальное количество односимвольных операций редактирования (вставок, удалений или замен), необходимых для преобразования одной строки в другую.
 """
 
+description_es = """
+Calcula la distancia de Levenshtein entre dos cuerdas.
+
+La distancia de Levenshtein es una métrica para medir la diferencia entre dos cuerdas. Es el número mínimo de ediciones de un solo carácter (inserciones, eliminaciones o sustituciones) necesarias para cambiar una cadena por otra.
+"""
+
+description_zh = """
+计算两个字符串之间的编辑距离。
+
+编辑距离是衡量两个字符串之间差异的度量。它是将一个字符串更改为另一个字符串所需的最小单字符编辑（插入、删除或替换）次数。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(s1) \\leq 100$
 - $0 \\leq \\text{len}(s2) \\leq 100$

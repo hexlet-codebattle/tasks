@@ -16,6 +16,18 @@ description_ru = """
 Для каждого слова отсортируйте его символы по алфавиту (без учёта регистра), но сохраните заглавные буквы в их исходных позициях внутри слова.
 """
 
+description_es = """
+Dada una oración, ordene los caracteres de cada palabra alfabéticamente conservando las posiciones originales de los casos.
+
+Para cada palabra, ordene sus caracteres alfabéticamente (no distingue entre mayúsculas y minúsculas), pero mantenga las letras mayúsculas en sus posiciones originales dentro de la palabra.
+"""
+
+description_zh = """
+给定一个句子，按字母顺序对每个单词中的字符进行排序，同时保留原始大小写位置。
+
+对于每个单词，按字母顺序对其字符进行排序（不区分大小写），但将大写字母保留在单词中的原始位置。
+"""
+
 limits = """
 - $1 \\leq |\\text{sentence}| \\leq 200$
 """

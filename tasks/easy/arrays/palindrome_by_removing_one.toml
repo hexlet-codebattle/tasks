@@ -16,6 +16,18 @@ description_ru = """
 Массив является палиндромом, если он читается одинаково как слева направо, так и справа налево.
 """
 
+description_es = """
+Dada una matriz de números enteros `arr`, determine si es posible convertirla en un palíndromo eliminando **exactamente un** elemento.
+
+Una matriz es un palíndromo si se lee igual hacia adelante y hacia atrás.
+"""
+
+description_zh = """
+给定一个整数数组 `arr`，确定是否可以通过删除**恰好一个**元素来使其成为回文。
+
+如果向前和向后读取相同的数组，则该数组是回文数组。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(arr) \\leq 10^5$
 - $0 \\leq arr[i] \\leq 10^9$

@@ -18,6 +18,20 @@ description_ru = """
 Если один массив заканчивается раньше другого, прекратите добавление и верните результат.
 """
 
+description_es = """
+Construya una nueva matriz entrelazando dos matrices de entrada.
+
+Tome el primer elemento de la primera matriz, luego el primer elemento de la segunda matriz, luego el segundo de la primera, y así sucesivamente.
+Si una matriz se queda sin elementos, deténgase y devuelva el resultado.
+"""
+
+description_zh = """
+通过交错两个输入数组构造一个新数组。
+
+从第一个数组中取出第一个元素，然后从第二个数组中取出第一个元素，然后从第一个数组中取出第二个元素，依此类推。
+如果一个数组用完元素，则停止并返回结果。
+"""
+
 limits = """
 - $2 \\leq \\text{len}(arr1) \\leq 5$
 - $2 \\leq \\text{len}(arr2) \\leq 5$

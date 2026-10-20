@@ -12,6 +12,14 @@ description_ru = """
 VAR-проверки заданы полуинтервалами `[start, end)`, где время измеряется в секундах от начала матча. Верните `[covered_time, peak_reviews]`: суммарное время работы хотя бы одной проверки и максимальное число одновременных проверок. Пустые интервалы игнорируются.
 """
 
+description_es = """
+Las revisiones del VAR son intervalos medio abiertos `[start, end)`, medidos en segundos desde el saque inicial. Devolver `[covered_time, peak_reviews]`: el tiempo total cubierto por al menos una revisión y el número máximo de revisiones simultáneas. Se ignoran los intervalos vacíos.
+"""
+
+description_zh = """
+VAR 审查采用半开放间隔 `[start, end)`，从开球后以秒为单位进行测量。返回`[covered_time, peak_reviews]`：至少一次审阅所花费的总时间以及同时审阅的最大数量。空间隔将被忽略。
+"""
+
 limits = """
 - $0 \\leq \\operatorname{len}(intervals) \\leq 1000$
 - $\\operatorname{len}(intervals_i) = 2$

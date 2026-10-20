@@ -23,6 +23,28 @@ description_ru = """
 Если размер окна больше размера массива, то верните массив с суммой всех чисел.
 """
 
+description_es = """
+Devuelve la matriz `sliding sums` de `numbers` con un tamaño de ventana igual a `window`.
+
+Por ejemplo, las sumas del array `[1, 2, 3, 4, 5]` con la ventana `2` serán:
+```
+[(1 + 2), (2 + 3), (3 + 4), (4 + 5)] → [3, 5, 7, 9]
+```
+
+Si el tamaño de la ventana es mayor que el tamaño de la matriz, devuelve la matriz con la suma de todos los números.
+"""
+
+description_zh = """
+返回 `numbers` 的 `sliding sums` 数组，窗口大小等于 `window`。
+
+例如，数组 `[1, 2, 3, 4, 5]` 与窗口 `2` 的总和将为：
+```
+[(1 + 2), (2 + 3), (3 + 4), (4 + 5)] → [3, 5, 7, 9]
+```
+
+如果窗口的大小大于数组的大小，则返回包含所有数字之和的数组。
+"""
+
 limits = """
 - $1 \\leq \\text{window} \\leq 100$
 - $1 \\leq |\\text{numbers}| \\leq 100$

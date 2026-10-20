@@ -16,6 +16,18 @@ description_ru = """
 В рамках этой задачи «путь с директорией» — это **любая строка, в которой есть символ "/"**.
 """
 
+description_es = """
+Implemente una función que cuente cuántas rutas de la lista dada contienen al menos un directorio.
+
+\"Ruta con un directorio\" es **cualquier cadena que contenga el carácter \"/\"**.
+"""
+
+description_zh = """
+实现一个函数，计算给定列表中有多少路径包含至少一个目录。
+
+“带有目录的路径”是**任何包含字符“/”**的字符串。
+"""
+
 limits = """
 Ограничения:
 - 2 ≤ len(filepaths) ≤ 50

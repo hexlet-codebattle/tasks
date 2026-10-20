@@ -16,6 +16,18 @@ description_ru = """
 Верните, на сколько минут октябрьский день короче сентябрьского. Значение отрицательно, если октябрьский день длиннее.
 """
 
+description_es = """
+El fotoperiodo es la duración de la parte luminosa del día. Se dan dos observaciones como `september` y `october`, cada una de ellas una matriz de dos elementos `[sunrise, sunset]` en minutos después de la medianoche con `sunrise` $<$ `sunset`. La duración de un día es igual a `sunset` $-$ `sunrise`.
+
+Calcula cuántos minutos el día de octubre es más corto que el de septiembre. El valor es negativo cuando el día de octubre es más largo.
+"""
+
+description_zh = """
+光周期是一天中有光部分的长度。两个观测值给出为 `september` 和 `october`，每个观测值都是午夜后几分钟内的二元素数组 `[sunrise, sunset]`，其中 `sunrise` $<$ `sunset`。一天的长度等于 `sunset` $-$ `sunrise`。
+
+返回十月的一天比九月的一天短多少分钟。当 10 月白天较长时，该值为负值。
+"""
+
 limits = """
 - $\\text{len}(\\text{september}) = \\text{len}(\\text{october}) = 2$
 - $0 \\leq \\text{september}[0] < \\text{september}[1] \\leq 1439$

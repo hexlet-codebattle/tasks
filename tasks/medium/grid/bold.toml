@@ -21,6 +21,22 @@ description_ru = '''
 Верните получившуюся матрицу.
 '''
 
+description_es = """
+Dada una matriz que consta de los caracteres '.' y '#', reemplaza cada
+aparición de '#' con un cuadrado $2 \\times 2$ de '#'. El cuadrado se coloca de manera que su
+La esquina superior izquierda coincide con el '#' original, es decir, se extiende una celda hacia abajo.
+y una celda a la derecha. La última fila y la última columna de la matriz nunca
+contener '#'. Devuelve la matriz resultante.
+"""
+
+description_zh = """
+给定一个由字符“.”组成的矩阵和“#”，替换每个
+'#' 与 $2 \\times 2$ 方格 '#' 一起出现。放置正方形，使其
+左上角与原来的“#”重合，即向下延伸一个单元格
+右侧有一个单元格。矩阵的最后一行和最后一列永远不会
+包含“#”。返回结果矩阵。
+"""
+
 solution = """
 def solution(matrix):
     \"\"\"Expand each '#' to a 2×2 block down‑right.\"\"\"

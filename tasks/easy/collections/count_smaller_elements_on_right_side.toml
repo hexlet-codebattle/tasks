@@ -16,6 +16,18 @@ description_ru = """
 Последнее значение результата всегда ноль, так как нет элементов правее последнего.
 """
 
+description_es = """
+Para cada elemento $X$ de la matriz dada, cuente cuántos elementos a la derecha de $X$ son más pequeños que $X$.
+
+El último valor siempre es cero ya que no hay elementos a la derecha del último elemento.
+"""
+
+description_zh = """
+对于给定数组的每个元素 $X$，计算 $X$ 右侧有多少元素小于 $X$。
+
+最后一个值始终为零，因为最后一个元素右侧没有元素。
+"""
+
 limits = """
 - $0 \\leq \\text{arr}[i] \\leq 100$
 - $5 \\leq \\text{len}(\\text{arr}) \\leq 100$

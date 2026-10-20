@@ -16,6 +16,18 @@ description_ru = """
 Верните индексы всех событий, масса которых попадает в окно кандидата от `120` до `130` включительно.
 """
 
+description_es = """
+En una búsqueda simplificada de Higgs, cada evento de colisión tiene una masa reconstruida en GeV.
+
+Devuelve los índices de todos los eventos cuya masa se encuentra en la ventana candidata desde `120` hasta `130`, inclusive.
+"""
+
+description_zh = """
+在简化的希格斯搜索中，每个碰撞事件都有一个以 GeV 为单位的重建质量。
+
+返回质量位于从 `120` 到 `130`（含）候选窗口中的所有事件的索引。
+"""
+
 limits = """
 - $0 \\leq \\text{len}(\\text{masses}) \\leq 100$
 - $0 \\leq \\text{mass} \\leq 300$

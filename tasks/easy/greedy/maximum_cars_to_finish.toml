@@ -20,6 +20,22 @@ description_ru = """
 Учитывая необходимое количество топлива $x$ и массив $a$, описывающий начальное количество бензина в каждой машине, верните максимальное число автомобилей, которые смогут добраться до финиша.
 """
 
+description_es = """
+Sergey está organizando un viaje por carretera con sus amigos. Hay autos $n$ y cada auto necesita exactamente $x$ litros de combustible para llegar a su destino. El coche $i$-ésimo dispone actualmente de litros de combustible $a_i$.
+
+Para maximizar la cantidad de automóviles que llegan al destino, Sergey puede elegir cualquier subconjunto de automóviles, agotar todo su combustible y redistribuirlo equitativamente entre ellos. Puede repetir este proceso tantas veces como desee.
+
+Dado el combustible requerido $x$ y la matriz $a$ que contiene el combustible inicial de cada automóvil, devuelva la cantidad máxima de automóviles que pueden llegar con éxito al destino.
+"""
+
+description_zh = """
+谢尔盖正在和他的朋友们组织一次公路旅行。有 $n$ 辆汽车，每辆汽车需要恰好 $x$ 升燃油才能到达目的地。第 $i$ 辆汽车目前拥有 $a_i$ 升燃油。
+
+为了最大限度地增加到达目的地的汽车数量，谢尔盖可以选择任何汽车子集，耗尽所有燃料，然后在它们之间平均重新分配。他可以多次重复这个过程。
+
+给定所需燃料 $x$ 和包含每辆车初始燃料的数组 $a$，返回能够成功到达目的地的最大汽车数量。
+"""
+
 limits = """
 - $1 \\leq x \\leq 10^4$
 - $1 \\leq \\text{len}(a) \\leq 10^5$

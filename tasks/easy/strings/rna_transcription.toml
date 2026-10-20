@@ -22,6 +22,24 @@ description_ru = """
 G -> C, C -> G, T -> A, A -> U.
 """
 
+description_es = """
+Dada una cadena de ADN, devuelve su complemento de ARN.
+Tanto las cadenas de ADN como las de ARN son una secuencia de nucleótidos.
+Los nucleótidos del ADN son adenina (A), citosina (C), guanina (G) y timidina (T).
+Los nucleótidos del ARN son adenina (A), citosina (C), guanina (G) y uracilo (U).
+La cadena de ARN transcrita de una cadena de ADN se forma reemplazando cada nucleótido con su complemento:
+G -> C, C -> G, T -> A, A -> U.
+"""
+
+description_zh = """
+给定一条 DNA 链，返回其 RNA 互补链。
+DNA 和 RNA 链都是核苷酸序列。
+DNA的核苷酸是腺嘌呤(A)、胞嘧啶(C)、鸟嘌呤(G)和胸苷(T)。
+RNA的核苷酸是腺嘌呤(A)、胞嘧啶(C)、鸟嘌呤(G)和尿嘧啶(U)。
+DNA 链的转录 RNA 链是通过用其互补序列替换每个核苷酸而形成的：
+G -> C、C -> G、T -> A、A -> U。
+"""
+
 solution = """
 def solution(dna: str) -> str:
     t = {'C': 'G', 'G': 'C', 'A': 'U', 'T': 'A'}

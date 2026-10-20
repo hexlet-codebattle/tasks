@@ -12,6 +12,14 @@ description_ru = """
 Дан массив целых чисел и положительное целое число $k$, сосчитайте все различные пары чисел, разность которых по модулю равна $k$. Порядок чисел важен.
 """
 
+description_es = """
+Dada una matriz de enteros y un entero positivo $k$, cuente todos los pares distintos con una diferencia igual a $k$. El orden de los números importa.
+"""
+
+description_zh = """
+给定一个整数数组和一个正整数 $k$，计算差值等于 $k$ 的所有不同对。数字的顺序很重要。
+"""
+
 limits = """
 - $0 \\leq k \\leq 20$
 - $5 \\leq \\text{len}(\\text{pairs}) \\leq 100$

@@ -12,6 +12,14 @@ description_ru = """
 Создайте функцию, которая удаляет слова с нечетной длиной в строке.
 """
 
+description_es = """
+Te dan una serie de palabras. Elimina cada palabra con una longitud impar.
+"""
+
+description_zh = """
+给你一串单词。删除每个奇数长度的单词。
+"""
+
 limits = """
 - $1 \\leq \\text{len}(\\text{sentence}) \\leq 10$
 """

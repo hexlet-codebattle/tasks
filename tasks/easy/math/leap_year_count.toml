@@ -16,6 +16,18 @@ description_ru = """
 Любой год, который делится на $4$ без остатка, является високосным годом. Однако есть исключение: год, который делится без остатка на $100$, является високосным годом только в том случае, если он также без остатка делится на $400$.
 """
 
+description_es = """
+Dado un rango de años como una matriz de dos números, devuelve el número de años bisiestos dentro del rango (inclusive).
+
+Todos los años bisiestos son divisibles por $4$, a excepción de los siglos, que no son años bisiestos a menos que sean divisibles por $400$.
+"""
+
+description_zh = """
+给定一个由两个数字组成的数组形式的年份范围，返回该范围内（含）的闰年数。
+
+闰年都可以被 $4$ 整除，但世纪除外，除非它们可以被 $400$ 整除，否则它们不是闰年。
+"""
+
 limits = """
 - $1700 \\leq \\text{years}[0] \\leq 2300$
 - $1700 \\leq \\text{years}[1] \\leq 2300$

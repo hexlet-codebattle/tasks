@@ -12,6 +12,14 @@ description_ru = """
 Рассчитайте площадь прямоугольника по переданной длине и ширине.
 """
 
+description_es = """
+Calcula el área de un rectángulo dado su largo y ancho.
+"""
+
+description_zh = """
+给定长和宽，计算矩形的面积。
+"""
+
 limits = """
 - $0 \\leq width \\leq 10000$
 - $0 \\leq length \\leq 10000$

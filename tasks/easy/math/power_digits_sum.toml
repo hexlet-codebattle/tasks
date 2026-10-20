@@ -16,6 +16,18 @@ description_ru = """
 Например, $2^{15} = 32768$, и сумма его цифр равна $3 + 2 + 7 + 6 + 8 = 26$.
 """
 
+description_es = """
+Calcula la suma de dígitos de $2^n$.
+
+Por ejemplo, $2^{15} = 32768$ y la suma de sus dígitos es $3 + 2 + 7 + 6 + 8 = 26$.
+"""
+
+description_zh = """
+计算$2^n$的各位数字之和。
+
+例如：$2^{15} = 32768$，其各位数字之和为$3 + 2 + 7 + 6 + 8 = 26$。
+"""
+
 limits = """
 - $0 \\leq n \\leq 100$
 """

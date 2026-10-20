@@ -12,6 +12,14 @@ description_ru = """
 Вычислите сумму всех натуральных чисел меньше чем $n$ (первый аргумент), которые делятся на $a$ или $b$ (второй и третий аргументы) без остатка.
 """
 
+description_es = """
+Calcule la suma de todos los números naturales menores que $n$ (primer argumento) que son divisibles por $a$ o $b$ (segundo y tercer argumento) sin resto.
+"""
+
+description_zh = """
+计算所有小于 $n$（第一个参数）且可被 $a$ 或 $b$（第二个和第三个参数）整除且没有余数的自然数的总和。
+"""
+
 limits = """
 - $1 \\leq n \\leq 100000$
 - $1 \\leq a, b \\leq 1000$

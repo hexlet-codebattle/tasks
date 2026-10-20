@@ -16,6 +16,18 @@ description_ru = """
 Верните значение $1 + 2 + \\dots + n$.
 """
 
+description_es = """
+Calcula la suma de la progresión aritmética de $1$ a $n$ (inclusive).
+
+Devuelve el valor $1 + 2 + \\dots + n$.
+"""
+
+description_zh = """
+计算从$1$到$n$（含）的等差级数之和。
+
+返回值 $1 + 2 + \\dots + n$。
+"""
+
 limits = """
 - $1 \\leq n \\leq 30$
 """

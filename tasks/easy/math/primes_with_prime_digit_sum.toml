@@ -16,6 +16,18 @@ description_ru = """
 Верните числа в порядке возрастания.
 """
 
+description_es = """
+Encuentre todos los números primos en el rango inclusivo $[a, b]$ de modo que la suma de sus dígitos también sea un número primo. Devuelve el resultado como una matriz.
+
+Devuelve los números en orden creciente.
+"""
+
+description_zh = """
+查找包含范围 $[a, b]$ 中的所有素数，使得它们的数字之和也是素数。以数组形式返回结果。
+
+按升序返回数字。
+"""
+
 limits = """
 - $1 \\leq a \\leq b \\leq 10^4$
 """

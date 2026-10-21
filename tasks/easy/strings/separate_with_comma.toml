@@ -1,7 +1,7 @@
 base_score        = 100
 level             = "easy"
 name              = "separate_with_comma"
-tags              = ["strings"]
+tags              = ["strings","formatting"]
 time_to_solve_sec = 250
 
 description_en = """

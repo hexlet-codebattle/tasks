@@ -1,0 +1,199 @@
+base_score        = 150
+level             = "medium"
+name              = "queen_maze"
+tags              = ["chess", "bfs"]
+time_to_solve_sec = 450
+
+description_en = """
+A rectangular board is given as strings of equal length. `#` is a wall, `.` is an empty square, `S` is the queen's starting square, and `T` is its destination. There is exactly one `S` and one `T`; they are different squares.
+
+In one move the queen travels a positive number of squares horizontally, vertically, or diagonally. A diagonal changes the row and column by the same amount in absolute value. Every visited square, including the destination, must be inside the board and not a wall. The queen cannot jump over walls. For diagonal moves, only the squares on the diagonal matter; walls beside them do not block the move.
+
+Return the minimum number of moves from `S` to `T`, or $-1$ if it is impossible. `S` and `T` are otherwise ordinary empty squares. There are no other pieces or chess rules.
+"""
+
+description_ru = """
+Прямоугольная доска задана строками одинаковой длины. `#` — стена, `.` — пустая клетка, `S` — начальная клетка ферзя, `T` — цель. На доске ровно одна `S` и одна `T`; это разные клетки.
+
+За один ход ферзь проходит положительное число клеток по горизонтали, вертикали или диагонали. При движении по диагонали строка и столбец изменяются на одинаковую величину по модулю. Все посещённые клетки, включая конечную, должны находиться внутри доски и не быть стенами. Перепрыгивать стены нельзя. При диагональном ходе проверяются только клетки самой диагонали; стены сбоку не мешают.
+
+Верните минимальное число ходов из `S` в `T` либо $-1$, если пути нет. `S` и `T` в остальном считаются обычными пустыми клетками. Других фигур и шахматных правил нет.
+"""
+
+description_es = """
+Un tablero rectangular se representa con cadenas de igual longitud. `#` es una pared, `.` una casilla vacía, `S` el inicio de la dama y `T` su destino. Hay exactamente una `S` y una `T`, en casillas distintas.
+
+En un movimiento, la dama recorre un número positivo de casillas en horizontal, vertical o diagonal. En diagonal, fila y columna cambian en la misma cantidad absoluta. Todas las casillas visitadas, incluido el destino, deben estar dentro del tablero y no ser paredes. No se pueden saltar paredes. En diagonal solo importan las casillas de la propia diagonal; las paredes a los lados no bloquean el movimiento.
+
+Devuelve el mínimo número de movimientos de `S` a `T`, o $-1$ si es imposible. `S` y `T` son, por lo demás, casillas vacías normales. No hay otras piezas ni reglas de ajedrez.
+"""
+
+description_zh = """
+矩形棋盘由等长字符串表示。`#` 是墙，`.` 是空格，`S` 是后的起点，`T` 是终点。恰有一个 `S` 和一个 `T`，且位于不同格子。
+
+每步后可以沿水平、竖直或对角线移动正数个格子。对角线移动时，行与列变化量的绝对值相同。经过的所有格子（含终点）都必须在棋盘内，且不能是墙。不能越过墙。对角线移动只检查该对角线上的格子，两侧的墙不阻挡移动。
+
+返回从 `S` 到 `T` 的最少步数；无法到达时返回 $-1$。除此之外，`S` 和 `T` 视为普通空格。没有其他棋子或国际象棋规则。
+"""
+
+limits = """
+- $1 \\leq |board| \\leq 6$
+- $1 \\leq |board_i|=|board_0| \\leq 6$
+- $2 \\leq |board|\\,|board_0|$
+- $board_{i,j}\\in\\{\\texttt{.},\\texttt{\\#},S,T\\}$
+- $\\#S=\\#T=1$
+"""
+
+solution = """
+def solution(board):
+    start = next((r, c) for r, row in enumerate(board) for c, cell in enumerate(row) if cell == \"S\")
+    queue, distance = [start], {start: 0}
+    for r, c in queue:
+        if board[r][c] == \"T\": return distance[r, c]
+        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)):
+            x, y = r + dr, c + dc
+            while 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] != \"#\":
+                if (x, y) not in distance:
+                    queue.append((x, y))
+                    distance[x, y] = distance[r, c] + 1
+                x, y = x + dr, y + dc
+    return -1
+"""
+
+examples = """
+```python
+solution(['ST']) == 1
+solution(['S#T']) == -1
+solution(['S#', '#T']) == 1
+```
+"""
+
+[[input_signature]]
+argument_name = "board"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["ST"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S#T"]]
+expected  = -1
+
+[[asserts]]
+arguments = [["S", "T"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S", "#", "T"]]
+expected  = -1
+
+[[asserts]]
+arguments = [["S#", "#T"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S..", "...", "..T"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S#.", ".#.", "..T"]]
+expected  = 2
+
+[[asserts]]
+arguments = [["S#T", "...", "..."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["S##", "###", "##T"]]
+expected  = -1
+
+[[asserts]]
+arguments = [["S.T"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S.....", "......", "......", "......", "......", ".....T"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S#####", ".#####", "...###", "##.###", "##....", "#####T"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["T##.", ".##.", "S#.#", "#.#."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["...#T", "...#.", "##.#.", ".#..#", ".S..."]]
+expected  = 3
+
+[[asserts]]
+arguments = [[".###.#", ".#.#.T", ".....#", "S.#..#", "#...#.", "#..##."]]
+expected  = 3
+
+[[asserts]]
+arguments = [["#.", "T.", "S.", "..", ".."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["#..", "##.", "...", ".#.", ".S#", "T#."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["..", ".S", ".T", ".#"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S#", "..", ".T", "#.", "#."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["TS", "#."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["..####", "##.TS."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["S", "T", "."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["..#.", "..#.", "#TS."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["ST", "..", ".."]]
+expected  = 1
+
+[[asserts]]
+arguments = [[".##", "...", "#.S", "..T"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["..#", "#..", "...", ".#.", ".#.", ".ST"]]
+expected  = 1
+
+[[asserts]]
+arguments = [["#.T##", "#S..#", "##..."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["##", ".#", "ST", "##", ".."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["#..#..", "....T#", "#.S#.#"]]
+expected  = 2
+
+[[asserts]]
+arguments = [[".T#S."]]
+expected  = -1

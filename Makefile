@@ -1,4 +1,4 @@
-PYTHON := $(shell command -v python3 || command -v python)
+PYTHON := $(if $(wildcard .venv/bin/python),.venv/bin/python,$(shell command -v python3 || command -v python))
 
 preview:
 	@pnpm --dir preview install --silent

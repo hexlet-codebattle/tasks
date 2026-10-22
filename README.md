@@ -21,7 +21,8 @@ This project contains programming tasks organized by difficulty levels (easy, el
 
 ### Python Dependencies
 ```bash
-pip install -r requirements.txt
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
 ```
 
 ### Node.js Dependencies (Dev Preview)
@@ -39,7 +40,8 @@ cd preview && pnpm install
 ### 1. Install Dependencies
 ```bash
 # Python dependencies
-pip install -r requirements.txt
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
 
 # Node.js dependencies for preview
 cd preview && pnpm install

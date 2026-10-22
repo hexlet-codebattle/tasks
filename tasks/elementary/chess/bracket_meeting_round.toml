@@ -1,0 +1,194 @@
+base_score        = 30
+level             = "elementary"
+name              = "bracket_meeting_round"
+tags              = ["chess", "bits"]
+time_to_solve_sec = 90
+
+description_en = """
+A knockout tournament starts with $2^k$ players in positions numbered from $1$ to $2^k$. A player leaves the tournament after losing.
+
+In round $1$, positions $1$ and $2$ play, then $3$ and $4$, and so on. In every later round, the winners of adjacent matches play each other, without rearranging the bracket.
+
+Players at distinct positions `a` and `b` win every game until they meet. Return the round in which they meet; rounds are numbered from $1$.
+"""
+
+description_ru = """
+В турнире на выбывание участвуют $2^k$ игроков на местах от $1$ до $2^k$. Проигравший покидает турнир.
+
+В раунде $1$ играют места $1$ и $2$, затем $3$ и $4$ и так далее. В каждом следующем раунде встречаются победители соседних матчей; порядок сетки не меняется.
+
+Игроки на разных местах `a` и `b` выигрывают все партии до встречи друг с другом. Верните номер раунда их встречи; нумерация начинается с $1$.
+"""
+
+description_es = """
+Un torneo de eliminación comienza con $2^k$ jugadores en posiciones numeradas de $1$ a $2^k$. Quien pierde abandona el torneo.
+
+En la ronda $1$ juegan las posiciones $1$ y $2$, luego $3$ y $4$, y así sucesivamente. En cada ronda posterior se enfrentan los ganadores de partidos adyacentes, sin reorganizar el cuadro.
+
+Los jugadores en las posiciones distintas `a` y `b` ganan todas sus partidas hasta enfrentarse. Devuelve la ronda de su encuentro; las rondas empiezan en $1$.
+"""
+
+description_zh = """
+淘汰赛有 $2^k$ 名选手，初始位置编号为 $1$ 到 $2^k$。输掉对局的选手离开比赛。
+
+第 $1$ 轮中，位置 $1$ 对阵 $2$，位置 $3$ 对阵 $4$，依此类推。之后每轮由相邻对局的胜者交手，不重新排列对阵表。
+
+位于不同位置 `a` 和 `b` 的选手在相遇前一直获胜。返回他们相遇的轮次，轮次从 $1$ 开始。
+"""
+
+limits = """
+- $1 \\leq k \\leq 8$
+- $1 \\leq a,b \\leq 2^k$
+- $a \\neq b$
+"""
+
+solution = """
+def solution(k, a, b):
+    return ((a - 1) ^ (b - 1)).bit_length()
+"""
+
+examples = """
+```python
+solution(1, 1, 2) == 1
+solution(2, 1, 3) == 2
+solution(8, 1, 256) == 8
+```
+"""
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 1, 2]
+expected  = 1
+
+[[asserts]]
+arguments = [1, 2, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [2, 1, 2]
+expected  = 1
+
+[[asserts]]
+arguments = [2, 1, 3]
+expected  = 2
+
+[[asserts]]
+arguments = [2, 2, 3]
+expected  = 2
+
+[[asserts]]
+arguments = [3, 3, 4]
+expected  = 1
+
+[[asserts]]
+arguments = [3, 4, 5]
+expected  = 3
+
+[[asserts]]
+arguments = [3, 1, 8]
+expected  = 3
+
+[[asserts]]
+arguments = [8, 1, 256]
+expected  = 8
+
+[[asserts]]
+arguments = [8, 255, 256]
+expected  = 1
+
+[[asserts]]
+arguments = [8, 128, 129]
+expected  = 8
+
+[[asserts]]
+arguments = [8, 65, 128]
+expected  = 6
+
+[[asserts]]
+arguments = [8, 64, 65]
+expected  = 7
+
+[[asserts]]
+arguments = [8, 210, 47]
+expected  = 8
+
+[[asserts]]
+arguments = [2, 3, 4]
+expected  = 1
+
+[[asserts]]
+arguments = [5, 12, 10]
+expected  = 2
+
+[[asserts]]
+arguments = [3, 2, 6]
+expected  = 3
+
+[[asserts]]
+arguments = [5, 11, 23]
+expected  = 5
+
+[[asserts]]
+arguments = [2, 2, 1]
+expected  = 1
+
+[[asserts]]
+arguments = [5, 30, 6]
+expected  = 5
+
+[[asserts]]
+arguments = [7, 25, 99]
+expected  = 7
+
+[[asserts]]
+arguments = [7, 53, 4]
+expected  = 6
+
+[[asserts]]
+arguments = [3, 6, 5]
+expected  = 1
+
+[[asserts]]
+arguments = [5, 2, 5]
+expected  = 3
+
+[[asserts]]
+arguments = [5, 16, 21]
+expected  = 5
+
+[[asserts]]
+arguments = [5, 21, 12]
+expected  = 5
+
+[[asserts]]
+arguments = [2, 2, 4]
+expected  = 2
+
+[[asserts]]
+arguments = [4, 7, 1]
+expected  = 3
+
+[[asserts]]
+arguments = [3, 3, 2]
+expected  = 2
+
+[[asserts]]
+arguments = [8, 178, 89]
+expected  = 8

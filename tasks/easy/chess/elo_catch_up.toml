@@ -1,0 +1,237 @@
+base_score        = 90
+level             = "easy"
+name              = "elo_catch_up"
+tags              = ["chess", "simulation"]
+time_to_solve_sec = 300
+
+description_en = """
+Two players have ratings `a` and `b`, with $a<b$. A rating is a number representing playing strength. The first player wins every game. Use exactly the following simplified Elo model, with the same constant `k` for both players.
+
+Before each game, let their current ratings be $R_A,R_B$. Compute
+
+$$
+E_A=\\frac{1}{1+10^{(R_B-R_A)/400}},\\qquad \\Delta=k(1-E_A).
+$$
+
+After that game, update **both** ratings using this same $\\Delta$:
+
+$$
+R_A'=R_A+\\Delta,\\qquad R_B'=R_B-\\Delta.
+$$
+
+Recompute the formula from the updated ratings before the next game. Do not round intermediate values. Return the minimum number of games after which the first player's rating is **at least** the second's. No other rating rules apply.
+"""
+
+description_ru = """
+У двух игроков рейтинги `a` и `b`, причём $a<b$. Рейтинг — число, характеризующее силу игрока. Первый игрок выигрывает каждую партию. Используйте ровно следующую упрощённую модель Elo с одинаковым постоянным коэффициентом `k` для обоих игроков.
+
+Перед каждой партией обозначим текущие рейтинги через $R_A,R_B$. Вычислим
+
+$$
+E_A=\\frac{1}{1+10^{(R_B-R_A)/400}},\\qquad \\Delta=k(1-E_A).
+$$
+
+После партии обновим **оба** рейтинга, используя одно и то же $\\Delta$:
+
+$$
+R_A'=R_A+\\Delta,\\qquad R_B'=R_B-\\Delta.
+$$
+
+Перед следующей партией формула пересчитывается по обновлённым рейтингам. Не округляйте промежуточные значения. Верните минимальное число партий, после которых рейтинг первого игрока станет **не меньше** рейтинга второго. Другие правила рейтингов не применяются.
+"""
+
+description_es = """
+Dos jugadores tienen los ratings `a` y `b`, con $a<b$. El rating es un número que representa la fuerza de juego. El primero gana todas las partidas. Usa exactamente este modelo Elo simplificado, con la misma constante `k` para ambos.
+
+Antes de cada partida, sus ratings actuales son $R_A,R_B$. Calcula
+
+$$
+E_A=\\frac{1}{1+10^{(R_B-R_A)/400}},\\qquad \\Delta=k(1-E_A).
+$$
+
+Después de la partida, actualiza **ambos** ratings usando el mismo $\\Delta$:
+
+$$
+R_A'=R_A+\\Delta,\\qquad R_B'=R_B-\\Delta.
+$$
+
+Recalcula la fórmula con los ratings actualizados antes de la siguiente partida. No redondees valores intermedios. Devuelve el mínimo número de partidas tras las que el rating del primero sea **al menos** el del segundo. No se aplican otras reglas de rating.
+"""
+
+description_zh = """
+两名选手的等级分为 `a` 和 `b`，且 $a<b$。等级分是表示实力的数值。第一名选手每局都获胜。严格使用以下简化 Elo 模型，双方采用相同的常数 `k`。
+
+每局开始前，双方当前等级分为 $R_A,R_B$。计算
+
+$$
+E_A=\\frac{1}{1+10^{(R_B-R_A)/400}},\\qquad \\Delta=k(1-E_A).
+$$
+
+本局结束后，使用同一个 $\\Delta$ 更新**双方**等级分：
+
+$$
+R_A'=R_A+\\Delta,\\qquad R_B'=R_B-\\Delta.
+$$
+
+下一局开始前，使用更新后的等级分重新计算。不要对中间值取整。返回第一名选手等级分**大于或等于**第二名所需的最少对局数。不使用其他等级分规则。
+"""
+
+limits = """
+- $1000 \\leq a < b \\leq 2800$
+- $b-a \\leq 1000$
+- $k \\in \\{10,20,40\\}$
+"""
+
+solution = """
+def solution(a, b, k):
+    gap, games = b - a, 0
+    while gap > 0:
+        gap, games = gap - 2 * k / (1 + 10 ** (-gap / 400)), games + 1
+    return games
+"""
+
+examples = """
+```python
+solution(1500, 1520, 20) == 1
+solution(1500, 1900, 40) == 7
+solution(1500, 1900, 20) == 14
+```
+"""
+
+[[input_signature]]
+argument_name = "a"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "b"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1500, 1520, 20]
+expected  = 1
+
+[[asserts]]
+arguments = [1000, 1001, 10]
+expected  = 1
+
+[[asserts]]
+arguments = [2799, 2800, 40]
+expected  = 1
+
+[[asserts]]
+arguments = [1000, 2000, 10]
+expected  = 59
+
+[[asserts]]
+arguments = [1000, 2000, 20]
+expected  = 29
+
+[[asserts]]
+arguments = [1000, 2000, 40]
+expected  = 15
+
+[[asserts]]
+arguments = [1800, 2800, 10]
+expected  = 59
+
+[[asserts]]
+arguments = [1500, 1900, 20]
+expected  = 14
+
+[[asserts]]
+arguments = [1500, 1900, 40]
+expected  = 7
+
+[[asserts]]
+arguments = [1500, 1519, 20]
+expected  = 1
+
+[[asserts]]
+arguments = [1500, 1521, 20]
+expected  = 1
+
+[[asserts]]
+arguments = [1500, 1538, 20]
+expected  = 2
+
+[[asserts]]
+arguments = [1500, 1539, 20]
+expected  = 2
+
+[[asserts]]
+arguments = [1500, 1540, 20]
+expected  = 2
+
+[[asserts]]
+arguments = [1500, 1541, 20]
+expected  = 2
+
+[[asserts]]
+arguments = [1797, 2167, 20]
+expected  = 13
+
+[[asserts]]
+arguments = [1520, 2241, 20]
+expected  = 22
+
+[[asserts]]
+arguments = [1836, 2484, 20]
+expected  = 21
+
+[[asserts]]
+arguments = [1157, 1486, 40]
+expected  = 6
+
+[[asserts]]
+arguments = [1228, 2192, 20]
+expected  = 29
+
+[[asserts]]
+arguments = [2648, 2660, 20]
+expected  = 1
+
+[[asserts]]
+arguments = [2078, 2348, 10]
+expected  = 21
+
+[[asserts]]
+arguments = [1747, 2507, 20]
+expected  = 23
+
+[[asserts]]
+arguments = [2446, 2717, 20]
+expected  = 10
+
+[[asserts]]
+arguments = [1241, 1863, 20]
+expected  = 20
+
+[[asserts]]
+arguments = [2783, 2796, 20]
+expected  = 1
+
+[[asserts]]
+arguments = [2264, 2367, 20]
+expected  = 5
+
+[[asserts]]
+arguments = [1861, 2795, 40]
+expected  = 14
+
+[[asserts]]
+arguments = [1838, 2503, 20]
+expected  = 21
+
+[[asserts]]
+arguments = [2338, 2466, 10]
+expected  = 11

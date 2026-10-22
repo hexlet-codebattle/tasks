@@ -1,0 +1,17 @@
+{
+  "name": "masters_2026_10_21",
+  "task_names": [
+    "minimum_wins_for_target",
+    "bracket_meeting_round",
+    "knight_fork_check",
+    "next_game_colors",
+    "clock_reserve_seconds",
+    "rivalry_cycles",
+    "elo_catch_up",
+    "exchange_decision",
+    "exact_match_finish",
+    "queen_maze",
+    "partitioned_rooks",
+    "final_round_pairing"
+  ]
+}

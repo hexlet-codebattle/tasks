@@ -1,0 +1,197 @@
+base_score        = 120
+level             = "medium"
+name              = "exchange_decision"
+tags              = ["chess", "minimax"]
+time_to_solve_sec = 360
+
+description_en = """
+Consider a simplified exchange on one square. Initially an opponent's piece worth `target` points occupies it. Capturing removes the piece on the square and replaces it with the capturing piece.
+
+The values of the capturing pieces are listed in `attackers`, in a fixed order. Index $0$ belongs to you, index $1$ to your opponent, and so on alternately. At each turn, the current player may either end the entire exchange immediately or capture with the next listed piece. Skipping or reordering pieces is forbidden. If the list ends, the exchange ends. Pieces still on the square at the end are not lost.
+
+Your score is the sum of the values of opposing pieces you captured minus the sum of the values of your pieces the opponent captured. You maximize this score and your opponent minimizes it. Return your final score under optimal play. You may stop before the first capture for a score of $0$. Ignore all other chess rules.
+"""
+
+description_ru = """
+Рассмотрим упрощённый размен на одной клетке. Изначально на ней стоит фигура противника стоимостью `target` очков. При взятии фигура на клетке удаляется, а взявшая занимает её место.
+
+Стоимости берущих фигур заданы списком `attackers` в фиксированном порядке. Индекс $0$ — ваша фигура, индекс $1$ — фигура противника, далее стороны чередуются. На своём ходу игрок может немедленно закончить весь размен либо взять следующей фигурой из списка. Пропускать фигуры или менять их порядок нельзя. Если список закончился, размен завершается. Фигура, оставшаяся на клетке в конце, не считается потерянной.
+
+Ваш результат — сумма стоимостей взятых вами фигур противника минус сумма стоимостей ваших фигур, взятых противником. Вы максимизируете результат, противник минимизирует его. Верните результат при оптимальной игре. Можно отказаться от первого взятия и получить $0$. Другие шахматные правила не применяются.
+"""
+
+description_es = """
+Considera un intercambio simplificado en una casilla. Al principio la ocupa una pieza rival de valor `target`. Capturar elimina la pieza de la casilla y la sustituye por la pieza que captura.
+
+`attackers` contiene los valores de las piezas que pueden capturar, en un orden fijo. El índice $0$ te pertenece, el $1$ al rival, y así alternativamente. En su turno, el jugador puede terminar todo el intercambio de inmediato o capturar con la siguiente pieza de la lista. No se pueden omitir ni reordenar piezas. Al terminar la lista, termina el intercambio. La pieza que queda en la casilla al final no se considera perdida.
+
+Tu puntuación es la suma de los valores de las piezas rivales que capturaste menos la suma de los valores de tus piezas capturadas por el rival. Tú maximizas esta puntuación y el rival la minimiza. Devuelve el resultado con juego óptimo. Puedes rechazar la primera captura y obtener $0$. No se aplican otras reglas de ajedrez.
+"""
+
+description_zh = """
+考虑同一格上的简化兑子。最初该格有一枚价值为 `target` 的对方棋子。吃子时，格上的棋子被移除，吃子的棋子占据该格。
+
+`attackers` 按固定顺序列出后续吃子棋子的价值。下标 $0$ 属于你，下标 $1$ 属于对手，此后交替。每个回合，当前一方可以立即结束整个兑子过程，或用列表中的下一枚棋子吃子。不能跳过或重排棋子。列表用尽时过程结束。最终留在格上的棋子不算损失。
+
+你的得分等于你吃掉的对方棋子价值总和，减去对方吃掉的你的棋子价值总和。你使得分最大，对手使其最小。返回双方最优行动时的得分。你可以拒绝第一次吃子并得到 $0$ 分。不使用其他国际象棋规则。
+"""
+
+limits = """
+- $target \\in \\{1,3,5,9\\}$
+- $0 \\leq |attackers| \\leq 12$
+- $attackers_i \\in \\{1,3,5,9\\}$
+"""
+
+solution = """
+def solution(target, attackers):
+    def play(i, value, balance):
+        if i == len(attackers):
+            return balance
+        sign = 1 if i % 2 == 0 else -1
+        continuation = play(i + 1, attackers[i], balance + sign * value)
+        return max(balance, continuation) if sign == 1 else min(balance, continuation)
+    return play(0, target, 0)
+"""
+
+examples = """
+```python
+solution(5, [1]) == 5
+solution(1, [9, 1]) == 0
+solution(5, [1, 3]) == 4
+```
+"""
+
+[[input_signature]]
+argument_name = "target"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "attackers"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, []]
+expected  = 0
+
+[[asserts]]
+arguments = [9, []]
+expected  = 0
+
+[[asserts]]
+arguments = [5, [1]]
+expected  = 5
+
+[[asserts]]
+arguments = [1, [9]]
+expected  = 1
+
+[[asserts]]
+arguments = [1, [9, 1]]
+expected  = 0
+
+[[asserts]]
+arguments = [5, [1, 3]]
+expected  = 4
+
+[[asserts]]
+arguments = [3, [3, 1]]
+expected  = 0
+
+[[asserts]]
+arguments = [9, [1, 9, 3]]
+expected  = 9
+
+[[asserts]]
+arguments = [1, [9, 1, 1]]
+expected  = 0
+
+[[asserts]]
+arguments = [9, [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]]
+expected  = 0
+
+[[asserts]]
+arguments = [1, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+expected  = 0
+
+[[asserts]]
+arguments = [3, [1, 9, 3, 5]]
+expected  = 3
+
+[[asserts]]
+arguments = [5, [9, 1, 3, 5, 9]]
+expected  = 0
+
+[[asserts]]
+arguments = [9, [1, 3, 5, 9, 1, 3, 5, 9, 1, 3, 5, 9]]
+expected  = 9
+
+[[asserts]]
+arguments = [9, [9, 1, 5, 9, 5, 1, 3, 9, 5]]
+expected  = 1
+
+[[asserts]]
+arguments = [5, [3, 5, 9, 9, 3, 9, 3, 1, 9, 3, 5, 5]]
+expected  = 5
+
+[[asserts]]
+arguments = [3, [1, 1, 3, 5, 5]]
+expected  = 3
+
+[[asserts]]
+arguments = [9, [9, 1, 3, 5, 5, 1, 9, 3, 3]]
+expected  = 0
+
+[[asserts]]
+arguments = [5, [9, 5, 5, 5, 5, 5, 3, 3, 9]]
+expected  = 1
+
+[[asserts]]
+arguments = [3, [3, 5, 1, 9, 3, 3, 9, 3, 1, 3, 3, 9]]
+expected  = 3
+
+[[asserts]]
+arguments = [9, [1, 1, 3, 5, 1, 3, 1]]
+expected  = 9
+
+[[asserts]]
+arguments = [5, [1, 5, 9, 3, 9, 9]]
+expected  = 4
+
+[[asserts]]
+arguments = [5, [9, 5, 5, 9, 9, 3, 5, 3]]
+expected  = 0
+
+[[asserts]]
+arguments = [5, [1, 9, 9, 5, 1, 5, 1, 3, 9]]
+expected  = 5
+
+[[asserts]]
+arguments = [3, [3, 9, 9, 9, 5, 9, 9, 9, 3]]
+expected  = 3
+
+[[asserts]]
+arguments = [9, [9, 9, 5, 1, 9, 1, 5]]
+expected  = 4
+
+[[asserts]]
+arguments = [5, []]
+expected  = 0
+
+[[asserts]]
+arguments = [9, [5, 9, 9, 3, 5, 5, 1, 3, 3, 5]]
+expected  = 6
+
+[[asserts]]
+arguments = [5, [5, 3, 9]]
+expected  = 3
+
+[[asserts]]
+arguments = [3, [3, 9, 5, 1, 1, 1, 9, 3, 3, 3, 3]]
+expected  = 3

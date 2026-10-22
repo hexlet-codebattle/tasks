@@ -1,0 +1,196 @@
+base_score        = 130
+level             = "medium"
+name              = "exact_match_finish"
+tags              = ["chess", "dp"]
+time_to_solve_sec = 420
+
+description_en = """
+Two players, A and B, play a match. Each game has exactly one of three results: A wins, B wins, or a draw. A draw gives neither player a win.
+
+The match ends immediately when either player reaches `k` wins; no games may be played afterward. Return the number of different result sequences for which the match ends **exactly after** `games` games, without ending earlier. Result order matters, and A and B are distinct players.
+
+Return the exact integer count, without a modulus. If no such sequence exists, return $0$.
+"""
+
+description_ru = """
+Игроки A и B играют матч. У каждой партии ровно один из трёх результатов: победа A, победа B или ничья. Ничья не добавляет побед ни одному игроку.
+
+Матч заканчивается немедленно, как только кто-либо набирает `k` побед; после этого партии не проводятся. Верните число различных последовательностей результатов, в которых матч завершается **ровно после** `games` партий, не заканчиваясь раньше. Порядок результатов важен, игроки A и B различаются.
+
+Верните точное целое число, без взятия по модулю. Если таких последовательностей нет, верните $0$.
+"""
+
+description_es = """
+A y B juegan un encuentro. Cada partida tiene exactamente uno de tres resultados: gana A, gana B o empate. Un empate no añade victorias a nadie.
+
+El encuentro termina inmediatamente cuando alguien alcanza `k` victorias; después no se juegan más partidas. Devuelve el número de secuencias de resultados en las que termina **exactamente después de** `games` partidas, sin terminar antes. El orden importa y A y B son jugadores distintos.
+
+Devuelve el número entero exacto, sin módulo. Si no existe ninguna secuencia, devuelve $0$.
+"""
+
+description_zh = """
+选手 A 和 B 进行一场多局比赛。每局恰有三种结果之一：A 获胜、B 获胜或平局。平局不增加任何一方的获胜次数。
+
+当任意一方达到 `k` 次获胜时，比赛立即结束，之后不能再进行对局。返回使比赛**恰好在** `games` 局后结束、且此前尚未结束的结果序列数量。结果的顺序有意义，A 和 B 是不同选手。
+
+返回准确整数，不取模。如果不存在这样的序列，返回 $0$。
+"""
+
+limits = """
+- $1 \\leq k \\leq 6$
+- $0 \\leq games \\leq 20$
+"""
+
+solution = """
+def solution(k, games):
+    dp = {(0, 0): 1}
+    for _ in range(games):
+        nxt = {}
+        for (a, b), ways in dp.items():
+            if a < k and b < k:
+                for state in ((a + 1, b), (a, b), (a, b + 1)):
+                    nxt[state] = nxt.get(state, 0) + ways
+        dp = nxt
+    return sum(ways for (a, b), ways in dp.items() if a == k or b == k)
+"""
+
+examples = """
+```python
+solution(1, 0) == 0
+solution(1, 1) == 2
+solution(2, 3) == 8
+```
+"""
+
+[[input_signature]]
+argument_name = "k"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "games"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [1, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 1]
+expected  = 2
+
+[[asserts]]
+arguments = [1, 2]
+expected  = 2
+
+[[asserts]]
+arguments = [1, 20]
+expected  = 2
+
+[[asserts]]
+arguments = [2, 1]
+expected  = 0
+
+[[asserts]]
+arguments = [2, 2]
+expected  = 2
+
+[[asserts]]
+arguments = [2, 3]
+expected  = 8
+
+[[asserts]]
+arguments = [2, 4]
+expected  = 18
+
+[[asserts]]
+arguments = [2, 20]
+expected  = 722
+
+[[asserts]]
+arguments = [3, 2]
+expected  = 0
+
+[[asserts]]
+arguments = [3, 3]
+expected  = 2
+
+[[asserts]]
+arguments = [3, 5]
+expected  = 48
+
+[[asserts]]
+arguments = [3, 20]
+expected  = 52668
+
+[[asserts]]
+arguments = [6, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [6, 5]
+expected  = 0
+
+[[asserts]]
+arguments = [6, 6]
+expected  = 2
+
+[[asserts]]
+arguments = [6, 11]
+expected  = 16128
+
+[[asserts]]
+arguments = [6, 12]
+expected  = 58212
+
+[[asserts]]
+arguments = [6, 20]
+expected  = 80768088
+
+[[asserts]]
+arguments = [6, 13]
+expected  = 190080
+
+[[asserts]]
+arguments = [2, 11]
+expected  = 200
+
+[[asserts]]
+arguments = [1, 7]
+expected  = 2
+
+[[asserts]]
+arguments = [1, 18]
+expected  = 2
+
+[[asserts]]
+arguments = [4, 1]
+expected  = 0
+
+[[asserts]]
+arguments = [3, 18]
+expected  = 32912
+
+[[asserts]]
+arguments = [4, 20]
+expected  = 1350786
+
+[[asserts]]
+arguments = [6, 4]
+expected  = 0
+
+[[asserts]]
+arguments = [4, 15]
+expected  = 168896
+
+[[asserts]]
+arguments = [4, 7]
+expected  = 320
+
+[[asserts]]
+arguments = [2, 18]
+expected  = 578

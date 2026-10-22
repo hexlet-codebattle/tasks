@@ -1,0 +1,194 @@
+base_score        = 50
+level             = "easy"
+name              = "knight_fork_check"
+tags              = ["chess", "geometry"]
+time_to_solve_sec = 180
+
+description_en = """
+A board has columns `a` through `h` and rows `1` through `8`; for example, `c5` is column `c`, row `5`. Your knight is on `knight`. Opposing pieces occupy the distinct squares in `pieces`, none equal to `knight`.
+
+A knight attacks a square when the absolute column and row differences are $1$ and $2$, in either order. Squares between them do not matter. The pieces do not move; no other chess rules apply.
+
+Return `True` if the knight attacks at least two opposing pieces, otherwise `False`. For example, a knight on `d4` attacks both `b3` and `f5`. An empty list returns `False`.
+"""
+
+description_ru = """
+На доске столбцы обозначены буквами от `a` до `h`, строки — числами от `1` до `8`; например, `c5` — столбец `c`, строка `5`. Ваш конь стоит на `knight`. Фигуры противника занимают различные клетки из `pieces`, ни одна не совпадает с `knight`.
+
+Конь атакует клетку, если абсолютные разности номеров столбцов и строк равны $1$ и $2$ в любом порядке. Клетки между ними не имеют значения. Фигуры не двигаются; другие шахматные правила не применяются.
+
+Верните `True`, если конь атакует хотя бы две фигуры противника, иначе `False`. Например, конь на `d4` атакует и `b3`, и `f5`. Для пустого списка ответ — `False`.
+"""
+
+description_es = """
+El tablero tiene columnas de `a` a `h` y filas de `1` a `8`; por ejemplo, `c5` es la columna `c`, fila `5`. Tu caballo está en `knight`. Las piezas rivales ocupan las casillas distintas de `pieces`, ninguna igual a `knight`.
+
+Un caballo ataca una casilla si las diferencias absolutas de columna y fila son $1$ y $2$, en cualquier orden. Las casillas intermedias no importan. Las piezas no se mueven; no se aplican otras reglas de ajedrez.
+
+Devuelve `True` si el caballo ataca al menos dos piezas rivales; en caso contrario, `False`. Por ejemplo, desde `d4` ataca `b3` y `f5`. Una lista vacía devuelve `False`.
+"""
+
+description_zh = """
+棋盘的列为 `a` 到 `h`，行为 `1` 到 `8`；例如，`c5` 表示第 `c` 列、第 `5` 行。你的马位于 `knight`。对方棋子位于 `pieces` 中互不相同的格子，且都不在 `knight` 上。
+
+当列与行编号的绝对差分别为 $1$ 和 $2$（顺序不限）时，马攻击该格子。中间格子不影响攻击。棋子不移动，也不使用其他国际象棋规则。
+
+如果马攻击至少两枚对方棋子，返回 `True`，否则返回 `False`。例如，位于 `d4` 的马会攻击 `b3` 和 `f5`。空列表返回 `False`。
+"""
+
+limits = """
+- $knight, pieces_i \\in \\{a,b,c,d,e,f,g,h\\}\\times\\{1,2,3,4,5,6,7,8\\}$
+- $0 \\leq |pieces| \\leq 8$
+- $|\\{pieces_i\\}|=|pieces|$
+- $knight \\notin pieces$
+"""
+
+solution = """
+def solution(knight, pieces):
+    x, y = ord(knight[0]), int(knight[1])
+    attacked = sum(sorted((abs(ord(p[0]) - x), abs(int(p[1]) - y))) == [1, 2] for p in pieces)
+    return attacked >= 2
+"""
+
+examples = """
+```python
+solution('d4', []) == False
+solution('d4', ['b3']) == False
+solution('d4', ['b3', 'f5']) == True
+```
+"""
+
+[[input_signature]]
+argument_name = "knight"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "pieces"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "boolean"
+
+[[asserts]]
+arguments = ["d4", []]
+expected  = false
+
+[[asserts]]
+arguments = ["d4", ["b3"]]
+expected  = false
+
+[[asserts]]
+arguments = ["d4", ["b3", "f5"]]
+expected  = true
+
+[[asserts]]
+arguments = ["a1", ["b3", "c2"]]
+expected  = true
+
+[[asserts]]
+arguments = ["h8", ["f7", "g6"]]
+expected  = true
+
+[[asserts]]
+arguments = ["a1", ["a2", "b1", "b2"]]
+expected  = false
+
+[[asserts]]
+arguments = ["d4", ["b3", "d5"]]
+expected  = false
+
+[[asserts]]
+arguments = ["d4", ["b3", "b5", "c2", "c6", "e2", "e6", "f3", "f5"]]
+expected  = true
+
+[[asserts]]
+arguments = ["h1", ["f2", "g3"]]
+expected  = true
+
+[[asserts]]
+arguments = ["a8", ["b6", "c7"]]
+expected  = true
+
+[[asserts]]
+arguments = ["d4", ["b4", "d2", "f4", "d6"]]
+expected  = false
+
+[[asserts]]
+arguments = ["e8", ["h1", "g7", "b7", "d7", "e7", "e1"]]
+expected  = false
+
+[[asserts]]
+arguments = ["f8", ["g6", "e6", "d7"]]
+expected  = true
+
+[[asserts]]
+arguments = ["e4", ["h2", "f3", "c5", "b3", "g1", "b7", "h6"]]
+expected  = false
+
+[[asserts]]
+arguments = ["a7", ["c8", "c6", "b5"]]
+expected  = true
+
+[[asserts]]
+arguments = ["c3", ["a8", "c2", "a3"]]
+expected  = false
+
+[[asserts]]
+arguments = ["b1", ["d2", "c3"]]
+expected  = true
+
+[[asserts]]
+arguments = ["f1", ["c6", "e2", "c1", "c5", "h4", "h8"]]
+expected  = false
+
+[[asserts]]
+arguments = ["b7", ["a5", "d6", "c5", "d8"]]
+expected  = true
+
+[[asserts]]
+arguments = ["h8", ["e7", "b8", "a1", "c6"]]
+expected  = false
+
+[[asserts]]
+arguments = ["g1", ["e2", "h3"]]
+expected  = true
+
+[[asserts]]
+arguments = ["a1", ["h8", "e4"]]
+expected  = false
+
+[[asserts]]
+arguments = ["c6", ["d4", "b8", "e5", "a7", "a5", "b4", "e7", "d8"]]
+expected  = true
+
+[[asserts]]
+arguments = ["d7", []]
+expected  = false
+
+[[asserts]]
+arguments = ["c6", ["d8", "a5", "e7", "a7", "b8", "d4"]]
+expected  = true
+
+[[asserts]]
+arguments = ["b3", ["c1", "f3", "d2", "c8", "d5", "e8", "a5"]]
+expected  = true
+
+[[asserts]]
+arguments = ["c4", ["b6", "d6", "e3", "d2", "a3", "a5", "e5", "b2"]]
+expected  = true
+
+[[asserts]]
+arguments = ["a6", ["e5", "c2", "c4", "h8", "g6", "e6"]]
+expected  = false
+
+[[asserts]]
+arguments = ["b4", ["d5", "d3", "a2"]]
+expected  = true
+
+[[asserts]]
+arguments = ["b7", ["b1", "c3", "a2", "g5", "d3", "d1"]]
+expected  = false

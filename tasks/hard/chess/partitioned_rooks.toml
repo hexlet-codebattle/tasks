@@ -1,0 +1,218 @@
+base_score        = 220
+level             = "hard"
+name              = "partitioned_rooks"
+tags              = ["chess", "matching"]
+time_to_solve_sec = 780
+
+description_en = """
+A rectangular board is given as strings of equal length: `.` is an empty square and `#` is a wall. Place at most one rook on each empty square; walls cannot hold rooks.
+
+Two rooks attack each other if they share a row or column and there is no wall between them. Sharing a diagonal is harmless. A rook between two other rooks does not make a placement valid: any attacking pair is forbidden.
+
+Return the maximum number of rooks you can place with no attacking pair. Rooks may share a row or column when a wall separates them. Return $0$ if there are no empty squares. No other chess rules apply.
+"""
+
+description_ru = """
+Прямоугольная доска задана строками одинаковой длины: `.` — пустая клетка, `#` — стена. На каждую пустую клетку можно поставить не более одной ладьи; на стены ставить нельзя.
+
+Две ладьи атакуют друг друга, если стоят в одной строке или столбце и между ними нет стены. Общая диагональ не опасна. Ладья между двумя другими не делает расстановку допустимой: запрещена любая атакующая пара.
+
+Верните максимальное число ладей, которое можно расставить без атакующих пар. Ладьи могут стоять в одной строке или столбце, если их разделяет стена. Если пустых клеток нет, верните $0$. Другие шахматные правила не применяются.
+"""
+
+description_es = """
+Un tablero rectangular se representa con cadenas de igual longitud: `.` es una casilla vacía y `#` una pared. Puedes colocar como máximo una torre en cada casilla vacía; no se pueden colocar sobre paredes.
+
+Dos torres se atacan si comparten fila o columna y no hay una pared entre ellas. Compartir diagonal no importa. Una torre entre otras dos no hace válida la colocación: se prohíbe cualquier pareja que se ataque.
+
+Devuelve el máximo número de torres que puedes colocar sin parejas que se ataquen. Pueden compartir fila o columna si una pared las separa. Si no hay casillas vacías, devuelve $0$. No se aplican otras reglas de ajedrez.
+"""
+
+description_zh = """
+矩形棋盘由等长字符串表示：`.` 是空格，`#` 是墙。每个空格最多放一枚车，墙上不能放车。
+
+若两枚车位于同一行或同一列，且它们之间没有墙，则它们互相攻击。同一对角线没有影响。在两枚车之间再放一枚车也不能使布局合法：任何攻击对都被禁止。
+
+返回没有任何攻击对时最多能放置的车数。若有墙隔开，车可以位于同一行或同一列。如果没有空格，返回 $0$。不使用其他国际象棋规则。
+"""
+
+limits = """
+- $1 \\leq |board| \\leq 6$
+- $1 \\leq |board_i|=|board_0| \\leq 6$
+- $board_{i,j}\\in\\{\\texttt{.},\\texttt{\\#}\\}$
+"""
+
+solution = """
+def solution(board):
+    horizontal, edges = {}, {}
+    for r, row in enumerate(board):
+        segment = -1
+        for c, cell in enumerate(row):
+            if cell == \"#\":
+                segment = -1
+            else:
+                if segment == -1:
+                    segment = len(edges)
+                    edges[segment] = []
+                horizontal[r, c] = segment
+    count = 0
+    for c in range(len(board[0])):
+        segment = -1
+        for r in range(len(board)):
+            if board[r][c] == \"#\":
+                segment = -1
+            else:
+                if segment == -1:
+                    segment = count
+                    count += 1
+                edges[horizontal[r, c]].append(segment)
+    matched = {}
+    def augment(u, seen):
+        for v in edges[u]:
+            if v in seen:
+                continue
+            seen.add(v)
+            if v not in matched or augment(matched[v], seen):
+                matched[v] = u
+                return True
+        return False
+    return sum(augment(u, set()) for u in edges)
+"""
+
+examples = """
+```python
+solution(['#']) == 0
+solution(['.']) == 1
+solution(['......']) == 1
+```
+"""
+
+[[input_signature]]
+argument_name = "board"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [["."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["#"]]
+expected  = 0
+
+[[asserts]]
+arguments = [["......"]]
+expected  = 1
+
+[[asserts]]
+arguments = [[".#.#.#"]]
+expected  = 3
+
+[[asserts]]
+arguments = [[".", "#", ".", "#", "."]]
+expected  = 3
+
+[[asserts]]
+arguments = [["..", ".."]]
+expected  = 2
+
+[[asserts]]
+arguments = [[".#", "#."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["...", "...", "..."]]
+expected  = 3
+
+[[asserts]]
+arguments = [[".#.", "###", ".#."]]
+expected  = 4
+
+[[asserts]]
+arguments = [["......", "......", "......", "......", "......", "......"]]
+expected  = 6
+
+[[asserts]]
+arguments = [["######", "######", "######", "######", "######", "######"]]
+expected  = 0
+
+[[asserts]]
+arguments = [[".#.#.#", "#.#.#.", ".#.#.#", "#.#.#.", ".#.#.#", "#.#.#."]]
+expected  = 18
+
+[[asserts]]
+arguments = [["..#...", "..#.#.", "###.#.", "....#.", ".##...", "......"]]
+expected  = 9
+
+[[asserts]]
+arguments = [["..", ".#"]]
+expected  = 2
+
+[[asserts]]
+arguments = [[".#.", "...", ".#."]]
+expected  = 3
+
+[[asserts]]
+arguments = [[".#..#", "###..", "....."]]
+expected  = 4
+
+[[asserts]]
+arguments = [[".", ".", ".", "#", "."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["..", "#.", ".#", ".."]]
+expected  = 4
+
+[[asserts]]
+arguments = [["#.", "..", "..", "..", ".."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["#..#..", ".#...#"]]
+expected  = 4
+
+[[asserts]]
+arguments = [[".#.", "...", "#..", "###", "..#"]]
+expected  = 4
+
+[[asserts]]
+arguments = [["..#.#", ".###.", ".#.#."]]
+expected  = 5
+
+[[asserts]]
+arguments = [["#..."]]
+expected  = 1
+
+[[asserts]]
+arguments = [["...", "...", "...", ".#.", "#.#", "..."]]
+expected  = 5
+
+[[asserts]]
+arguments = [["#.#..#", "###..."]]
+expected  = 3
+
+[[asserts]]
+arguments = [[".#.#.."]]
+expected  = 3
+
+[[asserts]]
+arguments = [["...", "..#", "...", "..."]]
+expected  = 4
+
+[[asserts]]
+arguments = [["..#..", ".....", "...#.", "#...#", "...#.", "#...."]]
+expected  = 9
+
+[[asserts]]
+arguments = [[".", "#", "#", ".", ".", "."]]
+expected  = 2
+
+[[asserts]]
+arguments = [["..", ".#", "..", "..", ".#", ".."]]
+expected  = 4

@@ -1,0 +1,203 @@
+base_score        = 75
+level             = "easy"
+name              = "rivalry_cycles"
+tags              = ["chess", "combinatorics"]
+time_to_solve_sec = 240
+
+description_en = """
+There are `n` players numbered from $0$ to $n-1$. Each pair played exactly once, with one winner and no draw.
+
+The string `results` records pairs in this order: $(0,1),(0,2),\\ldots,(0,n-1),(1,2),\\ldots,(n-2,n-1)$. For each pair $(a,b)$ with $a<b$, `1` means player $a$ won and `0` means player $b$ won. For fewer than two players the string is empty.
+
+Return the number of unordered groups of three players in which everyone beat one of the other two and lost to the other: $A$ beat $B$, $B$ beat $C$, and $C$ beat $A$. Count each group once.
+"""
+
+description_ru = """
+Есть `n` игроков с номерами от $0$ до $n-1$. Каждая пара сыграла ровно одну партию, в которой был победитель; ничьих нет.
+
+Строка `results` содержит результаты пар в порядке $(0,1),(0,2),\\ldots,(0,n-1),(1,2),\\ldots,(n-2,n-1)$. Для пары $(a,b)$, где $a<b$, символ `1` означает победу игрока $a$, а `0` — игрока $b$. При числе игроков меньше двух строка пустая.
+
+Верните число неупорядоченных троек, внутри которых каждый победил одного соперника и проиграл другому: $A$ победил $B$, $B$ победил $C$, $C$ победил $A$. Каждую тройку считайте один раз.
+"""
+
+description_es = """
+Hay `n` jugadores numerados de $0$ a $n-1$. Cada pareja jugó exactamente una vez, con un ganador y sin empate.
+
+`results` registra las parejas en este orden: $(0,1),(0,2),\\ldots,(0,n-1),(1,2),\\ldots,(n-2,n-1)$. Para cada pareja $(a,b)$ con $a<b$, `1` indica que ganó $a$ y `0` que ganó $b$. Con menos de dos jugadores, la cadena está vacía.
+
+Devuelve el número de grupos no ordenados de tres jugadores en los que cada uno venció a uno de los otros dos y perdió contra el otro: $A$ venció a $B$, $B$ a $C$ y $C$ a $A$. Cuenta cada grupo una sola vez.
+"""
+
+description_zh = """
+有 `n` 名选手，编号从 $0$ 到 $n-1$。每两人恰好交手一次，每局都有胜者，没有平局。
+
+字符串 `results` 按以下顺序记录对局：$(0,1),(0,2),\\ldots,(0,n-1),(1,2),\\ldots,(n-2,n-1)$。对于 $a<b$ 的一对 $(a,b)$，`1` 表示 $a$ 获胜，`0` 表示 $b$ 获胜。少于两名选手时字符串为空。
+
+返回满足以下条件的无序三人组数量：每人都战胜其中一人，并输给另一人，即 $A$ 胜 $B$、$B$ 胜 $C$、$C$ 胜 $A$。每组三人只计算一次。
+"""
+
+limits = """
+- $0 \\leq n \\leq 12$
+- $|results|=n(n-1)/2$
+- $results \\in \\{0,1\\}^*$
+"""
+
+solution = """
+def solution(n, results):
+    from itertools import combinations
+    wins = dict(zip(combinations(range(n), 2), results))
+    return sum(wins[a, b] == wins[b, c] != wins[a, c] for a, b, c in combinations(range(n), 3))
+"""
+
+examples = """
+```python
+solution(2, '0') == 0
+solution(3, '000') == 0
+solution(3, '010') == 1
+```
+"""
+
+[[input_signature]]
+argument_name = "n"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "results"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, ""]
+expected  = 0
+
+[[asserts]]
+arguments = [1, ""]
+expected  = 0
+
+[[asserts]]
+arguments = [2, "0"]
+expected  = 0
+
+[[asserts]]
+arguments = [2, "1"]
+expected  = 0
+
+[[asserts]]
+arguments = [3, "000"]
+expected  = 0
+
+[[asserts]]
+arguments = [3, "001"]
+expected  = 0
+
+[[asserts]]
+arguments = [3, "010"]
+expected  = 1
+
+[[asserts]]
+arguments = [3, "011"]
+expected  = 0
+
+[[asserts]]
+arguments = [3, "100"]
+expected  = 0
+
+[[asserts]]
+arguments = [3, "101"]
+expected  = 1
+
+[[asserts]]
+arguments = [3, "110"]
+expected  = 0
+
+[[asserts]]
+arguments = [3, "111"]
+expected  = 0
+
+[[asserts]]
+arguments = [
+  12,
+  "000000000000000000000000000000000000000000000000000000000000000000",
+]
+expected = 0
+
+[[asserts]]
+arguments = [
+  12,
+  "111111111111111111111111111111111111111111111111111111111111111111",
+]
+expected = 0
+
+[[asserts]]
+arguments = [4, "010101"]
+expected  = 2
+
+[[asserts]]
+arguments = [4, "101010"]
+expected  = 2
+
+[[asserts]]
+arguments = [4, "100111"]
+expected  = 2
+
+[[asserts]]
+arguments = [10, "111011000000001010001010000101100111110101111"]
+expected  = 31
+
+[[asserts]]
+arguments = [
+  12,
+  "011111110111010001101100011101001100010011100111011001001000110011",
+]
+expected = 48
+
+[[asserts]]
+arguments = [10, "101101100100110001010111111010001000011101011"]
+expected  = 36
+
+[[asserts]]
+arguments = [11, "0111010011100001001000010101010101101011011001000101111"]
+expected  = 43
+
+[[asserts]]
+arguments = [
+  12,
+  "110111111110110100100111001010110101111011101010010111101101111111",
+]
+expected = 49
+
+[[asserts]]
+arguments = [8, "0101101000111001100011111110"]
+expected  = 12
+
+[[asserts]]
+arguments = [10, "010100010111000100101111111100111010001111100"]
+expected  = 36
+
+[[asserts]]
+arguments = [11, "0001011011111001100000000100000000011101101011100001001"]
+expected  = 35
+
+[[asserts]]
+arguments = [6, "010111001011100"]
+expected  = 6
+
+[[asserts]]
+arguments = [10, "101110111001000101100100010100101011000100011"]
+expected  = 27
+
+[[asserts]]
+arguments = [4, "010100"]
+expected  = 0
+
+[[asserts]]
+arguments = [10, "101100000011000001110110111001111100111110011"]
+expected  = 32
+
+[[asserts]]
+arguments = [10, "011110111000100100001000111101001000011100101"]
+expected  = 29

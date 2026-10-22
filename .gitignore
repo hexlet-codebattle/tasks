@@ -7,3 +7,4 @@ release-v*.tar.gz
 .lsp
 __pycache__
 .env
+.venv/

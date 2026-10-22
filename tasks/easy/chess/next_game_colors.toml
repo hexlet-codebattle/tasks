@@ -1,0 +1,189 @@
+base_score        = 60
+level             = "easy"
+name              = "next_game_colors"
+tags              = ["chess", "strings"]
+time_to_solve_sec = 180
+
+description_en = """
+Two opponents must receive different colors for their next game: `W` means white, `B` means black. Their previous colors are the strings `first` and `second`, ordered from oldest to newest; either history may be empty.
+
+Assign one color to the first player and the other color to the second. Neither player may end up with three identical colors in a row. Only a new run completed by this game is checked; older runs do not matter.
+
+Return the allowed colors of the first player as a string: `\"W\"`, `\"B\"`, `\"WB\"` if both are allowed, or `\"\"` if neither is allowed. There are no other color restrictions.
+"""
+
+description_ru = """
+Двум соперникам нужно назначить разные цвета в следующей партии: `W` — белые, `B` — чёрные. Их прошлые цвета заданы строками `first` и `second`, от старых партий к новым; история может быть пустой.
+
+Назначьте первому игроку один цвет, второму — другой. Ни у кого не должны получиться три одинаковых цвета подряд. Проверяется только новая серия, завершающаяся этой партией; более старые серии не имеют значения.
+
+Верните допустимые цвета первого игрока строкой: `\"W\"`, `\"B\"`, `\"WB\"`, если допустимы оба, или `\"\"`, если ни один. Других ограничений на цвета нет.
+"""
+
+description_es = """
+Dos rivales deben recibir colores diferentes en su próxima partida: `W` significa blancas y `B`, negras. Sus colores anteriores son `first` y `second`, del más antiguo al más reciente; cualquier historial puede estar vacío.
+
+Asigna un color al primer jugador y el otro al segundo. Nadie puede terminar con tres colores iguales consecutivos. Solo se comprueba una nueva racha completada por esta partida; las rachas anteriores no importan.
+
+Devuelve los colores permitidos del primer jugador como cadena: `\"W\"`, `\"B\"`, `\"WB\"` si ambos son posibles, o `\"\"` si ninguno lo es. No hay otras restricciones de color.
+"""
+
+description_zh = """
+两名对手的下一局必须使用不同颜色：`W` 表示白方，`B` 表示黑方。字符串 `first` 和 `second` 按从旧到新的顺序记录各自过去使用的颜色；历史可以为空。
+
+给第一名选手分配一种颜色，给第二名分配另一种。任何人都不能因本局形成连续三次相同颜色。只检查以本局结束的新连续段，以前的连续段不影响判断。
+
+以字符串返回第一名选手可用的颜色：`\"W\"`、`\"B\"`、两种都可用时的 `\"WB\"`，或都不可用时的 `\"\"`。没有其他颜色限制。
+"""
+
+limits = """
+- $0 \\leq |first|,|second| \\leq 12$
+- $first,second \\in \\{W,B\\}^*$
+"""
+
+solution = """
+def solution(first, second):
+    choices = [(\"W\", \"B\"), (\"B\", \"W\")]
+    return \"\".join(a for a, b in choices if not first.endswith(a * 2) and not second.endswith(b * 2))
+"""
+
+examples = """
+```python
+solution('', '') == 'WB'
+solution('WW', 'WW') == ''
+solution('WW', 'BB') == 'B'
+```
+"""
+
+[[input_signature]]
+argument_name = "first"
+[input_signature.type]
+name = "string"
+
+[[input_signature]]
+argument_name = "second"
+[input_signature.type]
+name = "string"
+
+[output_signature.type]
+name = "string"
+
+[[asserts]]
+arguments = ["", ""]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["W", "B"]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["WW", "BB"]
+expected  = "B"
+
+[[asserts]]
+arguments = ["BB", "WW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["WW", "WW"]
+expected  = ""
+
+[[asserts]]
+arguments = ["BB", "BB"]
+expected  = ""
+
+[[asserts]]
+arguments = ["WW", ""]
+expected  = "B"
+
+[[asserts]]
+arguments = ["", "WW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["BB", ""]
+expected  = "W"
+
+[[asserts]]
+arguments = ["", "BB"]
+expected  = "B"
+
+[[asserts]]
+arguments = ["WWW", "B"]
+expected  = "B"
+
+[[asserts]]
+arguments = ["WWWB", "BBBW"]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["WBWBWBWBWBWB", "BWBWBWBWBWBW"]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["WWWWWWWWWWWW", "BBBBBBBBBBBB"]
+expected  = "B"
+
+[[asserts]]
+arguments = ["B", "BWWBWWBBWWW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["BBBBBBWWBW", "WWWBBWWWWWBW"]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["WWBBWBWBBWBB", "BWWWWWW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["WB", "BWBBBWB"]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["BBBBWBWBW", "BWBBWWWWWWWB"]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["WB", "WWBBWWBWWWWW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["WWW", "WWB"]
+expected  = "B"
+
+[[asserts]]
+arguments = ["BBBWBBWW", "WB"]
+expected  = "B"
+
+[[asserts]]
+arguments = ["BWBWBBBBWB", "BWWBWWWBBWW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["W", "WWWBWBWW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["B", "W"]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["W", "WWBBW"]
+expected  = "WB"
+
+[[asserts]]
+arguments = ["BBWWBWB", "WW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["BBWBBBBWWBBW", "BB"]
+expected  = "B"
+
+[[asserts]]
+arguments = ["WWBB", "BBWWBWWBWWW"]
+expected  = "W"
+
+[[asserts]]
+arguments = ["B", "WWBBBWBW"]
+expected  = "WB"

@@ -1,0 +1,180 @@
+base_score        = 20
+level             = "elementary"
+name              = "minimum_wins_for_target"
+tags              = ["chess", "math"]
+time_to_solve_sec = 60
+
+description_en = """
+You have `games` games left in a tournament. Each win earns $2$ points, each draw $1$, and each loss $0$. A draw means neither player wins.
+
+Return the minimum number of wins needed to earn **at least** `target` points in these games. You may choose any combination of wins, draws, and losses. Return $-1$ if the target is impossible. If `target` is $0$, return $0$.
+"""
+
+description_ru = """
+В турнире осталось сыграть `games` партий. За победу дают $2$ очка, за ничью — $1$, за поражение — $0$. Ничья означает, что никто не победил.
+
+Верните минимальное число побед, позволяющее набрать **не меньше** `target` очков в этих партиях. Можно выбрать любую комбинацию побед, ничьих и поражений. Если цель недостижима, верните $-1$. Если `target` равен $0$, верните $0$.
+"""
+
+description_es = """
+Te quedan `games` partidas en un torneo. Cada victoria da $2$ puntos, cada empate $1$ y cada derrota $0$. Un empate significa que nadie gana.
+
+Devuelve el mínimo número de victorias necesario para obtener **al menos** `target` puntos en estas partidas. Puedes elegir cualquier combinación de victorias, empates y derrotas. Devuelve $-1$ si es imposible. Si `target` es $0$, devuelve $0$.
+"""
+
+description_zh = """
+你在比赛中还剩 `games` 局。每次获胜得 $2$ 分，平局得 $1$ 分，失败得 $0$ 分。平局表示双方都没有获胜。
+
+返回在这些对局中获得**至少** `target` 分所需的最少获胜次数。可以选择任意胜、平、负组合。如果无法达到目标，返回 $-1$。如果 `target` 为 $0$，返回 $0$。
+"""
+
+limits = """
+- $0 \\leq games \\leq 20$
+- $0 \\leq target \\leq 42$
+"""
+
+solution = """
+def solution(games, target):
+    return max(0, target - games) if target <= 2 * games else -1
+"""
+
+examples = """
+```python
+solution(0, 0) == 0
+solution(3, 4) == 1
+solution(5, 11) == -1
+```
+"""
+
+[[input_signature]]
+argument_name = "games"
+[input_signature.type]
+name = "integer"
+
+[[input_signature]]
+argument_name = "target"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [0, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [0, 1]
+expected  = -1
+
+[[asserts]]
+arguments = [1, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 1]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 2]
+expected  = 1
+
+[[asserts]]
+arguments = [1, 3]
+expected  = -1
+
+[[asserts]]
+arguments = [3, 4]
+expected  = 1
+
+[[asserts]]
+arguments = [5, 5]
+expected  = 0
+
+[[asserts]]
+arguments = [5, 6]
+expected  = 1
+
+[[asserts]]
+arguments = [5, 9]
+expected  = 4
+
+[[asserts]]
+arguments = [5, 10]
+expected  = 5
+
+[[asserts]]
+arguments = [5, 11]
+expected  = -1
+
+[[asserts]]
+arguments = [20, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [20, 20]
+expected  = 0
+
+[[asserts]]
+arguments = [20, 21]
+expected  = 1
+
+[[asserts]]
+arguments = [20, 39]
+expected  = 19
+
+[[asserts]]
+arguments = [20, 40]
+expected  = 20
+
+[[asserts]]
+arguments = [20, 41]
+expected  = -1
+
+[[asserts]]
+arguments = [20, 42]
+expected  = -1
+
+[[asserts]]
+arguments = [17, 24]
+expected  = 7
+
+[[asserts]]
+arguments = [18, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [12, 25]
+expected  = -1
+
+[[asserts]]
+arguments = [10, 40]
+expected  = -1
+
+[[asserts]]
+arguments = [20, 14]
+expected  = 0
+
+[[asserts]]
+arguments = [15, 25]
+expected  = 10
+
+[[asserts]]
+arguments = [12, 0]
+expected  = 0
+
+[[asserts]]
+arguments = [7, 1]
+expected  = 0
+
+[[asserts]]
+arguments = [1, 39]
+expected  = -1
+
+[[asserts]]
+arguments = [18, 40]
+expected  = -1
+
+[[asserts]]
+arguments = [1, 7]
+expected  = -1

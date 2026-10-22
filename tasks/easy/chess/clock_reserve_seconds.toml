@@ -1,0 +1,193 @@
+base_score        = 65
+level             = "easy"
+name              = "clock_reserve_seconds"
+tags              = ["chess", "prefix_sums"]
+time_to_solve_sec = 240
+
+description_en = """
+Your clock starts with an unknown nonnegative integer number of seconds. The list `times` gives the duration of each of your moves, in seconds and chronological order.
+
+For each move, first subtract its duration. The remaining time must be **strictly positive**; zero already means you ran out of time. Only after a successful move, add `increment` seconds. Your clock does not run during the opponent's moves.
+
+Return the smallest integer starting time that lets you complete every listed move. Return $0$ if there are no moves.
+"""
+
+description_ru = """
+На ваших часах изначально неизвестное неотрицательное целое число секунд. Список `times` задаёт длительность каждого вашего хода в секундах, в хронологическом порядке.
+
+При каждом ходе сначала вычитается его длительность. Остаток должен быть **строго положительным**: ноль уже означает просрочку. Только после успешного хода добавляется `increment` секунд. Во время ходов соперника ваши часы не идут.
+
+Верните минимальное целое начальное время, позволяющее завершить все указанные ходы. Если ходов нет, верните $0$.
+"""
+
+description_es = """
+Tu reloj comienza con un número entero no negativo de segundos desconocido. `times` contiene la duración de cada uno de tus movimientos, en segundos y en orden cronológico.
+
+En cada movimiento, primero se resta su duración. El tiempo restante debe ser **estrictamente positivo**: cero ya significa que se agotó. Solo después de un movimiento válido se añaden `increment` segundos. Tu reloj no avanza durante los movimientos del rival.
+
+Devuelve el mínimo tiempo inicial entero que permite completar todos los movimientos indicados. Si no hay movimientos, devuelve $0$.
+"""
+
+description_zh = """
+你的时钟初始有一个未知的非负整数秒数。`times` 按时间顺序给出你每一步耗费的秒数。
+
+每步先扣除耗时。剩余时间必须**严格大于零**；等于零也算超时。只有成功完成这步后，才增加 `increment` 秒。对手行动时，你的时钟不计时。
+
+返回能够完成所有给定步骤的最小整数初始时间。如果没有步骤，返回 $0$。
+"""
+
+limits = """
+- $0 \\leq |times| \\leq 12$
+- $0 \\leq times_i \\leq 120$
+- $0 \\leq increment \\leq 30$
+"""
+
+solution = """
+def solution(times, increment):
+    from itertools import accumulate
+    deficits = [spent - i * increment for i, spent in enumerate(accumulate(times))]
+    return max(deficits, default=-1) + 1
+"""
+
+examples = """
+```python
+solution([], 0) == 0
+solution([5, 5], 0) == 11
+solution([5, 10], 5) == 11
+```
+"""
+
+[[input_signature]]
+argument_name = "times"
+[input_signature.type]
+name = "array"
+[input_signature.type.nested]
+name = "integer"
+
+[[input_signature]]
+argument_name = "increment"
+[input_signature.type]
+name = "integer"
+
+[output_signature.type]
+name = "integer"
+
+[[asserts]]
+arguments = [[], 0]
+expected  = 0
+
+[[asserts]]
+arguments = [[], 30]
+expected  = 0
+
+[[asserts]]
+arguments = [[0], 0]
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 0, 0], 30]
+expected  = 1
+
+[[asserts]]
+arguments = [[5], 0]
+expected  = 6
+
+[[asserts]]
+arguments = [[5], 30]
+expected  = 6
+
+[[asserts]]
+arguments = [[5, 5], 0]
+expected  = 11
+
+[[asserts]]
+arguments = [[5, 5], 5]
+expected  = 6
+
+[[asserts]]
+arguments = [[5, 10], 5]
+expected  = 11
+
+[[asserts]]
+arguments = [[10, 1, 1], 30]
+expected  = 11
+
+[[asserts]]
+arguments = [[1, 1, 120], 0]
+expected  = 123
+
+[[asserts]]
+arguments = [[1, 1, 120], 30]
+expected  = 63
+
+[[asserts]]
+arguments = [[120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120], 0]
+expected  = 1441
+
+[[asserts]]
+arguments = [[120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120], 30]
+expected  = 1111
+
+[[asserts]]
+arguments = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0]
+expected  = 1
+
+[[asserts]]
+arguments = [[0, 120, 0], 30]
+expected  = 91
+
+[[asserts]]
+arguments = [[30, 30, 30], 30]
+expected  = 31
+
+[[asserts]]
+arguments = [[29, 52, 1, 91, 48, 112, 21, 86], 24]
+expected  = 273
+
+[[asserts]]
+arguments = [[106, 75, 93, 2], 19]
+expected  = 237
+
+[[asserts]]
+arguments = [[60, 99, 68, 79, 58, 118], 0]
+expected  = 483
+
+[[asserts]]
+arguments = [[], 18]
+expected  = 0
+
+[[asserts]]
+arguments = [[72, 16, 80, 37, 31, 57, 117, 0, 101, 14, 74], 7]
+expected  = 530
+
+[[asserts]]
+arguments = [[73, 34, 77, 27, 11, 75], 9]
+expected  = 253
+
+[[asserts]]
+arguments = [[11, 10, 30, 6, 69, 10], 21]
+expected  = 43
+
+[[asserts]]
+arguments = [[79, 57, 35, 120, 72, 33, 73, 65, 95, 62, 93, 115], 21]
+expected  = 669
+
+[[asserts]]
+arguments = [[64, 17], 27]
+expected  = 65
+
+[[asserts]]
+arguments = [[10, 68, 54, 41], 11]
+expected  = 141
+
+[[asserts]]
+arguments = [[13, 93, 15, 105, 46, 29, 34, 73, 117, 108], 24]
+expected  = 418
+
+[[asserts]]
+arguments = [[120, 12], 9]
+expected  = 124
+
+[[asserts]]
+arguments = [[44, 119], 13]
+expected  = 151

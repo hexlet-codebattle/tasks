@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "mood_check"
 tags              = ["strings"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Create a function that takes in a current mood and return a sentence in the following format:

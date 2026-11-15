@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "even_all_way"
 tags              = ["collections"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given an array of numbers, return an array which contains all the even numbers in the original array, which also have even indexes. If there is no such numbers, return `[0]`.

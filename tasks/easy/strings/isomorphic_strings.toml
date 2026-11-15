@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "isomorphic_strings"
 tags              = ["strings"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Determine if two strings are isomorphic.

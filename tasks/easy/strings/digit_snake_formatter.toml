@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "digit_snake_formatter"
 tags              = ["strings", "formatting"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Transform a digit string `n` into a "snake" format based on an integer `c`:

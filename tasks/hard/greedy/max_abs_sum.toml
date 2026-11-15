@@ -2,7 +2,7 @@ base_score        = 210
 level             = "hard"
 name              = "max_abs_sum"
 tags              = ["greedy", "math"]
-time_to_solve_sec = 390
+time_to_solve_sec = 780
 
 description_ru = '''
 В последовательности разрешается изменить знак у не более чем $K$ чисел.

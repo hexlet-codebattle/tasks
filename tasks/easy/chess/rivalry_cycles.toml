@@ -2,7 +2,7 @@ base_score        = 75
 level             = "easy"
 name              = "rivalry_cycles"
 tags              = ["chess", "combinatorics"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 There are `n` players numbered from $0$ to $n-1$. Each pair played exactly once, with one winner and no draw.

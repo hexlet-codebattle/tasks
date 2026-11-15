@@ -2,7 +2,7 @@ base_score        = 40
 level             = "elementary"
 name              = "stoppage_time_board"
 tags              = ["world_cup_2026", "math"]
-time_to_solve_sec = 100
+time_to_solve_sec = 150
 
 description_en = """
 The scoreboard shows base minute `base_minute`, which is either `45` or `90`.

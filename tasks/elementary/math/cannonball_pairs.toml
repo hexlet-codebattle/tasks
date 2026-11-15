@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "cannonball_pairs"
 tags              = ["math", "pirates"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 A pirate quartermaster counts loose cannonballs before battle. There are `cannonballs` total cannonballs, but `cracked` of them are damaged and cannot be used.

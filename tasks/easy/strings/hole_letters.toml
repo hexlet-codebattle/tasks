@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "hole_letters"
 tags              = ["strings", "counting", "implementation"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 To combat trypophobia (fear of holes), it was decided to remove all lowercase (small) letters containing "holes" (such as "g", "q", "a", "b", etc.) from the English alphabet, while leaving letters without "holes" (such as "w", "k", etc.). Determine how many letters will be removed from the string."""

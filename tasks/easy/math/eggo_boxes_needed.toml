@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "eggo_boxes_needed"
 tags              = ["math"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Eleven loves Eggo waffles. Given `waffles`, `per_box`, and `max_boxes`, return the minimum number of boxes needed. If the need exceeds `max_boxes`, return `-1`.

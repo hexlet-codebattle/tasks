@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "reverse_everywhere"
 tags              = ["strings", "collections"]
-time_to_solve_sec = 230
+time_to_solve_sec = 300
 
 description_en = """
 Reverse each character of word in array and after that reverse array itself.

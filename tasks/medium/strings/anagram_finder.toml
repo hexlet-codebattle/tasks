@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "anagram_finder"
 tags              = ["strings", "hashing", "sorting"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 Given an array of lowercase words $w$, group words that are anagrams.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "minimum_bracket_reversals"
 tags              = ["strings", "greedy", "stack"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Given a string `s` consisting only of parentheses `(` and `)`, determine the minimum number of parentheses reversals required to make the string balanced.

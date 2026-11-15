@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "lunar_base_power_grid"
 tags              = ["space", "trees", "graphs"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 After landing, the crew deploys a small lunar base. Module `0` is the main hub, `parent[i]` is the module that powers module `i`, and `demand[i]` is its power usage. Cable `i` must carry the total demand of module `i` and all of its descendants, and its limit is `capacity[i]`. Return the indices of overloaded modules in ascending order.

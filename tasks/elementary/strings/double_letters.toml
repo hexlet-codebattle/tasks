@@ -2,7 +2,7 @@ base_score        = 30
 level             = "elementary"
 name              = "double_letters"
 tags              = ["strings"]
-time_to_solve_sec = 60
+time_to_solve_sec = 120
 
 description_en = """
 Given a string `s`, return a new string where every character is doubled.

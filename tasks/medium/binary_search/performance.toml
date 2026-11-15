@@ -2,7 +2,7 @@ base_score        = 120
 level             = "medium"
 name              = "performance"
 tags              = ["binary_search", "greedy", "math"]
-time_to_solve_sec = 210
+time_to_solve_sec = 420
 
 description_en = """
 Vasya studies $n$ subjects. For each subject he has a current grade, and grades are not bounded from above.

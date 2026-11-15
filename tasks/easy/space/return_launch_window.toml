@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "return_launch_window"
 tags              = ["space", "math", "simulation"]
-time_to_solve_sec = 280
+time_to_solve_sec = 300
 
 description_en = """
 To leave the Moon, the lander may lift off every `lander_period` minutes starting at `lander_start`, and the orbiter passes overhead every `orbiter_period` minutes starting at `orbiter_start`. Given the crew's `ready_time` and a mission `deadline`, return the earliest rendezvous time, or `-1` if none exists.

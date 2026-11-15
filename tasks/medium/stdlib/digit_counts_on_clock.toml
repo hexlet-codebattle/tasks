@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "digit_counts_on_clock"
 tags              = ["stdlib", "simulation", "time", "counting"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 A digital clock shows time in the format `HH:MM:SS` with leading zeros. Initially it shows $T_1$, finally it shows $T_2$, and fewer than $24$ hours pass between them. All readings from $T_1$ to $T_2$ (inclusive) are listed, one per second.

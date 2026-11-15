@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "tomato"
 tags              = ["strings", "training"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Count how many times the word `"tomato"` occurs in string.

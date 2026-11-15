@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "section_numbering"
 tags              = ["parsing", "strings", "formatting"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = '''
 Given a list of commands describing sections of a document, generate a list of strings with hierarchical numbering.

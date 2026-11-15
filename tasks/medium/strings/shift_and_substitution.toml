@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "shift_and_substitution"
 tags              = ["strings", "mapping", "rotation"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 A string $S$ is cyclically shifted left by $K$ positions, then a bijective substitution is applied over lowercase letters:

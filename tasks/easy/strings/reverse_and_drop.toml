@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "reverse_and_drop"
 tags              = ["strings"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 You are given a string of words. Drop each word with odd length and reverse each word with even length.

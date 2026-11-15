@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "leaders_in_an_array"
 tags              = ["collections"]
-time_to_solve_sec = 280
+time_to_solve_sec = 300
 
 description_en = """
 Return all the leaders in the array.

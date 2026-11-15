@@ -2,7 +2,7 @@ base_score        = 70
 level             = "easy"
 name              = "largest_number_with_digit_sum"
 tags              = ["greedy", "math", "strings"]
-time_to_solve_sec = 120
+time_to_solve_sec = 240
 
 description_en = """
 Given integers $A$ (digit sum) and $B$ (number of digits), construct the **largest** base-10 number with exactly $B$ digits and digit sum $A$. Return it as a string.

@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "coffe_cups"
 tags              = ["math", "training"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 For each $6$ coffee cups you buy, you get $1$ extra cup for free.

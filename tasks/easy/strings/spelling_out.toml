@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "spelling_out"
 tags              = ["strings", "collections"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Create a function which takes in a word and spells it out, by consecutively adding letters until the full word is completed.

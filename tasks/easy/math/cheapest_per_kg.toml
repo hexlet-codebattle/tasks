@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "cheapest_per_kg"
 tags              = ["math", "greedy"]
-time_to_solve_sec = 150
+time_to_solve_sec = 300
 
 description_en = """
 Products are sold in packages with varying prices and weights. Determine the product number with the lowest price per kilogram, starting with $0. If there are multiple such products, select the one with the lowest number. Products are described by a pair (price, weight)."""

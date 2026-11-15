@@ -2,7 +2,7 @@ base_score        = 130
 level             = "medium"
 name              = "exact_match_finish"
 tags              = ["chess", "dp"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 Two players, A and B, play a match. Each game has exactly one of three results: A wins, B wins, or a draw. A draw gives neither player a win.

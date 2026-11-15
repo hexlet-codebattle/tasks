@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "millikan_electron_count"
 tags              = ["physics", "experiments", "arrays"]
-time_to_solve_sec = 260
+time_to_solve_sec = 300
 
 description_en = """
 In Millikan's oil-drop experiment, measured droplet charges are close to multiples of the elementary charge.

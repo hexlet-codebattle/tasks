@@ -2,7 +2,7 @@ base_score        = 120
 level             = "medium"
 name              = "exchange_decision"
 tags              = ["chess", "minimax"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 Consider a simplified exchange on one square. Initially an opponent's piece worth `target` points occupies it. Capturing removes the piece on the square and replaces it with the capturing piece.

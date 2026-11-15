@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "demogorgon_alert"
 tags              = ["strings"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Sightings are reported by name. Given a list of `sightings`, return `true` if any entry equals `"demogorgon"` ignoring case and non-letter characters.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "maximize_product"
 tags              = ["math", "strings", "greedy"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 You are given two strings `x` and `y` of the same length, consisting of digits from `1` to `9`.

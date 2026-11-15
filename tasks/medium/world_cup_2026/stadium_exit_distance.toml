@@ -2,7 +2,7 @@ base_score        = 140
 level             = "medium"
 name              = "stadium_exit_distance"
 tags              = ["world_cup_2026", "bfs"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 A possibly empty rectangular stadium grid uses `E` for an exit, `F` for a fan, `#` for a wall, and `.` for a free cell.

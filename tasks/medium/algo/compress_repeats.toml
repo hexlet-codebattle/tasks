@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "compress_repeats"
 tags              = ["algo", "strings", "linear_scan"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 Given a string `s`, compress consecutive repeated characters.

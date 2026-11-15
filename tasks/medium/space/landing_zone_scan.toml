@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "landing_zone_scan"
 tags              = ["space", "matrices"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 A lunar height map is given as integers, where `-1` marks a crater that cannot be used. Among all valid `2 x 2` landing zones, choose the one with the smallest roughness `max - min`. Break ties by smaller Manhattan distance from the zone's top-left corner to `(target_row, target_col)`, then by smaller row and column. Return `[row, col]`, or `[-1, -1]` if no zone is valid.

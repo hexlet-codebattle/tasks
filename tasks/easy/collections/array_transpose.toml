@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "array_transpose"
 tags              = ["collections", "math"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Implement a matrix transposition function.

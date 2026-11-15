@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "triangle_area"
 tags              = ["math"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Calculate area of triangle using Heron's Formula:

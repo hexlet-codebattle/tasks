@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "maximum_altitude"
 tags              = ["arrays", "math"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 A cyclist starts their journey at an altitude of $0$. You are given an integer array `gain` of length $n$, where `gain[i]` represents the net altitude gain between point $i$ and point $i + 1$.

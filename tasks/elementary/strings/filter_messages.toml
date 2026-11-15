@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "filter_messages"
 tags              = ["strings", "collections", "hash_maps"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Implement a function that extracts users messages from Codebattle chat. If there is no such messages, return `['no messages!']`

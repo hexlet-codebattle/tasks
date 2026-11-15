@@ -2,7 +2,7 @@ base_score        = 20
 level             = "easy"
 name              = "atm_pin_code"
 tags              = ["strings"]
-time_to_solve_sec = 45
+time_to_solve_sec = 90
 
 description_en = """
 ATM machines allow only 4-digit or 6-digit PIN codes, and they must contain **digits only**.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "town_judge"
 tags              = ["arrays", "graphs"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 In a town, there are $n$ people labeled from $1$ to $n$. There is a rumor that one of these people is secretly the town judge.

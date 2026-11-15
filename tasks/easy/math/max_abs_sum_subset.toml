@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "max_abs_sum_subset"
 tags              = ["math", "greedy"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 Given $n$ cards, each card has an integer written on it. The player may choose any subset of the cards, including possibly none. The gain is the absolute value of the sum of the numbers on the selected cards. Determine the maximum possible gain.

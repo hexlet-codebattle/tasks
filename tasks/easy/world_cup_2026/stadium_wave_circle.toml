@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "stadium_wave_circle"
 tags              = ["world_cup_2026", "strings"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 A circular stadium row is encoded with `W` for a standing fan and `.` for a seated fan.

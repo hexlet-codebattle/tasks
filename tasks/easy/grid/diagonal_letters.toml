@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "diagonal_letters"
 tags              = ["grid", "string", "math"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = '''
 Fill an $n \times n$ square with letters, where the cells on the main diagonal and the secondary (anti‑) diagonal contain the letter “a”, and every other cell is filled with the letter whose position in the alphabet (0‑based) equals the minimal distance (in cells) to the nearest diagonal cell. For a cell $(i, j)$ (0‑based) this distance equals $\min(\lvert i - j \rvert,\ \lvert i + j - (n - 1) \rvert)$. Return an array of $n$ strings, each of length $n$.

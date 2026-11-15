@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "check_phone_number"
 tags              = ["strings"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 Validate whether a given string can represent a phone number.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "cross_country_podium_indices"
 tags              = ["collections", "winter_olympics"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Array `times_sec` stores finish times of skiers by start index.

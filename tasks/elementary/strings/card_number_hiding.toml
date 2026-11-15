@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "card_number_hiding"
 tags              = ["strings", "training"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Write a function that takes a credit card number as a string and returns a new string where only the last four characters remain visible, and all preceding characters are replaced with `*`.

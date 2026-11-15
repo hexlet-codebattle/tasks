@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "string_swaps"
 tags              = ["strings", "greedy"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 Given a pattern string and a set of strings of equal length. In one operation you may

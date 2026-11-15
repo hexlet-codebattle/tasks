@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "lucky_base"
 tags              = ["math", "number_theory", "brute_force"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Schoolboy Vasya likes numbers that end with his lucky digit `k`. Every time he sees a natural number `n`, he tries to find a base `d` ($d > 2$) such that the representation of `n` in base `d` ends with the maximum possible number of digits `k`.

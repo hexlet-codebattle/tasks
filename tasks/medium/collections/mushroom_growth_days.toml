@@ -2,7 +2,7 @@ base_score        = 100
 level             = "medium"
 name              = "mushroom_growth_days"
 tags              = ["collections", "prefix_scan"]
-time_to_solve_sec = 330
+time_to_solve_sec = 450
 
 description_en = """
 A visible mushroom is a fruiting body, while the main part of the organism lives in the soil as mycelium, and many species need enough moisture to fruit. In this model a fruiting body appears on day $i$ when the total rainfall over the `window` days ending at day $i$ inclusive is at least `min_rain`. Days with fewer than `window` days behind them never count.

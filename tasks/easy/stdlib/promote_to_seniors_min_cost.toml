@@ -2,7 +2,7 @@ base_score        = 70
 level             = "easy"
 name              = "promote_to_seniors_min_cost"
 tags              = ["stdlib", "greedy", "sorting"]
-time_to_solve_sec = 120
+time_to_solve_sec = 240
 
 description_en = """
 There are $N$ programmers with skills in $\\{1,2,3\\}$ (junior $=1$, middle $=2$, senior $=3$). Increasing a programmer's skill by $1$ costs $1$. The project requires at least $\\lceil N/2 \\rceil$ seniors. Find the minimum total cost to satisfy the requirement.

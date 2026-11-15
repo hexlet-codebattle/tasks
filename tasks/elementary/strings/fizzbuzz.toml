@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "fizzbuzz"
 tags              = ["strings", "games"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 If a number is divisible by $3$, return "Fizz". If a number is divisible by $5$, return "Buzz". If a number is divisible by $3$ and $5$, return "FizzBuzz". Otherwise, return an empty string.

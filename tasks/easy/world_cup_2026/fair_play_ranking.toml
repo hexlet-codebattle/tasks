@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "fair_play_ranking"
 tags              = ["world_cup_2026", "sorting"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Each team record is `[points, goal_difference, goals_scored, penalty_points]`.

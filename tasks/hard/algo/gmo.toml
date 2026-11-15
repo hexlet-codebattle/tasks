@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "gmo"
 tags              = ["algo", "strings", "dp", "greedy"]
-time_to_solve_sec = 600
+time_to_solve_sec = 900
 
 description_en = """
 A gene is a string $S$ ($|S| \\leq 20$) over $\\{A,C,G,T\\}$. You may **insert** any letters anywhere.

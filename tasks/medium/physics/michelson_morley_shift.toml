@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "michelson_morley_shift"
 tags              = ["physics", "experiments", "arrays"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 In a simplified Michelson-Morley setup, two circular brightness profiles are measured before and after rotation.

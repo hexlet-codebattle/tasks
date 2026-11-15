@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "star_number"
 tags              = ["math"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Create a function that takes a positive integer and returns the nth "star number". A star number is a centered figurate number, a centered hexagram (six-pointed star), such as the one that Chinese checkers is played on.

@@ -3,7 +3,7 @@ base_score = 150
 level             = "medium"
 name              = "max_problems"
 tags              = ["string", "math", "greedy"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 # ------------------- Statements -------------------
 description_ru = """

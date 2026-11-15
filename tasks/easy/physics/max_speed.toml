@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "max_speed"
 tags              = ["physics", "kinematics", "math"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 A car moves with initial speed $v_0$. Then it accelerates with acceleration $a_1$ for $t_1$ seconds,

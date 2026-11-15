@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "array_interleave"
 tags              = ["collections"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Construct a new array by interleaving two input arrays.

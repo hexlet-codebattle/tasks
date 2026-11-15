@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "honor_roll"
 tags              = ["collections", "university"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 The dean's office is preparing the semester's honor roll. The array `students` lists every student's name, and `gpas[i]` is the GPA of student `students[i]`. A GPA of $-1.0$ marks a student who has not received any grades yet and must be excluded.

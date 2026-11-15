@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "rum_barrel_streak"
 tags              = ["arrays", "pirates"]
-time_to_solve_sec = 150
+time_to_solve_sec = 300
 
 description_en = """
 The deck has a row of rum barrels. `barrels[i]` is the amount of rum in the `i`-th barrel.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "ascii_sum"
 tags              = ["strings"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given a string, return the sum of the ASCII codes of all its characters.

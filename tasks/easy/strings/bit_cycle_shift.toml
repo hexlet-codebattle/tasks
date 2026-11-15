@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "bit_cycle_shift"
 tags              = ["strings", "bits"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 You are given a binary string `bitstring` and an integer `shift`.

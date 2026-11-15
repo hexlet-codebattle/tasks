@@ -2,7 +2,7 @@ base_score        = 200
 level             = "hard"
 name              = "migration_weather_plan"
 tags              = ["dp", "collections"]
-time_to_solve_sec = 700
+time_to_solve_sec = 900
 
 description_en = """
 Many birds postpone departure in bad weather and use a tail wind to save energy. The route is split into $S$ segments that must be flown in order, and `costs` holds one row per day with $S$ values in each row. On every day the bird either rests or flies the next segment it has not flown yet: flying segment $s$ on day $d$ costs `costs[d][s]` energy, while `costs[d][s]` $= -1$ means that this segment cannot be flown on that day.

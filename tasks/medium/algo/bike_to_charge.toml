@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "bike_to_charge"
 tags              = ["algo", "strings", "greedy", "two_pointers", "prefix_scan"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 You're given a one-dimensional street as a string `s` made from the characters:

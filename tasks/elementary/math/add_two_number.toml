@@ -2,7 +2,7 @@ base_score        = 30
 level             = "elementary"
 name              = "add_two_number"
 tags              = ["math", "training"]
-time_to_solve_sec = 60
+time_to_solve_sec = 120
 
 description_en = """
 Given a two-digit integer $n$, return the sum of its digits.

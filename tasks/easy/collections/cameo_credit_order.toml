@@ -2,7 +2,7 @@ base_score        = 90
 level             = "easy"
 name              = "cameo_credit_order"
 tags              = ["collections", "spider_man"]
-time_to_solve_sec = 260
+time_to_solve_sec = 300
 
 description_en = """
 `appearances` lists character names in the order in which they appear in the new Spider-Man movie. The credits contain every distinct name once.

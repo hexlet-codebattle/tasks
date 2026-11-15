@@ -2,7 +2,7 @@ base_score        = 95
 level             = "easy"
 name              = "portal_pair_count"
 tags              = ["brute_force", "strings", "spider_man"]
-time_to_solve_sec = 280
+time_to_solve_sec = 300
 
 description_en = """
 Every portal has a circular code in `codes`; all codes have the same positive length. Portals at distinct indices $i < j$ link if `codes[j]` can be obtained from `codes[i]` by a **non-zero** cyclic left rotation.

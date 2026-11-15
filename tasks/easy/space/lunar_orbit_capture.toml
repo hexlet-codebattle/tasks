@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "lunar_orbit_capture"
 tags              = ["space", "simulation"]
-time_to_solve_sec = 260
+time_to_solve_sec = 300
 
 description_en = """
 Selene approaches the Moon with an initial speed. Brake burns are applied in order and each burn lowers the speed. Return the first burn count after which the speed enters the safe capture range `[min_speed, max_speed]`, or `-1` if it never does.

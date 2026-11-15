@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "toeplitz_matrix"
 tags              = ["arrays", "matrices"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given an $m \\times n$ `matrix`, return `True` if the matrix is Toeplitz. Otherwise, return `False`.

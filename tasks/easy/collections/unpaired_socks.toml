@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "unpaired_socks"
 tags              = ["collections"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Misha decided to simplify the task and make a machine that would count socks without pairs. The function accepts an array of $n$ integers $X$, where $X$ is the color of the sock from 0 to 1000. Return the count of socks that don't have a pair.

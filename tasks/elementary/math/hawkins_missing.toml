@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "hawkins_missing"
 tags              = ["math"]
-time_to_solve_sec = 140
+time_to_solve_sec = 150
 
 description_en = """
 In Hawkins, kids go missing. Given `total` missing kids and `found` kids, return how many are still missing, but never below `0`.

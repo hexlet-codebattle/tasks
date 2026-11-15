@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "christmas_garland"
 tags              = ["strings"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Given a number `n`, return a string of length `n` with alternating characters `*o*o*o...`, starting with `*`.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "study_buddies"
 tags              = ["arrays", "hash_maps", "university"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 At the start of the term, the dean's office collects each student's course enrollment. `courses[i]` is the list of course codes that student `i` is enrolled in.

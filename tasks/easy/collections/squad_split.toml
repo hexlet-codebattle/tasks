@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "squad_split"
 tags              = ["collections"]
-time_to_solve_sec = 230
+time_to_solve_sec = 300
 
 description_en = """
 The kids split into teams. Given a list of `names` and an index `k`, return two lists: the first `k` names and the rest. If `k` is negative, count from the end. Clamp `k` to the range from `0` to the list length.

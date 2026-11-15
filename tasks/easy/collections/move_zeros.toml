@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "move_zeros"
 tags              = ["collections"]
-time_to_solve_sec = 220
+time_to_solve_sec = 300
 
 description_en = """
 Moves all 0's to the end of the array while maintaining the relative order of the non-zero elements.

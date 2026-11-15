@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "insert_interval"
 tags              = ["algo", "intervals", "sorting"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 You are given an array of non-overlapping `intervals` where $\\text{intervals}[i] = [start_i, end_i]$ represent the start and the end of the $i$-th interval. The array `intervals` is sorted in ascending order by $start_i$.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "prime_number_count"
 tags              = ["math"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Create a function that finds how many prime numbers are in a sequence from zero to a given integer, inclusive.

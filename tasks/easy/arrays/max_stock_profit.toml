@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "max_stock_profit"
 tags              = ["arrays", "greedy", "math"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Given an array `prices` where `prices[i]` is the price of a given stock on the $i$-th day.

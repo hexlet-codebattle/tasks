@@ -2,7 +2,7 @@ base_score        = 140
 level             = "medium"
 name              = "elevator_buttons"
 tags              = ["elevator", "math", "greedy"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 The elevator buttons in a building with $2n$ floors are arranged in two columns with $n$ buttons each.

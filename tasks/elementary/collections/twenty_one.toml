@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "twenty_one"
 tags              = ["collections", "training"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Given an array, determine if the sum of all its elements is equal to 21.

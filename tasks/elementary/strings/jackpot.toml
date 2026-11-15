@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "jackpot"
 tags              = ["strings", "games"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Create a function that takes in an array (slot machine outcome) and returns true if all elements in the array are identical, and false otherwise. The array will contain 3 elements.

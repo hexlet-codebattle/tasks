@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "keyboard_right_neighbor"
 tags              = ["stdlib", "strings"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Given a lowercase English letter `letter`, return the letter that is immediately to its right on a standard QWERTY keyboard **in the same row**, with wrap-around.

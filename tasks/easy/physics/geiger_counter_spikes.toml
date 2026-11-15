@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "geiger_counter_spikes"
 tags              = ["physics", "experiments", "arrays"]
-time_to_solve_sec = 220
+time_to_solve_sec = 300
 
 description_en = """
 A Geiger counter records background radiation and occasional spikes.

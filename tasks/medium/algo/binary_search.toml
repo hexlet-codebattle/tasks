@@ -2,7 +2,7 @@ base_score        = 50
 level             = "medium"
 name              = "binary_search"
 tags              = ["algo", "collections"]
-time_to_solve_sec = 90
+time_to_solve_sec = 180
 
 description_en = """
 You are given a sorted array of integers `nums` (in non-decreasing order) and an integer `target`.

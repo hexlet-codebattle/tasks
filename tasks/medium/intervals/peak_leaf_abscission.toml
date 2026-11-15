@@ -2,7 +2,7 @@ base_score        = 120
 level             = "medium"
 name              = "peak_leaf_abscission"
 tags              = ["intervals", "sorting"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Before leaf fall an abscission zone forms at the base of the leaf stalk, and once the connection weakens wind and rain help the leaf to separate. For every tree `intervals` holds the days of its leaf fall as `[start, end]`, with both days included.

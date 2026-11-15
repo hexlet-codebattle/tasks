@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "biathlon_penalty_time"
 tags              = ["math", "winter_olympics"]
-time_to_solve_sec = 220
+time_to_solve_sec = 300
 
 description_en = """
 In biathlon, each miss adds a fixed penalty.

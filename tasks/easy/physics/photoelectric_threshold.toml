@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "photoelectric_threshold"
 tags              = ["physics", "experiments", "arrays"]
-time_to_solve_sec = 220
+time_to_solve_sec = 300
 
 description_en = """
 In the photoelectric effect, a photon ejects an electron only if its energy reaches the metal work function.

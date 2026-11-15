@@ -2,7 +2,7 @@ base_score        = 20
 level             = "elementary"
 name              = "daylight_loss"
 tags              = ["math", "time"]
-time_to_solve_sec = 60
+time_to_solve_sec = 120
 
 description_en = """
 Photoperiod is the length of the light part of a day. Two observations are given as `september` and `october`, each a two-element array `[sunrise, sunset]` in minutes after midnight with `sunrise` $<$ `sunset`. The length of a day equals `sunset` $-$ `sunrise`.

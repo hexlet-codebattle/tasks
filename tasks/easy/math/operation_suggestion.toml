@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "operation_suggestion"
 tags              = ["math"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Write a function that takes three numbers (first operand, second operand and result) and returns a string indicating which operation should be used to get the result.

@@ -2,7 +2,7 @@ base_score        = 60
 level             = "easy"
 name              = "bird_call_encoding"
 tags              = ["strings", "linear_scan"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Contact calls keep a flock together, while alarm calls warn about danger. In a bioacoustic recording `C` marks a contact call, `A` an alarm call and `S` silence.

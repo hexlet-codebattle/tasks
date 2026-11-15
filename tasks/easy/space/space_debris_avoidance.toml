@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "space_debris_avoidance"
 tags              = ["space", "intervals"]
-time_to_solve_sec = 260
+time_to_solve_sec = 300
 
 description_en = """
 Selene must perform one correction burn lasting `duration` consecutive seconds. Hazard intervals `[l, r]` mark times with dangerous debris, inclusive. Find the earliest safe start time inside `[window_start, window_end]`, or return `-1`.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "turtle_max_path_sum"
 tags              = ["dp", "matrix", "arrays"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 You are given an $m \\times n$ matrix of integers. A turtle starts its journey in the top-left corner $(0, 0)$ and wants to reach the bottom-right corner $(m-1, n-1)$.

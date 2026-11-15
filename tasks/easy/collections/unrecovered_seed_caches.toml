@@ -2,7 +2,7 @@ base_score        = 50
 level             = "easy"
 name              = "unrecovered_seed_caches"
 tags              = ["collections", "hash_maps", "sorting"]
-time_to_solve_sec = 160
+time_to_solve_sec = 300
 
 description_en = """
 Squirrels spread food over many caches, and the seeds they never recover sometimes sprout and help trees to spread. A cache label is written down once when a seed is buried there and once more when a seed is taken back.

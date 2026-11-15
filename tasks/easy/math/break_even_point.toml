@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "break_even_point"
 tags              = ["math", "greedy"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 A machine costs $A$. Raw materials per item cost $B$. Each item sells for $C$ (guaranteed $C>B$).

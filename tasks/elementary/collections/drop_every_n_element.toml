@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "drop_every_n_element"
 tags              = ["collections"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Drop every $N$-th element from a list.

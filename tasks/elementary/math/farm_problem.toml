@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "farm_problem"
 tags              = ["math", "training"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 A farmer is asking you to tell him how many legs can be counted among all his animals.

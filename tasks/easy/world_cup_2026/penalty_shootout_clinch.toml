@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "penalty_shootout_clinch"
 tags              = ["world_cup_2026", "simulation"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 The string `kicks` contains a prefix of the ten-kick regulation shootout, starting with team A and alternating between the teams.

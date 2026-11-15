@@ -2,7 +2,7 @@ base_score        = 125
 level             = "medium"
 name              = "bird_migration_stops"
 tags              = ["graphs", "search"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 During a stopover birds rest and rebuild their energy reserves, so the loss of key sites can break a long route. Every element of `points` is a location `[x, y]` on a plane: the first point is where the flight starts, the last one is its destination, and the other points are possible stopover sites. One flight leads from any point to any point whose Euclidean distance is at most `max_distance`.

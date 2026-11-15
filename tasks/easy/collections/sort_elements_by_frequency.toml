@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "sort_elements_by_frequency"
 tags              = ["collections", "sorting", "algo"]
-time_to_solve_sec = 280
+time_to_solve_sec = 300
 
 description_en = """
 Given an array of integers, sort the array according to frequency of elements. Most frequent numbers come first. If several groups of the same size exist, they should appear in the order of corresponding numbers in the input array (maintain first occurrence order for ties).

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "gift_filter"
 tags              = ["collections"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 Given a list of gift prices and a number `k`, remove all gifts that cost more than `k`, preserving the order of the remaining gifts.

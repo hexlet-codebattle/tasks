@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "tables_and_chairs"
 tags              = ["math", "greedy", "implementation"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 There are `tables` tables.

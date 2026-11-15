@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "is_armstrong_number"
 tags              = ["math", "numbers"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 An Armstrong number (or Narcissistic number) is a number that is the sum of its own digits each raised to the power of the number of digits.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "shortest_path_length"
 tags              = ["graphs", "bfs", "algorithms"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 You are given an unweighted, undirected graph with $n$ nodes numbered from $0$ to $n - 1$. You are also given an array `edges`, where $\\text{edges}[i] = [u_i, v_i]$ represents a bidirectional edge between node $u_i$ and node $v_i$.

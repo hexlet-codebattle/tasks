@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "string_blocks_transposition"
 tags              = ["strings", "formatting"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 You are given a string `s` and an integer `k`.

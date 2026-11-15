@@ -2,7 +2,7 @@ base_score        = 50
 level             = "easy"
 name              = "knight_fork_check"
 tags              = ["chess", "geometry"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 A board has columns `a` through `h` and rows `1` through `8`; for example, `c5` is column `c`, row `5`. Your knight is on `knight`. Opposing pieces occupy the distinct squares in `pieces`, none equal to `knight`.

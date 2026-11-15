@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "frame_tiling"
 tags              = ["tiling", "grid", "math", "combinatorics"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 A frame of size $x \\times y$ is a rectangle of size $x \\times y$ from whose centre a rectangle of size $(x - 2) \\times (y - 2)$ has been cut out.

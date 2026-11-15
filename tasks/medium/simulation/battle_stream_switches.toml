@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "battle_stream_switches"
 tags              = ["simulation", "graph", "cycle_detection", "battle_stream"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 In the new University Battle broadcast, you can watch a specific participant. The battle broadcast is watched by $n$ viewers, with a total of $m$ participants. Each viewer has a favorite and a least favorite participant. If the broadcast shows a participant disliked by a viewer, that viewer becomes upset and switches the broadcast to their favorite participant. If the current participant is disliked by multiple viewers, the viewer with the lowest number switches the broadcast. This process is repeated as long as there are disliked viewers.

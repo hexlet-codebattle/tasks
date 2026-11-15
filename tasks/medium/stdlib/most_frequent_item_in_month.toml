@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "most_frequent_item_in_month"
 tags              = ["stdlib", "hash_maps", "date_time", "collections"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 Given purchases as `(item, date)` with date in `'YYYY-MM-DD'` and a month `'YYYY-MM'`,

@@ -2,7 +2,7 @@ base_score        = 40
 level             = "elementary"
 name              = "group_match_points"
 tags              = ["world_cup_2026", "math"]
-time_to_solve_sec = 100
+time_to_solve_sec = 150
 
 description_en = """
 Given the goals scored by teams A and B, return their tournament points as `[points_a, points_b]`: three for a win, one for a draw, and zero for a loss.

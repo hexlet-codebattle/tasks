@@ -2,7 +2,7 @@ base_score        = 85
 level             = "easy"
 name              = "trailer_spoiler_mask"
 tags              = ["strings", "spider_man"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 The studio marks spoiler spans in trailer text `text`. Every pair `[left, right]` denotes the half-open character interval $[\\text{left}, \\text{right})$.

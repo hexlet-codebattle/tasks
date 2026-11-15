@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "baudot_code"
 tags              = ["strings", "decryption"]
-time_to_solve_sec = 600
+time_to_solve_sec = 900
 
 description_en = """
 The Baudot code or International Teleprinter Code was invented by Emile Baudot in 1870. It was used for teleprinter messages instead of morse code. Baudot uses five bits per character, allowing up to 32 distinct characters. The code uses up-shift and down-shift modes like a typewriter.

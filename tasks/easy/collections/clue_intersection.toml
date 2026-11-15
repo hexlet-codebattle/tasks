@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "clue_intersection"
 tags              = ["collections"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Different groups compare clues. Given two lists of clue strings, return a sorted list of unique clues that appear in both lists, comparing case-insensitively and returning lowercase strings.

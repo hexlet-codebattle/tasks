@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "custom_fibonacci"
 tags              = ["math", "algorithms"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given three integers `f0`, `f1`, and `n`.

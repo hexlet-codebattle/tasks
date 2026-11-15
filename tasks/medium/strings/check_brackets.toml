@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "check_brackets"
 tags              = ["strings"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 Check whether all brackets in the given string are balanced.

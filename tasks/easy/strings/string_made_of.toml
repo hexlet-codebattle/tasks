@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "string_made_of"
 tags              = ["strings"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Given a string which contains only decimal digits `(0-9)`, calculate the total number of dashes (segments) needed to display all digits on an LCD calculator display. Each digit is made of a certain number of dashes: `0=6, 1=2, 2=5, 3=5, 4=4, 5=5, 6=6, 7=3, 8=7, 9=6` dashes.

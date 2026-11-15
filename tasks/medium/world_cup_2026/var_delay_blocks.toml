@@ -2,7 +2,7 @@ base_score        = 140
 level             = "medium"
 name              = "var_delay_blocks"
 tags              = ["world_cup_2026", "sweep_line"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 VAR reviews are half-open intervals `[start, end)`, measured in seconds from kickoff. Return `[covered_time, peak_reviews]`: the total time covered by at least one review and the maximum number of simultaneous reviews. Empty intervals are ignored.

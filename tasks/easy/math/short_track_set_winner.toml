@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "short_track_set_winner"
 tags              = ["math", "winter_olympics"]
-time_to_solve_sec = 235
+time_to_solve_sec = 300
 
 description_en = """
 Given race points `a` and `b` in a short-track duel, return:

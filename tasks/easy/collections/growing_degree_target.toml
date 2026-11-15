@@ -2,7 +2,7 @@ base_score        = 45
 level             = "easy"
 name              = "growing_degree_target"
 tags              = ["collections", "linear_scan"]
-time_to_solve_sec = 150
+time_to_solve_sec = 300
 
 description_en = """
 Phenologists track plant development with accumulated heat: a day with temperature `t` adds $\\max(0, t - \\text{base})$ heat units. Days are processed in the order given by `temperatures`, and the heat of all processed days is summed.

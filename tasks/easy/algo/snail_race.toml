@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "snail_race"
 tags              = ["algo", "games"]
-time_to_solve_sec = 280
+time_to_solve_sec = 300
 
 description_en = """
 Steve and Maurice have racing snails. Each of them has exactly 3 snails.

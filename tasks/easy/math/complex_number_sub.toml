@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "complex_number_sub"
 tags              = ["math"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 You are given two complex numbers, each represented as an array `[a, b]` corresponding to $a + bi$.

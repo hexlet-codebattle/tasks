@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "combo_hits"
 tags              = ["stdlib", "collections", "simulation"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 You receive actions: `hit` or `miss`.

@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "min_team_combinations"
 tags              = ["bitmask", "brute_force", "algo"]
-time_to_solve_sec = 500
+time_to_solve_sec = 900
 
 description_en = """
 You are given an array of integers `people`, where each integer represents the skill set of a person as a bitmask (the $i$-th bit is $1$ if they have the $i$-th skill, and $0$ otherwise). You are also given an integer `target_skills` representing all the skills required for a project as a bitmask.

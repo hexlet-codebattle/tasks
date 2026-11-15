@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "all_symmetric_pairs"
 tags              = ["collections", "hashing", "pairs"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 Given an array of integer pairs $p = [[a_1,b_1], [a_2,b_2],\\dots]$, return all **unique symmetric pairs** $[x,y]$ such that both $[x,y]$ and $[y,x]$ appear in $p$.

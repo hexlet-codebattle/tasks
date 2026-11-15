@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "queen_pairs_no_blockers"
 tags              = ["algo", "geometry", "hashing", "sorting"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 On an infinite chessboard there are $N$ queens, each at integer coordinates $(x_i, y_i)$.

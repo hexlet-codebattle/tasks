@@ -2,7 +2,7 @@ base_score        = 60
 level             = "easy"
 name              = "next_game_colors"
 tags              = ["chess", "strings"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 Two opponents must receive different colors for their next game: `W` means white, `B` means black. Their previous colors are the strings `first` and `second`, ordered from oldest to newest; either history may be empty.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "industrial_alpinist"
 tags              = ["math"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 Industrial climber uses three carabiners for safety. For each carabiner the weight it can hold is known. The safety is considered reliable if at least two carabiners can hold the climber's weight. Determine the maximum weight for which the safety is reliable.

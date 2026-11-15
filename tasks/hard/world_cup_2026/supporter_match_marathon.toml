@@ -2,7 +2,7 @@ base_score        = 230
 level             = "hard"
 name              = "supporter_match_marathon"
 tags              = ["world_cup_2026", "dynamic_programming"]
-time_to_solve_sec = 700
+time_to_solve_sec = 900
 
 description_en = """
 Each match is `[start, end, city]`; match times are measured in minutes from the start of the tournament.

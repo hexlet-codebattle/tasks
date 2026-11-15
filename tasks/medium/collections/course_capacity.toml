@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "course_capacity"
 tags              = ["collections", "university"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 A popular course at the university has `capacity` seats. The registration system processes the array `events` in order, with each event written as one of the strings below:

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "balance_weights"
 tags              = ["brute_force"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 You are given the weights of four weights. Determine whether it is possible to place all four

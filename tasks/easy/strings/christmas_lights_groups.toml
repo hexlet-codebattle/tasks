@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "christmas_lights_groups"
 tags              = ["strings"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Joyce uses Christmas lights to communicate. Given a string `pattern` of `"L"` (light on) and `"."` (off), return the number of groups of consecutive lights with length at least `2`.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "multi_anagram_chunks"
 tags              = ["strings", "anagrams", "greedy"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 Given a string $s$, find the minimum length $|P|$ such that $s$ is a concatenation of anagrams of a string $P$.

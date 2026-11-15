@@ -2,7 +2,7 @@ base_score        = 115
 level             = "medium"
 name              = "mycelium_colonies"
 tags              = ["grid", "graphs"]
-time_to_solve_sec = 380
+time_to_solve_sec = 450
 
 description_en = """
 Mycelium is a network of branching threads called hyphae, and it can live in the soil for years without producing visible fruiting bodies. On the rectangular map `forest` the character `M` marks a cell with mycelium and `.` marks an empty cell; all rows have the same length.

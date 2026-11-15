@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "longest_common_prefix"
 tags              = ["strings", "arrays"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Write a function to find the longest common prefix string amongst an array of strings.

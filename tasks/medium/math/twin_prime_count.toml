@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "twin_prime_count"
 tags              = ["math", "algorithms"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 A prime number $p$ is considered to have a "pair" if there exists another prime number $x$ such that $|p - x| = 2$.

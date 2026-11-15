@@ -2,7 +2,7 @@ base_score        = 30
 level             = "elementary"
 name              = "build_hash_with_default"
 tags              = ["hash_maps"]
-time_to_solve_sec = 60
+time_to_solve_sec = 120
 
 description_en = """
 You are given an array of strings `words` and an integer `num`.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "circular_trams_common_street"
 tags              = ["algo", "graphs", "sets", "simulation"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 A city has $N$ intersections connected by streets. Two **circular** tram routes are given by the ordered lists of intersections they visit. Each adjacent pair (including the last with the first) defines a street. It is known there is exactly **one** street used by **both** routes. Return the endpoints of that street in ascending order.

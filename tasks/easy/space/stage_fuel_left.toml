@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "stage_fuel_left"
 tags              = ["space", "math"]
-time_to_solve_sec = 220
+time_to_solve_sec = 300
 
 description_en = """
 Selene reaches parking orbit and performs several planned burns. Given the starting fuel, the burn costs, and the mandatory reserve, return the remaining fuel or `-1` if the reserve would be violated.

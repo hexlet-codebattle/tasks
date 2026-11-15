@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "new_year_wishlist"
 tags              = ["collections", "strings"]
-time_to_solve_sec = 380
+time_to_solve_sec = 450
 
 description_en = """
 Given two lists of strings: children's wishes and Santa's gifts. Each gift can only be used once.

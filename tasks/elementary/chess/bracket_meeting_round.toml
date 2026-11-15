@@ -2,7 +2,7 @@ base_score        = 30
 level             = "elementary"
 name              = "bracket_meeting_round"
 tags              = ["chess", "bits"]
-time_to_solve_sec = 90
+time_to_solve_sec = 150
 
 description_en = """
 A knockout tournament starts with $2^k$ players in positions numbered from $1$ to $2^k$. A player leaves the tournament after losing.

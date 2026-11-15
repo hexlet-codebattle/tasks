@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "topological_sort_possible"
 tags              = ["graphs", "algorithms", "topological_sort"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 You are given `n` nodes labeled from $0$ to $n - 1$ and a list of directed `edges`.

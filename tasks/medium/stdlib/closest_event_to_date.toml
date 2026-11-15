@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "closest_event_to_date"
 tags              = ["stdlib", "date_time", "search"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 Given a list of events `(name, date)` with date in format `'YYYY-MM-DD'` and a target date,

@@ -2,7 +2,7 @@ base_score        = 230
 level             = "hard"
 name              = "final_day_qualification_scenarios"
 tags              = ["world_cup_2026", "brute_force"]
-time_to_solve_sec = 700
+time_to_solve_sec = 900
 
 description_en = """
 A four-team group uses team indices from `0` to `3` and has two matches left.

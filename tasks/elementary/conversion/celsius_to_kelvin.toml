@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "celsius_to_kelvin"
 tags              = ["conversion", "physics"]
-time_to_solve_sec = 100
+time_to_solve_sec = 150
 
 description_en = """
 Convert a temperature from Celsius to Kelvin using the formula

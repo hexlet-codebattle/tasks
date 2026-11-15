@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "find_missing_numbers"
 tags              = ["stdlib", "collections", "sets", "search"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 You are given a list `nums` that should contain all integers from `1` to `n` (inclusive),

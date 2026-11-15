@@ -2,7 +2,7 @@ base_score        = 20
 level             = "elementary"
 name              = "biggest_second_number"
 tags              = ["collections", "training"]
-time_to_solve_sec = 30
+time_to_solve_sec = 60
 
 description_en = """
 Given an array of integers `numbers`, return the second largest number in the array. The array always contains at least three elements. If the largest value appears multiple times, the second largest number may be equal to the largest value.

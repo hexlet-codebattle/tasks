@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "polygon_angles_sum"
 tags              = ["math"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Given an $n$-sided regular polygon, calculate the total sum of internal angles in degrees.

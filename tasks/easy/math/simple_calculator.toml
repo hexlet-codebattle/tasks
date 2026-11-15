@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "simple_calculator"
 tags              = ["math"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Given two integer numbers. Create a simple calculator that supports the following operations: `+` (add), `-` (subtract), `^` (power), `*` (multiply).

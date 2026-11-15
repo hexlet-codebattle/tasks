@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "largest_perimeter_triangle"
 tags              = ["arrays", "math", "geometry", "sorting"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given an integer array `nums` representing the lengths of line segments, return the largest perimeter of a triangle with a non-zero area, formed from three of these lengths.

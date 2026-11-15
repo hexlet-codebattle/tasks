@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "hockey_bet_outcome"
 tags              = ["collections", "winter_olympics"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 A hockey bet contains predicted score (`pred_a`, `pred_b`) and final score (`real_a`, `real_b`).

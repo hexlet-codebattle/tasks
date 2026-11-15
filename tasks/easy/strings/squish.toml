@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "squish"
 tags              = ["strings"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given a text, remove all the whitespaces from both ends of the text. Then collapse groups of whitespaces inside the text into single whitespace each. Handles both ASCII and Unicode whitespaces.

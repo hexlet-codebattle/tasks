@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "complex_number_div"
 tags              = ["math"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 You are given two complex numbers, each represented as an array of two integers `[a, b]` corresponding to $a + bi$.

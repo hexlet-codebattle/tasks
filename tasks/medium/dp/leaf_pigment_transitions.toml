@@ -2,7 +2,7 @@ base_score        = 110
 level             = "medium"
 name              = "leaf_pigment_transitions"
 tags              = ["dp", "collections"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 In autumn chlorophyll breaks down, carotenoids become visible, and many species also build up red anthocyanins. Observations are listed in chronological order, and `pigments[i]` holds the amounts of green, yellow and red pigment of observation $i$. In every observation one of the three amounts is strictly greater than the other two, and that pigment is the dominant one. Dominant pigments are ordered green $<$ yellow $<$ red.

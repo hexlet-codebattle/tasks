@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "rum_thirst"
 tags              = ["dp", "algo", "collections"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 A pirate walks along a deck lined with barrels of rum. Each barrel contains a certain number of liters (given as an array of non‑negative integers). The pirate cannot take rum from two adjacent barrels (that would make noise). What is the maximum total amount of rum he can drink unnoticed?

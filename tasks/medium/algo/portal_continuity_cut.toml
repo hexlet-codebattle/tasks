@@ -2,7 +2,7 @@ base_score        = 135
 level             = "medium"
 name              = "portal_continuity_cut"
 tags              = ["algo", "two_pointers", "spider_man"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 The trailer timeline is `scene_ids`. Repeated IDs create a continuity error. The editor may delete one contiguous half-open segment, possibly empty, and join the remaining prefix and suffix.

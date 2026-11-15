@@ -2,7 +2,7 @@ base_score        = 40
 level             = "elementary"
 name              = "spider_signal_sector"
 tags              = ["math", "spider_man"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 A Spider-Signal has $12$ beams numbered $0$ through $11$. Beam $0$ points at angle $0^\\circ$, and every next beam is another $30^\\circ$ clockwise.

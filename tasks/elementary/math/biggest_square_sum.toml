@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "biggest_square_sum"
 tags              = ["math", "training"]
-time_to_solve_sec = 100
+time_to_solve_sec = 150
 
 description_en = """
 Implement a function that takes three integers `a`, `b` and `c` and returns the sum of squares of the two largest numbers among them.

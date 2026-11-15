@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "next_lucky_number"
 tags              = ["math"]
-time_to_solve_sec = 360
+time_to_solve_sec = 450
 
 description_en = """
 Lucky numbers are defined as numbers consisting only of digits $3$ and $5$.

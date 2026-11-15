@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "palindrome_anagram"
 tags              = ["strings"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 Find out if it is possible to rearrange the letters of the string given so that it reads the same from left to right and from right to left.

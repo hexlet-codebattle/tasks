@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "new_year_sale"
 tags              = ["collections", "algo"]
-time_to_solve_sec = 350
+time_to_solve_sec = 450
 
 description_en = """
 Given an array of gift prices and a number `k`, find the maximum sum of two different gifts that does not exceed `k`.

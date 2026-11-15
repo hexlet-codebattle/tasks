@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "rect_area"
 tags              = ["math"]
-time_to_solve_sec = 100
+time_to_solve_sec = 150
 
 description_en = """
 Calculate the area of a rectangle given its length and width.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "loot_merge"
 tags              = ["arrays", "sorting", "pirates"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Two pirate crews bring sorted loot lists `port_loot` and `starboard_loot`, where each number is a crate weight in nondecreasing order.

@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "launch_window_day"
 tags              = ["space", "math"]
-time_to_solve_sec = 140
+time_to_solve_sec = 150
 
 description_en = """
 Mission control opens a launch window every `period` days starting from `first_window`. Given a day number, determine whether Selene may launch on that day.

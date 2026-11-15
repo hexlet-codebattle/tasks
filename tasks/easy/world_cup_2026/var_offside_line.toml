@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "var_offside_line"
 tags              = ["world_cup_2026", "arrays"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Positions use a pitch from `0` to `100`.

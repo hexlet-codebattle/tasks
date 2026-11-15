@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "goal_lead_changes"
 tags              = ["world_cup_2026", "strings"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 The string `goals` lists scoring teams in chronological order using `A` and `B`.

@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "array_two_digit_sum"
 tags              = ["collections", "training"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Given an array of two-digit integers, compute the digit sum of each number, then return the total sum of all digit sums.

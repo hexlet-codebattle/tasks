@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "peak_performance_sum"
 tags              = ["hashmaps", "arrays"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 You are given two arrays of the same length: `teams` and `scores`.

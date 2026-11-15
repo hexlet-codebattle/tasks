@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "watch_party_schedule"
 tags              = ["world_cup_2026", "greedy"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Each match broadcast is `[start, end]`, measured in minutes from the start of the tournament.

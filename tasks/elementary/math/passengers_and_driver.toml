@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "passengers_and_driver"
 tags              = ["math"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 A typical car can hold three passengers and one driver, allowing four people to travel somewhere.

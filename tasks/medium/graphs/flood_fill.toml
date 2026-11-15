@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "flood_fill"
 tags              = ["graphs"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 An image is represented by a 2D integer array `image`, where `image[i][j]` represents the pixel value of the image.

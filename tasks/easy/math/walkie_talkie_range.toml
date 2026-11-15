@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "walkie_talkie_range"
 tags              = ["math"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 The kids use walkie-talkies around town. Given two positions `(x1, y1)` and `(x2, y2)`, range `r`, and `battery`, return `true` if their Manhattan distance is at most `r` and the battery can cover that distance.

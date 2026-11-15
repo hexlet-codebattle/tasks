@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "alien_signal_compression"
 tags              = ["strings", "regex"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 You intercept an alien transmission and need to compress it to save storage space.

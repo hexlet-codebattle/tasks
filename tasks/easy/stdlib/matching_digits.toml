@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "matching_digits"
 tags              = ["stdlib"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 You are given two 4-digit integers: `a` and `b`.

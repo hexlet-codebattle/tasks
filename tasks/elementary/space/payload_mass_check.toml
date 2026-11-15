@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "payload_mass_check"
 tags              = ["space", "math"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Mission Selene begins on Earth. Given the masses of all cargo containers and the rocket's payload limit, determine whether the crew can launch without exceeding the limit.

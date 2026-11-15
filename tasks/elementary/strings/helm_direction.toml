@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "helm_direction"
 tags              = ["strings", "pirates"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 The helmsman receives a signed turn command `turn`.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "autobattler_squad"
 tags              = ["math", "greedy", "logic"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 In the game Autobattler, players form a squad by purchasing warriors from a shop.

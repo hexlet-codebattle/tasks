@@ -2,7 +2,7 @@ base_score        = 145
 level             = "medium"
 name              = "web_anchor_combo"
 tags              = ["dp", "spider_man"]
-time_to_solve_sec = 430
+time_to_solve_sec = 450
 
 description_en = """
 Rooftop anchors have strictly increasing positive positions `positions`; landing on anchor $i$ adds `bonuses[i]` to Spider-Man's combo score. He starts at position $0$ and may only move right. Every jump distance must be between `min_jump` and `max_jump`, inclusive. Anchors may be skipped, and he may stop after any landing.

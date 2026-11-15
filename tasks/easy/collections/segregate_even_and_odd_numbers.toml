@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "segregate_even_and_odd_numbers"
 tags              = ["collections"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Given an array of numbers, return an array in which all the even numbers come first, and all the odd numbers come second.

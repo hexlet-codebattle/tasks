@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "even_array_square_sum"
 tags              = ["collections", "math"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Find the sum of the squares of all even numbers in the array.

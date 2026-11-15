@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "young_double_slit_peaks"
 tags              = ["physics", "experiments", "arrays"]
-time_to_solve_sec = 260
+time_to_solve_sec = 300
 
 description_en = """
 In Young's double-slit experiment, bright fringes appear as local intensity maxima.

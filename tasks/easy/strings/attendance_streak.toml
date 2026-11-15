@@ -2,7 +2,7 @@ base_score        = 90
 level             = "easy"
 name              = "attendance_streak"
 tags              = ["strings", "university"]
-time_to_solve_sec = 160
+time_to_solve_sec = 300
 
 description_en = """
 A teaching assistant tracks a student's attendance across the term as a string `log` of `'P'` (present) and `'A'` (absent) characters, one per class.

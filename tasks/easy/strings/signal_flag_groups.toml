@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "signal_flag_groups"
 tags              = ["strings", "pirates"]
-time_to_solve_sec = 150
+time_to_solve_sec = 300
 
 description_en = """
 A row of signal flags is written as a string `flags`. Equal adjacent letters represent a continuous group of the same flag.

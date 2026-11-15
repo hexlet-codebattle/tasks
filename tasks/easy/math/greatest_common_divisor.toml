@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "greatest_common_divisor"
 tags              = ["math"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Create a function that calculates GCD (Greatest Common Divisor).

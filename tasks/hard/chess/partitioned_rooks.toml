@@ -2,7 +2,7 @@ base_score        = 220
 level             = "hard"
 name              = "partitioned_rooks"
 tags              = ["chess", "matching"]
-time_to_solve_sec = 780
+time_to_solve_sec = 900
 
 description_en = """
 A rectangular board is given as strings of equal length: `.` is an empty square and `#` is a wall. Place at most one rook on each empty square; walls cannot hold rooks.

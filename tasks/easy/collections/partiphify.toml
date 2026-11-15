@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "partiphify"
 tags              = ["collections"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Create a function that will divide the list into a specified number of parts.

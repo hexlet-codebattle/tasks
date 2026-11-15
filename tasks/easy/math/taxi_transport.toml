@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "taxi_transport"
 tags              = ["math", "greedy", "integer", "optimization"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 In an economy class taxi there are $3$ seats, and in a comfort class taxi there are $4$ seats.

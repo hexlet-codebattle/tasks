@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "number_range"
 tags              = ["math"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Create a function that validates whether a number `n` is inclusively within the bounds of `lower` and `upper`.

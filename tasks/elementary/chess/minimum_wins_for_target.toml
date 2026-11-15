@@ -2,7 +2,7 @@ base_score        = 20
 level             = "elementary"
 name              = "minimum_wins_for_target"
 tags              = ["chess", "math"]
-time_to_solve_sec = 60
+time_to_solve_sec = 120
 
 description_en = """
 You have `games` games left in a tournament. Each win earns $2$ points, each draw $1$, and each loss $0$. A draw means neither player wins.

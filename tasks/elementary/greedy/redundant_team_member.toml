@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "redundant_team_member"
 tags              = ["greedy", "collections"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 A team with member skills $s_1,\\dots,s_n$ can solve a task that requires skill level $X$ if the sum of all member skills is at least $X$: $\\sum_{i=1}^{n} s_i \\ge X$.

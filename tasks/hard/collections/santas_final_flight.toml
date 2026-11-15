@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "santas_final_flight"
 tags              = ["collections", "algo"]
-time_to_solve_sec = 800
+time_to_solve_sec = 900
 
 description_en = """
 Given a list of deliveries, each with an execution time and a deadline. Only one delivery can be performed at any given moment.

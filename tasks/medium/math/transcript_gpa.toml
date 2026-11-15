@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "transcript_gpa"
 tags              = ["math", "collections", "university"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 The registrar is computing a student's grade point average for the transcript. The array `grades` lists the letter grade earned in each course, and `credits[i]` is the credit weight of course `i`.

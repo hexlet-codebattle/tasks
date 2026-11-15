@@ -2,7 +2,7 @@ base_score        = 80
 level             = "easy"
 name              = "swing_energy_reserve"
 tags              = ["math", "spider_man"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Spider-Man visits rooftops in the order of `heights`. Rising by $d$ meters spends $d$ energy. Dropping by $d$ meters restores $\\lfloor d / 2 \\rfloor$ energy. Energy changes only between consecutive rooftops and may never be negative.

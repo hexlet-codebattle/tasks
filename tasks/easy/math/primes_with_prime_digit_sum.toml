@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "primes_with_prime_digit_sum"
 tags              = ["math", "numbers"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Find all prime numbers in the inclusive range $[a, b]$ such that the sum of their digits is also a prime number. Return the result as an array.

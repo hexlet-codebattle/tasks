@@ -2,7 +2,7 @@ base_score        = 75
 level             = "easy"
 name              = "danger_sense_ring"
 tags              = ["collections", "spider_man"]
-time_to_solve_sec = 220
+time_to_solve_sec = 300
 
 description_en = """
 The mask's danger sensors form a ring. `readings[i]` is the signal at sensor $i$; sensor $0$ is adjacent to both sensor $1$ and the last sensor.

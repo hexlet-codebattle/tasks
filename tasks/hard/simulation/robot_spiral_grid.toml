@@ -2,7 +2,7 @@ base_score        = 160
 level             = "hard"
 name              = "robot_spiral_grid"
 tags              = ["simulation", "grid", "set"]
-time_to_solve_sec = 300
+time_to_solve_sec = 600
 
 description_en = '''
 The robot starts in the cell $(0, 0)$ and is initially facing to the right. It follows the algorithm below:

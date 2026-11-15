@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "largest_pair_sum_in_array"
 tags              = ["collections"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Given an array of integers `arr`, find the largest pair sum in it.

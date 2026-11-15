@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "numbers_with_odd_occurrences"
 tags              = ["collections"]
-time_to_solve_sec = 280
+time_to_solve_sec = 300
 
 description_en = """
 Find numbers which have odd occurrences in array. Return them in the order of their first appearance.

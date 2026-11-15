@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "travelling_salesman_problem"
 tags              = ["math", "recursion"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 A travelling salesman wants to visit several different cities.

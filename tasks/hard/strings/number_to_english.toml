@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "number_to_english"
 tags              = ["strings"]
-time_to_solve_sec = 750
+time_to_solve_sec = 900
 
 description_en = """
 Write a function that accepts a positive integer between 0 and 2000 inclusive and returns a string representation of that integer written in English.

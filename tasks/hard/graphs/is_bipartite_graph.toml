@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "is_bipartite_graph"
 tags              = ["graphs", "bfs", "dfs"]
-time_to_solve_sec = 600
+time_to_solve_sec = 900
 
 description_en = """
 You are given an undirected graph represented as an adjacency list, where `graph[i]` is a list of nodes connected to node `i`.

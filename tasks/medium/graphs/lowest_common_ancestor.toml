@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "lowest_common_ancestor"
 tags              = ["trees", "graphs", "algorithms"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 You are given a tree of $n$ nodes represented by a `parent` array, where `parent[i]` is the parent of node $i$. The root of the tree has `parent[root] = -1`.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "max_pair_product_sum"
 tags              = ["math", "pairing", "brute_force", "optimization"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_ru = """
 Даны четыре целых числа. Разделите их на две пары так, чтобы сумма произведений чисел в парах была максимальной. Верните эту сумму.

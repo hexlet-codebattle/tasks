@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "add_two_fractions"
 tags              = ["math", "algorithms"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given two rational fractions $a/b$ and $c/d$, calculate their sum.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "schedule_conflicts"
 tags              = ["arrays", "university"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 A student picks several lectures for the term. Each lecture is given as a pair `[start, end]` (in minutes from the day's start) inside the array `lectures`, where `end` is exclusive.

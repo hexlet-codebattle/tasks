@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "sum_numbers_in_text"
 tags              = ["strings", "regex"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 You're given a string `s`.

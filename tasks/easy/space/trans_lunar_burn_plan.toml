@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "trans_lunar_burn_plan"
 tags              = ["space", "greedy"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 To leave Earth orbit, Selene may use each available engine impulse at most once. Find the minimum number of impulses needed to reach at least the required `delta-v`, or return `-1` if the transfer is impossible.

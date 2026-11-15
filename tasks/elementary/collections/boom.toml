@@ -2,7 +2,7 @@ base_score        = 20
 level             = "elementary"
 name              = "boom"
 tags              = ["collections", "training"]
-time_to_solve_sec = 30
+time_to_solve_sec = 60
 
 description_en = """
 Given an array of integers `numbers`, return `"Boom!"` if the number `7` appears anywhere in the array.

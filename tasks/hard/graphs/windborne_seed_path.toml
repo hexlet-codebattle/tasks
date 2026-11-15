@@ -2,7 +2,7 @@ base_score        = 210
 level             = "hard"
 name              = "windborne_seed_path"
 tags              = ["graphs", "grid"]
-time_to_solve_sec = 750
+time_to_solve_sec = 900
 
 description_en = """
 The direction of air currents shapes the trajectory of wind-dispersed seeds. Every cell of the rectangular grid `wind` holds the local wind direction: `U` up, `D` down, `L` left, `R` right, where up means towards row $0$ and left means towards column $0$; all rows have the same length. A seed starts in the top left cell and moves between cells sharing a side. A move out of a cell is free when it goes in the wind direction of that cell and costs $1$ otherwise.

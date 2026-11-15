@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "expanded_notation_array"
 tags              = ["math", "strings", "parsing", "arrays"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Expanded Notation means an integer is written as the sum of its digits multiplied with its place value (in strictly descending powers of $10$).

@@ -2,7 +2,7 @@ base_score        = 220
 level             = "hard"
 name              = "multiverse_identity_swaps"
 tags              = ["algo", "sorting", "spider_man"]
-time_to_solve_sec = 720
+time_to_solve_sec = 900
 
 description_en = """
 Two universes show a lineup of identities in arrays `original` and `target`. One move swaps two adjacent entries of `original`. Names may repeat, and equal occurrences are indistinguishable.

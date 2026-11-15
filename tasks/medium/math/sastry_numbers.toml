@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "sastry_numbers"
 tags              = ["math"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Check if a given integer `n` is a Sastry number.

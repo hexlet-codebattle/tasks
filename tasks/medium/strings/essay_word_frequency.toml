@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "essay_word_frequency"
 tags              = ["strings", "hash_maps", "university"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 A writing tutor at the university's writing center wants to know which word a student leans on the most in an essay `text`.

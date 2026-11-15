@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "capitalized_words_number"
 tags              = ["strings"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given a string `s`, count how many **words** in it start with a capital letter.

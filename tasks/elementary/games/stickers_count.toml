@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "stickers_count"
 tags              = ["games"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Given an $n \\times n \\times n$ Rubik's cube, find the number of stickers that are needed to cover the whole cube.

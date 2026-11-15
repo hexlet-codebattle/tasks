@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "pascals_triangle"
 tags              = ["math"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 Return the $n$-th row of Pascal's Triangle.

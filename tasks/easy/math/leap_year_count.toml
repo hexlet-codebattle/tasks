@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "leap_year_count"
 tags              = ["math"]
-time_to_solve_sec = 280
+time_to_solve_sec = 300
 
 description_en = """
 Given a range of years as an array of two numbers, return the number of leap years within the range (inclusive).

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "censor_emails"
 tags              = ["strings", "formatting"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Given a string `text` containing words separated by single spaces. Some of these words are email addresses.

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "cloud_chamber_longest_track"
 tags              = ["physics", "experiments", "graphs"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 A Wilson cloud chamber image is represented by a `15 x 15` grid.

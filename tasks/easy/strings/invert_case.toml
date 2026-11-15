@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "invert_case"
 tags              = ["strings"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Implement a function that changes the case of each letter in the text to the opposite.

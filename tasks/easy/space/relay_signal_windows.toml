@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "relay_signal_windows"
 tags              = ["space", "intervals"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 On the way to the Moon, several relays provide communication windows `[l, r]`, inclusive. After merging overlapping or touching windows, return the length of the longest continuous contact period.

@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "gold_rush"
 tags              = ["graphs", "bipartite", "matching"]
-time_to_solve_sec = 500
+time_to_solve_sec = 900
 
 description_en = """
 There are $m$ pirates, $k$ vacant positions on different ships, and a list `preferences` where `preferences[i]` contains the indices of ships pirate $i$ is willing to work on. Find the maximum number of pirates that can be assigned to ships, with each pirate assigned to at most one ship and each ship assigned to at most one pirate.

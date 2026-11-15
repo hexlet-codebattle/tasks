@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "sort_by_binary"
 tags              = ["collections", "sorting", "algo"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Sort an array of integers by the number of 1's in their binary representation (in ascending order). If two integers have the same number of 1's in their binary representation, their relative order should be the same as in the original array (stable sort).

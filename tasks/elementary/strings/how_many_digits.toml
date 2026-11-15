@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "how_many_digits"
 tags              = ["strings"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Imagine you took all the numbers from $1$ to $n$ and concatenated them together into a long string. How many digits are there between $0$ and $n$? Write a function that can calculate this.

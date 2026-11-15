@@ -2,7 +2,7 @@ base_score        = 130
 level             = "medium"
 name              = "count_multiplications_and_powers"
 tags              = ["strings", "parsing", "math"]
-time_to_solve_sec = 240
+time_to_solve_sec = 450
 
 description_en = """
 You are given a valid arithmetic expression with numbers, single-letter variables, operation signs, and spaces.

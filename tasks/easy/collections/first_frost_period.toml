@@ -2,7 +2,7 @@ base_score        = 55
 level             = "easy"
 name              = "first_frost_period"
 tags              = ["collections", "linear_scan"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 A single cold morning and a lasting cold spell affect organisms differently, so a phenological model looks for a run of cold days. A day is cold when its temperature is at most `threshold`.

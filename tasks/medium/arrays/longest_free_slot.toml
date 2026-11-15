@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "longest_free_slot"
 tags              = ["arrays", "sorting", "university"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 A student's study day spans the minutes from $0$ to `day_minutes`. The array `busy` lists `[start, end]` intervals (possibly overlapping, possibly unsorted) when she is occupied with classes, labs, or meetings.

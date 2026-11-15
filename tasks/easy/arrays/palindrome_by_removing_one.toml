@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "palindrome_by_removing_one"
 tags              = ["arrays", "algorithms"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Given an array of integers `arr`, determine if it is possible to make it a palindrome by removing **exactly one** element.

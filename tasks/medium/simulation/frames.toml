@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "frames"
 tags              = ["simulation", "strings", "grid"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = '''
 We have a screen of size $h \times w$ (rows are numbered from 1 at the top, columns from 1 on the left) initially filled with '.' characters. A list of frames is drawn on the screen. The $i$‑th frame is the border of the rectangle whose opposite corners are $(\mathrm{row}_{i,1}, \mathrm{col}_{i,1})$ and $(\mathrm{row}_{i,2}, \mathrm{col}_{i,2})$ ($\mathrm{row}_{i,1} < \mathrm{row}_{i,2}$, $\mathrm{col}_{i,1} < \mathrm{col}_{i,2}$). The frame consists of the $i$‑th letter of the English alphabet ('a' for $i=1$, 'b' for $i=2$, …). Frames are drawn in the given order, overwriting previous characters. Return the final picture as an array of $h$ strings, each of length $w$.

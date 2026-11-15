@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "lost_participant"
 tags              = ["strings"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 According to the new rules for the University Battle finals, participants must simultaneously program and run a marathon through the forest.

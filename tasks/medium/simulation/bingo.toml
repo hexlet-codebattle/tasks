@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "bingo"
 tags              = ["simulation", "set"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = '''
 The bingo field has a size of $5 \times 5$ and consists of various numbers from $1$ to $90$. The player crosses out a vertical, horizontal row, or one of the two diagonals if all five numbers from this row have been named. Determine how many rows will be crossed out.

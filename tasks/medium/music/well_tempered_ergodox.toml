@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "well_tempered_ergodox"
 tags              = ["music", "strings"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Write a function that gets a string number (1-6) and a fret (0-24) of a 6-string guitar in standard tuning and return the corresponding note. For this challenge we use a 24 fret model. The notes are: C, C#, D, D#, E, F, F#, G, G#, A, A#, B. Standard tuning from string 1 to 6 is: E, B, G, D, A, E.

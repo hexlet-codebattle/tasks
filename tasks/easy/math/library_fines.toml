@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "library_fines"
 tags              = ["math", "university"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 The university library bills a student for every overdue book she returns. The array `days` lists the number of days each borrowed book was overdue; a negative value means the book was returned early.

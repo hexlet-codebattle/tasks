@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "race_winner"
 tags              = ["simulation", "math"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 There are $n$ participants in a circular race. The system records each time a participant crosses the finish line, writing down the participant numbers in the order they cross. The race consists of $k$ laps, but the value of $k$ is unknown. Some participants may have dropped out and therefore crossed the finish line fewer than $k$ times, but it is guaranteed that at least one participant completed all $k$ laps. Determine the participant who completed $k$ laps first.

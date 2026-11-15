@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "char_replacement"
 tags              = ["strings", "collections"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Write a function that takes an array of strings `words`, a string `character`, and a string `replacement`.

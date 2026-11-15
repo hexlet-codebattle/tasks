@@ -2,7 +2,7 @@ base_score        = 50
 level             = "easy"
 name              = "complete_string"
 tags              = ["strings"]
-time_to_solve_sec = 90
+time_to_solve_sec = 180
 
 description_en = """
 A text is called complete if it contains every lowercase English letter from $a$ to $z$ at least once.

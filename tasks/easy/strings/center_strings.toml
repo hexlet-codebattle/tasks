@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "center_strings"
 tags              = ["strings", "formatting"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given an array of strings, return a new array where each string is centered to the length of the longest string in the original array, padded with spaces (`" "`).

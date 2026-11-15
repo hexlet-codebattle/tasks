@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "gift_packing"
 tags              = ["collections", "algo"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Given an array of gift sizes, you can remove one gift per operation.

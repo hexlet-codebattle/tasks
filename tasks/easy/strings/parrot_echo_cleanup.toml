@@ -2,7 +2,7 @@ base_score        = 70
 level             = "easy"
 name              = "parrot_echo_cleanup"
 tags              = ["strings", "pirates"]
-time_to_solve_sec = 120
+time_to_solve_sec = 240
 
 description_en = """
 A noisy parrot stretches sounds by repeating the same letter many times in a row.

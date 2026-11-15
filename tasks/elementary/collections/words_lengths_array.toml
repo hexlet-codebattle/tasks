@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "words_lengths_array"
 tags              = ["collections", "strings"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Create a function that takes an array of words and transforms it into an array of each word's length.

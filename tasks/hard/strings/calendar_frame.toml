@@ -2,7 +2,7 @@ base_score        = 210
 level             = "hard"
 name              = "calendar_frame"
 tags              = ["strings", "array", "ad_hoc"]
-time_to_solve_sec = 390
+time_to_solve_sec = 780
 
 description_en = """
 Given the number of days in a month and the weekday on which the month starts,

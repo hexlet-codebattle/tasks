@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "letters_to_santa"
 tags              = ["strings", "regex"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 You are given a string — a letter written to Santa. Count how many times the words `"gift"`, `"tree"`, and `"snow"` appear in the letter. The search is case-insensitive.

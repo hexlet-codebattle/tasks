@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "galileo_fall_matches"
 tags              = ["physics", "experiments", "arrays"]
-time_to_solve_sec = 220
+time_to_solve_sec = 300
 
 description_en = """
 In a simplified Galileo fall experiment each record is `[mass1, height1, mass2, height2]`.

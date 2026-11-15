@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "higgs_candidate_events"
 tags              = ["physics", "experiments", "arrays"]
-time_to_solve_sec = 220
+time_to_solve_sec = 300
 
 description_en = """
 In a simplified Higgs search, each collision event has a reconstructed mass in GeV.

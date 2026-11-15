@@ -2,7 +2,7 @@ base_score        = 45
 level             = "elementary"
 name              = "dual_web_cartridges"
 tags              = ["math", "spider_man"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Spider-Man fires `shots` web shots, alternating shooters: left, right, left, right, and so on. Each cartridge supplies exactly `capacity` shots to the shooter in which it is installed. The two shooters do not share cartridges.

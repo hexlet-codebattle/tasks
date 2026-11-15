@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "mandarin_balance"
 tags              = ["collections", "math"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 Given an array representing the number of mandarins each child has, determine if they can be redistributed so that everyone has an equal amount.

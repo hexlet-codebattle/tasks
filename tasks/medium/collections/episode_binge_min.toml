@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "episode_binge_min"
 tags              = ["collections"]
-time_to_solve_sec = 420
+time_to_solve_sec = 450
 
 description_en = """
 Hawkins fans plan a binge. Given episode durations in minutes and a target `minutes`, return the minimum number of consecutive episodes needed to reach at least `minutes`. If it is impossible, return `0`.

@@ -2,7 +2,7 @@ base_score        = 70
 level             = "easy"
 name              = "portal_camera_route"
 tags              = ["strings", "spider_man"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 A camera drone records Spider-Man's route as `N`, `E`, `S`, and `W` commands. A portal rotates every recorded direction $90^\\circ$ clockwise, then plays the clip backward.

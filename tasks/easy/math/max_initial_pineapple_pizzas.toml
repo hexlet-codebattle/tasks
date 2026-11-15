@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "max_initial_pineapple_pizzas"
 tags              = ["math", "greedy"]
-time_to_solve_sec = 200
+time_to_solve_sec = 300
 
 description_en = """
 At a party there are currently $g$ pear pizzas, $a$ pineapple pizzas, and $e$ empty boxes (each box contained some pizza).

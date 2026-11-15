@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "earth_return_reentry"
 tags              = ["space", "dp", "matrices"]
-time_to_solve_sec = 780
+time_to_solve_sec = 900
 
 description_en = """
 Selene returns to Earth through a layered reentry corridor. Each cell stores the heat cost of passing through that sector, and `-1` marks a storm sector that cannot be used. The capsule starts at row `0`, column `start_col`. On each step it moves to the next row in the same column, one column left, or one column right. A diagonal move uses `1` unit of steering fuel, a straight move uses `0`. Return the minimum total heat needed to reach any cell in the last row using at most `fuel` units, or `-1` if landing is impossible.

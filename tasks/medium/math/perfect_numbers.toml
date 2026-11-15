@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "perfect_numbers"
 tags              = ["math"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 Determine if a given number is "perfect".

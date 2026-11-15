@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "lecture_hall_schedule"
 tags              = ["greedy", "sorting", "intervals", "arrays"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 You are given a lecture hall where several professors want to give their lectures. To make a schedule, professors submitted requests represented as an array of two integers `[start, end]`, denoting the start time and end time of the lecture.

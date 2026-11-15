@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "maximum_cars_to_finish"
 tags              = ["greedy", "math", "arrays"]
-time_to_solve_sec = 250
+time_to_solve_sec = 300
 
 description_en = """
 Sergey is organizing a road trip with his friends. There are $n$ cars, and each car needs exactly $x$ liters of fuel to reach the destination. The $i$-th car currently has $a_i$ liters of fuel.

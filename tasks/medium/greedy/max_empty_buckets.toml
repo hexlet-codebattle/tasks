@@ -2,7 +2,7 @@ base_score        = 140
 level             = "medium"
 name              = "max_empty_buckets"
 tags              = ["greedy", "math", "buckets", "simulation"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 For each bucket, the amount of water in it, $w_i$, and its capacity, $c_i$, are known.

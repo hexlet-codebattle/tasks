@@ -2,7 +2,7 @@ base_score        = 20
 level             = "elementary"
 name              = "arithmetic_progression"
 tags              = ["math"]
-time_to_solve_sec = 30
+time_to_solve_sec = 60
 
 description_en = """
 Calculate the sum of the arithmetic progression from $1$ to $n$ (inclusive).

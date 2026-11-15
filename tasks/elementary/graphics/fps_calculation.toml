@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "fps_calculation"
 tags              = ["graphics"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Create a function that returns the number of frames shown in a given number of minutes for a certain FPS. Note: FPS stands for "frames per second" and it's the number of frames a computer screen shows every second.

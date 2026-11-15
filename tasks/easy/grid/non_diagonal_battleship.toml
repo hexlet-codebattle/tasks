@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "non_diagonal_battleship"
 tags              = ["grid", "counting", "simulation", "non_diagonal"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 Some squares of the $n \\times m$ board for the Unusual Naval Battle game are occupied (marked with the * symbol).

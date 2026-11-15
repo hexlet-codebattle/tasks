@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "linear_equation_system"
 tags              = ["math", "algebra"]
-time_to_solve_sec = 300
+time_to_solve_sec = 450
 
 description_en = """
 Given coefficients $a,b,c,d,e,f$ of a linear system:

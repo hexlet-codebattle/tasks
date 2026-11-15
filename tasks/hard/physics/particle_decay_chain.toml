@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "particle_decay_chain"
 tags              = ["physics", "experiments", "dfs"]
-time_to_solve_sec = 760
+time_to_solve_sec = 900
 
 description_en = """
 Particle decay rules are strings like `"Higgs->photon+photon"`.

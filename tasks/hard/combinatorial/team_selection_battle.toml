@@ -2,7 +2,7 @@ base_score        = 150
 level             = "hard"
 name              = "team_selection_battle"
 tags              = ["combinatorial", "search", "flow", "team_selection"]
-time_to_solve_sec = 250
+time_to_solve_sec = 500
 
 description_en = """
 In a university battle competition a team consists of exactly $10$ players.

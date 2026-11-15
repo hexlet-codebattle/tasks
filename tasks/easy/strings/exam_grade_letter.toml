@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "exam_grade_letter"
 tags              = ["strings", "university"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 A professor enters a student's final exam `score` (an integer from $0$ to $100$) into the gradebook and the system prints out the matching letter grade.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "treasure_map_route"
 tags              = ["arrays", "simulation", "pirates"]
-time_to_solve_sec = 180
+time_to_solve_sec = 300
 
 description_en = """
 A pirate follows a route written as an array `moves` containing only `"N"`, `"S"`, `"E"`, and `"W"`.

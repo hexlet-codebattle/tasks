@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "alpine_slalom_best_run"
 tags              = ["math", "winter_olympics"]
-time_to_solve_sec = 230
+time_to_solve_sec = 300
 
 description_en = """
 Given run times `times_sec` for one alpine slalom athlete, return the best run time.

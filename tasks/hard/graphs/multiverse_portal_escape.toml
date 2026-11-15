@@ -2,7 +2,7 @@ base_score        = 240
 level             = "hard"
 name              = "multiverse_portal_escape"
 tags              = ["graphs", "state_search", "spider_man"]
-time_to_solve_sec = 800
+time_to_solve_sec = 900
 
 description_en = """
 Spider-Man is trapped in a rectangular multiverse grid:

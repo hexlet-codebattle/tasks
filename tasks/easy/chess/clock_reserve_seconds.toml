@@ -2,7 +2,7 @@ base_score        = 65
 level             = "easy"
 name              = "clock_reserve_seconds"
 tags              = ["chess", "prefix_sums"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 Your clock starts with an unknown nonnegative integer number of seconds. The list `times` gives the duration of each of your moves, in seconds and chronological order.

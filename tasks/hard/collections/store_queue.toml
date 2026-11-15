@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "store_queue"
 tags              = ["collections", "algo"]
-time_to_solve_sec = 750
+time_to_solve_sec = 900
 
 description_en = """
 Given an array of service times for customers and `k` checkout registers, each customer chooses the register that will be free earliest.

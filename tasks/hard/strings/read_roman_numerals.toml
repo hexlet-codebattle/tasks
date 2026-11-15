@@ -2,7 +2,7 @@ base_score        = 250
 level             = "hard"
 name              = "read_roman_numerals"
 tags              = ["strings"]
-time_to_solve_sec = 800
+time_to_solve_sec = 900
 
 description_en = """
 Parse a Roman-numeral string and return the number it represents.

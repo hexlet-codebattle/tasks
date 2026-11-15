@@ -2,7 +2,7 @@ base_score        = 120
 level             = "medium"
 name              = "windborne_seed_landings"
 tags              = ["intervals", "sorting", "search"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Seed dispersal by wind is called anemochory: winged seeds and seeds with a pappus travel away from the parent plant, but they sprout only in suitable places. Every seed of `seeds` is carried by the same gust, so a seed at position `p` lands at `p + wind`. A landing succeeds when it falls inside at least one fertile interval `[left, right]`, both ends included. The intervals of `fertile` may overlap.

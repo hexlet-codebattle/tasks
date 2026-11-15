@@ -2,7 +2,7 @@ base_score        = 100
 level             = "medium"
 name              = "broadcast_finder"
 tags              = ["strings", "network"]
-time_to_solve_sec = 180
+time_to_solve_sec = 360
 
 description_en = """
 You are given a string `address` containing an IPv4 address with a subnet mask in CIDR notation: `"a.b.c.d/n"`.

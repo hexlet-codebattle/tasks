@@ -2,7 +2,7 @@ base_score        = 50
 level             = "elementary"
 name              = "celsius_to_fahrenheit"
 tags              = ["conversion", "physics"]
-time_to_solve_sec = 120
+time_to_solve_sec = 150
 
 description_en = """
 Convert a temperature from Celsius to Fahrenheit using the formula

@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "remove_comments"
 tags              = ["strings", "regex", "parsing"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 Given a string `code`, remove all single-line comments starting with `//`.

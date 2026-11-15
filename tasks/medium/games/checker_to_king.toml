@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "checker_to_king"
 tags              = ["math", "dynamic_programming", "games"]
-time_to_solve_sec = 400
+time_to_solve_sec = 450
 
 description_en = """
 On an $8 \\times 8$ chessboard, there is a single white checker. It can move diagonally forward (one step up-left or up-right).

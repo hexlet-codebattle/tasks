@@ -2,7 +2,7 @@ base_score        = 150
 level             = "medium"
 name              = "santas_laugh"
 tags              = ["strings"]
-time_to_solve_sec = 350
+time_to_solve_sec = 450
 
 description_en = """
 Given a string `s`, ignore all characters except `'h'` and `'o'`. Check if the remaining characters form the pattern `"hohoho..."` with an odd number of `"ho"` substrings.

@@ -2,7 +2,7 @@ base_score        = 20
 level             = "elementary"
 name              = "computers_count"
 tags              = ["strings", "training"]
-time_to_solve_sec = 30
+time_to_solve_sec = 60
 
 description_en = """
 Given an integer `number`, return a string with the number and the correct English form of the word `"computer"`.

@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "digit_sum_range"
 tags              = ["math", "digit_sum", "range"]
-time_to_solve_sec = 210
+time_to_solve_sec = 300
 
 description_en = """
 Given integers $l$, $r$, and $x$, where $0 \\le l \\le r \\le 10000$, find the smallest and the largest integer

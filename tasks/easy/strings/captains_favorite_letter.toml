@@ -2,7 +2,7 @@ base_score        = 70
 level             = "easy"
 name              = "captains_favorite_letter"
 tags              = ["strings", "hash_maps", "pirates"]
-time_to_solve_sec = 120
+time_to_solve_sec = 240
 
 description_en = """
 The captain studies a non-empty log word `log`.

@@ -2,7 +2,7 @@ base_score        = 40
 level             = "easy"
 name              = "ripe_berry_streak"
 tags              = ["collections", "linear_scan"]
-time_to_solve_sec = 120
+time_to_solve_sec = 240
 
 description_en = """
 Soluble sugar content rises as fruit ripens, so it serves as one measure of ripeness. A berry is ripe when its value in `sugar` is at least `min_sugar`.

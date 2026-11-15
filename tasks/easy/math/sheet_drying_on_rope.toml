@@ -2,7 +2,7 @@ base_score        = 100
 level             = "easy"
 name              = "sheet_drying_on_rope"
 tags              = ["math", "geometry", "logic"]
-time_to_solve_sec = 240
+time_to_solve_sec = 300
 
 description_en = """
 A sheet has size $A\\times B$ centimeters. A rope of length $L$ hangs at height $H$ above the floor.
